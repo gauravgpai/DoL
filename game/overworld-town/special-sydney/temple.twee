@@ -388,7 +388,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 		<</if>>
 	<<case 3>>
 		<<set _people to random(22, 34)>>
-		You open one eye and examine the room. There are others like you and Sydney, praying in the pews. <<if C.npc.Jordan.pronoun is "m">>Monks<<else>>Nuns<</if>> prowl the aisles, passing furtive messages to one another. There are many more than you'd expect. You count <<number _people>> coming and going.
+		You open one eye and examine the room. There are others like you and Sydney, praying in the pews. <<nnpc_Monk "Jordan">>s prowl the aisles, passing furtive messages to one another. There are many more than you'd expect. You count <<number _people>> coming and going.
 		<br><br>
 		<<if $awareness gte 400>>
 			You glance up at the shadowed ceiling, at the gaping abyss perched above. Terror shivers up your spine. Your gaze is forced away.
@@ -2947,7 +2947,7 @@ You continue to hold each other. Eventually, though <<he>> still shakes, Sydney 
 <<if $templePromised is "Sydney">>
 	<<set _sydneyText to "the one I'm promised to">>
 <<elseif isLoveInterest("Sydney")>>
-	<<set _sydneyText to "my <<nnpc_gendery \"Sydney\">>friend">>
+	<<set _sydneyText to "my <<nnpc_girlfriend \"Sydney\">>">>
 <<else>>
 	<<set _sydneyText to "my friend">>
 <</if>>

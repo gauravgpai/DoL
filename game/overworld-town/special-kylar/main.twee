@@ -2280,7 +2280,7 @@ Kylar hugs your arm on the walk over, as if afraid you'll run. The halls are emp
 	<<set _boy to ($kylarBathroomGender is "m" ? "boy" : "girl")>>
 	<<if $submissive gte 1150 + random(0,250) + _kylar.lust>>
 		<<He>> hesitates a bit when you approach the _boy's bathroom.
-		"Umm, c-could we use the <<print (_kylar.pronoun is "m" ? "boy": "girl")>>'s room instead?"
+		"Umm, c-could we use the <<nnpc_gendery "Kylar">>'s room instead?"
 		<<set $kylarBathroomGender to _kylar.pronoun>>
 		You don't refuse.
 	<<else>>

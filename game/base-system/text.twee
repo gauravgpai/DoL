@@ -1899,7 +1899,7 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "girlfriend">><<silently>>
-	<<girl>><<set _text_output to _text_output + "friend">>
+	<<set _text_output to ($player.gender_appearance is "m"? "boyfriend" : "girlfriend")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "partnerfriend">><<silently>>
@@ -5315,6 +5315,10 @@
 	<<set _text_output to ($pronoun is "m" ? "son" : "daughter")>>
 <</silently>>_text_output<</widget>>
 
+<<widget "niece">><<silently>>
+	<<set _text_output to ($pronoun is "m" ? "nephew" : "niece")>>
+<</silently>>_text_output<</widget>>
+
 
 <!-- Proper usage example: <<nnpc_he "Robin">> would return "he" or "she" based on Robin's pronoun. -->
 <!-- Useful for needing to call a named NPC's pronoun in a scene that doesn't directly include them, or for more efficient usage in scenes with multiple named NPCs. -->
@@ -5457,6 +5461,10 @@
 <<widget "nnpc_monk">><<silently>>
 	<<set _npcPronoun to C.npc[_args[0]].pronoun>>
 	<<set _text_output to (_npcPronoun is "m" ? "monk" : "nun")>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "nnpc_Monk">><<silently>>
+	<<nnpc_monk _args[0]>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_waiter">><<silently>>
