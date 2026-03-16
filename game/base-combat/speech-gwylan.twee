@@ -693,7 +693,7 @@
 		<<if _gwylanTF.known is true and _gwylanTF.tail is "revealed">>
 			<<if _gwylanStatus.includes("heat")>>
 				<<addinlineevent "gwylan_speech_tf_heat">>
-					<<set _gwyText to `<<His>> face is deeply flushed, and <<he>> lets out a low whine. You wonder if <<hes>> in <<if C.npc.Gwylan.pronoun is 'm'>>rut<<else>>heat<</if>>.`>>
+					<<set _gwyText to `<<His>> face is deeply flushed, and <<he>> lets out a low whine. You wonder if <<hes>> in <<if C.npc.Gwylan.pronoun is "m">>rut<<else>>heat<</if>>.`>>
 				<</addinlineevent>>
 			<</if>>
 			<<addinlineevent "gwylan_speech_tf_ears">>

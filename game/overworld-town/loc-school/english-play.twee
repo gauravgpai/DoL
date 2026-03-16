@@ -538,11 +538,11 @@ You approach Kylar and Sydney. They haven't noticed you yet. Sydney is giving Ky
 
 <<switch $englishPlayRoles.Player>>
 	<<case "Cass">>
-		"Let me hear some real desperation in it. 'Please <<if C.npc.Sydney.pronoun is "m">>father<<else>>mother<</if>>, listen! What I feel for Cass is no mere interest! We were truly meant to be together!' You're about to be taken away from the love of your life. I'm about to rob you of them."
+		"Let me hear some real desperation in it. 'Please <<nnpc_mother "Sydney">>, listen! What I feel for Cass is no mere interest! We were truly meant to be together!' You're about to be taken away from the love of your life. I'm about to rob you of them."
 		<br><br>
 
 		Kylar sees you standing behind Sydney, and frowns. "Yeah, that's right. I think I can do that." <<He "Kylar">> locks eyes with you.
-		"Please <<if C.npc.Sydney.pronoun is "m">>father<<else>>mother<</if>>, listen! What I feel for Cass is no mere interest! We were truly meant to be together!"
+		"Please <<nnpc_mother "Sydney">>, listen! What I feel for Cass is no mere interest! We were truly meant to be together!"
 		<<He "Kylar">> shoves past Sydney and stiffly grabs you by the arm.
 		<br><br>
 

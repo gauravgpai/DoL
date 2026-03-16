@@ -2008,7 +2008,7 @@ You thank Doctor Harper for the scan as <<he>> hands you a warm towel. You wipe 
 <<getChildrenIds>><<childSelect _childrenIds.last()>>
 
 <<if $alexRescued>>
-	Alex taps <<his>> foot as <<he>> waits for you in the hospital foyer. <<He>> runs over to you, very nearly knocking you over. "Partner! I'm so glad you're alright. You know how to scare a <<= C.npc.Alex.pronoun is "m" ? "farmboy" : "farmgirl">>."
+	Alex taps <<his>> foot as <<he>> waits for you in the hospital foyer. <<He>> runs over to you, very nearly knocking you over. "Partner! I'm so glad you're alright. You know how to scare a farm<<nnpc_gendery "Alex">>."
 	<<unset $alexRescued>>
 <<else>>
 	Alex waits for you in the hospital foyer. <<He>> smiles when <<he>> sees you. "Hey, I got a call from the hospital saying that you were in labour. I got here as fast as I could."
