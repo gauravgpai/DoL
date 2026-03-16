@@ -195,8 +195,7 @@
 				"You're not going to believe it. I signed up for Doren's Christmas stage play, and it looks like we'll be performing together!
 				<<switch $englishPlayRoles.Sydney>>
 					<<case "Sterling">>
-						<<set _playPronoun to (C.npc.Sydney.pronoun is "m" ? "Mr" : "Mrs")>>
-						Looks like I get to be the villain, that rich kid's sibling!" <<He>> stops for a moment, opening the booklet and quickly shuffling through the pages. "No, that's not right... the parent, _playPronoun Sterling!" <<He>> gives you a nervous smile. "I... need to give it a few more reads..."
+						Looks like I get to be the villain, that rich kid's sibling!" <<He>> stops for a moment, opening the booklet and quickly shuffling through the pages. "No, that's not right... the parent, <<nnpc_Mrs "Sydney">> Sterling!" <<He>> gives you a nervous smile. "I... need to give it a few more reads..."
 					<<default>>
 						I'll be playing that poor little beggar kid, Jazz... or, Jake?" <<He>> opens <<his>> booklet and takes a quick glance at it. "Cass! That's it!" <<He>> tries to laugh it off. "I won't mess it up, promise."
 				<</switch>>

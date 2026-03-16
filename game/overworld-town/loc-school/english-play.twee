@@ -231,8 +231,7 @@ You approach Kylar. <<He>> looks extremely uncomfortable, but lightens up when <
 
 <<switch $englishPlayRoles.Kylar>>
 	<<case "Sterling">>
-		<<set _playPronoun to (C.npc.Kylar.pronoun is "m" ? "Mr" : "Mrs")>>
-		"I'll be playing the parent, _playPronoun Sterling," <<he>> says. "There's always someone getting in the way, but love always wins in the end, don't you think?" <<He>> draws closer to you before coming to <<his>> senses and withdrawing. "Sorry."
+		"I'll be playing the parent, <<nnpc_Mrs "Kylar">> Sterling," <<he>> says. "There's always someone getting in the way, but love always wins in the end, don't you think?" <<He>> draws closer to you before coming to <<his>> senses and withdrawing. "Sorry."
 	<<default>>
 		"I get to play as that rich kid, Taylor, who falls in love with someone." <<He>> blushes deeply and looks you in the eyes. "I... still don't know who, though."
 <</switch>>
@@ -261,8 +260,7 @@ You approach Sydney. <<He>> looks excited about something, and smiles upon seein
 "You're not going to believe it. I signed up for the Christmas stage play, and it looks like we'll be performing together!
 <<switch $englishPlayRoles.Sydney>>
 	<<case "Sterling">>
-		<<set _playPronoun to (C.npc.Sydney.pronoun is "m" ? "Mr" : "Mrs")>>
-		I get to be the villain, that rich kid's sibling!" <<He>> stops for a moment, opening the booklet and quickly shuffling through the pages. "No, that's not right... the parent, _playPronoun Sterling!" <<He>> gives you a nervous smile. "I... need to give it a few more reads..."
+		I get to be the villain, that rich kid's sibling!" <<He>> stops for a moment, opening the booklet and quickly shuffling through the pages. "No, that's not right... the parent, <<nnpc_Mrs "Sydney">> Sterling!" <<He>> gives you a nervous smile. "I... need to give it a few more reads..."
 	<<default>>
 		I'll be playing that poor little beggar kid, Jazz... or, Jake?" <<He>> opens <<his>> booklet and takes a quick glance at it. "Cass! That's it!" <<He>> tries to laugh it off. "I won't mess it up, promise."
 <</switch>>
@@ -418,8 +416,7 @@ By the time you're done, the school has started to close. You walk outside with 
 
 				Sydney sheepishly looks away. "To witness such a heart-breaking dispute on Christmas Eve, I cannot bear to watch! No, that wasn't good, let me try again..."
 			<<case "Taylor">>
-				<<set _playPronoun to (C.npc.Kylar.pronoun is "m" ? "father" : "mother")>>
-				You rehearse as Taylor. "Please _playPronoun, listen! What I feel for Cass is no mere interest! We were truly meant to be together!" You take Sydney by the arm to emphasise the line.
+				You rehearse as Taylor. "Please <<nnpc_mother "Kylar">>, listen! What I feel for Cass is no mere interest! We were truly meant to be together!" You take Sydney by the arm to emphasise the line.
 				<br><br>
 
 				Sydney sheepishly looks away. "To witness such a heart-breaking dispute on Christmas Eve, I cannot bear to watch! No, that wasn't good, let me try again..."
