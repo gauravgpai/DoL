@@ -76,7 +76,7 @@
 		"P-pervert!")>>"
 <</widget>>
 
-/* Note: Has a low number of variaitons. Consider expanding */
+/* Note: Has a low number of variations. Consider expanding */
 <<widget "catcallschool">>
 	"<<print either(
 		"Hey sexy.",

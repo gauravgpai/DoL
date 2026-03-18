@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable jsdoc/require-description-complete-sentence */
-// adjust mousetrap behavior, see mousetrap.js
+// adjust mousetrap behaviour, see mousetrap.js
 Mousetrap.prototype.stopCallback = function (e, element, combo) {
 	// game uses V.tempDisable to indicate when the keyboard shortcuts shouldn't trigger
 	// e.g. when typing a name of a new outfit
@@ -732,7 +732,7 @@ Macro.add("icon", {
 			.join(" ");
 		iconImg.src = basePath + name;
 		this.output.append(iconImg);
-		// append a whitespace for compatibility with old icon behavior
+		// append a whitespace for compatibility with old icon behaviour
 		if (!this.args.includes("nowhitespace")) this.output.append(" ");
 	},
 });
