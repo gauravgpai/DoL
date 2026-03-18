@@ -1930,8 +1930,8 @@ Gwylan rummages around the shop for a while, looking for something. "I can never
 	You're curious. "Why do you have—"
 	<br><br>
 
-	"I stole it," <<he>> interrupts. "This will feel strange, brace yourself." <<He>> holds it against the belt. You feel a jolt and your belt clatters to the floor, the lock <span class="red">broken and smoldering</span>.
-	"I made a few modifications to it, too. It's great for self-defense." <<He>> picks up the remains. "I could use the scrap from this. Ooh, I could make a durable set of undergarments! Or maybe..."
+	"I stole it," <<he>> interrupts. "This will feel strange, brace yourself." <<He>> holds it against the belt. You feel a jolt and your belt clatters to the floor, the lock <span class="red">broken and smouldering</span>.
+	"I made a few modifications to it, too. It's great for self-defence." <<He>> picks up the remains. "I could use the scrap from this. Ooh, I could make a durable set of undergarments! Or maybe..."
 	<br><br>
 
 	<<He>> walks away with it, rambling to <<himself>>.

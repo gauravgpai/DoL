@@ -1799,8 +1799,8 @@ function initPlants() {
 		crème_brulee: {
 			index: 103,
 			name: "crème_brulee",
-			singular: "pot of crème brulee",
-			plural: "pots of crème brulee",
+			singular: "pot of crème brûlée",
+			plural: "pots of crème brûlée",
 			plant_cost: 600,
 			difficulty: 2,
 			bed: "kitchen",
@@ -2010,9 +2010,9 @@ function initPlants() {
 		bakewell_tart: {
 			index: 115,
 			name: "bakewell_tart",
-			recipe_name: "bakewell tarts",
-			singular: "bakewell tart",
-			plural: "bakewell tarts",
+			recipe_name: "Bakewell tarts",
+			singular: "Bakewell tart",
+			plural: "Bakewell tarts",
 			plant_cost: 1200,
 			difficulty: 3,
 			handheld_gift: true,

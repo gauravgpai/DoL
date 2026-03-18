@@ -6893,7 +6893,7 @@
 		<<unset $hospitalintro>>
 	<</if>>
 
-	/* Unset Night Monster persistent NPC in favor of Named NPC (NNPC) */
+	/* Unset Night Monster persistent NPC in favour of Named NPC (NNPC) */
 	<<if !$nightMonsterNNPCUpdate>>
 		<<set $nightMonsterNNPCUpdate to 1>> /* set to 1 here, set to 2 in variablesStart2 or Config.navigation.override */
 		<<clearNPC "tower_creature">>

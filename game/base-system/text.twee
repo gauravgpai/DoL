@@ -1185,7 +1185,7 @@
 <</widget>>
 
 <<widget "pshe">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "he" : "she")>><<gendercheck>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "he" : "she")>><<gendercheck>>
 <</silently>>_text_output<</widget>>
 
 <<widget "pShe">><<silently>>
@@ -1193,7 +1193,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "pshes">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "he's" : "she's")>><<gendercheck>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "he's" : "she's")>><<gendercheck>>
 <</silently>>_text_output<</widget>>
 
 <<widget "pShes">><<silently>>
@@ -1201,11 +1201,11 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "pher">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "his" : "her")>><<gendercheck>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "his" : "her")>><<gendercheck>>
 <</silently>>_text_output<</widget>>
 
 <<widget "phers">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "his" : "hers")>><<gendercheck>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "his" : "hers")>><<gendercheck>>
 <</silently>>_text_output<</widget>>
 
 <<widget "pHer">><<silently>>
@@ -1213,7 +1213,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "phim">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "him" : "her")>><<gendercheck>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "him" : "her")>><<gendercheck>>
 <</silently>>_text_output<</widget>>
 
 <<widget "pHim">><<silently>>
@@ -1221,7 +1221,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "pherself">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "himself" : "herself")>><<gendercheck>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "himself" : "herself")>><<gendercheck>>
 <</silently>>_text_output<</widget>>
 
 <<widget "pHerself">><<silently>>
@@ -1229,7 +1229,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "psir">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "sir" : "ma'am")>><<gendercheck>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "sir" : "ma'am")>><<gendercheck>>
 <</silently>>_text_output<</widget>>
 
 <<widget "pSir">><<silently>>
@@ -1237,11 +1237,11 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "pmother">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "father" : "mother")>><<gendercheck>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "father" : "mother")>><<gendercheck>>
 <</silently>>_text_output<</widget>>
 
 <<widget "pMother">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "Father" : "Mother")>><<gendercheck>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "Father" : "Mother")>><<gendercheck>>
 <</silently>>_text_output<</widget>>
 
 <!-- Commented out for deprecation. Use: ?animals
@@ -1841,6 +1841,14 @@
 	<</if>>
 <</silently>><<print _text_output>><</widget>>
 
+<<widget "partner">><<silently>>
+	<<if maleChance($pronoun) gte random(1,100)>>
+		<<set _text_output to ($pronoun is "m" ? "boyfriend" : "girlfriend")>>
+	<<else>>
+		<<set _text_output to ($pronoun is "m" ? "girlfriend" : "boyfriend")>>
+	<</if>>
+<</silently>><<print _text_output>><</widget>>
+
 <<widget "father">><<silently>>
 	<<set _text_output to ($pronoun is "m" ? "father" : "mother")>>
 <</silently>><<print _text_output>><</widget>>
@@ -1887,24 +1895,24 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "girl">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "boy" : "girl")>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "boy" : "girl")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "lady">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "man" : "lady")>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "man" : "lady")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "gentleman">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "gentleman" : "lady")>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "gentleman" : "lady")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "girlfriend">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "boyfriend" : "girlfriend")>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "boyfriend" : "girlfriend")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "partnerfriend">><<silently>>
 	/* Prints the gender of the player's assumed hetero partner */
-	<<set _text_output to ($player.gender_appearance is "m"? "girlfriend" : "boyfriend")>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "girlfriend" : "boyfriend")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "friend">><<silently>>
@@ -1922,7 +1930,7 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "wife">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "husband" : "wife")>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "husband" : "wife")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "Wife">><<silently>>
@@ -1943,6 +1951,14 @@
 
 <<widget "Sister_npc">><<silently>>
 	<<sister_npc>><<capitalise>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "girlfriend_npc">><<silently>>
+	<<set _text_output to ($pronoun is "m" ? "boyfriend" : "girlfriend")>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "wife_npc">><<silently>>
+	<<set _text_output to ($pronoun is "m" ? "husband" : "wife")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "victimgirl">>
@@ -1972,7 +1988,7 @@
 <</widget>>
 
 <<widget "lass">><<silently>>
-	<<set _text_output to ($player.gender_appearance is "m"? "lad" : "lass")>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "lad" : "lass")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "Lass">><<silently>>
