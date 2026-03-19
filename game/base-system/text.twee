@@ -1898,6 +1898,10 @@
 	<<set _text_output to ($player.gender_appearance is "m" ? "boy" : "girl")>>
 <</silently>><<print _text_output>><</widget>>
 
+<<widget "woman">><<silently>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "man" : "woman")>>
+<</silently>><<print _text_output>><</widget>>
+
 <<widget "lady">><<silently>>
 	<<set _text_output to ($player.gender_appearance is "m" ? "man" : "lady")>>
 <</silently>><<print _text_output>><</widget>>
@@ -1959,6 +1963,14 @@
 
 <<widget "wife_npc">><<silently>>
 	<<set _text_output to ($pronoun is "m" ? "husband" : "wife")>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "girl_npc">><<silently>>
+	<<set _text_output to ($pronoun is "m" ? "boy" : "girl")>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "woman_npc">><<silently>>
+	<<set _text_output to ($pronoun is "m" ? "man" : "woman")>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "victimgirl">>
@@ -3058,6 +3070,22 @@
 		<<set _text_output to "Sir">>
 	<<else>>
 		<<set _text_output to "Miss">>
+	<</if>>
+<</silently>>_text_output<</widget>>
+
+<<widget "maam">><<silently>>
+	<<if $pronoun is "m">>
+		<<set _text_output to "sir">>
+	<<else>>
+		<<set _text_output to "ma'am">>
+	<</if>>
+<</silently>>_text_output<</widget>>
+
+<<widget "Maam">><<silently>>
+	<<if $pronoun is "m">>
+		<<set _text_output to "Sir">>
+	<<else>>
+		<<set _text_output to "Ma'am">>
 	<</if>>
 <</silently>>_text_output<</widget>>
 
