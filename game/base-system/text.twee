@@ -1881,6 +1881,22 @@
 	<<grandpa>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
+<<widget "uncle">><<silently>>
+	<<set _text_output to ($pronoun is "m" ? "uncle" : "aunt")>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "Uncle">><<silently>>
+	<<uncle>><<capitalise>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "auntie">><<silently>>
+	<<set _text_output to ($pronoun is "m" ? "uncle" : "auntie")>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "Auntie">><<silently>>
+	<<auntie>><<capitalise>>
+<</silently>><<print _text_output>><</widget>>
+
 <<widget "actor">><<silently>>
 	<<set _text_output to ($pronoun is "m" ? "actor" : "actress")>>
 <</silently>><<print _text_output>><</widget>>
