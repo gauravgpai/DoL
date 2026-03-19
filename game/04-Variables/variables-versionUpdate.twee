@@ -4013,7 +4013,7 @@
 		<<set $objectVersion.fame to 3>>
 	<</if>>
 
-	<!-- <= v0.3.8.6: Modeling rework -->
+	<!-- <= v0.3.8.6: Modelling rework -->
 	<<if typeof $photo is 'object'>>
 		<<script>>
 			const photo = V.photo;

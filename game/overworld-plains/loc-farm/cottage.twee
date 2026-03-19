@@ -18,7 +18,7 @@
 You are downstairs in Alex's cottage. It's tight, and cosy. There's a kitchen with modern appliances, and a small table, as well as a living room with a sofa and armchair.
 <br><br>
 
-<!-- Flavor text of Alex coming down, going up, or being upstairs -->
+<!-- Flavour text of Alex coming down, going up, or being upstairs -->
 <<if Time.hour is 21 and $alex_to_bed is undefined and $farm_end isnot 1>>
 	<<npc Alex>><<person1>>
 	<<if $farm_end isnot 1>>

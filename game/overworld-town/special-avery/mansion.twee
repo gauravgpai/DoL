@@ -2039,7 +2039,7 @@ You climb from the pool, and dry yourself using the towels stacks just inside th
 		<<if _chat.fame is 3 and ($fame.model gte 400 or $fame.business gte 400 or $fame.social gte 400 or $fame.good gte 400)>> /* Positive fame */
 			<<He>> smiles at you, and tells you about something <<he>> heard from <<= either(`one of <<his>> colleagues`,`an associate`,`an acquaintance`)>> concerning
 			<<if $fame.model gte 400>>
-				your <span class="green">budding modeling career</span>.
+				your <span class="green">budding modelling career</span>.
 			<<elseif $fame.business gte 400>>
 				your <span class="green">business reputation</span>.
 			<<elseif $fame.social gte 400>>
