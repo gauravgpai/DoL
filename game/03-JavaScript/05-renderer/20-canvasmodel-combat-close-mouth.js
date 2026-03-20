@@ -89,7 +89,7 @@ function mouthPenetrator(npc, overrideOptions = {}) {
 			return options.animKeyMouth;
 		},
 		filtersfn(options) {
-			const filter = npc === "npc2" ? ["vaginaNpc2"] : ["vaginaNpc"];
+			const filter = npc === "npc2" ? ["mouthNpc2"] : ["mouthNpc"];
 			return options.mouth[npc] === "tentacle" ? ["vaginaTentacle"] : filter;
 		},
 		alphafn(options) {
@@ -101,6 +101,4 @@ function mouthPenetrator(npc, overrideOptions = {}) {
 	return Object.assign(defaults, overrideOptions);
 }
 
-
 Renderer.CanvasModels.combatCloseMouth = combatCloseMouth;
-

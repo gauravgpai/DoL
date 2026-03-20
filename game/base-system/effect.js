@@ -1268,7 +1268,7 @@ function effects() {
 			V.worn.over_lower.integrity = V.worn.over_lower.integrity_max;
 		}
 		if (V.worn.lower.name !== "naked") {
-			V.worn.lower.integrity =  V.worn.lower.integrity_max;
+			V.worn.lower.integrity = V.worn.lower.integrity_max;
 		}
 		if (V.worn.under_lower.name !== "naked") {
 			V.worn.under_lower.integrity = V.worn.under_lower.integrity_max;
