@@ -197,11 +197,11 @@ You are in your bedroom.
 	<<rngWraith 1>>
 <</if>>
 
-
-<<if pcAreArmsBound("any") or $feetuse is "bound" or $worn.feet.name is "ankle cuffs">>
+<<if breakableSoftBinding()>>
 	<<undobindingsicon>><<link [[Undo your bindings (0:10)|Bedroom]]>><<set $unbind to 1>><<pass 10>><<unbind>><</link>>
 	<br><br>
 <</if>>
+
 <<if $worn.face.cursed is 1>>
 	<<link [[Remove your $worn.face.name (0:10)|Bedroom]]>><<pass 10>><<set $worn.face.type.push("broken")>><<faceruined>><</link>>
 	<br><br>
@@ -1131,9 +1131,9 @@ You are in the bathroom.
 	<<His>> hands retreat, and you hear shuffling of clothes before <<his>> body is on you once again. "Won't you make me feel good?"
 	<br><br>
 
-	<<link [[Allow Kylar to continue|Bedroom Kylar Sneak Sex]]>><<set $sexstart to 1>><</link>><<gglove>><<npcincr Kylar love 2>>
+	<<link [[Allow Kylar to continue|Bedroom Kylar Sneak Sex]]>><<npcincr Kylar love 2>><<set $sexstart to 1>><</link>><<gglove>>
 	<br>
-	<<link [[Push Kylar away|Bedroom Kylar Sneak Push]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 6>><<npcincr Kylar lust -2>><</link>><<llove>><<ggksuspicion>><<gglust>>
+	<<link [[Push Kylar away|Bedroom Kylar Sneak Push]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 6>><<npcincr Kylar lust -2>><</link>><<llove>><<ggksuspicion>><<llust>>
 
 <<elseif $location is "home" and _kylarWake is 2>>
 	<<npc "Kylar">><<person1>>
