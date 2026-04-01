@@ -299,7 +299,7 @@
 			<</if>>
 			<</addinlineevent>>
 		<</if>>
-		<<if ["otherpenisntrance","otherpenisimminent","otherpenis"].includes($penisstate)>>
+		<<if ["otherpenisentrance","otherpenisimminent","otherpenis"].includes($penisstate)>>
 			<<addinlineevent "" 3>>
 			<<personselect $penistarget>>
 			<<if $orgasmdown gte 1>>
@@ -1468,7 +1468,7 @@
 			<</if>>
 			<</addinlineevent>>
 		<</if>>
-		<<if ["otherpenisntrance","otherpenisimminent","otherpenis"].includes($penisstate)>>
+		<<if ["otherpenisentrance","otherpenisimminent","otherpenis"].includes($penisstate)>>
 			<<addinlineevent "" 2>>
 			<<personselect $penistarget>>
 			<<if $worn.under_lower.exposed gte 1 and (_skirtExposed or $worn.lower.exposed gte 2)>>
@@ -2343,7 +2343,7 @@
 			<</if>>
 			<</addinlineevent>>
 		<</if>>
-		<<if ["otherpenisntrance","otherpenisimminent","otherpenis"].includes($penisstate)>>
+		<<if ["otherpenisentrance","otherpenisimminent","otherpenis"].includes($penisstate)>>
 			<<addinlineevent "" 2>>
 			<<personselect $penistarget>>
 			<<if $worn.under_lower.exposed gte 1 and (_skirtExposed or $worn.lower.exposed gte 2)>>

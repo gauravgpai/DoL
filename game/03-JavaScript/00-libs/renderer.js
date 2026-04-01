@@ -128,13 +128,13 @@ var Renderer;
      */
     Renderer.globalC2D = createCanvas(1, 1);
     /**
-     * Creates a cutout of color in shape of sourceImage
+     * Creates a cutout of colour in shape of sourceImage
      */
     function cutout(sourceImage, color, canvas = createCanvas(sourceImage.width, sourceImage.height)) {
         let sw = sourceImage.width;
         let sh = sourceImage.height;
         canvas.clearRect(0, 0, sw, sh);
-        // Fill with target color
+        // Fill with target colour
         canvas.globalCompositeOperation = 'source-over';
         canvas.fillStyle = color;
         canvas.fillRect(0, 0, sw, sh);
@@ -152,7 +152,7 @@ var Renderer;
     }
     Renderer.cutoutFrom = cutoutFrom;
     /**
-     * Paints sourceImage over cutout of it filled with color.
+     * Paints sourceImage over cutout of it filled with colour.
      */
     function composeOverCutout(sourceImage, color, blendMode = 'multiply', canvas = createCanvas(sourceImage.width, sourceImage.height)) {
         canvas = cutout(sourceImage, color, canvas);
@@ -164,7 +164,7 @@ var Renderer;
     Renderer.composeOverCutout = composeOverCutout;
     /**
      * Repeatedly fill all sub-frames of canvas with same style.
-     * (Makes sense with gradient and pattern fills, to keep consistents across all sub-frames)
+     * (Makes sense with gradient and pattern fills, to keep consistent across all sub-frames)
      */
     function fillFrames(fillStyle, canvas, frameCount, frameWidth, blendMode) {
         const frameHeight = canvas.canvas.height;
@@ -252,10 +252,10 @@ var Renderer;
     }
     Renderer.composeUnderSpecialRect = composeUnderSpecialRect;
     /**
-     * Paints sourceImage over same-sized canvas filled with color
+     * Paints sourceImage over same-sized canvas filled with colour
      */
     function composeOverRect(sourceImage, color, blendMode, targetCanvas = createCanvas(sourceImage.width, sourceImage.height)) {
-        // Fill with target color
+        // Fill with target colour
         targetCanvas.globalCompositeOperation = 'source-over';
         targetCanvas.fillStyle = color;
         targetCanvas.fillRect(0, 0, sourceImage.width, sourceImage.height);
@@ -265,7 +265,7 @@ var Renderer;
     }
     Renderer.composeOverRect = composeOverRect;
     /**
-     * Paints over sourceImage a cutout of it filled with color.
+     * Paints over sourceImage a cutout of it filled with colour.
      */
     function composeUnderCutout(sourceImage, color, blendMode = 'multiply', canvas = createCanvas(sourceImage.width, sourceImage.height)) {
         const cut = cutout(sourceImage, color);
@@ -279,7 +279,7 @@ var Renderer;
     }
     Renderer.composeUnderCutout = composeUnderCutout;
     /**
-     * Paints over sourceImage a same-sized canvas filled with color
+     * Paints over sourceImage a same-sized canvas filled with colour
      */
     function composeUnderRect(sourceImage, color, blendMode = 'multiply', targetCanvas = createCanvas(sourceImage.width, sourceImage.height)) {
         let fill = createCanvas(sourceImage.width, sourceImage.height, color);
