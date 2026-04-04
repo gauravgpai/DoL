@@ -1355,6 +1355,14 @@
 	<<pms>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
+<<widget "pbull">><<silently>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "bull" : "cow")>><<gendercheck>>
+<</silently>>_text_output<</widget>>
+
+<<widget "pwaiter">><<silently>>
+	<<set _text_output to ($player.gender_appearance is "m" ? "waiter" : "waitress")>><<gendercheck>>
+<</silently>>_text_output<</widget>>
+
 <!-- Commented out for deprecation. Use: ?animals
 			See 03-JavaScript/Templates/..
 <<widget "animals">>
