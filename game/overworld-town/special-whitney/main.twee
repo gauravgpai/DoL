@@ -9244,7 +9244,7 @@ You tell Whitney about how Bailey seized the resident's cigarettes. <<He>> burst
 
 :: Whitney Orphanage Loft Decline
 <<effects>>
-<<clearNPC "whitneys_auncle">>
+
 "Suit yourself," Whitney says. "But it wouldn't just be fags this would help smuggle in. Your <<nnpc_mummy "Bailey">> Bailey confiscates all sorts of things, I bet."<<person1>>
 <br><br>
 
@@ -9770,7 +9770,7 @@ Whitney throws an arm around your shoulder. "Course <<pshe>> is."
 <br><br>
 "Just go careful," <<person1>><<his>> <<person2>><<uncle>> continues, giving you one last look before departing.
 <br><br>
-<<clearNPC "whitneys_auncle">>
+
 "Gather some of your friends up in the loft," Whitney says. "I'll send something over as a demonstration."
 <br><br>
 

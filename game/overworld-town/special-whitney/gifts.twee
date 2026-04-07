@@ -70,7 +70,6 @@ Whitney is too absorbed by <<his>> thoughts to notice your hesitation.
 	<</if>>
 	You hold out the small plate of flapjack. Whitney smiles. "Flapjack?" <<He>> leans closer. "Smells like what my <<person2>><<uncle>> used to make."<<gglove>><<npcincr Whitney love 2>>
 	<br><br>
-	<<clearNPC "whitneys_auncle">>
 	<<person1>><<He>> seizes the plate, and takes a bite. "Tastes good too. Here." <<He>> holds the plate out to you.
 	<br><br>
 	<<saveFavoriteFood "Whitney" $gift>>
