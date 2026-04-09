@@ -1869,7 +1869,7 @@ You climb from the pool, and dry yourself using the towels stacks just inside th
 					<</if>>
 					It would save us all some hassle."
 					<br><br>
-				<<elseif $rng is 2 and !$avery_fate and ($player.virginity.vaginal is true or $player.virginity.penile is true) and $player.virginity.temple is true and !$averySeen.includes("player_virgin")>>
+				<<elseif $rng is 2 and !$avery_fate and $player.virginity.vaginal is true and $player.virginity.penile is true and $player.virginity.temple is true and !$averySeen.includes("player_virgin")>>
 					<<set $averySeen.pushUnique("player_virgin")>>
 					<<if $worn.genitals.type.includes("chastity")>>
 						Avery <<= $averyragerevealed is 1 ? `rolls <<his>> eyes` : `sighs`>>. "That must be why you wear that chastity belt." <<He>> puts a hand on the small of your back. "I still think it's overcaution on your part."
@@ -5829,7 +5829,7 @@ Avery scrutinises you for a long moment, as though <<he>> were trying to measure
 <br><br>
 "Very well. <<= $averyragerevealed gte 1 ? "You're lucky that" : "Luckily,">> I've been too busy to cancel the reservations, so we still have our table. I'll see you on Valentine's Day, at our usual time."
 <br><br>
-<i>Avery will expect you to meet <<him>> at <<ampm 21 00>> on February 14th.</i>
+<i>Avery will expect you to meet <<him>> at <<ampm 21 00>> on <<= getFormattedDate(new DateTime(Time.year, 2, 14))>>.</i>
 <br><br>
 
 <<endevent>>
