@@ -606,6 +606,7 @@ function dayPassed() {
 	if (V.whitneyromance || C.npc.Whitney.dom >= 20) {
 		V.bullytimer += 20;
 		V.bullytimeroutside += 10;
+		V.whitney_home_timer += 1;
 	} else {
 		V.bullytimer += 10;
 		V.bullytimeroutside += 5;
@@ -808,13 +809,15 @@ function dayPassed() {
 		if (Weather.temperature <= 0 && Time.month.between(9, 10)) V.livestock.winter.trigger++;
 		else if (Time.month >= 11 || Time.month === 1) {
 			if (V.bus === "livestock") V.livestock.winter.trigger = 5;
-			else V.livestock.winter.active = true; V.livestock.winter.exam = false;
+			else V.livestock.winter.active = true;
+			V.livestock.winter.exam = false;
 		} else V.livestock.winter.trigger = 0;
 	} else {
 		if (Weather.temperature > 0 && Time.month === 2) V.livestock.winter.trigger++;
 		else if (Time.month >= 3 && Time.month <= 8) {
 			if (V.bus === "livestock") V.livestock.winter.trigger = 5;
-			else V.livestock.winter.active = false; V.livestock.winter.exam = false;
+			else V.livestock.winter.active = false;
+			V.livestock.winter.exam = false;
 		} else V.livestock.winter.trigger = 0;
 	}
 
@@ -1052,7 +1055,7 @@ function hourPassed(hours) {
 			}
 		}
 		if (!V.avery_mansion || ["fallen", "kicked"].includes(V.avery_fate)) {
-			V.home_gone++;
+			V.hoursGoneFromHome++;
 		}
 
 		// Robin autowatering
@@ -1248,6 +1251,7 @@ function dawnCheck() {
 	delete V.connudatus_stripped;
 	delete V.gwylanWake;
 	delete V.gwylanCafeWake;
+	delete V.whitney_night_knock;
 
 	if (V.schoolBlocked) delete V.schoolBlocked;
 

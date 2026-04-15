@@ -1614,7 +1614,7 @@
 	<<if $birdbuild is undefined>>
 		<<set $birdbuild to 0>>
 		<<set $harpy to 0>>
-		<<set $home_gone to 0>>
+		<<set $hoursGoneFromHome to 0>>
 	<</if>>
 
 	<<if $hirsutedisable>>
@@ -6898,6 +6898,11 @@
 			<<set $nightmonstermonster to 0>>
 		<</if>>
 	<</if>>
+	
+	/* Timer to pace events related to Whitney's home unlock */
+	<<if $whitneyromance and $whitney_home_timer is undefined>>
+		<<set $whitney_home_timer to 21>>
+	<</if>>
 
 	/* Move legacy stall vars to new names */
 	<<if def $plants_stall>>
@@ -7053,7 +7058,7 @@
 		<</if>>
 		<<run ["livestock_dig", "livestock_lock_intro", "livestockLockSeq", "farmLockStr", "farmLockQty", "livestock_pig", "livestock_obey", "livestock_intro", "livestock_robin", "livestock_noise", "livestock_river", "livestock_fence", "livestock_grass", "livestock_muzzle", "livestock_return", "livestock_escape", "livestock_harper", "livestock_horse", "livestock_horse_rescued", "livestock_food", "livestock_milk", "livestock_semen"].forEach(v => delete V[v]);>>
 	<</if>>
-	
+
 	<<if $hy_parent or $hy_sibling>>
 		<<generate1>>
 		<<generates2>>
@@ -7065,10 +7070,19 @@
 		<<unset $hy_sibling>>
 	<</if>>
 
+	<!-- Renaming variable -->
+	<<if $hoursGoneFromHome is undefined>>
+		<<set $hoursGoneFromHome to $home_gone>>
+		<<unset $home_gone>>
+	<</if>>
+
 	/* Fix errors with corrupted museum antique name in some saves */
 	<<if !$museumAntiques.antiques.antiqueleathermap and $museumAntiques.antiques.antiqueleatp>>
 		<<set $museumAntiques.antiques.antiqueleathermap to $museumAntiques.antiques.antiqueleatp>>
 		<<run delete V.museumAntiques.antiques.antiqueleatp>>
 	<</if>>
+
+	/* Hide warning about no replacement clothing when switching sets by default */
+	<<set $options.clothingReplacementWarning ??= false>>
 
 <</widget>>

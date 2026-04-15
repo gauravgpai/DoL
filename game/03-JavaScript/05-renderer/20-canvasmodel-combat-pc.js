@@ -414,7 +414,8 @@ const combatMainPc = {
 		},
 		tattooMachine: {
 			srcfn(options) {
-				return `${options.root}machine/tattoo/${options.position}/${options.machines.tattoo.use}.png`;
+				const location = (options.machines.tattoo.use).replace("_", "-");
+				return `${options.root}machine/tattoo/${options.position}/${location}.png`;
 			},
 			showfn(options) {
 				return !!options.machines.tattoo.show;
@@ -886,7 +887,7 @@ const combatMainPc = {
 		pregnantBellyOverlay: {
 			srcfn(options) {
 				return options.bellyState === "exposed" && options.position === "doggy"
-					? `${options.src}body/pregnantBelly/base/overlay_exposed.png`
+					? `${options.src}body/pregnantBelly/base/overlay-exposed.png`
 					: `${options.src}body/pregnantBelly/${options.pregnantBellyPath}/overlay.png`;
 			},
 			showfn(options) {

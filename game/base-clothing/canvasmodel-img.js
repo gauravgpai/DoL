@@ -470,7 +470,7 @@ DefineMacro("modelprepare-player-body", function () {
 		T.modeloptions.pbhair_balls = V.pblevelballs;
 	}
 
-	if (V.player.sex === "m") {
+	if (V.player.sex !== "f") {
 		T.modeloptions.penis_size = Math.clamp(V.player.penissize, 0, 6);
 		T.modeloptions.balls = V.player.ballsExist;
 		T.modeloptions.penis_condom = V.player.condom.type;
@@ -624,6 +624,7 @@ DefineMacro("modelprepare-player-body", function () {
 
 	T.modeloptions.precipitation =
 		V.options.showSidebarEffects && Weather.precipitation !== "none" && Weather.overcast > 0.25 && V.outside === 1 && !V.underwater;
+	T.modeloptions.wraithFlash = V.options.showSidebarEffects;
 	T.modeloptions.water = V.options.showSidebarEffects && (V.underwater === 1 || T.tempEffects?.underwater);
 	T.modeloptions.waterBreath = V.options.showSidebarEffects && T.modeloptions.water && T.tempEffects?.underwater !== "noMouth";
 	T.modeloptions.fire = V.options.showSidebarEffects && (V.fire || T.tempEffects?.fire || (V.farm_assault && V.fields_damaged.includes(V.bus)));

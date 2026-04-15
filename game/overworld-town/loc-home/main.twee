@@ -2415,7 +2415,7 @@ You are in the main hall of the orphanage.
 	<<npc Bailey>><<person1>>
 	<<unset $baileyReunionScene>>
 
-	<<if $home_gone gte 24>>
+	<<if $hoursGoneFromHome gte 24>>
 		Bailey leans against a wall. A missing person's poster with a picture of you on it is pinned next to <<him>>.
 		<br><br>
 
@@ -2486,20 +2486,20 @@ You are in the main hall of the orphanage.
 	<br>
 	<<link [[Evade the question|Robin Pillory Evade]]>><</link>>
 
-<<elseif $home_gone gte 168 and Time.dayState isnot "night">>
+<<elseif $hoursGoneFromHome gte 168 and Time.dayState isnot "night">>
 	<<generatey1>><<person1>>
 	You notice something on the wall. It's a missing person's poster with a picture of you on it. It hasn't been taken down, which means Bailey must be looking for you as well.
 	<br><br>
 	<<if $orphan_hope gte 10>>
 		A <<person>> on cleaning duty notices you and glances at the poster. <<His>> eyes widen. "It's you!" <<he>> says, dropping <<his>> mop. "We didn't know if we'd see you again."
 		<br><br>
-		<<set $home_gone to 0>>
+		<<set $hoursGoneFromHome to 0>>
 		<<He>> sighs with relief while taking down the poster.<<ghope>><<hope 1>>
 		<br><br>
 	<<else>>
 		A <<person>> on cleaning duty notices you and spills <<his>> mop bucket. Before you can react, <<he>> steps forward and squeezes you. "It's you. We didn't think you were coming back, we—" <<He>> falls silent. Something drips onto your shoulder.
 		<br><br>
-		<<set $home_gone to 0>>
+		<<set $hoursGoneFromHome to 0>>
 		<<He>> sighs with relief while letting you go. <<He>> wipes away <<his>> tears, and takes down the poster.<<gghope>><<hope 3>>
 		<br><br>
 	<</if>>
@@ -2665,7 +2665,7 @@ and !$fromRobinRoom and _robin.cdquest is 2 and _robin.trauma lte 20 and !$daily
 		<br><br>
 		A brown-haired girl in a white sundress sits by the window.
 		<br>
-		<<ind>><<link [[Approach|Orphanage Sneaky Valentines]]>><</link>> <i>Sneaky update: Time travel to do days before Valentine's day for testing</i>
+		<<ind>><<link [[Approach|Orphanage Sneaky Whitney]]>><</link>> <i>Sneaky update: Enable Whitney's romance, and increase love, for testing their home</i>
 		<br><br>
 	<</if>>
 	<<if $halloween is 1 and Time.monthDay is 31 and !$fromRobinRoom and $robinmissing is 0 and Time.hour gte 16 and Time.hour lt 19 and _robin.init is 1>>
@@ -2947,7 +2947,6 @@ Face red and heart thumping, you dart past <<him>>, down the corridor and into y
 	<<link [[Refuse|Orphanage Flaunt Refuse]]>><</link>>
 	<br>
 <<else>>
-	<br><br>
 	<<link [[Next|Bedroom]]>><<endevent>><</link>>
 	<br>
 <</if>>
@@ -4266,7 +4265,7 @@ The pair blame each other for the mishap, and spend a few moments arguing before
 
 :: Sold Wait
 <<effects>>
-<<pass 2>>
+
 You stay still, and listen to the argument at the door. It becomes more heated, until the stranger threatens to call the police. The <<person2>><<person>> slams the door in response. <<He>> returns to the living room.
 <br><br>
 The pair blame each other for the mishap, and spend a few moments arguing before deciding they can't risk keeping you here. They shove you out the back door, and then a gate, leading to a path running behind the garden.
@@ -4381,8 +4380,7 @@ Robin's mouth hangs similarly open. "Th-that..." <<He>> blinks and shakes <<his>
 You shake your head and <<if $transformationParts.bird.plumage isnot "hidden">>puff up your plumage as you <</if>><<if $eggLayNumber gte 2>>gather your eggs into your arms<<else>>pick up your egg<</if>>, mind blank save for an overwhelming sensation of maternal bliss.
 
 <<if playerIsPregnant() and _eggnant.type is "hawk">>
-	<<wearProp "hawk egg">>
-	<<set _eggIcon to $eggLayNumber>>
+	<<set _eggIcon to $eggLayNumber>><<wearProp `"hawk egg " + Math.clamp(_eggIcon, 1, 3)`>>
 	<span class="lewd">You're certain the <<pluralise $eggLayNumber "egg is" "eggs are">> fertilised.</span> You should bring <<pluralise $eggLayNumber "it">> back to your nest. You pick up <<number $eggLayNumber>> <<birdicon "eggs">> fertilised bird <<pluralise $eggLayNumber "egg">>.
 	<<if $eggLayNumber gte 2>>They're quite large, and you're left wondering how they all fit inside of you to begin with.<<else>>It's quite large, and you're left wondering why passing it didn't hurt more.<</if>>
 	<<pregnancyFeats "pc">>
@@ -4733,4 +4731,37 @@ The girl smiles at you as you approach.
 	<<avery_valentines_init>>
 	<<set $eventskip to 1>>
 <</link>> <i>Avery will invite you on the street, on Saturday.</i>
+<br>
+
+:: Orphanage Sneaky Whitney
+<<effects>>
+
+The girl smiles at you as you approach.
+<br><br>
+"Hello! Someone in town has decided to become more open with their special someone." She pauses. "If that special someone is you, I can speed things along. You can find them in the park on rainy non-school days."
+<br><br>
+
+<<link [[Enable Whitney's romance|Orphanage Sneaky Whitney Love]]>><<npc Whitney>><<person1>><<endevent>><<set $whitneyromance to 1>><<npcincr Whitney love 100>><<set $whitney_home_timer to 21>><</link>>
+<br>
+<<link [[Skip ahead to their home unlock|Orphanage Sneaky Whitney Home]]>><<set $whitneyromance to 1>><<npcincr Whitney love 100>><<set $whitney_home_timer to 21>><<set $whitney_home_stage to 3>><</link>>
+<br>
+<<link [[Decline for now|Orphanage]]>><</link>>
+<br>
+
+:: Orphanage Sneaky Whitney Love
+<<effects>>
+
+The girl sprinkles glitter over your head. "That did the trick," she says with a smile. "Have a nice day!"
+<br><br>
+
+<<link [[Next|Orphanage]]>><</link>>
+<br>
+
+:: Orphanage Sneaky Whitney Home
+<<set $location to "park">><<effects>>
+
+The girl nods, and produces a wooden rod. "You're off to the park! Stay safe." She taps your shoulder, and the world changes.
+<br><br>
+
+<<link [[Next|Whitney Home Intro 3]]>><<npc Whitney>><<person1>><</link>>
 <br>

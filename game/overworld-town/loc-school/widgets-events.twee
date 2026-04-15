@@ -1271,6 +1271,7 @@
 			/* TODO: Add more events for being exposed in the school courtyard */
 		<<elseif !["dungeon", "pillory"].includes(C.npc.Whitney.state) and _whitney.love gte 20 and $whitneyromance isnot 1>>
 			<<set $whitneyromance to 1>>
+			<<set $whitney_home_timer to 21>>
 			<<npc Whitney>><<person1>> Whitney approaches you, and shoves you against a wall. <<He>> looks angrier than usual.
 			<br><br>
 			"Stupid slut," <<he>> says. <<He>> pins you with <<his>> arms. "You've been asking for this, don't try to deny it." <<He>> kisses you with surprising tenderness. <<takeKissVirginity "Whitney" "loveInterest">>
@@ -3004,7 +3005,7 @@
 	<<if $worn.upper.type.includes("naked") and $worn.lower.type.includes("naked") and $worn.under_lower.type.includes("naked") or $worn.upper.type.includes("naked") and $worn.lower.type.includes("naked") and playerChastity()>>
 		<<WhitneyParasitePenisComment>>
 	<<else>>
-		"Get <<phim>> ready <<nnpc_gendery "Whitney">>s," Whitney commands to <<his>> friends. As <<he>> steps forward with the <<print hasSexStat("deviancy", 5) ? (["lewd", "delightfully <<EZdisgusting>>"].pluck()) : "<<EZdisgusting>>">> thing, your mind races, wondering what they're going to do with you. With your arms restrained and your body utterly helpless, you can do nothing to stop them as they
+		"Get <<phim>> ready, <<nnpc_gendery "Whitney">>s," Whitney commands to <<his>> friends. As <<he>> steps forward with the <<print hasSexStat("deviancy", 5) ? (["lewd", "delightfully <<EZdisgusting>>"].pluck()) : "<<EZdisgusting>>">> thing, your mind races, wondering what they're going to do with you. With your arms restrained and your body utterly helpless, you can do nothing to stop them as they
 
 		<<switch _parasite_loc>>
 		<<case "bottom">>
