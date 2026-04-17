@@ -837,7 +837,6 @@
 	<<else>>
 		<<set _text_output to "beast">>
 	<</if>>
-	<</if>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "bBoy">><<silently>>
