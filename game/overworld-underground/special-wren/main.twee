@@ -132,8 +132,8 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 		off Wren's tray.
 	<<case 1>>
 		<<if $wrenHeistDance.help is false and $wrenHeistDance.phase is 3>>
-			<<set _special_pronoun to $per_npc.wren_heist_fighting.pronoun>>
-			Someone stops <<nnpc_him "Wren">>. <span class="red">It's the <<= $per_npc.wren_heist_fighting.fullDescription>>, and <<if _special_pronoun is "m">>he<<else>>she<</if>> doesn't look happy.</span> Neither does Wren, who says something to the <<if _special_pronoun is "m">>man<<else>>woman<</if>>. The two of them leave the room. <<stress 6>><<gstress>>
+			<<loadNPC 2 "wren_heist_fighting">><<person2>>
+			Someone stops <<nnpc_him "Wren">>. <span class="red">It's the <<= $per_npc.wren_heist_fighting.fullDescription>>, and <<he> doesn't look happy.</span> Neither does Wren, who says something to the <<woman_npc>>. The two of them leave the room. <<stress 6>><<gstress>>
 		<<else>>
 			<<set $wrenHeistDance.blackMoney += 500>>
 			<<if currentSkillValue('skulduggery') gte 800 or $transformationParts.traits.sharpEyes isnot "disabled">>
@@ -151,6 +151,7 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 		<</if>>
 	<<case 0>>
 		<<if $wrenHeistDance.help is false and $wrenHeistDance.phase is 3>>
+			<<loadNPC 2 "wren_heist_fighting">><<person2>>
 			You have time before your next dance. You're not sure if Wren's managed to slip away from the <<person>>. You wander until you find <<nnpc_him "Wren">>.
 		<<else>>
 			Wren notices you watching <<nnpc_him "Wren">> and jerks <<nnpc_his "Wren">> head towards the

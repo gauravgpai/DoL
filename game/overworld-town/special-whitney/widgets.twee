@@ -46,7 +46,8 @@
 			<br>
 		<</if>>
 	<<elseif $location is "flats" and Time.hour gte 9 and Weather.precipitation isnot "none">>
-		Whitney looks at the incliment weather. "That means <<whitney_parent>> will be here soon," <<he>> says. "I can't be fucked to deal with that. Let's go to the park."
+		<<loadNPC 1 "whitney_parent_flat">><<person2>>
+		Whitney looks at the inclement weather. "That means <<mum>> will be here soon," <<person1>><<he>> says. "I can't be fucked to deal with that. Let's go to the park."
 		<br><br>
 
 		<<link [[Go to the park with Whitney (0:15)|Whitney Home Park]]>><<pass 15>><</link>>
