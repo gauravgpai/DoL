@@ -3017,7 +3017,7 @@ You get on your feet but are still shaky. It takes a while for all your limbs to
 	You get dressed. The <<person4>><<person>> leads you to the door.
 	<br><br>
 
-	"You better stay away from our <<if $NPCList[0].pronoun is "f">>girl<<else>>boy<</if>>. We don't want <<person1>><<him>> to fall for a whore," <<he>> says in a condescending tone. <<He>> throws you <<moneyGain 2000>>.
+	"You better stay away from our <<person1>><<girl_npc>>. We don't want <<him>> to fall for a whore," <<he>> says in a condescending tone. <<He>> throws you <<moneyGain 2000>>.
 	<br><br>
 
 <<else>>

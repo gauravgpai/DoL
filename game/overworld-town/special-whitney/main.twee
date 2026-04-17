@@ -3682,11 +3682,7 @@ The <<person>> gapes.
 
 <<effects>>
 <<person1>>
-<<if $pronoun is "m">>
-	You take your position next to the <<person>>, feigning surprise at Whitney's exposure as you look for the imprint of <<his>> <<wallet>>.
-<<else>>
-	You take your position next to the <<person>>, feigning surprise at Whitney's exposure as you open <<his>> purse.
-<</if>>
+You take your position next to the <<person>>, feigning surprise at Whitney's exposure as you <<if $pronoun is "m">>look for the imprint of <<his>> <<wallet>><<else>>open <<his>> purse<</if>>.
 <br><br>
 <<skulduggerycheck>>
 <<outfitChecks>>

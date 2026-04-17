@@ -1472,7 +1472,7 @@ You hold the <<beasttype>>'s collar, and
 :: Pound Work Wash Hand
 <<effects>>
 
-You put the bucket aside, and crouch beside the <<beasttype>>. "If you promise to be a good <<if $NPCList[0].pronoun is "m">>boy<<else>>girl<</if>>," you say, "I'll give you a treat."
+You put the bucket aside, and crouch beside the <<beasttype>>. "If you promise to be a good <<bboy>>," you say, "I'll give you a treat."
 <<if $NPCList[0].penis isnot "none">>
 	You reach for <<bhis>> <<print $NPCList[0].penisdesc>>, and stroke it to attention.
 <<else>>
@@ -1750,7 +1750,7 @@ You arrive at the forest. You keep the <<beastsplural>> on their leashes, as get
 <<effects>>
 <<wearProp "dog leash">>
 <<if $tendingSuccess>>
-	"Here <<if $NPCList[0].pronoun is "m">>boy<<else>>girl<</if>>," you say. The <<beasttype 0>> responds, <span class="green">and leaves the flower be.</span>
+	"Here <<bboy 0>>," you say. The <<beasttype 0>> responds, <span class="green">and leaves the flower be.</span>
 	<br><br>
 
 	Once suitably exhausted, you lead the <<beastsplural>> back through town, to the pound.

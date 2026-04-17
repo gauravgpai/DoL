@@ -2864,7 +2864,7 @@ You shake your head. Whitney laughs. "Did I hear that right, slut? You don't nee
 You watch the fight play out. Whitney successfully counters, and follows it up with a super move, resulting in a rather gory death for <<his>> friend's character.
 <br><br>
 <<person1>>
-Whitney holds out <<his>> hand, a trumphant smirk on <<his>> face.
+Whitney holds out <<his>> hand, a triumphant smirk on <<his>> face.
 <br><br>
 "I'll get it for you later."
 <br>
@@ -3476,7 +3476,7 @@ The gang walks along the coast, before arriving on Oxford Street, and then the s
 :: Whitney Home School Walk Uniform
 <<effects>>
 
-"Leighton hands them out anyway," Whitney says. "You afraid <<nnpc_he Leighton>>'ll give you a 
+"Leighton hands them out anyway," Whitney says. "You afraid <<nnpc_he Leighton>>'ll give you a
 <<if $player.gender_appearance is "m">>
 	girl's
 <<else>>
