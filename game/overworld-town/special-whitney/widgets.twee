@@ -46,11 +46,10 @@
 			<br>
 		<</if>>
 	<<elseif $location is "flats" and Time.hour gte 9 and Weather.precipitation isnot "none">>
-		<<loadNPC 1 "whitney_parent_flat">><<person2>>
-		Whitney looks at the inclement weather. "That means <<mum>> will be here soon," <<person1>><<he>> says. "I can't be fucked to deal with that. Let's go to the park."
+		Whitney looks at the inclement weather. "That means <<loadNPC 1 "whitney_parent_flat">><<person2>><<mum>><<endevent>><<npc Whitney>><<person1>> will be here soon," <<he>> says. "I can't be fucked to deal with that. Let's go to the park."
 		<br><br>
 
-		<<link [[Go to the park with Whitney (0:15)|Whitney Home Park]]>><<pass 15>><</link>>
+		<<link [[Go to the park with Whitney (0:15)|Whitney Home Park Journey]]>><<pass 10>><</link>>
 		<br>
 		<<link [[Just leave (0:02)|Whitney Home Park Leave]]>><<pass 2>><</link>>
 		<br>
@@ -73,7 +72,7 @@
 			<<link [[Leave the flat (0:10)|Whitney Home Gang Arrive]]>><<pass 10>><</link>>
 			<br>
 		<</if>>
-	<<elseif $location is "flats" and Time.hour is 7 or Time.hour is 8 and !$daily.whitney.breakfast_done>>
+	<<elseif $location is "flats" and (Time.hour is 7 or Time.hour is 8) and !$daily.whitney.breakfast_done>>
 		"I'm famished," Whitney says. "Let's get breakfast."
 		<br><br>
 
@@ -223,9 +222,8 @@
 			<</if>>
 
 		<<elseif $location is "flats">>
-		
+			<br><br>
 			<<rng 3>>
-
 			<<if $rng is 3>>
 				Whitney sits on the floor of <<his>> room, back against <<his>> bed, bouncing a ball off the wall.
 			<<elseif $rng is 2>>
@@ -233,7 +231,6 @@
 			<<else>>
 				Whitney leans against <<his>> bedroom window, looking out.
 			<</if>>
-			<br><br>
 		<</if>>
 		<br><br>
 		<<if !_noOptions>>
@@ -666,7 +663,7 @@
 			"What do you think?" <<he>> asks, voice barely audible over the sound.
 			<br><br>
 
-			<<link [[Say its very nice|Whitney Home Hang Guitar Say]]>><</link>>
+			<<link [[Say it's very nice|Whitney Home Hang Guitar Say]]>><</link>>
 			<br>
 			<<link [[Give a thumbs up|Whitney Home Hang Guitar Up]]>><<npcincr Whitney love 1>><</link>><<glove>>
 			<br>
@@ -766,7 +763,7 @@
 
 			<<link [[Fetch snacks|Whitney Home Gang Snacks Fetch]]>><<npcincr Whitney dom 1>><</link>><<gdom>>
 			<br>
-			<<link [[Refuse|Whitney Home Gang Snack Fetch Refuse]]>><<npcincr Whitney dom -1>><<stress 6>><<trauma 6>><<pain 4>><</link>><<gpain>><<gtrauma>><<gstress>><<ldom>>
+			<<link [[Refuse|Whitney Home Gang Snacks Refuse]]>><<npcincr Whitney dom -1>><<stress 6>><<trauma 6>><<pain 4>><</link>><<gpain>><<gtrauma>><<gstress>><<ldom>>
 			<br>
 		<<else>>
 			There's some argument about what to put on, but Whitney has the final say.
