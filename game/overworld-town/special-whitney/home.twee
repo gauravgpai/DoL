@@ -692,16 +692,16 @@ You slap Whitney's hand away. <<He>> retaliates by reaching behind you, and givi
 What shall you make?
 <br><br>
 
-<<link [[Toast with jam (0:05)|Whitney Home Dawn Breakfast Jam]]>><<pass 5>><</link>><<tendingdifficulty 1 100>>
+<<link [[Toast with jam (0:05)|Whitney Home Dawn Breakfast Jam]]>><<pass 5>><</link>><<housekeepingdifficulty 1 100>>
 <br>
-<<link [[Toast with fried eggs (0:10)|Whitney Home Dawn Breakfast Eggs]]>><<pass 10>><</link>><<tendingdifficulty 1 200>>
+<<link [[Toast with fried eggs (0:10)|Whitney Home Dawn Breakfast Eggs]]>><<pass 10>><</link>><<housekeepingdifficulty 1 200>>
 <br>
 
 :: Whitney Home Dawn Breakfast Jam
 <<effects>>
 
 You drop slices of bread into the toaster, and place butter and jam on the table in front of Whitney.
-<<if $tendingSuccess>>
+<<if $housekeepingSuccess>>
 	You notice the dial on the toaster is a little high, <span class="green">but press the stop button before the toast is burned</span>.
 	<br><br>
 
@@ -751,7 +751,7 @@ You place the toast in front of Whitney. "Thanks slut," <<he>> says, already coa
 <<effects>>
 
 You put bread in the toaster, heat a little oil in a pan, and crack open a couple of eggs.
-<<if $tendingSuccess>>
+<<if $housekeepingSuccess>>
 	The eggs fry nicely, with the deep yellow yolk remaining together. You notice that the bread has been toasting for a little too long, <span class="green">and you manually pop the toast before it burns</span>.
 	<br><br>
 
@@ -763,6 +763,7 @@ You put bread in the toaster, heat a little oil in a pan, and crack open a coupl
 <<else>>
 	The yolk bursts, and they end up more broken than fried. <span class="red">Then you smell burning toast.</span>
 	<br><br>
+
 	<<link [[Serve Whitney the broken eggs and burnt toast|Whitney Home Dawn Breakfast Eggs Burnt]]>><</link>>
 	<br>
 	<<link [[Try again (0:10)|Whitney Home Dawn Breakfast Eggs Try]]>><<pass 10>><<stress 6>><</link>><<gstress>>
@@ -1259,7 +1260,7 @@ Whitney looks thoughtful for a moment, then <<he>> grabs a bottle of shampoo, an
 
 
 <<if currentSkillValue('oralskill') gte random(1, 600)>>
-	<<He>> shifts away a bit, playfully, as if trying to see how far you'll go. You won't let your prey escape, and manage to corner <<him>>, and unleash a barrage of kisses and licks that <span class="green">soon has <<him>> squirming</span>, <<his>> juices mixing with the soapy water.<<glove>><<npcincr Whitney love 1>>
+	<<He>> shifts away a bit, playfully, as if trying to see how far you'll go. You won't let your prey escape, manage to corner <<him>>, and unleash a barrage of kisses and licks that <span class="green">soon has <<him>> squirming</span>, <<his>> juices mixing with the soapy water.<<glove>><<npcincr Whitney love 1>>
 	<br><br>
 
 	"Good job," <<he>> says, breathless, but trying to assert some control. "Slut."
@@ -1914,7 +1915,7 @@ You walk down the hallway, still keeping your footsteps quiet. You draw close en
 You turn and run the way you came, and fly down the stairwell. You catch sight of Whitney emerging through the door as you descend. You don't think <<he>> saw you.
 <br><br>
 
-You make it back to the entrance, and try to calm your breath. Whitney emerges from the stairs as well, a moment later, as if <<he>> were in a hurry too. A fresh packet of cigarettes bulges in <<his>> shirt pocket. <<He>> flashes a cheeky smile when <<he>> sees you.
+You make it back to the entrance, and try to calm your breath. Whitney emerges from the stairs as well, a moment later, as if <<person1>><<he>> were in a hurry too. A fresh packet of cigarettes bulges in <<his>> shirt pocket. <<He>> flashes a cheeky smile when <<he>> sees you.
 <br><br>
 
 "You alright?" <<he>> asks. "Someone bother you?"
@@ -2454,6 +2455,7 @@ Whitney shoots a frustrated glance at the door, then stands. "Come on," <<he>> s
 <</if>>
 <br><br>
 
+<<loadNPC 1 "whitney_parent_flat">>
 Whitney's expression softens. "I'm on edge," <<he>> says. "It's my <<person2>><<mum>> showing up."
 <br><br>
 
@@ -2467,9 +2469,12 @@ Whitney casts a frustrated glance at the door, then stands. "Come on," <<person1
 :: Whitney Home Intro 3 Return
 <<effects>>
 <<pass 15>><<set $location to "park">><<set $bus to "park">>
+<<endevent>>
+<<npc "Whitney">><<loadNPC 1 "whitney_parent_flat">>
+
 You leave the flat with Whitney, and head outside the building. "I could use a smoke," <<he>> says. "But let's wait until we're back at the park."
 <br><br>
-<<loadNPC 1 "whitney_parent_flat">>
+
 Whitney is talkative once <<his>> frustration with <<his>> <<person2>><<mum>> simmers down, as if a weight were lifted off <<person1>><<his>> shoulders. "You should drop by my home now and then," <<he>> says at one point. "When it's dry. My <<person2>><<mum>> only works on dry days, and won't be around to bother us."
 <br><br>
 
@@ -2477,7 +2482,7 @@ Whitney is talkative once <<his>> frustration with <<his>> <<person2>><<mum>> si
 <br><br>
 
 You arrive by the fountain in the park. Whitney lights up, and smiles at you.
-<<person1>>
+<<person1>><<clearsinglenpc 1>>
 <<whitneyoptions>>
 
 
@@ -3201,7 +3206,7 @@ You don't complain. Whitney gets even more comfortable.
 
 <<else>>
 	You push your arms against the bed and try to haul yourself up, but Whitney shifts <<his>> weight further up your back, <span class="red">pinning you down</span>. <<He>> tries to maintain a nonchalant expression, but fails.
-	
+
 <</if>>
 
 <br><br>
@@ -3449,7 +3454,7 @@ Whitney watches you. <<He>> looks amused. Then <<he>> lunges for the sweets. You
 You put just enough effort in to make it appear like you're trying, until a skeleton rolls into you, knocking you off a ledge. <span class="red">Your character plummets to their death.</span> Some of Whitney's friends laugh.
 <br><br>
 
-"<<pShe>> got further you," Whitney says. "It's a stupid game anyway."
+"<<pShe>> got further than you," Whitney says. "It's a stupid game anyway."
 <br><br>
 
 <<whitney_gang_options>>
@@ -3475,6 +3480,9 @@ The controller is passed around a few more times, until Whitney gets fed up.
 
 :: Whitney Home School Walk
 <<effects>>
+<<if !$npc>>
+	<<npc "Whitney">><<person1>>
+<</if>>
 
 Together you leave the flat. A couple of <<his>> friends are already waiting for <<him>>, and more join as you descend the stairs, and exit the building.
 <br><br>
@@ -3487,6 +3495,9 @@ The gang walks along the coast, before arriving on Oxford Street, and then the s
 
 :: Whitney Home School Walk Uniform
 <<effects>>
+<<if !$npc>>
+	<<npc "Whitney">><<person1>>
+<</if>>
 
 "Leighton hands them out anyway," Whitney says. "You afraid <<nnpc_he Leighton>>'ll give you a
 <<if $player.gender_appearance is "m">>
@@ -3514,6 +3525,9 @@ throws on <<his>> uniform, and together you leave the flat. A couple of <<his>> 
 
 :: Whitney Home School Walk Pick
 <<effects>>
+<<if !$npc>>
+	<<npc "Whitney">><<person1>>
+<</if>>
 
 "You need to grab something slutty, I hope," Whitney says.
 <br><br>
@@ -3526,3 +3540,210 @@ You leave the flat together. A couple of <<his>> friends are already waiting for
 
 <<link [[Next|Barb Street]]>><<endevent>><<set $eventskip to 1>><</link>>
 
+:: Whitney Flats Sex
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+	<<maninit>>
+	<<if $NPCList[0].penis is "none">>
+		<<if random(0, 99) lt $settings.straponChance>>
+			<<npcstrapon 0>>
+		<</if>>
+	<</if>>
+<</if>>
+
+<<effects>>
+<<effectsman>>
+<<man>>
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if _combatend>>
+	<span id="next"><<link [[Next|Whitney Flats Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Whitney Flats Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Whitney Flats Sex Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>><<npcincr Whitney lust -20>>
+
+	<<if C.npc.Whitney.dom gte 10 and $orgasmcurrent is 0 and (($player.penisExist and (!playerChastity("penis") or $worn.genitals.name is "chastity parasite")) or ($player.vaginaExist and !playerChastity("hidden")))>>
+		<<whitneyFinish>>
+	<</if>>
+
+	<<clotheson>>
+	<<tearful>> you get your bearings. Whitney reclines in satisfaction.
+	<<llust>>
+	<br><br>
+
+	<<endcombat>>
+	<<npc Whitney>><<person1>>
+	<<if $exposed gte 1>>
+		<<He>> ogles your <<lewdness>>.
+		<br><br>
+
+		<<whitneyoptions>>
+	<<else>>
+		<br><br>
+		<<whitneyoptions>>
+	<</if>>
+<<elseif $enemyhealth lte 0>>
+	You shove Whitney away from you, and escape the flat. <<tearful>> you look over your shoulder. Whitney isn't following.
+	<<llove>><<ldom>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>>
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<whitneyexit>>
+
+<<else>>
+	"You're such a shitty tease," Whitney mumbles as <<he>> shoves you away.
+	<<llove>><<ldom>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>>
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<tearful>> you get your bearings.
+	<br><br>
+	<<whitneyoptions>>
+
+<</if>>
+
+:: Whitney Milkshake Cherry Flats Sex
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+	<<maninit>>
+	<<set $phase to 0>>
+	Whitney smirks and pushes you down onto the bed, climbing on top of you. "That a <<girl>>. I knew my slut would be good for it."
+	<<promiscuity1>>
+
+	<<enable_rescue>>
+<<elseif $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<maninit>>
+	<<set $phase to 1>>
+	Whitney shoves you down onto the bed and climbs on top of you. "A deal's a deal, slut. Shut up and pucker up."
+	<<if !$worn.face.type.includes("covered") and !$worn.face.type.includes("gag")>>
+		<<set $mouthuse to "kiss">><<set $mouthstate to "kissentrance">><<set $NPCList[0].mouth to "kissentrance">>
+	<</if>>
+
+/* <<enable_rescue>>*/
+<</if>>
+
+<<effects>>
+<<effectsman>>
+<<alarmstate>>
+<<man>>
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if _combatend>>
+	<span id="next"><<link [[Next|Whitney Milkshake Cherry Flats Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Whitney Milkshake Cherry Flats Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Whitney Milkshake Cherry Flats Sex Finish
+<<effects>>
+
+<<if $enemyhealth lte 0>>
+
+	You manage to throw Whitney off of you.
+	"What the fuck is your problem?" <<he>> shouts as you run through the flat, throw open the door, and escape down the corridor.
+	You don't look back, and Whitney doesn't follow you.
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+	<<whitneyexit>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	Whitney sits back with a contented sigh.
+	<<if $consensual is 1>>
+		"Fuck, I needed that."<<npcincr Whitney lust -20>><<llust>>
+		<br><br>
+		<<if C.npc.Whitney.dom gte 10 and $orgasmcurrent is 0 and (($player.penisExist and (!playerChastity("penis") or $worn.genitals.name is "chastity parasite")) or ($player.vaginaExist and !playerChastity("hidden")))>>
+			<<if $player.penisExist and $penisuse isnot 0>>
+				<<set $penisuse to 0>>
+			<</if>>
+			<<He>> runs <<his>> hand through <<his>> fringe. "Can't believe you didn't cum from that." <<He>> sighs and reaches between your legs. "Damn, you're high maintenance."
+			<br><br>
+			<<if $player.penisExist and (!$player.vaginaExist or random(1, 2) is 2) and (!playerChastity("penis") or $worn.genitals.name is "chastity parasite")>>
+				Whitney draws you into another kiss as <<he>> curls <<his>> fingers around your <<= $worn.genitals.name is "chastity parasite" ? "chastity parasite" : "<<penis>>">>. <<He>> <<= $worn.genitals.name is "chastity parasite" ? "squeezes lightly" : "pumps <<his>> fist up and down in long, practised strokes">> before building up the tempo. It doesn't take much more at this pace to send you over the edge.
+			<<else>>
+				Whitney draws you into another kiss as <<he>> stuffs <<his>> fingers in your <<pussy>>. <<He>> uses the heel of <<his>> palm to grind against your swollen <<clit>> while vigorously finger-fucking you to completion.
+			<</if>>
+			<<orgasm>>
+			You feel Whitney's smirk against your lips as
+			<<if ($parasite.penis.name and $parasite.penis.name isnot "parasite") or $worn.genitals.name is "chastity parasite" or ($player.penisExist and $femaleclimax is 1)>>
+				you convulse in orgasmic bliss.
+			<<else>>
+				your fluids gush over <<his>> hand. <<He>> wipes it clean on your <<outfitChecks>><<= !_shirtless ? "_top.name" : "chest">>.
+			<</if>>
+			<br><br>
+		<</if>>
+		<<He>> stands and fixes <<his>> clothes.
+		<br><br>
+		<<clotheson>>
+		<<endcombat>>
+		<<npc Whitney>><<person1>>
+		"Pleasure doing business, slut."
+		<br><br>
+
+		<<whitneyoptions>>
+ 	<<else>>
+		<<npcincr Whitney lust -20>><<llust>>
+		<br><br>
+		<<clotheson>>
+
+		"There. That wasn't so bad, was it? Don't make deals you don't intend on keeping, <<girl>>. It won't end well for you."
+
+		/*<<if $exposed gte 1>>
+			<<= playerBellyVisible() ? "<<He>> places an unlit cigarette between <<his>> lips" : "<<He>> lights another cigarette and takes a lazy drag">>, admiring your exposed body.
+			<br><br>
+			"You better run home and grab something to cover up. The people that come around here don't mind sloppy seconds." <<He>> pats your thigh with a curt laugh before sauntering out of the park.
+		<<else>>
+			<<He>> pats your thigh before <<he>> saunters out of the park.
+		<</if>>*/
+		<br><br>
+		<<endcombat>>
+		<<whitneyexit>>
+	<</if>>
+/*<<elseif $alarm is 1 and $rescue is 1>>
+	Whitney's head snaps up when <<he>> notices a couple of park goers looking in your direction. "Damn, you've got a set of lungs," Whitney grumbles, fixing <<his>> clothes as <<he>> <<= $phase is 0 ? "climbs" : "crawls">> off of you. "You're in for it next time."
+	<<if $location is "park">>
+		<<He>> picks up <<his>> umbrella and makes <<his>> exit from the park without turning back.
+		<br><br>
+
+		<<clotheson>>
+		<<endcombat>>
+		<<whitneyexit>>
+	<<else>>
+		<br><br>
+		<<clotheson>>
+		<<endcombat>>
+		<<npc Whitney>><<person1>>
+		<<whitneyoptions>>
+	<</if>>*/
+<<else>>
+	Whitney rolls <<his>> eyes and climbs off of you. "Fine. See if I ever let you have anything after this." <<He>> fixes <<his>> clothes and sticks an unlit cigarette between <<his>> lips. "You're gonna make it up to me later. Count on it."
+	<<He>> shoves you away from <<him>>.
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+	<<npc Whitney>><<person1>>
+	<<whitneyoptions>>
+<</if>>
+<<endcombat>>

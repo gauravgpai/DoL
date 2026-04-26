@@ -303,7 +303,7 @@ You tell Winter you changed your mind, now that you remembered you already knew 
 :: Hopeless Cycle
 <<hopelessCycleStart>>
 <<set _thermoDisable to true>><<effects>>
-<<set Weather.set("heavyClouds", true, 600)>><<canvas-model-override "mouth" "neutral">>
+<<canvas-model-override "mouth" "neutral">>
 <span class="narration">
 It's generally agreed upon that the event took place late in the 14th century.
 The Cloister of Virgo, as they called themselves, held much control over the region.
@@ -425,7 +425,7 @@ The cell's too dark for you to even inspect her now. You'll need to grab another
 
 /* Dungeon / guardhouse */
 :: Hopeless Cycle Dungeon
-<<set $location to "old_temple">><<set _thermoDisable to true>><<effects>><<set $bus to "guardhouse">>
+<<set $location to "old_temple">><<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "guardhouse">>
 <<hopelessCycleEffects>>
 
 You are in the guardhouse of the temple's dungeon. There are several hallways, each housing ten cells.
@@ -814,7 +814,7 @@ You sneak into the dungeon from the cloister.
 
 /* Disposal channel */
 :: Hopeless Cycle Disposal
-<<set $location to "drain">><<set _thermoDisable to true>><<effects>><<set $bus to "disposal">>
+<<set $location to "drain">><<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "disposal">>
 <<hopelessCycleEffects>>
 <<set _torchInSconce to $hcItems.find(torch => torch.type is "torch" and torch.state is "lit" and torch.location is "disposal" and torch.inSconce is true)>>
 
@@ -1159,7 +1159,7 @@ The torch, fingers, and appendage all wink out of existence at once. You rub you
 
 /* Cloister */
 :: Hopeless Cycle Cloister
-<<set _thermoDisable to true>><<effects>><<set $bus to "cloister">>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "cloister">>
 <<hopelessCycleEffects>>
 
 You are in the temple cloister.
@@ -1291,7 +1291,7 @@ A statue of a six-armed, six-winged angel stands resolute in the centre. The ang
 <</if>>
 
 :: Hopeless Cycle Cloister Training
-<<set _thermoDisable to true>><<effects>><<set $bus to "training">>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "training">>
 <<hopelessCycleEffects>>
 
 <<if Time.dayState isnot "night">>
@@ -1380,7 +1380,7 @@ One of your <<sister_npc>>s bows to you. A few of your brothers and sisters watc
 <br>
 
 :: Hopeless Cycle Cloister Dining
-<<set $location to "old_temple">><<set _thermoDisable to true>><<effects>><<set $bus to "dining">>
+<<set $location to "old_temple">><<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "dining">>
 <<hopelessCycleEffects>>
 You are in the cloister's dining hall.
 <<if Time.dayState is "night">>
@@ -2614,7 +2614,7 @@ It sinks back into the water. The mist fades away.
 
 /* Barracks */
 :: Hopeless Cycle Quarters
-<<set _thermoDisable to true>><<effects>><<set $bus to "quarters">>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "quarters">>
 <<hopelessCycleEffects>>
 You are in the barracks on the second floor of the temple, where your brothers and sisters make their home.
 There are four large rooms surrounding the central hall.
@@ -2681,7 +2681,7 @@ There are four large rooms surrounding the central hall.
 <</if>>
 
 :: Hopeless Cycle Bunk
-<<set _thermoDisable to true>><<effects>><<set $bus to "bed">>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "bed">>
 <<hopelessCycleEffects>>
 You are beside your bunk in the temple quarters. There's a rack for your armour and robes, and a small space behind a screen for dressing.
 <br><br>
@@ -2781,7 +2781,7 @@ You are beside your bunk in the temple quarters. There's a rack for your armour 
 <</if>>
 
 :: Hopeless Cycle Bunk Bed
-<<set _thermoDisable to true>><<effects>>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>>
 <<hopelessCycleEffects>>
 <<set _witchblooms to hcItemCanReach("clutter", w => w.name === "witchblooms" && w.dirty gte 1)>>
 <<if _witchblooms>>
@@ -2819,7 +2819,7 @@ You are beside your bunk in the temple quarters. There's a rack for your armour 
 <<link [[Climb out of bed|Hopeless Cycle Bunk]]>><<hopelessCycleOutfit "armour">><</link>>
 
 :: Hopeless Cycle Sleep
-<<set _thermoDisable to true>>
+<<set $outside to 0>><<set _thermoDisable to true>>
 <<sleep>><<effects>><<hopelessCycleEffects>><<set $hc.neverLeftDungeon to false>>
 <<if _sleepinterrupt>>
 	<<if $hc.bloodWake>>
@@ -2908,7 +2908,7 @@ You are beside your bunk in the temple quarters. There's a rack for your armour 
 <<set $phase to 0>>
 
 :: Hopeless Cycle Quarters Clean
-<<set _thermoDisable to true>><<effects>>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>>
 <<hopelessCycleEffects>>
 
 <<set _water to hcItemCanReach("water", (water => water.dirty lt 2))>>
@@ -2970,7 +2970,7 @@ You get to work scrubbing down the barracks. You clean the floors, some sheets, 
 
 /* Prayer Room */
 :: Hopeless Cycle Prayer Room
-<<set _thermoDisable to true>><<effects>><<set $bus to "prayerroom">>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "prayerroom">>
 <<hopelessCycleEffects>>
 
 <<if _hcEvent is "blood">>
@@ -3022,7 +3022,7 @@ You get to work scrubbing down the barracks. You clean the floors, some sheets, 
 <<unset $hcAction>>
 
 :: Hopeless Cycle Prayer
-<<set _thermoDisable to true>><<effects>><<set $bus to "prayerroom">>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "prayerroom">>
 <<hopelessCycleEffects>>
 
 <<hallucinogen 60>>
@@ -3082,7 +3082,7 @@ He seems to get angrier with every word you say, until his shoulders finally fal
 <br>
 
 :: Hopeless Cycle Prayer Report 2
-<<set _thermoDisable to true>><<effects>><<set $bus to "cloister">>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "cloister">>
 <<hopelessCycleEffects>>
 
 Your brothers and sisters all line up in front of you and the Bishop's Hand in the cloister.
@@ -3107,7 +3107,7 @@ They're each given a chastity examination. Out of them, two fail. The Hand grabs
 <br>
 
 :: Hopeless Cycle Prayer Report 3
-<<set _thermoDisable to true>><<effects>><<set $bus to "guardhouse">>
+<<set $outside to 0>><<set _thermoDisable to true>><<effects>><<set $bus to "guardhouse">>
 <<hopelessCycleEffects>>
 
 <<if $phase is 1>>
@@ -3240,7 +3240,7 @@ The confessors re-enter the cell to retrieve the monk, who sobs and groans in pa
 	<<link [[Next|Hopeless Cycle Cell]]>><<endevent>><</link>>
 	<br>
 <<else>>
-	<<set $location to "old_temple">><<set $bus to "garden">>
+	<<set $location to "old_temple">><<set $outside to 1>><<set $bus to "garden">>
 	You awaken to some water being poured on your head. You open your eyes and try to push away the source.
 	<br><br>
 
@@ -3477,7 +3477,7 @@ After a moment, he picks up his torch, turns around and continues on to the _goi
 <<link [[Next|_comingFromLink]]>><<unset $shortcut>><</link>>
 
 :: Hopeless Cycle Blood Cell Late
-<<set _thermoDisable to true>><<set $location to "old_temple">><<set $bus to "barracks">>
+<<set $location to "old_temple">><<set $outside to 0>><<set _thermoDisable to true>><<set $bus to "barracks">>
 
 <<if $worn.upper.name isnot "chain tunic">>
 	You head to the barracks and change into your armour.
@@ -3495,7 +3495,7 @@ You enter the dungeon. There's no one to sanctify you on the way in. You suppose
 <br>
 
 :: Hopeless Cycle Blood Cell
-<<set _thermoDisable to true>><<set $location to "old_temple">><<set $bus to "cell">>
+<<set $location to "old_temple">><<set $outside to 0>><<set _thermoDisable to true>><<set $bus to "cell">>
 <<hopelessCycleOutfit "armour">><<canvas-model-override "mouth" "neutral">><<tiredness -12>>
 <<run $hcItems.filter(items => items.type isnot "prisoner" and items.location isnot "prisoner").forEach(item => {hcItemRemove(item)})>>
 
@@ -3592,7 +3592,7 @@ You release the chain that holds her manacles to the wall and pick her up. She d
 <br>
 
 :: Hopeless Cycle Blood Carry
-<<set _thermoDisable to true>><<set $bus to "cloister">>
+<<set $outside to 0>><<set _thermoDisable to true>><<set $bus to "cloister">>
 <<set $hc.forcedMove to true>><<run delete $hc.endingETimer>>
 <<canvas-model-override "mouth" "neutral">><<canvas-model-override "eyes_half" true>>
 <<canvas-model-override "arm_left" "none">><<canvas-model-override "arm_right" "none">>
@@ -3601,22 +3601,22 @@ You release the chain that holds her manacles to the wall and pick her up. She d
 <<hopelessCycleBrandings>>
 
 <<if $prisonerEvents.includes("talkHairBlooms")>>
-	<<set $hc.witchHair to "hair_flowers">>
+	<<set $hc.witchHair to "hair-flowers">>
 <<elseif $prisonerEvents.includes("talkHair")>>
-	<<set $hc.witchHair to "hair_braid">>
+	<<set $hc.witchHair to "hair-braid">>
 <<elseif $prisonerEvents.includes("washHair")>>
-	<<set $hc.witchHair to "hair_clean">>
+	<<set $hc.witchHair to "hair-clean">>
 <<else>>
-	<<set $hc.witchHair to "hair_dirty">>
+	<<set $hc.witchHair to "hair-dirty">>
 <</if>>
 
 <<if $prisoner.state is "catatonic" or $phase lte 1>>
-	<<set _left_arm to "left_arm">>
+	<<set _left_arm to "left-arm">>
 	<<if _witchClothes is "robe">>
-		<<set _clothes_left_arm to "robe_left_arm">>
+		<<set _clothes_left_arm to "robe-left-arm">>
 	<</if>>
 <<else>>
-	<<set _left_arm to "left_arm_alt">>
+	<<set _left_arm to "left-arm-alt">>
 	<<if _brandings.left_arm>>
 		<<run delete _brandings.left_arm>>
 	<</if>>
@@ -3653,7 +3653,8 @@ You release the chain that holds her manacles to the wall and pick her up. She d
 	<<set $follower.hair += "_challenge_faithBlooms">>
 <</if>>
 
-<<set Time.setDate(new DateTime(1390, 5, 31, 22, 0))>><<set Weather.set("clear", true, 1000)>>
+<<run Time.timeTravel(new DateTime(1390, 5, 31, 22, 0))>>
+<<set Weather.set("clear", true, 1000)>>
 <span class="narration">To this day, the temple puts special emphasis on the last day of each month. It is unclear when this tradition started, but it has been around for centuries.</span>
 <br><br>
 
@@ -3694,7 +3695,7 @@ They walk by your side in-step, the silk trailing on the ground behind you.
 <br>
 
 :: Hopeless Cycle Blood Garden
-<<set $location to "forest">><<set _thermoDisable to true>><<set $outside to 1>><<set $bus to "forest">>
+<<set $location to "forest">><<set $outside to 1>><<set _thermoDisable to true>><<set $bus to "forest">>
 <span class="narration">
 	Out and out they went, across the temple's grounds, to the forest. The Bishop, and his Hand. The gaoler, and the witch.
 	Two dozen confessors, and many more members of the flock. Marching in procession behind the tainted pair.
@@ -3725,20 +3726,20 @@ You hear a heartbeat growing in volume and speed.
 	She can't feel your left arm under her legs. It must feel like she's half-floating.
 <</if>>
 <<if $prisoner.state isnot "catatonic" and $phase gte 1>>
-	<<set $follower.base to "base_alt">>
+	<<set $follower.base to "base-alt">>
 	<<if $follower.clothes is "robe">>
-		<<set $follower.clothes to "robe_alt">>
+		<<set $follower.clothes to "robe-alt">>
 	<<elseif $follower.clothes is "sack">>
-		<<set $follower.clothes to "sack_alt">>
+		<<set $follower.clothes to "sack-alt">>
 	<</if>>
 	<<if $follower.under_clothes>>
-		<<set $follower.under_clothes to "bandages_alt">>
+		<<set $follower.under_clothes to "bandages-alt">>
 	<</if>>
 	<<if $follower.writing_chest>>
-		<<set $follower.writing_chest to "brand_chest_alt">>
+		<<set $follower.writing_chest to "brand-chest-alt">>
 	<</if>>
 	<<if $follower.writing_right_arm>>
-		<<set $follower.writing_right_arm to "brand_right_arm_alt">>
+		<<set $follower.writing_right_arm to "brand-right-arm-alt">>
 	<</if>>
 <</if>>
 <br><br>
@@ -3917,7 +3918,7 @@ You don't want to watch, but you can't look away. Finally, the Hand brandishes a
 		<<if $prisonerEvents.includes("talkHairBlooms")>>
 			<span class="purple">Her braid elegantly flows, the witchblooms within softly glowing.</span>
 		<<else>>
-			<<set $hc.witchHair to "hair_clean">>
+			<<set $hc.witchHair to "hair-clean">>
 			<span class="pink">It unbraids itself, spreading out.</span>
 		<</if>>
 	<</if>>
@@ -3963,7 +3964,7 @@ You don't want to watch, but you can't look away. Finally, the Hand brandishes a
 				<<if $prisonerEvents.includes("talkHairBlooms")>>
 					<span class="purple">Her braid elegantly flows, the witchblooms within softly glowing.</span>
 				<<else>>
-					<<set $hc.witchHair to "hair_clean">>
+					<<set $hc.witchHair to "hair-clean">>
 					<span class="pink">It unbraids itself, spreading out.</span>
 				<</if>>
 			<</if>>
@@ -4499,7 +4500,8 @@ You slump back against the wall, resigned to your fate. You know there's no esca
 :: Hopeless Cycle Ending E 2 [ending]
 <<set _thermoDisable to true>>
 <<canvas-model-override "mouth" "neutral">><<set $trauma to 5000>>
-<<set Time.setDate(new DateTime(1390, 5, 31, 22, 0))>><<set Weather.set("clear", true, 1000)>>
+<<run Time.timeTravel(new DateTime(1390, 5, 31, 22, 0))>>
+<<set Weather.set("clear", true, 1000)>>
 <span class="narration">
 	They made him wait until the night of the ritual, and then... nothing.
 	<br><br>
@@ -4592,9 +4594,11 @@ You feel numb.
 <br>
 
 :: Hopeless Cycle Ending D 2 [ending]
-<<set Weather.Temperature.set(-25)>><<set Weather.set("heavyPrecipitation", true)>><<set V.weatherObj.snow = (80)>>
 <<set _thermoDisable to true>><<set $location to "lake">>
-<<set Time.setDate(new DateTime(1390, 11, 30, 21, 30))>>
+<<run Time.timeTravel(new DateTime(1390, 11, 30, 21, 30))>>
+<<set Weather.Temperature.set(-25)>>
+<<set Weather.set("heavyPrecipitation", true)>>
+<<set V.weatherObj.snow = (80)>>
 <<set $trauma to 5000>>
 <span class="narration">
 	The witch would never move again. She lay in her cell, slumped over like an unwanted doll cast aside.
@@ -4717,7 +4721,8 @@ You sit down and cautiously lower your hand, petting her on the head. You expect
 
 :: Hopeless Cycle Ending C 3 [ending]
 <<set _thermoDisable to true>>
-<<set Time.setDate(new DateTime(1390, 8, 3, 12, 30))>><<set Weather.set("heavyPrecipitation", true, 600)>>
+<<run Time.timeTravel(new DateTime(1390, 8, 3, 12, 30))>>
+<<set Weather.set("heavyPrecipitation", true, 600)>>
 <<set $trauma to 5000>><<set $stress to 0>><<set $control to 1000>><<set $purity to 500>><<set $arousal to 7000>>
 <<set $player.virginity.penile to $prisoner.name>><<set $player.virginity.temple to false>>
 <<canvas-model-override "arm_left" "none">><<canvas-model-override "arm_right" "none">>
@@ -4725,34 +4730,34 @@ You sit down and cautiously lower your hand, petting her on the head. You expect
 <<hopelessCycleBrandings>>
 
 <<if $prisonerEvents.includes("talkHairBlooms")>>
-	<<set $hc.witchHair to "hair_flowers">>
+	<<set $hc.witchHair to "hair-flowers">>
 <<elseif $prisonerEvents.includes("talkHair")>>
-	<<set $hc.witchHair to "hair_braid">>
+	<<set $hc.witchHair to "hair-braid">>
 <<elseif $prisonerEvents.includes("washHair")>>
-	<<set $hc.witchHair to "hair_clean">>
+	<<set $hc.witchHair to "hair-clean">>
 <<else>>
-	<<set $hc.witchHair to "hair_dirty">>
+	<<set $hc.witchHair to "hair-dirty">>
 <</if>>
 
 <<if $prisoner.bandagesOn>>
-	<<set _bandages to "bandages_alt">>
+	<<set _bandages to "bandages-alt">>
 <</if>>
 <<if _witchClothes is "robe">>
-	<<set _clothes to "robe_alt">>
+	<<set _clothes to "robe-alt">>
 <<elseif _witchClothes is "bloodstained sack" or _witchClothes is "torn vegetable sack">>
-	<<set _clothes to "sack_alt">>
+	<<set _clothes to "sack-alt">>
 <</if>>
 <<if _brandings.chest>>
-	<<set _brandings.chest to "brand_chest_alt">>
+	<<set _brandings.chest to "brand-chest-alt">>
 <</if>>
 <<if _brandings.right_arm>>
-	<<set _brandings.right_arm to "brand_right_arm_alt">>
+	<<set _brandings.right_arm to "brand-right-arm-alt">>
 <</if>>
 
 <<set $follower to {
 	name: "witchprisoner",
-	base: "base_alt",
-	left_arm: "left_arm_alt",
+	base: "base-alt",
+	left_arm: "left-arm-alt",
 	clothes: _clothes,
 	under_clothes: _bandages,
 	hair: $hc.witchHair,
@@ -5012,7 +5017,8 @@ You clutch your head, and try to make your way back to the temple.
 <<if !$hc.search>>
 	<<set $hcForest to 15>>
 	<<set $hc.search to true>>
-	<<set Time.setDate(new DateTime(1390, 6, 10, 10, 36))>><<set Weather.set("heavyClouds", true, 1000)>>
+	<<run Time.timeTravel(new DateTime(1390, 6, 10, 10, 36))>>
+	<<set Weather.set("heavyClouds", true, 1000)>>
 <<else>>
 	<<set $hc.search++>>
 <</if>>
@@ -5545,18 +5551,18 @@ Your siblings all pause as the writhing under her skin continues. She moans in m
 	<<if _collapse>>
 		<<canvas-model-override "arm_right" "hold">><<canvas-model-override "eyes_half" true>>
 		<<if _brandings.left_thigh>>
-			<<set _brandings.left_thigh to "brand_left_thigh_alt">>
+			<<set _brandings.left_thigh to "brand-left-thigh-alt">>
 		<</if>>
 		<<if _brandings.right_thigh>>
-			<<set _brandings.right_thigh to "brand_right_thigh_alt">>
+			<<set _brandings.right_thigh to "brand-right-thigh-alt">>
 		<</if>>
 		<<if _brandings.right_leg>>
-			<<set _brandings.right_leg to "brand_right_leg_alt">>
+			<<set _brandings.right_leg to "brand-right-leg-alt">>
 		<</if>>
 		<<set $follower to {
 			name: "witchstanding",
-			base: "base_alt",
-			hair: $hc.witchHair + "_alt",
+			base: "base-alt",
+			hair: $hc.witchHair + "-alt",
 			writing_right_cheek: _brandings.right_cheek,
 			writing_chest: _brandings.chest,
 			writing_left_shoulder: _brandings.left_shoulder,
@@ -5976,7 +5982,8 @@ You carry her into the forest. Together, you leave the clearing, the cloister, a
 
 :: Hopeless Cycle Ending S 7 [ending]
 <<set _thermoDisable to true>><<set $location to "lake">>
-<<set Time.setDate(new DateTime(1390, 6, 10, 10, 36))>><<set Weather.set("heavyClouds", true)>>
+<<run Time.timeTravel(new DateTime(1390, 6, 10, 10, 36))>>
+<<set Weather.set("heavyClouds", true)>>
 
 <span class="narration">
 	And so, in this version of the tale, the gaoler earned the witch a second chance at life, one free of prosecution.

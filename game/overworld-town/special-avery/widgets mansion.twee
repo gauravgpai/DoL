@@ -3059,7 +3059,12 @@
 
 			<<avery_housework_assess>>
 		<<elseif _avery_interrupt is "work">>
-			You hear the front gates rattle open, followed by a car driving through. It enters the garage, and a car door slams. Avery is home from work.
+			You hear the front gates rattle open, followed by a car driving through. It enters the garage, and a car door slams.
+			<<if Time.weekDay isnot 1>>
+				Avery is home from work.
+			<<else>>
+				Avery is home.
+			<</if>>
 			<br><br>
 			<<if $avery_mansion.schedule is "bath">>
 				<<set $avery_mansion.rage.work to false>>
@@ -3364,7 +3369,7 @@
 					<br><br>
 				<</if>>
 				<<if $worn.face.cursed is 1>>
-					<<link [[Remove your $worn.face.name (0:10)|Mansion Bedroom]]>><<pass 10>><<set $worn.face.type.push("broken")>><<faceruined>><</link>>
+					<<icon "clothes/gag.png">><<link [[Remove your $worn.face.name (0:10)|Mansion Bedroom]]>><<pass 10>><<set $worn.face.type.push("broken")>><<faceruined>><</link>>
 					<br><br>
 				<</if>>
 
@@ -3446,7 +3451,7 @@
 						<</if>>
 						<<endevent>>
 
-						<<if !$daily.avery.bathroom_peek and random(1, 4) is 4>>
+						<<if !$daily.avery.bathroom_peek and !["Mansion Bathroom", "Mansion Bathe", "Mansion Brush","Mansion Talk Chat 2"].includes($passagePrev) and random(1, 4) is 4>>
 							<<set _hide_links to 1>>
 							<<npc "Avery">><<person1>>
 							<<set $daily.avery.bathroom_peek to true>>
@@ -3466,6 +3471,7 @@
 							<<personalUpkeep>>
 							<br>
 							<<pregnancyTest "Mansion Bathroom">>
+							<br>
 						<</if>>
 
 					<<elseif $daily.avery.morning_bath is "drying">>
@@ -3487,6 +3493,7 @@
 						<<personalUpkeep>>
 						<br>
 						<<pregnancyTest "Mansion Bathroom">>
+						<br>
 					<</if>>
 				<<else>>
 					<<bathroomicon "bath">><<link [[Bathe (0:20)|Mansion Bathe]]>><<pass 20>><</link>>
@@ -3494,6 +3501,7 @@
 					<<personalUpkeep>>
 					<br>
 					<<pregnancyTest "Mansion Bathroom">>
+					<br>
 				<</if>>
 			<</if>>
 
@@ -3530,6 +3538,7 @@
 						<br><br>
 						<<socialiseicon>><<link [[Talk to Avery|Mansion Talk]]>><</link>>
 						<br><br>
+						<<avery_mansion_links>>
 					<</if>>
 
 				<<elseif $avery_mansion.schedule is "party_prepare">>
@@ -3967,7 +3976,7 @@
 
 		Avery eats breakfast as if you're not there, but you catch <<him>> watching you now and then, <<his>> gaze returning to <<his>> food so fast you might have imagined it.
 		<br><br>
-		"Fetch me cream from the kitchen, <<pcpetname "Avery">>" <<he>> says. "I fancy some with my dessert."
+		"Fetch me cream from the kitchen, <<pcpetname "Avery">>," <<he>> says. "I fancy some with my dessert."
 		<br><br>
 
 		<<link [[Fetch cream (0:03)|Mansion Housework Cream]]>><<pass 3>><</link>>
