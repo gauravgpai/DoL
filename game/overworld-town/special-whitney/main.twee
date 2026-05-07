@@ -6148,7 +6148,6 @@ You pass the cigarette back to Whitney. As if on autopilot, <<he>> immediately t
 				However, <span class="green">you steady yourself,</span> and manage to stop <<him>> from dunking you. <<He>> gives you one last frustrated pull before releasing you.
 				<br><br>
 				"You're no fun." <<He>> walks back to <<his>> spot under the tree.
-				<br><br>
 				<<whitneyoptions>>
 			<<else>>
 				You <span class="red">trip up, and <<he>> pushes you over the edge.</span> You fall right in,
@@ -9138,7 +9137,7 @@ You watch <<him>> skulk into an alley, leaving you alone.
 <<whitneyoptionsleave>>
 
 :: Whitney Chastity Replace
-<<effects>><<set $location to "park">>
+<<effects>>
 
 <<if $weekly.whitneyChastityReplace>>
 	<<He>> inspects the $worn.genitals.name. "Looking a little worn. These things don't grow on trees, I can't replace them every time you fuck them up."
@@ -9308,7 +9307,7 @@ You leave the park with Whitney, enduring the occasional grope. When you reach C
 You kiss Whitney, letting <<person1>><<his>> tongue invade your mouth, and <<his>> fringe tickles your nose.<<takeKissVirginity "Whitney" `($whitneyromance is 1?"loveInterest":"romantic")`>>
 <br><br>
 
-<<He>> steps back, keeping one arm around you, and looks at the cafe. "Our <<person2>><<personsimple>> is waiting in there," <<person1>><<he>> says. "<<person2>><<Hes>> a cunt. Just keep that in mind."
+<<He>> steps back, keeping one arm around you, and looks at the cafe. "Our <<person2>><<personsimple>> is waiting in there," <<person1>><<he>> says. <<person2>>"<<Hes>> a cunt. Just keep that in mind."
 <br><br>
 
 <<link [[Next|Whitney Orphanage Loft Cafe]]>><</link>>

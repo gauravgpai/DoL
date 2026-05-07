@@ -6747,13 +6747,6 @@ sugarcube-2:
       name: getTarget
     getTargetList:
       name: getTargetList
-    getTransformParts:
-      description: |-
-        Temporarily stores the player's TF parts in an array called `_tfParts`.
-
-        `<<getTransformParts ears? wings? tail? halo? horns? plumage? malar? cheeks? eyes? heterochromia? pubes? pits?>>`
-
-        Setting arguments can specify which parts to specifically check for. Leaving blank will check every part.
     getUsedChildrenNames:
       name: getUsedChildrenNames
       tags: ["unused"]
@@ -6944,7 +6937,7 @@ sugarcube-2:
       tags: ["text"]
     gggarousal:
       description: |-
-        Prints `| + + Arousal`
+        Prints `| + + + Arousal`
       tags: ["text"]
     gggathletics:
       description: |-
@@ -10019,6 +10012,10 @@ sugarcube-2:
       description: |-
         Prints `| - - - Stockholm Syndrome`
       tags: ["text"]
+    lllstray_happiness:
+      description: |-
+        Prints `| - - - Stray contentment`
+          tags: ["unused", "text"]
     lllstress:
       description: |-
         Prints `| - - - Stress`
@@ -10138,6 +10135,10 @@ sugarcube-2:
     llstockholm:
       description: |-
         Prints `| - - Stockholm Syndrome`
+      tags: ["unused", "text"]
+    llstray_happiness:
+      description: |-
+        Prints `| - - Stray contentment`
       tags: ["unused", "text"]
     llstress:
       description: |-
@@ -10451,6 +10452,10 @@ sugarcube-2:
       description: |-
         Prints `| - Stockholm Syndrome`
       tags: ["unused", "text"]
+    lstray_happiness:
+      description: |-
+        Prints `| - Stray contentment`
+      tags: ["text"]
     lstress:
       description: |-
         Prints `| - Stress`
@@ -16712,6 +16717,9 @@ sugarcube-2:
       name: updateFeats
     updateFeatsPointsMenu:
       name: updateFeatsPointsMenu
+    updateFoodstuffKey:
+      description: |-
+        For use when renaming (not deleting) setup.foodstuff keys. This widget mirrors changes to V.foodstuff and other variables
     updateHallucinations:
       description: |-
         Updates pc's hallucination state based on trauma, awareness, drugs, weather, and clothing

@@ -1229,7 +1229,7 @@ You arrive at the town hall. Several rows of seats span across the main room, al
 	<<endevent>>
 	<br><br>
 
-	<<if $avery_mansion?.attend.english_play>>
+	<<if C.npc.Avery.state isnot "dismissed" and $avery_mansion?.attend.english_play>>
 		You spot Avery in one of the rows of seats. <<nnpc_He "Avery">> meets your eyes and smiles<<if C.npc.Avery.love gte 50>>, giving you a wave<</if>>.
 		<br><br>
 
@@ -2447,7 +2447,7 @@ The two continue to converse until Sirris starts to lead Sydney out. Sydney hesi
 <<endevent>>
 <<clearNPC actor_replacement>>
 
-<<if $avery_mansion?.attend.english_play>>
+<<if C.npc.Avery.state isnot "dismissed" and $avery_mansion?.attend.english_play>>
 	You look around for Avery,
 	<<if $englishPlayApproval lte 50>>
 		<<set $averySeen.pushUnique("play_fail")>>
@@ -2651,7 +2651,7 @@ The two continue to converse until Sirris starts to lead Sydney out. Sydney hesi
 <br><br>
 You could leave with Avery now, but staying to support your fellow students will endear you to them.
 <br><br>
-<<link [[Stay and watch a performance (0:20)|English Play Watch]]>><<trauma -2>><<tiredness 2>><<status 1>><<npcincr Avery love -1>><<npcincr Avery rage 1>><<set $phase to 1>><<pass 20>><<set $englishPlay to "done">><</link>><<ltrauma>><<gtiredness>><<gcool>><<llove>><<garage>>
+<<link [[Stay and watch a performance (0:20)|English Play Watch]]>><<endevent>><<trauma -2>><<tiredness 2>><<status 1>><<npcincr Avery love -1>><<npcincr Avery rage 1>><<set $phase to 1>><<pass 20>><<set $englishPlay to "done">><</link>><<ltrauma>><<gtiredness>><<gcool>><<llove>><<garage>>
 <br>
 <<link [[Leave with Avery|English Play Avery Leave]]>><<npcincr Avery love 1>><<npcincr Avery rage -1>><</link>><<glove>><<larage>>
 <br>

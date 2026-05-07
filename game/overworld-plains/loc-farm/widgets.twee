@@ -3106,7 +3106,7 @@
 	<</if>>
 	<br><br>
 
-	<<link [[Next|Farm Alex Pregnancy Reveal]]>><</link>>
+	<<link [[Next|Farm Alex Pregnancy Reveal]]>><<endevent>><</link>>
 
 <</widget>>
 
@@ -3302,7 +3302,7 @@
 			<<setTalkedAboutPregnancy "pc" "Alex">><<set C.npc.Alex.pregnancy.pcKnowledge to true>>
 			I didn't even know you were pregnant!
 		<</if>>
-		Come on, let's get<<if $location isnot "alex_cottage">> in the cottage<<else>> get you on the sofa<</if>>, I'll call an ambulance for you," <<he>> says, taking you by the arm.
+		Come on, let's get <<if $location isnot "alex_cottage">>in the cottage<<else>>you on the sofa<</if>>, I'll call an ambulance for you," <<he>> says, taking you by the arm.
 		<br><br>
 
 		<<if $location isnot "alex_cottage">>Inside the cottage,<</if>> Alex guides you to the sofa. As soon as you take a seat, <<he>> reaches for <<his>> phone. <<He>> calls the emergency line and explains your situation.
@@ -3354,7 +3354,7 @@
 
 		<<link [[Give Alex the money|Farm Shopping Booze]]>><</link>>
 		<br>
-		<<link [[Keep the money|Farm Work]]>><<money $farm_work.shopping_money "farm">><<endevent>><</link>>
+		<<link [[Keep the money|Farm Work]]>><<money $farm_work.shopping_money "farm">><<endevent>><<unset $alexBooze>><</link>>
 
 	<<elseif $alexBooze is "noBooze">>
 		A slightly annoyed look appears on <<his>> face as <<he>> turns back toward you.
@@ -3401,13 +3401,13 @@
 
 		<<link [[Give Alex the money|Farm Shopping Booze]]>><</link>>
 		<br>
-		<<link [[Keep the money|Farm Work]]>><<money $farm_work.shopping_money "farm">><<endevent>><</link>>
+		<<link [[Keep the money|Farm Work]]>><<money $farm_work.shopping_money "farm">><<endevent>><<unset $alexBooze>><</link>>
 
 	<<else>>
 		A wide smile appears at the sight of the alcohol.
 		<br><br>
 
-		<<link [[Next|Farm Work]]>><<endevent>><</link>>
+		<<link [[Next|Farm Work]]>><<endevent>><<unset $alexBooze>><</link>>
 
 	<</if>>
 <</widget>>
