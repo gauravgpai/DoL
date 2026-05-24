@@ -39,7 +39,7 @@ You enter the block of flats, and climb the stairs to Whitney's abode. You knock
 		<<link [[Knock harder|Whitney Home Knock Harder]]>><<set $whitney_night_knock to 1>><</link>>
 		<br>
 	<</if>>
-	<<link [[Leave (0:02)|Barb Street]]>><</link>>
+	<<link [[Leave (0:02)|Barb Street]]>><<pass 2>><</link>>
 	<br>
 <<elseif Time.dayState is "dawn">>
 	<<npc Whitney>><<person1>>
@@ -158,7 +158,7 @@ You climb down the stairs, and leave the building.
 	"Inviting yourself in now," Whitney says. "You're getting too comfortable." <<He>> thinks for a moment, then opens the door all the way.
 <<elseif $whitney_home_invite lte 5>>
 	<<set $whitney_home_invite += 1>>
-	"You can't get enough of me, can you." <<He>> swings the door open all the way.
+	"You can't get enough of me, can you?" <<He>> swings the door open all the way.
 <<else>>
 	<<set $whitney_home_invite += 1>>
 	<<He>> swings the door open all the way.
@@ -515,7 +515,7 @@ Despite <<his>> words, <<he>> opens the door with some apprehension, becoming mo
 :: Whitney Home Dawn Breakfast Toast
 <<effects>>
 
-You sit at the table while Whitney puts four slices of bread in the toaster. <<He>> turns, then hauls <<himself>> up to sit on the counter.
+You wait by the table while Whitney puts four slices of bread in the toaster. <<He>> turns, then hauls <<himself>> up to sit on the counter.
 <br><br>
 
 <<His>> <<person2>><<mum>> stares at <<person1>><<him>>. "Get the fuck down from there," <<person2>><<he>> says.
@@ -795,7 +795,7 @@ You place the egg on toast in front of Whitney. <<He>> smiles, and digs in witho
 :: Whitney Home Dawn Shower
 <<effects>>
 
-Whitney pulls off <<his>> shirt before even closing the door, and dumps it in a basket beside the sink. <<He>> reaches into the shower, turns it on, then turns to you. "What are you waiting for? You can't wash me while dressed."
+Whitney pulls off <<his>> <<print $NPCList[0].clothes.lower.name>> before even closing the door, and dumps it in a basket beside the sink. <<He>> reaches into the shower, turns it on, then turns to you. "What are you waiting for? You can't wash me while dressed."
 <br><br>
 
 <<if isLoveInterest("Whitney")>>
@@ -1260,7 +1260,7 @@ Whitney looks thoughtful for a moment, then <<he>> grabs a bottle of shampoo, an
 
 
 <<if currentSkillValue('oralskill') gte random(1, 600)>>
-	<<He>> shifts away a bit, playfully, as if trying to see how far you'll go. You won't let your prey escape, manage to corner <<him>>, and unleash a barrage of kisses and licks that <span class="green">soon has <<him>> squirming</span>, <<his>> juices mixing with the soapy water.<<glove>><<npcincr Whitney love 1>>
+	<<He>> shifts away a bit, playfully, as if trying to see how far you'll go. You won't let your prey escape, manage to corner <<him>>, and unleash a barrage of kisses and licks that <span class="green">soon has <<him>> squirming</span>, <span class= "lewd"><<if $NPCList[0].penis isnot "none">>semen erupts from his <<print $NPCList[0].penisdesc>>,<<else>><<his>> juices<</if>> mixing with the soapy water.</span><<glove>><<npcincr Whitney love 1>>
 	<br><br>
 
 	"Good job," <<he>> says, breathless, but trying to assert some control. "Slut."
@@ -2811,6 +2811,7 @@ Whitney gropes you as you pass <<him>>, then follows you into <<his>> bedroom. <
 	<<neutral 1>>
 	<<maninit>>
 	<<set $enemytrust += 100>><<promiscuity1>>
+	<<set $audienceforceteen to 1>>
 	Whitney wastes no time, pinning you on your back in front of everyone. "Good <<girl>>."
 	<br><br>
 <</if>>
@@ -2823,6 +2824,7 @@ Whitney gropes you as you pass <<him>>, then follows you into <<his>> bedroom. <
 <br><br>
 <<actionsman>>
 <<if _combatend>>
+	<<set $audienceforceteen to 0>>
 	<span id="next"><<link [[Next|Whitney Home Gang Sex Finish]]>><</link>></span><<nexttext>>
 <<else>>
 	<span id="next"><<link [[Next|Whitney Home Gang Sex]]>><</link>></span><<nexttext>>
@@ -3088,6 +3090,7 @@ Whitney leads you outside, and grasps your arm again. Like before, <<he>> sidles
 <<effects>>
 
 <<if $exposed gte 1>>
+	<<npc Whitney>><<person1>>
 	Whitney examines you from head to toe. "If you go out like that you'll attract the wrong sort of attention," <<he>> says, searching a pile of fresh clothes for towels. <<He>> throws one over your head. "Be careful on the way out. This building is full of creeps."
 	<br><br>
 

@@ -55,7 +55,7 @@
 	<<else>>
 
 		<<if _gwylanLovePercent gte 35 and !$gwylan.punishment and !$gwylan.taken and !$gwylan.timer.wrap and (pcAreArmsBound("any") or $feetuse is "bound")>>
-			Your bindings catch on <<print either("a loose shelf", "a clothes hangar", "a low-hanging branch", "some unpleasantly sticky vines")>>. You try to pull away, and <span class="green">your bindings fall to tatters at your feet.</span>
+			Your bindings catch on <<print either("a loose shelf", "a clothes hanger", "a low-hanging branch", "some unpleasantly sticky vines")>>. You try to pull away, and <span class="green">your bindings fall to tatters at your feet.</span>
 			<<unbind>>
 			<br><br>
 		<</if>>
@@ -708,9 +708,9 @@ This place is no better than outside. You back yourself against the door. Your e
 "Take one. It will make you feel better."
 <br><br>
 
-<<link[[Eat one|Forest Shop Trauma 2]]>><<set $phase to 0>><</link>>
+<<link [[Eat one|Forest Shop Trauma 2]]>><<set $phase to 0>><</link>>
 <br>
-<<link[[Ignore|Forest Shop Trauma 2]]>><<set $phase to 1>><</link>>
+<<link [[Ignore|Forest Shop Trauma 2]]>><<set $phase to 1>><</link>>
 <br>
 
 :: Forest Shop Trauma 2

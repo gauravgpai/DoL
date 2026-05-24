@@ -10455,7 +10455,7 @@ sugarcube-2:
     lstray_happiness:
       description: |-
         Prints `| - Stray contentment`
-      tags: ["text"]
+      tags: ["unused", "text"]
     lstress:
       description: |-
         Prints `| - Stress`
@@ -15678,6 +15678,8 @@ sugarcube-2:
       name: struggle_region
     struggle_skin:
       name: struggle_skin
+    struggle_softlock_prevent:
+      name: struggle_softlock_prevent
     struggle_state:
       name: struggle_state
     struggleClearActions:
@@ -16723,6 +16725,9 @@ sugarcube-2:
     updateHallucinations:
       description: |-
         Updates pc's hallucination state based on trauma, awareness, drugs, weather, and clothing
+    updatePlayerTraumaState:
+      description: |-
+        Updates pc's trauma-derived state based on current trauma, including sleep trouble, nightmares, anxiety, flashbacks, panic attacks, and dissociation
     updatehistorycontrols:
       name: updatehistorycontrols
     updatemannequin:

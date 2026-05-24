@@ -917,7 +917,7 @@ Deciding that <<he>> might have bitten off more than <<he>> can chew, <<he>> fle
 	<br><br>
 <</if>>
 <<endcombat>>
-<<set $stress -= 1000>><<set $eventskip to 1>>
+<<set $eventskip to 1>>
 <<industrialquick>>
 
 :: Abduction Escape
@@ -3190,7 +3190,7 @@ Industrial
 <<if $phase isnot 0 and $phase isnot 5 and $phase isnot 6>>
 	You tell <<him>> your price.
 	<<if $speech_attitude is "meek">>
-		"I can feel that you're still quivering," you say "I'm good enough to be worth this price, right?"
+		"I can feel that you're still quivering," you say. "I'm good enough to be worth this price, right?"
 	<<elseif $speech_attitude is "bratty">>
 		"Don't deny it, that's what my body is worth," you say.
 	<<else>>
@@ -3205,19 +3205,19 @@ Industrial
 <<elseif $stealtarget isnot "" and random(1,2) is 1>>
 	<<He>> reaches for <<his>> <<wallet>>, freezes, then stares at you. "Did you just steal from me, you little shit?" <<he>> yells. "Consider yourself paid. Now, out!" <<He>> shoves you out the car. <<tearful>> you struggle to your feet and hear <<him>> cursing as <<he>> drives away.<<set $phase to 3>>
 <<elseif $phase is 1>>
-	<<He>> looks at you, dumbfounded. "You're underselling yourself, <<girl>>," <<he>> says. " Be more ambitious!" <<He>> climbs back over to the driver's seat, takes <<his>> wallet and holds out a wad of cash larger than what you asked. "Where would you like to go?" <<he>> says.
+	<<He>> looks at you, dumbfounded. "You're underselling yourself, <<girl>>," <<he>> says. "Be more ambitious!" <<He>> climbs back over to the driver's seat, takes <<his>> wallet and holds out a wad of cash larger than what you asked. "Where would you like to go?" <<he>> says.
 	<br><br>
 	<<tipreceive "prostitution">>
 <<elseif $phase is 2>>
-	<<He>> stays still for a moment before shaking <<his>> head. "No you're not," <<he>> says. "Be careful to not bite off more than you can chew, <<girl>>." <<He>> climbs back over to the driver's seat and throws some cash at you. "You need to be somewhere, sweetheart?" <<he>> asks.
+	<<He>> stays still for a moment before shaking <<his>> head. "No, you're not," <<he>> says. "Be careful to not bite off more than you can chew, <<girl>>." <<He>> climbs back over to the driver's seat and throws some cash at you. "You need to be somewhere, sweetheart?" <<he>> asks.
 	<br><br>
 	<<tipreceive "prostitution">>
 <<elseif $phase is 3>>
-	Anger flashes across <<his>> face. "I give you an inch and you ask for a mile, " <<he>> says. "Get out of my car. Now." <<He>> shoves you out the car and drives away. <<tearful>> you struggle to your feet.
+	Anger flashes across <<his>> face. "I give you an inch and you ask for a mile," <<he>> says. "Get out of my car. Now." <<He>> shoves you out the car and drives away. <<tearful>> you struggle to your feet.
 <<elseif $phase is 4>>
-	<<He>> takes a few instants to answer, still enraptured. "Of course, it's the best sex I ever had in my life, " <<he>> says.
+	<<He>> takes a few instants to answer, still enraptured. "Of course, it's the best sex I ever had in my life," <<he>> says.
 	<br>
-	<<He>> climbs back over to the driver's seat and rumages through <<his>> <<wallet>> and the glove compartment. <<He>> holds out some cash, less than you asked. "Sorry, it seems I'm almost out of money<<if $stealtarget isnot "">>, <span class="red">I hope no one stole it</span><</if>>, " <<he>> says, "Can I at least drive you somewhere?"
+	<<He>> climbs back over to the driver's seat and rumages through <<his>> <<wallet>> and the glove compartment. <<He>> holds out some cash, less than you asked. "Sorry, it seems I'm almost out of money<<if $stealtarget isnot "">>, <span class="red">I hope no one stole it</span><</if>>," <<he>> says, "Can I at least drive you somewhere?"
 	<br><br>
 	<<tipreceive "prostitution">>
 <<elseif $phase is 5>>
@@ -3236,7 +3236,7 @@ Industrial
 	<br><br>
 	"Right..." <<he>> says. "Then I guess you better be on your way."
 <<elseif $phase lt 400>>
-	<<He>> nods with a smile. "Indeed, you're quite good, " <<he>> says. <<He>> climbs back over to the driver's seat, takes a wad of cash from <<his>> wallet, and hands it over. "I can give you a lift if you want. Or you're just out here?" <<he>> asks.
+	<<He>> nods with a smile. "Indeed, you're quite good," <<he>> says. <<He>> climbs back over to the driver's seat, takes a wad of cash from <<his>> wallet, and hands it over. "I can give you a lift if you want. Or you're just out here?" <<he>> asks.
 	<br><br>
 	<span class="gold">You make</span> <<printmoney `100*$phase`>><<money `100*$phase` "prostitution">>.
 <<elseif $phase lte 400>>
@@ -3252,7 +3252,7 @@ Industrial
 <<else>>
 	<<He>> bursts into hysterical laughter. "Hah! That's a good one," <<he>> says. "And after that, we'll go sightseeing at my skyscraper."
 	<br>
-	<<He>> tosses some cash at you while climbing back over to the driver's seat
+	<<He>> tosses some cash at you while climbing back over to the driver's seat.
 	<br><br>
 	<<tipreceive "prostitution">>
 <</if>>
@@ -12250,6 +12250,42 @@ You turn and walk away. You try to focus on looking for another way to cross, bu
 	<<if $phase is 0>><<fame 1 "model">><<else>><<fame 3 "model">><<fame 2 "exhibitionism">><</if>>
 <</if>>
 <br><br>
+
+<<endevent>>
+<<destinationeventend>>
+
+:: Street Long Hair
+<<effects>>
+
+<<if $phase is "attempt">>
+	<<if $danceSuccess>>
+		You twist your body into a preternatural angle, <span class="green">finding your footing</span> before making a sharp spin to quickly untangle your hair.
+		<br><br>
+		You receive many amused gazes as you continue on your way.
+	<<else>>
+		You place a foot back, trying to find balance, <span class="red">but step further onto your hair instead.</span> You fall backward and land on your <<bottom>>.
+		<br><br>
+		<<if $anxiety gte 2>>
+			The eyes of the onlookers swarm your vision. Their jeers and laughter make your ears ring.<<severe_anxiety_disorder_text>>
+			<br><br>
+			When you snap out of it, you're no longer where you were. You don't remember leaving.<<stress 20>><<gggstress>>
+		<<elseif $anxiety gte 1>>
+			Dread chokes you. You scramble to your feet, covering your ears as you sprint away.<<anxiety_disorder_text>><<stress 15>><<ggstress>>
+		<<else>>
+			You hastily untangle your hair and spring up to get away from the scene. Jeers and mockery follow after you.<<stress 10>><<ggstress>>.
+		<</if>>
+	<</if>>
+<<else>>
+	You brace yourself for the fall, landing on your <<bottom>>. You untangle your hair and quickly get up to flee the scene.
+	<br><br>
+	<<if $anxiety gte 1>>
+		The echoes of laughter seem to haunt you wherever you go.<<anxiety_disorder_text>><<stress 10>><<ggstress>>
+	<<else>>
+		The sound of laughter chases after you.<<stress 5>><<gstress>>
+	<</if>>
+<</if>>
+<br><br>
+
 
 <<endevent>>
 <<destinationeventend>>
