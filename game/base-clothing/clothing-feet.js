@@ -2016,7 +2016,7 @@ function initFeet() {
 			iconFile: "ankletrainers.png",
 			accIcon: "ankletrainers_acc.png",
 		},
-        {
+		{
 			index: 54,
 			slot: "feet",
 			name: "ballet pumps",
@@ -2051,8 +2051,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "balletpumps.png",
 			accIcon: "balletpumps_acc.png",
-        },
-        {
+		},
+		{
 			index: 55,
 			slot: "feet",
 			name: "butterfly heels",
@@ -2088,8 +2088,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "butterflyheels.png",
 			accIcon: "butterflyheels_acc.png",
-        },
-        {
+		},
+		{
 			index: 56,
 			slot: "feet",
 			name: "clogs",
@@ -2125,8 +2125,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "clogs.png",
 			accIcon: "clogs_acc.png",
-        },
-        {
+		},
+		{
 			index: 57,
 			slot: "feet",
 			name: "double strap sandals",
@@ -2162,8 +2162,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "doublestrapsandals.png",
 			accIcon: "doublestrapsandals_acc.png",
-        },
-        {
+		},
+		{
 			index: 58,
 			slot: "feet",
 			name: "flat sandals",
@@ -2199,8 +2199,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "flatsandals.png",
 			accIcon: "flatsandals_acc.png",
-        },
-        {
+		},
+		{
 			index: 59,
 			slot: "feet",
 			name: "floral rain boots",
@@ -2235,8 +2235,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "floralrainboots.png",
 			accIcon: "floralrainboots_acc.png",
-        },
-        {
+		},
+		{
 			index: 60,
 			slot: "feet",
 			name: "floral ribbon trainers",
@@ -2278,8 +2278,8 @@ function initFeet() {
 			iconFile: "floralribbontrainers.png",
 			accIcon: "floralribbontrainers_acc.png",
 			detailIcon: "anklestrapsneakers_detail.png",
-        },
-        {
+		},
+		{
 			index: 61,
 			slot: "feet",
 			name: "fuzzy-bow boots",
@@ -2315,8 +2315,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "fuzzybowboots.png",
 			accIcon: "fuzzybowboots_acc.png",
-        },
-        {
+		},
+		{
 			index: 62,
 			slot: "feet",
 			name: "heeled trainers",
@@ -2339,17 +2339,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "f",
@@ -2360,8 +2360,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "heeledtrainers.png",
 			accIcon: "heeledtrainers-acc.png",
-        },
-        {
+		},
+		{
 			index: 63,
 			slot: "feet",
 			name: "high heel ankle boots",
@@ -2384,17 +2384,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "f",
@@ -2405,8 +2405,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "highheelankleboots.png",
 			accIcon: "highheelankleboots-acc.png",
-        },
-        {
+		},
+		{
 			index: 64,
 			slot: "feet",
 			name: "knee fur boots",
@@ -2429,17 +2429,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "n",
@@ -2449,8 +2449,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "kneefurboots.png",
 			accIcon: "kneefurboots-acc.png",
-        },
-        {
+		},
+		{
 			index: 65,
 			slot: "feet",
 			name: "knit cuff ankle boots",
@@ -2473,17 +2473,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "n",
@@ -2493,8 +2493,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "knitcuffankleboots.png",
 			accIcon: "knitcuffankleboots-acc.png",
-        },
-        {
+		},
+		{
 			index: 66,
 			slot: "feet",
 			name: "lace up heels",
@@ -2517,17 +2517,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "f",
@@ -2538,8 +2538,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "laceupheels.png",
 			accIcon: "laceupheels-acc.png",
-        },
-        {
+		},
+		{
 			index: 67,
 			slot: "feet",
 			name: "lace up mary janes",
@@ -2562,17 +2562,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "f",
@@ -2583,8 +2583,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "laceupmaryjanes.png",
 			accIcon: "laceupmaryjanes-acc.png",
-        },
-        {
+		},
+		{
 			index: 68,
 			slot: "feet",
 			name: "long puff boots",
@@ -2607,17 +2607,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "n",
@@ -2627,8 +2627,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "longpuffboots.png",
 			accIcon: "longpuffboots-acc.png",
-        },
-        {
+		},
+		{
 			index: 69,
 			slot: "feet",
 			name: "mary jane heels",
@@ -2651,9 +2651,9 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 0,
@@ -2667,8 +2667,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "maryjaneheels.png",
 			accIcon: 0,
-        },
-        {
+		},
+		{
 			index: 70,
 			slot: "feet",
 			name: "over-the-knee boots",
@@ -2691,17 +2691,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "f",
@@ -2712,8 +2712,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "overthekneeboots.png",
 			accIcon: "overthekneeboots-acc.png",
-        },
-        {
+		},
+		{
 			index: 71,
 			slot: "feet",
 			name: "platform ankle boots",
@@ -2736,17 +2736,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "n",
@@ -2756,8 +2756,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "platformankleboots.png",
 			accIcon: "platformankleboots-acc.png",
-        },
-        {
+		},
+		{
 			index: 72,
 			slot: "feet",
 			name: "platform clogs with fur",
@@ -2777,17 +2777,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			pattern: 0,
@@ -2800,8 +2800,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "platformclogswithfur.png",
 			accIcon: "platformclogswithfur-acc.png",
-        },
-        {
+		},
+		{
 			index: 73,
 			slot: "feet",
 			name: "platform loafers",
@@ -2824,17 +2824,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			pattern: 0,
@@ -2847,8 +2847,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "platformloafers.png",
 			accIcon: "platformloafers-acc.png",
-        },
-        {
+		},
+		{
 			index: 74,
 			slot: "feet",
 			name: "polka dot rain boots",
@@ -2871,17 +2871,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "n",
@@ -2891,8 +2891,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "polkadotrainboots.png",
 			accIcon: "polkadotrainboots-acc.png",
-        },
-        {
+		},
+		{
 			index: 75,
 			slot: "feet",
 			name: "puff boots",
@@ -2915,17 +2915,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			gender: "n",
 			warmth: 4,
@@ -2934,8 +2934,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "puffboots.png",
 			accIcon: "puffboots-acc.png",
-        },
-        {
+		},
+		{
 			index: 76,
 			slot: "feet",
 			name: "rose platform heels",
@@ -2958,17 +2958,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "f",
@@ -2979,8 +2979,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "roseplatformheels.png",
 			accIcon: "roseplatformheels-acc.png",
-        },
-        {
+		},
+		{
 			index: 77,
 			slot: "feet",
 			name: "rose pumps",
@@ -3003,17 +3003,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "f",
@@ -3024,8 +3024,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "rosepumps.png",
 			accIcon: "rosepumps-acc.png",
-        },
-        {
+		},
+		{
 			index: 78,
 			slot: "feet",
 			name: "satin ribbon heels",
@@ -3048,17 +3048,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "f",
@@ -3069,8 +3069,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "satinribbonheels.png",
 			accIcon: "satinribbonheels-acc.png",
-        },
-        {
+		},
+		{
 			index: 79,
 			slot: "feet",
 			name: "shark slippers",
@@ -3093,17 +3093,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "n",
@@ -3113,8 +3113,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "sharkslippers.png",
 			accIcon: "sharkslippers-acc.png",
-        },
-        {
+		},
+		{
 			index: 80,
 			slot: "feet",
 			name: "snowball heels",
@@ -3137,17 +3137,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "f",
@@ -3158,8 +3158,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "snowballheels.png",
 			accIcon: "snowballheels-acc.png",
-        },
-        {
+		},
+		{
 			index: 81,
 			slot: "feet",
 			name: "bow snow boots",
@@ -3179,17 +3179,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "n",
@@ -3199,8 +3199,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "bowsnowboots.png",
 			accIcon: "bowsnowboots-acc.png",
-        },
-        {
+		},
+		{
 			index: 82,
 			slot: "feet",
 			name: "soft slippers",
@@ -3223,17 +3223,17 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
 			accessory_colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			accessory_colour_sidebar: 1,
 			gender: "n",
@@ -3243,8 +3243,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "softslippers.png",
 			accIcon: "softslippers-acc.png",
-        },
-        {
+		},
+		{
 			index: 83,
 			slot: "feet",
 			name: "strawberry slippers",
@@ -3267,9 +3267,9 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 1,
@@ -3282,8 +3282,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "strawberryslippers.png",
 			accIcon: "strawberryslippers-acc.png",
-        },
-        {
+		},
+		{
 			index: 84,
 			slot: "feet",
 			name: "suede pumps",
@@ -3306,9 +3306,9 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 0,
@@ -3322,8 +3322,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "suedepumps.png",
 			accIcon: 0,
-        },
-        {
+		},
+		{
 			index: 85,
 			slot: "feet",
 			name: "t-strap heels",
@@ -3346,9 +3346,9 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 0,
@@ -3362,8 +3362,8 @@ function initFeet() {
 			location: 0,
 			iconFile: "tstrapheels.png",
 			accIcon: 0,
-        },
-        {
+		},
+		{
 			index: 86,
 			slot: "feet",
 			name: "wrinkled long boots",
@@ -3386,9 +3386,9 @@ function initFeet() {
 			plural: 1,
 			colour: 0,
 			colour_options: [
-                "black", "navy blue", "wine", "brown", "olive",
-                "pink", "light pink", "purple", "lilac", "red",
-                "tangerine", "teal", "white", "yellow", "custom"
+				"black", "navy blue", "wine", "brown", "olive",
+				"pink", "light pink", "purple", "lilac", "red",
+				"tangerine", "teal", "white", "yellow", "custom"
 			],
 			colour_sidebar: 1,
 			accessory: 0,
@@ -3402,7 +3402,7 @@ function initFeet() {
 			location: 0,
 			iconFile: "wrinkledlongboots.png",
 			accIcon: 0,
-        },
+		},
 	];
 	setup.clothes.feet = clothing;
 
