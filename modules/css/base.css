@@ -402,6 +402,11 @@ mouse.tooltip {
 	cursor: help;
 }
 
+/* Need to include this with the "tooltip" class if you want its underline to have a color. */
+mouse.colored-underline {
+	border-bottom: 1px dotted;
+}
+
 mouse.tooltip span:last-of-type {
 	z-index: 301;
 	display: none;
