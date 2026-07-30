@@ -48,7 +48,7 @@
 			<mouse class="tooltip-centertop">Al<span>Allure: <<print $allure.toFixed(2)>></span></mouse>
 		</div>
 	<</if>>
-	<<if Number.isFinite($drunk) and $drunk gt 0>>
+	<<if Number.isFinite($drunk) and drunkModifier() gt 0>>
 		<<mobileStatsColor "drunk">>
 		<div @class="'stat ' + _mobileColor">
 			<mouse class="tooltip-centertop">Dk<span>Drunk: <<print $drunk.toFixed(2)>></span></mouse>

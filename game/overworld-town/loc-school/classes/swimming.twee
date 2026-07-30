@@ -273,10 +273,10 @@
 		<br>
 	<<else>>
 		<<outfitChecks>>
-		<<if $drunk gte random(480, 1000) or $stress gte $stressmax>>
+		<<if $stress gte $stressmax>>
 			<<set $weekly.schoolNightPoolParty to false>>
 
-			A sudden wave of dizziness hits you, and soon it's like the whole room is spinning. <<if $stress gte $stressmax>>You've pushed yourself too much, and<<else>>You barely have time to wonder if all the alcohol has finally caught up to you before<</if>> your vision goes black.
+			A sudden wave of dizziness hits you, and soon it's like the whole room is spinning. <<if drunkModifier() lt 1>>You've pushed yourself too much, and<<else>>You barely have time to wonder if all the alcohol has finally caught up to you before<</if>> your vision goes black.
 			<br><br>
 			You pass out.
 			<br><br>
