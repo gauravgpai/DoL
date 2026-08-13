@@ -7647,6 +7647,14 @@
 		<<set $avery_helicopter to []>>
 		<<set $avery_helicopter.timer to 0>>
 	<</if>>
+	
+	/* Mine Rework */
+	<<unset $mines_guards_dig>>
+	<<unset $mines_entrance_drains>>
+	<<unset $mines_crystals>>
+	<<unset $mines_suspicion>>
+	<<unset $mines_guards_dig>>
+	<<unset $mines_crystals>>
 
 
 	<<if $ironmanmode and $options.maxStates is 1>>
