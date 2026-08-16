@@ -5,3 +5,9 @@
 	<</if>>
 	<<set $mine to {}>>
 <</widget>>
+
+<<widget "passout_mines">>
+	<<passout>>
+	<<link [[Next|Mines Passout]]>><</link>>
+	<br>
+<</widget>>

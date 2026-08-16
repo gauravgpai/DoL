@@ -11667,16 +11667,8 @@ sugarcube-2:
         - **change**: `number` - +/- change to apply
       parameters:
         - number
-    mines_crystals:
-      name: mines_crystals
-    mines_end:
-      name: mines_end
     mines_init:
       name: mines_init
-    mines_suspicion:
-      name: mines_suspicion
-    mines_suspicion_text:
-      name: mines_suspicion_text
     mirror:
       description: |-
         Prints wrapper for mirror options
