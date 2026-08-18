@@ -172,6 +172,7 @@ You are on Connudatus Street. The numerous clubs, bars and restaurants make it t
 			<</if>>
 		<</if>>
 		<<if Time.hour gte 6 and Time.hour lte 20 and $exposed lte 0>>
+			/* SANITY CHECK: All outcomes pass 30 minutes in total, time difference is intentional */
 			<<stallicon "open">><<link [[Explore the markets (0:30)|Connudatus Markets]]>><<pass 15>><</link>>
 			<br>
 		<</if>>

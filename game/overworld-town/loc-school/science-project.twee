@@ -300,8 +300,7 @@ The teachers draw closer. The <<person2>><<person>> with the flower display bobs
 <<set $science_fair_project to "phallus">>
 <<if $sciencephalluschance is 0>>
 	You don't have a phallus project. You decide to draw some cocks on a piece of paper. That will have to do. A <<person2>><<person>> with a flower display beside yours looks over and snickers.
-
-<<elseif $scienceshroomchance lt 100>>
+<<elseif $sciencephalluschance lt 100>>
 	You set up your phallus display and step back to admire it. It could be better, but it's not the worst in the room. A <<person2>><<person>> with a flower display beside yours looks over and gapes.
 <<else>>
 	You set up your phallus display and step back to admire it. It couldn't be better. A <<person2>><<person>> with a flower display beside yours looks horrified. You're not sure if it's the subject matter or quality that upsets them.
@@ -399,10 +398,8 @@ Leighton and Sirris examine your project.
 		"It's for science," Sirris says. "<<pShe>> should be commended for originality."
 		<br>
 		Leighton nods, and reads one of the papers stuck to your board. "I can get behind this. Though I'm not sure people count as wildlife."
-		<br><br>
 	<<else>>
 		They stand and stare for a few moments. "So," Leighton says. "You decided to submit crudely drawn cocks to the science fair?" You nod. Sirris looks embarrassed.
-		<br><br>
 	<</if>>
 <</if>>
 <br><br>
@@ -596,9 +593,6 @@ The teachers confer on the stage, then Leighton steps up to the microphone. "We'
 			"You did well today," <<he>> says. Then <<he>> offers <<his>> arm. "Now, shall we go?"
 			<br><br>
 
-			<<set $scienceproject to "won">><<set $scienceprojectwon to 1>><<earnFeat "Science Fair Winner">>
-			<<famesocial 5>>
-
 			<<link [[Go with Avery|Science Fair Avery]]>><<set $phase to 1>><</link>><<glove>><<larage>>
 			<br>
 			<<link [[Turn down the offer|Science Fair Avery]]>><<set $phase to 2>><</link>><<llove>><<garage>>
@@ -694,7 +688,7 @@ The <<person>> snatches the trophy and runs from the hall. The audience boos, pr
 
 <<if $physiqueSuccess>>
 
-	You try to keep hold of the trophy, and manage to <span class="green">push the <<person>> to the ground.</span> "It's not fair!" <<he>> shouts. <<He>> scrambles to <<his>> feet and runs from the hall.
+	You try to keep hold of the trophy, and manage to <span class="green">push the <<person>> to the ground.</span> "It's not fair!" <<he>> shouts. <<He>> scrambles to <<his>> feet and runs from the hall.<<earnFeat "Thesis Offence">>
 	<<money 50000 "schoolProject">><<npcincr Sirris love 5>><<llltrauma>><<trauma -120>><<famebusiness 100 "pic">><<famesex 100 "pic">>
 	<br><br>
 

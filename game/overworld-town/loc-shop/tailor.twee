@@ -48,7 +48,7 @@ You are in the tailor shop. It has cloth of various colours hanging on racks.
 <</for>>
 
 <<if $stress gte $stressmax>>
-	<<passoutshop>>
+	<<passoutshop "shop">>
 <<else>>
 	<<if Time.hour is 21>>
 		It's closing time. Security is herding everyone outside. <<if $exposed gte 1>>Panic swells within you as you realise how exposed you'll be should security find you in this state of dress.<</if>>
@@ -349,7 +349,7 @@ The tailor picks up the crate and carries it into the back of the shop.
 
 :: Fix Outfit
 	<<if $exposed gte 1>>
-		You continue to hide while the tailor makes the needed repairs. After what feels like an eternity, <<he>> passed you back your <<print $outfitRepair.name>> and you slip it on.
+		You continue to hide while the tailor makes the needed repairs. After what feels like an eternity, <<he>> passes you back your <<print $outfitRepair.name>> and you slip it on.
 		<br><br>
 	<<else>>
 		You loiter around the shop until the tailor calls you over for a few minor adjustments.

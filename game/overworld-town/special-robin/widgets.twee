@@ -315,7 +315,24 @@
 	<<set _robin to statusCheck("Robin")>>
 	<<storeon "Robin's Room" "check">>
 	<<set _anyItemsInRoom to _store_check is 1 and $store.upper.find(item => item.location is "Robin's Room") and $store.lower.find(item => item.location is "Robin's Room")>>
-	<<if Time.schoolDay and Time.hour gte 8 and Time.hour lte 12>>
+	<<if $worn.neck.name is "love locket" and C.npc.Robin.love gte 10 and $robin.timer.hurt is 0 and $rng gte 91 and !$daily.robin.lovelocket>>
+		<<set $daily.robin.lovelocket to 1>>
+		<<person1>>
+		Robin notices your love locket.
+		<br><br>
+		<<if C.npc.Robin.trauma gte 40>>
+			"Is that?" <<he>> asks, looking at it with curiosity.<<if $robinnote is 1 and !$robinromance>> <<He>> seems to have something on <<his>> mind, but hesitates to bring it up.<<elseif _robin.lovestage gte 5>> <<He>> blushes, and turns <<his>> curious eyes on you.<</if>>
+		<<else>>
+			"That's a cute locket!" <<He>> looks at it with great interest.<<if $robinnote is 1 and !$robinromance>> There's something on <<his>> mind.<<elseif _robin.lovestage gte 5>> Something seems to cross <<his>> mind, and <<he>> blushes a little.<</if>>
+		<</if>>
+		<br><br>
+		<<neckstrip>><<wearProp "love locket" $carried.neck.colour>>
+		<<link [[Thank <<him>>|Robin Talk Locket]]>><<set $phase to 1>><</link>>
+		<br>
+		<<link [[Show <<him>> your love locket|Robin Talk Locket]]>><<set $phase to 2>><</link>>
+		<br>
+		<<link [[Change the subject|Robin Talk Locket]]>><<set $phase to 3>><</link>>
+	<<elseif Time.schoolDay and Time.hour gte 8 and Time.hour lte 12>>
 		/* Only checks up to noon because if there's a set of actions that can lead past noon there's something else wrong and it shouldn't be masked by this case */
 		<<if $gwylan?.robin gte 10 and !between($chef_state, 7, 8) and false>> /* WARNING! Re-enable later for Gwybin cafe */
 			<<if _robin.trauma gte 80>>
@@ -517,7 +534,7 @@
 		<</if>>
 
 		<<link [[Leave|Orphanage]]>><<endevent>><</link>>
-	<<elseif Time.isWeekEnd() and Time.hour gte 9 and Time.hour lt 16 and _robin.trauma lt 80>>
+	<<elseif Time.isWeekEnd() and Time.hour gte 9 and Time.hour lt 16 and Weather.precipitation !== "rain" and _robin.trauma lt 80>>
 		<<set _standType to Time.season is "winter" ? "Chocolate" : "Lemonade">>
 		<<if _robin.cdquest is 3 and !$daily.robin.cdevent and _robin.trauma lte 20>>
 			<<if _standType is "Chocolate">>
@@ -789,7 +806,7 @@
 			<br>
 		<</if>>
 		<br>
-		<<if canGiftFood("Robin") and $robinromance gte 1>>
+		<<if canGiftFood("Robin")>>
 			<<if C.npc.Robin.trauma gte 40 || $robin.timer.hurt gte 1>>
 				<span class="blue">Robin is not receptive to gifts at the moment.</span>
 				<br>
@@ -1121,7 +1138,7 @@ Robin turns to you as you reach the far side of the promenade.
 <<if $robin_amusements.slot_win>>
 	The coins in <<his>> pocket jingle. "I'd like to take you to a cafe before we go home. There's a nice place near here."
 	<br><br>
-	<<link [[Go to cafe with Robin (0:45)|Robin Amusements Cafe]]>><<pass 45>><<npcincr Robin dom 1>><</link>><<gdom>>
+	<<link [[Go to the cafe with Robin (0:45)|Robin Amusements Cafe]]>><<pass 45>><<npcincr Robin dom 1>><</link>><<gdom>>
 	<br>
 	<<link [[Advise Robin to keep the money|Robin Amusements Cafe Refuse]]>><<set $robinmoney += 200>><<npcincr Robin dom -1>><</link>><<ldom>>
 	<br>

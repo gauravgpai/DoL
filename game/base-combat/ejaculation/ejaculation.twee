@@ -107,12 +107,17 @@
 			<!-- New Named NPCs or PC unique positions should be added above, otherwise below captures reaction -->
 			<<elseif ($npcrow.includes(_nn))>>
 
-				<<if $NPCList[_nn].vagina isnot "none" and $NPCList[_nn].penis is "none">>
+				<<if ($NPCList[_nn].vagina isnot "none" and $NPCList[_nn].penis is "none") or $NPCList[_nn].penis is "footjob">>
 					<<He>> convulses in orgasmic bliss.
 				<</if>>
 
 				<<if $NPCList[_nn].penis is "idle">>
-					<<He>> groans as a wet patch forms on <<his>> trousers.
+					<<He>> groans as
+					<<if $NPCList[_nn].clothes.lower.name is "naked">>
+						<<he>> ejaculates into the air.
+					<<else>>
+						a wet patch forms on <<his>> $NPCList[_nn].clothes.lower.name.
+					<</if>>
 				<</if>>
 
 				<<if npcHasStrapon(_nn)>>
@@ -293,6 +298,11 @@
 							<<He>> ejaculates onto your tummy.
 							<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "tummy" "semen">>
 						<</if>>
+					<</if>>
+
+					<<if $NPCList[_nn].penis is "othermouth">>
+						<<He>> shakes with arousal as <<he>> cums.
+						<<set _postOrgasmSpeech to `"That was awesome."`>>
 					<</if>>
 
 				<</if>>
@@ -1127,7 +1137,12 @@
 							<span class="red">The tip of the condom bursts and rips, exposing the head of <<his>> penis.</span>
 						<</if>>
 						<<if $NPCList[_nn].penis is "idle">>
-							<<He>> groans as a wet patch forms on <<his>> trousers.
+							<<He>> groans as
+							<<if $NPCList[_nn].clothes.lower.name is "naked">>
+								<<he>> ejaculates into the air.
+							<<else>>
+								a wet patch forms on <<his>> $NPCList[_nn].clothes.lower.name.
+							<</if>>
 							<<if $speech_attitude is "bratty">>
 								You stifle a giggle at how pathetic <<he>> looks.
 							<</if>>
@@ -1683,7 +1698,15 @@
 							<span class="red">The tip of the condom bursts and rips, exposing the head of <<his>> penis.</span>
 						<</if>>
 						<<if $NPCList[_nn].penis is "idle">>
-							<<He>> moans as a wet patch forms on <<his>> trousers. You laugh at the pathetic display, regardless of the danger <<he>> poses.
+							<<He>> moans as
+							<<if $NPCList[_nn].clothes.lower.name is "naked">>
+								<<he>> ejaculates into the air.
+							<<else>>
+								a wet patch forms on <<his>> $NPCList[_nn].clothes.lower.name.
+							<</if>>
+							<<if $speech_attitude is "bratty">>
+								You laugh at the pathetic display, regardless of the danger <<he>> poses.
+							<</if>>
 						<<elseif _condomResult is "contained">>
 							<<genericCondomEjaculation>>
 						<<elseif $NPCList[_nn].penis is "thighs">>
@@ -1705,7 +1728,6 @@
 							<</switch>>
 						<<elseif ($NPCList[_nn].penis is "vaginaentrance" or $NPCList[_nn].penis is "vaginaentrancedouble") and playerChastity("vagina")>>
 							<<He>> strokes <<his>> $NPCList[_nn].penisdesc and ejaculates onto your $worn.genitals.name, sending white streams of semen running down your thighs.
-							<br><br>
 							<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "vaginaoutside" "semen">><<bodyliquid "thigh" "semen">>
 						<<elseif $NPCList[_nn].penis is "vaginaentrance">>
 							<<switch random(1, 7)>>
@@ -1722,7 +1744,6 @@
 						<<elseif $NPCList[_nn].penis is "vaginaimminent" and playerChastity("vagina")>>
 							<<He>> ejaculates onto your $worn.genitals.name, sending white streams of semen running down your thighs.
 							<<set _postOrgasmSpeech to `"Wish you weren't wearing that thing."`>>
-							<br><br>
 							<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "vaginaoutside" "semen">><<bodyliquid "thigh" "semen">>
 						<<elseif $NPCList[_nn].penis is "vaginaimminent">>
 							<<switch random(1, 7)>>
@@ -1828,7 +1849,7 @@
 							<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "vaginaoutside" "semen">>
 							<<recordSperm `{target: "pc", spermOwner: $NPCList[_nn], spermType: $enemytype is "man" ? "human" : $NPCList[_nn].type, rngModifier: 15, rngType: "canWash"}`>>
 						<<elseif $NPCList[_nn].penis is "vaginadouble">>
-							/* Noncon */
+							/* Non-con */
 							<<set _otherNPCIndex to (_nn is $vaginatarget ? $vaginadoubletarget : $vaginatarget)>>
 							<<switch $NPCList[_nn].penissize>>
 							<<case 4 5>>
@@ -1891,7 +1912,6 @@
 							<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "bottom" "semen">>
 						<<elseif $NPCList[_nn].penis is "anusentrance" and playerChastity("anus")>>
 							<<He>> strokes <<his>> $NPCList[_nn].penisdesc as <<he>> ejaculates onto your <<bottom>>. Semen drips down your thighs.
-							<br><br>
 							<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "bottom" "semen">><<bodyliquid "thigh" "semen">>
 						<<elseif $NPCList[_nn].penis is "anusentrance">>
 							<<switch random(1, 7)>>
@@ -2036,7 +2056,7 @@
 						<<elseif $NPCList[_nn].penis is "chest">>
 							<<switch random(1, 7)>>
 							<<case 1 2 3>>
-								<<He>> squeezes your <<breasts>> arounds <<his>> $NPCList[_nn].penisdesc as <<he>> cums, ejaculating onto them. <span class="pink"><<He>> finishes with a slap to your face.</span>
+								<<He>> squeezes your <<breasts>> around <<his>> $NPCList[_nn].penisdesc as <<he>> cums, ejaculating onto them. <span class="pink"><<He>> finishes with a slap to your face.</span>
 								<<gstress>><<gtrauma>><<gpain>><<violence 3>><<bruise face>><<hitstat>>
 							<<case 4 5 6>>
 								<<He>> grasps your hair and forces you to look at <<him>> while <<his>> $NPCList[_nn].penisdesc thrusts between your <<breasts>>. <<He>> shudders and ejaculates over them.
@@ -2273,7 +2293,7 @@
 							<<case 6 7>>
 								<<He>> <<print ($player.ballsExist ? "cups your balls" : "grabs your pussy")>> and painfully drives your <<penis>> down <<his>> throat.
 								<<He>> ejaculates on <<his>> chest as <<he>> gags on your cock.
-								<<set _postOrgasmSpeech to `"T-Topping from the bottom is my speciality, <<bitch>>."`>>
+								<<set _postOrgasmSpeech to `"T-Topping from the bottom is my specialty, <<bitch>>."`>>
 
 							<</switch>>
 						<<elseif $NPCList[_nn].penis is "othermouth">>
@@ -2323,7 +2343,7 @@
 								<<He>> brushes your cheek with <<his>> hand.
 								<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
 									<<He>> says something in <<his>> incomprehensible language, but <<his>> tone is warm. <span class="green">Your face flushes with pleasure.</span>
-								<<else>>
+								<<elseif !$speechdisable>>
 									"You're so <<if $player.gender_appearance is "m">>handsome<<else>>beautiful<</if>>!" <span class="green">Your face flushes with pleasure.</span>
 								<</if>>
 								<<lstress>><<ltrauma>><<lpain>><<violence -3>>
@@ -2343,12 +2363,12 @@
 						<</if>>
 						<<if $npcrow.includes(_j)>>
 							<<print $npc[$npcrow.indexOf(_j)]>>
-						<<else>>
+						<<elseif !$speechdisable>>
 							The <<person>>
 						<</if>>
 						<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
 							snarls and says something in <<his>> incomprehensible language.
-						<<else>>
+						<<elseif !$speechdisable>>
 							snarls: "You shouldn't have resisted
 							<<if $enemyno gte 2>>us<<else>>me<</if>>."
 						<</if>>
@@ -2384,7 +2404,7 @@
 							<<He>> <span class="red">punches you. You <<if playerBellySize(true) gte 8>>stagger and fall backwards.<<else>>double over.<</if>></span>
 							<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
 								<<He>> shouts something in <<his>> language, before laughing at you.
-							<<else>>
+							<<elseif !$speechdisable>>
 								"That's for struggling, <<bitch>>."
 							<</if>>
 							<<gstress>><<gtrauma>><<gpain>><<violence 6>>
@@ -2394,7 +2414,7 @@
 							<<He>> holds your arms <span class="red">while the <<person2>><<person>> punches you. <<if playerBellySize(true) gte 8>>Your head spins.<<else>>You double over.<</if>></span>
 							<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
 								They shout and jeer at you in their language, and you understand none of it.
-							<<else>>
+							<<elseif !$speechdisable>>
 								"That'll teach you not to fight us, you little <<cunt>>."
 							<</if>>
 							<<gstress>><<gtrauma>><<gpain>><<violence 10>>
@@ -2404,7 +2424,7 @@
 							<<He>> holds your arms <span class="red">while the others take turns punching you. <<if playerBellySize(true) gte 8>>Your head spins.<<else>>You double over.<</if>></span>
 							<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
 								They shout and jeer at you in their language, and you understand none of it.
-							<<else>>
+							<<elseif !$speechdisable>>
 								"Trying to fight us? You get what you deserve, you worthless slut."
 							<</if>>
 							<<gstress>><<gtrauma>><<gpain>><<violence 20>>
@@ -2415,7 +2435,7 @@
 							<<He>> <span class="pink">slaps you back and forth across the face.</span>
 							<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
 								<<He>> shouts something at you. You don't understand it, but <<his>> tone demands submission.
-							<<else>>
+							<<elseif !$speechdisable>>
 								"That's for struggling."
 							<</if>>
 							<<gstress>><<gtrauma>><<gpain>><<violence 3>>
@@ -2426,7 +2446,7 @@
 							<<He>> holds your arms <span class="pink">while the <<person2>><<person>> slaps you back and forth across the face.</span>
 							<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
 								<<He>> shouts something at you. You don't understand it, but <<his>> tone demands submission.
-							<<else>>
+							<<elseif !$speechdisable>>
 								"That's what you get for struggling."
 							<</if>>
 							<<gstress>><<gtrauma>><<gpain>><<violence 5>>
@@ -2436,7 +2456,7 @@
 							<<He>> holds your arms <span class="pink">while the others take turns slapping you across the face and chest.</span>
 							<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
 								<<He>> shouts something at you. You don't understand it, but <<his>> tone demands submission.
-							<<else>>
+							<<elseif !$speechdisable>>
 								"That's what you get for struggling."
 							<</if>>
 							<<gstress>><<gtrauma>><<gpain>><<violence 10>>
@@ -2500,7 +2520,7 @@
 	<</if>>
 	<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
 		<<He>> sneers and says something in <<his>> incomprehensible language.
-	<<else>>
+	<<elseif !$speechdisable>>
 		<<print either(
 			`"Take that, meat toilet."`,
 			`"This is all you're good for."`,

@@ -27,10 +27,10 @@ You are in the Ocean Breeze Cafe.
 <br><br>
 
 <<if $stress gte $stressmax>>
-	<<passoutshop>>
+	<<passoutshop "cafe">>
 
 <<elseif Time.openingHours() and $exposed lt 1 and $bunstat gte 50 and $chef_state is 1>>
-	<<set $chef_state to 2>><<set $bun_value to 10000>>
+	<<set $chef_state to 2>><<set $bun_value to 7500>>
 	<<npc Sam>><<person1>>
 	Sam approaches you, wiping <<his>> hands on a towel and beaming.
 	"I've made a decision," <<he>> says. "I wanted to keep the buns affordable, but we've attracted interest."
@@ -39,7 +39,7 @@ You are in the Ocean Breeze Cafe.
 	<br><br>
 
 	"World-class!" Sam beams.
-	"I've decided to increase the price to <<printmoney 10000>>. We have a limited supply after all, and can't keep up with demand as it is."
+	"I've decided to increase the price to <<printmoney 7500>>. We have a limited supply after all, it's already difficult to keep up with demand as it is."
 	<br><br>
 
 	<<He>> returns to work, humming some tune.
@@ -351,7 +351,7 @@ The pay is £5 an hour, plus tips. Just a warning though: some customers might t
 Please be patient with them; they don't mean nothing by it! We're always understaffed, so you can work whenever we're open."
 <br><br>
 
-<<link [[Take job|Ocean Breeze Take Job]]>><</link>>
+<<link [[Take job|Ocean Breeze Take Job]]>><<pass 5>><</link>>
 <br>
 <<link [[Refuse job|Ocean Breeze]]>><<endevent>><</link>>
 <br>
@@ -360,7 +360,16 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 <<set $outside to 0>><<set $location to "cafe">><<effects>>
 <<set $oceanbreezejob to 1>>
 
-"Splendid!" <<he>> says, grabbing your hand in both of <<his>> own and shaking. "I'm Sam, by the way. Come on, let me show you the ropes."
+"Splendid!" <<he>> says, grabbing your hand in both of <<his>> own and shaking. "I'm Sam, by the way. This here is Ocean Breeze Cafe, the heart of our town's gossip and caffeine fixes. Come on, let me show you the ropes."
+<br><br>
+
+Sam shows you around, conversing along the way. "We serve smiles just as much as we serve coffee!" <<He>> smiles brightly. "Let's start with the basics. You'll be handling orders, refills, and most importantly, learning everyone's quirks. That one likes their pie before their coffee, for example. Sometimes the mayor visits, and <<nnpc_he "Quinn">> likes <<nnpc_his "Quinn">> tea stirred exactly seven times. Oh! And if you see a certain grumpy fisherman at the counter?" <<He>> leans in conspiratorially. "Extra bacon. Always."
+<br><br>
+
+<<He>> leads you behind the counter where the rich smell of coffee beans and baking pastries grows stronger. "I've another employee over there who'll teach you our signature drinks. And this"—<<he>> pats an ancient but well-polished cash register with affection—"is Old Betsy. She gets stuck sometimes, but just give her a gentle nudge."
+<br><br>
+
+<<He>> clasps <<his>> hands together excitedly. "So! Ready for your first shift? The <<= Time.hour lte 3 or Time.hour gte 18 ? "dinner" : Time.hour lte 12 ? "breakfast" : "lunch">> rush is about to begin!"
 <br><br>
 
 <<link [[Next|Ocean Breeze]]>><<endevent>><</link>>
@@ -512,7 +521,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 					"Robin was telling me about you," Gwylan says. "Now I know all your terrible secrets."
 					<br><br>
 
-					Robin blushes and starts shaking <<person1>><<his>> head. "I-I didn't tell <<person2>><<him>> anything embarassing! I was just—"
+					Robin blushes and starts shaking <<person1>><<his>> head. "I-I didn't tell <<person2>><<him>> anything embarrassing! I was just—"
 					<br><br>
 
 					Gwylan giggles and waves <<person1>><<him>> off. "I'm only playing. <<Hes>> been quite discreet, despite my prodding."
@@ -663,7 +672,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 
 	<<if Weather.precipitation is "none">>
 		<<addinlineevent "cafe_breeze" 1.2>>
-			<<if dangerEvent()>>
+			<<if dangerEvent(0.25,4000)>> /* Roughly 33% at game start, max 80% */
 				<<if setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt is 1>>
 					As you're serving tables outside the cafe, a strong breeze blows in from the ocean, lifting your skirt and exposing your <<undies>> for anyone who looks.
 					<<undiestrauma>>
@@ -688,7 +697,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 					<<lstress>><<stress -4>>
 					<br><br>
 
-					The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+					<<waiter_default>>
 					<<pass 1 hour>>
 					<br><br>
 
@@ -738,7 +747,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 			<<link [[Refuse|Ocean Breeze Pregnant Milk Refuse]]>><</link>>
 			<br>
 
-		<<elseif dangerEvent()>>
+		<<elseif dangerEvent(0.25,4000)>> /* Roughly 33% at game start, max 80% */
 			<<generate1>><<person1>>You serve a <<person>> who orders a bun. <<He>> licks the cream. "That's so good," <<he>> gasps.
 			<<He>> pulls back a chair and slides the plate in front of it. "Please, sit and try some. My treat." The cafe isn't very busy.
 			<br><br>
@@ -751,7 +760,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 			<<generate1>><<person1>>You serve a <<person>> who orders a bun. <<He>> stares at you as <<he>> licks the cream.
 			<br><br>
 
-			The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+			<<waiter_default>>
 			<<pass 1 hour>>
 			<br><br>
 
@@ -790,7 +799,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 		<</if>>
 		<br><br>
 
-		The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+		<<waiter_default>>
 		<<pass 1 hour>>
 		<br><br>
 
@@ -799,7 +808,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 	<</addinlineevent>>
 
 	<<addinlineevent "cafe_pair" 1>>
-		<<if dangerEvent()>>
+		<<if dangerEvent(0.25,4000)>> /* Roughly 33% at game start, max 80% */
 			<<generatey1>><<generatey2>>You serve a young pair, a <<fullGroup>>.
 			<<if setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt is 1>>
 				<<if $worn.under_lower.type.includes("naked")>>
@@ -850,7 +859,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 			You think you catch the <<person1>><<person>> checking you out, but they don't say anything.
 			<br><br>
 
-			The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+			<<waiter_default>>
 			<<pass 1 hour>>
 			<br><br>
 
@@ -861,7 +870,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 
 	<<addinlineevent "cafe_tourists" 1>>
 		A couple of tourists are sat at one of your tables.
-		<<if dangerEvent()>>
+		<<if dangerEvent(0.25,4000)>> /* Roughly 33% at game start, max 80% */
 			<<generate1>><<generate2>>
 			<<person1>>You overhear the <<person>> telling the <<person2>><<person>> about the town in a hushed voice.
 			<br>
@@ -898,7 +907,8 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 				"the ultimate unity of life", "their plans for next weekend", "the political situation"
 			)>>.
 			<br><br>
-			The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+
+			<<waiter_default>>
 			<<pass 1 hour>>
 			<br><br>
 
@@ -909,7 +919,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 
 	<<addinlineevent "cafe_freeloader" 1>>
 		<<generate1>><<person1>> A <<person>> enters the cafe and sits alone in the corner.
-		<<if dangerEvent()>>
+		<<if dangerEvent(0.5,6000)>> /* Roughly 50% at game start, max 80% */
 			<<He>> keeps stealing glances at you, and when you go to take <<his>> order <<he>> asks only for a glass of water.
 			As you turn to leave <<he>> grabs your wrist.
 			"You don't happen to be on the menu, do you?" <<He>> smiles.
@@ -933,7 +943,8 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 		<<else>>
 			<<He>> keeps stealing glances at you. However, <<he>> refuses to make eye contact when you take <<his>> order.
 			<br><br>
-			The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+
+			<<waiter_default>>
 			<<pass 1 hour>>
 			<br><br>
 
@@ -943,7 +954,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 	<</addinlineevent>>
 
 	<<addinlineevent "cafe_collision" 1>>
-		<<if dangerEvent()>>
+		<<if dangerEvent(0.25,4000)>> /* Roughly 33% at game start, max 80% */
 			<<generateRole 0 0 "waiter/waitress">><<person1>>
 			A <<person>> collides with you as you exit the kitchen, spilling warm soup over your
 			<<if $worn.upper.type.includes("naked")>>chest<<else>>$worn.upper.name.<</if>>
@@ -969,7 +980,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 			A <<person>> almost collides with you as you exit the kitchen.
 			<br><br>
 
-			The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+			<<waiter_default>>
 			<<pass 1 hour>>
 			<br><br>
 
@@ -979,7 +990,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 	<</addinlineevent>>
 
 	<<addinlineevent "cafe_crowd" 1>>
-		<<if dangerEvent()>>
+		<<if dangerEvent(0.25,4000)>> /* Roughly 33% at game start, max 80% */
 			<<generate1>><<generate2>><<generate3>><<generate4>>
 			A large group enters the cafe, taking up several tables by themselves.
 			You try to ask for their order, but a <<person1>><<person>> sitting at the head interrupts you.
@@ -989,13 +1000,13 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 			<<link [[Dance for them|Ocean Breeze Dance]]>>
 				<<danceinit>><<set $dancing to 1>><<set $audience to 4>><<set $venuemod to 2>><<set $timer to 12>><<set $dancelocation to "cafe">>
 			<</link>><<exhibitionist1>><<gstress>><<gtiredness>>
-			<br><br>
-
+			<br>
 			<<link [[Refuse|Ocean Breeze Dance Refuse]]>><</link>>
 		<<else>>
 			A large group enters the cafe, taking up several tables by themselves. They don't give you any trouble though.
 			<br><br>
-			The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+
+			<<waiter_default>>
 			<<pass 1 hour>>
 			<br><br>
 
@@ -1049,7 +1060,7 @@ Please be patient with them; they don't mean nothing by it! We're always underst
 				<i>Perhaps Sam would be willing to give you a chance if <<he>> liked you more.</i>
 				<br><br>
 
-				The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+				<<waiter_default>>
 				<<pass 1 hour>>
 				<br><br>
 
@@ -1147,7 +1158,8 @@ The rest of the shift passes uneventfully. Gwylan left you a tip.
 <<if $phase is 0>>
 	It takes a few minutes, but you manage to get everything to the table.
 	<br><br>
-	The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+
+	<<waiter_default>>
 	<br><br>
 <<elseif $phase is 1>>
 	<<if $danceSuccess>>
@@ -1166,7 +1178,8 @@ The rest of the shift passes uneventfully. Gwylan left you a tip.
 		<br><br>
 		You sigh as you begin cleaning up your mess.
 		<br><br>
-		The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+
+		<<waiter_default>>
 	<</if>>
 	<br><br>
 <</if>>
@@ -1189,7 +1202,7 @@ The <<personsimple>> nods and disappears into the kitchen while you dry off.
 "You handled that well," Sam says from behind the till.
 <br><br>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <<pass 1 hour>>
 <br><br>
 
@@ -1208,7 +1221,7 @@ The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<
 <<He>> bows <<his>> head while the audience whispers and chuckles amongst themselves. Sam gives you a disapproving look.
 <br><br>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <<pass 1 hour>>
 <br><br>
 
@@ -1283,7 +1296,8 @@ The grin falls off <<his>> face. "Just having a laugh. No need to pout." Sam loo
 	The rest of the shift passes uneventfully. Gwylan left you a tip.
 	<<tipreceive "cafeWaiter">>
 <<else>>
-	The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+
+	<<waiter_default>>
 	<<pass 1 hour>>
 <</if>>
 <br><br>
@@ -1396,7 +1410,7 @@ The grin falls off <<his>> face. "Just having a laugh. No need to pout." Sam loo
 You tell the <<person>> that this establishment doesn't serve anything not found on the menu, and leave to fetch <<his>> water. When you return, <<hes>> already gone.
 <br><br>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <<pass 1 hour>>
 <br><br>
 
@@ -1442,7 +1456,7 @@ The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<
 
 <<endcombat>>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <<pass 1 hour>>
 <br><br>
 
@@ -1478,7 +1492,7 @@ The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<
 :: Ocean Breeze Dance Refuse
 <<set $outside to 0>><<set $location to "cafe">><<effects>>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <<pass 1 hour>>
 <br><br>
 
@@ -1516,7 +1530,7 @@ You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
 	You decide you're being paranoid, and walk over to the dumpster. The pair check you out as you walk by, but don't say anything.
 	<br><br>
 
-	The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+	<<waiter_default>>
 	<<pass 1 hour>>
 	<br><br>
 
@@ -1530,7 +1544,7 @@ You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
 You decide not to risk it and go back inside. Sam says <<he>> understands, but doesn't look happy.<<npcincr Sam love -1>><<llove Sam>>
 <br><br>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <<pass 1 hour>>
 <br><br>
 
@@ -1613,7 +1627,7 @@ The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<
 
 <<endcombat>>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <<pass 1 hour>>
 <br><br>
 
@@ -1634,7 +1648,7 @@ The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<
 	You decide you're being paranoid, and walk over to the dumpster. The <<beasttype>> runs away as you draw closer.
 	<br><br>
 
-	The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+	<<waiter_default>>
 	<<pass 1 hour>>
 	<br><br>
 
@@ -1712,7 +1726,7 @@ The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<
 
 <<endcombat>>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <<pass 1 hour>>
 <br><br>
 
@@ -1805,7 +1819,7 @@ You press the spoon into the bun, but are interrupted by the <<person>> appearin
 "You're missing out," the <<person>> says, pulling the bun back. "It tastes so good."
 <br><br>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <br><br>
 
 <<link [[Next|Ocean Breeze]]>><<endevent>><<pass 1 hour>><</link>>
@@ -1819,7 +1833,7 @@ You drop the spoon and stand up before <<he>> can take it further.
 The <<person>> climbs back out from under the table. "Not hungry?" <<he>> says. "You're so cute."
 <br><br>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <br><br>
 
 <<link [[Next|Ocean Breeze]]>><<endevent>><<pass 1 hour>><</link>>
@@ -1964,7 +1978,7 @@ You shake your head and walk away from them. "Hey, I'm talking to you, <<bitch>>
 You do your best to ignore <<him>>. Sam hears the yelling from across the cafe, and stares at you in disappointment before moving on.
 <br><br>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <<pass 1 hour>>
 <br><br>
 
@@ -2124,29 +2138,29 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 					You bring the coffee up to your mouth to partially obscure your face, and bring your knees ever so slightly apart.
 					Not very far, just far enough to give the tiniest glimpse at your <<undies>> to anyone who happens to be looking.
 					You take a sip of your coffee.
-					<<cafecoffeesip>>
 				<<else>>
 					You leave your legs just barely parted, savouring the tease as you sip your coffee.
-					<<cafecoffeesip>>
 				<</if>>
+				<<cafecoffeesip>>
 				<br><br>
+				A few passers-by let their eyes linger on the window a little longer than normal,
 				<<if currentSkillValue('skulduggery') gte 100 + random(0, 50)>>
-					A few passers-by let their eyes linger on the window a little longer than normal, clearly unsure if they are seeing what they think they are.
+					clearly unsure if they are seeing what they think they are.
 				<<else>>
-					A few passers-by let their eyes linger on the window a little longer than normal, before smirking as they walk away. You got caught way too easily.
+					before smirking as they walk away. You got caught way too easily.
 					<<trauma $phase>><<gtrauma>>
 					<br><br>
 					<<set _caught to 1>>
 				<</if>>
 			<<case 1>>
+				Taking another sip of your coffee, you adjust your
 				<<if !$still>>
-					Taking another sip of your coffee you adjust your legs to bring your knees to a slight part,
+					legs to bring your knees to a slight part,
 					exposing a tantalising amount of your <<undies>> to onlookers without giving all your secrets away.
-					<<cafecoffeesip>>
 				<<else>>
-					Taking another sip of your coffee you adjust your feet a little, making sure to stay at about the same level of exposure. It's fun to tease.
-					<<cafecoffeesip>>
+					feet a little, making sure to stay at about the same level of exposure. It's fun to tease.
 				<</if>>
+				<<cafecoffeesip>>
 				<br><br>
 				<<if currentSkillValue('skulduggery') gte 200 + random(0, 50)>>
 					Passers-by make excuses to stop and look in your direction.
@@ -2159,18 +2173,17 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 			<<case 2>>
 				<<if !$still>>
 					Exhilarated by your own brazen exhibitionism you shift your feet so as to part your thighs nice and wide, leaving little to the imagination.
-					You take another sip of your coffee.
-					<<cafecoffeesip>>
 				<<else>>
 					Savouring the thrill of exposing yourself like this you shift your feet a little, making sure not to cover your <<undies>> even slightly.
-					You take another sip of your coffee.
-					<<cafecoffeesip>>
 				<</if>>
+				You take another sip of your coffee.
+				<<cafecoffeesip>>
 				<br><br>
+				Some of the passers-by gather in
 				<<if currentSkillValue('skulduggery') gte 300 + random(0, 50)>>
-					Some of the passers-by gather in small groups at a time, whispering to each other while attempting to stay discreet about their voyeurism.
+					small groups at a time, whispering to each other while attempting to stay discreet about their voyeurism.
 				<<else>>
-					Some of the passers-by gather in a small group, whispering to each other before pointing and laughing. You've been caught.
+					a small group, whispering to each other before pointing and laughing. You've been caught.
 					<<trauma $phase>><<gtrauma>>
 					<br><br>
 					<<set _caught to 1>>
@@ -2180,12 +2193,11 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 				view of your bare <<undies>> while you take another sip of your coffee.
 				<<cafecoffeesip>>
 				<br><br>
+				Some of the strangers gawk at what they're seeing, struggling to hide their voyeurism. A few of them
 				<<if currentSkillValue('skulduggery') gte 400 + random(0, 50)>>
-					Some of the strangers gawk at what they're seeing, struggling to hide their voyeurism.
-					A few of them jab the others in the rib to try and keep them from spoiling the fun.
+					jab the others in the rib to try and keep them from spoiling the fun.
 				<<else>>
-					Some of the strangers gawk at what they're seeing, struggling to hide their voyeurism.
-					A few of them point at you, whisper something to the others before looking back at you and meeting your gaze with a smirk. You've been caught.
+					point at you, whisper something to the others before looking back at you and meeting your gaze with a smirk. You've been caught.
 					<<trauma $phase>><<gtrauma>>
 					<br><br>
 					<<set _caught to 1>>
@@ -2197,11 +2209,7 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 				<<cafecoffeesip>>
 				<br><br>
 				<<if $cameras_raised gt 0>>
-					<<if $cameras_raised gt 1>>
-						The strangers who had their phones out pocket them as they go, scowling.
-					<<else>>
-						The stranger who had their phone out pockets it as they go, scowling.
-					<</if>>
+					The stranger<<if $cameras_raised gt 1>>s<</if>> who had their phone<<if $cameras_raised gt 1>>s<</if>> out pocket them as they go, scowling.
 				<</if>>
 				<<set $cameras_raised to 0>>
 				<<set $resting to 1>>
@@ -2223,17 +2231,19 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 				<span class="pink">
 				A <<generate1>><<person1>><<person>> raises <<his>> phone and takes a photo.
 				</span>
+				<<He>> brings <<his>> phone to <<his>> face and
 				<<if random(0,2) gte 1>>
-					<<He>> brings <<his>> phone to <<his>> face and grins, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
+					grins, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
 					<<set _photos_taken +=1>>
 				<<else>>
-					<<He>> brings <<his>> phone to <<his>> face and frowns, seemingly unhappy with the photo <<he>> got of your exposed <<undies>>.
+					frowns, seemingly unhappy with the photo <<he>> got of your exposed <<undies>>.
 					Raising it again <<he>> takes another photo of your exposed <<undies>>.
+					<<He>> brings <<his>> phone to <<his>> face
 					<<if random(0,2) gte 1>>
-						<<He>> brings <<his>> phone to <<his>> face and grins this time, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
+						and grins this time, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
 						<<set _photos_taken +=1>>
 					<<else>>
-						<<He>> brings <<his>> phone to <<his>> face again and frowns, before pocketing <<his>> phone in frustration.
+						again and frowns, before pocketing <<his>> phone in frustration.
 					<</if>>
 				<</if>>
 				<br><br>
@@ -2246,17 +2256,19 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 				<span class="pink">
 				A <<generate2>><<person2>><<person>> raises <<his>> phone and takes a photo.
 				</span>
+				<<He>> brings <<his>> phone to <<his>> face and
 				<<if random(0,2) gte 1>>
-					<<He>> brings <<his>> phone to <<his>> face and grins, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
+					grins, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
 					<<set _photos_taken +=1>>
 				<<else>>
-					<<He>> brings <<his>> phone to <<his>> face and frowns, seemingly unhappy with the photo <<he>> got of your exposed <<undies>>.
+					frowns, seemingly unhappy with the photo <<he>> got of your exposed <<undies>>.
 					Raising it again <<he>> takes another photo of your exposed <<undies>>.
+					<<He>> brings <<his>> phone to <<his>> face
 					<<if random(0,2) gte 1>>
-						<<He>> brings <<his>> phone to <<his>> face and grins this time, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
+						and grins this time, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
 						<<set _photos_taken +=1>>
 					<<else>>
-						<<He>> brings <<his>> phone to <<his>> face again and frowns, before pocketing <<his>> phone in frustration.
+						again and frowns, before pocketing <<his>> phone in frustration.
 					<</if>>
 				<</if>>
 				<br><br>
@@ -2269,17 +2281,19 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 				<span class="pink">
 				A <<generate3>><<person3>><<person>> raises <<his>> phone and takes a photo.
 				</span>
+				<<He>> brings <<his>> phone to <<his>> face and
 				<<if random(0,2) gte 1>>
-					<<He>> brings <<his>> phone to <<his>> face and grins, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
+					grins, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
 					<<set _photos_taken +=1>>
 				<<else>>
-					<<He>> brings <<his>> phone to <<his>> face and frowns, seemingly unhappy with the photo <<he>> got of your exposed <<undies>>.
+					frowns, seemingly unhappy with the photo <<he>> got of your exposed <<undies>>.
 					Raising it again <<he>> takes another photo of your exposed <<undies>>.
+					<<He>> brings <<his>> phone to <<his>> face
 					<<if random(0,2) gte 1>>
-						<<He>> brings <<his>> phone to <<his>> face and grins this time, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
+						and grins this time, seemingly happy with the photo <<he>> got of your exposed <<undies>>.
 						<<set _photos_taken +=1>>
 					<<else>>
-						<<He>> brings <<his>> phone to <<his>> face again and frowns, before pocketing <<his>> phone in frustration.
+						again and frowns, before pocketing <<his>> phone in frustration.
 					<</if>>
 				<</if>>
 				<br><br>
@@ -2661,7 +2675,7 @@ You don't succeed, but you don't mind. It's tasty, and leaves you feeling warm a
 You lift the plate and lap the cream off it directly.
 
 
-<<if dangerEvent()>>
+<<if dangerEvent(0.25,4000)>> /* Roughly 33% at game start, max 80% */
 	You catch a <<generate1>><<person1>><<person>> staring at you, <<his>> spoon suspended halfway to <<his>> mouth.
 	<br><br>
 
@@ -2794,7 +2808,7 @@ You stare out the window <<print Weather.precipitation is "rain" ? "at the rain-
 			<br>
 			You leave when the other customer starts showing them photos.
 		<<elseif $beauty lte ($beautymax / 7) * 2>>
-			"Well, I mean bad example. Who'd bother? But every *attractive* person in this town has been raped."
+			"Well, I mean bad example. Who'd bother? But every <i>attractive</i> person in this town has been raped."
 			<br>
 			You leave them to their conversation.
 		<<else>>
@@ -2827,7 +2841,7 @@ You stare out the window <<print Weather.precipitation is "rain" ? "at the rain-
 		You shake your head.
 		<br>
 		<<if $beauty lte ($beautymax / 7) * 2>>
-			"Well, I mean bad example. Who'd bother? But every *attractive* person in this town has been raped."
+			"Well, I mean bad example. Who'd bother? But every <i>attractive</i> person in this town has been raped."
 			<br>
 			You leave them to their conversation.
 		<<else>>
@@ -2859,7 +2873,7 @@ The rest of the shift passes uneventfully.
 Sam nods, but looks exasperated. <<He>> approaches another member of staff, and asks them for help instead.
 <br><br>
 
-The rest of the shift passes uneventfully. You earn <<money 500 "cafeWaiter">><<printmoney 500>>.
+<<waiter_default>>
 <br><br>
 
 <<link [[Next|Ocean Breeze]]>><<endevent>><</link>>

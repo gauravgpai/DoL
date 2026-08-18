@@ -631,7 +631,7 @@ function getRobinLocation() {
 		}
 	} else if (V.halloween === 1 && between(Time.hour, 16, 18) && Time.monthDay === 31) {
 		T.robin_location = "halloween";
-	} else if (Time.isWeekEnd() && between(Time.hour, 9, 16) && C.npc.Robin.trauma < 80) {
+	} else if (Time.isWeekEnd() && between(Time.hour, 9, 16) && Weather.precipitation !== "rain" && C.npc.Robin.trauma < 80) {
 		T.robin_location = Time.season === "winter" ? "park" : "beach";
 	} else if (V.englishPlay === "ongoing" && V.englishPlayDays === 0 && Time.hour >= 17 && Time.hour < 21) {
 		T.robin_location = "englishPlay";
@@ -697,7 +697,8 @@ function isInPark(name) {
 			// prettier-ignore
 			return C.npc.Kylar.state === "active"
 				&& Weather.precipitation === "none"
-				&& Time.dayState === "day" && V.kylarwatched !== 1;
+				&& Time.dayState === "day" && !Time.schoolTime
+				&& V.kylarwatched !== 1;
 		case "robin":
 			return getRobinLocation() === "park";
 		case "whitney":
@@ -711,6 +712,11 @@ function isInPark(name) {
 			return C.npc.Doren.init === 1
 				&& Time.hour >= 9 && Time.hour <= 15
 				&& Time.weekDay === 7;
+		case "sam":
+			// prettier-ignore
+			return C.npc.Sam.init === 1
+				&& (Time.hour >= 6 && Time.hour < 7 && Time.minute <= 55)
+				&& Weather.precipitation === "none";
 		default:
 			return false;
 	}
@@ -1234,7 +1240,7 @@ function currentSkillValue(skill, disableModifiers = 0) {
 	) {
 		result = Math.floor(result * (1 + V.moorLuck / 100));
 	}
-	if (["physique", "danceskill", "swimmingskill", "athletics"].includes(skill) && playerBellySize() >= 10 && playerNormalPregnancyTotal() < 50) {
+	if (["physique", "danceskill", "swimmingskill", "athletics"].includes(skill) && playerBellySize() >= 10 && playerNormalPregnancyTotal() < 20) {
 		switch (playerNormalPregnancyTotal()) {
 			case 0:
 				T.pregnancyModifier = 36;
@@ -1248,8 +1254,6 @@ function currentSkillValue(skill, disableModifiers = 0) {
 			case 3:
 			case 4:
 			case 5:
-				T.pregnancyModifier = 78;
-				break;
 			case 6:
 			case 7:
 				T.pregnancyModifier = 96;
@@ -1264,7 +1268,6 @@ function currentSkillValue(skill, disableModifiers = 0) {
 		case "skulduggery":
 			if (V.worn.hands.type.includes("sticky_fingers")) result = Math.floor(result * 1.05);
 			if (V.transformationParts.traits.sharpEyes !== "disabled") result = Math.floor(result * 1.05);
-			if (V.fox >= 6) result = Math.floor(result * 1.1);
 			break;
 		case "physique":
 			if (["forest", "moor", "farm", "alex_farm"].includes(V.location)) {
@@ -1449,7 +1452,14 @@ window.drunkSexStatModifier = drunkSexStatModifier;
  * @returns {number}
  */
 function heatRutSexStatModifier(input) {
-	const maxMinArousal = 5000; // Maximum value for minArousal.
+	/**
+	 * While the PC's minimum arousal can technically go higher than 2500, a PC with only a penis has this arousal max out at 1500, and a PC with only a vagina has this arousal max out at 2500 (when risk = 0 and taking fertility pills). This also assumes the PC does not have ear slimes and mpreg is disabled.
+	 *
+	 * To account for this, the PC's Sex Stat mods will have their boosts max out at 2,500 minimum arousal to make the effects more noticeable.
+	 *
+	 * The PC's actual maximum minimum arousal threshold, meanwhile, is handled in a separate function.
+	 */
+	const maxMinArousal = 2500; // Maximum value for minArousal.
 	const minArousal = Math.clamp(playerHeatMinArousal() + playerRutMinArousal(), 0, maxMinArousal);
 	if (minArousal === 0) return 0;
 
@@ -1464,7 +1474,7 @@ function heatRutSexStatModifier(input) {
 
 	if (statName === "exhibitionism") return 0;
 
-	const maxHeatRutSexStatModifier = 40; // Maximum modifier for sexStat() from minArousal.
+	const maxHeatRutSexStatModifier = 30; // Maximum modifier for sexStat() from minArousal.
 	const heatRutSexStatModifierExponent = 0.6; // Lower to raise the final modifier at lower levels of minArousal.
 	const heatRutSexStatModifier = (maxHeatRutSexStatModifier / maxMinArousal ** heatRutSexStatModifierExponent) * minArousal ** heatRutSexStatModifierExponent;
 
@@ -1690,6 +1700,15 @@ function isPossibleLoveInterest(name) {
 	}
 }
 window.isPossibleLoveInterest = isPossibleLoveInterest;
+
+function isPossibleLoveInterestVirginity(taker) {
+	if (typeof taker !== "string") return false;
+	if (taker.includes(" and ")) {
+		return taker.split(" and ").some(name => isPossibleLoveInterest(name.trim()));
+	}
+	return isPossibleLoveInterest(taker);
+}
+window.isPossibleLoveInterestVirginity = isPossibleLoveInterestVirginity;
 
 function fameTotal() {
 	let result = 0;
@@ -2425,8 +2444,8 @@ function calculateSemenReleased() {
 	released += V.semen_volume / 30;
 
 	if (V.femaleclimax === 1) released /= 30;
-	if (V.orgasmtrait >= 1) released *= 2.5;
-	if (V.cow >= 6) released *= 2;
+	if (V.orgasmtrait >= 1) released *= 1.5;
+	if (V.cow >= 6) released *= 1.2;
 
 	/* if the player doesn't have enough semen, set $_semen_released to whatever they have left */
 	if (V.semen_amount < released) released = V.semen_amount;
@@ -3032,6 +3051,11 @@ function teensPresentCheck(location) {
 }
 window.teensPresentCheck = teensPresentCheck;
 
+function beachCampfirePartyPresent() {
+	return Time.dayState === "night" && !Weather.isOvercast;
+}
+window.beachCampfirePartyPresent = beachCampfirePartyPresent;
+
 function insecurityExists(type) {
 	const [possible, returnedType] = statChange.insecurityPossible(type);
 	return possible && returnedType === type && V["insecurity_" + type] > 0;
@@ -3044,8 +3068,15 @@ function isBeastSceneAllowed() {
 window.isBeastSceneAllowed = isBeastSceneAllowed;
 
 /**
- * check if event is going to be dangerous based on rng and player allure
- * for consistency, danger rng is rolled once per passage, unless specified otherwise
+ * Check if an event is going to be dangerous based on rng and the player's Allure. Another target's Allure can
+ * be substitued as needed.
+ *
+ * For consistency, danger rng is rolled once per passage, unless specified through the "reroll" parameter.
+ *
+ * Lowering the floor increases the player's flat probability of triggering an event. Changing the mod
+ * increases / decreases the chance of triggering the event with increasing / decreasing Allure.
+ *
+ * For a guaranteed activation at 8,000 Allure, set a mod of 1.25, or a floor of 8,000.
  *
  * @param {number} mod allure multiplier
  * @param {number} floor how high of a bar rng(1,10000) needs to pass to qualify as dangerous with 0 allure. default is 9900 (1% chance of danger event)
@@ -3054,6 +3085,17 @@ window.isBeastSceneAllowed = isBeastSceneAllowed;
  * @returns {boolean} whether the roll is dangerous
  */
 function dangerEvent(mod = 1, floor = 9900, allure = V.allure, reroll = false) {
+	/**
+	 * (mod = 1, floor = 8,000)
+	 * 8,000 Allure:	100% pass chance
+	 * 6,000 Allure:	80% pass chance
+	 * 0 Allure:		20% pass chance
+	 *
+	 * (mod = 1.25, floor = 9,900)
+	 * 8,000 Allure:	100% pass chance
+	 * 6,000 Allure:	76% pass chance
+	 * 0 Allure:		1% pass chance
+	 */
 	if (!T.danger || reroll) T.danger = random(1, 10000);
 	return T.danger >= floor - allure * mod;
 }
@@ -3109,3 +3151,48 @@ function breakableSoftBinding() {
 }
 
 window.breakableSoftBinding = breakableSoftBinding;
+
+function averageBunPrice(toSell = T.buns_sold) {
+	/* Calculates the average price of a bun with diminishing returns */
+	let totalRevenue = 0;
+	let remaining = toSell;
+	if (V.daily.buns_sold === undefined) {
+		V.daily.buns_sold = 0;
+	}
+	let batch = 1;
+	let harmonics = 1;
+
+	/* Calculates the current divisor for buns */
+	for (let soldToday = 20; soldToday <= V.daily.buns_sold; soldToday += 20) {
+		if (batch === 1) {
+			harmonics += 0.5;
+		} else {
+			harmonics += 1 / Math.max(batch / 20, 1);
+		}
+		batch++;
+	}
+	let doneToday = V.daily.buns_sold % 20;
+	let pricePerBun = V.bun_value / harmonics;
+	let bunsInBatch = 0;
+
+	/* Sells the new buns */
+	while (remaining > 0) {
+		bunsInBatch = Math.min(20 - doneToday, remaining);
+		doneToday = 0;
+
+		totalRevenue += bunsInBatch * pricePerBun;
+		remaining -= bunsInBatch;
+		if (batch === 1) {
+			harmonics += 0.5;
+		} else {
+			harmonics += 1 / Math.max(batch / 20, 1);
+		}
+		batch++;
+		pricePerBun = V.bun_value / harmonics;
+	}
+
+	V.daily.buns_sold += T.buns_sold;
+
+	return totalRevenue / toSell;
+}
+window.averageBunPrice = averageBunPrice;

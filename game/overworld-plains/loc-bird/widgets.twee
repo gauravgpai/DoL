@@ -889,14 +889,18 @@
 <</widget>>
 
 <<widget "your_bird_text">><<silently>>
+	<<if $greathawkmonster is 2 or ($greathawkmonster is 1 and $hallucinations gte 1)>>
+		<<set _text_output to "harpy">>
+	<<else>>
+		<<set _text_output to "hawk">>
+	<</if>>
 	<<if $syndromebird is 1>>
 		<<if $monster is 1>>
-			<<beasttype>><<set $_birdText to either("your spouse", "your _text_output")>>
+			<<set $_birdText to either("your spouse", "your _text_output")>>
 		<<else>>
-			<<beasttype>><<set $_birdText to "your " + _text_output>>
+			<<set $_birdText to "your " + _text_output>>
 		<</if>>
 	<<else>>
-		<<beasttype>>
 		<<set $_birdText to "the " + _text_output>>
 	<</if>>
 	<<if _args[0] is "cap">>
@@ -2670,19 +2674,7 @@
 		<<if currentSkillValue('housekeeping') lt $_upgrade.housekeeping>>
 			<br>
 			<span class="black">
-				<<switch $_upgrade.housekeeping>>
-					<<case 100>><span class="pink">F+</span>
-					<<case 200>><span class="purple">D</span>
-					<<case 300>><span class="purple">D+</span>
-					<<case 400>><span class="blue">C</span>
-					<<case 500>><span class="blue">C+</span>
-					<<case 600>><span class="lblue">B</span>
-					<<case 700>><span class="lblue">B+</span>
-					<<case 800>><span class="teal">A</span>
-					<<case 900>><span class="teal">A+</span>
-					<<case 1000>><span class="green">S</span>
-				<</switch>>
-				Housekeeping skill required.
+				<<skilllettergrade $_upgrade.housekeeping>> Housekeeping skill required.
 			</span>
 			<<set $_disableBuild to true>>
 		<</if>>
@@ -2958,7 +2950,7 @@
 				You gasp as you feel
 				<<if $_eggnantGenital is "cervix">>
 					<<if $_eggnant.fetus.length gte 2>>
-						the eggs pass through your cervix. They send shivers through your whole body as they glide down your vaginal canal. You grip your bedsheets as the eggs begin to crown.
+						the eggs pass through your cervix. They send shivers through your whole body as they glide down your vaginal canal. You grip <<if $location is home>>your bedsheets<<else>>the ground<</if>> as the eggs begin to crown.
 						The first one is the hardest. Your passage repeatedly contracts, sending even more waves of pleasure through you. It escapes partially, before going back in. You push for a full minute, and it finally pops out. <<arousal 4000>><<garousal>>
 						<br>
 						<<if $arousal gte $arousalmax>>
@@ -2974,7 +2966,7 @@
 							The next eggs pass easily, but the last one gets stuck, having nothing behind it to help push. You sit there pushing for more agonising minutes, but eventually you manage to push it out. Your <<pussy>> remains slightly opened. You pant in exertion, feeling dizzy.
 						<</if>>
 					<<else>>
-						the egg pass through your cervix. It sends shivers through your whole body as it glides down your vaginal canal. You grip your bedsheets as the egg begins to crown.
+						the egg pass through your cervix. It sends shivers through your whole body as it glides down your vaginal canal. You grip <<if $location is home>>your bedsheets<<else>>the ground<</if>> as the egg begins to crown.
 						It's only one, but it might as well be a regular human baby with how large it feels. You spread your legs further. Your <<pussy>> stretches more, trying to make room for it to escape. After several minutes of tortured pushing, it finally escapes you. You pant in exertion, feeling dizzy.
 					<</if>>
 				<<else>>
@@ -3005,7 +2997,7 @@
 			You gasp as you feel
 			<<if $_eggnantGenital is "cervix">>
 				<<if $harpyEggs.count gte 2>>
-					the eggs pass through your cervix. They send shivers through your whole body as they glide down your vaginal canal. You grip your bedsheets as the eggs begin to crown.
+					the eggs pass through your cervix. They send shivers through your whole body as they glide down your vaginal canal. You grip <<if $location is home>>your bedsheets<<else>>the ground<</if>> as the eggs begin to crown.
 					The first one is the hardest. Your passage repeatedly contracts, sending even more waves of pleasure through you. It escapes partially, before going back in. You push for a full minute, and it finally pops out. <<arousal 4000>><<garousal>>
 					<br>
 					<<if $arousal gte $arousalmax>>
@@ -3021,7 +3013,7 @@
 						The next eggs pass easily, but the last one gets stuck, having nothing behind it to help push. You sit there pushing for more agonising minutes, but eventually you manage to push it out. Your <<pussy>> remains slightly opened. You pant in exertion, feeling dizzy.
 					<</if>>
 				<<else>>
-					the egg pass through your cervix. It sends shivers through your whole body as it glides down your vaginal canal. You grip your bedsheets as the egg begins to crown.
+					the egg pass through your cervix. It sends shivers through your whole body as it glides down your vaginal canal. You grip <<if $location is home>>your bedsheets<<else>>the ground<</if>> as the egg begins to crown.
 					Without other eggs to help push it along, it gets stuck. Your <<pussy>> remains half-open with the egg plugging you. It retracts back in after a moment. You try to catch your breath, but each one is heavy. You push again, this time managing to get it all the way out.
 				<</if>>
 			<<else>>
@@ -3033,6 +3025,7 @@
 			<</if>>
 			<<if $arousal gte $arousalmax>>
 				<<orgasm>>
+				<<set $orgasmcurrent to 0>>
 			<<else>>
 				<br><br>
 			<</if>>
@@ -3040,8 +3033,9 @@
 			You're filled with a sense of maternal bliss, <span class="blue">but you know <<pluralise $harpyEggs.count "it's" "they're">> unfertilised.</span> <<tending_pick bird_egg $harpyEggs.count $harpyEggs.count>>
 			<<wearProp `"hawk egg " + Math.clamp($harpyEggs.count, 1, 3)`>><<unset $harpyEggs>>
 			<<set $harpyEggsPrevent to 14>>
+			<<set _eggEvent to true>>
 		<</if>>
-		<br><br>
+		<br>
 	<</if>>
 <</widget>>
 
@@ -3062,16 +3056,16 @@
 
 <<widget "hairToFeatherColour">>
 	<<switch $haircolour>>
-		<<case "red" "crimson">><<set _colourConverted to "red">>
-		<<case "jetblack" "black">><<set _colourConverted to "black">>
+		<<case "red" "crimson" "wine">><<set _colourConverted to "red">>
+		<<case "jetblack" "black" "ebony">><<set _colourConverted to "black">>
 		<<case "blond" "softblond" "platinumblond" "golden" "ashyblond" "strawberryblond">><<set _colourConverted to "yellow">>
-		<<case "darkbrown" "brown" "softbrown" "lightbrown">><<set _colourConverted to "brown">>
+		<<case "darkbrown" "brown" "softbrown" "lightbrown" "copperbrown">><<set _colourConverted to "brown">>
 		<<case "burntorange" "ginger" "bloodorange">><<set _colourConverted to "tangerine">>
-		<<case "blue" "deepblue" "neonblue">><<set _colourConverted to "blue">>
-		<<case "green" "darklime" "toxicgreen" "teal">><<set _colourConverted to "green">>
-		<<case "pink" "brightpink" "hotpink" "softpink">><<set _colourConverted to "pink">>
+		<<case "blue" "deepblue" "neonblue" "frostblue">><<set _colourConverted to "blue">>
+		<<case "green" "darklime" "toxicgreen" "teal" "aquamarine">><<set _colourConverted to "green">>
+		<<case "pink" "brightpink" "hotpink" "softpink" "rosegold">><<set _colourConverted to "pink">>
 		<<case "purple" "mediumpurple" "brightpurple">><<set _colourConverted to "purple">>
-		<<case "white" "snowwhite">><<set _colourConverted to "white">>
+		<<case "white" "snowwhite" "gray">><<set _colourConverted to "white">>
 		<<default>><<set _colourConverted to "red">>
 	<</switch>>
 <</widget>>

@@ -37,7 +37,7 @@ You are in the hairdressers. Various hair products are available for sale. You c
 <</if>>
 <br><br>
 <<if $stress gte $stressmax>>
-	<<passoutshop>>
+	<<passoutshop "shop">>
 <<else>>
 	<<if Time.hour is 21>>
 		It's closing time. Security is herding everyone outside.
@@ -89,9 +89,9 @@ You are in the hairdressers. Various hair products are available for sale. You c
 The hairdresser makes small talk as <<he>> rings up your purchase. "That stuff's great," <<he>> says.
 
 <<if $phase is 1>>
-	"The canister's small, so you'll only get <span class="teal">a small number of uses</span> out it, but you won't need to use it every day. You won't have to worry about your hair staying short. Not until you decide to get it cut again."
+	"The canister's small, so you'll only get <span class="teal">a small number of uses</span> out of it, but you won't need to use it every day. You won't have to worry about your hair staying short. Not until you decide to get it cut again."
 <<else>>
-	"The bottle's small, so you'll only get <span class="teal">one use</span> out it, of but it's got a rock-solid hold. You won't have to worry about your hair getting mussed up. Not until you decide to change up your 'do, at least."
+	"The bottle's small, so you'll only get <span class="teal">one use</span> out of it, but it's got a rock-solid hold. You won't have to worry about your hair getting mussed up. Not until you decide to change up your 'do, at least."
 <</if>>
 <br><br>
 <<He>> hands you your bag with a smile. "<<print either("Thanks for shopping with us!","Have a great day.","Take care.","Pleasure doing business with ya.","Come back soon!")>>"
@@ -183,7 +183,7 @@ The hairdresser makes small talk as <<he>> rings up your purchase. "That stuff's
 			<div id="currentCost" class="gold">To pay: £0</div>
 		</div>
 		<div>
-			<<if ($money gte _currentCost + 3000 or $hairOption isnot $hairlength) and $hairlength gt 100>>
+			<<if ($money gte _currentCost + 3000 or $hairOption isnot $hairlength)>>
 				<<if $hairOption isnot $hairlength>>
 					<<set _currentCost += 3000>>
 				<</if>>
@@ -206,7 +206,7 @@ The hairdresser makes small talk as <<he>> rings up your purchase. "That stuff's
 				<br><br>
 			<</if>>
 
-			<<if ($money gte _currentCost + 3000 or $fringeOption isnot $fringelength) and $fringelength gte 100>>
+			<<if ($money gte _currentCost + 3000 or $fringeOption isnot $fringelength)>>
 				<<if $fringeOption isnot $fringelength>>
 					<<set _currentCost += 3000>>
 				<</if>>
@@ -229,8 +229,8 @@ The hairdresser makes small talk as <<he>> rings up your purchase. "That stuff's
 				<br><br>
 			<</if>>
 
-			<<set _dyeNames to ["Red","Jet black", "Black", "Blond", "Soft Blond", "Platinum blond", "Golden", "Ashy blond", "Strawberry blond", "Dark Brown", "Brown", "Soft brown", "Light brown", "Burnt Orange", "Ginger", "Blood Orange", "Blue", "Deep Blue", "Neon Blue", "Green", "Dark Lime", "Toxic Green", "Teal", "Pink", "Bright Pink", "Hot pink", "Soft pink", "Crimson", "Purple", "Medium Purple", "Bright Purple", "White", "Snow white"]>>
-			<<set $hairdressersHairColour to ["red","jetblack", "black", "blond", "softblond", "platinumblond", "golden", "ashyblond", "strawberryblond", "darkbrown", "brown", "softbrown", "lightbrown", "burntorange", "ginger", "bloodorange", "blue", "deepblue", "neonblue", "green", "darklime", "toxicgreen", "teal", "pink", "brightpink", "hotpink", "softpink", "crimson", "purple", "mediumpurple", "brightpurple", "white", "snowwhite"]>>
+			<<set _dyeNames to ["Red", "ebony","Jet black", "Black", "Blond", "Soft Blond", "Platinum blond", "Golden", "Ashy blond", "Strawberry blond", "Dark Brown", "Brown", "Copper Brown", "Soft brown", "Light brown", "Burnt Orange", "Ginger", "Blood Orange", "Blue", "Deep Blue", "Neon Blue", "Frost Blue", "Green", "Dark Lime", "Toxic Green", "Teal", "Aquamarine", "Pink", "Bright Pink", "Hot pink", "Soft pink", "Rosegold", "Crimson", "Wine", "Purple", "Medium Purple", "Bright Purple", "Grey", "White", "Snow white"]>>
+			<<set $hairdressersHairColour to ["red", "ebony", "jetblack", "black", "blond", "softblond", "platinumblond", "golden", "ashyblond", "strawberryblond", "darkbrown", "brown", "copperbrown", "softbrown", "lightbrown", "burntorange", "ginger", "bloodorange", "blue", "deepblue", "neonblue", "frostblue", "green", "darklime", "toxicgreen", "teal", "aquamarine", "pink", "brightpink", "hotpink", "softpink", "rosegold", "crimson", "wine", "purple", "mediumpurple", "brightpurple", "grey", "white", "snowwhite"]>>
 
 			<<if $money gte _currentCost + 3000 or $dyeOption isnot "noChange" or $twoToneHairDye>>
 				<<if $dyeOption is "removeDye">>

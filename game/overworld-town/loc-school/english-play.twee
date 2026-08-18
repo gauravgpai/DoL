@@ -605,7 +605,7 @@ You start to rehearse with Kylar and Sydney. Kylar seems placid for the most par
 
 		<<link [[Give it your all|English Play Rehearse Both 3]]>><<pass 30>><<stress 6>><<npcincr Kylar rage -5>><<set $phase to 1>><</link>><<gstress>><<llksuspicion>>
 		<br>
-		<<link [[Half-ass it|English Play Rehearse Both 3]]>><<pass 30>><<stress -12>><<set $phase to 2>><</link>><<llstress>>
+		<<link [[Half-arse it|English Play Rehearse Both 3]]>><<pass 30>><<stress -12>><<set $phase to 2>><</link>><<llstress>>
 		<br>
 	<<case "Taylor">>
 		Part of the play requires you to spend a particularly heartfelt moment with Cass. Kylar looks at you and Sydney with a hint of disgust.
@@ -613,7 +613,7 @@ You start to rehearse with Kylar and Sydney. Kylar seems placid for the most par
 
 		<<link [[Give it your all|English Play Rehearse Both 3]]>><<pass 30>><<stress 6>><<npcincr Kylar rage 5>><<npcincr Sydney love 2>><<set $phase to 1>><</link>><<gstress>><<glove "Sydney">><<ggksuspicion>>
 		<br>
-		<<link [[Half-ass it|English Play Rehearse Both 3]]>><<pass 30>><<stress -12>><<set $phase to 2>><</link>><<llstress>>
+		<<link [[Half-arse it|English Play Rehearse Both 3]]>><<pass 30>><<stress -12>><<set $phase to 2>><</link>><<llstress>>
 		<br>
 	<<case "Sterling">>
 		Part of the play requires Taylor and Cass to spend a particularly heartfelt moment with one another. Sydney and Kylar look at each other with a moment of brief hesitation.
@@ -2394,9 +2394,9 @@ You walk with the two of them backstage, where you're greeted by Doren.
 <<if $englishPlayApproval lte 50>>
 	<<He>> looks at you with a comforting smile. "Just keep in mind, this wasn't about giving the most memorable of performances, but to bring the families together and remind them of the festivities." <<He>> glances at the audience uncomfortably. "All that matters is that you tried."
 <<elseif $englishPlayApproval lt 75>>
-	"Really great job out there!" <<he>> says. "I can tell they loved every second of it. If we're lucky, the <<nnpc_title "Leighton">> may allow us to do more of these next year. Thank you all so much for participating." <<npcincr Doren love 1>>
+	"Really great job out there!" <<he>> says. "I can tell they loved every second of it. If we're lucky, the <<nnpc_title "Leighton">> may allow us to do more of these next year. Thank you all so much for participating." <<npcincr Doren love 1>><<glove Doren>>
 <<else>>
-	"I cannot believe it," <<he>> says. "Your performance out there was second to none, it was perfect!" Doren beams with pride. "Now come here, you've made me so proud!" <<He>> grasps the three of you between <<his>> arms, giving you a tight hug. <<npcincr Doren love 3>>
+	"I cannot believe it," <<he>> says. "Your performance out there was second to none, it was perfect!" Doren beams with pride. "Now come here, you've made me so proud!" <<He>> grasps the three of you between <<his>> arms, giving you a tight hug. <<npcincr Doren love 3>><<gglove Doren>>
 <</if>>
 <<if $englishPlayApproval gte 75>>
 	<<set $englishPlayWell to 1>>
@@ -2507,7 +2507,7 @@ The two continue to converse until Sirris starts to lead Sydney out. Sydney hesi
 			<</if>>
 		<<case "Taylor">>
 			<<if $english_play_break_one and $english_play_break_two>>
-				"I don't seem to recall you saying anything about this story being as," <<he>> pauses. "Raunchy as it was, but the audience seemed to enjoy it, at least." You notice that <<he>> didn't include <<himself>> amongst them.
+				"I don't seem to recall you saying anything about this story being as," <<he>> pauses, "raunchy as it was, but the audience seemed to enjoy it, at least." You notice that <<he>> didn't include <<himself>> amongst them.
 			<<elseif $english_play_break_two>>
 				"Quite a bold improvisation near the end." <<He>> raises an eyebrow.
 			<<else>>
@@ -2534,7 +2534,7 @@ The two continue to converse until Sirris starts to lead Sydney out. Sydney hesi
 	<<link [[Next|English Play Avery 3]]>><</link>>
 
 <<else>> /* Did perfectly */
-	"You were marvelous up there," Avery says, reaching up to put a hand on your shoulder.
+	"You were marvellous up there," Avery says, reaching up to put a hand on your shoulder.
 	<<if _tragedyAhAhAhAh>>
 		"I don't seem to recall you telling me anything about this story being a tragedy." <<His>> smile quirks in one corner. "But no one can deny it was an impressive performance, improvised or not. And thrilling. Taylor was a surprisingly lamentable figure."
 	<<else>>
@@ -2833,11 +2833,11 @@ Doren releases you, and Kylar bolts without a word. A few moments later, you hea
 	<br><br>
 
 	<<if C.npc.Robin.init is 1 and $robinmissing is 0 and $englishPlayRobinWatch>>
-		<<link [[Leave with Robin (0:10)|English Play Leave Robin]]>><<englishplayfinish>><<pass 1>><<npcincr Robin love 2>><</link>><<glove "Robin">>
+		<<link [[Leave with Robin (0:10)|English Play Leave Robin]]>><<englishplayfinish>><<pass 10>><<npcincr Robin love 2>><</link>><<glove "Robin">>
 		<br>
 	<</if>>
 	<<if $englishPlayRoles.Player isnot "none" or $englishPlaySydneyWatch>>
-		<<link [[Wait for Sydney (0:10)|English Play Wait Sydney]]>><<englishplayfinish>><<pass 1>><<npcincr Sydney love 2>><</link>><<glove "Sydney">>
+		<<link [[Wait for Sydney (0:10)|English Play Wait Sydney]]>><<englishplayfinish>><<pass 10>><<npcincr Sydney love 2>><</link>><<glove "Sydney">>
 		<br>
 	<</if>>
 	<<link [[Leave with other students (0:10)|English Play Leave Students]]>><<englishplayfinish>><<status 5>><<pass 10>><</link>><<gcool>>

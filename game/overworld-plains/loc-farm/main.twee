@@ -842,7 +842,6 @@ Remy places <<his>> empty cup on the plate. "Thank you," <<he>> says as <<he>> r
 
 :: Farm Stage 6
 <<set $location to "alex_cottage">><<effects>>
-<<loadNPC 1 "alexs_parent1">>
 You listen to Alex talk over the phone to <<his>> <<person2>><<mum>>. <<person1>><<He>> tries to seem calm, but can't stop the excitement bubbling over.
 <br><br>
 
@@ -1100,7 +1099,7 @@ Alex takes <<person1>><<his>> <<person2>><<father>> on a tour of the farm, and i
 Alex beams with pride when you reach the fields. The first three are filled with rows of green potato plants. The last is barren, but clear and ready for planting.
 <br><br>
 
-You return to the farmhouse. "You've done a good job," Alex's <<father>> says. "Keep it up. Sorry I can't get out here more often. You know how it is." <<He>> reaches into <<his>> pocket. "Left my keys in the kitchen. Could you grab them?"
+You return to the farmhouse. "You've done a good job," Alex's <<father>> says. "Keep it up. Sorry, I can't get out here more often. You know how it is." <<He>> reaches into <<his>> pocket. "Left my keys in the kitchen. Could you grab them?"
 <br><br>
 Alex enters the farmhouse.
 <br><br>
@@ -1128,13 +1127,13 @@ Alex emerges from the farmhouse, and holds out the keys. "Thanks," <<person1>><<
 :: Farm Stage 6 8
 <<effects>><<wearProp "cash four">>
 
-Alex watches until the car vanishes from view. "I'm glad you were here to meet <<him>>," <<he>> says, turning back to the farm. "Come on. There's work to do. More land to cultivate. Let's make the farm even bigger."
+Alex watches until the car vanishes from view. "I'm glad you were here to meet <<him>>," <<person1>><<he>> says, turning back to the farm. "Come on. There's work to do. More land to cultivate. Let's make the farm even bigger."
 <br><br>
 
 You nod, but hang back until Alex disappears behind the sty. You open the envelope. There's a wad of cash inside, along with a note.
 <br><br>
 
-<i>"Thanks for looking out for my <<person1>><<daughter>>. Here's a little something for you. Don't give it to Alex. And don't let <<him>> pressure you into anything. <<Hes>> a good <<nnpc_gendery "Alex">>, but dogged.<<if C.npc.Alex.pregnancy.selfKnowledge is true or C.npc.Alex.pregnancy.pcKnowledge is true>> I'm really happy my <<nnpc_gendery "Alex">> is starting to settle down. Thanks for making that happen.<</if>>"
+<i>"Thanks for looking out for my <<daughter>>. Here's a little something for you. Don't give it to Alex. And don't let <<him>> pressure you into anything. <<Hes>> a good <<nnpc_gendery "Alex">>, but dogged.<<if C.npc.Alex.pregnancy.selfKnowledge is true or C.npc.Alex.pregnancy.pcKnowledge is true>> I'm really happy my <<nnpc_gendery "Alex">> is starting to settle down. Thanks for making that happen.<</if>>"
 </i>
 <br><br>
 You count the money. There's <<moneyGain 10000>>.

@@ -7,7 +7,7 @@
 			<<lstress>><<stress -6>>
 		<</if>>
 	<<else>>
-		<<set _masturbationorgasm to Math.clamp($masturbationorgasm - $masturbationRuinedOrgasm, 0, Infinity)>>
+		<<set _masturbationorgasm to Math.max($masturbationorgasm - $masturbationRuinedOrgasm, 0)>>
 		<<if _masturbationorgasm is 0 and $masturbationRuinedOrgasm gt 0>>
 			<<if ($earSlime.event is "masturbate and orgasm at least five times" and $masturbationorgasm gte 5) or ($earSlime.event is "masturbate and orgasm at least ten times" and $masturbationorgasm gte 10)>>
 				You didn't cum. Every orgasm was ruined, <span class="green">but a forgiving warmth fills you.</span> You can tell it's the slime in your ear, rewarding you for having the <<number $masturbationRuinedOrgasm>> ruined orgasms.
@@ -374,7 +374,10 @@
 		<span class="red">The slime in your ear will not allow you to stop.</span>
 	<</if>>
 	<div id="masturbationButtons">
-		<<if _args[0] and ((_args[0].includes("timer") and $timer lte 0) or (_args[0].includes("orgasmcurrent") and $orgasmcurrent) or (_args[0].includes("corruptionMasturbation") and $corruptionMasturbationCount lte 0))>>
+		<<if _args[0] and _args[0].includes("stallInterrupt")>>
+			<<silently>><<masturbationStallInterrupt>><</silently>>
+		<</if>>
+		<<if _args[0] and ((_args[0].includes("timer") and $timer lte 0) or (_args[0].includes("orgasmcurrent") and $orgasmcurrent) or (_args[0].includes("corruptionMasturbation") and $corruptionMasturbationCount lte 0) or (_args[0].includes("stallInterrupt") and $phase gte 2))>>
 			<div id="next"><<link [[Continue|$_passage + " Finish"]]>><</link>><<nexttext>></div>
 			<<if !$possessed>>
 				<div id="skip">

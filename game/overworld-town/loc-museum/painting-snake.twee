@@ -227,7 +227,7 @@ Winter pauses, thinking. "Well, there are a few aspects some tellings disagree o
 <<He>> smiles. "Alright. I'll try to include some more niche aspects. Was there anything you had in mind? As a jumping-off point."
 <br><br>
 
-<i>Completing runs with all challenges enabled is not intended, and is extemely difficult.<!-- all challenges run was completed --> There are no rewards, feats or otherwise, for completing runs with challenges enabled.
+<i>Completing runs with all challenges enabled is not intended, and is extremely difficult.<!-- all challenges run was completed --> There are no rewards, feats or otherwise, for completing runs with challenges enabled.
 <br>
 You may select any arrangement of challenges you like, or let the game choose a random selection of challenges for you.</i>
 <br><br>
@@ -1494,7 +1494,7 @@ You sit with your brothers and sisters to eat your meal. It's hearty and flavour
 			<br>
 			"You whine like a babe. Afraid Gran Glassfingers will find you? You need a nursery rhyme?"
 			<br>
-			"Don't joke about that. It's a monstrosity like any other. This one's just kept docile by all tainted refuse we toss."
+			"Don't joke about that. It's a monstrosity like any other. This one's just kept docile by all the tainted refuse we toss."
 			<br>
 			"You only give it power by believing it's real."
 		<</addinlineevent>>
@@ -3650,7 +3650,7 @@ You release the chain that holds her manacles to the wall and pick her up. She d
 	writing_right_foot: _brandings.right_foot
 }>>
 <<if $hcChallenge.faithBlooms>>
-	<<set $follower.hair += "_challenge_faithBlooms">>
+	<<set $follower.hair += "-challenge-faithBlooms">>
 <</if>>
 
 <<run Time.timeTravel(new DateTime(1390, 5, 31, 22, 0))>>
@@ -4560,7 +4560,7 @@ You slump back against the wall, resigned to your fate. You know there's no esca
 <<set $follower to {
 	name: "witchprisoner",
 	base: "base",
-	left_arm: "left_arm",
+	left_arm: "left-arm",
 	hair: $hc.witchHair,
 	writing_right_cheek: _brandings.right_cheek,
 	writing_chest: _brandings.chest,

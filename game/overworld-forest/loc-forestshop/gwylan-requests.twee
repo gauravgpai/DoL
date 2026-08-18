@@ -1624,7 +1624,7 @@ You stretch your wings out again. They feel noticeably lighter, but look magnifi
 		<<ejaculation>><<npcincr Gwylan lust -25>><<llllust>>
 	<<else>>
 		<<if _gwylanStatus.includesAny("dom", "lust")>>
-			<<He>> hums and holds you tight you as you recover from your <<if $orgasmcurrent gt 1>>final<</if>> orgasm. <<gwylanHypnosis "devotion" 2>><br>
+			<<He>> hums and holds you tight as you recover from your <<if $orgasmcurrent gt 1>>final<</if>> orgasm. <<gwylanHypnosis "devotion" 2>><br>
 			<<if $consensual is 1>>
 				"You did great, <<pcpetname "Gwylan">>,"
 			<<else>>
@@ -2610,7 +2610,7 @@ Finally, with one last hit of the hammer on the chisel, your belt clatters to th
 		<<ejaculation>><<npcincr Gwylan lust -25>><<llllust>>
 	<<else>>
 		<<if _gwylanStatus.includesAny("dom", "lust")>>
-			<<He>> hums and holds you tight you as you recover from your <<if $orgasmcurrent gt 1>>final<</if>> orgasm. <<gwylanHypnosis "devotion" 2>><br>
+			<<He>> hums and holds you tight as you recover from your <<if $orgasmcurrent gt 1>>final<</if>> orgasm. <<gwylanHypnosis "devotion" 2>><br>
 			<<if $consensual is 1>>
 				"You did great, <<pcpetname "Gwylan">>,"
 			<<else>>
@@ -2975,7 +2975,7 @@ Gwylan leads you back to the shop. "I'm looking forward to what we can do with t
 				"I... have a craving. If you could just be a dear and... and go get me a bunch of plums." <<He>> reaches forward and pinches your cheek. "Please?"
 				<br><br>
 
-				<<He>> loweers <<his>> hands, placing them over <<his>> <<bellyDescription "Gwylan">>. "Lots of them. I'm eating for two right now, after all."
+				<<He>> lowers <<his>> hands, placing them over <<his>> <<bellyDescription "Gwylan">>. "Lots of them. I'm eating for two right now, after all."
 			<<else>>
 				<<set $_types to []>>
 				<<run $_request.items.forEach(item => $_types.pushUnique(item.type))>>
@@ -3239,7 +3239,7 @@ Gwylan leads you back to the shop. "I'm looking forward to what we can do with t
 				<<case 4>>
 					<<hypnosisText "<span class='purple'>Gwylan's warm smile makes your heart skip a beat. You've made <<him>> happy, which makes you happy in turn.</span><<trauma -12>><<arousal 1000>><<hallucinogen 80>><<lltrauma>><<garousal>><<ghallucinogens>>">>
 				<<default>>
-					<<hypnosisText "<span class='pink'>Gwylan's proud smile nearly brings you to your knees. You're awash with primal fulfillment.</span><<trauma -16>><<arousal 3000>><<drugs 80>><<lltrauma>><<gggarousal>><<gdrugged>>">>
+					<<hypnosisText "<span class='pink'>Gwylan's proud smile nearly brings you to your knees. You're awash with primal fulfilment.</span><<trauma -16>><<arousal 3000>><<drugs 80>><<lltrauma>><<gggarousal>><<gdrugged>>">>
 			<</switch>>
 		<</if>>
 		/* Save as recently completed task for use later */

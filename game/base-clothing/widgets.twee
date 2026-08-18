@@ -34,6 +34,7 @@
 			<<for _outfitSlot, _outfitName range _outfitPrimaryWear>>
 				<<if $worn[_outfitSlot].name isnot "naked">>
 					<<generalUndress `clothesReturnLocation($worn[_outfitSlot])` _outfitSlot>>
+					<<dry>>
 				<</if>>
 				<<set _pieceId to setup.clothes[_outfitSlot].findIndex(item => item.name is _outfitName)>>
 				<<if _pieceId isnot -1>> <!-- findIndex() returns -1 if no index is found -->
@@ -723,7 +724,7 @@
 
 <<widget "upperruined">>
 	<<set _noRebuy to _args[0]>>
-	<<if $worn.upper.name is "naked" and $worn.under_upper.type.includes("covered")>>
+	<<if $worn.upper.name is "naked" and $worn.under_upper.type.includes("torso_covering")>>
 		<<generalRuined "under_upper">>
 	<<else>>
 		<<generalRuined "upper">>
@@ -732,7 +733,7 @@
 
 <<widget "lowerruined">>
 	<<set _noRebuy to _args[0]>>
-	<<if $worn.lower.name is "naked" and $worn.under_lower.type.includes("covered")>>
+	<<if $worn.lower.name is "naked" and $worn.under_lower.type.includes("lower_covering")>>
 		<<generalRuined "under_lower">>
 	<<else>>
 		<<generalRuined "lower">>
@@ -1610,6 +1611,13 @@
 	<<set $upperwetstage to 0>><<set $lowerwetstage to 0>><<set $underupperwetstage to 0>><<set $underlowerwetstage to 0>>
 <</widget>>
 
+<<widget "dry_item">>
+	<<set _slot_to_dry to _args[0] + "wet">>
+	<<set V[_slot_to_dry] to 0>>
+	<<set _slot_to_dry to _slot_to_dry + "stage">>
+	<<set V[_slot_to_dry] to 0>>
+<</widget>>
+
 /*The "searchWardrobeForItem" widget searches the wardrobe for an item that matches a given item stored somewhere else, the argument are as follows; slot, item index.*/
 
 <<widget "searchWardrobeForItem">>
@@ -1720,22 +1728,27 @@
 				<<for _labelWW, _valueWW range _outfitPrimary>>
 					<<if _valueWW isnot "broken" and _valueWW isnot "split">>
 						<<for _j to 0; _j lt $_selectedWardrobe[_labelWW].length; _j++>>
-							<<if $_selectedWardrobe[_labelWW][_j].name is _valueWW and _item.colour is $_selectedWardrobe[_labelWW][_j].colour and _item.accessory_colour is $_selectedWardrobe[_labelWW][_j].accessory_colour and _item.pattern is $_selectedWardrobe[_labelWW][_j].pattern>>
-								<<if $_selectedWardrobe[_labelWW][_j].outfitSecondary[1] isnot _item.name>>
+							<<set _selectedItem to $_selectedWardrobe[_labelWW][_j]>>
+							<<if $_selectedWardrobe[_labelWW][_j].name is _valueWW and _item.colour is _selectedItem.colour and _item.pattern is _selectedItem.pattern>>
+								<<if _item.accessory_colour isnot 0 and _selectedItem.accessory_colour isnot 0 /* Give some leniency when selecting outfit pieces when one doesn't use accessory colours */
+									and _item.accessory_colour isnot _selectedItem.accessory_colour>>
+									<<continue>>
+								<</if>>
+								<<if _selectedItem.outfitSecondary[1] isnot _item.name>>
 									<<continue>>
 								<</if>>
 								<<set _matched to 0>>
-								<<if $_selectedWardrobe[_labelWW][_j].colour isnot "custom">>
+								<<if _selectedItem.colour isnot "custom">>
 									<<set _matched++>>
-								<<elseif _item.colourCustom isnot undefined and $_selectedWardrobe[_labelWW][_j].colourCustom isnot undefined>>
-									<<if _item.colourCustom is $_selectedWardrobe[_labelWW][_j].colourCustom>>
+								<<elseif _item.colourCustom isnot undefined and _selectedItem.colourCustom isnot undefined>>
+									<<if _item.colourCustom is _selectedItem.colourCustom>>
 										<<set _matched++>>
 									<</if>>
 								<</if>>
-								<<if $_selectedWardrobe[_labelWW][_j].accessory is 0 or $_selectedWardrobe[_labelWW][_j].accessory_colour isnot "custom">>
+								<<if _selectedItem.accessory is 0 or _selectedItem.accessory_colour isnot "custom">>
 									<<set _matched++>>
-								<<elseif _item.accessory_colourCustom isnot undefined and $_selectedWardrobe[_labelWW][_j].accessory_colourCustom isnot undefined>>
-									<<if _item.accessory_colourCustom is $_selectedWardrobe[_labelWW][_j].accessory_colourCustom>>
+								<<elseif _item.accessory_colourCustom isnot undefined and _selectedItem.accessory_colourCustom isnot undefined>>
+									<<if _item.accessory_colourCustom is _selectedItem.accessory_colourCustom>>
 										<<set _matched++>>
 									<</if>>
 								<</if>>

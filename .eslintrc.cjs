@@ -67,6 +67,7 @@ module.exports = {
 		Stack: "readonly",
 		Wikifier: "readonly",
 		// DoL other namespaces/objects
+		ClothesItem: "readonly",
 		Constants: "readonly",
 		ConstantsLoader: "readonly",
 		Cooker: "readonly",
@@ -114,6 +115,7 @@ module.exports = {
 		calculatePenisBulge: "readonly",
 		calchairlengthstage: "readonly",
 		canBeMPregnant: "readonly",
+		cheatsUpdateSlider: "readonly",
 		closeOverlay: "readonly",
 		clothesDataTrimmer: "readonly",
 		clothesIndex: "readonly",

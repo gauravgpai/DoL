@@ -3,7 +3,7 @@
 function initHandheld() {
 	/** @type {ClothesItem[]} */
 	const clothing = [
-		{
+		new ClothesItem({
 			index: 0,
 			slot: "handheld",
 			name: "naked",
@@ -34,8 +34,8 @@ function initHandheld() {
 			iconFile: 0,
 			accIcon: 0,
 			mainImage: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 1,
 			slot: "handheld",
 			name: "umbrella",
@@ -87,8 +87,8 @@ function initHandheld() {
 			accIcon: "umbrella_acc.png",
 			zIndex: "over_head",
 			coverBackImage: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 2,
 			slot: "handheld",
 			name: "parasol",
@@ -143,8 +143,8 @@ function initHandheld() {
 			accIcon: "parasol_acc.png",
 			zIndex: "over_head",
 			coverBackImage: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 3,
 			slot: "handheld",
 			name: "sweet lolita parasol",
@@ -199,8 +199,8 @@ function initHandheld() {
 			accIcon: "sweetparasol_acc.png",
 			zIndex: "over_head",
 			coverBackImage: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 4,
 			slot: "handheld",
 			name: "paper parasol",
@@ -228,7 +228,20 @@ function initHandheld() {
 			accessory_colour: 0,
 			accessory_colour_options: [],
 			pattern: 0,
-			pattern_options: ["apricots","camellia", "cherryblossom", "cranes", "flower", "lotuses","morningglory", "peaches", "plain", "spiderlily", "wave", "wisteria"],
+			pattern_options: [
+				"apricots",
+				"camellia",
+				"cherryblossom",
+				"cranes",
+				"flower",
+				"lotuses",
+				"morningglory",
+				"peaches",
+				"plain",
+				"spiderlily",
+				"wave",
+				"wisteria",
+			],
 			pattern_caption: true,
 			pattern_layer: "secondary",
 			back_img: 1,
@@ -240,8 +253,8 @@ function initHandheld() {
 			iconFile: "paper-parasol.png",
 			accIcon: "pattern",
 			coverBackImage: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 5,
 			slot: "handheld",
 			name: "purse",
@@ -289,8 +302,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "purse.png",
 			accIcon: "purse_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 6,
 			slot: "handheld",
 			name: "heart purse",
@@ -338,8 +351,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "heart_purse.png",
 			accIcon: "heart_purse_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 7,
 			slot: "handheld",
 			name: "messenger bag",
@@ -371,8 +384,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "messenger_bag.png",
 			accIcon: "messenger_bag_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 8,
 			slot: "handheld",
 			name: "backpack",
@@ -407,8 +420,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "backpack.png",
 			accIcon: "backpack_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 9,
 			slot: "handheld",
 			name: "paper fan",
@@ -434,10 +447,36 @@ function initHandheld() {
 			shop: ["clothing"],
 			accessory: 1,
 			accessory_colour: 0,
-			accessory_colour_options: ["black", "blue", "brown", "green", "pink", "purple", "red", "tangerine", "teal", "white", "yellow", "neon blue", "custom"],
+			accessory_colour_options: [
+				"black",
+				"blue",
+				"brown",
+				"green",
+				"pink",
+				"purple",
+				"red",
+				"tangerine",
+				"teal",
+				"white",
+				"yellow",
+				"neon blue",
+				"custom",
+			],
 			accessory_colour_sidebar: "secondary",
 			pattern: 0,
-			pattern_options: ["apricots","camellia", "cherryblossom", "cranes", "lotuses","morningglory", "peaches", "plain", "spiderlily", "wave", "wisteria"],
+			pattern_options: [
+				"apricots",
+				"camellia",
+				"cherryblossom",
+				"cranes",
+				"lotuses",
+				"morningglory",
+				"peaches",
+				"plain",
+				"spiderlily",
+				"wave",
+				"wisteria",
+			],
 			pattern_layer: "tertiary",
 			pattern_caption: true,
 			cursed: 0,
@@ -446,8 +485,8 @@ function initHandheld() {
 			accIcon: "pattern",
 			zIndex: "head",
 			holdPosition: "right_hold",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 10,
 			slot: "handheld",
 			name: "feather duster",
@@ -480,8 +519,8 @@ function initHandheld() {
 			zIndex: "head",
 			iconFile: "feather_duster.png",
 			accIcon: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 11,
 			slot: "handheld",
 			name: "pom poms",
@@ -530,8 +569,8 @@ function initHandheld() {
 			iconFile: "pom_poms.png",
 			accIcon: "pom_poms_acc.png",
 			leftImage: 1,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 12,
 			slot: "handheld",
 			name: "balloon",
@@ -563,8 +602,8 @@ function initHandheld() {
 			zIndex: "handheld_over_sleeve",
 			iconFile: "balloon.png",
 			accIcon: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 13,
 			slot: "handheld",
 			name: "heart balloon",
@@ -596,8 +635,8 @@ function initHandheld() {
 			zIndex: "handheld_over_sleeve",
 			iconFile: "balloon-heart.png",
 			accIcon: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 14,
 			slot: "handheld",
 			name: "gym bag",
@@ -643,8 +682,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "gym_bag.png",
 			accIcon: "gym_bag_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 15,
 			slot: "handheld",
 			name: "cane",
@@ -677,8 +716,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "cane.png",
 			accIcon: "cane_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 16,
 			slot: "handheld",
 			name: "forearm crutch",
@@ -712,8 +751,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "crutch.png",
 			accIcon: "crutch_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 17,
 			slot: "handheld",
 			name: "broomstick",
@@ -745,8 +784,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "broom.png",
 			accIcon: "broom_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 18,
 			slot: "handheld",
 			name: "glowstick",
@@ -778,8 +817,8 @@ function initHandheld() {
 			zIndex: "head",
 			iconFile: "glowstick.png",
 			accIcon: "glowstick_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 19,
 			slot: "handheld",
 			name: "pinwheel",
@@ -826,8 +865,8 @@ function initHandheld() {
 			zIndex: "head",
 			iconFile: "pinwheel.png",
 			accIcon: "pinwheel_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 20,
 			slot: "handheld",
 			name: "heart hand warmer",
@@ -857,8 +896,8 @@ function initHandheld() {
 			cursed: 0,
 			location: 0,
 			iconFile: "heart_hand_warmer.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 21,
 			slot: "handheld",
 			name: "floral parasol",
@@ -937,8 +976,8 @@ function initHandheld() {
 			accIcon: "pattern",
 			zIndex: "over_head",
 			coverBackImage: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 22,
 			slot: "handheld",
 			name: "regal parasol",
@@ -992,8 +1031,8 @@ function initHandheld() {
 			accIcon: "regal_parasol_acc.png",
 			zIndex: "over_head",
 			coverBackImage: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 23,
 			slot: "handheld",
 			name: "clock purse",
@@ -1024,8 +1063,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "clock_purse.png",
 			accIcon: "clock_purse_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 24,
 			slot: "handheld",
 			name: "cloud purse",
@@ -1057,8 +1096,8 @@ function initHandheld() {
 			cursed: 0,
 			location: 0,
 			iconFile: "pattern",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 25,
 			slot: "handheld",
 			name: "teddy backpack",
@@ -1090,8 +1129,8 @@ function initHandheld() {
 			cursed: 0,
 			location: 0,
 			iconFile: "teddy_backpack.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 26,
 			slot: "handheld",
 			name: "star purse",
@@ -1137,8 +1176,8 @@ function initHandheld() {
 			cursed: 0,
 			location: 0,
 			iconFile: "star_purse.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 27,
 			slot: "handheld",
 			name: "candy cane",
@@ -1170,8 +1209,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "candy_cane.png",
 			accIcon: "candy_cane_acc.png",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 28,
 			slot: "handheld",
 			name: "tote bag",
@@ -1203,8 +1242,8 @@ function initHandheld() {
 			location: 0,
 			iconFile: "tote_bag.png",
 			accIcon: 0,
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 29,
 			slot: "handheld",
 			name: "luggage",
@@ -1213,7 +1252,7 @@ function initHandheld() {
 			description: "Packed and ready.",
 			cost: 6500,
 			shop: ["clothing"],
-			type: ["normal","school","bookbag"],
+			type: ["normal", "school", "bookbag"],
 			state: 0,
 			state_base: 0,
 			integrity: 100,
@@ -1223,10 +1262,7 @@ function initHandheld() {
 			word: "n",
 			plural: 1,
 			colour: 0,
-			colour_options: [
-				"black", "blue", "brown", "green", "pink", "purple",
-				"red", "tangerine", "teal", "white", "yellow", "custom"
-			],
+			colour_options: ["black", "blue", "brown", "green", "pink", "purple", "red", "tangerine", "teal", "white", "yellow", "custom"],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
@@ -1241,8 +1277,8 @@ function initHandheld() {
 			iconFile: "luggage.png",
 			accIcon: "pattern",
 			holdPosition: "right_cover",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 30,
 			slot: "handheld",
 			name: "vintage suitcase",
@@ -1251,7 +1287,7 @@ function initHandheld() {
 			description: "A case from another time.",
 			cost: 6500,
 			shop: ["clothing"],
-			type: ["normal","school","bookbag"],
+			type: ["normal", "school", "bookbag"],
 			state: 0,
 			state_base: 0,
 			integrity: 100,
@@ -1261,10 +1297,7 @@ function initHandheld() {
 			word: "n",
 			plural: 1,
 			colour: 0,
-			colour_options: [
-				"black", "blue", "brown", "green", "pink", "purple",
-				"red", "tangerine", "teal", "white", "yellow", "custom"
-			],
+			colour_options: ["black", "blue", "brown", "green", "pink", "purple", "red", "tangerine", "teal", "white", "yellow", "custom"],
 			colour_sidebar: 1,
 			accessory: 1,
 			accessory_colour: 0,
@@ -1276,53 +1309,9 @@ function initHandheld() {
 			iconFile: "vintage-suitcase.png",
 			accIcon: "vintage-suitcase-acc.png",
 			holdPosition: "right_cover",
-		},
-		{
+		}),
+		new ClothesItem({
 			index: 31,
-			slot: "handheld",
-			name: "school bag",
-			name_cap: "School bag",
-			variable: "school bag",
-			description: "For your books.",
-			cost: 1500,
-			shop: ["clothing"],
-			type: ["school", "bookbag"],
-			state: 0,
-			state_base: 0,
-			integrity: 100,
-			integrity_max: 100,
-			fabric_strength: 25,
-			reveal: 200,
-			word: "n",
-			plural: 1,
-			colour: 0,
-			colour_options: [
-				"black", "navy blue", "wine", "brown", "olive",
-				"pink", "light pink", "purple", "lilac", "red",
-				"tangerine", "teal", "white", "yellow", "custom"
-			],
-			colour_sidebar: 1,
-			accessory: 1,
-			accessory_colour: 0,
-			accessory_colour_options: [
-				"black", "navy blue", "wine", "brown", "olive",
-				"pink", "light pink", "purple", "lilac", "red",
-				"tangerine", "teal", "white", "yellow", "custom"
-			],
-			accessory_colour_sidebar: 1,
-			pattern: 0,
-			pattern_options: ["plain", "bird", "bird angel", "bird demon", "bird fallen", "cat", "cat angel", "cat demon", "cat fallen", "cow", "cow angel", "cow demon", "cow fallen", "fox", "fox angel", "fox demon", "fox fallen", "heart", "heart angel", "heart demon", "heart fallen", "wolf", "wolf angel", "wolf demon", "wolf fallen"],
-			pattern_layer: "tertiary",
-			gender: "n",
-			warmth: 1,
-			set: "handheld",
-			cursed: 0,
-			location: 0,
-			iconFile: "school-bag.png",
-			accIcon: "school-bag-acc.png",
-		},
-		{
-			index: 32,
 			slot: "handheld",
 			name: "clear umbrella",
 			name_cap: "Clear umbrella",
@@ -1348,7 +1337,7 @@ function initHandheld() {
 			accessory_colour: 0,
 			accessory_colour_options: [],
 			pattern: 0,
-			pattern_options: ["plain","autumn","daisies","donuts","ducks","lemons","spring","strawberries","summer","sunflowers","winter"],
+			pattern_options: ["plain", "autumn", "daisies", "donuts", "ducks", "lemons", "spring", "strawberries", "summer", "sunflowers", "winter"],
 			pattern_caption: true,
 			pattern_layer: "secondary",
 			back_img: 1,
@@ -1359,7 +1348,7 @@ function initHandheld() {
 			accIcon: "pattern",
 			coverBackImage: 0,
 			zIndex: "over_head",
-		},
+		}),
 	];
 	setup.clothes.handheld = clothing;
 

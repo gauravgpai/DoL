@@ -89,9 +89,8 @@
 		<<He>> tosses the cup to the ground, pushing you away.
 		<br><br>
 
-		<<endevent>>
 		<<if $location is "park">>
-			<<link [[Next|Park]]>><</link>>
+			<<link [[Next|Park]]>><<endevent>><</link>>
 		<<else>>
 			<<whitneyoptions>>
 		<</if>>
@@ -152,7 +151,7 @@
 			<br><br>
 
 			The taste of <<his>> cum mixes with what's left of the milkshake, and you swallow it quickly.
-			<<oralejacstat>><<cumswallow "human">>
+			<<oralejacstat>><<cumswallow "human" undefined undefined "consensual">>
 		<</if>>
 	<<else>>
 		<<if random(1,100) lte (_whitney.dom * 5)>> <!-- max dom is 20, so * 5 for 100 -->
@@ -285,6 +284,7 @@
 		<</if>>
 		<br>
 	<<else>>
+		<<npc Whitney>>
 		<<whitneyoptions>>
 		<br>
 	<</if>>
@@ -307,6 +307,7 @@
 	<<if $location is "park">>
 		<<link [[Next|Whitney Park]]>><</link>>
 	<<else>>
+		<<npc Whitney>>
 		<<whitneyoptions>>
 	<</if>>
 	<br>
@@ -356,7 +357,7 @@
 
 :: Whitney Milkshake Give
 	Whitney looks taken aback as you hand <<him>> the milkshake, and roughly wraps <<his>> arm around your shoulder.
-	You spend the next twenty minutes leaning against <<him>>, idly chatting while Whitney <<print playerBellyVisible() ? "drinks" : "drinks and smokes">>.
+	You spend the next twenty minutes leaning against <<him>>, idly chatting while Whitney <<print playerBellyVisible() || V.location === "flats" ? "drinks" : "drinks and smokes">>.
 	When <<hes>> done, <<he>> leans over and kisses you with a surprising softness. <<He>> tastes like vanilla and cigarettes.
 	<br><br>
 
@@ -370,7 +371,7 @@
 	<<set _whitney to C.npc.Whitney>>
 	Whitney eyes the milkshake in your hand. You hesitate, but brace yourself and wordlessly offer the drink. <<He>> stares at you silently.
 	You start to retract the drink, but in a flash, Whitney splashes it over your face.
-	<span class="red">It drips down to soak through your clothes.</span><<trauma 3>><<stress 8>><<gtrauma>><<ggstress>><<wet_upper>>
+	<span class="red">It drips down to soak through your clothes.</span><<trauma 3>><<stress 8>><<gtrauma>><<ggstress>><<wetUpper>>
 	<br><br>
 
 	Whitney chuckles, evidently pleased with <<his>> handiwork, swiping <<his>> finger across your cheek and licking it clean.
@@ -727,7 +728,7 @@
 		When <<he>> realises what you were trying to do, <<he>> looks livid. <<He>> raises <<his>> fist at you. "Do I look fucking stupid to you?"
 		<br><br>
 		<<He>> dumps the remainder of the shake on your head, soaking your clothes and ruining your hair. <<He>> gives a mean laugh. "Fuck around and find out, dumbass."
-		<<wet_upper>><<ruffleHair>>
+		<<wetUpper>><<ruffleHair>>
 		<br><br>
 
 		<<if $location is "park">>
@@ -877,7 +878,7 @@
 	<</if>>
 	<<set $phase to 1>>
 	Whitney shoves you down onto the <<= Weather.precipitation is "snow" ? "ledge" : "bench">> and climbs on top of you. "A deal's a deal, slut. Shut up and pucker up."
-	<<if !$worn.face.type.includes("covered") and !$worn.face.type.includes("gag")>>
+	<<if !$worn.face.type.includes("face_covering") and !$worn.face.type.includes("gag")>>
 		<<set $mouthuse to "kiss">><<set $mouthstate to "kissentrance">><<set $NPCList[0].mouth to "kissentrance">>
 	<</if>>
 

@@ -5,6 +5,8 @@
 	softLockable: true, //Will disable the unlocking of the feat if softmode is enabled
 	pregnancyLockable: true, //Will disable the unlocking of the feat if certain pregnancy settings are too low
 	hidden: true, //Will hide the feat at all times unless unlocked, best for feats for unreleased content
+	alt: "altTitle", //Alternate title to display if the feat is unlocked and altCond is met
+	altCond: "conditional" //Conditional evaluated to decide whether or not to display the altTitle (the feat must be owned in the current save for this to happen, regardless of the conditional)
 */
 setup.feats = {
 	"Pocket Change": {
@@ -211,8 +213,17 @@ setup.feats = {
 		title: "Science Fair Winner",
 		desc: "Blind them with science.",
 		difficulty: 2,
-		series: "",
+		series: "scienceFair",
 		filter: ["All", "General"],
+		softLockable: true,
+	},
+	"Thesis Offence": {
+		title: "Thesis Offence",
+		desc: "You maintained your scientific integrity by force.",
+		difficulty: 3,
+		series: "scienceFair",
+		filter: ["All", "General"],
+		hint: "Hint: Blind them with something not-quite-scientific.",
 		softLockable: true,
 	},
 	"Maths Competition Winner": {
@@ -233,11 +244,11 @@ setup.feats = {
 	},
 	"50 Shades of Tan": {
 		title: "50 Shades of Tan",
-		desc: "Achieved 5 distinct tanlines at once.",
+		desc: "Achieved 5 distinct tan lines at once.",
 		difficulty: 2,
 		series: "",
 		filter: ["All", "Special"],
-		hint: "?????",
+		hint: "Hint: Spend some time in the sun.",
 	},
 	"Most Aware": {
 		title: "Most Aware",
@@ -323,6 +334,8 @@ setup.feats = {
 		difficulty: 3,
 		series: "",
 		filter: ["All", "Stats"],
+		alt: "Degree in Lewdity",
+		altCond: "random(100) is 100",
 	},
 	"Perfect Record": {
 		title: "Perfect Record",
@@ -467,6 +480,13 @@ setup.feats = {
 	"Giddy Up": {
 		title: "Giddy Up",
 		desc: "Throw Whitney into a pool.",
+		difficulty: 2,
+		series: "",
+		filter: ["All", "Social"],
+	},
+	"Whitney's Secret": {
+		title: "Whitney's Secret",
+		desc: "Discover Whitney's collection.",
 		difficulty: 2,
 		series: "",
 		filter: ["All", "Social"],
@@ -1843,6 +1863,24 @@ setup.feats = {
 		hint: "Hint: Date your way into the town's upper echelons.",
 		softLockable: true,
 	},
+	"Stomping Down The Street": {
+		title: "Stomping Down The Street",
+		desc: "Handed out lots of flyers on the High Street.",
+		difficulty: 1,
+		series: "Flyers",
+		filter: ["All", "Discoveries-Town"],
+		hint: "Hint: Work with Niki.",
+		softLockable: true,
+	},
+	"Hear Me Roar": {
+		title: "Hear Me Roar",
+		desc: "Handed out even more flyers on the High Street.",
+		difficulty: 2,
+		series: "Flyers",
+		filter: ["All", "Discoveries-Town"],
+		hint: "Hint: Work with Niki.",
+		softLockable: true,
+	},
 	"Max Those Shots": {
 		title: "Max Those Shots",
 		desc: "Holding a lot of pepper spray.",
@@ -2017,6 +2055,7 @@ function featsMerge() {
 	}
 
 	if (!featData.specialClothes) featData.specialClothes = [];
+	if (!featData.seeds) featData.seeds = [];
 	// eslint-disable-next-line prettier/prettier
 	if (!Array.isArray(featData.specialClothes)) featData.specialClothes = getUnlockedSpecialSets(updateSpecialClothesNames(featData.specialClothes)).filter(set => setup.specialClothesSets[set].feat);
 	const loadFeats = (data = {}) => {
@@ -2026,6 +2065,11 @@ function featsMerge() {
 					? date
 					: getUnlockedSpecialSets(updateSpecialClothesNames(date)).filter(set => setup.specialClothesSets[set].feat);
 				clothes.forEach(a => featData.specialClothes.pushUnique(a));
+				return;
+			}
+			if (key === "seeds") {
+				const seeds = Array.isArray(date) ? date : V.plants_known.filter(plant => setup.foodstuff[plant].tending?.featCost);
+				seeds.forEach(a => featData.seeds.pushUnique(a));
 				return;
 			}
 			if (!featData[key] || new Date(date).getTime() < new Date(featData[key]).getTime()) {
@@ -2057,7 +2101,12 @@ function featsMerge() {
 	if (localStorageSaves) {
 		if (localStorageSaves.autosave) {
 			localStorageSaves.autosave.state.history = State.deltaDecode(localStorageSaves.autosave.state.delta);
-			DoLSave.decompressIfNeeded(localStorageSaves.autosave);
+			try {
+				DoLSave.decompressIfNeeded(localStorageSaves.autosave);
+			} catch (e) {
+				// a save that cannot be decompressed has no feats to read, skip it
+				console.warn("Couldn't decompress a save while loading feats, skipping it.", e);
+			}
 
 			if (localStorageSaves.autosave.state?.history?.[localStorageSaves.autosave.state.index]?.variables) {
 				const variables = localStorageSaves.autosave.state.history[localStorageSaves.autosave.state.index].variables;
@@ -2073,7 +2122,12 @@ function featsMerge() {
 			localStorageSaves.slots.forEach(slot => {
 				if (slot) {
 					slot.state.history = State.deltaDecode(slot.state.delta);
-					DoLSave.decompressIfNeeded(slot);
+					try {
+						DoLSave.decompressIfNeeded(slot);
+					} catch (e) {
+						// a save that cannot be decompressed has no feats to read, skip it
+						console.warn("Couldn't decompress a save while loading feats, skipping it.", e);
+					}
 					if (slot.state.history?.[slot.state.index]?.variables) {
 						const variables = slot.state.history[slot.state.index].variables;
 						if (variables.feats) {
@@ -2276,7 +2330,8 @@ function earnHourlyFeats() {
 		earnFeat("Broodmother Zoologist");
 	}
 
-	if (V.spraymax >= 7) earnFeat("Max Those Shots");
+	if (V.spraymax >= 8) earnFeat("Max Those Shots");
+	if (V.spraymax > 8) console.warn("pepper spray count above 8! does feat threshold need to be increased?");
 	if ((V.semen_volume >= 2000 && V.semen_amount >= V.semen_volume) || (V.milk_volume >= 2000 && V.milk_amount >= V.milk_volume)) earnFeat("Feeling Full");
 	if (V.cool >= 400) earnFeat("Social Butterfly");
 	if (V.cool <= 2 && !V.backgroundTraits.includes("nerd")) earnFeat("Anti-Social Moth");
@@ -2301,8 +2356,9 @@ function earnHourlyFeats() {
 	if (V.produce_sold >= 100) earnFeat("Hawker");
 	if (V.produce_sold >= 1000) earnFeat("Vendor");
 	if (V.produce_sold >= 5000) earnFeat("Merchant");
-	if (V.plants_known.length >= 13) earnFeat("Seedy");
-	if (V.plants_known.length >= 26) earnFeat("Breedy");
+	const totalSeeds = Object.values(setup.foodstuff).filter(plant => plant.tending?.has_seeds).length;
+	if (V.plants_known.length >= totalSeeds / 2) earnFeat("Seedy");
+	if (V.plants_known.length >= totalSeeds) earnFeat("Breedy");
 	if (V.daily.ex.road === 1 && V.daily.ex.cream === 1 && V.daily.ex.flyover === 1) earnFeat("A Lewd Adventure");
 	if (V.athletics >= 1000) earnFeat("Swift");
 
@@ -2374,10 +2430,7 @@ function earnHourlyFeats() {
 	}
 
 	// Should be last
-	let currentMax = 0;
-	for (let i = 0; i < Object.keys(setup.feats).length; i++) {
-		currentMax += setup.feats[Object.keys(setup.feats)[i]].difficulty;
-	}
+	const currentMax = Object.values(setup.feats).reduce((sum, feat) => sum + feat.difficulty, 0);
 	if (V.feats.allSaves.points >= Math.floor(currentMax * 0.5)) earnFeat("My Collection of Feats");
 	if (V.feats.allSaves.points >= Math.floor(currentMax * 0.95)) earnFeat("My Timeless Collection of Feats");
 
@@ -2391,7 +2444,7 @@ function updateFeats() {
 	let coins = 0;
 	let writeFlag = false;
 	// some entries within the feats object are not actually feats
-	const notFeats = ["points", "specialClothes"];
+	const notFeats = ["points", "specialClothes", "seeds"];
 	// at the game start, V.feats is not yet imported
 	const allFeats = (passage() === "Start" ? JSON.parse(localStorage.getItem("dolFeats")) : V.feats.allSaves) || {};
 	const curFeats = V.feats.currentSave;
@@ -2449,6 +2502,20 @@ function updateFeats() {
 		});
 	}
 	allFeats.specialClothes = specialClothes;
+
+	const seeds = allFeats.seeds || [];
+	if (V.plants_known && V.plants_known.length && !V.feats.locked && !V.cheatsEnabled) {
+		const unlockedSeeds = V.plants_known.filter(plant => setup.foodstuff[plant].tending?.featCost);
+		// merge unlockedSeeds into seeds
+		unlockedSeeds.forEach(seed => {
+			if (!seeds.includes(seed)) {
+				seeds.push(seed);
+				writeFlag = true;
+			}
+		});
+	}
+	allFeats.seeds = seeds;
+
 	V.feats.allSaves = allFeats;
 
 	// update permanent feat storage
@@ -2480,6 +2547,7 @@ function setupFeatBoosts(force) {
 		},
 		sexToys: [{}, {}, {}, {}, {}, {}],
 		specialClothesSets: {},
+		seeds: {},
 		earSlimeType: "immaturePassive",
 	};
 
@@ -2602,6 +2670,12 @@ function setupFeatBoosts(force) {
 			cost: 0,
 			missing: "Unlock this boost by obtaining a hidden feat (" + setup.feats["Curious Attire"].hint + ")",
 		},
+		seeds: {
+			name: "Starting Seeds",
+			required: ["Seedy", "Breedy"],
+			cost: 0,
+			missing: "Unlock this boost by obtaining the 'Seedy' feat",
+		},
 		sexToys: {
 			name: "Sex Toys",
 			required: ["Opened Pandoras Box", "Opened Pandoras Cocks"],
@@ -2661,7 +2735,7 @@ function applyFeatBoosts() {
 	// green thumb
 	if (upgrades.greenThumb) {
 		V.backgroundTraits.pushUnique("greenthumb");
-		if (V.fertilizer) ++V.fertilizer.current;
+		if (V.fertiliser) ++V.fertiliser.current;
 	}
 
 	// parasitic pregnancy
@@ -2788,11 +2862,18 @@ function applyFeatBoosts() {
 		specialClothesUpdate();
 		const level = details.specialClothing.purchased;
 		// old notes on the level:
-		/* Level 1 upgrade - unlock previosuly unlocked special clothing sets by selection. */
+		/* Level 1 upgrade - unlock previously unlocked special clothing sets by selection. */
 		/* Level 2 upgrade - unlock all special clothes unlocked in any other save. */
 		/* Level 3 upgrade - everything is remembered. */
 		unlocked.forEach(c => {
 			if (V.featsBoosts.specialClothesSets[c] === true) specialClothesUnlock("set", c, Math.clamp(level, 2, 3));
+		});
+	}
+
+	// seeds
+	if (upgrades.seeds) {
+		V.feats.allSaves.seeds.forEach(c => {
+			if (V.featsBoosts.seeds[c] === true) V.plants_known.push(c);
 		});
 	}
 

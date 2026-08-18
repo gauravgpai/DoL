@@ -315,6 +315,18 @@ setup.colours.hair = [
 		},
 	},
 	{
+		variable: "ebony",
+		name: "ebony",
+		name_cap: "Ebony",
+		csstext: "black",
+		natural: false,
+		dye: true,
+		canvasfilter: {
+			blend: "#302e2d",
+			brightness: -0.3,
+		},
+	},
+	{
 		variable: "jetblack",
 		name: "jet black",
 		name_cap: "Jet Black",
@@ -408,7 +420,7 @@ setup.colours.hair = [
 		variable: "darkbrown",
 		name: "dark brown",
 		name_cap: "Dark Brown",
-		csstext: "brown",
+		csstext: "darkbrown",
 		natural: true,
 		dye: true,
 		canvasfilter: {
@@ -425,6 +437,18 @@ setup.colours.hair = [
 		dye: true,
 		canvasfilter: {
 			blend: "#8f6e56",
+			brightness: -0.3,
+		},
+	},
+	{
+		variable: "copperbrown",
+		name: "copper brown",
+		name_cap: "Copper Brown",
+		csstext: "copperbrown",
+		natural: true,
+		dye: true,
+		canvasfilter: {
+			blend: "#9c4f37",
 			brightness: -0.3,
 		},
 	},
@@ -522,6 +546,17 @@ setup.colours.hair = [
 		},
 	},
 	{
+		variable: "frostblue",
+		name: "frost blue",
+		name_cap: "Frost Blue",
+		csstext: "frostblue",
+		natural: false,
+		dye: true,
+		canvasfilter: {
+			blend: "#b0c0f3",
+		},
+	},
+	{
 		variable: "green",
 		name: "green",
 		name_cap: "Green",
@@ -563,6 +598,17 @@ setup.colours.hair = [
 		dye: true,
 		canvasfilter: {
 			blend: "#008040",
+		},
+	},
+	{
+		variable: "aquamarine",
+		name: "aquamarine",
+		name_cap: "Aquamarine",
+		csstext: "aquamarine",
+		natural: false,
+		dye: true,
+		canvasfilter: {
+			blend: "#6dd1b0",
 		},
 	},
 	{
@@ -611,6 +657,17 @@ setup.colours.hair = [
 		},
 	},
 	{
+		variable: "rosegold",
+		name: "rosegold",
+		name_cap: "Rosegold",
+		csstext: "rosegold",
+		natural: false,
+		dye: true,
+		canvasfilter: {
+			blend: "#c47984",
+		},
+	},
+	{
 		variable: "crimson",
 		name: "crimson",
 		name_cap: "Crimson",
@@ -622,6 +679,18 @@ setup.colours.hair = [
 		},
 	},
 	{
+		variable: "wine",
+		name: "wine",
+		name_cap: "Wine",
+		csstext: "winehair",
+		natural: false,
+		dye: true,
+		canvasfilter: {
+			blend: "#790727",
+			brightness: -0.2,
+		},
+	},
+	{
 		variable: "purple",
 		name: "purple",
 		name_cap: "Purple",
@@ -630,6 +699,7 @@ setup.colours.hair = [
 		dye: true,
 		canvasfilter: {
 			blend: "#6a0d89",
+			brightness: -0.2,
 		},
 	},
 	{
@@ -652,6 +722,17 @@ setup.colours.hair = [
 		dye: true,
 		canvasfilter: {
 			blend: "#ab66ff",
+		},
+	},
+	{
+		variable: "grey",
+		name: "grey",
+		name_cap: "Grey",
+		csstext: "grey",
+		natural: false,
+		dye: true,
+		canvasfilter: {
+			blend: "#888484",
 		},
 	},
 	{
@@ -1015,7 +1096,8 @@ setup.colours.eyes = [
 			blend: "#917742",
 		},
 	},
-	{variable: "brown",
+	{
+		variable: "brown",
 		name: "brown",
 		name_cap: "Brown",
 		csstext: "brown",
@@ -1320,7 +1402,7 @@ setup.colours.clothes = [
 	{
 		variable: "witchbloom",
 		name: "witchbloom",
-		name_cap: "witchbloom",
+		name_cap: "Witchbloom",
 		csstext: "witchbloom",
 		canvasfilter: {
 			blend: "#743499",
@@ -1828,6 +1910,96 @@ setup.colours.mascara = [
 		csstext: "black",
 		canvasfilter: {
 			blend: "#292929",
+		},
+	},
+	{
+		variable: "brown waterproof",
+		name: "brown (waterproof)",
+		name_cap: "Brown (waterproof)",
+		csstext: "brown",
+		canvasfilter: {
+			blend: "#5a422e",
+		},
+	},
+	{
+		variable: "light brown waterproof",
+		name: "light brown (waterproof)",
+		name_cap: "Lught brown (waterproof)",
+		csstext: "light brown",
+		canvasfilter: {
+			blend: "#907b6a",
+		},
+	},
+	{
+		variable: "red waterproof",
+		name: "red (waterproof)",
+		name_cap: "Red (waterproof)",
+		csstext: "red",
+		canvasfilter: {
+			blend: "#97190b",
+		},
+	},
+	{
+		variable: "orange waterproof",
+		name: "orange (waterproof)",
+		name_cap: "Orange (waterproof)",
+		csstext: "orange",
+		canvasfilter: {
+			blend: "#cb6d10",
+		},
+	},
+	{
+		variable: "yellow waterproof",
+		name: "yellow (waterproof)",
+		name_cap: "Yellow (waterproof)",
+		csstext: "yellow",
+		canvasfilter: {
+			blend: "#cfb72c",
+		},
+	},
+	{
+		variable: "green waterproof",
+		name: "green (waterproof)",
+		name_cap: "Green (waterproof)",
+		csstext: "green",
+		canvasfilter: {
+			blend: "#0ba41d",
+		},
+	},
+	{
+		variable: "blue waterproof",
+		name: "blue (waterproof)",
+		name_cap: "Blue (waterproof)",
+		csstext: "blue",
+		canvasfilter: {
+			blend: "#1b3eb4",
+		},
+	},
+	{
+		variable: "pink waterproof",
+		name: "pink (waterproof)",
+		name_cap: "Pink (waterproof)",
+		csstext: "pink",
+		canvasfilter: {
+			blend: "#cb24a7",
+		},
+	},
+	{
+		variable: "purple waterproof",
+		name: "purple (waterproof)",
+		name_cap: "Purple (waterproof)",
+		csstext: "purple",
+		canvasfilter: {
+			blend: "#5d07a4",
+		},
+	},
+	{
+		variable: "white waterproof",
+		name: "white (waterproof)",
+		name_cap: "White (waterproof)",
+		csstext: "white",
+		canvasfilter: {
+			blend: "#eeeeee",
 		},
 	},
 	{

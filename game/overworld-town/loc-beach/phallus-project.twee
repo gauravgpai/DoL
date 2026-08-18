@@ -82,7 +82,7 @@ You approach the <<person>> just as the <<person2>><<person>> walks off.
 		<<insufficientStat "exhibitionism" "to show more">>
 		<br>
 	<</if>>
-	/* I'm using the base brothel icon throughout this file in place of a dedicated "seduciton" icon. If this is bad practice, feel free to correct it */
+	/* I'm using the base brothel icon throughout this file in place of a dedicated "seduction" icon. If this is bad practice, feel free to correct it */
 	<<brothelicon>><<link [[Convince <<him>> you've shown enough|Beach Phallus Flirt]]>><</link>>
 	<br>
 	<<investigateicon>><<link [[Look for someone else (0:15)|Beach Phallus]]>><<endevent>><<pass 15>><</link>>
@@ -785,6 +785,7 @@ Despite the shallow water and gentle waves, the occasional swell is still high e
 	<<neutral 1>>
 	<<molested>>
 	<<set $noBodyWriting to 1>>
+	<<set $speechdisable to 1>>
 	<<maninit>>
 	<<enable_rescue>>
 	<<set $NPCList[0].mouth to "underwater">>
@@ -1672,6 +1673,7 @@ You move along the beach and intercept the <<person>> as <<he>> swims by, callin
 	<<set $consensual to 1>>
 	<<neutral 1>>
 	<<set $noBodyWriting to 1>>
+	<<set $speechdisable to 1>>
 	<<maninit>>
 	<<if $phase lte 0>>
 		<<set $enemytrust += 100>>

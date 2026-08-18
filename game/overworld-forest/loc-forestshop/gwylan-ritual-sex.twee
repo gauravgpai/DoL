@@ -3,7 +3,11 @@
 <<set $outside to 0>><<set $location to "forest_shop">><<effects>><<run statusCheck("Gwylan")>>
 <<set _hideRitualOptions to true>>
 
-You tell Gwylan that you're ready to help enact the ritual.
+<<if $phase isnot "no">>
+	You tell Gwylan that you're ready to help enact the ritual.
+<<else>>
+	You ask Gwylan if you can lure a denizen of the forest for purging instead.
+<</if>>
 <br><br>
 
 <<if Time.isBloodMoon() or Time.monthDay is Time.lastDayOfMonth and Time.hour gte 16>>
@@ -31,10 +35,18 @@ You tell Gwylan that you're ready to help enact the ritual.
 
 		<<ind>><<link [[Lure a denizen of the forest for purging|Gwylan Forest Journey Prep]]>><<endevent>><</link>>
 		<br>
+	<<elseif $phase is "no">>
+		<<He>> shakes <<his>> head. "You've neglected me, dear." <<He>> smiles. It doesn't reach <<his>> eyes. "This is the least you can do."
+		<br><br>
+
+		<<ind>><<link [[Act as the forest's vessel|Gwylan Ritual Start]]>><</link>><<if $gwylanSeen.includes("ritual_sex")>><<gwylanHypnoNote>><</if>>
+		<br>
 	<<elseif $gwylan.hunting is 3>>
 		<<He>> smiles. "Finally. We'll be doing the more advanced ritual. I've missed your touch." <<He>> blushes, and looks away. "I mean, it's more effective, and—" <<he>> stops, taking a deep breath. "<span class="lewd">I've been craving you, <<pcpetname "Gwylan">>.</span> It's been too long."
 		<br><br>
 
+		<<ind>><<link [[Ask to lure a denizen of the forest for purging|Gwylan Ritual Select]]>><<set $phase to "no">><</link>>
+		<br>
 		<<ind>><<link [[Act as the forest's vessel|Gwylan Ritual Start]]>><</link>><<if $gwylanSeen.includes("ritual_sex")>><<gwylanHypnoNote>><</if>>
 		<br>
 	<<elseif $gwylan.ritualNext is "sex" or $gwylan.hunting gte 2>>
@@ -45,6 +57,8 @@ You tell Gwylan that you're ready to help enact the ritual.
 		<</if>>
 		<br><br>
 
+		<<ind>><<link [[Ask to lure a denizen of the forest for purging|Gwylan Ritual Select]]>><<set $phase to "no">><</link>>
+		<br>
 		<<ind>><<link [[Act as the forest's vessel|Gwylan Ritual Start]]>><</link>><<if $gwylanSeen.includes("ritual_sex")>><<gwylanHypnoNote>><</if>>
 		<br>
 	<<else>>
@@ -1144,7 +1158,7 @@ Gwylan lights two incense burners, one on each side of the covered room. <<He>> 
 		<<handsundress "gwylanRitual">><<handheldundress "gwylanRitual">><<legsundress "gwylanRitual">><<feetundress "gwylanRitual">>
 		<<exhibitionism4>>
 <</switch>>
-<<if $worn.face.type.includesAny("covered", "mask")>>
+<<if $worn.face.type.includesAny("face_covering", "mask")>>
 	<<faceundress "gwylanRitual">>
 <</if>>
 <<He>> drops a garden hose into the large wooden tub and turns a valve. It begins to fill with steaming water. The incense and steam fill the air with warmth. <<gghallucinogens>><<hallucinogen 400>>
@@ -1643,7 +1657,7 @@ You feel a warmth start to spread through your whole body, starting in your core
 			<<insufficientStat "promiscuity" "to request oral">>
 			<br>
 		<</if>>
-		<<if hasSexStat("promiscuity", 4)>>
+		<<if hasSexStat("promiscuity", 3)>>
 			<<if $player.penisExist>>
 				<<if $sexRitual.virginity.includes("penis")>>
 					<<link [[Give Gwylan permission to take your penile virginity|Gwylan Ritual Drugged]]>><<set $phase to "virginity">><<set $sexRitual.target to "gwylanPenetration">><</link>>
@@ -2927,7 +2941,7 @@ You let out another moan, the sensation amplified by whatever <<he>> had you dri
 <<if $player.penisExist>>
 	<<He>> dismounts you and moves <<his>> head to your <<penis>>. <<He>> slows down <<his>> stroking, and licks up your shaft.
 	<<if $sexRitual.bondage>>
-		<<His>> breath is <<= _gwylanStatus.includesAny("aroused", "lust") ? "hot and heavy" : "warm">>hot against your cock.
+		<<His>> breath is <<= _gwylanStatus.includesAny("aroused", "lust") ? "hot and heavy" : "warm">> against your cock.
 	<<else>>
 		<<if _gwylanStatus.includesAny("aroused", "lust")>>
 			<<His>> eyes resemble that of a hungry predator, completely locked with your own.
@@ -3338,6 +3352,7 @@ You let out another moan, the sensation amplified by whatever <<he>> had you dri
 				Gwylan snaps <<his>> fingers, and the vines binding your arms and legs release.
 			<<else>>
 				<<He>> grabs the jar of blue sand, and spreads a small amount of it onto your lips. You feel your senses returning. <<arousal -1000>><<npcincr Gwylan lust -2>><<larousal>><<llust>>
+				<br><br>
 			<</if>>
 			<<He>> looks you over. "Is everything alright, dear? Too much?" <<He>> smiles warmly. "It takes some getting used to. Don't worry, you did well. We can try again next week."
 		<<elseif $sexRitual.end is "spent">>
@@ -4422,7 +4437,7 @@ Perhaps you haven't been entirely cast out.
 			<<default>>
 				<<set $sexRitual.noKiss to true>><<set $NPCList[0].mouth to 0>><<set $mouthuse to 0>>
 				<<if _gwylanStatus.includes("heat")>>
-					<<His>> hungrily returns the kiss for one more moment, before pushing your face away.
+					<<He>> hungrily returns the kiss for one more moment, before pushing your face away.
 				<<else>>
 					<<He>> lazily returns the kiss for one more moment, before pushing your face away.
 				<</if>>
@@ -4512,6 +4527,7 @@ Perhaps you haven't been entirely cast out.
 				"I can't stay mad at you."
 			<<elseif _gwylanLovePercent gte 75>>
 				"<<pcPetname "Gwylan" "good">>." The words ring in your ears. <<stress -6>><<lstress>><<arousal 50>><<garousal>>
+				<br><br>
 			<<else>>
 				"Close enough."
 			<</if>>
@@ -7080,10 +7096,10 @@ Perhaps you haven't been entirely cast out.
 				<</if>>
 			<</if>>
 		<</if>>
-		<br>
 	<</if>>
 
 	<<if _args[0] is "both" and !_deniedOrgasm and !$femaleclimax>>
+		<br>
 		/* Gwylan and player cum at the same time */
 		<span class="lewd">
 		<<switch $sexRitual.position>>
@@ -7322,6 +7338,7 @@ Perhaps you haven't been entirely cast out.
 		</span>
 	<<elseif _args[0] is "Gwylan" or _args[0] is "both" and _deniedOrgasm>>
 		/* Only Gwylan cums */
+		<br>
 		<span class="lewd">
 		<<switch $sexRitual.position>>
 			<<case "gwylanRidingVaginal" "gwylanRidingAnal">>
@@ -7633,6 +7650,7 @@ Perhaps you haven't been entirely cast out.
 
 	<<if ["player", "both"].includes(_args[0]) and !_deniedOrgasm and !$femaleclimax>>
 		/* Followup if player came */
+		<br>
 		<<if _args[1] isnot "pre">>
 			<<switch $sexRitual.position>>
 				<<case "gwylanRidingVaginal" "gwylanRidingAnal">>
@@ -8016,6 +8034,7 @@ Perhaps you haven't been entirely cast out.
 			<<He>> briefly leans forward, placing a kiss on your forehead.
 		<</if>>
 		"I'll remember this gift you've given me." <<lpain>><<pain -4>>
+		<br><br>
 		<<set $sexRitual.virginityProtected to false>>
 	<</if>>
 <</widget>>

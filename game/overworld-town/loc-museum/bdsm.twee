@@ -611,6 +611,20 @@ You wear the rags, as taut and revealing as you remember. You wonder how you loo
 	"I was going to suggest something, but it'd probably be best to avoid anything extreme while you're with child."
 	<<He>> puts what looks like a whip to the back of the room. "Don't want to scare those watching."
 	<br><br>
+
+	<<set _preggy to getPregnancyObject()>>
+	<<if !_preggy.awareOf>>
+		<<set _preggy.awareOf to "museum">>
+		Your legs feel weak.
+		<<if _preggy.potentialFathers.length is 1>>
+			<<set _fatherName to pregnancyNameCorrection(_preggy.potentialFathers[0].source)>>
+			<span class="lewd">It's clear that <<print _fatherName === "yourself" ? "you are" : _fatherName + " is">> the father.</span>
+		<<else>>
+			<span class="red">You wonder who the father is.</span>
+		<</if>>
+		<br><br>
+	<</if>>
+
 	<<link [[Next|Museum Horse Light]]>><<bindtemp>><<npcincr Winter love 1>><</link>><<glove>>
 <<else>>
 	Winter returns. <<He>> holds something at <<his>> side. "Perfect." <<He>> pauses. "I'd like to propose something. I don't want you to feel pressured."
@@ -876,7 +890,7 @@ You nod in acknowledgement. <<if $exhibitionism gte 500>>The thought of having a
 		You hold the flog in your hands, considering your options.
 
 		<br><br>
-		<<link [[Accept|Museum Famous Horse 2]]>><<bind>><<npcincr Winter love 3>><<pass 90>><</link>><<gpain>><<garousal>><<ggwillpower>><<gglove>><<ltrauma>>
+		<<link [[Accept|Museum Famous Horse 2]]>><<bind>><<npcincr Winter love 3>><<trauma -6>><<pass 90>><</link>><<gpain>><<garousal>><<ggwillpower>><<gglove>><<ltrauma>>
 		<br>
 		<<link [[Cancel the demonstration|Museum Famous Horse Cancel]]>><</link>>
 	<</if>>
@@ -1034,7 +1048,7 @@ Retrieving the flog, <<he>> moves behind you, ready to strike. The audience wait
 		You try to keep your composure, but the anticipation is just too much. You tremble in place.<<ggwillpower>><<willpower 10>>
 	<</if>>
 <<elseif $phase is 2>>
-	"Please, my <<if $pronoun is "m">>Lord,<<else>>Lady,<</if>> I only wish to survive the famine! I meant no offence, and I shall not steal again!" you shout, staying in character.
+	"Please, my <<Lord>>, I only wish to survive the famine! I meant no offence, and I shall not steal again!" you shout, staying in character.
 	<br><br>
 	The crowd applauds your willingness to go along with the demonstration. A few of them even toss a few coins into the middle to reward you for the act. <<money `50*(fameSum('business', 'good', 'social', 'model')/8000)*100` "museum">> <<fameexhibitionism 5>>
 <</if>>

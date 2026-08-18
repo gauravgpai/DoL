@@ -1238,7 +1238,7 @@ You place your hand on Avery's wrist. <<He>> smiles, and puts <<his>> foot down 
 
 :: Mansion Party Bailey Trip
 <<set $location to "town">><<effects>>
-
+<<person1>>
 <<if $phase is 1>>
 	Bailey leads the convoy through Danube Boulevard, towards Elk Street. Avery taps the wheel in excitement.
 	<br><br>
@@ -1717,7 +1717,11 @@ You leave the $phase, and search the mansion. You spy the temple's people in the
 
 :: Mansion Party Investigate Message
 <<effects>>
-<<set $avery_mansion.fox.task_complete to "success">>
+<<if $avery_mansion.fox.task_detail is "ascend">>
+	<<set $avery_mansion.fox.message to true>>
+<<else>>
+	<<set $avery_mansion.fox.task_complete to "success">>
+<</if>>
 
 <<if $speech_attitude is "meek">>
 	"The brown fox would like your attention," you say.
@@ -2051,7 +2055,7 @@ You walk beside Jordan. The <<monks_and_nuns>> bow their heads when <<he>> passe
 <</if>>
 <br><br>
 
-Jordan smiles. "I'm glad. The temple isn't far, should you ever need shelter." A <<person6>><<monk>> catches <<person1>><<his>> eye. Jordan reads something in <<person6>><<him>>, then turns back to you. "I believe dinner is almost ready. Come."
+Jordan smiles. "I'm glad. The temple isn't far, should you ever need shelter." A <<person6>><<monk>> catches <<person2>><<his>> eye. Jordan reads something in <<person6>><<him>>, then turns back to you. "I believe dinner is almost ready. Come."
 <br><br>
 
 <<link [[Next|Mansion Party Jordan 4]]>><<pass 5>><</link>>
@@ -2074,7 +2078,7 @@ Jordan smiles. "I'm glad. The temple isn't far, should you ever need shelter." A
 Jordan looks pained. "I'm sorry," <<he>> says. "I'll pray for you."
 <br><br>
 
-A <<person6>><<monk>> catches <<person1>><<his>> eye. Jordan reads something in <<person6>><<him>>, then turns back to you. "I believe dinner is almost ready. Come."
+A <<person6>><<monk>> catches <<person2>><<his>> eye. Jordan reads something in <<person6>><<him>>, then turns back to you. "I believe dinner is almost ready. Come."
 <br><br>
 
 <<link [[Next|Mansion Party Jordan 4]]>><<pass 5>><</link>>
@@ -2092,7 +2096,7 @@ A <<person6>><<monk>> catches <<person1>><<his>> eye. Jordan reads something in 
 <</if>>
 <br><br>
 
-Jordan nods. "You'll be in my prayers tonight." A <<person6>><<monk>> catches <<person1>><<his>> eye. Jordan reads something in <<person6>><<him>>, then turns back to you. "I believe dinner is almost ready. Come."
+Jordan nods. "You'll be in my prayers tonight." A <<person6>><<monk>> catches <<person2>><<his>> eye. Jordan reads something in <<person6>><<him>>, then turns back to you. "I believe dinner is almost ready. Come."
 <br><br>
 
 <<link [[Next|Mansion Party Jordan 4]]>><<pass 5>><</link>>
@@ -2235,7 +2239,7 @@ The initiates return the empty jugs and baskets to the kitchen, then arrange the
 <br><br>
 <<person2>>
 <<if $avery_party.speech_guest.includes("badly")>>
-	<<if $avery_mansion.fox.task_complete and $avery_mansion.fox.task_detail is "ascend">><<set $avery_mansion.fox.task_complete to "fail">><</if>>
+	<<if $avery_mansion.fox.task_detail is "ascend">><<set $avery_mansion.fox.task_complete to "fail">><</if>>
 	Jordan stares across the table at Avery. "I wanted to talk with you about your building project on Elk Street," <<he>> says. <<His>> voice is cold. "However, I've heard all I need to hear." The cowled figures on either side of <<person2>><<him>> frown in surprise.
 	<br><br>
 	Jordan takes a deep breath. "You are a despicable person, Avery. We condemn your works. May God help you find the peace you need." <<person2>><<He>> rises to <<his>> feet, and the <<person6>><<monks_and_nuns>> follow suit. They leave in single file.
@@ -2248,7 +2252,7 @@ The initiates return the empty jugs and baskets to the kitchen, then arrange the
 	<br>
 <<else>>
 	<<if $avery_party.speech_guest.includes("dungeon") or ($avery_mansion.fox.task_complete is "success" and $avery_mansion.fox.task_detail is "descend")>>
-		<<if $avery_mansion.fox.task_complete and $avery_mansion.fox.task_detail is "ascend">><<set $avery_mansion.fox.task_complete to "fail">><</if>>
+		<<if $avery_mansion.fox.task_detail is "ascend">><<set $avery_mansion.fox.task_complete to "fail">><</if>>
 		Jordan stares across the table at Avery. "I wanted to talk with you about your building project on Elk Street," <<he>> says. "The bishop and I have concerns about your intentions. You know the site you've chosen is on holy ground? Not to mention the height of the building. It violates scriptural law."
 		<br>
 		Avery fails to hide <<person1>><<his>> impatience. "I don't share your religion. I can't be expected to follow your rules."
@@ -2285,6 +2289,9 @@ The initiates return the empty jugs and baskets to the kitchen, then arrange the
 				<</if>>
 				<br><br>
 			<</if>>
+			<<if $avery_mansion.fox.message>>
+				<<set $avery_mansion.fox.task_complete to "success">>
+			<</if>>
 			<<link [[Next|Mansion Party Jordan End Very Good]]>><</link>>
 			<br>
 		<<elseif $avery_party.speech_avery.includes("caught_warned") or $avery_party.speech_avery.includes("eavesdrop_warned")>>
@@ -2303,9 +2310,13 @@ The initiates return the empty jugs and baskets to the kitchen, then arrange the
 					<br><br>
 				<</if>>
 			<</if>>
+			<<if $avery_mansion.fox.message>>
+				<<set $avery_mansion.fox.task_complete to "success">>
+			<</if>>
 			<<link [[Next|Mansion Party Jordan End Good]]>><</link>>
 			<br>
 		<<else>>
+			<<if $avery_mansion.fox.task_detail is "ascend">><<set $avery_mansion.fox.task_complete to "fail">><</if>>
 			Jordan stares across the table at Avery. "I wanted to talk with you about your building project on Elk Street," <<he>> says. "The bishop and I have concerns about your intentions. You know the site you've chosen is on holy ground? Not to mention the height of the building. It violates scriptural law."
 			<br>
 			Avery fails to hide <<person1>><<his>> frown. "I don't share your religion. I can't be expected to follow your rules."
@@ -2318,11 +2329,15 @@ The initiates return the empty jugs and baskets to the kitchen, then arrange the
 				<span class="gold"><<Monks_and_Nuns>> from the temple will now obstruct the construction of Avery's project.</span>
 				<br><br>
 			<</if>>
+			<<if $avery_mansion.fox.message>>
+				<<set $avery_mansion.fox.task_complete to "success">>
+			<</if>>
 			<<link [[Next|Mansion Party Jordan End Bad]]>><<set $avery_tower.effects.pushUnique("temple")>><</link>>
 			<br>
 		<</if>>
 	<</if>>
 <</if>>
+<<unset $avery_mansion.fox.message>>
 
 
 :: Mansion Party Jordan End Bad
@@ -2527,7 +2542,7 @@ You drop beneath the table, and move so fast that Avery jumps in surprise when y
 <<link [[Lie still|Mansion Party Jordan End Still]]>><</link>>
 <br>
 <<if hasSexStat("promiscuity", 2)>>
-	<<link [["Pull " + $NPCList[0].pronouns.him + " closer"|Mansion Party Jordan End Pull]]>><<npcincr Avery love 1>><</link>><<glove>>
+	<<link [["Pull " + $NPCList[0].pronouns.him + " closer"|Mansion Party Jordan End Pull]]>><<npcincr Avery love 1>><</link>><<promiscuous2>><<glove>>
 	<br>
 <</if>>
 <<link [[Refuse|Mansion Party Jordan End Sex Refuse]]>><<npcincr Avery rage 1>><</link>><<garage>>
@@ -2547,7 +2562,7 @@ Avery's jaw is practically on the floor. "A donation. From them." <<He>> runs <<
 <<link [[Lie still|Mansion Party Jordan End Still]]>><</link>>
 <br>
 <<if hasSexStat("promiscuity", 2)>>
-	<<link [["Pull " + $NPCList[0].pronouns.him + " closer"|Mansion Party Jordan End Pull]]>><<npcincr Avery love 1>><</link>><<glove>>
+	<<link [["Pull " + $NPCList[0].pronouns.him + " closer"|Mansion Party Jordan End Pull]]>><<npcincr Avery love 1>><</link>><<promiscuous2>><<glove>>
 	<br>
 <</if>>
 <<link [[Refuse|Mansion Party Jordan End Sex Refuse]]>><<npcincr Avery rage 1>><</link>><<garage>>
@@ -4001,7 +4016,7 @@ A servant refills the <<persons>> glass. "One more for the road!" the <<person>>
 You drink the third glass, and find yourself propped up on both sides by guests.
 <br><br>
 
-"You okay there <<girl>>?" laughs the <<person>>. "Let's help <<phim>> to a seat." <<He>> helps you to a nearby bench, but doesn't miss the opportunity to grope you en route.<<gstress>><<stress 6>>
+"You okay there, <<girl>>?" laughs the <<person>>. "Let's help <<phim>> to a seat." <<He>> helps you to a nearby bench, but doesn't miss the opportunity to grope you en route.<<gstress>><<stress 6>>
 <br><br>
 <<pass 3>>
 You slump on the bench for a few minutes, until the initial wave of dizziness subsides.
@@ -4661,9 +4676,9 @@ A polite murmur of conversation fills the room, but it quiets when the main cour
 	The servants 'forget' to serve you until Remy's meal is in front of <<person2>><<him>>.
 	<br><br>
 	When your food arrives, you twirl the pasta around your fork with such force that you spray the table, and your neighbour, with flecks of sauce and cheese.
-	<<if $housekeeping gte 800 and $foodstuff.linguine.recipe>>
+	<<if $housekeeping gte 800 and $foodstuff.linguine.knows_recipe>>
 		It's very good, though you could do better. The guests voice their approval up and down the hall, though your immediate neighbours seem annoyed by something.
-	<<elseif $housekeeping gte 400 and $foodstuff.linguine.recipe>>
+	<<elseif $housekeeping gte 400 and $foodstuff.linguine.knows_recipe>>
 		It's very good. Perhaps better than your own. The guests voice their approval up and down the hall, though your immediate neighbours seem annoyed by something.
 	<<else>>
 		It's very good. The guests voice their approval up and down the hall, though your immediate neighbours seem annoyed by something.
@@ -4671,9 +4686,9 @@ A polite murmur of conversation fills the room, but it quiets when the main cour
 	Avery gives you a stern look.
 	<br><br>
 <<else>>
-	<<if $housekeeping gte 800 and $foodstuff.linguine.recipe>>
+	<<if $housekeeping gte 800 and $foodstuff.linguine.knows_recipe>>
 		It's very good, though you could do better. The guests voice their approval up and down the hall.
-	<<elseif $housekeeping gte 400 and $foodstuff.linguine.recipe>>
+	<<elseif $housekeeping gte 400 and $foodstuff.linguine.knows_recipe>>
 		It's very good. Perhaps better than your own. The guests voice their approval up and down the hall.
 	<<else>>
 		It's very good. The guests voice their approval up and down the hall.
@@ -6231,7 +6246,7 @@ You remain silent as Avery stares at the door, in thought.
 <<if $harperSeen.includes("livestock")>>
 	The car parks nearby, and a young <<personsimple>> climbs out. <<Hes>> wearing a white medical coat, and carrying a clipboard under <<his>> arm. It's the Doctor from the farm. The one who experimented on you.
 	<br><br>
-	<<He>> smiles at Avery. "Sorry I'm late," <<he>> says. "And still in my work clothes. Just finished, and came straight here."
+	<<He>> smiles at Avery. "Sorry, I'm late," <<he>> says. "And still in my work clothes. Just finished, and came straight here."
 	<br><br>
 	"It's no trouble at all," Avery says.
 	<br><br>
@@ -6241,7 +6256,7 @@ You remain silent as Avery stares at the door, in thought.
 
 	The car parks nearby, and a young <<personsimple>> climbs out. <<Hes>> wearing a white medical coat, and carrying a clipboard under <<his>> arm.
 	<br><br>
-	<<He>> smiles at Avery. "Sorry I'm late," <<he>> says. "And still in my work clothes. Just finished, and came straight here."
+	<<He>> smiles at Avery. "Sorry, I'm late," <<he>> says. "And still in my work clothes. Just finished, and came straight here."
 	<br><br>
 	"It's no trouble at all," Avery says.
 	<br><br>
@@ -6250,7 +6265,7 @@ You remain silent as Avery stares at the door, in thought.
 <<else>>
 	The car parks nearby, and a young <<personsimple>> climbs out. <<Hes>> wearing a white medical coat, and carrying a clipboard under <<his>> arm.
 	<br><br>
-	Harper smiles at Avery. "Sorry I'm late," <<he>> says. "And still in my work clothes. Just finished, and came straight here."
+	Harper smiles at Avery. "Sorry, I'm late," <<he>> says. "And still in my work clothes. Just finished, and came straight here."
 	<br><br>
 	"It's no trouble at all," Avery says.
 	<br><br>
@@ -6375,7 +6390,7 @@ You accompany Avery to the lounge, and hang off <<his>> arm while <<he>> moves f
 
 <<link [[Say Harper is in the study|Mansion Party Harper Study Say]]>><<avery_mansion_party_speech guest "stray">><</link>>
 <br>
-<<link [[Just make smalltalk|Mansion Party Harper Study Smalltalk]]>><</link>>
+<<link [[Just make small talk|Mansion Party Harper Study Smalltalk]]>><</link>>
 <br>
 <<link [[Say nothing|Mansion Party Harper Study Nothing]]>><</link>>
 <br>
@@ -6674,7 +6689,7 @@ You swallow a mouthful. A tingling warmth ripples down your spine. The soup take
 
 <<if $willpowerSuccess>>
 	<<wearProp "spoon">>
-	You don't see Avery drinking like an animal. <span class="green">You maintain your composure,</span> sipping from your spoon as if you've all the time in the world. Despite the building lust. Most of the guests seem affected, as well as Harper and Avery. As the meal goes on, more and more guests lose the pretense of decorum. They lift the bowls to their faces, and slurp down the soup.
+	You don't see Avery drinking like an animal. <span class="green">You maintain your composure,</span> sipping from your spoon as if you've all the time in the world. Despite the building lust. Most of the guests seem affected, as well as Harper and Avery. As the meal goes on, more and more guests lose the pretence of decorum. They lift the bowls to their faces, and slurp down the soup.
 	<br><br>
 
 	A handful also maintain their composure, including Avery and Harper.
@@ -6696,7 +6711,7 @@ It doesn't take long to empty the bowls. The servants arrive to collect them. So
 :: Mansion Party Harper Eat Feel
 <<effects>><<wearProp "soup bowl">>
 
-You grab the bowl, lift it to your face, and drink. You're aware of other guests doing likewise, losing the pretense of decorum, but Avery maintains <<person1>><<his>> composure. So does Harper.
+You grab the bowl, lift it to your face, and drink. You're aware of other guests doing likewise, losing the pretence of decorum, but Avery maintains <<person1>><<his>> composure. So does Harper.
 <br><br>
 
 It doesn't take long to empty the bowls. The servants arrive to collect them. Some look anxious, hoping for seconds, but Avery calms them. "Patience, my friends. The main course will soon arrive."

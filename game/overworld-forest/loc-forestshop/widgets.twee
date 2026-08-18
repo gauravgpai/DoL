@@ -142,8 +142,8 @@
 		<br>
 		<<exit>>
 	<</if>>
-	<<if $location is "cafe" and Time.schoolDay and (Time.hour is 8 and Time.minute gte 40 or Time.hour is 9) and !$daily.gwylan_skip_school and ($gwylanSeen.includes("cafe_walk") or ($gwylan.sea + ($gwylanTalked.count("fox_mask") * 20) + ($gwylanTalked.count("dark_pendant") * 20) gte 40))>>
-		<<if _gwylanTF.known>>
+	<<if $location is "cafe" and !$gwylan_school_walk_refused and Time.schoolDay and (Time.hour is 8 and Time.minute gte 40 or Time.hour is 9) and !$daily.gwylan_skip_school and ($gwylanSeen.includes("cafe_walk") or ($gwylan.sea + ($gwylanTalked.count("fox_mask") * 20) + ($gwylanTalked.count("dark_pendant") * 20) gte 40))>>
+		<<if _gwylanTF?.known>>
 			Gwylan's ears twitch, and <<he>> seems to realise something.
 		<</if>>
 
@@ -663,6 +663,7 @@
 	<<set $_schoolWalkAvailable to ($gwylanSeen.includes("cafe_walk") or ($gwylan.sea + ($gwylanTalked.count("fox_mask") * 20) + ($gwylanTalked.count("dark_pendant") * 20) gte 40)) or ($gwylan.robin gte 10 and $daily.robin_in_cafe and false)>> /* WARNING! Re-enable later for Gwybin cafe */
 	<<if $_schoolWalkAvailable and Time.schoolDay and ((Time.hour is 7 and Time.minute gte 45) or (Time.hour is 8 and Time.minute lte 35)) and !$daily.gwylan_skip_school>>
 		<<set _passTime to "<<passTimeUntil 8 45>><<set $daily.gwylan.cafeSkip to true>>">><<set _passTimeDisplay to "0:" + ("0" + ((45 - Time.minute + 60) % 60)).slice(-2)>>
+		<<if _passTimeDisplay is "0:00">><<set _passTimeDisplay to "1:00">><</if>>
 	<<elseif $_schoolWalkAvailable and Time.schoolDay and Time.hour is 8 and Time.minute gt 35 and !$daily.gwylan_skip_school>>
 		<<set _passTime to "<<pass 10>><<set $daily.gwylan.cafeSkip to true>>">><<set _passTimeDisplay to "0:10">>
 	<<elseif Time.hour lte 7 or (Time.hour is 8 and Time.minute lt 10)>>
@@ -1236,7 +1237,7 @@
 		<<switch $worship.tummy>>
 			<<case 8 7 6 5 4 3>><<His>> <<bellyDescription "Gwylan">> is <span class="pink">covered in $_fluid</span>.
 			<<case 2>><<His>> <<bellyDescription "Gwylan">> is <span class="blue">splattered with $_fluid</span>. You can see parts of <<his>> tattoos peeking through.
-			<<case 1>><<His>> <<bellyDescription "Gwylan">> is <span class="teal">smeared with $_fluid</span>. You can <<his>> tattoos peeking through.
+			<<case 1>><<His>> <<bellyDescription "Gwylan">> is <span class="teal">smeared with $_fluid</span>. You can see <<his>> tattoos peeking through.
 			<<default>><<His>> <<bellyDescription "Gwylan">> is <span class="green">clean</span>. <<if $worship.arousal gte 150>>You can see <<his>> tattoos softly glowing.<</if>>
 		<</switch>>
 		<br>
@@ -2291,7 +2292,7 @@
 		"You best remember your promise, dearest."
 	<</if>>
 	<<He>> continues thumbing the petals of the rose off to the side.
-<<elseif $gwylanSeen.includes("yearning") or $gwylanSeen.includesAll("ritual_sex", "pink_rose")>>Gwylan lends a patient ear through it all, before speaking up <<himself>>.
+<<elseif $gwylanSeen.includes("yearning") or $gwylanSeen.includesAll("ritual_sex", "pink_rose")>>
 	"I'll confess, Valentine's is my least favourite time of the year. I'm not terribly romantic." <<He>> pauses. "I try not to be, at least. Too many complicated emotions." <<His>> eyes seem to sharpen towards you at the word 'complicated'.
 	"It's not all terrible, but in the long term, it's going to hurt. Infatuation is doomed to end in tragedy. Love hurts, and true love truly hurts."
 	<br><br>

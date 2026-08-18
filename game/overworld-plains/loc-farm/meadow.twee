@@ -61,11 +61,11 @@ You are in a meadow ringed by tall trees. Long grass caresses your legs. A solit
 <<else>>
 	<<relaxicon>><<link [[Relax (0:15)|Meadow Relax]]>><<stress -6>><<tiredness -2>><</link>><<lstress>><<ltiredness>>
 	<br>
-	<<if $worn.upper.exposed gte 1 and $worn.upper.name isnot "plant top" and !$worn.under_upper.type.includes("covered")>>
+	<<if $worn.upper.exposed gte 1 and $worn.upper.name isnot "plant top" and !$worn.under_upper.type.includes("torso_covering") and !pcAreArmsBound("both")>>
 		<<foresticon "bush">><<link [[Make a top out of plants and twigs (0:10)|Meadow Plant]]>><<pass 10>><<set $phase to 1>><</link>>
 		<br>
 	<</if>>
-	<<if $worn.lower.exposed gte 1 and $worn.lower.name isnot "plant skirt" and !$worn.under_lower.type.includes("covered")>>
+	<<if $worn.lower.exposed gte 1 and $worn.lower.name isnot "plant skirt" and !$worn.under_lower.type.includes("lower_covering") and !pcAreArmsBound("both")>>
 		<<foresticon "bush">><<link [[Make a skirt out of plants and twigs (0:10)|Meadow Plant]]>><<pass 10>><<set $phase to 2>><</link>>
 		<br>
 	<</if>>
@@ -609,6 +609,7 @@ You keep low as you move, though you see no one else around.
 
 		You outpace your quarry, and catch <<bhim>> a little into the trees.
 		<<if $monster is 1>>
+			<<earnFeat "Cornered Rogue">>
 			<<if $museumAntiques.antiques.antiquestonetalisman isnot "found" and $museumAntiques.antiques.antiquestonetalisman isnot "talk" and $museumAntiques.antiques.antiquestonetalisman isnot "museum">>
 				<<set $phase to "monster">>
 				"I-I'm sorry," <<bhe>> says, your arm around <<bhis>> neck. "I didn't mean any harm. Here." <<bHe>> drops your clothes. "I'll give you a present too if you don't hurt me. Something I found in a cave."
@@ -1063,6 +1064,6 @@ You release the <<beasttype>>.
 
 You walk back to the meadow.
 <<deviancy4>>
-
+<<endevent>>
 <<link [[Next|Meadow]]>><<unset $foxGen>><</link>>
 <br>

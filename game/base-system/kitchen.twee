@@ -291,6 +291,11 @@
 <</widget>>
 
 <<widget "learn_recipe">>
+	/* checks if object exists in $foodstuff */
+	<<if !$foodstuff[_args[0]]>>
+		<<set $foodstuff[_args[0]] to {amount: 0}>>
+	<</if>>
+
 	<<if $foodstuff[_args[0]].knows_recipe isnot true>>
 		<span class="gold">You have learned how to make <<recipe_name _args[0] "article">>!</span>
 		<<foodstufficon _args[0]>>
@@ -301,7 +306,7 @@
 	<<set _food_keys_recipes to Object.keys(setup.foodstuff)>>
 	<<for _e to 0; _e lt _food_keys_recipes.length; _e++>>
 		<<set _food_recipes to _food_keys_recipes[_e]>>
-		<<if $foodstuff[_food_recipes].knows_recipe is true>>
+		<<if $foodstuff[_food_recipes]?.knows_recipe is true>>
 			<<set _recipes_known++>>
 		<</if>>
 	<</for>>
@@ -480,7 +485,7 @@ Should probably be removed once said feature has been implemented
 	<<unset $chosen_recipe>>
 	<<set _food_keys to Object.keys(setup.foodstuff)>>
 	<<set _possible_recipes to []>>
-	<<set $_foodOptions to Object.entries(clone(setup.foodstuff)).filter(([key, item]) => !$foodstuff[key].knows_recipe and item.recipe?.ingredients.length)>>
+	<<set $_foodOptions to Object.entries(clone(setup.foodstuff)).filter(([key, item]) => !$foodstuff[key]?.knows_recipe and item.recipe?.ingredients.length)>>
 	<<for $_difficulty to 1; $_difficulty lt 5; $_difficulty++>>
 		<<run $_foodOptions.forEach(([key, item]) => {
 			if (item.recipe.difficulty is $_difficulty and item.recipe.ingredients.every(ingredient => !setup.foodstuff[ingredient].recipe?.ingredients.length or $foodstuff[ingredient].knows_recipe)) {
@@ -705,7 +710,7 @@ Should probably be removed once said feature has been implemented
 			<<case "lemonade">>
 				"An excellent drink for the summer months, if you wish to cool off. Serve it hot for a satisfactory cold remedy, alongside some honey."
 			<<case "linguine">>
-				"It's recommended you use linguine as a base for other flavours, like seafood or alfredo. However, if your linguine cannot stand on its own, no amount of sauce will cover that up."
+				"It's recommended you use linguine as a base for other flavours, like seafood or Alfredo. However, if your linguine cannot stand on its own, no amount of sauce will cover that up."
 			<<case "macaroni_cheese">>
 				"Remember to boil it for less time than the package says for. It will finish cooking in the oven."
 			<<case "melting_moment">>
@@ -722,12 +727,12 @@ Should probably be removed once said feature has been implemented
 				"I see those eye rolls. If you'd like to stuff your body with preservatives, by all means, keep drinking store-bought."
 			<<case "pasta">>
 				"The foundation for so many savoury meals. Much like pastries and sweet dishes."
-				<<if $foodstuff.pastry.recipe>>
+				<<if $foodstuff.pastry.knows_recipe>>
 					<<He>> smiles. "Sound familiar?"
 				<</if>>
 			<<case "pastry">>
 				"The foundation for so many sweet meals. Much like pasta and savoury dishes."
-				<<if $foodstuff.pasta.recipe>>
+				<<if $foodstuff.pasta.knows_recipe>>
 					<<He>> smiles. "Sound familiar?"
 				<</if>>
 			<<case "peach_panzanella">>
@@ -813,7 +818,7 @@ Should probably be removed once said feature has been implemented
 	<<set _allowLewdIngredients to true>>
 	<<if !$housekeepingTips.includes("alternativeLewd") and $foodstuff.bottle_of_breast_milk.amount + $foodstuff.bottle_of_semen.amount gte 1>>
 		<<set $housekeepingTips.pushUnique("alternativeLewd")>>
-		You doubt you could get away with it in more controlled kitchens, but this kitchen seems quite free. If you're running short on milk or cream, <span class="gold">you may be able substitute with lewder ingredients</span>.
+		You doubt you could get away with it in more controlled kitchens, but this kitchen seems quite free. If you're running short on milk or cream, <span class="gold">you may be able to substitute with lewder ingredients</span>.
 	<</if>>
 <</widget>>
 

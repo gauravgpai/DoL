@@ -1165,7 +1165,7 @@ The window slams shut. Gwylan holds you tightly.
 	<</if>>
 	<br><br>
 
-	<<if Weather.precipitation isnot "none">>
+	<<if Weather.precipitation is "none">>
 		Gwylan huffs as the figure disappears.
 	<<else>>
 		Gwylan huffs as the <<print Weather.precipitation>> begins to clear up.
@@ -1641,7 +1641,7 @@ Your head hurts. <<awareness -20>><<llawareness>>
 				<<set $willpowerSuccess to 0>>
 				<<willpowerdifficulty 1 _wraithWill true>>
 				<<if $willpowerSuccess>>
-					<<control `Math.floor(currentSkillValue('willpower') / 80)`>>
+					<<control `Math.floor(currentSkillValue('willpower') / 40)`>>
 					<<controlcaption>>
 					<br>
 					<<if _notMoving>>

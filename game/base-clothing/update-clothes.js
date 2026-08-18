@@ -343,6 +343,23 @@ function updateClothesItem(slot, item, debug) {
 	if (slot === "genitals") return;
 
 	// put renamed clothes and updated types here
+	if (item.type.includes("covered")) {
+		switch (item.slot) {
+			case "under_upper":
+				item.type.splice(item.type.indexOf("covered"), 1, "torso_covering");
+				break;
+			case "under_lower":
+				item.type.splice(item.type.indexOf("covered"), 1, "lower_covering");
+				break;
+			case "lower":
+				item.type.splice(item.type.indexOf("covered"), 1, "overalls");
+				break;
+			case "face":
+				item.type.splice(item.type.indexOf("covered"), 1, "face_covering");
+				break;
+		}
+	}
+
 	switch (item.name) {
 		case "Crop top":
 			item.name = "crop top";
@@ -369,11 +386,11 @@ function updateClothesItem(slot, item, debug) {
 			item.name_cap = "Punk leather jacket";
 			break;
 		case "swim shirt":
-			item.type = ["swim", "school", "chest_bind", "constricting", "covered"];
+			item.type = ["swim", "school", "chest_bind", "constricting", "torso_covering"];
 			break;
 		case "undershirt":
 		case "long johns":
-			item.type = ["normal", "covered"];
+			item.type = ["normal", "lower_covering"];
 			break;
 		case "unitard bottom":
 		case "leotard bottom":
@@ -381,14 +398,14 @@ function updateClothesItem(slot, item, debug) {
 		case "leotard":
 		case "turtleneck leotard":
 		case "skimpy leotard":
-			item.type = ["dance", "covered"];
+			item.type = ["dance", "torso_covering"];
 			break;
 		case "turtleneck leotard bottom":
 		case "skimpy leotard bottom":
 			item.type = ["dance"];
 			break;
 		case "sports bra":
-			item.type = ["normal", "athletic", "covered"];
+			item.type = ["normal", "athletic", "torso_covering"];
 			break;
 		case "witch dress":
 		case "scarecrow shirt":
@@ -411,7 +428,7 @@ function updateClothesItem(slot, item, debug) {
 			item.type = ["costume", "formal"];
 			break;
 		case "skeleton mask":
-			item.type = ["costume", "mask"];
+			item.type = ["costume", "mask", "face_covering"];
 			break;
 		case "riding helmet":
 		case "racing helmet":
@@ -561,6 +578,13 @@ function updateClothes() {
 		/* === $store section === */
 		if (V.store !== undefined && V.store[slot]) {
 			for (const item of V.store[slot]) updateClothesItem(slot, item);
+		}
+
+		/* Bailey Confiscation System */
+		if (V.bailey_confiscation && Array.isArray(V.bailey_confiscation.items)) {
+			for (const held of V.bailey_confiscation.items) {
+				if (held.source === "clothing" && held.slot === slot && held.item) updateClothesItem(slot, held.item);
+			}
 		}
 
 		/* === $outfit section === */
@@ -723,6 +747,7 @@ function wardrobesUpdate() {
 	if (!V.wardrobes.temple) {
 		V.wardrobes.temple = clone(defWardrobe);
 		V.wardrobes.temple.unlocked = V.temple_rank === "monk";
+		V.wardrobes.temple.isolated = true;
 		V.wardrobes.temple.space = 20;
 	}
 	if (!V.wardrobes.temple.name) {
@@ -786,6 +811,9 @@ function wardrobesUpdate() {
 		V.wardrobes.avery_mansion.locationRequirement.pushUnique("alley");
 		/* remove broken temporary clothes creeped into main wardrobe */
 		V.wardrobe.lower = V.wardrobe.lower.filter(s => !s.temp);
+	}
+	if (V.objectVersion.wardrobes < 18) {
+		V.wardrobes.temple.isolated = true;
 	}
 }
 DefineMacro("wardrobesUpdate", wardrobesUpdate);

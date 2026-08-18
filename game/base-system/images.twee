@@ -33,7 +33,7 @@
 					T.childrenIconSelect.push(child.childId);
 				}
 			})>>
-			<<if _childrenIconSelect.length gte 2>>
+			<<if _childrenIconSelect and _childrenIconSelect.length gte 2>>
 				<<set $_child1 to _childrenIconSelect.pluck()>>
 				<<set $_child2 to _childrenIconSelect.pluck()>>
 				<<if $children[$_child1].features.monster isnot $children[$_child2].features.monster>>
@@ -210,6 +210,7 @@
 <<widget "parkicon">>
 	<<switch _args[0]>>
 		<<case "fountain">><<icon "fountain.png">>
+		<<case "bridge">><<icon "bridge.png">>
 		<<default>><<icon "park.gif">>
 	<</switch>>
 <</widget>>
@@ -662,7 +663,9 @@
 		<<case "bracelet">><<icon "bird-tower/bracelet.png">>
 		<<case "wallet">><<icon "bird-tower/wallet.png">>
 		<<case "ring">><<icon "bird-tower/ring.png">>
-		<<case "watch">><<icon "bird-tower/watch.png">>
+		<<case "watch">>
+		<<case "antique watch">>
+			<<icon "bird-tower/watch.png">>
 		<<case "necklace">><<icon "bird-tower/necklace.png">>
 		<<case "antique bullet">><<icon "antiques/antique-bullet.png">>
 		<<case "silver">><<icon "bird-tower/silver-bar.gif">>
@@ -674,7 +677,7 @@
 					T.childrenIconSelect.push(child.childId);
 				}
 			})>>
-			<<if _childrenIconSelect.length gte 2>>
+			<<if _childrenIconSelect and _childrenIconSelect.length gte 2>>
 				<<set $_child1 to _childrenIconSelect.pluck()>>
 				<<set $_child2 to _childrenIconSelect.pluck()>>
 				<<if $children[$_child1].features.monster is $children[$_child2].features.monster>>
@@ -1863,4 +1866,12 @@
 
 <<widget "troughicon">>
 	<<icon "trough-water.png">>
+<</widget>>
+
+<<widget "baywindowicon">>
+	<<if $loft_gh is 3>>
+		<<icon "bay-window-update.png">>
+	<<else>>
+		<<icon "bay-window.png">>
+	<</if>>
 <</widget>>

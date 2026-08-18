@@ -458,18 +458,18 @@ The <<beasttype>> whimpers and flees into the darkness. <<tearful>> you rise to 
 		Unable to cover yourself, you bow your head in shame and march through the crowds to the safety of a changing room.
 		<<garousal>><<gstress>><<gtrauma>><<stress 6>><<trauma 6>><<arousal 600>><<fameexhibitionism 30>>
 		<br><br>
-		<<link [[Changing room|Changing Room]]>><<endevent>><</link>>
+		<<link [[Next|Changing Room]]>><<endevent>><</link>>
 	<<else>>
 		<<if $exposed gte 2>>
 			Face red with humiliation, you make sure your <<genitals_are 1>> properly concealed and make your way across the beach to the safety of a changing room, taunted and ridiculed all the way.
 			<<fameexhibitionism 20>><<garousal>><<arousal 600>>
 			<br><br>
-			<<link [[Changing room|Changing Room]]>><<endevent>><</link>>
+			<<link [[Next|Changing Room]]>><<endevent>><</link>>
 		<<else>>
 			Face red with humiliation, you make your way across the beach to the safety of a changing room, taunted and ridiculed all the way.
 			<<garousal>><<arousal 300>><<fameexhibitionism 10>>
 			<br><br>
-			<<link [[Changing room|Changing Room]]>><<endevent>><</link>>
+			<<link [[Next|Changing Room]]>><<endevent>><</link>>
 		<</if>>
 	<</if>>
 <<else>>
@@ -902,7 +902,7 @@ Having come this far, you submit to the collar being placed round your neck.
 
 		You come to a relatively flat area, surrounded by dunes on all sides, shielding it from view. In the centre is a <<beasttype>>, <<bhis>> leash tied to a wooden post. At the sight of you <<bhe>> leaps to <<bhis>> feet, straining the leash in a bid to reach you.
 		<<if $monster is 1>>
-			<<bHis>> nude body is on full display for all to see, but <<bhe>> doesn't seem all too phased by it. <<bHe>> seems oddly well-groomed for a <<beasttype>>, despite the state <<bhes>> in. <<bHe>> paws at the air in an attempt to reach you, and <<bhes>> almost successful.
+			<<bHis>> nude body is on full display for all to see, but <<bhe>> doesn't seem all too fazed by it. <<bHe>> seems oddly well-groomed for a <<beasttype>>, despite the state <<bhes>> in. <<bHe>> paws at the air in an attempt to reach you, and <<bhes>> almost successful.
 		<</if>>
 		<br><br>
 		<<person2>> The <<person>> speaks in a high-pitched voice, "Who's a good <<beasttype>>! You are! We brought you a <<bitch>>, because you're such a good <<beasttype>>!"

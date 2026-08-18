@@ -11,8 +11,8 @@ const StartConfig = {
 	debug: false,
 	enableImages: true,
 	enableLinkNumberify: true,
-	version: "0.5.9.8",
-	versionName: `"Here Comes the Sun" edition`,
+	version: "0.5.11.9",
+	versionName: `"The Great Equaliser" edition`,
 	sneaky: false,
 	socialMediaEnabled: true,
 	sourceLinkEnabled: false,
@@ -606,6 +606,15 @@ Config.navigation.override = function (dest) {
 			case "Prison Wren Intro Met":
 				return "Prison Wren Intro";
 
+			case "Orphanage Loft Doren":
+				return "Doren Loft 3";
+			case "Orphanage Loft Doren 2":
+				return "Doren Loft 8";
+			case "Orphanage Loft Doren 3":
+				return "Doren Loft 10";
+			case "Orphanage Loft Doren Thank":
+				return "Doren Loft Thank";
+
 			case "Museum Box":
 				return "Museum Waterlogged Ivory Box";
 			case "Museum Silver Ring":
@@ -735,6 +744,12 @@ Config.navigation.override = function (dest) {
 				return "Sewers Scones Eat";
 			case "Sewers Rats Pretend":
 				return "Sewers Scones Pretend";
+
+			case "Farm Pig Rape":
+				return "Farm Pigs Rape Extreme";
+			case "Farm Pig Rape Finish":
+				return "Farm Pigs Rape Extreme Finish";
+
 			default:
 				return false;
 		}

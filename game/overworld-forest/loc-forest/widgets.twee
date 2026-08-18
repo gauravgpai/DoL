@@ -1447,27 +1447,36 @@
 	<</if>>
 
 	<<if _forest_shrooms is 1>>
-		<<if $scienceshroomheart lt 5>>
-			<<foodstufficon "mushroom">><<link [[Take for science project (0:02)|Forest Science Shroom]]>><<pass 2>><<set $phase to 0>><</link>>
-			<br>
+		<<if !pcAreArmsBound("both")>>
+			<<if $scienceshroomheart lt 5>>
+				<<foodstufficon "mushroom">><<link [[Take for science project (0:02)|Forest Science Shroom]]>><<pass 2>><<set $phase to 0>><</link>>
+				<br>
+			<</if>>
+			<<foodstufficon "mushroom">><<link [[Search for saleable specimens (0:20)|Forest Mushrooms Pick]]>><<pass 20>><</link>><<tendingdifficulty 1 300>>
+		<<else>>
+			<span class="red">Both of your arms are bound</span>, so you are unable to harvest them.
 		<</if>>
-		<<foodstufficon "mushroom">><<link [[Search for saleable specimens (0:20)|Forest Mushrooms Pick]]>><<pass 20>><</link>><<tendingdifficulty 1 300>>
 		<br>
 		<<foodstufficon "mushroom">><<link [[Eat one (0:01)|Forest Mushrooms]]>><<stress 3>><<pass 1>><<tiredness -6>><</link>><<gstress>><<ltiredness>>
 	<<else>>
-		<<if $scienceshroomwolf lt 5>>
-			<<foodstufficon "wolfshroom">><<link [[Take for science project (0:02)|Forest Science Shroom]]>><<pass 2>><<set $phase to 1>><</link>>
-			<br>
-		<</if>>
-		<<if currentSkillValue('tending') lt 300 and $gwylan?.request.special is "tutorial" and $gwylanTutorialShrooms lt 3>>
-			<<foodstufficon "wolfshroom">><<link [[Pick for Gwylan (0:20)|Forest Mushrooms Gwylan Pick]]>><<pass 20>><</link>>
-			<br>
-		<</if>>
-		<<if currentSkillValue('tending') gte 300>>
-			<<foodstufficon "wolfshroom">><<link [[Search for saleable specimens (0:20)|Forest Mushrooms2 Pick]]>><<pass 20>><</link>><<tendingdifficulty 300 600>>
-			<br>
+		<<if !pcAreArmsBound("both")>>
+			<<if $scienceshroomwolf lt 5>>
+				<<foodstufficon "wolfshroom">><<link [[Take for science project (0:02)|Forest Science Shroom]]>><<pass 2>><<set $phase to 1>><</link>>
+				<br>
+			<</if>>
+			<<if currentSkillValue('tending') lt 300 and $gwylan?.request.special is "tutorial" and $gwylanTutorialShrooms lt 3>>
+				<<foodstufficon "wolfshroom">><<link [[Pick for Gwylan (0:20)|Forest Mushrooms Gwylan Pick]]>><<pass 20>><</link>>
+				<br>
+			<</if>>
+			<<if currentSkillValue('tending') gte 300>>
+				<<foodstufficon "wolfshroom">><<link [[Search for saleable specimens (0:20)|Forest Mushrooms2 Pick]]>><<pass 20>><</link>><<tendingdifficulty 300 600>>
+				<br>
+			<<else>>
+				<span class="blue">You need a higher tending skill to pick saleable mushrooms.</span>
+				<br>
+			<</if>>
 		<<else>>
-			<span class="blue">You need a higher tending skill to pick saleable mushrooms.</span>
+			<span class="red">Both of your arms are bound</span>, so you are unable to harvest them.
 			<br>
 		<</if>>
 		<<foodstufficon "wolfshroom">><<link [[Eat one (0:01)|Forest Mushrooms2]]>><<pass 1>><<alcohol 60>><<arousal 3000>><<trauma -3>><<transform wolf 3>><</link>><<garousal>><<ltrauma>>
@@ -1588,7 +1597,7 @@
 			<br>
 		<</if>>
 		<<if $forest_nest.fox is 3>>
-			<<link [[Hide and wait (0:05)|Forest Nest Hide]]>><<unset $athleticsSuccess>><<set $forest_nest.eggs -= 2>><<pass 5>><</link>><<note "Fewer eggs" "red">>
+			<<link [[Hide and wait (0:05)|Forest Nest Hide]]>><<unset $athleticsSuccess>><<set $forest_nest.eggs -= 2>><<pass 5>><</link>><<if currentSkillValue('tending') lt 800>><<note "Fewer eggs" "red">><</if>>
 			<br>
 		<</if>>
 	<</if>>
@@ -1707,17 +1716,19 @@
 	<</if>>
 	<<lstress>><<stress -2>>
 	<br><br>
-	<<if $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1
+	<<if ($worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1
 	or $worn.upper.exposed gte 2 and $underupperwetstage gte 3
 	or $upperwetstage gte 3 and $worn.under_upper.exposed gte 1
-	or $upperwetstage gte 3 and $underupperwetstage gte 3>>
+	or $upperwetstage gte 3 and $underupperwetstage gte 3)
+	and !pcAreArmsBound("both")>>
 		<<foresticon "bush">><<link [[Make a top out of plants and twigs (0:20)|Forest Clearing]]>><<set $phase to 1>><<pass 20>><</link>>
 		<br>
 	<</if>>
-	<<if $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1
+	<<if ($worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1
 	or $worn.lower.exposed gte 2 and $underlowerwetstage gte 3
 	or $lowerwetstage gte 3 and $worn.under_lower.exposed gte 1
-	or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
+	or $lowerwetstage gte 3 and $underlowerwetstage gte 3)
+	and !pcAreArmsBound("both")>>
 		<<foresticon "bush">><<link [[Make a skirt out of plants and twigs (0:20)|Forest Clearing]]>><<set $phase to 2>><<pass 20>><</link>>
 		<br>
 	<</if>>
@@ -1894,7 +1905,7 @@
 			<<if $gwylan_rescue is 1>>
 				<span class="red">Gwylan does not come to help you<<if _args[0] isnot "Eden" and $syndromeeden is 1>>, and Eden must not be in the area<</if>>.</span>
 			<<else>>
-				<span class="red">You're too far from town for anyone to hear you<<if _args[0] isnot "hunter" and $syndromeeden is 1>>, and Eden must not be in the area<</if>>.</span>
+				<span class="red">You're too far from town for anyone to hear you<<if _args[0] isnot "Eden" and $syndromeeden is 1>>, and Eden must not be in the area<</if>>.</span>
 			<</if>>
 		<</if>>
 	<<else>>
@@ -2528,7 +2539,7 @@
 			<</if>>
 		<<else>> /* beast */
 			<<if $gwylanSeen?.includes("ritual_beast") and $rng gte 51>>
-				The <<beasttype>> <<beast_growls_text $_type>>, but it quiets down as you hear something else. Singing.
+				The <<beasttype>> <<beast_growls_text $_type>>, but <<bhe>> quiets down as you hear something else. Singing.
 				<<if $_type.includes("boar")>>
 					<<bHe>> grunts, looking around, before slowly bowing <<bhis>> head.
 					<<if $monster is 1>>
@@ -2793,7 +2804,16 @@
 		<</if>>
 		<br><br>
 
-		<<clotheson>><<set $gwylanRescue.failed to "">>
+		<<clotheson>>
+		<<if $gwylanRescue is undefined>>
+			<<set $gwylanRescue to {
+				seen: [],
+				failed: "",
+				count: 0,
+				eden: 0,
+			}>>
+		<</if>>
+		<<set $gwylanRescue.failed to "">>
 		<<endcombat>>
 
 		<<if _args.includes("slime")>>

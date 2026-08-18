@@ -48,6 +48,7 @@ You see Robin <<if $robin.stayup isnot 2>>stood<<else>>nodding off<</if>> behind
 <<location "beach">><<effects>><<wearProp "lemonade">>
 <<npc Robin>><<person1>>
 <<money -100 "robin">>
+<<if Weather.bodyTemperature gte 36.5>><<set Weather.bodyTemperature to Math.max(Weather.bodyTemperature - 1.0, 36.5)>><</if>>
 
 "<<print $robin.timer.hurt gte 1 ? "I guess." : "Sure!">> Just give me a minute..." Robin says, pouring the lemonade into a glass.
 <br><br>
@@ -207,31 +208,31 @@ You down the glass almost in one go, listening to the waves as you watch the tid
 		<<set _dorenlemonade to 10 + Math.floor(Math.random()*21)>>
 
 		<<set $weekly.dorenlemonadebuy to true>>
-		<<npc "Doren" 2>><<person2>>
-		You walk to the other end of the populated part of the beach, and then back to Robin. <<person1>><<Hes>> servicing a <<person2>><<person>>.
+		You walk to the other end of the populated part of the beach, and then back to Robin. <<person1>><<Hes>> servicing a familiar face.
 		<br><br>
 		Doren approaches the stall, wearing
 		<<if Time.hour gte 9 and Time.hour lt 10>> /*volunteering*/
 			a hi-vi vest
 		<<elseif Time.hour gte 10 and Time.hour lt 11>> /*playing volleyball*/
-			<<if C.npc.Doren.gender isnot "male">>
-				<<= either ("bikinis","a swimsuit")>>.
+			<<if C.npc.Doren.gender isnot "m">>
+				a <<= either ("bikini","swimsuit")>>.
 			<<else>>
 				a <<= either ("board shorts","speedo")>>.
 			<</if>>
 		<<elseif Time.hour gte 11 and Time.hour lte 12>> /*swimming/surfing*/
 			<<if random(1,2) is 2>>
 				<<set _dorenocean to "surfing">>
-				a wet suit, surfboard tucked under <<his>> arm
+				a wet suit, surfboard tucked under <<his>> arm.
 			<<else>>
-				<<if C.npc.Doren.gender isnot "male">>
-					<<= either ("bikinis","a swimsuit")>>.
+				<<if C.npc.Doren.gender isnot "m">>
+					a <<= either ("bikini","swimsuit")>>.
 				<<else>>
 					a <<= either ("board shorts","speedo")>>.
 				<</if>>
 			<</if>>
 		<</if>>
 		<br><br>
+		<<npc "Doren" 2>><<person2>>
 		"Hiya, Robin! Can I get <<print _dorenlemonade>> cups of lemonade?" <<He>> turns to a group of people behind <<him>>. "We're parched after
 			<<if Time.hour gte 9 and Time.hour lt 10>>
 				picking up trash on the beach."
@@ -360,24 +361,24 @@ You down the glass almost in one go, listening to the waves as you watch the tid
 
 		<<set $weekly.dorenlemonadebuy to true>>
 		<<npc "Doren" 2>><<person2>>
-		You walk to the other end of the populated part of the beach, and then back to Robin. <<person1>><<Hes>> servicing a <<person2>><<person>>.
+		You walk to the other end of the populated part of the beach, and then back to Robin. <<person1>><<Hes>> servicing a familiar face.
 		<br><br>
 		Doren approaches the stall, wearing
 		<<if Time.hour gte 9 and Time.hour lt 10>> /*volunteering*/
 			a hi-vi vest
 		<<elseif Time.hour gte 10 and Time.hour lt 11>> /*playing volleyball*/
-			<<if C.npc.Doren.gender isnot "male">>
-				<<= either ("bikinis","a swimsuit")>>.
+			<<if C.npc.Doren.gender isnot "m">>
+				a <<= either ("bikini","swimsuit")>>.
 			<<else>>
 				a <<= either ("board shorts","speedo")>>.
 			<</if>>
 		<<elseif Time.hour gte 11 and Time.hour lte 12>> /*swimming/surfing*/
 			<<if random(1,2) is 2>>
 				<<set _dorenocean to "surfing">>
-				a wet suit, surfboard tucked under <<his>> arm
+				a wet suit, surfboard tucked under <<his>> arm.
 			<<else>>
-				<<if C.npc.Doren.gender isnot "male">>
-					<<= either ("bikinis","a swimsuit")>>.
+				<<if C.npc.Doren.gender isnot "m">>
+					a <<= either ("bikini","swimsuit")>>.
 				<<else>>
 					a <<= either ("board shorts","speedo")>>.
 				<</if>>

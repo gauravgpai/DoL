@@ -2308,7 +2308,7 @@
 			<<if $arousal lt $arousalmax / 5>>
 				"Take your filthy <<beasttype>> cock out of my pussy right now!"
 			<<elseif $arousal lt ($arousalmax / 5) * 4>>
-				"Get off of me you fucking <<beasttype>>, I'm not your toy!"
+				"Get off of me, you fucking <<beasttype>>, I'm not your toy!"
 			<<else>>
 				"I-I'm not gonna cum from a stupid <<beasttype>> fucking me... I'm not..."
 			<</if>>
@@ -2317,7 +2317,7 @@
 			<<if $arousal lt $arousalmax / 5>>
 				"Release me this instant, stupid <<beasttype>>!"
 			<<elseif $arousal lt ($arousalmax / 5) * 4>>
-				"Get off of me you fucking <<beasttype>>, I'm not your toy!"
+				"Get off of me, you fucking <<beasttype>>, I'm not your toy!"
 			<<else>>
 				"I-I'm not gonna cum from a stupid <<beasttype>> fucking me... I'm not..."
 			<</if>>
@@ -2326,7 +2326,7 @@
 			<<if $arousal lt $arousalmax / 5>>
 				"Release me this instant, stupid <<beasttype>>!"
 			<<elseif $arousal lt ($arousalmax / 5) * 4>>
-				"Get off of me you fucking <<beasttype>>, I'm not your toy!"
+				"Get off of me, you fucking <<beasttype>>, I'm not your toy!"
 			<<else>>
 				"I-I'm not gonna cum from a stupid <<beasttype>> fucking me... I'm not..."
 			<</if>>
@@ -2335,7 +2335,7 @@
 			<<if $arousal lt $arousalmax / 5>>
 				"Get your filthy <<beasttype>> cock out of my ass right now!"
 			<<elseif $arousal lt ($arousalmax / 5) * 4>>
-				"Get off of me you fucking <<beasttype>>, I'm not your toy!"
+				"Get off of me, you fucking <<beasttype>>, I'm not your toy!"
 			<<else>>
 				"I-I'm not gonna cum from a stupid <<beasttype>> fucking my ass... I'm not..."
 			<</if>>
@@ -3841,7 +3841,7 @@
 
 		<<if $arousal gte ($arousalmax / 5) * 4>>
 			<<set _eagerclimax to either("You're eager to climax", "You look forward to climaxing", "You yearn to climax", "You crave climaxing", "You want to climax")>>
-			<<set _youraction to "Lust taking over, you _vaginaltext rock your pelvis back and forth and squeeze the penis hard as you approach your peak. _eagerclimax with a _penis inside you.">>
+			<<set _youraction to "Lust taking over, you _vaginaltext rock your pelvis back and forth and squeeze the penis hard as you approach your peak. _eagerclimax with <<a _penis>> inside you.">>
 		<<elseif $arousal gte ($arousalmax / 5) * 2>>
 			<<set _youraction to "You _vaginaltext rock your pelvis back and forth, while also squeezing the _penis each time it slides into you.">>
 		<<else>>

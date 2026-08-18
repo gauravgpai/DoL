@@ -8,7 +8,7 @@ You are in the dog pound on Starfish Street. Stray <<pound_text>> fill the cages
 <<if $stress gte $stressmax>>
 	<br><br>
 
-	<<passoutshop>>
+	<<passoutshop "dog_pound">>
 <<elseif Time.hour is $closinghour>>
 	It's closing time. The staff are preparing to leave.<<if $exposed gte 1>> Panic swells within you as you realise how exposed you'll be should you be found in this state of dress.<</if>>
 	<br><br>
@@ -70,7 +70,7 @@ You are in the dog pound on Starfish Street. Stray <<pound_text>> fill the cages
 		<br><br>
 
 		<<if $pound.progress lte 3>>
-			A low growl can be heard within the shadowed cage.
+			A low growl can be heard within a shadowed cage.
 			<br>
 			<<if $pound.progress gte 2 and $pound.status gte 100>>
 				<<wolfcaveicon "black dog">><<link [[Approach the brute|Pound Work Brute]]>><<endevent>><</link>><<tendingdifficulty 1 1000>>
@@ -841,7 +841,7 @@ The <<beasttype>> eventually tires and walks away, leaving behind a huge mess. Y
 	<<else>>
 		"Don't even think about it,"
 	<</if>>
-	 you say, your voice stern and steady.
+	you say, your voice stern and steady.
 	<br><br>
 
 	<<if $monster is 1>>
@@ -863,7 +863,7 @@ The <<beasttype>> eventually tires and walks away, leaving behind a huge mess. Y
 	<<else>>
 		"Don't do it,"
 	<</if>>
-	 you say, but the <<beasttype>> ignores you. <<bHe>> knocks over the dustpan, spilling the contents back onto the floor. <<bHe>> starts playing with the bits of fur before you can stop <<bhim>>, flinging debris everywhere.<<gstress>><<stress 6>>
+	you say, but the <<beasttype>> ignores you. <<bHe>> knocks over the dustpan, spilling the contents back onto the floor. <<bHe>> starts playing with the bits of fur before you can stop <<bhim>>, flinging debris everywhere.<<gstress>><<stress 6>>
 	<br><br>
 
 	The <<beasttype>> eventually tires and walks away, leaving behind a huge mess. You try to clean it up the best you can, but it takes some effort to clean a second time.<<tiredness 6>><<gtiredness>><<pound_status -1>><<lpound_status>>
@@ -1480,7 +1480,7 @@ You enter one of the cages, bucket in hand.
 	You continue washing the <<beasttype>>, backing away when you suspect <<bhes>> gonna splash you. <span class="green">You manage to stay dry.</span>
 <<else>>
 	You continue washing the <<beasttype>>. <span class="red">Without warning</span>, <<bhe>> shakes <<bhis>> fur, <span class="red">drenching you in water.</span><<gstress>><<stress 6>>
-	<<wet_all>>
+	<<wetAll>>
 	<br><br>
 	<<exposure>>
 	The <<beasttype>> cocks <<bhis>> head innocently.
@@ -1497,7 +1497,7 @@ You hold the <<beasttype>>'s collar, and
 	give <<bhim>> a word of warning. <<bHe 0>> seems to understand, <span class="green">and waits until you're finished before drying <<bhimself>> again.</span><<gpound_status>><<pound_status 1>>
 <<else>>
 	adopt a firm tone. You think it's working, until <<bhe>> shakes <<bhis>> fur with violent force, <span class="red">drenching you in water.</span>
-	<<wet_all>>
+	<<wetAll>>
 	<br><br>
 	<<exposure>>
 	The <<beasttype>> cocks <<bhis>> head innocently.
@@ -1527,7 +1527,7 @@ You hold the <<beasttype>>'s collar, and
 	<br><br>
 
 	<<bHe>> relents eventually, but whines the whole time. When done, <<bhe>> shakes <<bhis>> head and fur with force enough to splash the <<pound_text>> in neighbouring cages. <span class="pink">You're drenched.</span>
-	<<wet_all>>
+	<<wetAll>>
 	<br><br>
 	<<exposure>>
 	The <<beasttype>> cocks <<bhis>> head innocently.

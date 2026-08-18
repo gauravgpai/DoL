@@ -135,13 +135,13 @@
 				<<switch random(1, 5)>>
 				<<case 1 2>>
 					<<He>> shudders with pleasure, exhaling against your crotch as <<he>> cums.
-					<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "vaginaoutside" "goo">>
+					<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<if $player.vaginaExist>><<bodyliquid "vaginaoutside" "goo">><<else>><<bodyliquid "penis" "goo">><</if>>
 				<<case 3 4>>
-					<<He>> gives your <<pussy>> a slow, savage lick. You feel it shake as <<he>> cums.
+					<<He>> gives your <<if $player.vaginaExist>><<pussy>><<else>><<penis>><</if>> a slow, savage lick. You feel it shake as <<he>> cums.
 
-					<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "vaginaoutside" "goo">>
+					<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<if $player.vaginaExist>><<bodyliquid "vaginaoutside" "goo">><<else>><<bodyliquid "penis" "goo">><</if>>
 				<<case 5>>
-					<<He>> screams and clutches <<his>> thighs as <<he>> cums, breathing hard on your <<pussy>>.
+					<<He>> screams and clutches <<his>> thighs as <<he>> cums, breathing hard on your <<if $player.vaginaExist>><<pussy>><<else>><<penis>><</if>>.
 
 				<</switch>>
 			<!-- following appear to be Male PC to Female Antagonist only? -->
@@ -293,8 +293,15 @@
 		<<elseif npcHasStrapon(_nn)>>
 			<<He>> moans and shivers in orgasmic bliss, grinding the strap-on against <<his>> genitals.
 		<<elseif $NPCList[_nn].penis is "idle">>
-			<<He>> moans as a wet patch forms on <<his>> trousers. You stifle a giggle at the sight.
-
+			<<He>> moans as
+			<<if $NPCList[_nn].clothes.lower.name is "naked">>
+				<<he>> ejaculates into the air.
+			<<else>>
+				a wet patch forms on <<his>> $NPCList[_nn].clothes.lower.name.
+			<</if>>
+			<<if $speech_attitude is "bratty">>
+				You stifle a giggle at the sight.
+			<</if>>
 		<<elseif $NPCList[_nn].penis is "thighs">>
 			<<switch random(1, 7)>>
 			<<case 1 2 3>>
@@ -609,8 +616,15 @@
 		<<if _condomResult is "contained">>
 			<<genericCondomEjaculation>>
 		<<elseif $NPCList[_nn].penis is "idle">>
-			<<He>> groans as a wet patch forms on <<his>> trousers. You barely stifle a laugh at the pathetic display, but any mirth is soon driven from your mind by dread.
-
+			<<He>> groans as
+			<<if $NPCList[_nn].clothes.lower.name is "naked">>
+				<<he>> ejaculates into the air.
+			<<else>>
+				a wet patch forms on <<his>> $NPCList[_nn].clothes.lower.name.
+			<</if>>
+			<<if $speech_attitude is "bratty">>
+				You barely stifle a laugh at the pathetic display, but any mirth is soon driven from your mind by dread.
+			<</if>>
 		<<elseif $NPCList[_nn].penis is "thighs">>
 			<<switch random(1, 7)>>
 			<<case 1 2 3>>

@@ -57,15 +57,15 @@ setup.debugMenu.eventList = {
 		},
 		{
 			link: [`Pass 18 hours`, stayOnPassageFn],
-			widgets: [`<<pass 18 hours>>`],
+			widgets: [`<<pass 18 hours>>`, `<<set $tiredness to 0>>`],
 		},
 		{
 			link: [`Pass 23 hours`, stayOnPassageFn],
-			widgets: [`<<pass 23 hours>>`],
+			widgets: [`<<pass 23 hours>>`, `<<set $tiredness to 0>>`],
 		},
 		{
 			link: [`Pass 24 hours`, stayOnPassageFn],
-			widgets: [`<<pass 24 hours>>`],
+			widgets: [`<<pass 24 hours>>`, `<<set $tiredness to 0>>`],
 		},
 		{
 			link: [`Wardrobe`, `Wardrobe`],
@@ -223,6 +223,27 @@ setup.debugMenu.eventList = {
 		{
 			link: [`Escape Vore`, stayOnPassageFn],
 			widgets: [`<<set $vorestage to 0>>`],
+		},
+		{
+			link: [`Earn all Feats`, stayOnPassageFn],
+			widgets: [
+				`
+				<<set _featList to Object.keys(setup.feats)>>
+				<<for _i to 0; _i lt _featList.length; _i++>>
+					<<set $feats.currentSave[_featList[_i]] to new DateTime().timeStamp>>
+				<</for>>
+			`,
+			],
+		},
+		{
+			link: [`Unlock forest shop clothing`, stayOnPassageFn],
+			widgets: [
+				`
+				<<for _i to 0; _i lt $specialClothes.length; _i++>>
+					<<set $specialClothes[_i].unlocked to 3>>
+				<</for>>
+			`,
+			],
 		},
 		{
 			text_only: `\n`,

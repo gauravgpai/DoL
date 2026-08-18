@@ -1,6 +1,13 @@
 :: Widgets Pub [widget]
 
 <<widget "landryoptions">>
+	<<if $loft_gh is 1 and $landry_loft_known isnot 1>>
+		<<socialiseicon "ask">><<link [[Ask for help hiring workers|Pub Window Loft Ask]]>><</link>>
+		<br>
+	<<elseif $landry_loft_known is 1 and $loft_gh is 1 and $money gte 500000>>
+		<<highicon>><<link [[Hand Landry the money to hire workers|Pub Window Loft Purchase]]>><<money -500000 "orphanageUpgrades">><<endevent>><</link>>
+		<br>
+	<</if>>
 	<<if $blackmoney gte 1>>
 		<<highicon>><<link [[Sell stolen goods|Pub Sell]]>><</link>>
 		<br>
@@ -160,6 +167,7 @@
 			<</if>>
 		<<else>>
 			<<set $avery_mansion.fox.task to "heist">>
+			<<set $avery_mansion.fox.task_complete to false>>
 			"<span class="blue">I think it's time for us to make our move.</span> I'm healed up, and we have the information we need. The next time Avery's not in the way, I'll sneak in, and we'll get the bones at last."
 			<br><br>
 
@@ -215,7 +223,62 @@
 :: Pub
 <<set $outside to 0>><<set $location to "pub">><<effects>><<set $bus to "harvest">>
 
-<<if $exposed gte 1>>
+<!-- If the PC maxes out their stress while they're wasted, they'll wake up at a random passout location. -->
+<<if $stress gte $stressmax and $drunk gte 500>>
+	The countertop is swirling. You try to get up, but you end up walking into the floor.
+	<br><br>
+
+	<!--
+		Generic Environment Weight: 3
+		Specific Location Weight: 2
+		Complex Location Weight: 1
+	 -->
+	<<cleareventpool>>
+		<!-- Waking up in an alley. -->
+		<<addinlineevent "alley" 3>>
+			<<passoutalley>>
+		<</addinlineevent>>
+
+		<!-- Waking up on the street. -->
+		<<addinlineevent "street" 3>>
+			<<passoutstreet>>
+		<</addinlineevent>>
+
+		<!-- Waking up at the park. -->
+		<<addinlineevent "park" 2>>
+			<<passoutpark>>
+		<</addinlineevent>>
+
+		<!-- Waking up on the beach. -->
+		<<addinlineevent "beach" 2>>
+			<<passoutbeach>>
+		<</addinlineevent>>
+
+		<!-- Waking up on bus. -->
+		<<addinlineevent "bus" 1>>
+			<<set $phase to 1>>
+			<<set $phase2 to 0>>
+			<<passoutbus>>
+		<</addinlineevent>>
+
+		<!-- Waking up in the arcade. -->
+		<<if Time.dayState is "day" or Time.dayState is "dusk">>
+			<<addinlineevent "arcade" 1>>
+				<<passoutarcade>>
+			<</addinlineevent>>
+		<</if>>
+
+		<!-- Waking up in the adult shop. -->
+		<<if $adultshopunlocked isnot undefined
+			and (Time.hour gte 21 or Time.weekDay is 1 or (Time.weekDay is 7 ? Time.hour lt 9 : Time.hour lt 16))
+			and not (Time.hour is $closinghour and Time.weekDay isnot 1)
+			and $adultshopstate is not "closed">>
+			<<addinlineevent "adult_shop" 1>>
+				<<passoutadultshop>>
+			<</addinlineevent>>
+		<</if>>
+	<<runeventpool>>
+<<elseif $exposed gte 1>>
 	You are hiding in a trolley to conceal your <<lewdness>>. Everyone's too busy or intoxicated to notice you.
 	<br><br>
 
@@ -237,8 +300,11 @@
 	<</if>>
 	<<if $arousal gte $arousalmax>>
 		<<orgasmLocation "pub">>
+		<<set _nobr to true>>
 	<</if>>
-	<br><br>
+	<<if !_nobr>>
+		<br><br>
+	<</if>>
 	<<if $averyPub is 1 and (Time.dayState is "day" or Time.dayState is "dusk")>>
 		<<npc Avery>><<person1>>
 		<<loadNPC 1 avery_sidepiece>><<person2>>
@@ -1931,7 +1997,7 @@ Landry hands the stones back to you. "The brown fox insisted that you should hol
 	<</if>>
 	<br><br>
 
-	"So I heard. You've done a good thing," Landry says. "Sorry I left out some details. The less you knew, the safer you were. Those friends of <<nnpc_his Avery>> will be cowed, but I'm under no illusions. This war is far from over, but this is the first significant blow we've struck."
+	"So I heard. You've done a good thing," Landry says. "Sorry, I left out some details. The less you knew, the safer you were. Those friends of <<nnpc_his Avery>> will be cowed, but I'm under no illusions. This war is far from over, but this is the first significant blow we've struck."
 	<br><br>
 
 	<<He>> pauses, but continues. "I'm sorry about the unforeseen complications. You weren't meant to be that close when they went off."
@@ -2137,3 +2203,33 @@ Landry leans forward. "You're already involved, and you're dangerously close to 
 <<landryoptions>>
 <<getouticon>><<link [[Leave|Pub]]>><<endevent>><</link>>
 <br>
+
+:: Pub Window Loft Ask
+<<effects>><<set $landry_loft_known to 1>>
+You tell Landry about the loft at the orphanage, and your plan to build a bay window there.
+<br><br>
+"A good place for secrets," Landry muses. "Alright." <<He>> nods, and picks up <<his>> phone.
+<br><br>
+"Yes. Yes. It's—" <<he>> cuts off. "That's right." <<He>> hangs up, and raises five fingers. "<<printmoney 500000>>. The workers will arrive after you make the payment."
+<br><br>
+
+<<if $money gte 500000>>
+	<<highicon>><<link [[Hand over the money|Pub Window Loft Purchase]]>><<money -500000 "orphanageUpgrades">><<endevent>><</link>>
+	<br>
+<<else>>
+	<span class="blue">You don't have enough money for the payment.</span>
+	<br>
+<</if>>
+<<getouticon>><<link [[Leave|Pub]]>><<endevent>><</link>>
+<br>
+
+:: Pub Window Loft Purchase
+<<effects>><<pass 20>>
+<<generate1>><<generate2>><<generate3>><<generate4>>
+Landry counts the money, then points at the table in the corner. "Twenty minutes."
+<br><br>
+You walk over to the table and wait. Soon, a <<fullGroup>> arrive. Landry steps over to introduce you, and you discuss your plan with them.
+<br><br>
+They lead you to their van, and you give directions to the orphanage.
+<br><br>
+<<link [[Next (0:10)|Bird Loft 1]]>><<set $loft_gh to 2>><<set $loft_upgrade += 1>><<pass 10>><</link>>

@@ -54,8 +54,8 @@
 	<<addinlineevent "asylum_treatment_1" 1>>
 		<<asylumUnbindGown>>
 
-		<<if $o_long_and_beautiful gte 1 and $o_long_and_beautiful lte 7 and $rng % 2>>
-			<<set $phase to 0>><<set $o_long_and_beautiful += 1>>
+		<<if $o_long_and_beautiful is 8 and $rng % 2 and maleChance() lt 100>>
+			<<set $phase to 0>><<set $o_long_and_beautiful to 9>>
 			<<npc Harper>><<person1>>
 			<<loadNPC 1 "long_haired">>
 
@@ -161,7 +161,7 @@
 	<<addinlineevent "asylum_treatment_8" 1>>
 		<<npc Harper>><<generate2>><<generate3>>
 
-		You enter Harper's office. <<person1>><<He>> sits behind <<his>> desk. A <<person2>><<person>> and <<person3>><<person>> sit in front of <<him>>, both in white coats. They turn to regard you.
+		You enter Harper's office. <<person1>><<He>> sits behind <<his>> desk. A <<person2>><<person>> and <<person3>><<person>> sit in front of <<person1>><<him>>, both in white coats. They turn to regard you.
 		<br><br>
 
 		"Thank you for coming," Harper says. "I have something special for you today. A new drug. My colleagues here would like to observe its effects. Here." <<person1>><<He>> stands and removes a sheet from a nearby chair. There are straps on the arms and legs. "Please sit."
@@ -556,6 +556,7 @@
 
 <<widget "asylumRebind">>
 	<<if $asylumbound gt 0 and ($worn.upper.name isnot "straightjacket" or $worn.lower.name isnot "straightjacket bottom")>>
+		<<clearsinglenpc 0>>
 		<<generate1>><<person1>>
 		<<if V.carried.upper.name is "patient gown" or V.worn.upper.name is "patient gown">>
 			<<set _gown to true>>

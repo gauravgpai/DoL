@@ -40,7 +40,7 @@ The <<beasttype>> doesn't look content, but lets you go nonetheless. As you pass
 	You follow the Black Wolf deeper into the forest. Unlike during the hunts, your companion walks slowly, matching <<bhis>> speed to yours.
 	<br><br>
 
-	You have already been to this part of the forest with the Black Wolf. Just like before, <<bhe>> has a confident expression on <<bhim>> <<if $monster is 1>>face<<else>>muzzle<</if>>, which brings peace to your heart.
+	You have already been to this part of the forest with the Black Wolf. Just like before, <<bhe>> has a confident expression on <<bhis>> <<if $monster is 1>>face<<else>>muzzle<</if>>, which brings peace to your heart.
 	<br><br>
 
 	You feel safe. There is no way anyone would dare to attack a <<beasttype>> this big and fierce-looking.
@@ -1038,7 +1038,7 @@ You spread your legs, welcoming <<bhim>>.
 	<br><br>
 	Despite the barrier, <<bhe>> continues eagerly licking your <<genitals>> until <<bhe>> feels you tense up.<<gggarousal>>
 <<elseif $player.penisExist>>
-	<<set _parts.push("penis")>>
+	<<set _parts.push("penis")>><<set _virgin to C.npc["Black Wolf"].virginity.oral>>
 	<<bHe>> runs <<bhis>> tongue along your length, cradling it in <<bhis>> mouth. <<bHe>> pays extra attention to the head of your cock.<<takeNPCVirginity "Black Wolf" "oral">>
 	<br><br>
 	<<bHe>> continues licking, cradling your member in <<bhis>> mouth. As you shudder into an orgasm, <<bhe>> buries <<bhis>> nose <<if $settings.pubicHairEnabled and $pblevel gte 2>>in your pubes <</if>>against your pubic mound.<<gggarousal>>
@@ -1046,7 +1046,10 @@ You spread your legs, welcoming <<bhim>>.
 	<<set _parts.push("vagina", "vaginaoutside")>>
 	<<bHe>> runs <<bhis>> tongue along your vagina, alternating between focusing on your clit and lapping up lewd fluid. <<bHis>> tongue slides in and out of your vagina with each stroke. <<bHe>> pushes <<bhis>> nose against you, trying to taste more of you. <<gggarousal>>
 <</if>>
-<br><br>
+<br>
+<<if !_virgin>>
+	<br>
+<</if>>
 <<orgasm>>
 
 <<if $worn.genitals.name is "chastity parasite" or ($player.penisExist and $femaleclimax is 1)>>

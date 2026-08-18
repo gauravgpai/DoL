@@ -606,14 +606,15 @@ You are on the deck aboard the pirate ship.
 
 		<<if Weather.dayState is "dawn">>
 			<<link [[Watch the sun rise (1:00)|Pirate Dawn]]>><<pass 60>><<stress -6>><</link>><<lstress>>
-			<br><br>
+			<br>
 		<<elseif Weather.dayState is "dusk">>
 			<<link [[Watch the sun set (1:00)|Pirate Dusk]]>><<pass 60>><<stress -6>><</link>><<lstress>>
-			<br><br>
+			<br>
 		<</if>>
 
 		<<if $possessed>>
 		<<elseif Time.dayState isnot "night">>
+			<br>
 			Captain Zephyr peers through a telescope.
 			<br>
 			<<if $exposed gte 1>>
@@ -624,6 +625,7 @@ You are on the deck aboard the pirate ship.
 				<br>
 			<</if>>
 		<<else>>
+			<br>
 			Captain Zephyr is ensconced in <<nnpc_his "Zephyr">> quarters.
 			<br>
 			<<if $exposed gte 1>>
@@ -1638,7 +1640,7 @@ Zephyr pushes you below deck. More pirates leer as you pass, ogling every inch o
 <<generateRole 0 0 "pirate">><<person1>>
 The crowd crows. Zephyr pushes you through a bulkhead, into a chamber where a group are sat drinking.
 <br><br>
-"This <<bitch_pirate>> was impertinent," Zephyr says, addressing a <<person>>. "I need you to teach <<phim>> a lesson." The captain looks at you, and grasps your chin. "Say 'I'm sorry for being naughty' to the nice <<if $pronoun is "m">>gentleman<<else>>lady<</if>>."
+"This <<bitch_pirate>> was impertinent," Zephyr says, addressing a <<person>>. "I need you to teach <<phim>> a lesson." The captain looks at you, and grasps your chin. "Say 'I'm sorry for being naughty' to the nice <<gentleman_npc>>."
 <br><br>
 
 <<link [[Say you're sorry for being naughty|Pirate Clothes Say]]>><<pirate_status -1>><</link>><<lrespect>>
@@ -1713,7 +1715,7 @@ The crowd crows. Zephyr pushes you through a bulkhead, into a chamber where a gr
 :: Pirate Clothes Spit
 <<effects>>
 
-You spit in the <<persons>> face. The pirates laugh. "Careful <<lass>>," Zephyr says. "There's a bunk right here. Keep acting the brat and we'll pound it into sawdust."
+You spit in the <<persons>> face. The pirates laugh. "Careful, <<lass>>," Zephyr says. "There's a bunk right here. Keep acting the brat and we'll pound it into sawdust."
 <br><br>
 
 <<nnpc_He "Zephyr">> turns back to the <<person>>. "Why don't ye teach this <<bitch_pirate>> a different sort of lesson?" <<nnpc_He "Zephyr">> bends you over the bunk, sticking your <<bottom>> out.

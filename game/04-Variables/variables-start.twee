@@ -109,10 +109,10 @@
 
 	<<if $objectVersion is undefined>>
 		<<set $objectVersion to {
-			"updateClothes": 77,
+			"updateClothes": 85,
 			"specialClothes": 21,
 			"feats": 2,
-			"wardrobes": 17,
+			"wardrobes": 18,
 			"customColors": 4,
 			"uncomfortable": 2,
 			"chastity": 3,
@@ -179,7 +179,17 @@
 	}>>
 	<<npcList>>
 	<<npcNamed>>
+
+	<!-- PC Stat Max Initializations. -->
+	<<set $arousalmax to 10000>>
+	<<set $beautymax to 10000>>
 	<<set $controlmax to 1000>>
+	<<set $drunkmax to 1000>>
+	<<set $physiquemax to 20000>>
+	<<set $stressmax to 10000>>
+	<<set $traumamax to 5000>>
+	<<set $willpowermax to 1000>>
+
 	<<set $control to 1000>>
 
 	<<clothinginit>>
@@ -201,15 +211,9 @@
 	<<set $hairtype to "default">>
 	<<set $fringetype to "default">>
 	<<set $trauma to 0>>
-	<<set $traumamax to 5000>>
-	<<set $stressmax to 10000>>
-	<<set $arousalmax to 10000>>
 	<<set $physique to 3500>>
-	<<set $physiquemax to 20000>>
 	<<set $willpower to 200>>
-	<<set $willpowermax to 1000>>
 	<<set $beauty to 100>>
-	<<set $beautymax to 10000>>
 	<<set $birthmonth to "september">>
 	<<set $birthday to 3>>
 	<<set $npc to []>>
@@ -261,6 +265,8 @@
 	<<set $baileyRefusedToPayTotal to 0>>
 	<<set $baileyRefusedToPayTotalStat to 0>>
 	<<set $soldCount to 0>>
+	<<set $bailey_confiscation to null>>
+	<<set $bailey_confiscation_lost to 0>>
 	<<set $robinmoney to 300>>
 	<<set $settings.allureModifier to 1>>
 	<<set $speechcycle to 0>>
@@ -413,7 +419,7 @@
 	<<set $breastsensitivity to 1>>
 	<<set $bottomsensitivity to 1>>
 	<<set $genitalsensitivity to 1>>
-	<<set $alcoholMod to 1>>
+	<<set $drunkSensitivity to 1>>
 	<<set $bottomsizeold to 0>>
 	<<set $bottomsizemax to 8>>
 	<<set $bottomsizemin to 0>>

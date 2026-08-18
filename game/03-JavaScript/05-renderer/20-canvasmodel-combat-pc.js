@@ -76,6 +76,7 @@ const combatMainPc = {
 		 *     ██  ██  ██    ██ ██   ██ ██
 		 *      ████    ██████  ██   ██ ███████
 		 */
+		/* Pre 0.5.10.0 code for old images
 		voreBack: {
 			srcfn(options) {
 				return `${options.src}vore/back-${options.vore.stage}.png`;
@@ -93,7 +94,7 @@ const combatMainPc = {
 				return !!options.vore.show;
 			},
 			z: CombatRenderer.indices.near,
-		},
+		}, */
 		/*
 		 *    ██████  ██████   ██████  ██████  ███████
 		 *    ██   ██ ██   ██ ██    ██ ██   ██ ██
@@ -415,7 +416,7 @@ const combatMainPc = {
 		},
 		tattooMachine: {
 			srcfn(options) {
-				const location = (options.machines.tattoo.use).replace("_", "-");
+				const location = options.machines.tattoo.use.replace("_", "-");
 				return `${options.root}machine/tattoo/${options.position}/${location}.png`;
 			},
 			showfn(options) {

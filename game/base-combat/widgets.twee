@@ -45,21 +45,12 @@
 						<<set $_taker to "Ivory Wraith">>
 					<</if>>
 				<<elseif _args[1] is "vaginal" or _args[1] is "penile">>
-					<<switch $_taker>>
-						<<case "Robin">><<earnFeat "Robin the Lover">>
-						<<case "Kylar">><<earnFeat "Kylar the Obsessed">>
-						<<case "Eden">><<earnFeat "Eden the Lonely">>
-						<<case "Whitney">><<earnFeat "Whitney the Tsundere">>
-						<<case "Avery">><<earnFeat "Avery the Moneybags">>
-						<<case "Leighton">><<earnFeat "Leighton the Shady">>
-						<<case "Alex">><<earnFeat "Alex the Robust">>
-						<<case "Great Hawk">><<earnFeat "Great Hawk the Terror">>
-						<<case "Wren">><<earnFeat "Wren the Sly">>
-						<<case "Black Wolf">><<earnFeat "Great Wolf the Alpha">>
-						<<case "Harper">><<earnFeat "Harper the Hypnotist">>
-						<<case "Morgan">><<earnFeat "Morgan the Lost">>
-						<<case "Gwylan">><<earnFeat "Gwylan the Bewitching">>
-					<</switch>>
+					<<if Array.isArray(_args[0])>>
+						<<awardVirginityFeat $NPCList[_args[0][0]].fullDescription>>
+						<<awardVirginityFeat $NPCList[_args[0][1]].fullDescription>>
+					<<else>>
+						<<awardVirginityFeat $_taker>>
+					<</if>>
 				<</if>>
 
 				<<if !$player.virginityDetails>>
@@ -124,6 +115,24 @@
 			<</if>>
 		<</if>>
 	<</if>>
+<</widget>>
+
+<<widget "awardVirginityFeat">>
+	<<switch _args[0]>>
+		<<case "Robin">><<earnFeat "Robin the Lover">>
+		<<case "Kylar">><<earnFeat "Kylar the Obsessed">>
+		<<case "Eden">><<earnFeat "Eden the Lonely">>
+		<<case "Whitney">><<earnFeat "Whitney the Tsundere">>
+		<<case "Avery">><<earnFeat "Avery the Moneybags">>
+		<<case "Leighton">><<earnFeat "Leighton the Shady">>
+		<<case "Alex">><<earnFeat "Alex the Robust">>
+		<<case "Great Hawk">><<earnFeat "Great Hawk the Terror">>
+		<<case "Wren">><<earnFeat "Wren the Sly">>
+		<<case "Black Wolf">><<earnFeat "Great Wolf the Alpha">>
+		<<case "Harper">><<earnFeat "Harper the Hypnotist">>
+		<<case "Morgan">><<earnFeat "Morgan the Lost">>
+		<<case "Gwylan">><<earnFeat "Gwylan the Bewitching">>
+	<</switch>>
 <</widget>>
 
 <<widget "takeTempleVirginity">>
@@ -216,7 +225,7 @@
 		<</if>>
 		<<switch $_kissType>>
 			<<case "loveInterest">>
-				<span class="lewd">You're happy your first kiss went to a love interest.</span><<arousal 3000>><<stress -12>><<trauma -12>><<ggarousal>><<llstress>>
+				<span class="lewd">You're happy your first kiss went to a love interest.</span><<arousal 3000>><<stress -12>><<trauma -12>><<ggarousal>><<llstress>><<lltrauma>>
 				<<if ($wraith.mimic isnot $_fullDescription)>><<earnFeat "First Kiss">><</if>>
 				<<set _consensualOverride to true>>
 			<<case "romantic">>
@@ -498,7 +507,7 @@
 	<</if>>
 <</widget>>
 
-<<widget "combatTrainAdvance">>/*For use after a beast/monster in a train is finished with their turn. Loads next in line into $NPCList[0]. Loads them all back into $NPCList if at the end of the train.*/
+<<widget "combatTrainAdvance">>
 	<<clearnpc>>
 	<<if $combatTrain.length gt 0>>
 		<<set $combatTrain.length-->>
