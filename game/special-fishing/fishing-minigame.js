@@ -862,7 +862,7 @@ function decrementFishingTimer(playerAction) {
 		minigame.fishEscapeTimer -= 0.25;
 
 		if (fishingMinigameActionRequiresAthletics(playerAction) && !V.athleticsSuccess) {
-			minigame.fishEscapeTimer -= 0.75;
+			minigame.fishEscapeTimer -= 0.25;
 		}
 	}
 
