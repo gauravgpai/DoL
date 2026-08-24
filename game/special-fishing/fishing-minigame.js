@@ -167,6 +167,17 @@ setup.fishingMinigame = {
 				}
 				return {};
 			},
+			duringThrash(_playerAction, athleticsSuccess) {
+				if (athleticsSuccess) {
+					return {
+						fishStamina: [-1, -2].random(),
+					};
+				} else {
+					return {
+						fishStamina: [0, -1].random(),
+					};
+				}
+			},
 			nextActionFromRun(stamina, _maxStamina, fishDistance, _playerAction) {
 				if (stamina <= 0) {
 					return [["idle", 100]];
@@ -190,8 +201,9 @@ setup.fishingMinigame = {
 				if (fishDistance <= 2) {
 					if (stamina > 0) {
 						return [
-							["thrash", 80],
+							["thrash", 70],
 							["idle", 20],
+							["run", 10],
 						];
 					}
 					return [
