@@ -754,17 +754,17 @@ function fishingMinigameAthleticsCheckDifficulty(playerAction) {
 	let base;
 	if (minigame.fishAction === "run") {
 		if (playerAction === "reel") {
-			base = 3500;
+			base = 2800;
 		} else if (playerAction === "hold") {
-			base = 2500;
+			base = 1800;
 		} else {
 			throw new Error(`fishingMinigameAthleticsCheckDifficulty: unexpected action "${playerAction}" for a running fish`);
 		}
 	} else if (minigame.fishAction === "thrash") {
 		if (playerAction === "reel") {
-			base = 2900;
+			base = 2200;
 		} else if (playerAction === "hold") {
-			base = 2300;
+			base = 1600;
 		} else {
 			throw new Error(`fishingMinigameAthleticsCheckDifficulty: unexpected action "${playerAction}" for a thrashing fish`);
 		}

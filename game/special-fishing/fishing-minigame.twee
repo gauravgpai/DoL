@@ -161,7 +161,7 @@
 <</widget>>
 
 <<widget "fishingMinigameAthleticsCheck">>
-	<<athleticsdifficulty -4500 `fishingMinigameAthleticsCheckDifficulty(_args[0])`>>
+	<<athleticsdifficulty -6500 `fishingMinigameAthleticsCheckDifficulty(_args[0])`>>
 <</widget>>
 
 <<widget "fishingMinigameFrame">>
