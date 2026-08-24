@@ -744,6 +744,8 @@ window.fishingMinigameActionRequiresAthletics = fishingMinigameActionRequiresAth
 /**
  * Returns the maximum of the athletics roll range for the given action.
  *
+ * The numbers for the athletics checks are so large because we don't want athletics to play such a huge roll in the fishing minigame checks. High athletics shouldn't allow the player to just spam reel and catch any fish, that's uninteresting. Though better athletics should help a bit, so it can't just be a flat roll, it needs to use the athletics difficulty system.
+ *
  * @param {string} playerAction
  * @returns {number} The upper bound of the athletics check.
  */
@@ -752,17 +754,17 @@ function fishingMinigameAthleticsCheckDifficulty(playerAction) {
 	let base;
 	if (minigame.fishAction === "run") {
 		if (playerAction === "reel") {
-			base = 360;
+			base = 3500;
 		} else if (playerAction === "hold") {
-			base = 250;
+			base = 2500;
 		} else {
 			throw new Error(`fishingMinigameAthleticsCheckDifficulty: unexpected action "${playerAction}" for a running fish`);
 		}
 	} else if (minigame.fishAction === "thrash") {
 		if (playerAction === "reel") {
-			base = 290;
+			base = 2900;
 		} else if (playerAction === "hold") {
-			base = 230;
+			base = 2300;
 		} else {
 			throw new Error(`fishingMinigameAthleticsCheckDifficulty: unexpected action "${playerAction}" for a thrashing fish`);
 		}
@@ -776,9 +778,9 @@ function fishingMinigameAthleticsCheckDifficulty(playerAction) {
 	}
 
 	if (minigame.fishStamina === minigame.maxStamina) {
-		return base + minigame.armFatigue * minigame.armFatigueDifficulty + 200;
+		return base + minigame.armFatigue * minigame.armFatigueDifficulty + 2000;
 	}
-	return base + minigame.armFatigue * minigame.armFatigueDifficulty + 20 * (minigame.fishStamina - minigame.maxStamina);
+	return base + minigame.armFatigue * minigame.armFatigueDifficulty + 200 * (minigame.fishStamina - minigame.maxStamina);
 }
 window.fishingMinigameAthleticsCheckDifficulty = fishingMinigameAthleticsCheckDifficulty;
 
