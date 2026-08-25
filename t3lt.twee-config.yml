@@ -1491,6 +1491,8 @@ sugarcube-2:
       name: baitOverlay
     baitSidebar:
       name: baitSidebar
+    baitShopFishLocationHint:
+      name: baitShopFishLocationHint
     balloonRobinAngryHelp:
       name: balloonRobinAngryHelp
       tags: ["text"]
