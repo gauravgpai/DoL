@@ -273,7 +273,7 @@ You deftly open the cash register and count out the money inside. There's <<prin
 <<set $fishing.baitShopIntro to "fullIntro">>
 <<set $daily.fishing.baitShopRequestFish to "haddock">>
 
-As you turn to go, the <<person>> at the counter speaks up. "If you plan on fishing in these parts, be careful, there're some strange things in the waters here." <<He>> pauses. "But if you're heading out anyway, bring me back a haddock for my dinner and I'd pay good money for it. It'd have to be caught fresh today though, I can buy smelly fish at the market." <<He>> shrugs. "Either way, I'll be here until we close at <<ampm 19 00>>, then I'll need to figure out dinner."
+As you turn to go, the <<person>> at the counter speaks up. "If you plan on fishing in these parts, be careful, there're some strange things in the waters here." <<He>> pauses. "But if you're heading out anyway, bring me back <span class="blue">a haddock</span> for my dinner and I'd pay good money for it. It'd have to be caught fresh today though, I can buy smelly fish at the market." <<He>> shrugs. "Either way, I'll be here until we close at <<ampm 19 00>>, then I'll need to figure out dinner."
 <br><br>
 
 <<link [[Ask how to catch <<a $daily.fishing.baitShopRequestFish>>|Bait Shop Request Fish Catch Help]]>>
@@ -308,7 +308,7 @@ As you turn to go, the <<person>> at the counter speaks up. "If you plan on fish
 <<set $fishing.baitShopIntro to "fullIntro">>
 <<set $daily.fishing.baitShopRequestFish to baitShopRequestFish()>>
 
-As you turn to go, the <<person>> behind the counter speaks up. "Glad to see repeat customers around here, I hope you've caught something good since I last saw you!" <<He>> pauses. "If you're going out tonight, you could bring me back <<a $daily.fishing.baitShopRequestFish>> for my dinner and I'd pay good money for it. It'd have to be caught fresh today though, I can buy smelly fish at the market." <<He>> shrugs. "Either way, I'll be here until we close at <<ampm 19 00>>, then I'll need to figure out dinner."
+As you turn to go, the <<person>> behind the counter speaks up. "Glad to see repeat customers around here, I hope you've caught something good since I last saw you!" <<He>> pauses. "If you're going out tonight, you could bring me back <span class="blue"><<a $daily.fishing.baitShopRequestFish>></span> for my dinner and I'd pay good money for it. It'd have to be caught fresh today though, I can buy smelly fish at the market." <<He>> shrugs. "Either way, I'll be here until we close at <<ampm 19 00>>, then I'll need to figure out dinner."
 <br><br>
 
 <<link [[Ask how to catch <<a $daily.fishing.baitShopRequestFish>>|Bait Shop Request Fish Catch Help]]>>
@@ -331,9 +331,9 @@ As you turn to go, the <<person>> behind the counter speaks up. "Glad to see rep
 <<set $daily.fishing.baitShopRequestFish to baitShopRequestFish()>>
 As you step in, the <<person>> at the counter glances up at you.
 <<if $fishing.baitShopRequestsCompleted is 0>>
-	"Glad to see repeat customers around here, I hope you've caught something good since I last saw you!" <<He>> pauses. "If you're going out tonight, if you bring me back <<a $daily.fishing.baitShopRequestFish>> for my dinner, I'd pay good money for it. It'd have to be caught fresh today though, I can buy smelly fish at the market." <<He>> shrugs. "I'll be here until we close at <<ampm 19 00>>, then I'll need to figure out dinner."
+	"Glad to see repeat customers around here, I hope you've caught something good since I last saw you!" <<He>> pauses. "If you're going out tonight, if you bring me back <span class="blue"><<a $daily.fishing.baitShopRequestFish>></span> for my dinner, I'd pay good money for it. It'd have to be caught fresh today though, I can buy smelly fish at the market." <<He>> shrugs. "I'll be here until we close at <<ampm 19 00>>, then I'll need to figure out dinner."
 <<else>>
-	"Hello! Glad to see my favourite <<fisherPerson>>. I'd love to get some <<= $daily.fishing.baitShopRequestFish>> for my dinner tonight, if you're interested. Caught fresh, as always. Fancy finding one for me again? I'll be here 'til we close at <<ampm 19 00>>, then I'll need to figure out dinner."
+	"Hello! Glad to see my favourite <<fisherPerson>>. I'd love to get a <span class="blue"><<= $daily.fishing.baitShopRequestFish>></span> for my dinner tonight, if you're interested. Caught fresh, as always. Fancy finding one for me again? I'll be here 'til we close at <<ampm 19 00>>, then I'll need to figure out dinner."
 <</if>>
 <br><br>
 
