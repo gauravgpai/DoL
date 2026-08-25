@@ -729,6 +729,8 @@ function dayPassed() {
 	if (V.bell_timer) V.bell_timer--;
 	if (V.lake_ice_broken >= 1) V.lake_ice_broken--;
 	if (V.lake_ice_broken < 1) delete V.lake_ice_broken;
+	if (V.lake_fishing_ice_broken >= 1) V.lake_fishing_ice_broken--;
+	if (V.lake_fishing_ice_broken < 1) delete V.lake_fishing_ice_broken;
 	if (V.community_service >= 1) {
 		if (V.community_service_done !== 1 && !["asylum", "prison"].includes(V.location) && !V.daily?.asylumPrison) {
 			wikifier("crimeUp", 200, "obstruction");
@@ -1274,6 +1276,8 @@ function noonCheck() {
 	wikifier("dailySellProduce");
 	if (V.lake_ice_broken >= 1) V.lake_ice_broken--;
 	if (V.lake_ice_broken <= 0) delete V.lake_ice_broken;
+	if (V.lake_fishing_ice_broken >= 1) V.lake_fishing_ice_broken--;
+	if (V.lake_fishing_ice_broken <= 0) delete V.lake_fishing_ice_broken;
 	if (V.edenNightmareWake) delete V.edenNightmareWake;
 
 	wikifier("menstruationCycle");
