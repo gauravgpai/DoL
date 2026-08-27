@@ -1144,10 +1144,10 @@
 						<<elseif _clothingList[_clothingLayer]?.index gt 0 and $options.images is 1>>
 							<<set _imageFunction to `<<clothingicon _clothingList[_clothingLayer] _clothingLayer>>`>>
 						<<else>>
-							<<set _clothingLayerString to _clothingLayer.replace('_','')>>
+							<<set _clothingLayerString to _clothingLayer.replace('_','-')>>
 							<<switch _clothingLayerString>>
-								<<case "overupper", "overhead", "overlower">>
-									<<set _clothingLayerString to "overoutfit">>
+								<<case "over-upper", "over-head", "over-lower">>
+									<<set _clothingLayerString to "over-outfit">>
 								<<case "hands">>
 									<<set _clothingLayerString to "hand">>
 								<<default>>
