@@ -233,7 +233,7 @@
 				<<He>> holds your leash with one hand, and takes your hand in <<his>> other. <<He>> leads you out of the shop and into the forest. <<takeHandholdingVirginity "Gwylan" "consensual">>
 			<<else>>
 				<<set $beastRitual.binding to "handheld">>
-				<<He>> takes your hand in <<his>> as <<he>> leads you out of the shop and into the forest. <<takeHandholdingVirginity "Gwylan" "consensual">>
+				<<He>> takes your hand in <<hers>> as <<he>> leads you out of the shop and into the forest. <<takeHandholdingVirginity "Gwylan" "consensual">>
 			<</if>>
 		<<elseif $beastRitual.binding is "leash">>
 			<<He>> pinches your cheek. "Stay close, <<pcpetname "Gwylan" "simple">>." You leave the shop, and head out into the forest with <<him>>, led by your leash.
@@ -387,9 +387,9 @@
 	<br><br>
 
 	<<if $gwylanSeen.includes("forest_journey_handheld")>>
-		<<set $gwylanSeen.pushUnique("forest_journey_handheld")>>
 		You walk beside <<him>> and hold your hand out, grabbing one of <<hers>>. <<takeHandholdingVirginity "Gwylan" "consensual">> <span class="teal"><<He>> hesitantly squeezes yours back.</span>
 	<<else>>
+		<<set $gwylanSeen.pushUnique("forest_journey_handheld")>>
 		You walk beside <<him>> and hold your hand out, grabbing one of <<hers>>. <<takeHandholdingVirginity "Gwylan" "consensual">> <<He>> stops humming, but keeps walking. <span class="teal"><<He>> hesitantly squeezes your hand back.</span>
 		<<if $beastRitual.binding isnot "leash">>
 			"Good idea, we're less likely to get separated this way."
@@ -855,7 +855,7 @@ but <<he>> holds the tincture away from you. "It's also a potent hallucinogen. I
 			You were already in rut, and <<gwylanHypnoName>> now looks and smells like the perfect mate. <<arousal 2000>><<gggarousal>>
 		<<elseif hasSexStat("deviancy", 3) and _gwylanLovePercent gte 50>>
 			<<set $beastRitual.lewdOption to true>>
-			The world swirls around <<gwylanHypnoName>>, and <<he>> both looks and smells like the perfect mate for you. <<if $beastRitual.petplay gte 3>>Your pet-like behavior seems to have put you in a strange mindset.<</if>> <<arousal 2000>><<gggarousal>>
+			The world swirls around <<gwylanHypnoName>>, and <<he>> both looks and smells like the perfect mate for you. <<if $beastRitual.petplay gte 3>>Your pet-like behaviour seems to have put you in a strange mindset.<</if>> <<arousal 2000>><<gggarousal>>
 		<<else>>
 			<span class="blue">You're barely able to shake off the strange impulse.</span> <<arousal 500>><<garousal>>
 		<</if>>
@@ -1288,7 +1288,7 @@ but <<he>> holds the tincture away from you. "It's also a potent hallucinogen. I
 
 						<<link [[Dodge <<bhim>>|Gwylan Forest Run Fox]]>><<set $phase to "dodge">><</link>><<dancedifficulty 1 1000>>
 						<br>
-						<<link [[Redirect <<bhis>> pounce|Gwylan Forest Run Fox]]>><<set $phase to "redirect">><</link>><<physiquedifficulty 4000 16000>>
+						<<link [[Redirect <<bhis>> pounce|Gwylan Forest Run Fox]]>><<set $phase to "redirect">><</link>><<physiquedifficulty 4000 15000>>
 						<br>
 						<<if $fox gte 4>>
 							<<link [[Scream at <<bhim>>|Gwylan Forest Run Fox]]>><<set $phase to "scream">><<transform fox 1>><</link>><<fox>>
@@ -1355,7 +1355,7 @@ Finally, <span class="green">you see Gwylan running ahead of you.</span> You pus
 	<span class="pink"><<He>> grins. <<He>> was waiting for this.</span> <<He>> leads you on a grand chase.
 	<br><br>
 
-	Two foxes briefly forget their places in the world, and take solace this primal delight. <<trauma -6>><<npcincr Gwylan dom 1>><<ltrauma>><<gyearning>>
+	Two foxes briefly forget their places in the world and take solace in this primal delight. <<trauma -6>><<npcincr Gwylan dom 1>><<ltrauma>><<gyearning>>
 <<else>>
 	<<He>> looks surprised, but grins. <<He>> leads you on a brief chase.
 <</if>>
@@ -1495,7 +1495,7 @@ You're evenly matched with <<him>> for the moment. You quickly get separated aga
 	You hear something whip through the air as the <<beasttype>> growls. <span class="pink">A collar snaps in place around <<bhis>> neck with perfect accuracy.</span>
 	<br><br>
 
-	"Get off of <<phim>>!" Gwylan shouts as <<nnpc_he "Gwylan">> runs past, putting the leash over <<his>> shoulder and using <<his>> whole body weight to pull the <<beasttype>> off of you.
+	"Get off of <<phim>>!" Gwylan shouts as <<nnpc_he "Gwylan">> runs past, putting the leash over <<nnpc_his "Gwylan">> shoulder and using <<nnpc_his "Gwylan">> whole body weight to pull the <<beasttype>> off of you.
 	<<bHis>> claws dig into the dirt, but <<bhes>> ultimately pulled away right as the collar snaps from the tension. Seeing <<bhes>> outnumbered, <<bhe>> flees back into the forest quickly.
 	<br><br>
 
@@ -1612,7 +1612,7 @@ You're evenly matched with <<him>> for the moment. You quickly get separated aga
 		<<set _continue to true>>
 		<span class="green"><<He>> never saw you coming.</span> You easily pin <<him>> to the ground.
 	<<else>>
-		<<He>> turns at the last moment and <span class="red">ducks into your pounce, causing you to roll right over <<his>> shoulder.</span> You manage land on your hands and feet and recover quickly.
+		<<He>> turns at the last moment and <span class="red">ducks into your pounce, causing you to roll right over <<his>> shoulder.</span> You manage to land on your hands and feet and recover quickly.
 		<br><br>
 
 		You look up. Gwylan grins at you as <<he>> continues running ahead.
@@ -1627,9 +1627,11 @@ You're evenly matched with <<him>> for the moment. You quickly get separated aga
 	<br><br>
 
 	It's too late for <<him>> to do anything about it, though. You're already on <<him>>. <<His>> guard was down, and you easily pin <<him>> to the ground.
+	<br><br>
+
+	<<He>> struggles against your grip for a moment, but <<he>> isn't very strong. <<He>> quickly submits, looking up to you while panting. "Alright, <<pcpetname "Gwylan" "name">>, you got me. What's your next move?" <<npcincr Gwylan lust 4>><<gglust>>
+	<br><br>
 <</if>>
-<<He>> struggles against your grip for a moment, but <<he>> isn't very strong. <<He>> quickly submits, looking up to you while panting. "Alright, <<pcpetname "Gwylan" "name">>, you got me. What's your next move?" <<npcincr Gwylan lust 4>><<gglust>>
-<br><br>
 
 <<if _continue>>
 	<<if $beastRitual.lewdOption>>
@@ -1731,7 +1733,7 @@ You start to grind your pelvis against Gwylan's leg. The scent on <<him>> is mak
 
 			Gwylan patiently smiles. "All better?"
 			<<if _orgasmAssist>>
-				<<He>> licks your fludis off of <<his>> hand. <<npcincr Gwylan lust 2>><<glust>>
+				<<He>> licks your fluids off of <<his>> hand. <<npcincr Gwylan lust 2>><<glust>>
 			<<else>>
 				<<He>> gently pets you as the orgasm subsides. <<trauma -2>><<npcincr Gwylan lust 1>><<ltrauma>><<glust>>
 			<</if>>
@@ -1812,8 +1814,8 @@ You keep <<his>> arms pinned down, and start to grind your body against <<him>>.
 	<<link [[Take it|Gwylan Forest Run Clearing Up]]>><</link>><<handholdingvirginitywarning>>
 	<br>
 	<<if $gwylanSeen.includes("ritual_sex")>>
-		<<if $submissive lte 500>>
-			<<link [[Try mounting <<him>> again|Gwylan Forest Run Clearing Mount Persist]]>><</link>><<defianttext>><<gwylanWillpowerDifficulty>>
+		<<if displayDefiantOption(500)>>
+			<<link [[Try mounting <<him>> again|Gwylan Forest Run Clearing Mount Persist]]>><<wolfDefiant 500>><</link>><<defianttext 500>><<gwylanWillpowerDifficulty>>
 			<br>
 		<<else>>
 			<<insufficientStat "submissive" "to try mounting <<him>> again">>
@@ -1907,7 +1909,7 @@ You keep <<his>> arms pinned down, and start to grind your body against <<him>>.
 		<<ejaculation>><<npcincr Gwylan lust -25>><<llllust>>
 	<<else>>
 		<<if _gwylanStatus.includesAny("dom", "lust")>>
-			<<He>> hums and holds you tight you as you recover from your <<if $orgasmcurrent gt 1>>final<</if>> orgasm. <<gwylanHypnosis "devotion" 2>><br>
+			<<He>> hums and holds you tight as you recover from your <<if $orgasmcurrent gt 1>>final<</if>> orgasm. <<gwylanHypnosis "devotion" 2>><br>
 			<<if $consensual is 1>>
 				"You did great, <<pcpetname "Gwylan">>,"
 			<<else>>
@@ -1994,9 +1996,9 @@ You quickly dart around Gwylan's legs on all fours, getting a lead on <<him>>. <
 	<<if $beastRitual.petplay gte 3>>
 		You make it back to the forest shop, Gwylan walking you like a dog for the end. <<He>> kneels down and pets your cheeks.
 		<<if $beastRitual.sex or $beastRitual.orgasm>>
-			"I expect you to be on your best behavior now that you've gotten your treat," <<he>> says.
+			"I expect you to be on your best behaviour now that you've gotten your treat," <<he>> says.
 		<<else>>
-			You were a very <<pcpetname "Gwylan" "good">>." <<trauma -1>><<ltrauma>>
+			"You were a very <<pcpetname "Gwylan" "good">>." <<trauma -1>><<ltrauma>>
 		<</if>>
 	<<else>>
 		You make it back to the forest shop, hand-in-hand with Gwylan. "That was nice," <<he>> says. "I'm so used to walking the forest alone."
@@ -2197,7 +2199,7 @@ The two of you head into the garden.
 	<br><br>
 
 	<<He>> raises a hand after the first verse, the sleeves of <<his>> robe dancing in the wind. After the fourth, the words pause, and <<he>> begins a slow, elegant dance.
-	<<if Weather.name is "thunderStorm">>
+	<<if Weather.name is "thunderstorm">>
 		A roll of thunder fills in for <<his>> voice.
 	<<elseif Weather.name is "heavyPrecipitation">>
 		The <<= Weather.precipitation>> itself yields to <<his>> performance.
@@ -2265,7 +2267,7 @@ The two of you head into the garden.
 
 <span class="narration">
 <<if $beastRitual.lure is "dryad">>
-	<<if Weather.name is "thunderStorm">>
+	<<if Weather.name is "thunderstorm">>
 		Feel the thunder inside,<br>
 		come take shelter in mine,<br>
 		and drink deep of the tide.
@@ -2301,7 +2303,7 @@ for still, it sings for you.
 </span>
 
 <<He>> pauses singing, and begins an elegant, twirling dance.
-<<if Weather.name is "thunderStorm">>
+<<if Weather.name is "thunderstorm">>
 	A roll of thunder fills in for <<his>> voice.
 <<elseif Weather.name is "heavyPrecipitation">>
 	The <<= Weather.precipitation>> itself yields to <<his>> performance.
@@ -2425,7 +2427,7 @@ that which the earth will keep.
 		"I'm not surprised you know it, although I'm surprised you could understand it! What else is rattling around in that head of yours?"
 	<</if>>
 <</if>>
-<<He>> ruffles your hair, but <<his>> expression slowly turns somber.
+<<He>> ruffles your hair, but <<his>> expression slowly turns sombre.
 <br><br>
 
 "It's called <span class="teal">Seabird's Lullaby</span>. A song passed down through my family." <<He>> huddles in on <<himself>> slightly, looking away.
@@ -2529,9 +2531,17 @@ You feel a vague memory creep towards the front of your mind as you look at Gwyl
 <br><br>
 
 <<if $gwylanSeen.includes("romance")>>
-	<<He>> sighs. "Greedy <<girl>>." <<He>> grabs the back of your head and pulls you into a kiss. <<gwylanKiss>> <<His>> tongue pushes in for a moment, before <<he>> pulls away and licks your cheek. "Thank you," <<he>> says much louder. "Satisfied now?"
+	<<He>> sighs. "Greedy <<girl>>." <<He>> grabs the back of your head and pulls you into a kiss. <<gwylanKiss>>
+	<<if _pcKissVirginityTaken>>
+		<br><br>
+	<</if>>
+	<<His>> tongue pushes in for a moment, before <<he>> pulls away and licks your cheek. "Thank you," <<he>> says much louder. "Satisfied now?"
 <<elseif C.npc.Gwylan.dom gte 60>>
-	<<He>> sighs. After thinking for a moment, <<he>> leans in and kisses you. <<gwylanKiss>> <<He>> holds it and pulls away slowly. "Thank you," <<he>> says again. "Satisfied now?"
+	<<He>> sighs. After thinking for a moment, <<he>> leans in and kisses you. <<gwylanKiss>>
+	<<if _pcKissVirginityTaken>>
+		<br><br>
+	<</if>>
+	<<He>> holds it and pulls away slowly. "Thank you," <<he>> says again. "Satisfied now?"
 <<else>>
 	<<He>> growls, leaning in and giving you a quick peck on the lips. "That's the most you're getting."
 <</if>>
@@ -2555,7 +2565,7 @@ You sit and wait with Gwylan, enjoying the sounds of nature. It's quite cosy in 
 <br><br>
 
 Flecks of the green light creep into your peripheral vision as the incense fills the air.
-<<if ["lightPrecipitation", "heavyPrecipitation", "thunderStorm"].includes(Weather.name)>>
+<<if ["lightPrecipitation", "heavyPrecipitation", "storm", "thunderstorm"].includes(Weather.name)>>
 	The <<= Weather.precipitation>> simply doesn't seem to land around you and Gwylan, or anywhere on the stone path.
 <</if>>
 <br><br>
@@ -2772,7 +2782,7 @@ The rest of the time passes in silence, but you don't have to wait long.
 	<</if>>
 	<<nnpc_He "Gwylan">> clears <<nnpc_his "Gwylan">> throat. "We'll be washing <<if $beastRitual.lure is "dryad">><<him>><<else>>them<</if>> first, though."
 <</if>>
-<<nnpc_He "Gwylan">> leans down and whispers<<if $beastRitual.lure is "dryad">> into the <<personsimple>>'s ear<<else>> into the first <<beasttype>>'s ear<</if>>. "Bath time."
+<<nnpc_He "Gwylan">> leans down and whispers<<if $beastRitual.lure is "dryad">> into the <<personssimple>> ear<<else>> into the first <<beasttype>>'s ear<</if>>. "Bath time."
 <br><br>
 
 <<set _tendingDiffMin to 400>><<set _tendingDiffMax to 800>>
@@ -3606,7 +3616,7 @@ Gwylan very slowly cuts a withered flower from <<his>> hair, and places it in th
 <br><br>
 
 <<if $beastRitual.tainted>>
-	<<nnpc_He "Gwylan">> holds up one of the <<personsimple>>'s vines. It looks much worse than all the rest. There are purple veins running along its length, and thorns jutting out at random.
+	<<nnpc_He "Gwylan">> holds up one of the <<personssimple>> vines. It looks much worse than all the rest. There are purple veins running along its length, and thorns jutting out at random.
 	"There's no saving this vine, I'll need to <span class="red">amputate</span> so a new one can grow." <<nnpc_He "Gwylan">> pulls out a much larger, heavily angled pair of shears and holds the vine over the bucket. "Just hold still, you won't feel a thing."
 	<br><br>
 
@@ -3691,7 +3701,7 @@ The <<personsimple>> shudders, and <<his>> leafy clothes begins to move to expos
 
 	"It was almost too late for <<him>>," <<nnpc_he "Gwylan">> says, kneeling down to further inspect. "<<He>> was hiding the worst of it. We're lucky <<hes>> the one that answered us. <<He>> can still fully recover from this, although <<he>>'ll have some scars."
 <<else>>
-	Gwylan nods. "I've seen worse." You notice that there are some discoloured patches of skin around <<his>> body, with cracks forming at their center. "<<He>>'ll be okay after we finish the cleansing."
+	Gwylan nods. "I've seen worse." You notice that there are some discoloured patches of skin around <<his>> body, with cracks forming at their centre. "<<He>>'ll be okay after we finish the cleansing."
 <</if>>
 <br><br>
 
@@ -3812,7 +3822,7 @@ The <<person>> shudders, and starts to breathe heavily.
 	<br>
 <</if>>
 
-<<if $angel gte 6 and Object.values($tentacles).some(tentacle => tentacle.head is "vaginaimminent" or tentacle.head is "penisimminent") and !$beastRitual.virginityProtected>>
+<<if $angel gte 6 and Object.values($tentacles).some(tentacle => tentacle.head is "vaginaimminent" or (tentacle.head is "penisimminent" and !playerHasStrapon())) and !$beastRitual.virginityProtected>>
 	<<set _gwyTargetFeet to Object.values($tentacles).find(tentacle => tentacle.head is "vaginaimminent" or tentacle.head is "penisimminent")>>
 	<<if _gwyTargetFeet>>
 		<<set $beastRitual.virginityProtected to true>>
@@ -4091,7 +4101,7 @@ The <<person>> shudders, and starts to breathe heavily.
 		<br><br>
 
 		<<His>> vines quickly propel <<him>> to the edge of the garden, where they climb the wall. <<Hes>> hauled over the top, and vanishes into the forest.
-		<<tearful>> Gwylan brushes you down and looks you over. "That isn't my usual method, but it worked. I'm blessed to have your help." <<He>> walks you over to the bath.
+		<<tearful>> Gwylan brushes you down and looks you over. "That isn't my usual method, but it worked. I'm blessed to have your help." <<nnpc_He "Gwylan">> walks you over to the bath.
 		<<clotheson>>
 		<<endcombat>>
 
@@ -4276,7 +4286,7 @@ Gwylan pants for breath. <<His>> cheeks are flushed, and you're both covered in 
 		source: "plant",
 		body: 5,
 		tummy: 3,
-		breasts: Math.ceil(C.npc.Gwylan.breastsize / 2),
+		breasts: C.npc.Gwylan.breastsize gte 1 ? Math.ceil(C.npc.Gwylan.breastsize / 2) : 1,
 		genitals: 3,
 		control: "player",
 		arousal: C.npc.Gwylan.lust + Math.floor(C.npc.Gwylan.dom / 3),
@@ -4359,7 +4369,11 @@ Gwylan pants for breath. <<His>> cheeks are flushed, and you're both covered in 
 		<br><br>
 
 		You crawl up towards <<him>>. When you're close enough, <<he>> <span class="lewd"><<he>> licks a bit of nectar off your cheek</span>. <<He>> licks again, closer to your mouth, then your lips.
-		Suddenly, you're kissing each other, your tongues eagerly sharing the fizzy nectar. <<gwylanKiss>> <<He>> leans forward, pushing you back in <<his>> effort to kiss you even deeper, until you're toppled backwards.
+		Suddenly, you're kissing each other, your tongues eagerly sharing the fizzy nectar. <<gwylanKiss>>
+		<<if _pcKissVirginityTaken>>
+			<br><br>
+		<</if>>
+		<<He>> leans forward, pushing you back in <<his>> effort to kiss you even deeper, until you're toppled backwards.
 		<br><br>
 
 		<<He>> disengages. A line of saliva and nectar connects your mouths as <<he>> hovers over you. "We... should go get cleaned up before we get carried away," <<he>> laughs. <<He>> helps you stand.
@@ -4397,7 +4411,11 @@ Gwylan pants for breath. <<His>> cheeks are flushed, and you're both covered in 
 		<br><br>
 
 		You crawl up towards <<him>>. When you're close enough, <<he>> <span class="lewd"><<he>> licks a bit of nectar off your cheek</span>. <<He>> licks again, closer to your mouth, then your lips.
-		Suddenly, you're kissing each other, your tongues eagerly sharing the fizzy nectar. <<gwylanKiss>> <<He>> leans forward, pushing you back in <<his>> effort to kiss you even deeper, until you're toppled backwards.
+		Suddenly, you're kissing each other, your tongues eagerly sharing the fizzy nectar. <<gwylanKiss>>
+		<<if _pcKissVirginityTaken>>
+			<br><br>
+		<</if>>
+		<<He>> leans forward, pushing you back in <<his>> effort to kiss you even deeper, until you're toppled backwards.
 		<br><br>
 
 		<<He>> disengages. A line of saliva and nectar connects your mouths as <<he>> hovers over you. "We... should go get cleaned up before we get carried away," <<he>> laughs. <<He>> helps you stand.
@@ -4554,16 +4572,17 @@ You allow Gwylan to wash you. After some time, <<he>> drops <<his>> robes and st
 			Without hesitation, <<he>> stands up and grabs you by the shoulders, before letting <<himself>> fall back into the tub with you in tow.
 		<</if>>
 		<<stress 6>><<gstress>><<pain 3>><<gpain>>
-		<br>
 		<<water>><<effectswater "warm water">>
+		<br><br>
 
 		You gasp as you push yourself up out of the water. Gwylan laughs. "I'm sorry, I couldn't help myself. Might as well get comfortable now that you're soaked anyways."
 		You grumble and settle in as best you can.
 	<</if>>
+	<br><br>
 <<else>>
 	You step into the wooden tub.
+	<br><br>
 <</if>>
-<br><br>
 
 You sit opposite to Gwylan.
 <<if !$gwylanSeen.includes("ritual_beast")>>
@@ -4932,7 +4951,7 @@ You hold each other for a short time, before <<he>> gets back on your lap.
 		<<ejaculation>><<npcincr Gwylan lust -25>><<llllust>>
 	<<else>>
 		<<if _gwylanStatus.includesAny("dom", "lust")>>
-			<<He>> hums and holds you tight you as you recover from your <<if $orgasmcurrent gt 1>>final<</if>> orgasm. <<gwylanHypnosis "devotion" 2>><br>
+			<<He>> hums and holds you tight as you recover from your <<if $orgasmcurrent gt 1>>final<</if>> orgasm. <<gwylanHypnosis "devotion" 2>><br>
 			<<if $consensual is 1>>
 				"You did great, <<pcpetname "Gwylan">>,"
 			<<else>>
@@ -5125,6 +5144,9 @@ It's a selfish desire. I offer nothing in return, because I have nothing to give
 :: Gwylan Ritual Bait End Wash 3
 <<effects>><<run statusCheck("Gwylan")>>
 
+/* This needs to be run early so that worn clothing is checked in the following section */
+<<silently>><<clotheson>><</silently>><<dry_full>>
+
 <<if $worn.neck.name is "familiar collar" and $worn.neck.cursed is 1>>
 	<<He>> runs <<his>> hands along your collar affectionately. It makes you feel warm. <<trauma -6>><<ltrauma>>
 	<<detach_leash>>
@@ -5167,7 +5189,7 @@ It's a selfish desire. I offer nothing in return, because I have nothing to give
 	<<set $beastRitual.purge++>>
 <</if>>
 
-<<if ["thunderStorm"].includes(Weather.name)>>
+<<if ["thunderstorm", "storm"].includes(Weather.name)>>
 	The lull of the thunder leads the trees in a windy dance, yet you two remain untouched by the storm.
 <<elseif ["lightPrecipitation", "heavyPrecipitation"].includes(Weather.name)>>
 	The smell of the <<= Weather.precipitation>> is soothing, too.
@@ -5244,7 +5266,7 @@ It's a selfish desire. I offer nothing in return, because I have nothing to give
 	<</if>>
 
 	<<if $beastRitual.purgeInfo>>
-		<<if Math.floor($beastRitual.purgeInfo.banish / 20) gte 1>>
+		<<if Math.floor($beastRitual.purgeInfo.banish / 20) gte 1 and $angel gte 6 >>
 			"That radiance. Your radiance. <span class="gold">It was brilliant</span>, but I don't believe less tainted dryads would be affected by it. Still, it's a boon." <<His>> eyes trace something above your head.
 			<br>
 		<</if>>
@@ -5301,8 +5323,11 @@ It's a selfish desire. I offer nothing in return, because I have nothing to give
 	<br><br>
 <</if>>
 
-You exit the bath, dry off, and get dressed. <<silently>><<clotheson>><</silently>><<dry_full>>
+You exit the bath, dry off, and get dressed.
 <br><br>
+
+
+
 
 <<link [[Stay with Gwylan for a while (0:30)|Gwylan Ritual Bait Corruption]]>><<pass 30>><</link>>
 <br>
@@ -5607,7 +5632,7 @@ You exit the bath, dry off, and get dressed. <<silently>><<clotheson>><</silentl
 				<</if>>
 			<</if>>
 		<<else>>
-			Gwylan's race reddens a bit as <<he>> drinks all of the fluid, and brings <<his>> face close to yours. <<He>> cups your face, and you open your mouth.
+			Gwylan's face reddens a bit as <<he>> drinks all of the fluid, and brings <<his>> face close to yours. <<He>> cups your face, and you open your mouth.
 			<br><br>
 
 			<<if $gwylanSeen.includes("romance") or _gwylanStatus.includes("lust")>>
@@ -5731,5 +5756,5 @@ Gwylan ushers you back inside. <<He>> enters the shop again <<himself>> a few mi
 <</if>>
 
 
-<<link [[Next|Forest Shop Entrance]]>><<endevent>><</link>>
+<<link [[Next|Forest Shop Entrance]]>><<endcombat>><</link>>
 <br>

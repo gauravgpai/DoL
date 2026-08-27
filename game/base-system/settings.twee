@@ -8,12 +8,13 @@
 	<<set $player.ballsExist to false>>
 	<<set $player.freckles to false>>
 	<<set $player.breastsize to 0>>
-	<<set $player.penissize to 1>>
+	<<set $player.penissize to 3>>
 	<<set $bodysize to 2>>
 	<<set $mouthsensitivity to 1>>
 	<<set $breastsensitivity to 1>>
 	<<set $bottomsensitivity to 1>>
 	<<set $genitalsensitivity to 1>>
+	<<set $alcoholMod to 1>>
 	<<set $facestyle to "default">>
 	<<set $facevariant to "default">>
 	<<set $eyeselect to "purple">>
@@ -70,6 +71,7 @@
 	<<set $settings.skillCheckStyle to "words">>
 	<<set $blackwolfmonster to 1>>
 	<<set $greathawkmonster to 1>>
+	<<set $nightmonstermonster to 1>>
 	<<set $reducedLineHeight to false>>
 	<<set $settings.clothingCostModifier to 1>>
 	<<set $settings.underwearCostModifier to 1>>
@@ -181,7 +183,7 @@
 	</div>
 
 	<hr>
-	<<set _featTabName to "Feat Boosts<span class='red'> *</span>"+ ($options.images is 1 ? " <img class='imgButton' src='img/ui/GoldCoin.gif'/>" : "")>>
+	<<set _featTabName to "Feat Boosts<span class='red'> *</span>"+ ($options.images is 1 ? " <img class='imgButton' src='img/ui/coin-gold.gif'/>" : "")>>
 	<<switch _selectedStart>>
 		/*Basic Start is selected */
 		<<case "default">>
@@ -311,15 +313,6 @@
 		<<switch _selectedStart>>
 			<<case "default">>
 				<div class="my-1"><span class="gold bold">Current Settings:</span> <i>Adjustable</i></div>
-				/* Reset these settings if going back to this tab */
-				<<set $settings.maleChanceSplit to false>>
-				<<set $settings.maleChance to 50>>
-				<<set $settings.maleChanceMale to 50>>
-				<<set $settings.maleChanceFemale to 50>>
-				<<set $settings.beastMaleChanceSplit to false>>
-				<<set $settings.beastMaleChance to 50>>
-				<<set $settings.beastMaleChanceMale to 50>>
-				<<set $settings.beastMaleChanceFemale to 50>>
 				<<button "Start Game!">>
 					<<presets _kinkPreset "save">>
 					<<presets _namedNpcPreset "save">>
@@ -340,7 +333,7 @@
 						<<set $settings.incompletePregnancyEnabled to _incompletePregnancyDisable>>
 						<<npcPregnancyUpdater>>
 					<</if>>
-					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
+					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
 						<<settingsExitFunction>>
 					<<else>><!-- confirm cheats -->
 						<<replace #settingsExit>><<settingsExitConfirm>><</replace>>
@@ -349,7 +342,7 @@
 			<<case "custom">>
 				<div class="my-1"><span class="gold bold">Current Settings:</span> <i>Customisable</i></div>
 				<<button "Start Game!">>
-					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
+					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
 						<<settingsExitFunction>>
 					<<else>><!-- confirm cheats -->
 						<<replace #settingsExit>><<settingsExitConfirm>><</replace>>
@@ -360,7 +353,7 @@
 				<<button "Start Game!">>
 						/*Rerolls all settings*/
 					<<presets "randomize" "characterSettings" `randomizeSettings()`>>
-					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
+					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
 						<<settingsExitFunction>>
 					<<else>><!-- confirm cheats -->
 						<<replace #startOptions>><<startOptions>><</replace>>
@@ -373,7 +366,7 @@
 		</div>
 	<<else>>
 		<<button "Save changes">>
-			<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
+			<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
 				<<settingsExitFunction>>
 			<<else>><!-- confirm cheats -->
 				<<replace #settingsExit>><<settingsExitConfirm>><</replace>>
@@ -389,6 +382,7 @@
 		<ul>
 			<<if $settings.cheatsEnabledToggle is true>><li>Enabled cheats: disables all feats.</li><</if>>
 			<<if $settings.rentCostModifier lt 1>><li>Lowered rent: disables all feats.</li><</if>>
+			<<if $settings.tendingYieldModifier gt 5>><li>Increased crop yield: disables all feats.</li><</if>>
 			<<if !$feats.soft and $gamemode is "soft">><li>Soft mode: disables some feats.</li><</if>>
 			<<if !$feats.soft and $settings.allureModifier lt 1>><li>Lowered allure: disables some feats.</li><</if>>
 			<<if !$feats.pregnancyLocked and $settings.humanPregnancyMonths lt 3>><li>Human pregnancy set to under 3 months: disables some pregnancy feats.</li><</if>>
@@ -407,6 +401,9 @@
 			<</if>>
 			<<if $settings.rentCostModifier lt 1>>
 				<<set $settings.rentCostModifier to 1>>
+			<</if>>
+			<<if $settings.tendingYieldModifier gt 5>>
+				<<set $settings.tendingYieldModifier to 5>>
 			<</if>>
 			<<if !$feats.pregnancyLocked and $settings.humanPregnancyMonths lt 3>>
 				<<set $settings.humanPregnancyMonths to 3>>
@@ -435,6 +432,7 @@
 		<ul>
 			<<if $settings.cheatsEnabledToggle is true>><li>Enabled cheats: disables all feats.</li><</if>>
 			<<if $settings.rentCostModifier lt 1>><li>Lowered rent: disables all feats.</li><</if>>
+			<<if $settings.tendingYieldModifier gt 5>><li>Increased crop yield: disables all feats.</li><</if>>
 			<<if !$feats.soft and $gamemode is "soft">><li>Soft mode: disables some feats.</li><</if>>
 			<<if !$feats.soft and $settings.allureModifier lt 1>><li>Lowered allure: disables some feats</li><</if>>
 			<<if !$feats.pregnancyLocked and $settings.humanPregnancyMonths lt 3>><li>Human pregnancy set to under 3 months: disables some pregnancy feats.</li><</if>>
@@ -453,6 +451,9 @@
 			<</if>>
 			<<if $settings.rentCostModifier lt 1>>
 				<<set $settings.rentCostModifier to 1>>
+			<</if>>
+			<<if $settings.tendingYieldModifier gt 5>>
+				<<set $settings.tendingYieldModifier to 5>>
 			<</if>>
 			<<if !$feats.pregnancyLocked and $settings.humanPregnancyMonths lt 3>>
 				<<set $settings.humanPregnancyMonths to 3>>
@@ -507,7 +508,7 @@
 	<<if !$ironmanmode>>
 		<<set $cheatsEnabled to $settings.cheatsEnabledToggle>>
 	<</if>>
-	<<if $cheatsEnabled is true or $settings.rentCostModifier lt 1>>
+	<<if $cheatsEnabled is true or $settings.rentCostModifier lt 1 or $settings.tendingYieldModifier gt 5>>
 		<<set $feats.locked to true>>
 	<</if>>
 	<<unset $settings.cheatsEnabledToggle>>
@@ -546,9 +547,9 @@
 	<<set $saveName to $saveName.replace(/[^a-zA-Z\u4e00-\u9fa5 0-9]+/g,"")>>
 	<<unset $importString>>
 
-	/* Updates the penis max size for females so its never below 1 */
-	<<if $player.sex is "f" && $penissizemax < 0>>
-		<<set $penissizemax to 0>>
+	/* Updates the penis max size for females so its never below 2 */
+	<<if $player.sex is "f" && $penissizemax < 2>>
+		<<set $penissizemax to 2>>
 	<</if>>
 <</widget>>
 
@@ -851,7 +852,7 @@
 			</div>
 			<div class="settingsToggleItem">
 			<<if StartConfig.enableImages is true>>
-				<span class="gold">Sidebar Preview:</span><br> <label>Hide clothes <<checkbox "_showClothes" true false autocheck>></label> | <label>Hide underwear <<checkbox "_showUnderwear" true false autocheck>></label>
+				<span class="gold">Sidebar Preview:</span><br> <label>Hide clothes <<checkbox "_showClothes" true false autocheck>></label> | <label>Hide underwear <<checkbox "_showUnderwear" true false autocheck>></label><<if $player.sex isnot "f">> | <label>Flaccid penis <<checkbox "_flaccidPenis" false true autocheck>></label><</if>>
 				<br>
 			<</if>>
 			</div>
@@ -901,8 +902,10 @@
 			>>
 
 			<div class="settingsToggleItem">
-				<span class="gold">Body Size:</span><br>
-				<label>Tiny <<radiobutton "$bodysize" 0 autocheck>></label> |
+				<span class="gold">Body Size:</span> <mouse class="tooltip linkBlue">(?)<span>Larger bodies can build a more powerful physique, making combat easier. Smaller bodies can squeeze through gaps that larger bodies might get stuck in, allowing them to escape some dangerous situations. </span></mouse>
+<br>
+
+				<label><mouse class="tooltip">Tiny<span class="blue"><i>Not recommended for beginners.</i></span></mouse> <<radiobutton "$bodysize" 0 autocheck>></label> |
 				<label>Small <<radiobutton "$bodysize" 1 autocheck>></label> |
 				<label>Normal <<radiobutton "$bodysize" 2 autocheck>></label> |
 				<label>Large <<radiobutton "$bodysize" 3 autocheck>></label><br>
@@ -941,9 +944,9 @@
 				<div class="settingsToggleItem">
 					<span data-target="player.sex" data-disabledif="V.player.sex==='f'">
 					<span class="gold">Penis Size:</span><br>
-					<label>Tiny <<radiobutton "$player.penissize" 0 autocheck>></label> |
-					<label>Small <<radiobutton "$player.penissize" 1 autocheck>></label> |
-					<label>Normal <<radiobutton "$player.penissize" 2 autocheck>></label>
+					<label>Tiny <<radiobutton "$player.penissize" 2 autocheck>></label> |
+					<label>Small <<radiobutton "$player.penissize" 3 autocheck>></label> |
+					<label>Normal <<radiobutton "$player.penissize" 4 autocheck>></label>
 					</span>
 				</div>
 			<</if>>
@@ -991,10 +994,13 @@
 				<label><span class="lblue">Light blue</span> <<radiobutton "$eyeselect" "light blue" autocheck>></label> |
 				<label><span class="tangerine">Amber</span> <<radiobutton "$eyeselect" "amber" autocheck>></label> |
 				<label><span class="brown">Hazel</span> <<radiobutton "$eyeselect" "hazel" autocheck>></label> |
+				<label><span class="brown">Brown</span> <<radiobutton "$eyeselect" "brown" autocheck>></label> |
 				<label><span class="green">Green</span> <<radiobutton "$eyeselect" "green" autocheck>></label> |
+				<label><span class="green">Light Green</span> <<radiobutton "$eyeselect" "light green" autocheck>></label> |
 				<label><span class="lime-green">Lime green</span> <<radiobutton "$eyeselect" "lime green" autocheck>></label> |
 				<label><span class="red">Red</span> <<radiobutton "$eyeselect" "red" autocheck>></label> |
 				<label><span class="pink">Pink</span> <<radiobutton "$eyeselect" "pink" autocheck>></label> |
+				<label><span class="black">Black</span> <<radiobutton "$eyeselect" "black" autocheck>></label> |
 				<label><span class="grey">Grey</span> <<radiobutton "$eyeselect" "grey" autocheck>></label> |
 				<label><span class="light-grey">Light grey</span> <<radiobutton "$eyeselect" "light grey" autocheck>></label> |
 				<label><span>Random</span> <<radiobutton "$eyeselect" "random" autocheck>></label>
@@ -1004,6 +1010,7 @@
 				<label><span class="red">Red</span> <<radiobutton "$hairselect" "red" autocheck>></label> |
 				<label><span class="black">Jet black</span> <<radiobutton "$hairselect" "jetblack" autocheck>></label> |
 				<label><span class="black">Black</span> <<radiobutton "$hairselect" "black" autocheck>></label> |
+				<label><span class="brown">Dark brown</span> <<radiobutton "$hairselect" "darkbrown" autocheck>></label> |
 				<label><span class="brown">Brown</span> <<radiobutton "$hairselect" "brown" autocheck>></label> |
 				<label><span class="softbrown">Soft brown</span> <<radiobutton "$hairselect" "softbrown" autocheck>></label> |
 				<label><span class="lightbrown">Light brown</span> <<radiobutton "$hairselect" "lightbrown" autocheck>></label> |
@@ -1035,8 +1042,12 @@
 		<hr>
 
 		<div class="settingsGrid">
-			<<set _skinTone to "">>
-			<<set _skinShade to "light">>
+			<<if !_skinTone>>
+				<<set _skinTone to "">>
+			<</if>>
+			<<if !_skinShade>>
+				<<set _skinShade to "light">>
+			<</if>>
 
 			<div class="settingsHeader">
 				Skin Colour
@@ -1077,7 +1088,7 @@
 
 		<div class="settingsGrid">
 			<div class="settingsHeader">
-				Sensitivity
+				Sensitivity <span class="tooltip-anchor linkBlue" tooltip="<span class='linkBlue'>Sensitivity determines the amount of arousal gained when a particular body part is touched sexually. <i>Higher sensitivity makes the game harder.</i></span>">(?)</span>
 			</div>
 			<div class="settingsToggleItem">
 				<span class="gold">Mouth:</span><br>
@@ -1104,6 +1115,12 @@
 				<label>Normal <<radiobutton "$genitalsensitivity" 1 autocheck>></label> |
 				<label><span class="pink">Sensitive</span> <<radiobutton "$genitalsensitivity" 2 autocheck>></label> |
 				<label><span class="red">Very sensitive</span> <<radiobutton "$genitalsensitivity" 3 autocheck>></label>
+			</div>
+			<div class="settingsToggleItem">
+				<span class="gold">Alcohol Tolerance</span><br>
+				<label><span class="blue">Heavyweight </span><<radiobutton "$alcoholMod" 0.5 autocheck>></label> |
+				<label>Normal <<radiobutton "$alcoholMod" 1 autocheck>></label> |
+				<label><span class="red">Lightweight</span> <<radiobutton "$alcoholMod" 1.5 autocheck>></label>
 			</div>
 		</div>
 
@@ -1215,7 +1232,7 @@
 					<<script>>
 						localStorage.removeItem("dolFeats");
 					<</script>>
-					<<setupFeats true>>
+					<<setupFeatBoosts true>>
 					<<displaySettings "featSettings">>
 				<</link>>
 				<span class="red"> This will remove all feats that have been earned so far, meaning you will have to collect them again.</span>
@@ -1276,7 +1293,7 @@
 	<<else>>
 		<<if $passage is "Start">>
 			<label data-target="settingscheatsenabledtoggle" data-disabledif="V.settings.cheatsEnabledToggle===true">
-				<input id="checkbox-ironmanmode" onclick="IronMan.UI.checkBox()" name="checkbox-ironmanmode" type="checkbox" tabindex="0" class="macro-checkbox"> <mouse class="tooltip white">Ironman mode<span>To prevent save-scumming and other practices in that spirit<br><br>You can save, you will then be led to Start Menu. You can then load that save, but then it will delete itself.<br><br>There will also be an additional save every 4-8 in-game days just in case you lose the other save.</span></mouse>&nbsp;<i class="ironman-clarify">(Cannot be unset after game start)</i>
+				<input id="checkbox-ironmanmode" onclick="IronMan.UI.checkBox()" name="checkbox-ironmanmode" type="checkbox" tabindex="0" class="macro-checkbox"> <mouse class="tooltip white">Ironman mode<span>To prevent save-scumming and other practices in that spirit.<br><br>You can save, you will then be led to Start Menu. You can then load that save, but then it will delete itself.<br><br>There will also be an additional save every 4-8 in-game days just in case you lose the other save.</span></mouse>&nbsp;<i class="ironman-clarify">(Cannot be unset after game start)</i>
 				<<run IronMan.UI.checkBox(`init`)>>
 			</label>
 			<br>
@@ -1988,6 +2005,7 @@
 			</div>
 			<div class="settingsToggleItemWide">
 				<div class="small-description">Modifies the amount of harvested crops. 500% is default. 100% is (legacy) hard mode.</div>
+					<span class="red">Setting this above 500% will prevent feats being earned in that save.</span>
 				<div class="ironman-slider" id="sliderTendingYieldFactor">
 					<<numberslider "$settings.tendingYieldModifier" $settings.tendingYieldModifier 1 10 1 $ironmanmode>>
 				</div>
@@ -2218,11 +2236,11 @@
 <<widget "sizeLimitsSettings">>
 	<div class="settingsGrid">
 		<div class="settingsHeader">
-			Body Part Size Limits <span class="tooltip-anchor linkBlue" tooltip="As you partake in lewd acts and experiences, your body parts may grow or shrink. Surgery, pills, and parasites can influence growth, among other conditions.">(?)</span>
+			Body Part Size Limits <span class="tooltip-anchor linkBlue" tooltip="<span class='linkBlue'>As you partake in lewd acts and experiences, your body parts may grow or shrink. Surgery, pills, and parasites can influence growth, among other conditions.</span>">(?)</span>
 		</div>
 
 		<div class="settingsToggleItemWide">
-			<span class="gold">Breast Size Limits:</span> <span class="tooltip-anchor linkBlue" tooltip="Breasts already below the minimum size won't automatically grow.">(?)</span>
+			<span class="gold">Breast Size Limits:</span> <span class="tooltip-anchor linkBlue" tooltip="<span class='linkBlue'>Breasts already below the minimum size won't automatically grow.</span>">(?)</span>
 			<br>
 			<<rangeslider "$breastsizemin" "$breastsizemax" $breastsizemin $breastsizemax 0 12 1
 				{
@@ -2241,7 +2259,7 @@
 		</div>
 
 		<div class="settingsToggleItemWide">
-			<span class="gold">Ass Size Limits:</span> <span class="tooltip-anchor linkBlue" tooltip="Bottoms already below the minimum size won't automatically grow.">(?)</span>
+			<span class="gold">Ass Size Limits:</span> <span class="tooltip-anchor linkBlue" tooltip="<span class='linkBlue'>Bottoms already below the minimum size won't automatically grow.</span>">(?)</span>
 			<br>
 			<<rangeslider "$bottomsizemin" "$bottomsizemax" $bottomsizemin $bottomsizemax 0 8 1
 				{
@@ -2261,18 +2279,18 @@
 
 		<<if ($passage is "Start" and $player.sex isnot "f") or $player.penisExist>>
 			<div class="settingsToggleItemWide">
-			<span class="gold">Penis Size Limits:</span> <span class="tooltip-anchor linkBlue" tooltip="Penises already below the minimum size won't automatically grow.">(?)</span>
-			<<rangeslider "$penissizemin" "$penissizemax" $penissizemin $penissizemax -2 4 1
+			<span class="gold">Penis Size Limits:</span> <span class="tooltip-anchor linkBlue" tooltip="<span class='linkBlue'>Penises already below the minimum size won't automatically grow.">(?)</span>
+			<<rangeslider "$penissizemin" "$penissizemax" $penissizemin $penissizemax 0 6 1
 				{
-					minClamp: 0,
+					minClamp: 2,
 					minClampMessage: `<span class="red">Cannot increase minimum size further.</span>`
 				}
 				{
 					value: (v1, v2) => {
-						const color1 = ColourUtils.interpolateMultiple(["--teal", "--pink"], normalise(v1, 4, -2));
-						const color2 = ColourUtils.interpolateMultiple(["--teal", "--pink"], normalise(v2, 4, -2));
+						const color1 = ColourUtils.interpolateMultiple(["--teal", "--pink"], normalise(v1, 6, 0));
+						const color2 = ColourUtils.interpolateMultiple(["--teal", "--pink"], normalise(v2, 6, 0));
 						var name = ["Micro","Mini", "Tiny", "Small", "Normal", "Large", "Enormous"];
-						return `<span style="color: ${color1}">${name[v1+2]}</span> - <span style="color: ${color2}">${name[v2+2]}</span>`;
+						return `<span style="color: ${color1}">${name[v1]}</span> - <span style="color: ${color2}">${name[v2]}</span>`;
 					},
 				}
 
@@ -2373,6 +2391,37 @@
 				<</link>>
 			<</if>>
 		</div>
+		<div class="settingsToggleIndent">
+			<<foldout false "_gender">>
+				<span class="gold">Assign to all Named NPCs:</span>
+				Gender:
+				<<link "Male">><<assignAllNPCs "pronoun" "m">><</link>> | <<link "Female">><<assignAllNPCs "pronoun" "f">><</link>>
+				<br>
+				Genitals:
+				<<link "Penis">><<assignAllNPCs "gender" "m">><</link>> | <<link "Vagina">><<assignAllNPCs "gender" "f">><</link>>
+				<br>
+				Penis size:
+				<<set _penisNames to ["", "Tiny", "Average", "Thick", "Huge"]>> /* the empty first element is necessary because _j starts at 1 */
+				<<for _j to 1; _j lt _penisNames.length; _j++>>
+					<<capture _j>>
+						<<link _penisNames[_j]>><<assignAllNPCs "penissize" _j>><</link>>
+						<<if _j isnot _penisNames.length -1>>|<</if>>
+					<</capture>>
+				<</for>>
+				<br>
+				Breast size:
+				<<set _breastNames to ["Flat", "Budding", "Tiny", "Small", "Pert", "Modest", "Full", "Large", "Ample", "Massive", "Huge", "Gigantic", "Enormous"]>>
+				<<for _k to 0; _k lt _breastNames.length; _k++>>
+					<<capture _k>>
+						<<link _breastNames[_k]>><<assignAllNPCs "breastsize" _k>><</link>>
+						<<if _k isnot _breastNames.length -1>>|<</if>>
+					<</capture>>
+				<</for>>
+				<br>
+				Skin colour:
+				<<link "Pale">><<assignAllNPCs "skincolour" "white">><</link>> | <<link "Dark">><<assignAllNPCs "skincolour" "black">><</link>>
+			<</foldout>>
+		</div>
 		<hr>
 		<<if _npcId is undefined>>
 			<<set _npcId to 25>> /* Should be set to the index of the NPC that is at the top of the list when sorted alphabetically by name */
@@ -2392,15 +2441,15 @@
 
 		<<if _npcList is undefined>>
 			<<set _npcList to {}>>
-			<<set _sortedNPCList to clone($NPCNameList)>>
-			<<run _sortedNPCList.sort()>>
+			<<set _sortedNPCList to clone($NPCNameList).sort()>>
 
 			<<for $_i to 0; $_i lt _sortedNPCList.length; $_i++>>
-				<<set _npcList[_sortedNPCList[$_i]] to clone($NPCNameList.indexOf(_sortedNPCList[$_i]))>>
+				<<set _npcList[_sortedNPCList[$_i]] to $NPCNameList.indexOf(_sortedNPCList[$_i])>>
 			<</for>>
 
 			<<if $passage is "Start" or !$wraithIntro>>
 				<<run delete _npcList["Ivory Wraith"]>>
+				<<run _sortedNPCList.delete("Ivory Wraith")>>
 			<</if>>
 		<</if>>
 
@@ -2419,7 +2468,7 @@
 
 					T.npcKeys = {};
 					T.npcKeyNames = [];
-					const allowed_npcs = ["steed", "guard", "inmate", "panty_thief", "school_nurse", "tower_creature", "pinch", "black_dog", "hacker", "bishop", "bishop_right_hand", "bishop_left_hand", "manager"];
+					const allowed_npcs = ["steed", "guard", "inmate", "panty_thief", "school_nurse", "pinch", "black_dog", "hacker", "bishop", "bishop_right_hand", "bishop_left_hand", "manager", "alexs_parent1", "alexs_parent2", "whitneys_auncle", "whitney_parent_flat"];
 					Object.keys(V.per_npc).forEach(k => {
 						for (const j of allowed_npcs){
 							if (k.includes(j)){
@@ -2445,6 +2494,28 @@
 			<<set _listActive to true>>
 		<</if>>
 	</div>
+<</widget>>
+
+<<widget "assignAllNPCs">>
+	<<set $_characteristic to _args[0]>>
+	<<set $_value to _args[1]>>
+	<<for $_i to 0; $_i lt $NPCName.length; $_i++>>
+		<<set $NPCName[$_i][$_characteristic] to $_value>>
+		<<if $_characteristic is "breastsize">>
+			<<set $NPCName[$_i].breastdesc to $_i > 0 ? setup.breastsizes[$_value] + " breast" : "nipple">>
+			<<set $NPCName[$_i].breastsdesc to $_i > 0 ? setup.breastsizes[$_value] + " breasts" : "nipples">>
+		<</if>>
+	<</for>>
+	<<if $passage isnot "start" and $per_npc and Object.keys($per_npc).length gt 0>>
+		<<for $_i range Object.keys($per_npc)>>
+			<<set $per_npc[$_i][$_characteristic] to $_value>>
+			<<if $_characteristic is "breastsize">>
+				<<set $per_npc[$_i].breastdesc to $_i > 0 ? setup.breastsizes[$_value] + " breast" : "nipple">>
+				<<set $per_npc[$_i].breastsdesc to $_i > 0 ? setup.breastsizes[$_value] + " breasts" : "nipples">>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
 <</widget>>
 
 <<widget "exportsettings">>
@@ -2519,25 +2590,23 @@
 			<span style="font-size:80%">
 				<br>
 				<<link "Previous">>
-					<<if _npcId is 0>>
-						<<set _npcId to $NPCNameList.length - 1>>
+					<<set _sortedId to _sortedNPCList.indexOf($NPCNameList[_npcId])>>
+					<<if _sortedId is 0>>
+						<<set _sortedId to $NPCNameList.length - 2>>
 					<<else>>
-						<<set _npcId-->>
+						<<set _sortedId-->>
 					<</if>>
-					<<if _npcList[$NPCName[_npcId].nam] is undefined>>
-						<<set _npcId-->>
-					<</if>>
+					<<set _npcId to _npcList[_sortedNPCList[_sortedId]]>>
 					<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
 				<</link>> <span style="color:white">|</span>
 				<<link "Next">>
-					<<if _npcId is $NPCNameList.length - 1>>
-						<<set _npcId to 0>>
+					<<set _sortedId to _sortedNPCList.indexOf($NPCNameList[_npcId])>>
+					<<if _sortedId gte $NPCNameList.length - 1>>
+						<<set _sortedId to 0>>
 					<<else>>
-						<<set _npcId++>>
+						<<set _sortedId++>>
 					<</if>>
-					<<if _npcList[$NPCName[_npcId].nam] is undefined>>
-						<<set _npcId++>>
-					<</if>>
+					<<set _npcId to _npcList[_sortedNPCList[_sortedId]]>>
 					<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
 				<</link>>
 			</span>
@@ -2570,10 +2639,7 @@
 				<span class="gold">Penis Size:</span>
 				<br>
 				<<for _j to 1; _j lt _penisNames.length; _j++>>
-					<label>
-						<<radiobutton "$NPCName[_npcId].penissize" _j autocheck>>
-						<<print _penisNames[_j]>>
-					</label>
+					<label>	<<radiobutton "$NPCName[_npcId].penissize" _j autocheck>><<= _penisNames[_j]>></label>
 					<<if _j isnot _penisNames.length -1>>|<</if>>
 				<</for>>
 			</span>
@@ -2610,8 +2676,13 @@
 				<label><<radiobutton "$NPCName[_npcId].skincolour" "white" autocheck>> Pale</label> |
 				<label><<radiobutton "$NPCName[_npcId].skincolour" "black" autocheck>> Dark</label>
 				</span>
-			<<elseif $NPCName[_npcId].nam is "Great Hawk">>/*disable skin colour toggle when player has BW set to 'always a beast'*/
+			<<elseif $NPCName[_npcId].nam is "Great Hawk">>/*disable skin colour toggle when player has GH set to 'always a beast'*/
 				<span data-target="greathawkmonster" data-disabledif="V.greathawkmonster===0">
+				<label><<radiobutton "$NPCName[_npcId].skincolour" "white" autocheck>> Pale</label> |
+				<label><<radiobutton "$NPCName[_npcId].skincolour" "black" autocheck>> Dark</label>
+				</span>
+			<<elseif $NPCName[_npcId].nam is "Night Monster">>/*disable skin colour toggle when player has NM set to 'always a beast'*/
+				<span data-target="nightmonstermonster" data-disabledif="V.nightmonstermonster===0">
 				<label><<radiobutton "$NPCName[_npcId].skincolour" "white" autocheck>> Pale</label> |
 				<label><<radiobutton "$NPCName[_npcId].skincolour" "black" autocheck>> Dark</label>
 				</span>
@@ -2638,6 +2709,14 @@
 				<label><<radiobutton "$greathawkmonster" 0 autocheck>> Always a beast</label> |
 				<label><<radiobutton "$greathawkmonster" 1 autocheck>> Monster girl or boy when requirements met</label> |
 				<label><<radiobutton "$greathawkmonster" 2 autocheck>> Always a monster girl or boy</label>
+			</div>
+		<<elseif $NPCName[_npcId].nam is "Night Monster">>
+			<div class="settingsToggleItemWide">
+				<span class="gold">Beast Type:</span>
+				<br>
+				<label><<radiobutton "$nightmonstermonster" 0 autocheck>> Always a beast</label> |
+				<label><<radiobutton "$nightmonstermonster" 1 autocheck>> Monster girl or boy when requirements met</label> |
+				<label><<radiobutton "$nightmonstermonster" 2 autocheck>> Always a monster girl or boy</label>
 			</div>
 		<</if>>
 	</div>
@@ -2702,8 +2781,6 @@
 			<div class="settingsHeader">
 				<<if $per_npc[_pNPCId].name_known or _pNPCId is "farm_tower_guard">>
 					$per_npc[_pNPCId].name the <<= toTitleCase(_pNPCId.toUpperFirst().replace(/_/g, ' '))>>
-				<<elseif _pNPCId is "tower_creature">>
-					The Night Monster
 				<<elseif _pNPCId is "hacker">>
 					'Mickey' the Hacker
 				<<elseif _pNPCId is "bishop">>
@@ -2712,6 +2789,30 @@
 					The Bishop's Right Hand
 				<<elseif _pNPCId is "bishop_left_hand">>
 					The Bishop's Left Hand
+				<<elseif _pNPCId is "alexs_parent1">>
+					<<if $per_npc[_pNPCId].pronoun is "m">>
+						Alex's Hardy Dad
+					<<else>>
+						Alex's Hardy Mum
+					<</if>>
+				<<elseif _pNPCId is "alexs_parent2">>
+					<<if $per_npc[_pNPCId].pronoun is "m">>
+						Alex's Calculating Dad
+					<<else>>
+						Alex's Calculating Mum
+					<</if>>
+				<<elseif _pNPCId is "whitneys_auncle">>
+					<<if $per_npc[_pNPCId].pronoun is "m">>
+						Whitney's Uncle
+					<<else>>
+						Whitney's Aunt
+					<</if>>
+				<<elseif _pNPCId is "whitney_parent_flat">>
+					<<if $per_npc[_pNPCId].pronoun is "m">>
+						Whitney's Dad
+					<<else>>
+						Whitney's Mum
+					<</if>>
 				<<else>>
 					<<= toTitleCase(_pNPCId.toUpperFirst().replace(/_/g, ' '))>>
 				<</if>>
@@ -2773,7 +2874,7 @@
 				<br>
 				<<numberslider "$per_npc[_pNPCId].breastsize" $per_npc[_pNPCId].breastsize 0 12 1 {
 					onInputChange: v => {
-						V.per_npc[_pNPCId].breastdesc = (v > 0) ? setup.breastsizes[v] + " breast" : "nipple";;
+						V.per_npc[_pNPCId].breastdesc = (v > 0) ? setup.breastsizes[v] + " breast" : "nipple";
 						V.per_npc[_pNPCId].breastsdesc = (v > 0) ? setup.breastsizes[v] + " breasts" : "nipples";
 					},
 					value: v => {
@@ -2832,7 +2933,7 @@
 	<br><br>
 	<div id="featsFinishButton" class="hidden">
 		<<link "Next">>
-			<<setupFeats true>>
+			<<setupFeatBoosts true>>
 			<<replace "#startCaption">><<startCaption>><</replace>>
 			<<replace "#settingsStart">><<settingsStart>><</replace>>
 		<</link>>

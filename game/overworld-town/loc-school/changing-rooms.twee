@@ -258,7 +258,7 @@ You are in the $changingRoomGender' changing room.
 		<<if $worn.genitals.origin is "Whitney">>
 			<<addinlineevent "schoolChangingRoomGirlsComment">>/* Intended usage of She */
 				One of them points at your $worn.genitals.name. "What's it like knowing Whitney has your key?" She laughs.
-				<<if $player.penissize lt 0>>
+				<<if $player.penissize lt 2>>
 					"It's not like you'll ever need it, if it's as small as <<nnpc_his "Whitney">> friends say." <<incgpenisinsecurity>>
 				<<else>>
 					"I bet it's driving you mad, not being able to touch it."
@@ -372,7 +372,7 @@ You are in the $changingRoomGender' changing room.
 				<br><br>
 				"Now you better at least have the swimwear that was given to you, or Whitney is going to be having some fun later," <<he>> says after dragging you to the nearest locker. Finally turning to address the other girls. "Don't worry about this slut,
 				<<if $worn.genitals.origin is "Whitney">>
-					<<pher>> <<if $player.penissize lt 0>>useless thing<<else>>penis<</if>> is all locked up down there, so <<pshe>> is mostly trained at this point."
+					<<pher>> <<if $player.penissize lt 2>>useless thing<<else>>penis<</if>> is all locked up down there, so <<pshe>> is mostly trained at this point."
 				<<else>>
 					<<pshe>> won't dare do anything or Whitney will make sure it can't happen again."
 				<</if>><<gstress>><<stress 5>>
@@ -412,7 +412,7 @@ The students continue their lesson, unaware of what awaits.
 
 <<link [[Wait to witness the results|School Changing Wait]]>><<control 25>><<trauma -12>><<stress -12>><</link>><<ggcontrol>><<lltrauma>><<llstress>>
 <br>
-<<ind>><<link [[Leave|School Pool Entrance]]>><</link>>
+<<link [[Leave|School Pool Entrance]]>><</link>>
 
 :: School Changing Wait
 <<effects>>
@@ -939,7 +939,7 @@ You emerge from the locker behind Mason. "Th-this is unacceptable behaviour," <<
 :: School Pool Locker Penis
 <<effects>>
 
-You lower your hand beneath your raised thigh, and touch <<his>> cock<<if  $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>> through <<his>> <<print ($pronoun is "m" ? "trunks" : "swimsuit")>><</if>>. <<He>> tries to squirm away, but there's nowhere to go.
+You lower your hand beneath your raised thigh, and touch <<his>> cock<<if $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>> through <<his>> <<print ($pronoun is "m" ? "trunks" : "swimsuit")>><</if>>. <<He>> tries to squirm away, but there's nowhere to go.
 
 <<if $speech_attitude is "meek">>
 	"Following a student into a locker," you tease. "Then getting hard! Naughty teacher."
@@ -976,7 +976,7 @@ You watch through the slits as a <<person>> rushes in, and opens the locker next
 	"We'll be in trouble if we're caught," you whisper.
 <</if>>
 
-<<if  $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>>
+<<if $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>>
 	You <<person1>><<print ($pronoun is "m" ? "tug down Mason's trunks" : "pull aside Mason's swimsuit")>>, <span class="pink">revealing <<his>> <<print $NPCList[0].penisdesc>></span>.
 <<else>>
 	You trace your finger along <<person1>><<his>> <<print $NPCList[0].penisdesc>>.
@@ -1054,7 +1054,7 @@ At that, Mason's body shudders, and <<his>> <<print $NPCList[0].penisdesc>> twit
 :: School Pool Locker Pussy
 <<effects>>
 
-You reach around Mason's waist, and touch <<his>> pussy<<if  $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>> through <<his>> <<print ($pronoun is "m" ? "trunks" : "swimsuit")>><</if>>. <<He>> tries to squirm away, but there's nowhere to go.
+You reach around Mason's waist, and touch <<his>> pussy<<if $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>> through <<his>> <<print ($pronoun is "m" ? "trunks" : "swimsuit")>><</if>>. <<He>> tries to squirm away, but there's nowhere to go.
 
 <<if $speech_attitude is "meek">>
 	"Following a student into a locker," you tease. "Then getting wet! Naughty teacher."
@@ -1090,7 +1090,7 @@ You watch through the slits as a <<person>> rushes in, and opens the locker next
 	"We'll be in trouble if we're caught," you whisper.
 <</if>>
 
-<<if  $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>>
+<<if $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>>
 	You <<person1>><<print ($pronoun is "m" ? "tug down Mason's trunks" : "pull aside Mason's swimsuit")>>, <span class="pink">revealing <<his>> pussy.</span>
 <<else>>
 	You trace your finger along <<person1>><<his>> <<npcGenitals>>.
@@ -1114,9 +1114,9 @@ You watch through the slits as a <<person>> rushes in, and opens the locker next
 
 Mason struggles to remain silent as you slide your fingers into <<his>> slit.
 
-<<if $player.penisExist and $player.penissize gte 1 and ($exposed gte 2 or $player.gender_appearance is "m" or $genderknown.includes("Mason"))>>
+<<if $player.penisExist and $player.penissize gte 3 and ($exposed gte 2 or $player.gender_appearance is "m" or $genderknown.includes("Mason"))>>
 	<<set _isVirgin to ($player.virginity.penile is true)>>
-	<<set _huge to $player.penissize gte 3 ? "huge":"">>
+	<<set _huge to $player.penissize gte 5 ? "huge":"">>
 	<<if $speech_attitude is "meek">>
 		"I'm so helpless," you tease. "Trapped in here with a teacher. Forced to do perverted things."
 	<<elseif $speech_attitude is "bratty">>
@@ -1129,7 +1129,7 @@ Mason struggles to remain silent as you slide your fingers into <<his>> slit.
 	<<if $exposed lt 2>>
 		You thrust your pelvis against <<his>> butt.
 	<<else>>
-		<<if $player.penissize gte 3>>
+		<<if $player.penissize gte 5>>
 			You grind your <<penissize>> cock between <<his>> legs, rubbing along <<his>> pussy without pushing into it, all while you continue pumping your fingers into <<him>>.
 			"It's like you're riding my cock. Can you imagine
 		<<else>>
@@ -1183,7 +1183,7 @@ With the way clear, Mason stumbles from the locker, and rests against a bench. <
 	"Let's keep this between us," you say. "Including my thieving."
 <</if>>
 <br><br>
-Mason can't bring <<himself>> to meet your gaze. "You're terrible," <<he>> says. <<He>> sounds conflicted. "I'll let you off with a warning." <<He>><<if  $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>>adjusts <<his>> swimwear, and<</if>> returns to <<his>> class.
+Mason can't bring <<himself>> to meet your gaze. "You're terrible," <<he>> says. <<He>> sounds conflicted. "I'll let you off with a warning." <<He>> <<if $swimall isnot 1 or (Time.hour lt 14 and $swimall is 1)>>adjusts <<his>> swimwear and <</if>>returns to <<his>> class.
 <br><br>
 
 <<endevent>>

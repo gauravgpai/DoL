@@ -35,6 +35,7 @@ Degrees of Lewdity
 							<<dialogclose>>
 						<</if>>
 					<</button>>
+					<br><br><br>
 				</div>
 			</div>
 		<</dialog>>
@@ -61,8 +62,10 @@ This work of fiction is only intended for an adult audience. It contains themes 
 Welcome to the alpha of Degrees of Lewdity!
 <br><br>
 
-If you want to avoid trouble, dress modestly and stick to safe, well-lit areas. Nights are particularly dangerous. Dressing lewd will attract attention, both good and bad.
+If you want to avoid trouble, <span class="gold">keep your allure low</span> by dressing modestly and sticking to safe, well-lit areas. Nights are particularly dangerous. Dressing lewd will attract attention, both good and bad, and the more vulnerable you look, the more danger you are in. Be careful!
 <br><br>
+
+
 
 <<if Time.season is "winter">>
 	The school year starts on the first Monday of January at <<ampm 9 0>>. The bus service is the easiest way to get around town. Don't forget your uniform and backpack!
@@ -130,5 +133,12 @@ If you want to avoid trouble, dress modestly and stick to safe, well-lit areas. 
 
 	<<link [[Valentine's Day Start|Orphanage Intro]]>><<set Time.startDate to new DateTime(2022, 2, 12, 7)>><</link>> (Begins the game 2 days before Valentine's Day. For testing.)
 	<br>
+
+	<br><br>
+
+	''The following options pertain to Avery's mansion:''<br>
+
+	<<link [[Unlock Avery's mansion|Mansion Intro Orphanage]]>><<cheatAveryMansion>><<npc Bailey 2>><</link>><br>
+	<<link [[Unlock Avery's mansion at Valentines's|Mansion Intro Orphanage]]>><<cheatAveryMansion>><<npc Bailey 2>><<set Time.startDate to new DateTime(2022, 2, 12, 7)>><</link>>
 
 <</if>>

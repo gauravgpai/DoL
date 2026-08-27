@@ -440,10 +440,11 @@ mouse.tooltip-centertop span:last-of-type {
 	display: none;
 	padding: 5px 10px;
 	min-width: 20px;
-	max-width: 200px !important;
+	max-width: 450px !important;
 	line-height: 20px;
 	border-radius: 1px;
-	white-space: nowrap;
+	white-space: normal;
+	overflow-wrap: anywhere;
 	box-shadow: 0 0 8px 4px var(--900);
 }
 
@@ -1261,6 +1262,10 @@ input.heart:hover {
 	margin: 0;
 }
 
+.deleteButton {
+	min-width: fit-content;
+}
+
 .datestamp {
 	font-size: 13px;
 }
@@ -1578,6 +1583,10 @@ body.no-images #ui-bar-body {
 
 .OpenDyslexicMono {
 	font-family: OpenDyslexicMono-Regular, monospace;
+}
+
+.Lexend {
+	font-family: "Lexend-VariableFont_wght", sans-serif;
 }
 
 .ComicSans {
@@ -1985,6 +1994,13 @@ body.has-images #storyCaptionContent {
 	z-index: -1;
 }
 
+#genderAppearance {
+	position: absolute;
+	left: 70px;
+	top: 0;
+	z-index: -1;
+}
+
 .noAnimations img {
 	-webkit-animation-duration: unset !important;
 	-webkit-animation-timing-function: unset !important;
@@ -2304,7 +2320,7 @@ body.has-images #storyCaptionContent {
 .columnRadioControl > label,
 .columnRadioControl > .extraMargin > span,
 .columnRadioControl > .extraMargin > label {
-	margin-right: 30px; /* On very narrow displays (aka phones) The text can run together between columns.  This prevents that from happening. */
+	margin-right: 30px; /* On very narrow displays (aka phones) The text can run together between columns. This prevents that from happening. */
 }
 
 .radioControl .extraMargin {
@@ -3775,4 +3791,8 @@ a[target="_blank"]::after {
 	br {
 		display: none;
 	}
+}
+
+.demon-tf-purity {
+	text-shadow: 0 0 5px var(--purple), 0 0 12px var(--lewd);
 }

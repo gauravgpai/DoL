@@ -127,7 +127,7 @@
 
 <<widget "leftspraynew">>
 	<<if $lefttarget isnot "self">>
-		<<if $consensual isnot 1 and $spray gte 1 and $NPCList.some(npc => npc.health >= 0 && (!$fightTargets || $fightTargets.includes(npc.index)))>>
+		<<if $consensual isnot 1 and $spray gte 1 and $NPCList.some(npc => npc.health > 0 && (!$fightTargets || $fightTargets.includes(npc.index)))>>
 			<<set _leftaction["Pepper spray"] to "spray">>
 		<</if>>
 	<</if>>
@@ -515,7 +515,7 @@
 
 <<widget "rightspraynew">>
 	<<if $righttarget isnot "self">>
-		<<if $consensual isnot 1 and $spray gte 1 and $NPCList.some(npc => npc.health >= 0 && (!$fightTargets || $fightTargets.includes(npc.index)))>>
+		<<if $consensual isnot 1 and $spray gte 1 and $NPCList.some(npc => npc.health > 0 && (!$fightTargets || $fightTargets.includes(npc.index)))>>
 			<<set _rightaction["Pepper spray"] to "spray">>
 		<</if>>
 	<</if>>
@@ -1635,10 +1635,10 @@
 		<<set $rightaction to 0>>
 		<<personselect $righttarget>>
 		<<set $_target to $NPCList[$righttarget]>>
-		<<if $_target.lefthand is "hypnosis" or $_target.lefthand  and $_target.lefthand.startsWith("hypnosis_")>>
+		<<if $_target.lefthand is "hypnosis" or $_target.lefthand and $_target.lefthand.startsWith("hypnosis_")>>
 			You whack the <<print $_target.lefttool>> from <<personselect $righttarget>><<combatpersons>> hand.
 			<<combat-reset-hand "left">><<set $_target.lefttool to 0>>
-		<<elseif $_target.righthand is "hypnosis" or $_target.righthand  and $_target.righthand.startsWith("hypnosis_")>>
+		<<elseif $_target.righthand is "hypnosis" or $_target.righthand and $_target.righthand.startsWith("hypnosis_")>>
 			You whack the <<print $_target.righttool>> from <<personselect $righttarget>><<combatpersons>> hand.
 			<<combat-reset-hand "right">><<set $_target.righttool to 0>>
 		<</if>>
@@ -2109,6 +2109,7 @@
 		<<case "hypnosis_orgasm">> <<combat-hand-hypnosis-orgasm $_hand>>
 		<<case "hypnosis_masochism">> <<combat-hand-hypnosis-masochism $_hand>>
 		<<case "hypnosis_devotion">> <<combat-hand-hypnosis-devotion $_hand>>
+		<<case "hypnosis_end">> <<combat-set-hand-start $_hand>>
 		<<case 0>> <<combat-set-hand-start $_hand>>
 		<<default>> <<run console.error("NPC hand action unaccounted for! Hand: " + $_hand + " Value: " + $_npcHand)>> <<run throw new Error("NPC hand action unaccounted for! Hand: " + $_hand + " Value: " + $_npcHand)>>
 	<</switch>>
@@ -2320,7 +2321,7 @@
 		<<set $_hypnosis to "lewd">>
 	<<elseif $uncomfortable.hypnosis is false and $hypnosis_traits.cover gte random(1,5)>>
 		<<set $_hypnosis to "accepted">>
-	<<elseif $hypnosis_traits.cover gte 1 and $willpower lt random(1, (200 * $hypnosis_traits.cover))>>
+	<<elseif $hypnosis_traits.cover gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.cover))>>
 		<<set $_hypnosis to "forced">>
 	<</if>>
 	<<switch _args[0]>>
@@ -2438,7 +2439,7 @@
 		<<set $_hypnosis to "lewd">>
 	<<elseif $uncomfortable.hypnosis is false and $hypnosis_traits.cover gte random(1,5)>>
 		<<set $_hypnosis to "accepted">>
-	<<elseif $hypnosis_traits.cover gte 1 and $willpower lt random(1, (200 * $hypnosis_traits.cover))>>
+	<<elseif $hypnosis_traits.cover gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.cover))>>
 		<<set $_hypnosis to "forced">>
 	<</if>>
 	<<switch _args[0]>>
@@ -2558,7 +2559,7 @@
 		<<set $_hypnosis to "lewd">>
 	<<elseif $uncomfortable.hypnosis is false and $hypnosis_traits.cover gte random(1,5)>>
 		<<set $_hypnosis to "accepted">>
-	<<elseif $hypnosis_traits.cover gte 1 and $willpower lt random(1, (200 * $hypnosis_traits.cover))>>
+	<<elseif $hypnosis_traits.cover gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.cover))>>
 		<<set $_hypnosis to "forced">>
 	<</if>>
 	<<switch _args[0]>>

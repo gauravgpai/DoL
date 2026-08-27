@@ -53,14 +53,14 @@
 <br><br>
 <<if Time.hour lt 12 and (Time.schoolDay or Time.isWeekEnd())>>
 	<<effects>>
-	<<His>> eyes light up, but then looks at the clock on the wall. "I can't," <<he>> says. "I need to get ready soon. I can go in the evening."
+	<<His>> eyes light up, but then look at the clock on the wall. "I can't," <<he>> says. "I need to get ready soon. I can go in the evening."
 	<br><br>
 	<<robinoptions>>
 <<else>>
 	<<set $outside to 0>><<set $location to "town">><<effects>>
 	<<set $daily.robin.cinema to 1>>
 	<!-- note: changes to _robin *will* affect C.npc.Robin -->
-	<!-- does not use the new NPC clothes system completely, needs Robin crosdressing events to better determine when Robin will crossdress -->
+	<!-- does not use the new NPC clothes system completely, needs Robin crossdressing events to better determine when Robin will crossdress -->
 	<<if _robin.outfits isnot undefined>>
 		<<if _robin.outfits.length gt 0 and _robin.outfits.some(x => x.includes("robinGift"))>>
 			<<set _robinOutfits to clone(_robin.outfits)>>
@@ -143,12 +143,12 @@ _popcornIntro
 		I'm still a little wary about sharing the beach with them, but their popcorn does smell delicious..." Robin gives you a tentative smile.
 	<</if>>
 	<br><br>
-	<<socialiseicon "cinema">><<link [[Enter theatre|"Robin Cinema " + _theatreLink]]>><<handheldon>><<set $phase2 to "popcorn">><</link>>
+	<<socialiseicon "cinema">><<link [[Enter theatre|"Robin Cinema " + _theatreLink]]>><<set $phase2 to "popcorn">><</link>>
 
 <<else>>
 	<<if $money gte 1000>>
-		<<foodicon "popcorn">><<link [[Buy popcorn (£10)|"Robin Cinema " + _theatreLink]]>><<handheldon>><<money -1000 "robin">><<set $popcorn += 1>><<set $phase to "purchase">><<set $phase2 to "popcorn">><</link>><br>
-		<<socialiseicon "cinema">><<link [[Enter theatre|"Robin Cinema " + _theatreLink]]>><<handheldon>><</link>>
+		<<foodicon "popcorn">><<link [[Buy popcorn (£10)|"Robin Cinema " + _theatreLink]]>><<money -1000 "robin">><<set $popcorn += 1>><<set $phase to "purchase">><<set $phase2 to "popcorn">><</link>><br>
+		<<socialiseicon "cinema">><<link [[Enter theatre|"Robin Cinema " + _theatreLink]]>><</link>>
 	<<else>>
 		<<if $speech_attitude is "meek">>
 			"I-I'm so sorry, but I can't afford it..." You bite your lip and glance away from Robin.
@@ -161,11 +161,11 @@ _popcornIntro
 		<<if $robinmoney gte 10>>
 			"That's okay," Robin assures you. "My treat!" <<He>> purchases a bag of popcorn for the two of you to share. <<set $robinmoney -= 10>><<set $popcorn += 1>>
 			<br><br>
-			<<socialiseicon "cinema">><<link [[Enter theatre|"Robin Cinema " + _theatreLink]]>><<handheldon>><<set $phase2 to "popcorn">><</link>>
+			<<socialiseicon "cinema">><<link [[Enter theatre|"Robin Cinema " + _theatreLink]]>><<set $phase2 to "popcorn">><</link>>
 		<<else>>
 			"Oh." Robin looks crestfallen for a moment, but <<he>> quickly shakes it off. "It's okay! I guess I shouldn't've brought it up, because I can't afford it either." <<He>> gives a sheepish little laugh.
 			<br><br>
-			<<socialiseicon "cinema">><<link [[Enter theatre|"Robin Cinema " + _theatreLink]]>><<handheldon>><</link>>
+			<<socialiseicon "cinema">><<link [[Enter theatre|"Robin Cinema " + _theatreLink]]>><</link>>
 		<</if>>
 	<</if>>
 <</if>>
@@ -183,10 +183,10 @@ The film soon starts. It's pretty good. Robin enjoys it, and laughs along with t
 <br><br>
 
 <<if $robinromance is 1>>
-	<<link [[Fondle|Robin Cinema Fondle]]>><<npcincr Robin lust 1>><</link>><<promiscuous1>><<handheldon>><<glust>>
+	<<link [[Fondle|Robin Cinema Fondle]]>><<npcincr Robin lust 1>><</link>><<promiscuous1>><<glust>>
 	<br>
 <</if>>
-<<link [[Keep watching (0:15)|Robin Cinema Watch]]>><<pass 15>><<handheldon>><</link>>
+<<link [[Keep watching (0:15)|Robin Cinema Watch]]>><<pass 15>><</link>>
 <br>
 
 :: Robin Cinema Fondle
@@ -322,7 +322,11 @@ You lean into Robin and lower your hands to <<his>> hips, right as the film's pr
 You move closer and closer to Robin. <<He>> turns to you just in time, but you still catch <<him>> by surprise.
 <br><br>
 
-You wrap your arms around <<him>> as your lips meet. <<takeKissVirginity "Robin" `($robinromance is 1?"loveInterest":"romantic")`>>Confusion turns into a quick moan, and <<he>> embraces you. <<His>> lust is almost palpable.
+You wrap your arms around <<him>> as your lips meet. <<takeKissVirginity "Robin" `($robinromance is 1?"loveInterest":"romantic")`>>
+<<if _pcKissVirginityTaken>>
+	<br><br>
+<</if>>
+Confusion turns into a quick moan, and <<he>> embraces you. <<His>> lust is almost palpable.
 <br><br>
 
 No one in the room seems to notice what you're up to.
@@ -561,6 +565,9 @@ You strip yourself naked. You barely have enough time to remove the last piece b
 <</if>>
 
 <<He>> gazes into your eyes. "I love you." <<He>> kisses you again. <<takeKissVirginity "Robin" `($robinromance is 1?"loveInterest":"romantic")`>>
+<<if _pcKissVirginityTaken>>
+	<br><br>
+<</if>>
 
 <<if $penisfucked is 1>>
 	"It feels so good to have you inside me."
@@ -760,7 +767,7 @@ Robin applauds when the credits roll, and talks about the film on the way home.
 
 :: Robin Cinema Flirt
 <<set $outside to 0>><<set $location to "town">><<effects>>
-<<silently>><<handheldon>><</silently>>
+
 
 You quote one of the film's leads, from the part right before the two protagonists first kiss. Robin smiles and takes the other role. You think you get the lines right. <<He>> says the final line.
 <br><br>
@@ -782,7 +789,7 @@ You quote one of the film's leads, from the part right before the two protagonis
 
 :: Robin Cinema Listen
 <<set $outside to 0>><<set $location to "town">><<effects>>
-<<silently>><<handheldon>><</silently>>
+
 
 You listen to Robin talk about the film. <<He>> enjoyed it more than you, and <<his>> delight is infectious. Maybe it wasn't so bad.
 <br><br>
@@ -955,7 +962,7 @@ Robin finishes packing up the rug and together you return to the orphanage. <<Hi
 <<robinoptions>>
 
 :: Robin Forest New Basket
-<<location "forest">><<effects>>
+<<location "forest">><<effects>><<wearProp "picnic basket">>
 
 You offer to go shopping for a new one with Robin. <<His>> eyes light up. "Thank you. I've been needing a new basket anyway."
 <br><br>
@@ -1013,14 +1020,21 @@ You spot it caught under a root. As you bend over to free it, you feel something
 <<if $stress gte $stressmax or $vorestomach gte 5>>
 	<<endcombat>>
 	<<npc Robin>><<person1>>
+
 	Though you struggle, the snake's digestive tract pushes you through its body until you feel yourself pressed through a tight ring of flesh. You try to push your way out, but the stomach presses in on you, stopping your movements and coating you in slime. <<outergoo>>It's so tight. You feel like you might pass out, when you hear muffled crying from the outside.
 	<br><br>
 
 	"—you okay? Where are you? Please answer." It's Robin's voice. <<He>> must have realised something was wrong after so much time had passed. You cry for help as loud as you can. You hear Robin scream. "No! Let my friend go!" You feel the snake lurch forward with you still in it, causing you to rub against its insides. Robin shrieks.
 	<br><br>
 
+	<<vore_img "npc_1">>
+	<<if V.options.images>>
+		<br><br>
+	<</if>>
+
 	<<link [[Next|Robin Forest Double Vore]]>><<set $daily.robin.walk to 2>><</link>>
 <<else>>
+	<<wearProp "picnic basket">>
 	<<tearful>> you escape the snake's ravenous maw, then remember what you came here for. The picnic basket is still where you last saw it, so you dash away from the snake, now too slow without the element of surprise, and bring the basket back to Robin.
 	<br><br>
 
@@ -1046,6 +1060,11 @@ You spot it caught under a root. As you bend over to free it, you feel something
 Robin's shriek is muffled. When <<he>> cries out again, it sounds a lot closer to you than before. "Let me go, don't eat me!" <<He>> must have been swallowed head first. The stomach walls shake and constrict around you due to the commotion at the snake's mouth. Robin's shouts turn to whimpers as <<his>> struggles die down. The snake's stomach continues to massage you all the while as you drift in and out of consciousness, until you feel a mass press on to your head from what you assume is the front of the snake.
 <br><br>
 
+<<vore_img "npc_2">>
+<<if V.options.images>>
+	<br><br>
+<</if>>
+
 "Is that you? The snake ate me and now I can't see. It's so tight and hot and slimy in here." Robin sounds on the verge of tears.
 <<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
 <br><br>
@@ -1064,6 +1083,11 @@ Robin's shriek is muffled. When <<he>> cries out again, it sounds a lot closer t
 <<outergoo>><<outergoo>><<outergoo>><<outergoo>>
 "I have an idea to get us out of here," you say. "If we struggle together, we might be able to make the snake throw up." You can't see <<him>>, but you think the movement you feel above you is Robin nodding. "Is it going to digest us?" <<He>> whimpers.
 <br><br>
+
+<<vore_img "npc_struggle">>
+<<if V.options.images>>
+	<br><br>
+<</if>>
 
 The two of you start to stretch and push outwards with your arms and legs as hard as you can, while matching the timing of your movements. The stomach tightens around you, spewing fluids all over you. Your clothing seems to degrade from the fluid, though you're unharmed. Robin doesn't seem to be getting squeezed or drenched the same way you are, maybe because <<he>> isn't quite in the stomach of the snake.
 <br><br>
@@ -1090,6 +1114,11 @@ Robin hugs you but doesn't say anything. The ordeal must have been as traumatisi
 <<outergoo>><<outergoo>><<outergoo>><<outergoo>>
 You tell Robin that you're both going to be okay. You reach your hand towards where you think Robin is trapped in the snake's gullet, searching for the entrance to the stomach. You push your hand through a fleshy valve and feel <<his>> slime-covered head. You tell <<him>> to take your hand. "I'm glad I'm not alone in here," <<he>> says. "These slimy walls keep squeezing me." <<He>> takes your hand.
 <br><br>
+
+<<vore_img "npc_comfort">>
+<<if V.options.images>>
+	<br><br>
+<</if>>
 
 Unable to escape the snake that's swallowed both of you whole, there's nothing to do but wait as you're squeezed and massaged. The viscous fluids eat away at your clothes. It isn't long until you're naked and completely covered in slime. The walls contract and rub against your <<breasts>> and <<genitals>>, and you realise with shame that your body is responding to the stimulation. The warmth and pressure on your body is having an effect, and you feel hot. Robin seems to be feeling it too, as <<his>> whimpers have turned into soft moans that escape <<his>> lips every time the snake's throat churns with <<him>> in it.
 <br><br>
@@ -1180,7 +1209,7 @@ You help each other clean off as much slime as you can, but the stickiness makes
 <br>
 
 :: Robin Forest Break Down
-<<location "forest">><<effects>>
+<<location "forest">><<effects>><<wearProp "picnic basket">>
 
 "There was a big snake and it coiled around me and it tried to swallow me and—" You stumble through your explanation with a trembling voice, before being cut off by a tight hug.
 <br><br>
@@ -1202,7 +1231,7 @@ You help each other clean off as much slime as you can, but the stickiness makes
 <</if>>
 
 :: Robin Forest Explain
-<<location "forest">><<effects>>
+<<location "forest">><<effects>><<wearProp "picnic basket">>
 
 "When I found the picnic basket I got attacked by a giant snake. It tried to eat me!"
 <br><br>
@@ -1225,7 +1254,7 @@ Robin rushes to your side, looking panicked. "I'm so sorry," <<he>> says. "I sho
 
 :: Robin Forest Brag
 
-<<location "forest">><<effects>>
+<<location "forest">><<effects>><<wearProp "picnic basket">>
 "A giant snake tried to eat me when I found the picnic basket, but I fought it off," you say, hiding your terror beneath bravado.
 <br><br>
 Robin clings to your arm and gazes on you with awe. "You fought off a giant snake?" <<he>> says. "And you rescued my basket. You're so amazing."
@@ -1258,9 +1287,9 @@ You stand right beneath <<him>>.
 	<<Hes>> wearing pink underwear.
 <</if>>
 <<promiscuity1>>
-You cheer Robin on as <<he>> climbs the tree. <<He>> makes it to the top. "I knew I could do it," <<he>> shouts. You can barely make <<him>> out in the canopy. "It's pretty <<if Weather.precipitation is "rain">>wet<<else>>cold<</if>> up here. I should come down."
+You cheer Robin on as <<he>> climbs the tree. <<He>> makes it to the top. "I knew I could do it," <<he>> shouts. You can barely make <<him>> out in the canopy. "It's quite <<if Weather.precipitation is "rain">>wet<<else>>cold<</if>> up here. I should come down."
 <br><br>
-<<Hes>> panting by the time <<he>> reaches the floor. "That was fun, but I got <<if Weather.precipitation is "rain">>pretty wet<<else>>a bit chilly<</if>>," <<he>> says. "Let's go home, or I'll catch a cold."
+<<Hes>> panting by the time <<he>> reaches the floor. "That was fun, but I got <<if Weather.precipitation is "rain">>pretty soaked<<else>>a bit chilly<</if>>," <<he>> says. "Let's go home, or I'll catch a cold."
 <br><br>
 Together you return to the orphanage.
 <br><br>
@@ -1269,9 +1298,9 @@ Together you return to the orphanage.
 :: Robin Forest Cheer
 
 <<location "forest">><<effects>>
-You cheer Robin on as <<he>> climbs the tree. <<He>> makes it to the top. "I knew I could do it," <<he>> shouts. You can barely make <<him>> out in the canopy. "It's pretty <<if Weather.precipitation is "rain">>wet<<else>>cold<</if>> up here. I should come down."
+You cheer Robin on as <<he>> climbs the tree. <<He>> makes it to the top. "I knew I could do it," <<he>> shouts. You can barely make <<him>> out in the canopy. "It's quite <<if Weather.precipitation is "rain">>wet<<else>>cold<</if>> up here. I should come down."
 <br><br>
-<<Hes>> panting by the time <<he>> reaches the floor. "That was fun, but I got <<if Weather.precipitation is "rain">>pretty wet<<else>>a bit chilly<</if>>," <<he>> says. "Let's go home, or I'll catch a cold."
+<<Hes>> panting by the time <<he>> reaches the floor. "That was fun, but I got <<if Weather.precipitation is "rain">>pretty soaked<<else>>a bit chilly<</if>>," <<he>> says. "Let's go home, or I'll catch a cold."
 <br><br>
 Together you return to the orphanage.
 <br><br>
@@ -1299,7 +1328,7 @@ You talk with Robin.
 
 :: Robin Forest Milking
 <<location "forest">><<effects>>
-<<wearProp "sandwich">>
+<<wearProp "ham sandwich">>
 Robin seems engrossed in <<his>> sandwich, though you catch <<him>> glancing in your direction. <<Hes>> blushing, and avoids eye contact.
 <br><br>
 You smirk as a lewd idea strikes you. You stand and take Robin's sandwich from <<his>> hand, placing it back in the basket. Robin looks embarrassed, and stares at <<his>> lap.
@@ -1311,7 +1340,7 @@ You let out a <<if $cow gte 6>>moo and <</if>>laugh, reminding Robin that <<hes>
 "Squeeze it," you say. "Don't be shy." <<He>> hesitates, then does as instructed. A little milk leaks out.
 <br><br>
 
-<<link [[Next|Robin Forest Milking 2]]>><<handheldon>><</link>>
+<<link [[Next|Robin Forest Milking 2]]>><</link>>
 <br>
 
 :: Robin Forest Milking 2
@@ -1413,7 +1442,7 @@ The rest of the picnic is uneventful. Robin seems less embarrassed by the end.
 <br><br>
 You walk back to the orphanage, Robin at your side. <<He>> hugs you from behind once back in <<his>> room.
 <br><br>
-"Sorry I wasn't more into it," <<he>> whispers. "I mean, I was, but it's a little strange. If you like it, I do."
+"Sorry, I wasn't more into it," <<he>> whispers. "I mean, I was, but it's a little strange. If you like it, I do."
 <br><br>
 <<robinoptions>>
 
@@ -1853,9 +1882,12 @@ You only relax when you're safe in Robin's room.
 <<effects>>
 
 You lean forwards and kiss Robin. <<He>> kisses back, pulling you closer. "I feel so safe with you," <<he>> says.<<takeKissVirginity "Robin" `($robinromance is 1?"loveInterest":"romantic")`>>
+<<if _pcKissVirginityTaken>>
+	<br><br>
+<</if>>
 <<promiscuity1>>
 
-Heavy footsteps interrupt before you can continue. A hand grabs your hair and yanks you back. You catch a glimpse of Eden's face contorted into a snarl, right before <<npc Eden 2>><<person2>><<he>> slams <<his>> fist into Robin's gut.
+Heavy footsteps interrupt before you can continue. A hand grabs your hair and yanks you back. You catch a glimpse of Eden's face contorted into a snarl, right before <<npc Eden 2>><<person2>><<he>> slams <<his>> fist into Robin's gut. <<set $edenSeen.pushUnique("robinGutPunch")>>
 <br><br>
 "Robin!" You try to go to <<person1>><<him>>, but Eden holds you still.<<pain 2>><<stress 6>><<npcincr Robin trauma 5>><<gpain>><<gstress>><<ggrtrauma>>
 <br><br>
@@ -2104,7 +2136,7 @@ You hesitate, unsure how to explain. Robin waits for an answer. When it becomes 
 <br><br>
 <<if Time.hour lt 12 and (Time.schoolDay or Time.isWeekEnd())>>
 	<<effects>>
-	<<His>> eyes light up, but then looks at the clock on the wall. "I can't," <<he>> says. "I need to get ready soon. I can go in the evening."
+	<<His>> eyes light up, but then look at the clock on the wall. "I can't," <<he>> says. "I need to get ready soon. I can go in the evening."
 	<br><br>
 	<<robinoptions>>
 <<else>>
@@ -2288,7 +2320,7 @@ The toy rolls to a stop by your knee.
 <</if>>
 <br><br>
 
-obin nods. "It will look nice in your room," <<he>> says.
+Robin nods. "It will look nice in your room," <<he>> says.
 <br><br>
 
 <<link [[Next|Robin Amusements Main]]>><</link>>
@@ -2359,9 +2391,9 @@ Robin smiles and nods.
 <<if $speech_attitude is "meek">>
 	"I'm sorry I failed you," you say.
 <<elseif $speech_attitude is "bratty">>
-	"Sorry I'm not good enough," you say.
+	"Sorry, I'm not good enough," you say.
 <<else>>
-	"Sorry I'm not better at it," you say.
+	"Sorry, I'm not better at it," you say.
 <</if>>
 <br><br>
 
@@ -2425,7 +2457,7 @@ The coins indeed look ready to fall, but no matter how many additional coins you
 	<br><br>
 	The rest of the your coins soon disappear, along with your further meagre winnings. Robin stands back, looking satisfied despite the result.
 	<br><br>
-	"That was fun," <<He>> says. "It's a shame we didn't win more, but we've prepared them for the next person."
+	"That was fun," <<he>> says. "It's a shame we didn't win more, but we've prepared them for the next person."
 	<br><br>
 
 
@@ -2439,7 +2471,7 @@ The coins indeed look ready to fall, but no matter how many additional coins you
 
 The rest of the your coins soon disappear, along with your further meagre winnings. Robin stands back, looking satisfied despite the result.
 <br><br>
-"That was fun," <<He>> says. "It's a shame we didn't win more, but we've prepared them for the next person."
+"That was fun," <<he>> says. "It's a shame we didn't win more, but we've prepared them for the next person."
 <br><br>
 
 <<link [[Next|Robin Amusements Main]]>><</link>>
@@ -2467,7 +2499,7 @@ The rest of the your coins soon disappear, along with your further meagre winnin
 <<He>> insists you use <<his>> coins, though it doesn't amount to much. They soon disappear, along with your meagre winnings.
 <br><br>
 
-"That was fun," <<He>> says. "It's a shame we didn't win more, but we've prepared it for the next person."
+"That was fun," <<he>> says. "It's a shame we didn't win more, but we've prepared it for the next person."
 <br><br>
 
 <<link [[Next|Robin Amusements Main]]>><</link>>
@@ -2485,7 +2517,7 @@ You approach the shooting gallery. Robin takes one of the guns, eager, and pushe
 	A series of electronic targets spring to life. You take each down almost as soon as they appear, and it's soon clear that Robin isn't quick enough to keep up with you. You're too experienced with the real thing.
 	<br><br>
 
-	When it's over, a long ream of tickets trails across the floor. "You're so good at this," Robin says. "Sorry I didn't help much." <span class="teal">You win many prize tickets.</span>
+	When it's over, a long ream of tickets trails across the floor. "You're so good at this," Robin says. "Sorry, I didn't help much." <span class="teal">You win many prize tickets.</span>
 	<br><br>
 	<<set $robin_amusements.tickets += 100>>
 <<else>>
@@ -2759,7 +2791,7 @@ You trade 100 tickets for a bubble blower, and walk onto the promenade. Robin is
 :: Robin Amusements Sweets 2
 <<effects>>
 
-You trade 100 tickets for two small bags of sweets. There's a variety inside. Boiled sweets, sherbert, milk chocolate. You walk along the promenade beside Robin, chatting and eating the sweets. You make it most of the way along before running out.
+You trade 100 tickets for two small bags of sweets. There's a variety inside. Boiled sweets, sherbet, milk chocolate. You walk along the promenade beside Robin, chatting and eating the sweets. You make it most of the way along before running out.
 <br><br>
 
 <<robin_amusements_end_links>>
@@ -2767,7 +2799,7 @@ You trade 100 tickets for two small bags of sweets. There's a variety inside. Bo
 :: Robin Amusements Sweets
 <<effects>>
 
-You trade 50 tickets for a small bag of sweets. There's a variety inside. Boiled sweets, sherbert, milk chocolate. Robin waits for you to have one before having one <<himself>>. You finish the bag before you make it far down the promenade.
+You trade 50 tickets for a small bag of sweets. There's a variety inside. Boiled sweets, sherbet, milk chocolate. Robin waits for you to have one before having one <<himself>>. You finish the bag before you make it far down the promenade.
 <br><br>
 
 <<robin_amusements_end_links>>
