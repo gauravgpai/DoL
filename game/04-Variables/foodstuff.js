@@ -1021,6 +1021,7 @@ function initFoodstuff() {
 				servings: 1,
 				ingredients: ["flour", "chicken_egg", "vegetable_oil", "salt"],
 				tags: [],
+				also_teaches: ["macaroni_cheese"],
 			},
 			food: {
 				tags: ["vegetarian"],
@@ -1660,6 +1661,7 @@ function initFoodstuff() {
 				servings: 1,
 				ingredients: ["beef", "bread", "onion", "tomato"],
 				tags: [],
+				automatically_know: true,
 			},
 			food: {
 				tags: [],
@@ -1684,6 +1686,7 @@ function initFoodstuff() {
 				servings: 2,
 				ingredients: ["beef", "bread", "onion", "tomato", "cheese"],
 				tags: [],
+				automatically_know: true,
 			},
 			food: {
 				tags: [],
@@ -2075,7 +2078,7 @@ function initFoodstuff() {
 				sell_price: 3000,
 			},
 			recipe: {
-				recipe_name: "souffl\u00E9s",
+				recipe_name: "soufflés",
 				difficulty: 4,
 				cook_minutes: 40,
 				servings: 1,
@@ -2821,6 +2824,7 @@ function initFoodstuff() {
 				servings: 2,
 				ingredients: ["orange", "sugar"],
 				tags: [],
+				automatically_know: true,
 			},
 			food: {
 				tags: ["vegan", "drink"],
@@ -3214,6 +3218,7 @@ function initFoodstuff() {
 				servings: 1,
 				ingredients: ["chicken_egg", "vegetable_oil", "butter"],
 				tags: [],
+				automatically_know: true,
 			},
 			food: {
 				tags: ["vegetarian"],
@@ -3238,6 +3243,7 @@ function initFoodstuff() {
 				servings: 1,
 				ingredients: ["oats", "bottle_of_milk"],
 				tags: [],
+				automatically_know: true,
 			},
 			food: {
 				tags: ["vegetarian"],
@@ -3262,6 +3268,7 @@ function initFoodstuff() {
 				servings: 1,
 				ingredients: ["turnip", "potato", "onion", "vegetable_oil", "salt"],
 				tags: [],
+				automatically_know: true,
 			},
 			food: {
 				tags: ["vegan"],
@@ -3354,6 +3361,7 @@ function initFoodstuff() {
 				servings: 5,
 				ingredients: ["flour", "sugar", "butter", "chicken_egg", "jam"],
 				tags: [],
+				also_teaches: ["shortbread"],
 			},
 			food: {
 				handheld_gift: true,
