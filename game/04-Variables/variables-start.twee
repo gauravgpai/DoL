@@ -196,6 +196,7 @@
 	<<set $control to 1000>>
 
 	<<clothinginit>>
+	<<accessoriesInit>>
 	<<parasiteinit>>
 	<<init_names>>
 

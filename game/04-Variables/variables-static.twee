@@ -22,6 +22,7 @@
 	}>>
 
 	<<clothing_data>>
+	<<accessoryData>>
 	<<hair_data>>
 	<<init_bodywriting_objects>>
 	<<run initFoodstuff()>>

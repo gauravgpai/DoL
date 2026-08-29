@@ -1479,6 +1479,23 @@
 	</div>
 <</widget>>
 
+<<widget "mirrorAccessoryDisplay">>
+	<<if _hairCategory isnot "accessories">>
+		<<set _perPage to $showMannequins ? 14 : 100>>
+		<<set _page to 1>>
+	<</if>>
+
+	<<set _hairCategory to "accessories">>
+	<<mirrorAccessoryOptions>>
+
+	<div id="hairContainerElements">
+		<<mirrorHairAccessoriesDisplayElements _hairOptions>>
+	</div>
+	<div id="hairContainerPages" class="no-numberify">
+		<<mirrorhairControls _args[1]>>
+	</div>
+<</widget>>
+
 <<widget "mirrorhairControls">>
 	<<if $showMannequins>>
 		<div class="containerFooter">
@@ -1547,6 +1564,20 @@
 	})>>
 <</widget>>
 
+<<widget "mirrorAccessoryOptions">>
+	<<set _hairOptions to {}>>
+	<<run setup.accessories.hair.forEach(hairAccessory => {
+		T.hairOptions[hairAccessory.colour] = hairAccessory.variable === V.hairtype;
+	})>>
+	<<set _pageMax to Math.ceil(Object.keys(_hairOptions).length / _perPage)>>
+
+	<<run Object.keys(_hairOptions).forEach((key, index) => {
+	if (!between(index, T.perPage * (T.page - 1), (T.perPage * T.page) - 1)) {
+			delete T.hairOptions[key];
+		}
+	})>>
+<</widget>>
+
 <<widget "mirrorhairdisplayLinks">>
 	<div class="tab">
 		<span @class="_args[0] is 'hair' ? 'tab-selected' : 'tab'">
@@ -1568,6 +1599,18 @@
 						<<mirrorhairdisplayLinks "fringe">>
 					</div>
 					<<mirrorhairdisplay "$fringetype" "fringe">>
+				<</replace>>
+			<</button>>
+		</span>
+	</div>
+	<div class="tab">
+		<span @class="_args[0] is 'accessories' ? 'tab-selected' : ''">
+			<<button "Accessories">>
+				<<replace "#hairContainer">>
+					<div class="containerHeader" class="no-numberify">
+						<<mirrorhairdisplayLinks "accessories">>
+					</div>
+					<<mirrorAccessoryDisplay>>
 				<</replace>>
 			<</button>>
 		</span>
@@ -1632,6 +1675,44 @@
 							<<set _modeloptions.hair_sides_type to $hairtype>>
 						<</if>>
 						<<set _modeloptions.ears_position to $earsposition>>
+						<<rendermodel "hairstyleMannequin">>
+						<br>
+					<</if>>
+					<<print toTitleCase(_label)>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+<</widget>>
+
+<<widget "mirrorHairAccessoriesDisplayElements">>
+	<div id="hairGridSides" class="no-numberify hairGrid">
+		<<for _colour, _enabled range _args[0]>>
+			<<capture _hairCategory, _enabled>>
+				<div @id="'hairGrid-' + _hairCategory.replace('$','') + '-' + _hairName.replace(/ /g,'')" @class="'gridItem' + (_hairName is V[_hairCategory.replace('$','')] ? ' selectedHair' : '')" @onclick="`wikifier('mirrorhairdisplayClick', '${T.hairCategory.replace('$','')}', '${T.hairName.replace(/ /g,'_')}');`">
+					<<if $options.images is 1 and $showMannequins is 1>>
+						<<selectmodel "main">>
+						<<set _modeloptions.tanningEnabled to false>>
+						<<set _modeloptions.skin_type = Skin.color.natural>>
+						<<set _modeloptions.skin_tone = Skin.color.tan>>
+						<<set _modeloptions.freckles = $player.freckles == true and $makeup.concealer != 1>>
+						<<set _modeloptions.mouth to 'neutral'>>
+						<<set _modeloptions.facevariant = $facevariant>>
+						<<set _modeloptions.left_eye = $makeup.eyelenses.left != 0 ? $makeup.eyelenses.left : $leftEyeColour>>
+						<<set _modeloptions.right_eye = $makeup.eyelenses.right != 0 ? $makeup.eyelenses.right : $rightEyeColour>>
+						<<set _modeloptions.hair_colour = $haircolour>>
+						<<set _modeloptions.hair_fringe_colour = $hairfringecolour>>
+						<<set _modeloptions.hair_fringe_colour_gradient = $hairFringeColourGradient>>
+						<<set _modeloptions.hair_fringe_colour_style = $hairFringeColourStyle>>
+						<<set _modeloptions.hair_colour_gradient = $hairColourGradient>>
+						<<set _modeloptions.hair_colour_style = $hairColourStyle>>
+						<<set _modeloptions.hair_sides_length to $hairlengthstage>>
+						<<set _modeloptions.hair_sides_position to $hairposition>>
+						<<set _modeloptions.hair_fringe_length to $fringelengthstage>>
+						<<set _modeloptions.hair_sides_type to $hairtype>>
+						<<set _modeloptions.hair_fringe_type to $fringetype>>
+						<<set _modeloptions.ears_position to $earsposition>>
+						<<set _modeloptions.accessories.hair to _colour>>
 						<<rendermodel "hairstyleMannequin">>
 						<br>
 					<</if>>

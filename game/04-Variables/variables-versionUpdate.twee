@@ -7497,4 +7497,8 @@
 	<<if $options.fishingBaitSelection is undefined>>
 		<<set $options.fishingBaitSelection to "sidebar">>
 	<</if>>
+
+	<<if $objectVersion.updateAccessories lt 1 or $objectVersion.updateAccessories is undefined>>
+		<<updateAccessories>>
+	<</if>>
 <</widget>>

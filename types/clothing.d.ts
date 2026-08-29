@@ -78,6 +78,13 @@ declare module "twine-sugarcube" {
 		moddedProps: {
 			[x: string]: PropSetup;
 		};
+		accessories: {
+			[x in AccessoryTypes]: AccessoryItem[];
+		};
+		moddedAccessories: {
+			[x in AccessoryTypes]: AccessoryItem[];
+		};
+		accessoriesAllTypes: AccessoryTypes[];
 	}
 }
 
@@ -106,6 +113,8 @@ declare global {
 		| "legs"
 		| "feet"
 		| "genitals";
+
+	export type AccessoryTypes = "hair";
 
 	export type SexToySlots = "strap-on" | "vibrator" | "dildo" | "butt_plug" | "lube" | "stroker" | "aphrodisiacpill" | "breastpump";
 
@@ -379,6 +388,40 @@ declare global {
 		mask_img_ponytail?: 0 | 1;
 		head_type?: "veil" | "hat";
 		// TODO list and document other options
+	}
+	export interface AccessoryItem {
+		name: string;
+		name_cap: string;
+		/**
+		 * Folder name
+		 */
+		variable: string;
+		/**
+		 * a: A piercing.
+		 *
+		 * n: Ribbons.
+		 *
+		 * an: An earring.
+		 */
+		word: "a" | "n" | "an";
+		/** Whether the item is plural */
+		plural: number;
+		cost?: number;
+		description: string;
+		shop?: string[];
+		/**
+		 * key in setup.colours.prefilters identifying preprocessing required for canvas renderer.
+		 * default is "accessory"
+		 */
+		prefilter?: string;
+		colour: 0 | string;
+		colour_options?: string[];
+		/**
+		 * (For head slots)
+		 * if 1, this item has mask.png image to cut out hair & animal ears layers
+		 */
+		mask_img?: 0 | 1 | "combat";
+		zIndex?: string;
 	}
 
 	export interface Wardrobe {

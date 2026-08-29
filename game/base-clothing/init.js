@@ -1,4 +1,4 @@
-/* global initOverUpper, initOverLower, initUpper, initLower, initUnderUpper, initUnderLower, initGenitals, initOverHead, initHead, initFace, initNeck, initHands, initHandheld, initLegs, initFeet, initSpecialClothes, initProps, wardrobesUpdate, clothesDataTrimmerLoop, npcAssignClothesToSet */
+/* global initOverUpper, initOverLower, initUpper, initLower, initUnderUpper, initUnderLower, initGenitals, initOverHead, initHead, initFace, initNeck, initHands, initHandheld, initLegs, initFeet, initSpecialClothes, initProps, initAccessoryHair, wardrobesUpdate, clothesDataTrimmerLoop, npcAssignClothesToSet */
 
 function clothingDataInit() {
 	setup.clothes = {};
@@ -693,3 +693,41 @@ function initNpcClothes() {
 		{ name: "femaleDefault",		type: "default", gender: "f", outfit: 0, clothes: npcAssignClothesToSet("shirt", "skirt"), desc: "shirt and skirt" },
 	];
 }
+
+function accessoryDataInit() {
+	setup.accessories = {};
+	setup.moddedAccessories = {};
+	initAccessoryHair();
+
+	setup.accessoriesAllTypes = [
+		"hair",
+	];
+
+	// create an "all" category in setup.clothes
+	const accessories = [];
+	setup.accessoriesAllTypes.forEach(accessoriesType => {
+		setup.accessories[accessoriesType].forEach(a => accessories.push(a));
+
+		setup.accessories[accessoriesType].forEach(accessory => {
+			accessory.type = accessoriesType;
+		});
+	});
+	setup.accessories.all = accessories;
+}
+DefineMacro("accessoryData", accessoryDataInit);
+
+function accessoryArrays() {
+	V.accessories = {};
+	V.wornAccessories = {};
+
+	setup.accessoriesAllTypes.forEach(type => {
+		V.accessories[type] = [];
+		V.wornAccessories[type] = [];
+	});
+}
+
+function accessoriesInit() {
+	accessoryArrays();
+}
+
+DefineMacro("accessoriesInit", accessoriesInit);
