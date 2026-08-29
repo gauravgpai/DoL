@@ -694,7 +694,7 @@
 				</div>
 			<</if>>
 		</div>
-		<<if _type isnot "specialClothing">>
+		<<if !["specialClothing", "seeds", "recipes"].includes(_type)>>
 			<div class=" black small-description" style="margin-top:10px;">
 				(<span class="gold">_details.cost <<pluralise _details.cost "VrelCoin">></span> per upgrade)
 			</div>
@@ -1001,7 +1001,7 @@
 					</div>
 			</fieldset>
 		</form>
-			<<run $(document).off("change.specialClothesFeat").on("change.specialClothesFeat", /* ???? */
+			<<run $(document).off("change.specialClothesFeat").on("change.specialClothesFeat", /* ???? this thing somehow responsible for subtracting the feat cost and listing it in the footer */
 				'input[type="checkbox"][data-limit-group="recipesFeatSelect"]',
 				function () {
 					const id = $(this).attr("id").replace(/^checkbox-featsboostsrecipes-/, "").replace(/-/g, "_"); /* featsboostsrecipes is $featsBoosts.recipes[$_labelC] */
