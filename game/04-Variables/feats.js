@@ -2115,6 +2115,7 @@ function featsMerge() {
 
 	if (!featData.specialClothes) featData.specialClothes = [];
 	if (!featData.seeds) featData.seeds = [];
+	if (!featData.recipes) featData.recipes = [];
 	// eslint-disable-next-line prettier/prettier
 	if (!Array.isArray(featData.specialClothes)) featData.specialClothes = getUnlockedSpecialSets(updateSpecialClothesNames(featData.specialClothes)).filter(set => setup.specialClothesSets[set].feat);
 	const loadFeats = (data = {}) => {
@@ -2129,6 +2130,13 @@ function featsMerge() {
 			if (key === "seeds") {
 				const seeds = Array.isArray(date) ? date : V.plants_known.filter(plant => setup.foodstuff[plant].tending?.featCost);
 				seeds.forEach(a => featData.seeds.pushUnique(a));
+				return;
+			}
+			if (key === "recipes") {
+				const recipes = Array.isArray(date)
+					? date
+					: Object.keys(V.foodstuff).filter(food => V.foodstuff[food].knows_recipe && setup.foodstuff[food].recipe?.featCost);
+				recipes.forEach(a => featData.recipes.pushUnique(a));
 				return;
 			}
 			if (!featData[key] || new Date(date).getTime() < new Date(featData[key]).getTime()) {
@@ -2519,7 +2527,7 @@ function updateFeats() {
 	let coins = 0;
 	let writeFlag = false;
 	// some entries within the feats object are not actually feats
-	const notFeats = ["points", "specialClothes", "seeds"];
+	const notFeats = ["points", "specialClothes", "seeds", "recipes"];
 	// at the game start, V.feats is not yet imported
 	const allFeats = (passage() === "Start" ? JSON.parse(localStorage.getItem("dolFeats")) : V.feats.allSaves) || {};
 	const curFeats = V.feats.currentSave;
@@ -2591,6 +2599,19 @@ function updateFeats() {
 	}
 	allFeats.seeds = seeds;
 
+	const recipes = allFeats.recipes || [];
+	if (V.foodstuff && !V.feats.locked && !V.cheatsEnabled) {
+		const unlockedRecipes = Object.keys(V.foodstuff).filter(food => V.foodstuff[food].knows_recipe && setup.foodstuff[food].recipe?.featCost);
+		// merge unlockedRecipes into recipes
+		unlockedRecipes.forEach(recipe => {
+			if (!recipes.includes(recipe)) {
+				recipes.push(recipe);
+				writeFlag = true;
+			}
+		});
+	}
+	allFeats.recipes = recipes;
+
 	V.feats.allSaves = allFeats;
 
 	// update permanent feat storage
@@ -2623,6 +2644,7 @@ function setupFeatBoosts(force) {
 		sexToys: [{}, {}, {}, {}, {}, {}],
 		specialClothesSets: {},
 		seeds: {},
+		recipes: {},
 		earSlimeType: "immaturePassive",
 	};
 
@@ -2750,6 +2772,12 @@ function setupFeatBoosts(force) {
 			required: ["Seedy", "Breedy"],
 			cost: 0,
 			missing: "Unlock this boost by obtaining the 'Seedy' feat",
+		},
+		recipes: {
+			name: "Starting Recipes",
+			required: ["Chef de Tournant", "Chef de Partie", "Sous Chef"],
+			cost: 0,
+			missing: "Unlock this boost by obtaining the 'Chef de Tournant' feat",
 		},
 		sexToys: {
 			name: "Sex Toys",
@@ -2949,6 +2977,17 @@ function applyFeatBoosts() {
 	if (upgrades.seeds) {
 		V.feats.allSaves.seeds.forEach(c => {
 			if (V.featsBoosts.seeds[c] === true) V.plants_known.push(c);
+		});
+	}
+
+	// recipes
+	if (upgrades.recipes) {
+		// redundant check if a recipe is ever known?
+		V.feats.allSaves.recipes.forEach(c => {
+			if (V.featsBoosts.recipes[c] === true) {
+				if (!V.foodstuff[c]) V.foodstuff[c] = { amount: 0 }; // redundant existence check?
+				V.foodstuff[c].knows_recipe = true;
+			}
 		});
 	}
 

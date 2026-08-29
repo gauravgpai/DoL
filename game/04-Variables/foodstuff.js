@@ -8,6 +8,8 @@ function finalizefoodstuff() {
 		.sort()
 		.forEach(key => {
 			sortedCatalog[key] = setup.foodstuff[key];
+			if (sortedCatalog[key].recipe && sortedCatalog[key].recipe.difficulty <= 4)
+				sortedCatalog[key].recipe.featCost = [0, 2, 5, 10, 15][sortedCatalog[key].recipe.difficulty];
 		});
 
 	setup.foodstuff = sortedCatalog;
