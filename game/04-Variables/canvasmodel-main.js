@@ -608,7 +608,10 @@ Renderer.CanvasModels.main = {
 				"hair_fringe"
 			);
 		}
-		options.filters.hair_accessories = lookupColour(options, setup.colours.clothes_map, options.hair_accessory_colour, "prop");
+
+		if (options.hair_accessory_colour) {
+			options.filters.hair_accessory = lookupColour(options, setup.colours.clothes_map, options.hair_accessory_colour, "prop");
+		}
 
 		const empty = Renderer.emptyLayerFilter();
 		options.filters.brows = lookupColour(options, setup.colours.hair_map, options.brows_colour || options.hair_colour, "brows", "brows_custom", "brows");
@@ -1578,15 +1581,16 @@ Renderer.CanvasModels.main = {
 			showfn(options) {
 				return !!options.show_hair && !!options.hair_sides_type;
 			},
-		"hair_accessories": {
-			filters: ["hair"],
+		},
+		"hair_accessory": {
+			filters: ["hair_accessory"],
 			animation: "idle",
 
 			srcfn(options) {
 				return `img/clothes/accessories/hair/ribbons/${options.hair_sides_type}/${options.hair_sides_length}.png`;
 			},
 			zfn(options) {
-				return options.hair_sides_position === "front" ? ZIndices.hair_forward : ZIndices.backhair;
+				return (options.hair_sides_position === "front" ? ZIndices.hair_forward : ZIndices.backhair)+1;
 			},
 			masksrcfn(options) {
 				if (options.worn.over_upper.setup.name === "kaiju costume")
@@ -1594,9 +1598,8 @@ Renderer.CanvasModels.main = {
 				return options.headMask;
 			},
 			showfn(options) {
-				return !!options.show_hair && !!options.hair_sides_type;
+				return !!options.show_hair && !!options.hair_sides_type && setup.hairstyles.sides.find(hs => hs.variable === options.hair_sides_type).type.includes("ribbons");
 			},
-		},
 		},
 		/***
 		 *     ██████ ██████   ██████  ████████  ██████ ██   ██
