@@ -238,19 +238,6 @@
 	<</if>>
 <</widget>>
 
-<<widget "saveTempHairStyle">>
-	<<set $tempSavedHairStyles to {hairtype:$hairtype, fringetype:$fringetype, hairposition:$hairposition}>>
-<</widget>>
-
-<<widget "loadTempHairStyle">>
-	<<if $tempSavedHairStyles>>
-		<<set $hairtype to $tempSavedHairStyles['hairtype']>>
-		<<set $fringetype to $tempSavedHairStyles['fringetype']>>
-		<<set $hairposition to $tempSavedHairStyles['hairposition']>>
-		<<unset $tempSavedHairStyles>>
-	<</if>>
-<</widget>>
-
 <<widget "wearoutfit">>
 	/* Strip worn strap-on before equipping outfit */
 	<<if $wear_outfit isnot "none" and $worn.under_lower.type.includes("strap-on")>>
@@ -675,10 +662,7 @@
 		<</for>>
 		<<if $outfit[$wear_outfit].hairStyle>>
 			/*Update Hairstyle*/
-			<<set $_outfitHair to $savedHairStyles[$outfit[$wear_outfit].hairStyle]>>
-			<<set $hairtype to $_outfitHair.hairtype>>
-			<<set $fringetype to $_outfitHair.fringetype>>
-			<<set $hairposition to $_outfitHair.hairposition>>
+			<<hairPresetWear $outfit[$wear_outfit].hairStyle>>
 		<</if>>
 	<</if>>
 

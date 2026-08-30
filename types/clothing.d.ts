@@ -55,6 +55,13 @@ declare module "twine-sugarcube" {
 		lowerwetstage: number;
 		underlowerwetstage: number;
 		specialClothes: specialClothesItem[];
+		accessories: {
+			[x in AccessoryTypes]: AccessoryItem[];
+		};
+		wornAccessories: {
+			sides: AccessoryItem[];
+			fringes: AccessoryItem[];
+		};
 	}
 
 	export interface SugarCubeSetupObject {

@@ -1905,58 +1905,41 @@
 
 <<widget "mirrorHairSave">>
 	<div class="hairContainerSave">
-	<<if _savedHairStylesKeys.length gt 0>>
-	<div class="tab">
-		<<button '<span class="fa-icon fa-check"></span> Wear'>>
-			<<set $hairtype to $savedHairStyles[_selectedSavedHairStyle].hairtype>>
-			<<set $fringetype to $savedHairStyles[_selectedSavedHairStyle].fringetype>>
-			<<set $hairposition to $savedHairStyles[_selectedSavedHairStyle].hairposition>>
-			<<set $ruffledisable to "f">>
-			<<updatesidebarimg>>
-		<</button>>
-		<<button '<span class="fa-icon fa-overwrite"></span> Overwrite'>>
-			<<set $savedHairStyles[_selectedSavedHairStyle].hairtype to $hairtype>>
-			<<set $savedHairStyles[_selectedSavedHairStyle].fringetype to $fringetype>>
-			<<set $savedHairStyles[_selectedSavedHairStyle].hairposition to $hairposition>>
-			<<updatesidebarimg>>
-		<</button>>
-		<<button '<span class="fa-icon fa-delete"></span> Delete'>>
-			<<if _selectedSavedHairStyle isnot "Default">>
-				<<run $outfit.forEach((o) => {
-					if(o.hairStyle === T.selectedSavedHairStyle){
-						o.hairStyle = undefined;
-					}
-				})>>
-				<<run delete $savedHairStyles[_selectedSavedHairStyle]>>
-				<<updatesidebarimg>>
-				<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
+		<div class="tab">
+			<<if _savedHairStylesKeys.length gt 0>>
+				<<button '<span class="fa-icon fa-check"></span> Wear'>>
+					<<hairPresetWear _selectedSavedHairStyle>>
+					<<updatesidebarimg>>
+					
+					<<replace "#hairContainer">>
+						<div class="containerHeader" class="no-numberify">
+							<<mirrorhairdisplayLinks "style">>
+						</div>
+						<<mirrorhairdisplaySave>>
+					<</replace>>
+				<</button>>
+				<<button '<span class="fa-icon fa-overwrite"></span> Overwrite'>>
+					<<hairPresetOverwrite _selectedSavedHairStyle>>
+					<<updatesidebarimg>>
+				<</button>>
+				<<button '<span class="fa-icon fa-delete"></span> Delete'>>
+					<<if _selectedSavedHairStyle isnot "Default">>
+						<<hairPresetDelete _selectedSavedHairStyle>>
+						<<updatesidebarimg>>
+						<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
+					<</if>>
+				<</button>>
 			<</if>>
-		<</button>>
-		<<button '<span class="fa-icon fa-save"></span> Save'>>
-			<<if _hairStyleName is "">>
-				<<replace "#textbox-error">><br> <span class="red">Please enter a name.</span><</replace>>
-			<<else>>
-				<<replace "#textbox-error">><</replace>>
-				<<set _hairStyleName to _hairStyleName.replace(/[^a-zA-Z\u4e00-\u9fa50-9_-]+/g,"").substring(0,30)>>
-				<<set $savedHairStyles[_hairStyleName] to { hairtype:$hairtype, fringetype:$fringetype, hairposition:$hairposition }>>
-				<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
-			<</if>>
-		<</button>>
-	</div>
-	<<else>>
-	<div class="tab">
-		<<button '<span class="fa-icon fa-save"></span> Save'>>
-			<<if _hairStyleName is "">>
-				<<replace "#textbox-error">><br> <span class="red">Please enter a name.</span><</replace>>
-			<<else>>
-				<<replace "#textbox-error">><</replace>>
-				<<set _hairStyleName to _hairStyleName.replace(/[^a-zA-Z\u4e00-\u9fa50-9_-]+/g,"").substring(0,30)>>
-				<<set $savedHairStyles[_hairStyleName] to { hairtype:$hairtype, fringetype:$fringetype, hairposition:$hairposition }>>
-				<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
-			<</if>>
-		<</button>>
-	</div>
-	<</if>>
+			<<button '<span class="fa-icon fa-save"></span> Save'>>
+				<<if _hairStyleName is "">>
+					<<replace "#textbox-error">><br> <span class="red">Please enter a name.</span><</replace>>
+				<<else>>
+					<<replace "#textbox-error">><</replace>>
+					<<hairPresetSave _hairStyleName>>
+					<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
+				<</if>>
+			<</button>>
+		</div>
 	</div>
 <</widget>>
 
