@@ -114,7 +114,7 @@ declare global {
 		| "feet"
 		| "genitals";
 
-	export type AccessoryTypes = "hair";
+	export type AccessoryTypes = "sides" | "fringes";
 
 	export type SexToySlots = "strap-on" | "vibrator" | "dildo" | "butt_plug" | "lube" | "stroker" | "aphrodisiacpill" | "breastpump";
 

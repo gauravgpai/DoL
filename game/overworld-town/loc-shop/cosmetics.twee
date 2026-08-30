@@ -264,7 +264,7 @@ Each bottle costs <<printmoney _sunscreen.price>> and has <<print _sunscreen.use
 <<widget "hairAccessoryDisplay">>
 	<<set _availableColours to ["black", "blue", "brown", "green", "pink", "purple", "red", "tangerine", "teal", "white", "yellow", "custom"]>>
 
-	<<for _i, _hairAccessory range setup.accessories.hair>>
+	<<for _i, _hairAccessory range setup.accessories.sides>>
 		<label>_hairAccessory.name<<radiobutton "_accessoryChoice" _hairAccessory>></label> |
 	<</for>>
 	<br>

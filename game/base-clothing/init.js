@@ -1,4 +1,4 @@
-/* global initOverUpper, initOverLower, initUpper, initLower, initUnderUpper, initUnderLower, initGenitals, initOverHead, initHead, initFace, initNeck, initHands, initHandheld, initLegs, initFeet, initSpecialClothes, initProps, initAccessoryHair, wardrobesUpdate, clothesDataTrimmerLoop, npcAssignClothesToSet */
+/* global initOverUpper, initOverLower, initUpper, initLower, initUnderUpper, initUnderLower, initGenitals, initOverHead, initHead, initFace, initNeck, initHands, initHandheld, initLegs, initFeet, initSpecialClothes, initProps, initAccessorySides, initAccessoryFringes, wardrobesUpdate, clothesDataTrimmerLoop, npcAssignClothesToSet */
 
 function clothingDataInit() {
 	setup.clothes = {};
@@ -697,10 +697,12 @@ function initNpcClothes() {
 function accessoryDataInit() {
 	setup.accessories = {};
 	setup.moddedAccessories = {};
-	initAccessoryHair();
+	initAccessorySides();
+	initAccessoryFringes();
 
 	setup.accessoriesAllTypes = [
-		"hair",
+		"sides",
+		"fringes"
 	];
 
 	// create an "all" category in setup.clothes

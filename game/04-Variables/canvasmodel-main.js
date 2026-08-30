@@ -609,8 +609,8 @@ Renderer.CanvasModels.main = {
 			);
 		}
 
-		if (options.hair_accessory_colour) {
-			options.filters.hair_accessory = lookupColour(options, setup.colours.clothes_map, options.hair_accessory_colour, "prop");
+		if (options.sides_accessory_colour) {
+			options.filters.sides_accessory = lookupColour(options, setup.colours.clothes_map, options.sides_accessory_colour, "prop");
 		}
 
 		const empty = Renderer.emptyLayerFilter();
@@ -1582,8 +1582,8 @@ Renderer.CanvasModels.main = {
 				return !!options.show_hair && !!options.hair_sides_type;
 			},
 		},
-		"hair_accessory": {
-			filters: ["hair_accessory"],
+		"sides_accessory": {
+			filters: ["sides_accessory"],
 			animation: "idle",
 
 			srcfn(options) {
@@ -1598,7 +1598,7 @@ Renderer.CanvasModels.main = {
 				return options.headMask;
 			},
 			showfn(options) {
-				return !!options.show_hair && !!options.hair_sides_type && setup.hairstyles.sides.find(hs => hs.variable === options.hair_sides_type).type.includes("ribbons");
+				return !!options.show_hair && !!options.hair_sides_type && setup.hairstyles.sides.find(hs => hs.variable === options.hair_sides_type).type.includes("ribbon");
 			},
 		},
 		/***

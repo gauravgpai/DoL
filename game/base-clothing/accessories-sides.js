@@ -1,21 +1,9 @@
 // @ts-check
 /* For any item that has a colour_combat tag, set it to 0 if that item ever gets its own combat sprites.
-
-Warmth checklist:
-	Base: 0
-	Covers mouth: +1
-	Covers eyes: +1
-
-	Materials
-	Thin: -1
-	Normal: 0
-	Thick: +1
-
-	Max warmth: 3
-*/
-function initAccessoryHair() {
+ */
+function initAccessorySides() {
 	/** @type {AccessoryItem[]} */
-	const clothing = [
+	const accessories = [
 		new AccessoryItem({
 			index: 0,
 			name: "little doll ribbons",
@@ -39,14 +27,14 @@ function initAccessoryHair() {
 			shop: ["cosmetics"],
 		}),
 	];
-	setup.accessories.hair = clothing;
+	setup.accessories.sides = accessories;
 
 	/*
-		Clothes that modders add go into this array. This should be empty in the base game at all times.
+		Accessories that modders add go into this array. This should be empty in the base game at all times.
 		These items should have a `modder` variable with the modder's name in a short string.
 	*/
-	setup.moddedAccessories.hair = [];
+	setup.moddedAccessories.sides = [];
 
-	setup.accessories.hair.push(...setup.moddedAccessories.hair);
+	setup.accessories.sides.push(...setup.moddedAccessories.sides);
 }
-window.initAccessoryHair = initAccessoryHair;
+window.initAccessorySides = initAccessorySides;
