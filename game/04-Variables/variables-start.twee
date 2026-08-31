@@ -323,6 +323,12 @@
 	<<set $settings.tendingYieldModifier to 5>>
 	<<set $plants_known to []>>
 	<<set $foodstuff to {}>>
+	<<run Object.keys(setup.foodstuff).forEach(key => {
+		if (setup.foodstuff[key].recipe?.automatically_know) {
+			if (!V.foodstuff[key]) V.foodstuff[key] = { amount: 0 };
+			V.foodstuff[key].knows_recipe = true;
+		}
+	})>>
 	<<set $fishing to {
 		locationsFound: [],
 		record: {},
