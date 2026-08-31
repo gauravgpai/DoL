@@ -1,17 +1,4 @@
-/* global AccessoryTypes, Hairstyle */
-
-/**
- * @param {AccessoryTypes} accessoryType
- * @param {Hairstyle} hairstyle
- */
-function haveHairAccessoryFor(accessoryType, hairstyle) {
-	const originalAccessory = setup.accessories[accessoryType].find(h => h.variable === hairstyle.variable);
-	if (originalAccessory) return V.accessories[accessoryType].filter(a => a.index === originalAccessory.index).length > 0;
-
-	return false;
-}
-
-window.haveHairAccessoryFor = haveHairAccessoryFor;
+/* global removeAccessories, wearAccessory */
 
 function createPresetHairObject() {
 	const preset = {
@@ -21,12 +8,10 @@ function createPresetHairObject() {
 	};
 
 	const originalSides = setup.hairstyles.sides.find(h => h.variable === V.hairtype);
-	console.log(originalSides);
 
 	if (originalSides.type.includes("ribbon")) {
 		if (V.wornAccessories.sides.length === 0) throw new Error(`hairPresetSave: missing worn accessory for hairstyle that requires it`);
-		console.log(V.wornAccessories.sides[0].colour);
-		preset.sidesAccessoryColour = V.wornAccessories.sides[0].colour;
+		preset.sidesAccessory = V.wornAccessories.sides[0];
 	}
 
 	return preset;
@@ -34,6 +19,7 @@ function createPresetHairObject() {
 
 function loadPresetHairObject(hairPreset) {
 	const originalSides = setup.hairstyles.sides.find(h => h.variable === hairPreset.hairtype);
+	removeAccessories("sides");
 
 	if (originalSides.type.includes("ribbon")) {
 		const originalAccessory = setup.accessories.sides.find(h => h.variable === originalSides.variable);
@@ -47,7 +33,7 @@ function loadPresetHairObject(hairPreset) {
 			throw new Error(`hairPresetWear: preset ${name} is missing required accessories`);
 		}
 
-		V.wornAccessories.sides = [accessory];
+		wearAccessory(accessory);
 	}
 
 	V.hairtype = hairPreset.hairtype;

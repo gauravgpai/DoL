@@ -1,5 +1,5 @@
-class AccessoryItem {
-	/* Index of Accessories | REQUIRED | MUST BE UNIQUE TO SLOT | INT */
+class AccessoryItemSetup {
+	/* Index of accessory | REQUIRED | MUST BE UNIQUE TO TYPE | INT */
 	index;
 
 	/* Lowercase name of accessory | REQUIRED | STRING */
@@ -8,8 +8,10 @@ class AccessoryItem {
 	/* Capitalized name of accessory | AUTOFILL | STRING */
 	name_cap;
 
+	/* Accessory name for variable purpose | REQUIRED | MUST BE UNIQUE TO type | MUST MATCH OTHER OUTFIT PARTS | STRING */
 	variable;
 
+	/* Type of the accessory | REQUIRED | STRING */
 	type;
 
 	/* */
@@ -17,12 +19,6 @@ class AccessoryItem {
 
 	/* indicated if the accessory is a singular or plural item. 0 for singular, 1 for plural | REQUIRED| AUTOFILL | INT */
 	plural;
-
-	/* Filter storage, always 0 | AUTOFILL | INT */
-	colour = 0;
-
-	/* Filter options | REQUIRED | AUTOFILL | ARRAY */
-	colour_options;
 
 	/* Accessory cost | INT */
 	cost = 0;
@@ -32,6 +28,9 @@ class AccessoryItem {
 
 	/* The shops the accessory can be found in | REQUIRED | AUTOFILL | ARRAY */
 	shop;
+
+	/* Filter options | REQUIRED | AUTOFILL | ARRAY */
+	colour_options = [];
 
 	constructor(props) {
 		/* parses passed object and populates class properties */
@@ -48,4 +47,4 @@ class AccessoryItem {
 	}
 }
 
-window.AccessoryItem = AccessoryItem;
+window.AccessoryItemSetup = AccessoryItemSetup;

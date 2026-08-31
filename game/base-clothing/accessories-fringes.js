@@ -2,7 +2,7 @@
 /* For any item that has a colour_combat tag, set it to 0 if that item ever gets its own combat sprites.
  */
 function initAccessoryFringes() {
-	/** @type {AccessoryItem[]} */
+	/** @type {AccessoryItemSetup[]} */
 	const accessories = [];
 	setup.accessories.fringes = accessories;
 

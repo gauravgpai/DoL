@@ -110,7 +110,7 @@ DefineMacro("modelprepare-player-body", function () {
 	T.modeloptions.hair_fringe_type = V.fringetype;
 
 	if (V.wornAccessories.sides.length > 0) {
-		T.modeloptions.sides_accessory_colour = V.wornAccessories.sides[0].colour;
+		T.modeloptions.sides_accessory = V.wornAccessories.sides[0];
 	}
 
 	/*

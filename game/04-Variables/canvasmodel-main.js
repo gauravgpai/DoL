@@ -609,8 +609,12 @@ Renderer.CanvasModels.main = {
 			);
 		}
 
-		if (options.sides_accessory_colour) {
-			options.filters.sides_accessory = lookupColour(options, setup.colours.clothes_map, options.sides_accessory_colour, "prop");
+		if (options.sides_accessory) {
+			if (options.sides_accessory.colour === "custom") {
+				options.filters.sides_accessory = getCustomClothesColourCanvasFilter(options.sides_accessory.colourCustom);
+			} else {
+				options.filters.sides_accessory = lookupColour(options, setup.colours.clothes_map, options.sides_accessory.colour, "sides_accessory", "sides_accessory.colourCustom");
+			}
 		}
 
 		const empty = Renderer.emptyLayerFilter();
@@ -1587,7 +1591,7 @@ Renderer.CanvasModels.main = {
 			animation: "idle",
 
 			srcfn(options) {
-				return `img/clothes/accessories/hair/ribbons/${options.hair_sides_type}/${options.hair_sides_length}.png`;
+				return `img/clothes/accessories/hair/ribbons/${options.sides_accessory.variable}/${options.hair_sides_length}.png`;
 			},
 			zfn(options) {
 				return (options.hair_sides_position === "front" ? ZIndices.hair_forward : ZIndices.backhair)+1;
@@ -1598,7 +1602,7 @@ Renderer.CanvasModels.main = {
 				return options.headMask;
 			},
 			showfn(options) {
-				return !!options.show_hair && !!options.hair_sides_type && setup.hairstyles.sides.find(hs => hs.variable === options.hair_sides_type).type.includes("ribbon");
+				return !!options.show_hair && !!options.hair_sides_type && options.sides_accessory !== undefined;
 			},
 		},
 		/***

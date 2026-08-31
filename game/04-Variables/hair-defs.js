@@ -63,7 +63,7 @@ setup.hair = {
 				"twintails",
 				"princess twintails",
 				"princess ribbons",
-				"magical ribbons",
+				"magical curls",
 			],
 			devolve: ["twintails"],
 		},

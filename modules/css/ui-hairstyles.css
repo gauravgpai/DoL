@@ -223,4 +223,11 @@
 	object-position: 45% 14%;
 }
 
+.accessory-discard-container {
+	background-color: var(--800);
+	border: 1px solid var(--150);
+	border-top: 0;
+	padding: 0 15px;
+}
+
 /* Updated Hairstyle UI: End */

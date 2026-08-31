@@ -505,7 +505,7 @@ sugarcube-2:
 
         `<<cosmeticsicon iconName?>>`
         - **iconName** _optional_: `string` - type
-          - `"blusher"` | `"contacts"` | `"dyes"` | `"mascara"` | `"eyeshadow"` | `"sunscreen"` | `default`
+          - `"blusher"` | `"contacts"` | `"dyes"` | `"mascara"` | `"eyeshadow"` | `"sunscreen"` | `"ribbons"` | `default`
       parameters:
         - '|+ "blusher"|"contacts"|"dyes"|"mascara"|"eyeshadow"|"sunscreen"'
       tags: ["img"]

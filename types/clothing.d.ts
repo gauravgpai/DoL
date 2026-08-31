@@ -59,8 +59,7 @@ declare module "twine-sugarcube" {
 			[x in AccessoryTypes]: AccessoryItem[];
 		};
 		wornAccessories: {
-			sides: AccessoryItem[];
-			fringes: AccessoryItem[];
+			[x in AccessoryTypes]: AccessoryItem[];
 		};
 	}
 
@@ -86,10 +85,10 @@ declare module "twine-sugarcube" {
 			[x: string]: PropSetup;
 		};
 		accessories: {
-			[x in AccessoryTypes]: AccessoryItem[];
+			[x in AccessoryTypes]: AccessoryItemSetup[];
 		};
 		moddedAccessories: {
-			[x in AccessoryTypes]: AccessoryItem[];
+			[x in AccessoryTypes]: AccessoryItemSetup[];
 		};
 		accessoriesAllTypes: AccessoryTypes[];
 	}
@@ -397,12 +396,23 @@ declare global {
 		// TODO list and document other options
 	}
 	export interface AccessoryItem {
+		setupIndex: number;
+		type: string;
+		variable: string;
+		colour: string;
+		colourCustom: string;
+		customName?: string;
+	}
+
+	export interface AccessoryItemSetup {
+		index: number;
 		name: string;
 		name_cap: string;
 		/**
 		 * Folder name
 		 */
 		variable: string;
+		type: string;
 		/**
 		 * a: A piercing.
 		 *
@@ -413,22 +423,10 @@ declare global {
 		word: "a" | "n" | "an";
 		/** Whether the item is plural */
 		plural: number;
-		cost?: number;
+		cost: number;
 		description: string;
-		shop?: string[];
-		/**
-		 * key in setup.colours.prefilters identifying preprocessing required for canvas renderer.
-		 * default is "accessory"
-		 */
-		prefilter?: string;
-		colour: 0 | string;
-		colour_options?: string[];
-		/**
-		 * (For head slots)
-		 * if 1, this item has mask.png image to cut out hair & animal ears layers
-		 */
-		mask_img?: 0 | 1 | "combat";
-		zIndex?: string;
+		shop: string[];
+		colour_options: string[];
 	}
 
 	export interface Wardrobe {
