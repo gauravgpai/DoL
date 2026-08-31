@@ -230,6 +230,23 @@ DefineMacro("modelprepare-player-body", function () {
 	}
 
 	/*
+			███████ ██████  ███████  ██████ ██   ██ ██      ███████ ███████ 
+			██      ██   ██ ██      ██      ██  ██  ██      ██      ██      
+			█████   ██████  █████   ██      █████   ██      █████   ███████ 
+			██      ██   ██ ██      ██      ██  ██  ██      ██           ██ 
+			██      ██   ██ ███████  ██████ ██   ██ ███████ ███████ ███████
+		*/
+	// T.modeloptions.upperBodyFreckles = true;
+	// T.modeloptions.lowerBodyFreckles = true;
+	// Needs to be replaced with:
+	T.modeloptions.leftArmFreckles = true;
+	T.modeloptions.rightArmFreckles = true;
+	T.modeloptions.shoulderFreckles = true;
+	T.modeloptions.breastFreckles = true;
+	T.modeloptions.bodyFreckles = true;
+	T.modeloptions.legFreckles = true;
+
+	/*
 			███████  █████   ██████ ███████
 			██      ██   ██ ██      ██
 			█████   ███████ ██      █████

@@ -153,6 +153,8 @@ replace (?<!["'\w])_(?=\w) with T.
  * For each body writing SLOT (key in $skin):
  * - "writing_SLOT" - key in setup.bodywwriting, "" for no writing
  *
+ * BODY FRECKLE OPTIONS:
+ * 
  * DRIPPING FLUIDS OPTIONS:
  * -----------------------
  * "drip_vaginal": ""|"Start"|"VerySlow"|"Slow"|"Fast"|"VeryFast"
@@ -257,6 +259,7 @@ Renderer.CanvasModels.main = {
 			"arm_left": "idle",
 			"arm_right": "idle",
 			"body_type": "classic",
+			"bodyFreckles": false,
 			// Skin & tan
 			"skin_type": "light",
 			"skin_tone": 0,
@@ -2084,6 +2087,117 @@ Renderer.CanvasModels.main = {
 			},
 			showfn(options) {
 				return !!options.writing_right_thigh;
+			},
+		},
+
+		/*
+				███████ ██████  ███████  ██████ ██   ██ ██      ███████ ███████ 
+				██      ██   ██ ██      ██      ██  ██  ██      ██      ██      
+				█████   ██████  █████   ██      █████   ██      █████   ███████ 
+				██      ██   ██ ██      ██      ██  ██  ██      ██           ██ 
+				██      ██   ██ ███████  ██████ ██   ██ ███████ ███████ ███████
+		*/
+		"freckles_belly": {
+			filters: ["tan"],
+			z: ZIndices.freckles,
+			animation: "idle",
+
+			srcfn(options) {
+				if (options.body_type === "clasic") {
+					return "";
+				} else if (options.body_type === "slender") {
+					return "";
+				} else if (options.body_type === "curvy") {
+					return "";
+				} else if (options.body_type === "soft") {
+					return "";
+				}
+			},
+			showfn(options) {
+				return !!options.uperBodyFreckles && !options.mannequin;
+			},
+		},
+		"freckles_breasts": {
+			filters: ["tan"],
+			z: ZIndices.freckles,
+			animation: "idle",
+
+			srcfn(options) {
+				switch (options.breast_size) {
+					case 1:
+						return "";
+					case 2:
+						return "";
+					case 3:
+						return "";
+					case 4:
+						return "";
+					case 5:
+						return "";
+					case 6:
+						return "";
+				}
+			},
+			showfn(options) {
+				return !!options.uperBodyFreckles && !options.mannequin;
+			},
+		},
+		"freckles_left_arm": {
+			filters: ["tan"],
+			animation: "idle",
+
+			srcfn(options) {
+				if (options.arm_left === "cover") {
+					return "";
+				} else if (options.arm_left === "idle") {
+					return "";
+				}
+			},
+			showfn(options) {
+				return !!options.uperBodyFreckles && !options.mannequin && options.arm_left !== "none";
+			},
+			zfn(options) {
+				return options.arm_left === "cover" ? ZIndices.left_cover_arm + 0.1 : ZIndices.armsidle + 0.1;
+			},
+		},
+		"freckles_shoulders": {
+			filters: ["tan"],
+			animation: "idle",
+			Z: ZIndices.freckles,
+			src: "",
+
+			showfn(options) {
+				return !!options.uperBodyFreckles && !options.mannequin;
+			},
+		},
+		"freckles_right_arm": {
+			filters: ["tan"],
+			animation: "idle",
+
+			srcfn(options) {
+				if (options.arm_right === "cover") {
+					return "";
+				} else if (options.arm_right === "hold") {
+					return "";
+				} else if (options.arm_right === "idle") {
+					return "";
+				}
+			},
+			showfn(options) {
+				return !!options.uperBodyFreckles && !options.mannequin && options.arm_right !== "none";
+			},
+			zfn(options) {
+				return ["cover", "hold"].includes(options.arm_right) ? ZIndices.right_cover_arm + 0.1 : ZIndices.armsidle + 0.1;
+			},
+		},
+		"freckles_legs": {
+			filters: ["tan"],
+			animation: "idle",
+			Z: ZIndices.freckles,
+			src: "",
+
+			showfn(options) {
+				return !!options.lowerBodyFreckles && !options.mannequin;
 			},
 		},
 
