@@ -198,7 +198,7 @@ sugarcube-2:
       name: actionscheekrub
     actionschoke:
       description: |-
-        Prints the player's speech when they request the NPC to choke them during encounters. Contains variations depending of level of awareness, asphyxiophilia trait, and a special `_daddy` variant if the NPC is male and the player's submissiveness is above 1150.
+        Prints the player's speech when they request the NPC to choke them during encounters. Contains variations depending of level of awareness, asphyxiophilia trait, and a special `_daddy` variant if the player's submissiveness is above 1150.
 
         Speech variations are currently determined by the value of `$speechcycle`, increasing at each turn and resetted after the last available option.
 
@@ -1392,7 +1392,7 @@ sugarcube-2:
         
     averySpeechDaddyChoke:
       description: |-
-        Speech variations when Avery chokes the player after being called "daddy" (`_daddy` is set to true). Contains rage variations.
+        Speech variations when Avery chokes the player after being called "daddy"/"mummy" (`_daddy` is set to true). Contains rage variations.
     averyTfComments:
       description: |-
         Avery speech comments on the player's transformation parts
@@ -10010,13 +10010,17 @@ sugarcube-2:
       name: lassie
     Lassie:
       name: Lassie
+    laugh:
+      description: |-
+        Prints random appropriate laugh name for active NPC, which is either `laugh`, `chuckle` or `giggle`.
+      tags: ["text"]
     lattention:
       description: |-
         Prints `| - Attention`
       tags: ["unused", "text"]
     laughs:
       description: |-
-        Prints random appropriate laugh verb for active NPC
+        Prints random appropriate laugh verb for active NPC, which is either `laughs`, `chuckles` or `giggles`.
       tags: ["text"]
     lawareness:
       description: |-
@@ -12443,15 +12447,21 @@ sugarcube-2:
         ```
         <<npc Bailey>>
         ```
-        The widget is used as such
+        Bailey will be generated and put into slot 0
+
+        ```
+        <<npc Whitney 2>>
+        ```
+        Whitney will be generated and put into slot 2
 
         ```
         <<npc namedNPCName>>
+        <<npc namedNPCName slot>>
         ``` 
         - **namedNPCName**: `npcObject` - The NPC to instanciate
-          - %namedNPCDesc%
+        - **slot**: `number` - The Slot the NPC will be put into (zero based)
       parameters:
-        - "%namedNPC%"
+        - text |+ number
     npc_attempt_sex:
       name: npc_attempt_sex
     npc_pillory:
@@ -17080,6 +17090,14 @@ sugarcube-2:
       tags: ["unused"]
     swimmingskilluse:
       name: swimmingskilluse
+    swim_strip:
+      description: |-
+        Strips clothing while swimming, calls swim_strip_check
+      name: swim_strip
+    swim_strip_check:
+      description: |-
+        Checks which clothing items can be stripped while swimming, creates list in _swim_strip_check and whether it's exhibitionism in _swim_strip_check_exhib
+      name: swim_strip_check
     swimmingtext:
       description: |-
         Prints colour-coded adjective of active swimming skill usage

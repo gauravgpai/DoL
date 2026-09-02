@@ -58,12 +58,12 @@
 
 <<addinlineevent "bite" fishingCatchEventWeight("fishingBeach", 10)>>
 	<<set $fishingHookedFish to rollFish("fishingBeach")>>
+	<<set _isPreferredBait to $fishing.currentBait !== undefined && setup.fishing.lootTables.fish[$fishingHookedFish.type].preferredBait is $fishing.currentBait>>
 	<<run onBaitLoss()>>
 	<<if fishTriggersMinigame($fishingHookedFish)>>
 		<<run fishingMinigameStart($fishingHookedFish.type)>>
 		<<include "Fishing Beach Minigame Loop">>
 	<<else>>
-		<<set _isPreferredBait to $fishing.currentBait !== undefined && setup.fishing.lootTables.fish[$fishingHookedFish.type].preferredBait is $fishing.currentBait>>
 		You feel a tug on your line as <<a $fishingHookedFish.type>><<if _isPreferredBait>> greedily<</if>> <<if $fishing.currentBait>>takes the bait<<else>>takes the hook<</if>>. You haul back on the line and pull it out of the water without a fight.
 		<<onFishCaught>>
 		<<fishingCatchFishText $fishingHookedFish>>
@@ -92,7 +92,7 @@
 
 /* Fisher cliff tip */
 <<if $daily.fishing.fishingBeach.fisher.phase is "fishing" and numberOfFishCaught() gte 50 and !$fishing.locationsFound.includes("fishingCoastPath")>>
-	<<addinlineevent "fisherCliffTipOffer" 1>>
+	<<addinlineevent "fisherCliffTipOffer" 10>>
 		<<include "Fishing Beach Fisher Cliff Tip Offer">>
 	<</addinlineevent>>
 <</if>>
@@ -138,7 +138,7 @@
 <</addinlineevent>>
 
 /* Dog tearing at clothing */
-<<if [undefined, "finished"].includes($daily.fishing.fishingBeach.fisher.phase)>>
+<<if [undefined, "finished"].includes($daily.fishing.fishingBeach.fisher.phase) and !$worn.lower.type.includes("naked")>>
 	<<addinlineevent "beachDog" fishingDangerEventWeight(0.75)>>
 		<<beachday2>>
 	<</addinlineevent>>

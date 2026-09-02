@@ -110,7 +110,7 @@
 		<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 60>>
 			<<He>> looks down at you and <<= either("sneers","<<laughs>>")>>. "There we are. Just how it ought to be for a rebellious little brat such as you."
 		<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
-			<<He>> smirks at you. "Oh, dear... It appears your vow has been broken<<if $brokenVowCount.Avery gt 1>> once again<</if>>." <<He>> doesn't seem all that apologetic.
+			<<He>> smirks at you. "Oh, dear... It appears your vow has been broken<<if $brokenVowCount?.Avery gt 1>> once again<</if>>." <<He>> doesn't seem all that apologetic.
 		<<else>>
 			<<He>> smiles slyly at you. "Ah, my apologies. I'd just about forgotten all about that little vow of yours..."
 		<</if>>
@@ -142,7 +142,7 @@
 		<</if>>
 	<<elseif $speechgenitals is 1 and !playerChastity() and $averySeen.includes("chastity")>>/* PC removed the device */
 		<<He>> looks surprised when <<he>> notices your $worn.genitals.name is gone. "I see you finally had that<<if C.npc.Avery.rage gte 60>> bloody<</if>> thing removed. Good <<girl>>," <<he>> says with a <<= C.npc.Avery.rage gte 20 ? `smirk` : `smile`>>. <<npcincr Avery rage -5>> <<larage>>
-		<<set $averySeen.pop("chastity")>>
+		<<set $averySeen.delete("chastity")>>
 	<<elseif $speechgenitals is 1 and ($player.vaginaExist or (!playerHasStrapon() and $player.penisExist))>>
 		<<set _usesPenis to !playerHasStrapon() and $player.penisExist and (!$player.vaginaExist or random(0,1))>>
 		<<set _aroused to _usesPenis ? $arousal gte 6000 : $vaginaWetness gte 75>>
@@ -212,7 +212,7 @@
 			<<else>>
 				<<print either(
 					`"A <<= $worn.genitals.name is "gold chastity belt" ? "bit of gold" : "piece of iron">> won't protect your purity for long, <<pcpetname Avery>>. You belong to me, after all."`, 
-					`"I do wonder how long it will take for me to make you break this little vow of yours<<if $brokenVowCount.Avery gt 1>> this time<</if>."`, 
+					`"I do wonder how long it will take for me to make you break this little vow of yours<<if $brokenVowCount?.Avery gt 1>> this time<</if>."`, 
 					`"This device is rather tiresome. I do hope you reconsider that silly vow of yours soon."`
 					)>>
 			<</if>>
@@ -288,7 +288,7 @@
 				<<if C.npc.Avery.rage gte 60>>
 					"What was that, you little <<= either(`<<bitch>>`,`<<bastard>>`,`<<slut>>`)>>? You want to try that again?"
 				<<elseif C.npc.Avery.rage lt 60 and C.npc.Avery.rage gte 20>>
-					"Words aren't always important." <<His>> smirk is sadistic. "So why don't you just lie back and let <<= _daddy ? "daddy have <<his>>" : "me have my">> way with you, hm?"
+					"Words aren't always important." <<His>> smirk is sadistic. "So why don't you just lie back and let <<= _daddy ? `<<nnpc_mummy "Avery">> have <<his>>` : `me have my`>> way with you, hm?"
 				<</if>>
 		<</switch>>	
 	/* Same but lewder */
@@ -326,11 +326,11 @@
 				<</if>>
 			<<case "Kylar">>
 				<<if $avery_mansion?.attend.english_play>>
-					<<His>> gaze darkens. "That actor from your play?" <<he>> sneers. "How foolish. Do not waste your attention on someone who couldn't dream of giving you the life I do."
+					<<His>> gaze darkens. "That actor from your play?" <<he>> sneers. "How foolish. Do not waste your attention on someone who couldn't dream of giving you the life I do."<<npcincr Avery rage 1>><<garage>>
 				<</if>>
 			<<case "Sydney">>
 				<<if $avery_mansion?.attend.english_play>>
-					<<His>> gaze darkens. "That actor from your play?" <<he>> scoffs. "How quaint. Do keep your eyes where they belong."
+					<<His>> gaze darkens. "That actor from your play?" <<he>> scoffs. "How quaint. Do keep your eyes where they belong."<<npcincr Avery rage 1>><<garage>>
 				<</if>>
 			<<default>>
 				<<He>> wordlessly eyes you with contempt.
@@ -452,22 +452,23 @@
 				<<else>>
 					<<He>> <<= either("smiles","<<laughs>>")>>. "I know. It's adorable."
 				<</if>>
+				<<npcincr Avery rage -1>><<larage>>
 			<<case "avery_moan_daddy">> /* Put me in my place, daddy */
 				<<if $consensual>>
 					<<if C.npc.Avery.rage gte 60 >>
-						"Oh, I'll put you in your place alright. Daddy's been waiting to punish you properly."
+						"Oh, I'll put you in your place alright. <<nnpc_Mummy "Avery">>'s been waiting to punish you properly."
 					<<elseif C.npc.Avery.rage gte 20>>
-						<<He>> smiles knowingly. "You want daddy to put you in your place? Maybe you've been acting up for attention."
+						<<He>> smiles knowingly. "You want <<nnpc_mummy "Avery">> to put you in your place? Maybe you've been acting up for attention."
 					<<else>>
-						<<He>> chuckles. "Mm. I love when you call me that. Don't worry, daddy will take care of you."
+						<<He>> chuckles. "Mm. I love when you call me that. Don't worry, <<nnpc_mummy "Avery">> will take care of you."
 					<</if>>
 				<<else>>
 					<<if C.npc.Avery.rage gte 60 >>
-						<<He>> sneers. "Oh, I intend to. daddy is going to remind you exactly where you belong."
+						<<He>> sneers. "Oh, I intend to. <<nnpc_mummy "Avery">> is going to remind you exactly where you belong."
 					<<elseif C.npc.Avery.rage gte 20>>
-						"Acting up just to get daddy's hands on you? I'll gladly show you where you belong."
+						"Acting up just to get <<nnpc_mummy "Avery">>'s hands on you? I'll gladly show you where you belong."
 					<<else>>
-						"You want daddy to put you in your place? You could have just asked politely instead of forcing my hand."
+						"You want <<nnpc_mummy "Avery">> to put you in your place? You could have just asked politely instead of forcing my hand."
 					<</if>>
 				<</if>>
 			<<case "avery_moan_premansion">> /* Take me away from that place */
@@ -607,7 +608,7 @@
 			<<if $averyragerevealed is 1>>
 				<<His>> eyes flash dangerously. "Do you enjoy being roughed up, <<pcpetname "Avery">>? Because <i>that</i> I can provide."
 			<<else>>
-				<<He>> grins sadistically. "Oh? You want daddy to beat you, too, <<pcpetname "Avery">>?"
+				<<He>> grins sadistically. "Oh? You want <<nnpc_mummy "Avery">> to beat you, too, <<pcpetname "Avery">>?"
 			<</if>>
 		<<else>>
 			<<if C.npc.Avery.rage gte 60>>
@@ -1266,7 +1267,7 @@
 		<</addinlineevent>>
 
 		<<if C.npc.Avery.rage gte 60>>
-			<<addinlineevent "avery_speech_penetration_highrage" 1>>"Your mouth might be useless, but your <<if _playerPenetrates>><<= either("cock","<<penissimple>>")>><<else>><<if _orifice is "vagina">><<= either("pussy","cunt")>><<else>>ass<</if>><</if>> makes keeping you around worth it..."<</addinlineevent>>
+			<<addinlineevent "avery_speech_penetration_highrage" 1>>"Your mouth might be useless, but your <<if _playerPenetrates>><<= either("cock","<<penisSimple>>")>><<else>><<if _orifice is "vagina">><<= either("pussy","cunt")>><<else>>ass<</if>><</if>> makes keeping you around worth it..."<</addinlineevent>>
 		<<elseif C.npc.Avery.rage gte 20 and _isCooperating>>
 			<<addinlineevent "avery_speech_penetration_midrage" 1>>
 				"Oh, fuck..." <<he>> <<= either("moans","groans","gasps")>>. "Good <<girl>>, just like that."
@@ -1542,7 +1543,7 @@
 
 		/* Temple vow */
 		<<if $player.virginity.temple is true and $averySeen.includes("player_virgin")>>
-			<<if $brokenVowCount.Avery gt 1>>
+			<<if $brokenVowCount?.Avery gt 1>>
 				/* Avery already broke the vow  */
 				<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 60>>
 					<<addinlineevent "avery_speech_withhold_temple_broken_hirage" 1>>
@@ -1865,13 +1866,13 @@
 	<<if _bodyPart is "forehead" and C.npc.Avery.love gte 60 and C.npc.Avery.rage lt 20 and $enemytrust gt 60>>
 		"That's a good <<pcpetname "Avery" "my">>," <<he>> murmurs against your skin.
 	<<else>>
-		As <<he>> lavishes attention on your <<if _bodyPart is "chest">><<chest>><<elseif _bodyPart is "bottom">><<bottom>><<else>>thights<</if>>, it's interspersed with <<= C.npc.Avery.rage gte 60 ? "harsh nips and bites" : C.npc.Avery.rage gte 20 ? "biting and sucking" : "nips and the odd bite">>. <<= $awareness gte 100 ? "<<He>> must be" : "It's almost like <<hes>>">> trying to leave a mark.
+		As <<he>> lavishes attention on your <<if _bodyPart is "chest">><<chest>><<elseif _bodyPart is "bottom">><<bottom>><<else>>thighs<</if>>, it's interspersed with <<= C.npc.Avery.rage gte 60 ? "harsh nips and bites" : C.npc.Avery.rage gte 20 ? "biting and sucking" : "nips and the odd bite">>. <<= $awareness gte 100 ? "<<He>> must be" : "It's almost like <<hes>>">> trying to leave a mark.
 	<</if>>
 <</widget>>
 
 
 <<widget "averyDaddy">>
-	<<His>> eyes widen for a moment, but then <<he>> smirks. You think <<he>> liked the sound of you calling <<him>> "daddy".
+	<<His>> eyes widen for a moment, but then <<he>> smirks. You think <<he>> liked the sound of you calling <<him>> "<<nnpc_mummy "Avery">>".
 <</widget>>
 
 <<widget "averyFondlingSpeech">>
@@ -1903,7 +1904,7 @@
 		<<He>> narrows <<his>> eyes at you. "You'll leave that to me unless told otherwise."
 	<<else>>
 		<<print either(
-			`<<He>> lets out a <<laugh>>. "Trying to save us both time, hm?"`,
+			`<<He>> lets out a laugh. "Trying to save us both time, hm?"`,
 			`<<He>> raises both brows. "My, how bold of you, <<pcpetname "Avery">>."`
 		)>>
 	<</if>>
@@ -2037,6 +2038,8 @@
 			<<addinlineevent "avery_speech_bodywriting_other_li_midrage" 1>>
 				"What is this?" <<He>> scowls. "You'd better wash this off, <<girl>>. We wouldn't want anyone seeing it, would we?"
 			<</addinlineevent>>
+		<<else>>
+			<<addinlineevent "nothing" 0.001>><</addinlineevent>>
 		<</if>>
 	<<elseif _bodywritingPart.special is "prostitution">>
 		<<if isAveryMansionUnlocked()>>
@@ -2090,6 +2093,8 @@
 			<<addinlineevent "avery_speech_bodywriting_sex_midrage" 1>>
 				"Looking for attention, <<pcpetname "Avery">>? I'll give you all the attention you can handle, but no one else looks at you like this."
 			<</addinlineevent>>
+		<<else>>
+			<<addinlineevent "nothing" 0.001>><</addinlineevent>>
 		<</if>>		
 	<<elseif _bodywritingPart.special is "exhibitionism">>
 		<<if C.npc.Avery.rage gte 60>>
@@ -2538,10 +2543,7 @@
 					<</addinlineevent>>
 				<<elseif C.npc.Avery.rage gte 20>>
 					<<addinlineevent "avery_speech_dungeon_in_midrage_sex" 3>>
-						<<set _laughPos to ["chuckle", "laugh"]>>
-						<<if C.npc.Avery.gender is "f">><<set _laugh.push("giggle")>><</if>>
-						<<set _laugh to _laugh.random()>>
-						"Nowhere better than home to give you the punishment you've well earned," <<he>> says with a _laugh. "Unless you've decided you want to be a good <<girl>> tonight?"
+						"Nowhere better than home to give you the punishment you've well earned," <<he>> says with a <<laugh>>. "Unless you've decided you want to be a good <<girl>> tonight?"
 					<</addinlineevent>>
 				<<else>>
 					<<addinlineevent "avery_speech_dungeon_in_lowrage_sex" 3>>
@@ -2953,7 +2955,7 @@
 <<widget "averySpeechDaddyChoke">>
 	<<cleareventpool>>
 	<<addinlineevent "avery_daddy_choke_classic" 0.5>>
-		<<He>> <<laughs>>. "Let's see if you can still beg for daddy with <<his>> hand around your throat."
+		<<He>> <<laughs>>. "Let's see if you can still beg for <<nnpc_mummy "Avery">> with <<his>> hand around your throat."
 	<</addinlineevent>>
 	<<addinlineevent "avery_daddy_choke_variations" 2>>
 		<<if C.npc.Avery.rage gte 60>>
@@ -2961,7 +2963,7 @@
 		<<elseif C.npc.Avery.rage gte 20>>
 			"That's right, <<pcpetname "Avery">>." <<He>> <<laughs>> as <<his>> hand squeezes down a little harder. "Finally, you know how to speak to me."
 		<<else>>
-			"As you wish, <<pcpetname "Avery">>," <<he>> purrs. "Leave it to daddy."
+			"As you wish, <<pcpetname "Avery">>," <<he>> purrs. "Leave it to <<nnpc_mummy "Avery">>."
 		<</if>>
 	<</addinlineevent>>
 	<<runeventpool>>
