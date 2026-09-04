@@ -154,7 +154,9 @@ replace (?<!["'\w])_(?=\w) with T.
  * - "writing_SLOT" - key in setup.bodywwriting, "" for no writing
  *
  * BODY FRECKLE OPTIONS:
- * 
+ * --------------------
+ * "bodyFreckles": "none"|"upper"|"full"
+ *
  * DRIPPING FLUIDS OPTIONS:
  * -----------------------
  * "drip_vaginal": ""|"Start"|"VerySlow"|"Slow"|"Fast"|"VeryFast"
@@ -259,7 +261,7 @@ Renderer.CanvasModels.main = {
 			"arm_left": "idle",
 			"arm_right": "idle",
 			"body_type": "classic",
-			"bodyFreckles": false,
+			"bodyFreckles": "none",
 			// Skin & tan
 			"skin_type": "light",
 			"skin_tone": 0,
@@ -2097,49 +2099,28 @@ Renderer.CanvasModels.main = {
 				██      ██   ██ ██      ██      ██  ██  ██      ██           ██ 
 				██      ██   ██ ███████  ██████ ██   ██ ███████ ███████ ███████
 		*/
-		"freckles_belly": {
+		"freckles_base": {
 			filters: ["tan"],
 			z: ZIndices.freckles,
 			animation: "idle",
 
 			srcfn(options) {
-				if (options.body_type === "clasic") {
-					return "";
-				} else if (options.body_type === "slender") {
-					return "";
-				} else if (options.body_type === "curvy") {
-					return "";
-				} else if (options.body_type === "soft") {
-					return "";
-				}
+				return `img/body/freckles/base-${options.body_type}-freckles-${options.bodyFreckles}.png`;
 			},
 			showfn(options) {
-				return !!options.uperBodyFreckles && !options.mannequin;
+				return options.bodyFreckles !== "none" && !options.mannequin;
 			},
 		},
-		"freckles_breasts": {
+		"freckles_pregnant_belly": {
 			filters: ["tan"],
 			z: ZIndices.freckles,
 			animation: "idle",
 
 			srcfn(options) {
-				switch (options.breast_size) {
-					case 1:
-						return "";
-					case 2:
-						return "";
-					case 3:
-						return "";
-					case 4:
-						return "";
-					case 5:
-						return "";
-					case 6:
-						return "";
-				}
+				return between(options.belly, 1, 24) ? `img/body/freckles/pregnant-belly/${options.belly}-freckles.png` : "";
 			},
 			showfn(options) {
-				return !!options.uperBodyFreckles && !options.mannequin;
+				return options.bodyFreckles !== "none" && !options.mannequin && !!options.belly;
 			},
 		},
 		"freckles_left_arm": {
@@ -2148,26 +2129,16 @@ Renderer.CanvasModels.main = {
 
 			srcfn(options) {
 				if (options.arm_left === "cover") {
-					return "";
+					return "img/body/freckles/left-arm-cover-freckles.png";
 				} else if (options.arm_left === "idle") {
-					return "";
+					return `img/body/freckles/left-arm-idle-${options.body_type}-freckles.png`;
 				}
 			},
 			showfn(options) {
-				return !!options.uperBodyFreckles && !options.mannequin && options.arm_left !== "none";
+				return options.bodyFreckles !== "none" && !options.mannequin && options.arm_left !== "none";
 			},
 			zfn(options) {
 				return options.arm_left === "cover" ? ZIndices.left_cover_arm + 0.1 : ZIndices.armsidle + 0.1;
-			},
-		},
-		"freckles_shoulders": {
-			filters: ["tan"],
-			animation: "idle",
-			Z: ZIndices.freckles,
-			src: "",
-
-			showfn(options) {
-				return !!options.uperBodyFreckles && !options.mannequin;
 			},
 		},
 		"freckles_right_arm": {
@@ -2176,28 +2147,18 @@ Renderer.CanvasModels.main = {
 
 			srcfn(options) {
 				if (options.arm_right === "cover") {
-					return "";
+					return "img/body/freckles/right-arm-cover-freckles.png";
 				} else if (options.arm_right === "hold") {
-					return "";
+					return "img/body/freckles/right-arm-hold-freckles.png";
 				} else if (options.arm_right === "idle") {
-					return "";
+					return `img/body/freckles/right-arm-idle-${options.body_type}-freckles.png`;
 				}
 			},
 			showfn(options) {
-				return !!options.uperBodyFreckles && !options.mannequin && options.arm_right !== "none";
+				return options.bodyFreckles !== "none" && !options.mannequin && options.arm_right !== "none";
 			},
 			zfn(options) {
 				return ["cover", "hold"].includes(options.arm_right) ? ZIndices.right_cover_arm + 0.1 : ZIndices.armsidle + 0.1;
-			},
-		},
-		"freckles_legs": {
-			filters: ["tan"],
-			animation: "idle",
-			Z: ZIndices.freckles,
-			src: "",
-
-			showfn(options) {
-				return !!options.lowerBodyFreckles && !options.mannequin;
 			},
 		},
 

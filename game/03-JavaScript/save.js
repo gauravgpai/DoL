@@ -1120,15 +1120,21 @@ function settingsObjects(type) {
 							randomize: "characterAppearance",
 							displayName: "Natural Skintone:",
 						},
+						faceFreckles: {
+							bool: true,
+							displayName: "Freckles:",
+							textMap: { true: "Existent", false: "Nonexistent" },
+							strings: ["random"],
+							randomize: "characterAppearance",
+						},
+						bodyFreckles: {
+							strings: ["none", "upper", "full", "random"],
+							displayName: "Body freckles:",
+							textMap: { none: "None", upper: "Upper body", full: "Full body", random: "Random" },
+							randomize: "characterAppearance",
+						},
 					},
 					ballsExist: { bool: true, displayName: "Balls:", textMap: { true: "Existent", false: "Nonexistent" }, randomize: "characterAppearance" },
-					freckles: {
-						bool: true,
-						displayName: "Freckles:",
-						textMap: { true: "Existent", false: "Nonexistent" },
-						strings: ["random"],
-						randomize: "characterAppearance",
-					},
 					breastsize: {
 						min: 0,
 						max: 4,

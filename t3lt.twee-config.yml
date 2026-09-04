@@ -14355,7 +14355,7 @@ sugarcube-2:
         - **useAltLabel** _optional_: `boolean` - use sub-labels (truthy)
       parameters:
         - var|bareword
-        - '"pronoun"|"gender"|"penissize"|"breastsize"|"bottomsize"|"gender_body"|"ballsExist"|"freckles" |+ bool|text|string|number'
+        - '"pronoun"|"gender"|"penissize"|"breastsize"|"bottomsize"|"gender_body"|"ballsExist" |+ bool|text|string|number'
       tags: ["temp"]
     presetConfirmDetails:
       name: presetConfirmDetails

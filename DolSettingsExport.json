@@ -4,9 +4,10 @@
 			"gender": "m",
 			"gender_body": "f",
 			"ballsExist": true,
-			"freckles": false,
 			"skin": {
-				"color": "light"
+				"color": "light",
+				"faceFreckles": false,
+				"bodyFreckles": "none"
 			}
 		},
 		"bodysize": 2,
