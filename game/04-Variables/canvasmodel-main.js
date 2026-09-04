@@ -261,11 +261,12 @@ Renderer.CanvasModels.main = {
 			"arm_left": "idle",
 			"arm_right": "idle",
 			"body_type": "classic",
-			"bodyFreckles": "none",
 			// Skin & tan
 			"skin_type": "light",
 			"skin_tone": 0,
 			"skin_scars":false,
+			"bodyFreckles": "none",
+			"freckles": false,
 			// Hair
 			"hair_colour": "red",
 			"hair_colour_gradient": {
@@ -294,7 +295,6 @@ Renderer.CanvasModels.main = {
 			"facestyle": "default",
 			"facevariant": "default",
 			"ears_position": "back",
-			"freckles": false,
 			"trauma": false,
 			"blink": true,
 			"eyes_half": false,
