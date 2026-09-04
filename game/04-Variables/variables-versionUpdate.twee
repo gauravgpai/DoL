@@ -7502,6 +7502,10 @@
 		<<set $options.fishingBaitSelection to "sidebar">>
 	<</if>>
 
+	<<if $foodstuff.cod?.supermarket>>
+		<<unset $foodstuff.cod.supermarket>>
+	<</if>>
+
 	<<if $player.skin.faceFreckles is undefined>>
 		<<set $player.skin.faceFreckles to $player.freckles is true>>
 		<<run delete $player.freckles>>
