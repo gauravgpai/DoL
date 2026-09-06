@@ -1244,7 +1244,7 @@ Renderer.CanvasModels.main = {
 		 */
 		"freckles": {
 			filters: ["tan"],
-			z: ZIndices.freckles,
+			z: ZIndices.faceFreckles,
 
 			srcfn(options) {
 				return `img/face/${options.facestyle}/freckles.png`;
@@ -2101,7 +2101,7 @@ Renderer.CanvasModels.main = {
 		*/
 		"freckles_base": {
 			filters: ["tan"],
-			z: ZIndices.freckles,
+			z: ZIndices.bodyFreckles,
 			animation: "idle",
 
 			srcfn(options) {
@@ -2113,7 +2113,7 @@ Renderer.CanvasModels.main = {
 		},
 		"freckles_pregnant_belly": {
 			filters: ["tan"],
-			z: ZIndices.freckles,
+			z: ZIndices.bellyBase + 0.1,
 			animation: "idle",
 
 			srcfn(options) {
