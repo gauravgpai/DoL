@@ -131,11 +131,11 @@ You stand before the cosy reading nook, by a window. The shelves are filled with
 	<br>
 	<<link [[Practise writing (0:20)|Orphanage Loft Reading Nook 2]]>><<set $phase to "write">><<pass 20>><</link>><<lstress>><<ltrauma>><<gtiredness>><<genglish>>
 	<br>
-	<<if ($worn.lower.name !== "naked" and ($worn.lower.integrity lte (clothingData('lower',$worn.lower,'integrity_max')/5))) or 
-			($worn.upper.name !== "naked" and ($worn.upper.integrity lte (clothingData('upper',$worn.upper,'integrity_max')/5))) or 
-			($worn.under_upper.name !== "naked" and ($worn.under_upper.integrity lte (clothingData('under_upper',$worn.under_upper,'integrity_max')/5))) or 
+	<<if ($worn.lower.name !== "naked" and ($worn.lower.integrity lte (clothingData('lower',$worn.lower,'integrity_max')/5))) or
+			($worn.upper.name !== "naked" and ($worn.upper.integrity lte (clothingData('upper',$worn.upper,'integrity_max')/5))) or
+			($worn.under_upper.name !== "naked" and ($worn.under_upper.integrity lte (clothingData('under_upper',$worn.under_upper,'integrity_max')/5))) or
 			($worn.under_lower.name !== "naked" and ($worn.under_lower.integrity lte (clothingData('under_lower',$worn.under_lower,'integrity_max')/5)))>>
-		<<link [[Fix your clothes|Orphanage Loft Reading Nook 2]]>><<set $phase to "sew">><</link>><<ghousekeeping>>
+		<<link [[Fix your clothes (?:??)|Orphanage Loft Reading Nook 2]]>><<set $phase to "sew">><</link>><<ghousekeeping>><<note "Time depends on Housekeeping skill." "italic">>
 		<br>
 	<</if>>
 	<<if $tiredness gte 1700>>
@@ -741,7 +741,7 @@ You walk over to the coffee pot. The rich aroma greets you.
 <br><br>
 
 <<if $daily.loftcoffee isnot 1>>
-	<<foodicon "coffee">><<link [[Make a cup of coffee|Orphanage Loft Coffee Pot Drink]]>><<endevent>><<set $daily.loftcoffee to 1>><<pass 5>><<stress -3>><<tiredness -4>><</link>><<lstress>><<ltiredness>>
+	<<foodicon "coffee">><<link [[Make a cup of coffee (0:05)|Orphanage Loft Coffee Pot Drink]]>><<endevent>><<set $daily.loftcoffee to 1>><<pass 5>><<stress -3>><<tiredness -4>><</link>><<lstress>><<ltiredness>>
 	<br>
 <<else>>
 	<span class="blue">You've had your fill for today.</span>

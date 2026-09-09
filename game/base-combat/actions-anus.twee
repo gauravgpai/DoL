@@ -183,7 +183,7 @@
 	<<if ($consensual is 0 or (hasSexStat("promiscuity", 4) and $enemytype is "man") or (hasSexStat("deviancy", 4) and $enemytype isnot "man")) and currentSkillValue("analskill") gte 800>>
 		<<set _anusaction["Edge " + $NPCList[$anustarget].pronouns.him] to "penisEdging">>
 	<</if>>
-	<<if !playerIsPregnant() and canBeMPregnant() and $sexStats.vagina.menstruation.currentState isnot "recovering" and !$player.vaginaExist and playerPregnancyPossibleWith($NPCList[$anustarget]) and $enemyarousal gte $enemyarousalmax and $demon gte 6 and $demonbuild gte 90>>
+	<<if !playerIsPregnant() and playerCanCarryAnally() and $sexStats.vagina.menstruation.currentState isnot "recovering" and playerPregnancyPossibleWith($NPCList[$anustarget]) and $enemyarousal gte $enemyarousalmax and $demon gte 6 and $demonbuild gte 90>>
 		<<if playerAwareTheyCanBePregnant()>>
 			<<set _anusaction["Force Impregnation"] to "forceImpregnation">>
 		<<else>>
@@ -282,6 +282,7 @@
 						<</if>>
 						<<if $enemytype is "beast">><<set $NPCList[$anustarget].stance to "top">><</if>>
 						<<set $NPCList[$anustarget].location.genitals to "genitals">>
+						<<namedNpcReaction $anustarget "initiative">>
 					<<else>>
 						<span class="blue">You try to straddle <<combatperson>> with your <<bottom>>, but the phallus is already occupied.</span><<set $anusactiondefault to "anustopenis">>
 					<</if>>

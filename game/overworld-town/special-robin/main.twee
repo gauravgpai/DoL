@@ -930,7 +930,16 @@ You shove the note <<if !$worn.under_lower.type.includes("naked")>>into your $wo
 		<<neckon>>
 		<<robinoptions>>
 	<<else>>
-		Inside is a picture of <<= $carried.neck.photo is "Robin" ? `<<nnpc_him "Robin">>` : ($carried.neck.photo is "Black Wolf" or $carried.neck.photo is "Great Hawk") ? "the " + $carried.neck.photo : `<<print $carried.neck.photo>>`>>.
+		Inside is a picture of 
+		<<if $carried.neck.photo is "Robin">>
+			`<<nnpc_him "Robin">>.`
+		<<elseif($carried.neck.photo is "Black Wolf" or $carried.neck.photo is "Great Hawk")>>
+			"the " + $carried.neck.photo + "."
+		<<elseif $carried.neck.photo is "Gwylan" and $gwylan?.timer?.nobody gte Time.date.timeStamp>>
+			Nobody.
+		<<else>>
+			`<<print $carried.neck.photo>>.`
+		<</if>>
 		<br><br>
 		<<switch $carried.neck.photo>>
 		<<case "Robin">>
@@ -3112,15 +3121,9 @@ Robin watches as you leave <<him>> on the table. <<His>> soulless eyes stare at 
 :: Bailey's Office
 <<set $outside to 0>><<set $location to "home">><<effects>>
 
-<<if Object.values($children).find(child => child.mother === "Alex" && child.location === "home") or Object.values($children).find(child => child.father === "Alex" && child.location === "home")>>
-
-	<<if Object.values($children).find(child => child.mother === "Alex" && child.location === "home")>>
-		<<set _alexMother to Object.values($children).find(child => child.mother === "Alex" && child.location === "home")>>
-
-	<<elseif Object.values($children).find(child => child.father === "Alex" && child.location === "home")>>
-		<<set _alexFather to Object.values($children).find(child => child.father === "Alex" && child.location === "home")>>
-	<</if>>
-
+<<set _alexMother to getChildrenAt("home").find(child => getPregnancyOf(child).carrier === "Alex")>>
+<<if !_alexMother>>
+	<<set _alexFather to getChildrenAt("home").find(child => getPregnancyOf(child).donor === "Alex")>>
 <</if>>
 
 <<npc Bailey>><<person1>>
@@ -3226,6 +3229,8 @@ Robin watches as you leave <<him>> on the table. <<His>> soulless eyes stare at 
 		<<icon "manila-envelope.png">><<link [[Ask about the photo you found in the letter folder|Bailey Mansion Photo]]>><</link>>
 		<br>
 	<</if>>
+
+	<<baileyRentReclaimOption>> /* Bailey Confiscation System */
 <</if>>
 
 <<if _options isnot 2>>
@@ -7137,7 +7142,7 @@ Robin's grip on your hand trembles, then tightens. <<His>> arm reaches up yours,
 	<br><br>
 
 	<<if $rapetrait is 1 or $trauma gte ($traumamax / 5) * 4>>
-		<<if $robinromance is 1>>"Love you too," you whisper. It's an automatic response. For a brief moment, you let yourself forget how horrible things are. In that instance, it's just you and Robin.<</else>>"It's fine," you whisper. It's an automatic response. For a brief moment, you let yourself forget how horrible things are. It could be worse. It was just Robin, after all.<</if>>
+		<<if $robinromance is 1>>"Love you too," you whisper. It's an automatic response. For a brief moment, you let yourself forget how horrible things are. In that instance, it's just you and Robin.<<else>>"It's fine," you whisper. It's an automatic response. For a brief moment, you let yourself forget how horrible things are. It could be worse. It was just Robin, after all.<</if>>
 		<br><br>
 
 		Reality crashes down, and you and Robin recoil from each other, horrified.
@@ -7449,6 +7454,7 @@ You join the crowd around the pillory on Cliff Street. Robin is locked in the to
 	<<His>> face is marked by bruises and broken fruit. Robin's clothing has all long since been discarded.
 	<<if !$robinPillory.naked>>
 		<<set $robinPillory.naked to true>>
+		<<set $robinSeen.pushUnique("pilloryNaked")>>
 	<</if>>
 	<br><br>
 
@@ -8149,6 +8155,7 @@ You run off to a nearby gardening store and start looking for something that wil
 :: Robin Pillory Escape Orphanage
 <<set _robin to statusCheck("Robin")>>
 <<set $outside to 0>><<set $location to "home">><<effects>>
+<<set $robinSeen.pushUnique("pilloryRescue")>>
 <<npc Robin>><<person1>>
 
 <<if $phase is 1>>
@@ -8586,7 +8593,7 @@ You get up from the bed and leave the room. Robin doesn't look at you.
 <<main_hall_icon>><<link [[Main hall (0:01)|Orphanage]]>><<pass 1>>
 	<<endevent>>
 	<<if C.npc.Robin.trauma gte 40>>
-		<<stress 6>><<npcincr Robin confidence -1>>
+		<<stress 6>><<npcincr Robin dom -1>>
 	<</if>>
 <</link>>
 <<if C.npc.Robin.trauma gte 40>>
@@ -8602,7 +8609,7 @@ You try your best to enquire Robin about what happened to <<him>>. <<Hes>> silen
 
 <<link [[Offer to help (0:30)|Robin Bath Trauma]]>><<pass 30>><<npcincr Robin trauma -3>><</link>><<lrtrauma>>
 <br>
-<<link [[Leave|Orphanage]]>><<endevent>><<stress 6>><<npcincr Robin confidence -1>><</link>><<gstress>><<ldom>>
+<<link [[Leave|Orphanage]]>><<endevent>><<stress 6>><<npcincr Robin dom -1>><</link>><<gstress>><<ldom>>
 
 :: Robin Bath Trauma
 <<effects>><<set $daily.robin.bath to true>>

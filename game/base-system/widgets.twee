@@ -1497,7 +1497,7 @@
 	<<if $drunk gt 0>>
 		<<set $_colour to getColourClassFromPercentage($drunk * (100 / 480), "drunk")>>
 		<<set $_barColour to $_colour + "bar">>
-		<<set $_percent to Math.floor(($drunk/1000)*100)>>
+		<<set $_percent to Math.floor(100 * ($drunk / $drunkmax))>>
 		<<set $_barWidth to `width:${$_percent}%`>>
 
 		<div id="drunkcaption" @title="'Drunk: ' + $drunk.toFixed(2)">
@@ -2240,34 +2240,6 @@
 	<<waterwash>>
 <</widget>>
 
-<<widget "wet_all">>
-	<<wet_upper>>
-	<<wet_lower>>
-<</widget>>
-
-<<widget "wet_upper">>
-	<<for _slot range ["over_upper", "upper", "under_upper"]>>
-		<<if waterproofCheck($worn[_slot])>>
-			/* if the clothing is waterproof, protect it and layers below from getting wet */
-			<<break>>
-		<<elseif !$worn[_slot].type.includes("naked")>>
-			/* skin wetness system is not implemented... yet? */
-			<<set V[_slot + "wet"] to 200>>
-			<<set V[_slot + "wetstage"] to 3>>
-		<</if>>
-	<</for>>
-<</widget>>
-
-<<widget "wet_lower">>
-	<<for _slot range ["over_lower", "lower", "under_lower"]>>
-		<<if waterproofCheck($worn[_slot])>>
-			<<break>>
-		<<elseif !$worn[_slot].type.includes("naked")>>
-			<<set V[_slot + "wet"] to 200>>
-			<<set V[_slot + "wetstage"] to 3>>
-		<</if>>
-	<</for>>
-<</widget>>
 
 <<widget "storecleanup">>
 	<<unset $action_unclad_over_outfit>>
@@ -2569,8 +2541,7 @@
 			<<if $player.bodyliquid[_bodypart]["semen"] gte 1>><<set $waterwash += 1>><<set $allure += 500>><<bodyliquid _bodypart "semen" -1>><</if>>
 			<<if $player.bodyliquid[_bodypart]["nectar"] gte 1>><<set $waterwash += 1>><<set $allure += 500>><<bodyliquid _bodypart "nectar" -1>><</if>>
 		<</for>>
-		<<washRecordedSperm "vagina" "pc">>
-		<<washRecordedSperm "anus" "pc">>
+		<<run washLoads()>>
 	<</if>>
 
 	<<if $waterwash is 0>> /* Return early if no lewd fluids */
@@ -2606,8 +2577,7 @@
 <</widget>>
 
 <<widget "wash">>
-	<<washRecordedSperm "vagina" "pc">>
-	<<washRecordedSperm "anus" "pc">>
+	<<run washLoads()>>
 	<<bodyliquid "clear">>
 	<<if $parasite.right_thigh.name is "maggot">>
 		<<removeparasite right_thigh>>
@@ -2703,7 +2673,10 @@
 <</widget>>
 
 <<widget "tipreceive">>
-	<<set _profit to $tip + 500>>
+	<<set _profit to $tip>>
+	<<if $location is "cafe">>
+		<<set _profit to _profit + 500>>
+	<</if>>
 	<span class="gold"><<if random(1, 10000) is 10000>>You gain Brouzouf<<else>>You make<</if>> <<printmoney _profit>>.</span>
 	<<money _profit `_args[0] ? _args[0] : ""`>>
 	<<if $tip gte 50000>>
@@ -3554,6 +3527,7 @@
 	<<set $NPCName[_i].lust = Math.clamp($NPCName[_i].lust, 0, 100)>>
 	<<set $NPCName[_i].dom = Math.clamp($NPCName[_i].dom, 0, 20)>>
 	<<set $NPCName[_i].trust to Math.clamp($NPCName[_i].trust,- 100, 300)>>
+	<<set $NPCName[_i].trauma = Math.clamp($NPCName[_i].trauma, 0, 100)>>
 	<<set _i to $NPCNameList.indexOf("Eden")>>
 	<<set $NPCName[_i].love = Math.clamp($NPCName[_i].love, 0, 200)>>
 	<<set $NPCName[_i].lust = Math.clamp($NPCName[_i].lust, 0, 100)>>
@@ -3601,8 +3575,8 @@
 		<<set $NPCName[_i].trust to Math.clamp($NPCName[_i].trust,- 100, 300)>>
 	<</for>>
 
-	<<set _defaultnnpcclamps to ["Bailey", "Briar", "Doren", "Harper", "Jordan", 
-								 "Landry", "Leighton", "Morgan", "Winter", "Niki", 
+	<<set _defaultnnpcclamps to ["Bailey", "Briar", "Doren", "Harper", "Jordan",
+								 "Landry", "Leighton", "Morgan", "Winter", "Niki",
 								 "Quinn", "Remy", "Zephyr", "Sirris"]>>
 	<<for _name range _defaultnnpcclamps>>
 		<<set _i to $NPCNameList.indexOf(_name)>>
@@ -3829,7 +3803,7 @@
 	<<set $hunger -= (_args[0] * 5)>><<set $thirst -= (_args[0] * 5)>>
 	<<drugs _args[0]>><<set $arousal += _args[0]>>
 	<<if $ejaculating is 1>>
-		<<alcohol `(_args[0] * 3)`>>
+		<<drunk `(_args[0] * 3)`>>
 		<<bodyliquid "mouth" "nectar">>
 	<</if>>
 	<<if $backgroundTraits.includes("plantlover")>>
@@ -5354,7 +5328,7 @@
 			}
 		});
 	})>>
-	
+
 	<<set $bodysize     to 2>>
 	<<set $physiquesize to 12000>>
 	<<set $awarelevel   to 1>>
@@ -5369,7 +5343,7 @@
 	<<set $deviancy      to 0>>
 	<<set $masochism to 0>><<set $masochism_level to 0>>
 	<<set $sadism    to 0>><<set $sadism_level    to 0>>
-	<<!--set $submissive to 1000-->>
+	<!--set $submissive to 1000-->
 
 	<<set $money to 0>>
 	<<set $spraymax to 0>>
@@ -5379,7 +5353,7 @@
 	<<set $farm_stage to 0>>
 	<<set $quicksand to 0>>
 	<<set $heterochromia to 0>>
-	
+
 	<<set $harper_appointments.hypnosis to 0>>
 	<<set $hypnosis_traits to {}>>
 	<<set $hypnosisTimers to {}>>
@@ -5421,7 +5395,7 @@
 	<<set $athletics     to 0>>
 	<<set $tending       to 0>>
 	<<set $housekeeping  to 0>>
-	
+
 	<<set $seductionskill to 0>>
 	<<set $oralskill      to 0>>
 	<<set $chestskill     to 0>>

@@ -729,6 +729,8 @@ function dayPassed() {
 	if (V.bell_timer) V.bell_timer--;
 	if (V.lake_ice_broken >= 1) V.lake_ice_broken--;
 	if (V.lake_ice_broken < 1) delete V.lake_ice_broken;
+	if (V.lake_fishing_ice_broken >= 1) V.lake_fishing_ice_broken--;
+	if (V.lake_fishing_ice_broken < 1) delete V.lake_fishing_ice_broken;
 	if (V.community_service >= 1) {
 		if (V.community_service_done !== 1 && !["asylum", "prison"].includes(V.location) && !V.daily?.asylumPrison) {
 			wikifier("crimeUp", 200, "obstruction");
@@ -924,8 +926,8 @@ function dayPassed() {
 	}
 
 	wikifier("menstruationCycle", "daily");
-	pregnancyProgress();
-	pregnancyProgress("anus");
+	advancePregnancy("vagina");
+	advancePregnancy("anus");
 	wikifier("rutCycle");
 	npcPregnancyCycle();
 	randomPregnancyProgress();
@@ -964,6 +966,10 @@ function dayPassed() {
 				delete V.whitneyRescueStatus;
 			}
 		}
+	}
+
+	if (C.npc.Whitney.state === "dungeon") {
+		V.whitney.daysSinceCapture++;
 	}
 
 	if (V.pirate_journey > 1) {
@@ -1042,6 +1048,11 @@ function hourPassed(hours) {
 
 	/* code that needs to run every hour */
 	for (let i = 0; i < hours; i++) {
+		// the first hour already has minutes passed and time set before hourPassed even ran, but subsequent hours still need it
+		if (i !== 0) {
+			minutePassed(60);
+			Time.set(V.timeStamp + 3600);
+		}
 		if (V.innocencestate === 1 && V.control <= 0) statChange.awareness(1);
 		statChange.control(1);
 		wikifier("orgasmHourlyRecovery");
@@ -1069,8 +1080,6 @@ function hourPassed(hours) {
 			if (numberOfEarSlime() > 1 && V.earSlime.growth < 100) V.earSlime.defyCooldown--;
 			if (V.earSlime.defyCooldown <= 0) V.earSlime.defyCooldown = 0;
 		}
-		playerEndWaterProgress();
-
 		if (V.wolfpatrolsent >= 1) V.wolfpatrolsent++;
 
 		if (C.npc.Sydney.init === 1) {
@@ -1114,14 +1123,36 @@ function hourPassed(hours) {
 		// time checks
 		if (Time.hour === 6) dawnCheck();
 		if (Time.hour === 12) noonCheck();
-		// the first hour already has minutes passed and time set before hourPassed even ran, but subsequent hours still need it
-		if (i !== 0) {
-			minutePassed(60);
-			Time.set(V.timeStamp + 3600);
+
+		// Pregnancy uses the current time, so it runs after the clock moves forward above.
+		if (V.settings.pregnancyType !== "realistic") {
+			// Fetish mode. Pending conceptions from realistic mode are thrown out.
+			V.pendingPregnancies.vagina = null;
+			V.pendingPregnancies.anus = null;
+		}
+		hourlyPregnancyUpdate();
+		checkLabour();
+		if (V.settings.pregnancyType === "realistic") {
+			rollAndRecordConception("vagina");
+			rollAndRecordConception("anus");
+		}
+
+		if (V.fishing) {
+			// Decrease fishing danger values by 0.5 per hour, and remove the event if the danger is 0.
+			Object.values(V.fishing).forEach(location => {
+				if (location?.eventDanger > 0) {
+					location.eventDanger = Math.max(0, location.eventDanger - 0.5);
+					if (location.eventDanger === 0) {
+						location.event = "none";
+					}
+				}
+			});
 		}
 	}
 	/* changes that can be applied just once. consider if using V.hourly would make better sense before putting things here */
 	calchairlengthstage();
+
+	window.baileyConfiscationTick();
 
 	if (
 		V.sexStats.vagina.menstruation.running &&
@@ -1186,8 +1217,8 @@ function minutePassed(minutes) {
 		// use fancy math to ensure that `pass(60);` and `pass(30);pass(30);` apply the same amount of tiredness regardless of changed V.drunk value
 		const sum = (from, to) => ((from - to) * (from + to + 1)) / 2;
 		const drunkMod = sum(V.drunk, Math.max(V.drunk - minutes, 0));
-		// warning: assumes 1:1 negative alcohol changes, true as of yet
-		statChange.alcohol(-minutes);
+		// warning: assumes 1:1 negative drunk changes, true as of yet
+		statChange.drunk(-minutes);
 		// V.drunk ranging from 0 to 1000, 1 minute at 1000 will add extra 1.25 of tiredness (2.25x total)
 		// reference values are 2x at 800, 1.5x at 400 (pain reduction from drunkenness starts at 360), 1.25x at 200
 		if (minutes < 1200) statChange.tiredness(drunkMod / 12000);
@@ -1249,8 +1280,8 @@ function noonCheck() {
 	if (V.edenNightmareWake) delete V.edenNightmareWake;
 
 	wikifier("menstruationCycle");
-	pregnancyProgress();
-	pregnancyProgress("anus");
+	advancePregnancy("vagina");
+	advancePregnancy("anus");
 
 	if (V.weekly.schoolNightPoolParty && V.weekly.schoolNightPoolParty !== "intro") V.weekly.schoolNightPoolParty = false;
 	delete V.birdSleep;
@@ -1395,6 +1426,7 @@ function dailyNPCEffects() {
 	if (C.npc.Avery.state !== "dismissed") {
 		V.averyschoolpickup = 0;
 		V.averyseen = 0;
+		V.averyBodyWritingSeen = false;
 		if (V.averydate && Time.weekDay === 1) {
 			V.averydate = 0;
 			if (V.averydateattended !== 1 && !V.avery_injury) V.averydatemissed = 1;
@@ -2134,7 +2166,9 @@ function dailySchoolEffects() {
 		V.schoolLessonsMissed.english += !Number(V.daily.school.attended.english);
 		V.schoolLessonsMissed.history += !Number(V.daily.school.attended.history);
 		V.schoolLessonsMissed.swimming += !Number(V.daily.school.attended.swimming);
-		V.lessonmissed += 5 - attended * 2; // Reduce lessonmissed if lessons are attended
+		const BREAKPOINTS = [200, 400, 700, 1000];
+		const bonus = BREAKPOINTS.filter(t => V.school / 4 >= t).length;
+		V.lessonmissed += 5 - attended * (2 + bonus); // Reduce lessonmissed if lessons are attended
 		V.lessonmissed = Math.max(0, V.lessonmissed);
 		V.lessonmissedtext = 5 - attended;
 	}

@@ -1823,7 +1823,7 @@ Jordan places a hand on your head. "You must use your best judgement to properly
 <</addinlineevent>>
 <<if $world_corruption_soft gte 50>>
 	<<addinlineevent "confession_temple_punished_vowbreaker" 1>>
-		<<generatev1>><<person1>><<set $attendant to "punished_3">>
+		<<generateTemple 1>><<person1>><<set $attendant to "punished_3">>
 		They sit down. A <<personssimple>> voice greets you, and <<he>> wastes no time. "Forgive me, <<sister>>, for I have broken my vow."
 		<br><br>
 
@@ -4579,7 +4579,7 @@ The <<person1>>centre <<priest>> sits, coming down to your eye level. <<His>> fa
 	<<link [[Why me?|Temple Confessor Intro Ask]]>><<set $confessorQuestions.push("self")>><<set $confessorQuestion to "self">><</link>>
 	<br>
 <</if>>
-<br><br><br>
+<br><br>
 
 <<if $confessorQuestions.includesAll("who","what","where","jordan","how")>>
 	<<link [[I have no more questions.|Temple Confessor Intro 6]]>><<unset $confessorQuestions>><<unset $confessorQuestion>><<unset $drainedPronoun>><<unset $drainedAge>><</link>>

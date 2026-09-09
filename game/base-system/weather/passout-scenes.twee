@@ -1417,7 +1417,7 @@ You apologise, but your words come out slurred. <<He>> looks even more worried. 
 <<if _fullyNaked>>
 	"I don't know what you were thinking, running around naked like this..." <<He>> frowns as <<he>> wraps a towel around you. <<He>> grabs a few more to cover you with.
 	<br><br>
-
+	<<towelup>>
 	<<link [[Next|Passout Beach Hypothermia Robin End]]>><</link>>
 
 <<elseif $upperwetstage gte 3 or $lowerwetstage gte 3 or $underlowerwetstage gte 3 or $underupperwetstage gte 3>>
@@ -1593,8 +1593,8 @@ You spread your <<= $harpy gte 6 ? "wings" : "arms">> wide, feeling the cool win
 :: Passout Bird Hypothermia
 <<set $location to "tower">><<setTowerTemp>>
 <<npc "Great Hawk">><<person1>>
-<<set _eggs to Object.values($children).find(child => (child.type is "hawk" and child.location is "tower" and child.eggTimer))>>
-<<set $tempHatched to Object.values($children).filter(child => (child.location is "tower" and !child.eggTimer))>>
+<<set _eggs to getChildrenAt("tower").find(child => (child.species is "hawk" and childIsUnhatchedEgg(child)))>>
+<<set $tempHatched to getChildrenAt("tower").filter(child => !childIsUnhatchedEgg(child))>>
 <<if $tempHatched.length > 0>><<childSelect $tempHatched[0].childId>><</if>>
 <<outfitChecks>>
 <<if _bottom>><<set _bottom.integrity -=5>><<set _damagedClothes to _bottom.name>><</if>>
@@ -1749,7 +1749,7 @@ The Great Hawk <<= $monster is 1 ? "beams" : "perks up">> at that, and <<bhe>> r
 
 You rest in the nest, conserving your strength while the Great Hawk hunts. By the time <<bhe>> returns, you're feeling better and significantly warmer. <<your_bird_text "cap">> carries a <<if $bird.hunts.lurkers is true>>lurker<<else>>strange, leathery and many-limbed creature<</if>> in <<bhis>> <<if $monster is 1>>talons<<else>>mouth<</if>>.
 <<if $monster is 1>>
-	<<if playerIsPregnant() and getPregnancyObject().fetus[0].type is "hawk" and talkedAboutPregnancy("pc","Great Hawk") and !$daily.birdPregFeed>>
+	<<if playerIsPregnant() and getActivePregnancies("pc").some(p => childBaseSpecies(p.donorSpecies) === "hawk") and talkedAboutPregnancy("pc","Great Hawk") and !$daily.birdPregFeed>>
 		<<set $daily.birdPregFeed to true>>
 		<<bHe>> doesn't take a bite for <<bhimself>>, instead offering the whole thing to you.
 		"<<print either(
@@ -1834,7 +1834,7 @@ You wake up to cold water drenching your face. Whitney stands above you, holding
 	<<if C.npc.Whitney.lust gte 60>>
 		"Oops," Whitney says. "Let me help you with that." <<He>> removes your <<allTops>> and drops it on the ground. You're too dazed to stop <<him>>. <<overupperstrip>><<upperstrip>>
 	<<else>>
-		<<wet_upper>>
+		<<wetUpper>>
 	<</if>>
 	Whitney stands back to appreciate the view. "Feeling better? I know I am. Consider this your toll for passing through. Later, slut." <<He>> flicks your <<= $worn.under_upper.type.includes("naked") ? "nipple" : $worn.under_upper.name>> before sauntering off with <<his>> friends in tow. <<garousal>><<glust>><<arousal 100>><<npcincr Whitney lust 2>>
 	<br><br>
