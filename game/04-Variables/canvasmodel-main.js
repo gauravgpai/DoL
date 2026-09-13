@@ -1435,7 +1435,6 @@ Renderer.CanvasModels.main = {
 			},
 		},
 		"blush": {
-			filters: ["tan"],
 			z: ZIndices.blush,
 
 			srcfn(options) {
