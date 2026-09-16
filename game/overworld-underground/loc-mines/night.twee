@@ -22,7 +22,7 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 	<<generate1>><<person1>>
 	A guard opens up the metal gate. "Alright everyone, get to work!" the <<person>> yells. You leave with everyone else.
 	<br><br>
-	<<link [[Next|Mine Job Intro]]>><</link>>
+	<<link [[Next|Mine Job Intro]]>><<endevent>><</link>>
 <<else>>
 	<<if $mine.bomb.progress gte 10>>
 		<br>

@@ -8,6 +8,7 @@
 		<<set $mine.bomb to {}>>
 		<<set $mine.job to {}>>
 		<<set $mine.job.list to []>>
+		<<set $mine.job.mining to { shackle: 8 }>>
 		<<set $mine.favor to {}>>
 		<<set $mine.favor.job to {}>>
 		<<set $mine.distraction to {}>>
