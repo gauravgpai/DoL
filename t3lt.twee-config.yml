@@ -11667,8 +11667,30 @@ sugarcube-2:
         - **change**: `number` - +/- change to apply
       parameters:
         - number
-    mines_init:
-      name: mines_init
+    mine_init:
+      description: |-
+        Initializes Mine Variables
+      name: mine_init
+    mine_job:
+      description: |-
+        Selects Daily Mine Job
+      name: mine_job
+    mine_distract_links:
+      description: |-
+        Generates Links for mine distraction date
+      name: mine_distract_links
+    mine_night_task:
+      description: |-
+        Selects Mine night distraction favor
+      name: mine_night_task
+    mine_hope:
+      description: |-
+        Changes Mine hope stat
+      name: mine_hope
+    mine_distract_time:
+      description: |-
+        Prints when distraction when happen
+      name: mine_distract_time
     mirror:
       description: |-
         Prints wrapper for mirror options

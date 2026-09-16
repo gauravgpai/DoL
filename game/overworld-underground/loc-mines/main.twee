@@ -1,0 +1,40 @@
+:: Mine Intro
+<<mine_init>>
+<<set $outside to 0>><<effects>><<shackle_feet>>
+<<generate1>><<generate2>><<generate3>>
+
+The stone walls of the tunnels are broken up by wooden supports. Three <<people>> stand in front of a metal gate directly ahead of you. A <<person1>><<person>> walks up to you and forces you to turn around with no regard for your comfort. <<He>> places metal shackles around your ankles and closes them with a click.
+<br><br>
+"From now on you will do what you're told," <<he>> says as <<he>> tries to pull you through the open gate. "Or we will make you."
+
+<br><br>
+<<link [[Follow <<him>>|Mine Intro 2]]>><<set $phase to 0>><</link>>
+<br>
+<<link [[Resist|Mine Intro 2]]>><<set $phase to 1>><</link>>
+
+
+
+:: Mine Intro 2
+<<effects>>
+
+<<if $phase is 1>>
+	You pull against <<him>>, trying to break his grip on you. <<He>> sighs and pulls out a baton and bashes it against your head, sending you reeling backwards. <<pain 15>><<gggpain>>
+	<br><br>
+	<<He>> pulls you through the gate as the other two guards laugh, you hear it slam and lock behind you.
+<<else>>
+	You follow <<him>> through the gate, you hear it slam and lock behind you.
+<</if>>
+
+<br><br>
+"From now on you will be given a job every day," <<he>> says as he pulls you through the tunnels. "If you resist, you will be punished. You try to escape, you will be punished. Trust me, you do not want to be punished."
+
+<<if Time.hour lte 5 or Time.hour gte 21>>
+	<<He>> pulls you to another metal gate, the guard in front of it opens it up. The <<person>> pushes you through. The gate slams and locks behind you.
+	<br><br>
+	<<link [[Next|Mine Night]]>><</link>>
+<<else>>
+	<<He>> pulls you into a cave with a bunch of other people.
+	<br><br>
+	<<link [[Next|Mine Job Intro]]>><</link>>
+<</if>>
+<<endevent>>

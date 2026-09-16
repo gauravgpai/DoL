@@ -1,13 +1,105 @@
 :: Widgets Mines [widget]
-<<widget "mines_init">>
+<<widget "mine_init">>
 	<<if $prof.pickaxe is undefined>>
 		<<set $prof.pickaxe to 0>>
 	<</if>>
-	<<set $mine to {}>>
+	<<if !$mine>>
+		<<set $mine to {}>>
+		<<set $mine.bomb to {}>>
+		<<set $mine.job to {}>>
+		<<set $mine.job.list to []>>
+		<<set $mine.favor to {}>>
+		<<set $mine.favor.job to {}>>
+		<<set $mine.distraction to {}>>
+		<<set $mine.hope to 0>>
+	<</if>>
 <</widget>>
 
 <<widget "passout_mines">>
 	<<passout>>
 	<<link [[Next|Mines Passout]]>><</link>>
 	<br>
+<</widget>>
+
+<<widget "mine_job">>
+	<<if $mine.job.list.length is 0>>
+		<<set $mine.job.list to ["mining", "minecart", "cleaning"]>>
+	<</if>>
+	<<set $mine.job.current to $mine.job.list.pluck()>>
+
+	<<switch $mine.job.current>>
+		<<case "mining">>
+			<<He>> leads you through the caves to a large group of slaves, all swinging pickaxes into the rock wall.
+			<br><br>
+			<<link [[Next|Mine Job Mining Intro]]>><</link>>
+		<<case "minecart">>
+			<<He>> leads you through the caves to a minecart track. You look up to see a rail on the rock ceiling that goes along the tunnel.
+			<br><br>
+			<<link [[Next|Mine Job Minecart Intro]]>><</link>>
+		<<case "cleaning">>
+			<<He>> leads you through the caves and into a large cave filled with guards. One side of the cave is filled with bunkbeds, a handful of them have people sleeping in them. The other side is filled with tables.
+			<br><br>
+			<<link [[Next|Mine Job Cleaning Intro]]>><</link>>
+		<<default>>
+			Please Report this Error in the #bug-reports channel of the Degrees of Lewdity Discord Server 
+	<</switch>>
+<</widget>>
+
+<<widget "mine_distract_links">>
+	<<if Time.hour lt 6>>
+		<<set _today to true>>
+	<</if>>
+
+	<<link [[<<print _today ? "Today" : "Tomorrow">>|Mine Night Distraction Set]]>><<set $phase to _today ? 0 : 1>><</link>>
+	<br>
+	<<link [[<<print _today ? "Tomorrow" : "In Two Days">>|Mine Night Distraction Set]]>><<set $phase to _today ? 1 : 2>><</link>>
+	<br>
+	<<link [[<<print _today ? "In Two Days" : "In Three Days">>|Mine Night Distraction Set]]>><<set $phase to _today ? 2 : 3>><</link>>
+	<br>
+	<<link [[<<print _today ? "In Three Days" : "In Four Days">>|Mine Night Distraction Set]]>><<set $phase to _today ? 3 : 4>><</link>>
+<</widget>>
+
+<<widget "mine_distract_time">>
+	<<if Time.hour lt 6>>
+		<<set _today to true>>
+	<</if>>
+
+	<<switch $phase>>
+		<<case 0>>
+			<<set _time to "today">>
+		<<case 1>>
+			<<set _time to "tomorrow">>
+		<<case 2>>
+			<<set _time to "in two days">>
+		<<case 3>>
+			<<set _time to "in three days">>
+		<<case 4>>
+			<<set _time to "in four days">>
+	<</switch>>
+
+	<<print _time>>
+<</widget>>
+
+<<widget "mine_night_task">>
+	<<set $mine.distraction.night to "inprogress">>
+	<<switch random(1,3)>>
+		<<case 1>>
+			<<set $mine.favor.job.night to "gem">>
+			"I need a gem or a crystal, doesn't matter which."
+		<<case 2>>
+			<<set $mine.favor.job.night to "note">>
+			<<He>> hands you a piece of paper. "I need you to give this to a person wearing a boiler suit with a diamond painted on it."
+		<<case 3>>
+			<<set $mine.favor.job.night to "firework">>
+			<<He>> hands you some fireworks. "I need you to set these fireworks off next to a guard. I wish I could see their face when it goes off. Don't ask where I got these."
+		<<default>>
+			"I need you to make a report in the bug reports channel in the Degrees of Lewdity discord server," <<he>> says. "Make sure to include a screenshot and a save file,""
+			<<he>> start to walk away before remembering something. "Just one more thing, make sure you're on the most recent version. Send James my regards."
+	<</switch>>
+<</widget>>
+
+<<widget "mine_hope">>
+	<<if !isNaN(T.args[0])>>
+		<<set $mine.hope to Math.clamp(V.mine.hope + _args[0], 0, 50)>>
+	<</if>>
 <</widget>>

@@ -275,5 +275,5 @@ The <<person5>><<person>> shoves you from the lift.
 <br><br>
 <<badEndTracking "Mines" { reason: "minesSold" }>>
 
-<<link [[Next|Mines Intro]]>><<endevent>><<flats_auction_end>><</link>>
+<<link [[Next|Mine Intro]]>><<endevent>><<flats_auction_end>><</link>>
 <br>
