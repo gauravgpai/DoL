@@ -2592,7 +2592,7 @@
 	<<if isPregnancyEnding()>>
 		<<pregnancyPassout "street">>
 	<<else>>
-		<<if dangerEvent() and $bus is "barb">>
+		<<if $bus is "barb" and $mine?.freed isnot 1 and dangerEvent()>>
 			<<link [[Next|Flats Auction]]>><</link>>
 			<br>
 		<<else>>
@@ -3959,7 +3959,7 @@
 
 <<widget "streeteffects">>
 	<<rng>>
-	<<if $bus is "barb" and $rng gte 80>>
+	<<if $bus is "barb" and $mine?.freed isnot 1 and $rng gte 80>>
 		You feel a rumble from below.
 	<</if>>
 	<<rng>>
