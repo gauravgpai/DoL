@@ -20,6 +20,10 @@ You're in the guard's quarters. Guards sporadically enter and leave.
 	You clutch your stomach and go to your knees, a <<person1>><<person>> notices you. <<He>> rushes to your side. You slip out of consciousness as <<he>> lifts you.
 	<br><br>
 	<<link [[Next|Mine Birth]]>><</link>>
+<<elseif $stress gte $stressmax>>
+	Everything fades to black...
+	<br><br>
+	<<link [[Next|Mine Job Cleaning Passout]]>><<endevent>><</link>>
 <<elseif Time.hour lte 5 or Time.hour gte 21>>
 	<br><br>
 	<<link [[Next|Mine Job Cleaning End]]>><</link>>

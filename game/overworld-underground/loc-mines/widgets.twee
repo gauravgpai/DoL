@@ -15,12 +15,6 @@
 	<</if>>
 <</widget>>
 
-<<widget "passout_mines">>
-	<<passout>>
-	<<link [[Next|Mines Passout]]>><</link>>
-	<br>
-<</widget>>
-
 <<widget "mine_job">>
 	<<if $mine.job.list.length is 0>>
 		<<set $mine.job.list to ["mining", "minecart", "cleaning"]>>
