@@ -22,6 +22,12 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	You clutch your stomach and go to your knees, a <<person1>><<person>> notices you. <<He>> rushes to your side, removing your chains. You slip out of consciousness as <<he>> lifts you.
 	<br><br>
 	<<link [[Next|Mine Birth]]>><</link>>
+<<elseif $stress gte $stressmax>>
+	You've pushed yourself too much.
+	<br><br>
+
+	<<passout>>
+	<<link [[Everything fades to black...|Mine Job Mining Passout]]>><<endevent>><</link>>
 <<elseif Time.hour lte 5 or Time.hour gte 21>>
 	<br><br>
 	<<link [[Next|Mine Job Mining End]]>><</link>>

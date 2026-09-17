@@ -21,9 +21,11 @@ You're in the guard's quarters. Guards sporadically enter and leave.
 	<br><br>
 	<<link [[Next|Mine Birth]]>><</link>>
 <<elseif $stress gte $stressmax>>
-	Everything fades to black...
+	You've pushed yourself too much.
 	<br><br>
-	<<link [[Next|Mine Job Cleaning Passout]]>><<endevent>><</link>>
+
+	<<passout>>
+	<<link [[Everything fades to black...|Mine Job Cleaning Passout]]>><<endevent>><</link>>
 <<elseif Time.hour lte 5 or Time.hour gte 21>>
 	<br><br>
 	<<link [[Next|Mine Job Cleaning End]]>><</link>>

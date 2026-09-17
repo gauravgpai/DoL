@@ -15,9 +15,11 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 	<br><br>
 	<<link [[Next|Mine Birth]]>><<endevent>><</link>>
 <<elseif $stress gte $stressmax>>
-	Everything fades to black...
+	You've pushed yourself too much.
 	<br><br>
-	<<link [[Next|Mine Night Passout]]>><<endevent>><</link>>
+
+	<<passout>>
+	<<link [[Everything fades to black...|Mine Night Passout]]>><<endevent>><</link>>
 <<elseif Time.hour gte 6 and Time.hour lte 20>>
 	<<generate1>><<person1>>
 	A guard opens up the metal gate. "Alright everyone, get to work!" the <<person>> yells. You leave with everyone else.
