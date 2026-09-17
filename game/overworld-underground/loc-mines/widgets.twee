@@ -41,6 +41,10 @@
 	<</switch>>
 <</widget>>
 
+<<widget "mine_job_link">>
+	
+<</widget>>
+
 <<widget "mine_distract_links">>
 	<<if Time.hour lt 6>>
 		<<set _today to true>>
@@ -124,9 +128,50 @@
 <</widget>>
 
 <<widget "mine_gem">>
-
+	
 <</widget>>
 
 <<widget "mine_gem_collect">>
 
+<</widget>>
+
+<<widget "mine_pit">>
+	<<set _pits to ["nothing"]>>
+	<<set _coveredPits to 0>>
+	<<if $settings.slimesEnabled and $hallucinations gte 1>>
+		<<set _pit.push["slimes"]>>
+	<<else>>
+		<<set _coveredPits++>>
+	<</if>>
+	<<if $settings.tentaclesEnabled and $hallucinations gte 2>>
+		<<set _pit.push["tentacles"]>>
+	<<else>>
+		<<set _coveredPits++>>
+	<</if>>
+	<<if $settings.swarmsEnabled and $settings.spidersEnabled>>
+		<<set _pit.push["spiders"]>>
+	<<else>>
+		<<set _coveredPits++>>
+	<</if>>
+<</widget>>
+
+<<widget "mine_punishment_end">>
+	<<if isPregnancyEnding()>>
+		"I hope you learned your lesson down–" <<He>> realizes you're in labour. <<He>> grabs you and picks you up as you slip from consciousness.
+		<br><br>
+		<<link [[Next|Mine Birth]]>><</link>>
+	<<else>>
+		"I hope you learned your lesson down there," <<he>> chuckles before dragging you away.
+		<br><br>
+		<<if Time.hour lte 5 or Time.hour gte 21>>
+			<<He>> pulls you to the sleeping area. The guard in front of it opens it up. The <<person>> pushes you through. The gate slams and locks behind you.
+			<br><br>
+			<<link [[Next|Mine Night]]>><</link>>
+		<<else>>
+			<<He>> pulls you in front of another guard. "Deal with this trash," <<he>> says.
+			<br><br>
+			<<mine_job_link>>
+		<</if>>
+	<</if>>
+	<<endevent>>
 <</widget>>

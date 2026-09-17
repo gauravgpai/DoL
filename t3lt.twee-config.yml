@@ -11675,6 +11675,10 @@ sugarcube-2:
       description: |-
         Selects Daily Mine Job
       name: mine_job
+    mine_job_link:
+      description: |-
+        Generates links for Mine Job
+      name: mine_job_link
     mine_distract_links:
       description: |-
         Generates Links for mine distraction date
@@ -11709,8 +11713,12 @@ sugarcube-2:
       name: mine_gem
     mine_gem_collect:
       description: |-
-        Collects generates gem in mines
+        Collects generated gem in mines
       name: mine_gem_collect
+    mine_pit:
+      description: |-
+        Generates availible pits
+      name: mine_pit
     mirror:
       description: |-
         Prints wrapper for mirror options

@@ -41,22 +41,6 @@ The stone walls of the tunnels are broken up by wooden supports. Three <<people>
 
 
 
-:: Mine Punishment
-<<effects>>
-
-The <<person>> pulls you through the tunnels. <<He>> grumbles the whole way.
-<br><br>
-<<if $rng gte 51>>
-	You're eventually handed over to two guards. Without a word, they grab your arms and drag you through another tunnel.
-	<br><br>
-	<<endevent>>
-	<<link [[Next|Mine Punishment Creature Feature Intro]]>><<generate1>><<generate2>><</link>>
-<<else>>
-	<<link [[Next|Mine Punishment Pit Intro]]>><</link>>
-<</if>>
-
-
-
 :: Mine Return
 <<effects>><<set $mine.intro to 1>>
 

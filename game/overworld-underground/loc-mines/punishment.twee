@@ -1,0 +1,238 @@
+:: Mine Punishment
+<<effects>>
+
+The <<person>> pulls you through the tunnels. <<He>> grumbles the whole way.
+<br><br>
+<<if $rng gte 51>>
+	You're eventually handed over to two guards. Without a word, they grab your arms and drag you through another tunnel.
+	<br><br>
+	<<endevent>>
+	<<link [[Next|Mine Punishment Creature Feature Intro]]>><<generate1>><<generate2>><</link>>
+<<else>>
+	<<link [[Next|Mine Punishment Pit Intro]]>><</link>>
+<</if>>
+
+
+
+:: Mine Punishment Pit Intro
+<<effects>><<mine_pit>><<person1>>
+
+You're dragged into a room with several grates in the ground.
+<<if _coveredPits is 1>>
+	<span class="blue">1</span> of the grates is covered with a tarp.
+<<elseif _coveredPits gte 2>>
+	<span class="blue">_coveredPits</span> of them are covered with tarps.
+<<else>>
+	"I guess we're spoiled for choice," the <<person>> chuckles.
+<</if>>
+<br><br>
+<<link [[Next|Mine Punishment Pit _pits.pluck()]]>><<endevent>><</link>>
+
+
+
+
+:: Mine Punishment Pit Nothing
+<<effects>>
+
+They pull you up to one of the grates, open it and shove you in. You fall a few feet onto the hard rock. <<ggpain>><<pain 5>>
+<br><br>
+You look up and see the guards pulling a tarp over the grate, plunging you into darkness. <<ggstress>><<stress 20>>
+<br><br>
+Silence befalls you. The only things that accompany you are your own thoughts. You reflect on everything that has brought you to this moment. <<gggstress>><<stress 100>>
+<br><br>
+You think about your life and wonder if you'll ever be free of Bailey's torment. <<gggtrauma>><<trauma 25>>
+<br><br>
+You think about the other orphans in the same situation as you. <<gggtrauma>><<trauma 25>>
+
+<br><br>
+<<link [[Wait (2:00)|Mine Punishment Pit End]]>><<pass 2 hours>><</link>>
+<<if $trauma gte 2500>>
+	<br>
+	<<link [[Cry|Mine Punishment Pit Nothing Cry]]>><<trauma -25>><</link>><<llltrauma>>
+<</if>>
+
+
+
+:: Mine Punishment Pit Nothing Cry
+<<effects>>
+
+<span class="red">It's all too much</span>, you start to break down in tears. You hear the guards outside start to laugh at your misery. <<ggstress>><<stress 20>>
+<br><br>
+Eventually they get tired of it and stop laughing. Despite everything, you feel better having let it all out. <<llltrauma>><<trauma -50>>
+
+<br><br>
+<<link [[Wait (2:00)|Mine Punishment Pit End]]>><<pass 2 hours>><</link>>
+
+
+
+:: Mine Punishment Pit Slimes
+<<effects>>
+
+They pull you up to one of the grates, open it and shove you in. You fall a few feet and land in a puddle of slime.
+<br><br>
+You look up and see the guards pulling a tarp over the grate, plunging you into darkness. <<ggstress>><<stress 20>>
+<br><br>
+You try to scrape the slime off of you <span class="red">but it doesn't come off.</span> As you keep trying to get rid of it, <span class="red">you feel something move in the slime.</span>
+<br><br>
+You look down to try and see what it is, but it's too dark. You feel something press up against you.
+
+<<link [[Next|Mine Punishment Pit Slimes Rape]]>><<set $molestationstart to 1>><</link>>
+
+
+
+:: Mine Punishment Pit Slimes Rape
+<<effects>>
+
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<molested>>
+	<<controlloss>>
+	<<set $combat to 1>>
+
+	<<set $enemytype to "swarm">>
+
+	<<swarminit "slimes" "slime mass" "moving towards you" "encircle you" "fend off" 4 2>>
+	<<set $timer to 8>>
+<</if>>
+
+<<swarmeffects>>
+
+<<swarm>>
+
+<<swarmactions>>
+
+<<if $timer lte 0>>
+	<span id="next"><<link [[Next|Mine Punishment Pit Slimes Rape Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Mine Punishment Pit Slimes Rape]]>><</link>></span><<nexttext>>
+<</if>>
+
+
+
+:: Mine Punishment Pit Slimes Rape Finish
+<<effects>>
+
+The slimes retreat away from you. <<tearful>> you're left in the dark to your own thoughts.
+
+<br><br>
+<<clotheson>>
+<<endcombat>>
+<<link [[Wait (2:00)|Mine Punishment Pit End]]>><<pass 2 hours>><</link>>
+
+
+
+:: Mine Punishment Pit Tentacles
+<<effects>>
+
+They pull you up to one of the grates, open it and shove you in. You fall a few feet onto the hard rock. <<ggpain>><<pain 5>>
+<br><br>
+You look up and see the guards pulling a tarp over the grate, plunging you into darkness. <<ggstress>><<stress 20>>
+<br><br>
+You sit in the dark and try to take your mind off everything, <span class="red">but you're interrupted by something soft touching your arm.</span>
+<br><br>
+You recoil your arm and turn to look. You see several tentacles emerging from cracks in the wall.
+<br><br>
+<<link [[Struggle|Mine Punishment Pit Tentacles Rape]]>><<set $molestationstart to 1>><</link>>
+
+
+
+:: Mine Punishment Pit Tentacles Rape
+<<effects>>
+
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<set $combat to 1>>
+	<<set $enemytype to "tentacles">>
+	<<molested>>
+	<<controlloss>>
+
+	<<tentaclestart 6 12>>
+
+<</if>>
+<<water>>
+<<waterbr 1>>
+<<statetentacles>>
+
+<<effects>>
+<<effectstentacles>>
+<<tentacles>>
+<<actionstentacles>>
+
+<<if $tentacles.active lte ($tentacles.max / 2)>>
+	<span id="next"><<link [[Next|Mine Punishment Pit Tentacles Rape Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Mine Punishment Pit Tentacles Rape]]>><</link>></span><<nexttext>>
+<</if>>
+
+
+
+:: Mine Punishment Pit Tentacles Rape Finish
+<<effects>>
+
+The tentacles retreat back into the crack. <<tearful>> you're left in the dark to your own thoughts.
+
+<br><br>
+<<clotheson>>
+<<endcombat>>
+<<link [[Wait (2:00)|Mine Punishment Pit End]]>><<pass 2 hours>><</link>>
+
+
+
+:: Mine Punishment Pit Spiders
+<<effects>>
+
+They pull you up to one of the grates, open it and shove you in. You fall a few feet and land in a giant web. A bunch of spiders almost immediately start walking across your skin.
+<br><br>
+You look up and see the guards pulling a tarp over the grate, plunging you into darkness. <<ggstress>><<stress 20>>
+<br><br>
+You try to brush the spiders off your skin, but the largest ones remain on you.
+<br><br>
+<<link [[Struggle|Mine Punishment Pit Spiders Swarm]]>><<set $molestationstart to 1>><</link>>
+
+
+
+:: Mine Punishment Pit Spiders Swarm
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "danube">>
+
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<molested>>
+	<<controlloss>>
+	<<set $combat to 1>>
+	<<set $enemytype to "swarm">>
+	<<swarminit "spiders" "sac" "slipping" "break" "steady" 1 9>>
+	<<set $timer to 15>>
+<</if>>
+
+<br><br>
+
+<<swarmeffects>>
+<<swarm>>
+<<swarmactions>>
+
+<<if $timer lte 0>>
+	<span id="next"><<link [[Next|Mine Punishment Pit Spiders Swarm Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Mine Punishment Pit Spiders Swarm]]>><</link>></span><<nexttext>>
+<</if>>
+
+
+
+:: Mine Punishment Pit Spiders Swarm Finish
+<<effects>>
+
+The spiders retreat away from you<<if $tending gte 300>>, intending on saving you for later<</if>>. <<tearful>> you're left in the dark to your own thoughts.
+
+<br><br>
+<<clotheson>>
+<<endcombat>>
+<<link [[Wait (2:00)|Mine Punishment Pit End]]>><<pass 2 hours>><</link>>
+
+
+
+:: Mine Punishment Pit End
+<<effects>><<generate1>><<person1>>
+
+After a while of waiting, the tarp is pulled off, and a length of rope is dropped down. You don't hesitate to climb it out of the hole.
+<br><br>
+<<mine_punishment_end>>
