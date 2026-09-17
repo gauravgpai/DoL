@@ -30,7 +30,7 @@
 		<<case "minecart">>
 			<<He>> leads you through the caves to a minecart track. You look up to see a rail on the rock ceiling that goes along the tunnel.
 			<br><br>
-			<<link [[Next|Mine Job Minecart Intro]]>><</link>>
+			<<link [[Next|Mine Job Minecarts Intro]]>><</link>>
 		<<case "cleaning">>
 			<<He>> leads you through the caves and into a large cave filled with guards. One side of the cave is filled with bunkbeds, a handful of them have people sleeping in them. The other side is filled with tables.
 			<br><br>
