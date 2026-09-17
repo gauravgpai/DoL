@@ -932,12 +932,11 @@
 			<<else>>
 				<<characteristic-box _hiddenConfig>>
 			<</if>>
-			/*
 			<<if $prof.pickaxe isnot undefined>>
 				<<characteristic-box _pickaxeConfig>>
 			<<else>>
 				<<characteristic-box _hiddenConfig>>
-			<</if>>*/
+			<</if>>
 		</div>
 	</div>
 

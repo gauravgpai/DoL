@@ -136,8 +136,11 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<br><br>
 	Your ears ring while you find your bearings, your hand touches something hot. You look at it, 
 	<<if $science gte 100>>
-	<<set $mine.bomb.parts++>>
-		<span class="green">it's a part of a bomb!</span> You wait for it to cool down and take it with you. | <span>Bomb Part Added</span>
+		<<if !$mine.bomb.progress>>
+			<<set $mine.bomb.progress to 0>>
+		<</if>>
+		<<set $mine.bomb.parts++>>
+		<span class="green">it's a part of a bomb!</span> You wait for it to cool down and take it with you. | <span class="green">Bomb Part Added</span>
 	<<else>>
 		<span class="blue">it's a small bit of metal and other things you don't recognise.</span>
 	<</if>>

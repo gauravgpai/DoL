@@ -4,15 +4,15 @@
 		<<set $prof.pickaxe to 0>>
 	<</if>>
 	<<if !$mine>>
-		<<set $mine to {}>>
-		<<set $mine.bomb to {}>>
-		<<set $mine.job to {}>>
-		<<set $mine.job.list to []>>
+		<<set $mine to { hope: 0 }>>
+		<<set $mine.bomb to { parts: 0 }>>
+		<<set $mine.job to { list: [] }>>
 		<<set $mine.job.mining to { shackle: 8 }>>
+		<<set $mine.job.cleaning to {}>>
 		<<set $mine.favor to {}>>
 		<<set $mine.favor.job to {}>>
 		<<set $mine.distraction to {}>>
-		<<set $mine.hope to 0>>
+		<<set $mine.setup to {}>>
 	<</if>>
 <</widget>>
 
