@@ -106,7 +106,7 @@
 			"Ouch!" <<He>> recoils with <<his>> hands over eyes. <<stress 6>><<gstress>>
 		<<else>>
 			<br><br>
-			<<print [
+			<<print either(
 				`Robin is crying.`,
 				`Robin frantically tries to look away from you, but <<he>> doesn't stop.`,
 				`"I d-don't...<<if $robinromance isnot 1>> I don't want to...<</if>>" Robin whispers under <<his>> breath.`,
@@ -117,11 +117,11 @@
 				`Robin shakes <<his>> head and closes <<his>> eyes.`,
 				`"S-stop it!" Robin yells, but not at you.`,
 				`"<<if $robinromance is 1>>I need you...<<else>>I'm sorry... I'm sorry... I need to...<</if>>" Robin says with teary eyes.`
-			][random(0,9)]>>
+			)>>
 			<<grtrauma>>
 		<</if>>
 	<<elseif $robinMetal>>
-		<<print [
+		<<print either(
 			`Robin can't maintain eye contact.`,
 			`<<if $robinromance is 1>>"Hurry," Robin whispers. "So they'll leave you alone."<<else>>"Please don't hate me," Robin whispers. "You have to... I'm sorry."<</if>>`,
 			`Robin struggles against <<his>> bindings.`,
@@ -132,7 +132,7 @@
 			`"They did something to me," Robin says shamefully. "I feel... numb."`,
 			`"<<if $robinromance is 1>>I'm sorry it's taking so long," Robin mutters.<<else>>"I'm so sorry," Robin mutters. "I'm trying to, I... I can't..."<</if>>`,
 			`"<<if $robinromance is 1>>They're using me against you," Robin sobs.<<else>>"You're my friend," Robin sobs. "I don't want to do this..."<</if>>`
-		][random(0,9)]>>
+		)>>
 	<<elseif $speechNPCPenisVirgin is 1 or $speechNPCVaginaVirgin is 1>>
 		<<if $speechvaginavirgin is 1 or $speechanusvirgin is 1>>
 			<<He>> gasps. "Sorry! It's my first time too! I hope I'm doing well."
@@ -225,11 +225,20 @@
 		<<set $speechsextoy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if C.npc.Robin.dom gte 70>>
-			<<print `<<He>> looks at your $_sexToy and giggles. "` + [`I've wanted to do this with you for a while.`, `This is so dirty... keep going.`][random(0,1)] + `"`>>
+			<<print either(
+				`<<He>> looks at your $_sexToy and giggles. "I've wanted to do this with you for a while."`,
+				`<<He>> looks at your $_sexToy and giggles. "This is so dirty... keep going."`
+			)>>
 		<<elseif C.npc.Robin.dom lte 30>>
-			<<print `<<He>> looks at your $_sexToy and blushes. "` + [`Woah! Don't you feel embarrassed?`, `Just take it slow, okay?`][random(0,1)] + `"`>>
+			<<print either(
+				`<<He>> looks at your $_sexToy and blushes. "Woah! Don't you feel embarrassed?"`,
+				`<<He>> looks at your $_sexToy and blushes. "Just take it slow, okay?"`
+			)>>
 		<<else>>
-			<<print `<<He>> looks at your $_sexToy and giggles. "` + [`I can't believe you're touching that.`, `This is so dirty... keep going.`][random(0,1)] + `"`>>
+			<<print either(
+				`<<He>> looks at your $_sexToy and giggles. "I can't believe you're touching that."`,
+				`<<He>> looks at your $_sexToy and giggles. "This is so dirty... keep going."`
+			)>>
 		<</if>>
 	<<elseif $speechwheeze is 1>>
 		<<if C.npc.Robin.dom gte 70>>

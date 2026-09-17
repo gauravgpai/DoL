@@ -217,22 +217,17 @@
 		)>>
 	<<elseif $enemyanger lte 60>>
 		<<if $rng gte 81>>
-			<<set $_options to ["default"]>>
+			<<set _lines to [$_stringsPre + `"Don't make this harder than it needs to be."`]>>
 			<<if $hairlength gte 600>>
-				<<run $_options.push("hair")>>
+				<<run _lines.push($_stringsPre + `"Kept your hair long? I know someone who will like that."`)>>
 			<</if>>
 			<<if $player.breastsize gte 6 or $player.penissize gte 4>>
-				<<run $_options.push("cow")>>
+				<<run _lines.push($_stringsPre + `"Cows fetch a high price these days, you know."`)>>
 			<</if>>
 			<<if $athletics gte 750 or $physique gte $physiquesize * 0.75>>
-				<<run $_options.push("healthy")>>
+				<<run _lines.push($_stringsPre + `"You're strong. Good. Some people pay for the fight."`)>>
 			<</if>>
-			<<switch $_options[random(0, $_options.length - 1)]>>
-				<<case "hair">><<print $_stringsPre + `"Kept your hair long? I know someone who will like that."`>>
-				<<case "cow">><<print $_stringsPre + `"Cows fetch a high price these days, you know."`>>
-				<<case "healthy">><<print $_stringsPre + `"You're strong. Good. Some people pay for the fight."`>>
-				<<case "default">><<print $_stringsPre + `"Don't make this harder than it needs to be."`>>
-			<</switch>>
+			<<print _lines.random()>>
 		<<else>>
 			<<print $_stringsPre + either(
 				`"Just relax. I'll handle everything like always."`,

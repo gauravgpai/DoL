@@ -32,11 +32,23 @@
 		<<set $speechsextoy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if C.npc.Alex.dom gte 30>>
-			<<print `<<He>> looks at your $_sexToy and grins. "` + [`Now we're getting somewhere.`, `Cute toy. You better know how to use it.`, `Is that the best thing town has to offer?`][random(0,2)] + `"`>>
+			<<print either(
+				`<<He>> looks at your $_sexToy and grins. "Now we're getting somewhere."`,
+				`<<He>> looks at your $_sexToy and grins. "Cute toy. You better know how to use it."`,
+				`<<He>> looks at your $_sexToy and grins. "Is that the best thing town has to offer?"`
+			)>>
 		<<elseif C.npc.Alex.dom lte -30>>
-			<<print `<<He>> looks at your $_sexToy and hesitates. "` + [`All right. I trust your judgement.`, `Hope you know how to use that thing.`, `You always know just how to have a good time.`][random(0,2)] + `"`>>
+			<<print either(
+				`<<He>> looks at your $_sexToy and hesitates. "All right. I trust your judgement."`,
+				`<<He>> looks at your $_sexToy and hesitates. "Hope you know how to use that thing."`,
+				`<<He>> looks at your $_sexToy and hesitates. "You always know just how to have a good time."`
+			)>>
 		<<else>>
-			<<print `<<He>> looks at your $_sexToy and smiles. "` + [`I like where your head's at.`, `Looks like we're in for a wild ride.`, `So this is what sells in town.`][random(0,2)] + `"`>>
+			<<print either(
+				`<<He>> looks at your $_sexToy and smiles. "I like where your head's at."`,
+				`<<He>> looks at your $_sexToy and smiles. "Looks like we're in for a wild ride."`,
+				`<<He>> looks at your $_sexToy and smiles. "So this is what sells in town."`
+			)>>
 		<</if>>
 	<<else>>
 		<<set _noNameComment to true>>
