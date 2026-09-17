@@ -345,6 +345,10 @@
 	<<skill_difficulty currentSkillValue('housekeeping') "Housekeeping" _args[0] _args[1] _args[2]>>
 <</widget>>
 
+<<widget "pickaxedifficulty">>
+	<<skill_difficulty $prof.pickaxe "Pickaxe" _args[0] _args[1] _args[2]>>
+<</widget>>
+
 <<widget "difficulty">>
 	<<if _args[0] and !$settings.blindStatsEnabled>>
 	| Success Chance:

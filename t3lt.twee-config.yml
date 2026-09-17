@@ -11695,6 +11695,22 @@ sugarcube-2:
       description: |-
         Changes Mine hope stat
       name: mine_hope
+    mine_pregnancy:
+      description: |-
+        Generates pregnancy passout link for mines
+      name: mine_pregnancy
+    mine_passout:
+      description: |-
+        Generates passout link for mines
+      name: mine_passout
+    mine_gem:
+      description: |-
+        Generates gem selection in mines
+      name: mine_gem
+    mine_gem_collect:
+      description: |-
+        Collects generates gem in mines
+      name: mine_gem_collect
     mirror:
       description: |-
         Prints wrapper for mirror options
@@ -14289,6 +14305,10 @@ sugarcube-2:
         - 'number |+ "noMessage" | "invig" | "workout"'
     physiquedifficulty:
       name: physiquedifficulty
+    pickaxedifficulty:
+      description: |-
+        Prints pickaxe difficulty
+      name: pickaxedifficulty
     pickupSexToy:
       name: pickupSexToy
     pigsOpinion:
@@ -14812,10 +14832,10 @@ sugarcube-2:
 
         `<<prof category change>>`
         - **category**: `string` - category of proficiency to add
-          - `"spray"` | `"net"` | `"whip"` | `"baton"`
+          - `"spray"` | `"net"` | `"whip"` | `"baton"` | `"pickaxe"`
         - **change**: `number` - +/- change to apply
       parameters:
-        - '"spray"|"net"|"whip"|"baton" &+ number'
+        - '"spray"|"net"|"whip"|"baton"|"pickaxe" &+ number'
     projectoptions:
       name: projectoptions
     promiscuity1:

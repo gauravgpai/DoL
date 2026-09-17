@@ -13,6 +13,7 @@
 		<<set $mine.favor.job to {}>>
 		<<set $mine.distraction to {}>>
 		<<set $mine.setup to {}>>
+		<<set $mine.tunnel to {}>>
 	<</if>>
 <</widget>>
 
@@ -104,4 +105,28 @@
 	<<if !isNaN(T.args[0])>>
 		<<set $mine.hope to Math.clamp(V.mine.hope + _args[0], 0, 50)>>
 	<</if>>
+<</widget>>
+
+<<widget "mine_pregnancy">>
+	You stumble towards the exit and barely reach the street before collapsing, your consciousness fading away.
+	<br><br>
+	<<link [[Next|Pregnancy Birth Hospital]]>><<set $stress -= 5000>><<endevent>><<set $phase to 1>><</link>>
+	<<exit>>
+<</widget>>
+
+<<widget "mine_passout">>
+	You've pushed yourself too much.
+	<br><br>
+
+	<<passout>>
+	<<link [[Everything fades to black...|Mine Passout]]>><<endevent>><</link>>
+	<<exit>>
+<</widget>>
+
+<<widget "mine_gem">>
+
+<</widget>>
+
+<<widget "mine_gem_collect">>
+
 <</widget>>
