@@ -30,7 +30,7 @@ const ZIndices = {
 	breasts: 35,
 	breastsparasite: 36,
 	tanbreasts: 30,
-	faceFreckles: 50,
+	faceFreckles: 51,
 	blush: 51,
 	mascara_running: 51.5,
 	skin: 52,
