@@ -122,7 +122,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 		"on the ground, you almost trip on it"
 	)>>.
 	<br><br>
-	<<link [[Take it|Mine Antique]]>><<set $phase to _gem>><</link>>
+	<<link [[Take it|Mine Antique]]>><</link>>
 	<br>
 	<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><<endevent>><</link>>
 	<br>

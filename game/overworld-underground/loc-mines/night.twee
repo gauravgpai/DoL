@@ -2,6 +2,9 @@
 <<effects>>
 
 You are in a small cave. The walls are bare. With all the other people in here, it's quite cramped.
+<<if $exposed gte 1>>
+	People ignore your <<lewdness>>.
+<</if>>
 <br><br>
 <<if $arousal gte $arousalmax>>
 	<<orgasm>>
@@ -26,6 +29,11 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 	<br><br>
 	<<link [[Next|Mine Job Intro]]>><<endevent>><</link>>
 <<else>>
+	<<if $exposed gte 1>>
+		<br>
+		<<link [[Grab a boiler suit|Mine Night Suit]]>><</link>>
+	<</if>>
+
 	<<if $mine.bomb.progress gte 10>>
 		<br>
 		<span class="blue">You have a bomb ready.</span>
@@ -235,6 +243,16 @@ You walk up and sit next to him. You wrap your arm around <<his>> waist and pull
 You get as close to the gate as you can where the guards outside can't see you. You can only hear snippets of the conversation.
 <br><br> 
 "–in <<nnpc_his "Quinn">> cut…shipment is ready…elk…request for…parts…out of town…used up a lot of them–"
+<br><br>
+<<endevent>>
+<<link [[Next|Mine Night]]>><</link>>
+
+
+
+:: Mine Night Suit
+<<effects>><<upperwear "boiler suit">>
+
+You grab a boiler suit out of a bin in the corner and slip it on.
 <br><br>
 <<endevent>>
 <<link [[Next|Mine Night]]>><</link>>
