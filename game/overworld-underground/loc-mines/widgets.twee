@@ -14,6 +14,7 @@
 		<<set $mine.distraction to {}>>
 		<<set $mine.setup to {}>>
 		<<set $mine.tunnel to {}>>
+		<<set $mine.gemPool to []>>
 	<</if>>
 <</widget>>
 
@@ -128,11 +129,51 @@
 <</widget>>
 
 <<widget "mine_gem">>
-	
+	<<if $mine.gemPool.length is 0>>
+		<<run
+			for (let i = 0; i < 10; i++) V.mine.gemPool.push(1);
+
+			let gem_count = 5;
+			if (V.prof.pickaxe < 300) gem_count = 8;
+			for (let i = 0; i < gem_count; i++) V.mine.gemPool.push(2);
+
+			gem_count = 2;
+			if (V.prof.pickaxe < 650) gem_count = 5;
+			for (let i = 0; i < gem_count; i++) V.mine.gemPool.push(3);
+		>>
+	<</if>>
+
+	<<set _gem to $mine.gemPool.pluck()>>
+	<<set _gem_diff_min to _gem is 1 ? 0 : _gem is 2 ? 300 : 650>>
+	<<set _gem_diff_max to _gem is 1 ? 299 : _gem is 2 ? 649 : 1000>>
 <</widget>>
 
 <<widget "mine_gem_collect">>
+	You pick up a
+	<<switch _args[0]>>
+		<<case 1>>
+			<<set _gemSize to "small">>
+		<<case 2>>
+			<<set _gemSize to "medium">>
+		<<case 3>>
+			<<set _gemSize to "large">>
+	<</switch>>
+	<<set _gemType to either("gem", "crystal")>>
+	<<set $mine.heldGem to _gemSize + _gemType>>
+	$mine.heldGem. It might be worth something on the black market.
+	<<mine_gem_value>>
+	<<set $blackmoney += _gem_value>>
+<</widget>>
 
+<<widget "mine_gem_value">>
+	<<set _gem_value to 0>>
+	<<if $mine.heldGem.includes("small")>>
+		<<set _gem_value to 25>>
+	<<elseif $mine.heldGem.includes("medium")>>
+		<<set _gem_value to 50>>
+	<<elseif $mine.heldGem.includes("large")>>
+		<<set _gem_value to 100>>
+	<</if>>
 <</widget>>
 
 <<widget "mine_pit">>

@@ -11715,6 +11715,10 @@ sugarcube-2:
       description: |-
         Collects generated gem in mines
       name: mine_gem_collect
+    mine_gem_value:
+      description: |-
+        Sets _gem_value to value of $mine.heldGem
+      name: mine_gem_value
     mine_pit:
       description: |-
         Generates availible pits

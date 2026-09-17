@@ -104,7 +104,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 
 <<addinlineevent "gem">>
 	<<mine_gem>>
-	You find a _gem embedded in the wall of a tunnel.
+	You find something shiny embedded in the wall of a tunnel.
 	<br><br>
 	<<link [[Attempt to mine it (0:30)|Mine Gem]]>><<pass 30>><<tiredness 10>><<set $phase to _gem>><</link>><<pickaxedifficulty _gem_diff_min _gem_diff_max>><<ggtiredness>>
 	<br>
@@ -181,11 +181,13 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 
 You pick up a pickaxe and try to break the $phase out of the rock wall.
 <<if $pickaxeSuccess>>
+	<span class="green">You manage to break the $phase out of the wall without damaging it.</span>
+	<br><br>
 	<<mine_gem_collect $phase>><<prof pickaxe 1>>
-<span class="green">You manage to break the $phase out of the wall without damaging it.</span>
+
 <<else>>
 	<<prof pickaxe 2>>
-You accidentally hit the $phase, and <span class="red">it shatters into a bunch of small pieces that scatter all over the ground.</span>
+	You accidentally hit the $phase, and <span class="red">it shatters into a bunch of small pieces that scatter all over the ground.</span>
 <</if>>
 <br><br>
 <<endevent>>
