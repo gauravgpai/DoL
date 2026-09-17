@@ -76,7 +76,10 @@
 <</widget>>
 
 <<widget "mine_distract_check">>
-	
+	<<set _distraction_count to 0>>
+	<<if $mine.distraction.minecarts is 0>><<set _distraction_count += 1>><</if>>
+	<<if $mine.distraction.mining is 0>><<set _distraction_count += 1>><</if>>
+	<<if $mine.distraction.cleaning is 0>><<set _distraction_count += 1>><</if>>
 <</widget>>
 
 <<widget "mine_night_task">>

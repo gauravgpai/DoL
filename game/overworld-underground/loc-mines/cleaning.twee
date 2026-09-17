@@ -295,27 +295,11 @@ You climb the table as instructed. You're surrounded by <<people>>. Their eyes s
 
 
 
-:: Mine Punishment
-<<effects>>
-
-The <<person>> pulls you through the tunnels. <<He>> grumbles the whole way.
-<br><br>
-<<if $rng gte 51>>
-	You're eventually handed over to two guards. Without a word, they grab your arms 	and drag you through another tunnel.
-	<br><br>
-	<<endevent>>
-<<link [[Next|Mine Punishment Creature Feature Intro]]>><<generate1>><<generate2>><</link>>
-<<else>>
-<<link [[Next|Mine Punishment Pit Intro]]>><</link>>
-<</if>>
-
-
-
 :: Mine Job Cleaning Pot
 <<effects>>
 
 <<if $phase is 0>>
-You pull out the bottle and pour it into the soup. You make sure to use the ladle to mix it in.
+	You pull out the bottle and pour it into the soup. You make sure to use the ladle to mix it in.
 <</if>>
 You grab a bowl and pour a generous helping of soup into it.
 <br><br>
