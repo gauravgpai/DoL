@@ -11679,6 +11679,14 @@ sugarcube-2:
       description: |-
         Generates Links for mine distraction date
       name: mine_distract_links
+    mine_distract_time:
+      description: |-
+        Prints when distraction when happen
+      name: mine_distract_time
+    mine_distract_check:
+      description: |-
+        Sets _distraction_count to number of current distractions active
+      name: mine_distract_check
     mine_night_task:
       description: |-
         Selects Mine night distraction favor
@@ -11687,10 +11695,6 @@ sugarcube-2:
       description: |-
         Changes Mine hope stat
       name: mine_hope
-    mine_distract_time:
-      description: |-
-        Prints when distraction when happen
-      name: mine_distract_time
     mirror:
       description: |-
         Prints wrapper for mirror options

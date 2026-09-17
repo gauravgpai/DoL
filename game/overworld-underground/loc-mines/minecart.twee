@@ -75,7 +75,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<<link [[Next|Mine Job Minecarts]]>><<endevent>><</link>>
 <</addinlineevent>>
 
-<<if $mine.favor.mining isnot 1>>
+<<if $mine.favor.mining isnot 1 and $mine.distraction.minecarts is undefined>>
 	<<addinlineevent "clothes">>
 		<<generatey1>><<person1>>
 		You see a <<person>>, <span class="blue"><<hes>> nude.</span> <<He>> tries to cover <<himself>>, unsuccessfully.

@@ -116,7 +116,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<<link [[Next|Mine Job Mining]]>><<endevent>><</link>>
 <</addinlineevent>>
 
-<<if $mine.favor.mining isnot 1>>
+<<if $mine.favor.mining isnot 1 and $mine.distraction.mining is undefined>>
 	<<addinlineevent "favor">>
 		<<generatey1>><<generate2>>
 		You and a <<person1>><<person>> start moving rocks into a minecart. <<He>> has a tough time with a particularly large rock. You grab one end and <<he>> grabs the other. As you lift it into the cart, a gem falls out of <<his>> pocket.

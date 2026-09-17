@@ -75,6 +75,10 @@
 	<<print _time>>
 <</widget>>
 
+<<widget "mine_distract_check">>
+	
+<</widget>>
+
 <<widget "mine_night_task">>
 	<<set $mine.distraction.night to "inprogress">>
 	<<switch random(1,3)>>

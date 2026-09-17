@@ -139,9 +139,9 @@ You attempt to talk with the other slaves, though most are unwilling.
 	<<link [[Next|Mine Night]]>><</link>>
 <</addinlineevent>>
 
-<<if !["complete","inprogress"].includes($mine.distraction.night)>>
+<<if !["complete","inprogress"].includes($mine.favor.night) and $mine.distraction.night is undefined>>
 	<<addinlineevent "request">>
-		<<if $mine.distraction.night is undefined>>
+		<<if $mine.favor.night is undefined>>
 			<<generate1>>
 			<<saveNPC 0 "mine_night">>
 			You walk up to a <<person1>><<person>>, but before you can open your mouth to speak, <<he>> speaks first "You look like someone who can handle <<print $player.gender_appearance is "m" ? "himself" : "herself">>," <<he>> says. "I need a favor, can you get it done?"
