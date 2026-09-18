@@ -29,34 +29,29 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 	<br><br>
 	<<link [[Next|Mine Job Intro]]>><<endevent>><</link>>
 <<else>>
-	<<if $exposed gte 1>>
-		<br>
-		<<link [[Grab a boiler suit|Mine Night Suit]]>><</link>>
-	<</if>>
+	<<icon "clothes/boiler-suit.png">><<link [[Grab a boiler suit|Mine Night Suit]]>><</link>>
+	<br>
 
 	<<if $mine.bomb.progress gte 10>>
-		<br>
 		<span class="blue">You have a bomb ready.</span>
-	<<elseif $mine.bomb.progress isnot undefined>>
 		<br>
+	<<elseif $mine.bomb.progress isnot undefined>>
 		<<if $mine.bomb.parts gt 0>>
-			<<link [[Work on bomb|Mine Bomb Work]]>><</link>>
+			<<icon "wrench.png">><<link [[Work on bomb|Mine Bomb Work]]>><</link>>
 		<<else>>
 			<span class="blue">You need parts to continue working on the bomb.</span>
 		<</if>>
 		<br>
 	<</if>>
-	
-	<<link [[Converse with other slaves (0:20)|Mine Night Talk]]>><<pass 20>><</link>>
-
+	<<icon "socialise.png">><<link [[Converse with other slaves (0:20)|Mine Night Talk]]>><<pass 20>><</link>>
+	<br>
 	<<if $mine.favor.night is "complete">>
+		<<icon "socialise.png">><<link [[Ask for a distraction|Mine Night Distraction]]>><</link>>
 		<br>
-		<<link [[Ask for a distraction|Mine Night Distraction]]>><</link>>
 	<</if>> 
 
-	<br>
 	<<bedicon "zzz">><<link [[Sleep|Mine Sleep]]>><<set $phase to 0>><</link>>
-
+	<br>
 <</if>>
 
 
@@ -191,7 +186,9 @@ You attempt to talk with the other slaves, though most are unwilling.
 
 <<addinlineevent "escape_plan">>
 	<<generate1>><<generatey2>>
-	You overhear two <<people>> talking about an escape plan. "So when we both have mining duty, we break our chains and overpower a guard and hold them hostage," the <<person1>> says. "So they'll have to let us go! That's genius!" the <<person2>><<person>> says a little too loudly. The <<person1>><<person>> shushes <<person2>><<him>>. <<mine_hope 2>><<gghope>>
+	You overhear two <<people>> talking about an escape plan. "So when we both have mining duty, we break our chains and overpower a guard and hold them hostage," 
+	the <<person1>><<person>> says. "So they'll have to let us go! That's genius!" the <<person2>><<person>> says a little too loudly. 
+	The <<person1>><<person>> shushes <<person2>><<him>>. <<mine_hope 2>><<gghope>>
 	<br><br>
 	<<endevent>>
 	<<link [[Next|Mine Night]]>><</link>>

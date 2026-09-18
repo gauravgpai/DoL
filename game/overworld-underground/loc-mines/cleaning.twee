@@ -2,7 +2,7 @@
 <<effects>>
 
 The <<person>> shoves a bundle of rags into your hands. "Clean this place up," <<he>> says before quickly returning to <<his>> chair.
-
+<br><br>
 <<endevent>>
 <<link [[Next|Mine Job Cleaning]]>><</link>>
 
@@ -31,9 +31,9 @@ You're in the guard's quarters. Guards sporadically enter and leave.
 	<<link [[Next|Mine Job Cleaning End]]>><</link>>
 <<else>>
 	<br><br>
-	<<link [[Focus on cleaning (1:00)|Mine Job Cleaning Events]]>><<pass 1 hours>><<set $phase to 0>><<tiredness 10>><</link>><<ggtiredness>>
+	<<link [[Focus on cleaning (1:00)|Mine Job Cleaning Events]]>><<pass 1 hours>><<set $phase to 0>><<tiredness 5>><</link>><<ggtiredness>>
 	<br>
-	<<link [[Pretend to clean (1:00)|Mine Job Cleaning Events]]>><<pass 1 hours>><<set $phase to 1>><<stress 10>><</link>><<ggstress>>
+	<<link [[Pretend to clean (1:00)|Mine Job Cleaning Events]]>><<pass 1 hours>><<set $phase to 1>><<stress 5>><</link>><<ggstress>>
 <</if>>
 
 
@@ -71,14 +71,15 @@ You make it look like you're cleaning and try to keep out of sight of the guards
 <<cleareventpool>>
 
 <<addinlineevent "dress_up">>
-	<<generate1>>
-	You notice a guard staring at you from the corner of the room. You pay <<him>> no 	mind as you continue.
+	<<generate1>><<person1>>
+	You notice a guard staring at you from the corner of the room. You pay <<him>> no mind as you continue.
 	<br><br>
 	<<He>> quickly stands up and walks over to a bunk. <<He>> pulls a box out from under it. "Hey you, come here," <<he>> yells while pointing at you. You reluctantly walk towards him as <<he>> opens up the box. <span class="blue">You notice a black bottle tucked into a pile of clothing.</span>
 	<br><br>
 	<<He>> pulls out a sundress. "Put this on," <<he>> barks.
 	<br><br>
 	<<link [[Steal the bottle|Mine Job Cleaning Sundress]]>><<set $phase to 0>><</link>><<skulduggerydifficulty>>
+	<br>
 	<<link [[Just put it on|Mine Job Cleaning Sundress]]>><<set $phase to 1>><</link>>
 <</addinlineevent>>
 
@@ -135,11 +136,11 @@ You make it look like you're cleaning and try to keep out of sight of the guards
 <</addinlineevent>>
 
 <<addinlineevent "map">>
-	<<generate1>>
+	<<generate1>><<person1>>
 	A <<person>> starts watching you from across the room. You ignore <<him>> and continue. As you avert your eyes away from <<him>>, you notice a small part of an old paper slipped behind a pin-up.
 	<br><br>
 	<<if $history gte 300>>
-		<set $mine.setup.map to 1>>
+		<<set $mine.setup.map to 1>>
 		<span class="green">It's an old map of the tunnels!</span>
 	<<else>>
 		<span class="red">You can't get a better look while the guard is watching.</span><span class="blue">You could maybe have figured out what it is if you were better with history.</span>
@@ -155,7 +156,7 @@ You make it look like you're cleaning and try to keep out of sight of the guards
 <</addinlineevent>>
 
 <<addinlineevent "scream" 1.5>>
-	You hear a scream echo through the tunnels and into the guard room. One of the guards chuckles. <<stress 10>><<trauma 5>><<ggstress>><gtrauma>
+	You hear a scream echo through the tunnels and into the guard room. One of the guards chuckles. <<stress 10>><<trauma 5>><<ggstress>><<gtrauma>>
 		<br><br>
 	<<link [[Next|Mine Job Cleaning]]>><<endevent>><</link>>
 <</addinlineevent>>
@@ -231,14 +232,14 @@ You climb the table as instructed. You're surrounded by <<people>>. Their eyes s
 <<effects>>
 
 <<if $rng gte 51>>
+	<<generate2>><<generate3>><<person1>>
 	You refuse the <<persons>> order. <<He>> whistles, drawing attention from all over. "I've had enough of this <<girl>>'s impudence," <<he>> says. <span class="red">"Who wants to put <<phim>> in <<pher>> place?"</span>
 	<br><br>
 	Chair legs grind against the floor as <<his>> colleagues rise. They surround you, lust in their eyes.
 	<br><br>
-	<<endevent>>
-	<<link [[Next|Mine Job Cleaning Gangrape]]>><<generate2>><<generate3>><<set $molestationstart to 1>><</link>>
+	<<link [[Next|Mine Job Cleaning Gangrape]]>><<set $molestationstart to 1>><</link>>
 <<else>>
-	<<He>> quickly grabs your neck and pulls you with <<him>> as <<he>> walks out of the cave. <<pain 20>> <<gggpain>>
+	<<He>> quickly grabs your neck and pulls you with <<him>> as <<he>> walks out of the cave. <<pain 20>><<gggpain>>
 	<br><br>
 	"I've had enough of you," <<he>> says. "The rules were clear, you were warned when you arrived, and now it's time for your punishment."
 	<br><br>
@@ -321,7 +322,7 @@ You bring it over to the <<person>> and set it down on the table. "Good <<girl>>
 	<br><br>
 	A <<person2>><<person>> walks over to the pot and takes a sip of the soup and spits it out almost as fast as the <<person1>><<person>> did. "We can't eat this," the <<person2>><<person>> says.
 	<br><br>
-	"But that's all the food for the next <span class="blue>five days!</span>" the <<person1>><<person>> cries.
+	"But that's all the food for the next <span class="blue">five days!</span>" the <<person1>><<person>> cries.
 	<br><br>
 	"We'll just have to deal with it," the <<person2>><<person>> says.
 <<else>>
@@ -409,7 +410,6 @@ You bring it over to the <<person>> and set it down on the table. "Good <<girl>>
 	<<He>> pulls your face against <<hers>>, and invades your mouth with <<his>> tongue.<<takeKissVirginity "mine guard" "rape" "human">>
 	<br><br>
 	<<He>> soon releases you, and walks away as if nothing had happened.
-	<br><br>
 <<else>>
 	You push <<him>> away from you. "I know you want this you <<slut>>," <<he>> says while groping your <<bottom>>. <<He>> pushes you away from <<him>> and walks away as if nothing had happened.
 <</if>>

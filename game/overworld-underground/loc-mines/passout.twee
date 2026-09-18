@@ -55,9 +55,8 @@ You wake up to a <<person1>><<person>> dragging you across the hard rock. <span 
 <<if $enemyhealth lte 0>>
 	<<tearful>> you knock <<him>> away and quickly rush away from <<him>>.
 	<<clotheson>>
-	<br><br>
 	<<endcombat>>
-	<<link [[Next|Mine Job Mining Escape]]>><</link>>
+	<<link [[Next|Mine Job Minecarts Escape]]>><</link>>
 <<elseif $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 	<<shackle_feet>>

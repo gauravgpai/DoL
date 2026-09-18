@@ -43,7 +43,8 @@
 <</widget>>
 
 <<widget "mine_job_link">>
-	
+	<<set _job_link to `Mine Job ${$mine.job.current.toLocaleUpperFirst()} Intro`>>
+	<<link [[Next|_job_link]]>><</link>>
 <</widget>>
 
 <<widget "mine_distract_links">>
@@ -207,14 +208,13 @@
 		<<if Time.hour lte 5 or Time.hour gte 21>>
 			<<He>> pulls you to the sleeping area. The guard in front of it opens it up. The <<person>> pushes you through. The gate slams and locks behind you.
 			<br><br>
-			<<link [[Next|Mine Night]]>><</link>>
+			<<link [[Next|Mine Night]]>><<endevent>><</link>>
 		<<else>>
 			<<He>> pulls you in front of another guard. "Deal with this trash," <<he>> says.
 			<br><br>
 			<<mine_job_link>>
 		<</if>>
 	<</if>>
-	<<endevent>>
 <</widget>>
 
 <<widget "mine_maze_map">>

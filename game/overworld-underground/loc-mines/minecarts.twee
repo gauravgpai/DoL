@@ -25,9 +25,9 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<<link [[Next|Mine Job Minecarts End]]>><</link>>
 <<else>>
 	<br><br>
-	<<link [[Focus on moving rocks (1:00)|Mine Job Minecarts Event]]>><<pass 1 hours>><<set $phase to 0>><<tiredness 15>><</link>><<ggtiredness>>
+	<<link [[Focus on moving rocks (1:00)|Mine Job Minecarts Event]]>><<pass 1 hours>><<set $phase to 0>><<tiredness 5>><</link>><<ggtiredness>>
 	<br>
-	<<link [[Pretend to move rocks (1:00)|Mine Job Minecarts Event]]>><<pass 1 hours>><<set $phase to 1>><<stress 15>><</link>><<ggstress>>
+	<<link [[Pretend to move rocks (1:00)|Mine Job Minecarts Event]]>><<pass 1 hours>><<set $phase to 1>><<stress 5>><</link>><<ggstress>>
 	<<if $mine.favor.minecarts is 1>>
 		<br>
 		<<link [[Ask for a distraction|Mine Job Minecarts Distraction]]>><</link>>
@@ -64,7 +64,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 <</addinlineevent>>
 
 <<addinlineevent "scream" 1.5>>
-	You hear a scream echo through the tunnels. <<stress 10>><<trauma 5>><<ggstress>><gtrauma>
+	You hear a scream echo through the tunnels. <<stress 10>><<trauma 5>><<ggstress>><<gtrauma>>
 	<br><br>
 	<<link [[Next|Mine Job Minecarts]]>><<endevent>><</link>>
 <</addinlineevent>>
