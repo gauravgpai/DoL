@@ -165,6 +165,8 @@ You awaken to a growling from directly above you. You slowly open your eyes to s
 	<<neutral 1>>
 	<<molested>>
 	<<maninit>>
+	<<set $speechdisable to 1>>
+	<<set $noBodyWriting to 1>>
 <</if>>
 
 <<effects>>

@@ -464,6 +464,8 @@ You end up in a small cave and drop to the ground, trying to cover yourself. The
 	<<neutral 1>>
 	<<molested>>
 	<<maninit>>
+	<<set $speechdisable to 1>>
+	<<set $noBodyWriting to 1>>
 <</if>>
 
 <<effects>>
@@ -492,7 +494,6 @@ You end up in a small cave and drop to the ground, trying to cover yourself. The
 <</if>>
 <br><br>
 <<tearful>> you run until you reach a lit up tunnel.
-<br><br>
 <<clotheson>>
 <<endcombat>>
 <br><br>

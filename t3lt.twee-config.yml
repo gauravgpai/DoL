@@ -11723,6 +11723,10 @@ sugarcube-2:
       description: |-
         Generates availible pits
       name: mine_pit
+    mine_punishment_end:
+      description: |-
+        Prints mine punishment ending
+      name: mine_punishment_end
     mine_maze_map:
       description: |-
         Generates map of mine escape minigame for debug mode

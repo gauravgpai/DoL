@@ -171,6 +171,8 @@ class MineMazeNPC {
 	}
 
 	/**
+	 * PC_PROXIMITY is how far a guard has to be generated from the PC start position
+	 *
 	 * @returns {number} Returns PC_PROXIMITY
 	 */
 	static get PC_PROXIMITY() {
@@ -240,6 +242,8 @@ class MineMaze {
 	ActiveGuards = [];
 
 	/**
+	 * PC_PROXIMITY is how far exit has to be from the PC start position
+	 *
 	 * @returns {number} Returns PC_PROXIMITY
 	 */
 	static get PC_PROXIMITY() {
@@ -247,6 +251,8 @@ class MineMaze {
 	}
 
 	/**
+	 * MAZE_SIZE is how large the maze is
+	 *
 	 * @returns {number} Returns MAZE_SIZE
 	 */
 	static get MAZE_SIZE() {
@@ -349,14 +355,10 @@ class MineMaze {
 }
 window.MineMaze = MineMaze;
 
+// Redefines Instance Methods
 function resetMazeMethods() {
 	resetMineMazeMethods();
-	resetMineMazeNPCMethods(V.mine.maze.Guards[0]);
-	resetMineMazeNPCMethods(V.mine.maze.Guards[1]);
-	resetMineMazeNPCMethods(V.mine.maze.Guards[2]);
-	resetCoordinateMethods(V.mine.maze.Guards[0].Location);
-	resetCoordinateMethods(V.mine.maze.Guards[1].Location);
-	resetCoordinateMethods(V.mine.maze.Guards[2].Location);
+	V.mine.maze.Guards.forEach(guard => resetMineMazeNPCMethods(guard));
 	resetCoordinateMethods(V.mine.maze.PC);
 	resetCoordinateMethods(V.mine.maze.Exit);
 }
@@ -382,6 +384,7 @@ function resetMineMazeNPCMethods(obj) {
 		},
 	});
 	obj.move = MineMazeNPC.prototype.move;
+	resetCoordinateMethods(obj.Location);
 }
 
 function resetCoordinateMethods(obj) {
