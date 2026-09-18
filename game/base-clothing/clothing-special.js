@@ -408,6 +408,7 @@ function initSpecialClothes() {
 			icon: "clothes",
 			iconSlot: "head",
 			iconIndex: 126,
+			iconColor: "black",
 		},
 
 		// Temple
