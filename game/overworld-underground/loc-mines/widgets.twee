@@ -85,7 +85,7 @@
 	<<set _distraction_count to 0>>
 	<<if $mine.distraction.minecarts is 0>><<set _distraction_count += 1>><</if>>
 	<<if $mine.distraction.mining is 0>><<set _distraction_count += 1>><</if>>
-	<<if $mine.distraction.cleaning is 0>><<set _distraction_count += 1>><</if>>
+	<<if $mine.distraction.night is 0>><<set _distraction_count += 1>><</if>>
 <</widget>>
 
 <<widget "mine_night_task">>
@@ -215,4 +215,29 @@
 		<</if>>
 	<</if>>
 	<<endevent>>
+<</widget>>
+
+<<widget "mine_maze_map">>
+	<<for _i to 0; _i lt MineMaze.MAZE_SIZE; _i++>>
+		<<for _j to 0; _j lt MineMaze.MAZE_SIZE; _j++>>
+			<<if $mine.maze.PC.x is _j and $mine.maze.PC.y is _i>>
+				<<print "P ">>
+			<<elseif $mine.maze.Exit.x is _j and $mine.maze.Exit.y is _i>>
+				<<print "E ">>
+			<<else>>
+				<<set _guard_count to 0>>
+				<<for _k to 0; _k lt $mine.maze.Guards.length; _k++>>
+					<<if $mine.maze.Guards[_k].Location.x is _j and $mine.maze.Guards[_k].Location.y is _i>>
+						<<set _guard_count++>>
+					<</if>>
+				<</for>>
+				<<if _guard_count isnot 0>>
+					<<print `${_guard_count} `>>
+				<<else>>
+					<<print "_ ">>
+				<</if>>
+			<</if>>
+		<</for>>
+		<br>
+	<</for>>
 <</widget>>

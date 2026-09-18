@@ -1183,6 +1183,24 @@ function hourPassed(hours) {
 		V.pubfame.hospital = {};
 		if (V.per_npc.pubfame_nurse) wikifier("clearNPC", "pubfame_nurse");
 	}
+
+	if (V.mine?.setup.food > 0) V.mine.setup.food--;
+	if (V.mine?.setup.dust > 0) V.mine.setup.dust--;
+	if (V.mine?.distraction.night > 0) {
+		V.mine.distraction.night--;
+	} else if (V.mine?.distraction.night === 0) {
+		delete V.mine.distraction.night;
+	}
+	if (V.mine?.distraction.mining > 0) {
+		V.mine.distraction.mining--;
+	} else if (V.mine?.distraction.mining === 0) {
+		delete V.mine.distraction.mining;
+	}
+	if (V.mine?.distraction.minecarts > 0) {
+		V.mine.distraction.minecarts--;
+	} else if (V.mine?.distraction.minecarts === 0) {
+		delete V.mine.distraction.minecarts;
+	}
 }
 
 function minutePassed(minutes) {
