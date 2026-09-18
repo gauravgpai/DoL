@@ -292,6 +292,9 @@ End of '<<print $replayScene.name>>' scene.
 		<<if $nightmaresSeen.includes("office")>>
 			<<set $scenePassages.pushUnique("NightmareOffice")>>
 		<</if>>
+		<<if $nightmaresSeen.includes("mine")>>
+			<<set $scenePassages.pushUnique("NightmareMine")>>
+		<</if>>
 	<</if>>
 	<<if $harper_appointments.hypnosis gte 1>>
 		<<set $scenePassages.pushUnique("HarperHypnosisIntro")>>
@@ -1008,6 +1011,13 @@ End of '<<print $replayScene.name>>' scene.
 				passages:["Nightmare Gwylan", "Nightmare Gwylan Wake", "Nightmare Gwylan Leave", "Nightmare Gwylan Leave 2", "Nightmare Gwylan 2", "Nightmare Gwylan 3", "Nightmare Gwylan 4", "Nightmare Gwylan Tornado", "Nightmare Gwylan Whalefall", "Nightmare Gwylan End"],
 				manualVariableChanges:"<<set $sleephour to 1>><<set $nightmareExit to 'Bed'>>",
 				unlocked: $scenePassages.includes("NightmareGwylan")
+			},
+			"NightmareMine":{
+				name:"Nightmare Mine",
+				startPassage:"Nightmare Mine",
+				passages:["Nightmare Mine", "Nightmare Mine 2", "Nightmare Mine 3", "Nightmare Mine Wake", "Nightmare Mine End"],
+				manualVariableChanges:"<<set $sleephour to 1>><<set $nightmareExit to 'Bed'>>",
+				unlocked: $scenePassages.includes("NightmareMine")
 			},
 			"HarperHypnosisIntro":{
 				name:"Harper Hypnosis Intro",
