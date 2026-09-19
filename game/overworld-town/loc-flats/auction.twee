@@ -87,7 +87,7 @@ A heavy weight hurtles from the dark, smacking you in the back and knocking you 
 	<<pshes>> a pretty one."
 <<else>>
 	<<set $flats_auction += 1>>
-	<<pshes>> a cute one.
+	<<pshes>> a cute one."
 <</if>>
 An agreeable murmur responds.
 <br><br>
