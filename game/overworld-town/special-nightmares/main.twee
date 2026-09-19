@@ -2761,7 +2761,7 @@ You can feel your heartbeat in your ears as something slides across your hip. Th
 
 
 :: Nightmare Mine
-<<effects>><<nightmareStart "mine">><<set $location to "mine">><<undress "mine_nightmare">>
+<<effects>><<nightmareStart "mine">><<set $location to "mines">><<undress "mine_nightmare">>
 <<wearProp "pickaxe">>
 <<upperwear "boiler suit">><<headwear "mining helmet">><<facewear "gas mask">>
 <<feetwear "work boots">><<handswear "work gloves">>
@@ -2790,9 +2790,9 @@ Looking around, you can barely see anything. The only light emanating from the m
 <br><br>
 The rumbling quickly subsides and you get your footing on the hard ground.
 <<if $phase is 0>>
-	You can't stay here, you have to get out. You start running as fast as you can down the tunnel, <span class="red">but another rumble knocks you off your feet</span>. <<gpain>>
+	You can't stay here, you have to get out. You start running as fast as you can down the tunnel, <span class="red">but another rumble knocks you off your feet</span>.<<gpain>>
 <<else>>
-	With no other options, you start to walk down the tunnel. You keep walking and walking and walking. You start to wonder if there is an end <span class="red">as another rumble knocks you off your feet.</span>. <<gpain>>
+	With no other options, you start to walk down the tunnel. You keep walking and walking and walking. You start to wonder if there is an end <span class="red">as another rumble knocks you off your feet</span>. <<gpain>>
 <</if>>
 <br><br>
 Rocks start falling all around you, you hear the supports start to splinter and crack. You try to get up and run to safety, but a boulder lands on your back and pins you to the ground. <<gggpain>>
@@ -2835,10 +2835,11 @@ You have to wake up, you have to get out. You can't stay here. You close your ey
 
 
 :: Nightmare Mine End
-<<effects>><<nightmareEnd>>
+<<effects>>
 <<upperruined true>><<lowerruined true>><<headruined true>><<faceruined true>>
 <<feetruined true>><<handsruined true>>
 <<storeon "mine_nightmare">>
+<<nightmareEnd>>
 
 <<if $phase is 0>>
 	You slowly open your eyes, revealing the world around you. <<lstress>><<stress -2>>
