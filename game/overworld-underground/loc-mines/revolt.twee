@@ -189,6 +189,7 @@ Not knowing what else to do, you wait. Eventually, a group of guards wearing rio
 :: Mine Revolt Bomb
 <<effects>><<earnFeat "Down Below">><<earnFeat "The Time is Now">>
 <<badEndTrackingEnd "Mines" { reason: "minesRevolt" }>><<set $mine.freed to 1>><<world_corruption "hard" -1>>
+<<set $location to "town">>
 
 You pull out the bomb you made and walk up to the gate. The guards look at you in confusion before their faces turn white with the realisation of what you're holding.
 <br><br>
@@ -198,4 +199,4 @@ You look to see the damage, <span class="green">the gate has been blown off, alo
 <br><br>
 Before you can go through, a horde of people rush past you, almost knocking you down. You don't hesitate to follow. You reach a staircase leading to a metal door. You quickly walk up and go through and emerge at the bottom of the flats on Barb Street.
 <br><br>
-<<link [[Next|Flats]]>><<endevent>><<set $eventskip to 1>><</link>>
+<<link [[Next|Barb Street]]>><<endevent>><<set $eventskip to 1>><</link>>

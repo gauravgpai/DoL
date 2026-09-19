@@ -21,8 +21,7 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 	You've pushed yourself too much.
 	<br><br>
 
-	<<passout>>
-	<<link [[Everything fades to black...|Mine Night Passout]]>><<endevent>><</link>>
+	<<link [[Everything fades to black...|Mine Night Passout]]>><<passout>><<endevent>><</link>>
 <<elseif Time.hour gte 6 and Time.hour lte 20>>
 	<<generate1>><<person1>>
 	A guard opens up the metal gate. "Alright everyone, get to work!" the <<person>> yells. You leave with everyone else.
@@ -45,7 +44,7 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 	<</if>>
 	<<icon "socialise.png">><<link [[Converse with other slaves (0:20)|Mine Night Talk]]>><<pass 20>><</link>>
 	<br>
-	<<if $mine.favor.night is "complete">>
+	<<if $mine.distraction.night is "complete" or $mine.favor.night is 1>>
 		<<icon "socialise.png">><<link [[Ask for a distraction|Mine Night Distraction]]>><</link>>
 		<br>
 	<</if>> 
@@ -78,8 +77,8 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 	<<scienceskill>>
 <</if>>
 
-<<if $mine.bomb.progress is gte 10>>
-The last part clicks into place, <span class="red">your bomb is finally ready to be used.</span>
+<<if $mine.bomb.progress gte 10>>
+	The last part clicks into place, <span class="green">your bomb is finally ready to be used.</span>
 <</if>>
 <br><br>
 <<link [[Next|Mine Night]]>><</link>>
@@ -247,7 +246,7 @@ You get as close to the gate as you can where the guards outside can't see you. 
 
 
 :: Mine Night Suit
-<<effects>><<upperwear "boiler suit">>
+<<effects>><<upperruined true>><<lowerruined true>><<upperwear "boiler suit">>
 
 You grab a boiler suit out of a bin in the corner and slip it on.
 <br><br>

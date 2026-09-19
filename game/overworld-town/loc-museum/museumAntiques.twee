@@ -949,6 +949,18 @@ You look around the museum. The pedestals are grooved, as if awaiting specific o
 	<<if $museumAntiques.antiques.antiquegoldmask is undefined>>
 		<<set $museumAntiques.antiques.antiquegoldmask to "notFound">>
 	<</if>>
+	<<if $museumAntiques.antiques.antiquelantern is undefined>>
+		<<set $museumAntiques.antiques.antiquelantern to "notFound">>
+	<</if>>
+	<<if $museumAntiques.antiques.antiqueshovelhandle is undefined>>
+		<<set $museumAntiques.antiques.antiqueshovelhandle to "notFound">>
+	<</if>>
+	<<if $museumAntiques.antiques.antiquerustypickaxe is undefined>>
+		<<set $museumAntiques.antiques.antiquerustypickaxe to "notFound">>
+	<</if>>
+	<<if $museumAntiques.antiques.antiquepurplediamond is undefined>>
+		<<set $museumAntiques.antiques.antiquepurplediamond to "notFound">>
+	<</if>>
 	<<if $museumAntiques.paintings is undefined>>
 		<<set $museumAntiques.paintings to {
 			"paintingward": "notFound",

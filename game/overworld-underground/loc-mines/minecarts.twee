@@ -75,7 +75,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<<link [[Next|Mine Job Minecarts]]>><<endevent>><</link>>
 <</addinlineevent>>
 
-<<if $mine.favor.mining isnot 1 and $mine.distraction.minecarts is undefined>>
+<<if $mine.favor.minecarts isnot 1 and $mine.distraction.minecarts is undefined>>
 	<<addinlineevent "clothes">>
 		<<generatey1>><<person1>>
 		You see a <<person>>, <span class="blue"><<hes>> nude.</span> <<He>> tries to cover <<himself>>, unsuccessfully.
@@ -155,7 +155,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<br><br>
 	You start to chase after it, but it's moving pretty fast at this point. 
 	<br><br>
-	<<link [[Climb in|Mine Job Minecarts Climb]]>><</link>><<athleticsdifficulty 200 400>>
+	<<link [[Climb in|Mine Job Minecarts Climb]]>><</link>><<athleticsdifficulty 20 40>>
 	<br>
 	<<link [[Stop it|Mine Job Minecarts Stop]]>><</link>><<physiquedifficulty 12000 15000>>
 	<br>

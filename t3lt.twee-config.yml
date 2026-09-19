@@ -11719,6 +11719,10 @@ sugarcube-2:
       description: |-
         Sets _gem_value to value of $mine.heldGem
       name: mine_gem_value
+    mine_gem_check:
+      description: |-
+        Sets _gemSize to size passed in _arg[0]
+      name: mine_gem_check
     mine_pit:
       description: |-
         Generates availible pits

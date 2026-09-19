@@ -58,25 +58,25 @@ You're hit by a familiar stale air as you slowly walk down the staircase.
 
 You're in the mines. It's completely silent.
 
-<<if pregnancyEnding()>>
+<<if isPregnancyEnding()>>
 	<<mine_pregnancy>>
 <<elseif $stress gte $stressmax>>
 	<<mine_passout>>
 <</if>>
 
 <br><br>
-<<link [[Explore (0:30)|Mine Explore]]>><<pass 30>><</link>>
+<<icon "actions/explore.png">><<link [[Explore (0:30)|Mine Explore]]>><<pass 30>><</link>>
 <<if $mine.tunnel.intro and !$mine.tunnel.diamond>>
 	<<if $mine.tunnel.collapse lte 10>>
 		<br>
-		<<link [[Collapsed Tunnel|Mine Collapse]]>><</link>>
+		<<icon "ruins.png">><<link [[Collapsed Tunnel|Mine Collapse]]>><</link>>
 	<<else>>
 		<br>
-		<<link [[Flooded Tunnel|Mine Flood]]>><</link>>
+		<<icon "ruins.png">><<link [[Flooded Tunnel|Mine Flood]]>><</link>>
 	<</if>>
 <</if>>
 <br>
-<<link [[Leave|Barb Street]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Barb Street]]>><</link>>
 
 
 
@@ -85,7 +85,7 @@ You're in the mines. It's completely silent.
 
 You explore the winding tunnels. The map you took makes it easy to find your way around.
 
-<<if pregnancyEnding()>>
+<<if isPregnancyEnding()>>
 	<<mine_pregnancy>>
 <<elseif $stress gte $stressmax>>
 	<<mine_passout>>
@@ -97,36 +97,43 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 <<addinlineevent "nothing">>
 	You don't find anything of note.
 	<br><br>
-	<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><<endevent>><</link>>
+	<<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><<endevent>><</link>>
 	<br>
-	<<link [[Leave|Mine]]>><<endevent>><</link>>
+	<<icon "get-out.png">><<link [[Leave|Mine]]>><<endevent>><</link>>
 <</addinlineevent>>
 
 <<addinlineevent "gem">>
 	<<mine_gem>>
 	You find something shiny embedded in the wall of a tunnel.
 	<br><br>
-	<<link [[Attempt to mine it (0:30)|Mine Gem]]>><<pass 30>><<tiredness 10>><<set $phase to _gem>><</link>><<pickaxedifficulty _gem_diff_min _gem_diff_max>><<ggtiredness>>
+	<<icon "pickaxe.png">><<link [[Attempt to mine it (0:30)|Mine Gem]]>><<pass 30>><<tiredness 10>><<set $phase to _gem>><</link>><<pickaxedifficulty _gem_diff_min _gem_diff_max>><<ggtiredness>>
 	<br>
-	<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><<endevent>><</link>>
+	<<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><<endevent>><</link>>
 	<br>
-	<<link [[Leave|Mine]]>><</link>>
+	<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 <</addinlineevent>>
 
 <<addinlineevent "antique">>
 	<<set $phase to either("shovelhandle","lantern","rustypickaxe")>>
-	You find a $phase 
+	You find a 
+	<<if $phase is "shovelhandle">>
+		shovel handle
+	<<elseif $phase is "rustypickaxe">>
+		rusty pickaxe
+	<<else>>
+		$phase
+	<</if>> 
 	<<print either(
 		"under a rock",
 		"in a pile of rotten wood",
 		"on the ground, you almost trip on it"
 	)>>.
 	<br><br>
-	<<link [[Take it|Mine Antique]]>><</link>>
+	<<ind>><<link [[Take it|Mine Antique]]>><</link>>
 	<br>
-	<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><<endevent>><</link>>
+	<<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><<endevent>><</link>>
 	<br>
-	<<link [[Leave|Mine]]>><</link>>
+	<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 <</addinlineevent>>
 
 <<if $settings.tentaclesEnabled and $hallucinations gte 2>>
@@ -179,35 +186,45 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 :: Mine Gem
 <<effects>><<wearProp "pickaxe">>
 
-You pick up a pickaxe and try to break the $phase out of the rock wall.
+You pick up a pickaxe and try to break the object out of the rock wall.
 <<if $pickaxeSuccess>>
-	<span class="green">You manage to break the $phase out of the wall without damaging it.</span>
+	<span class="green">You manage to break the <<=_gemSize>> out of the wall without damaging it.</span>
 	<br><br>
 	<<mine_gem_collect $phase>><<prof pickaxe 1>>
-
 <<else>>
+	You accidentally hit it, and <span class="red">it shatters into a bunch of small pieces that scatter all over the ground.</span>
 	<<prof pickaxe 2>>
-	You accidentally hit the $phase, and <span class="red">it shatters into a bunch of small pieces that scatter all over the ground.</span>
 <</if>>
 <br><br>
 <<endevent>>
-<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
+<<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
 <br>
-<<link [[Leave|Mine]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 
 
 
 :: Mine Antique
 <<effects>>
-<<set $antiquemoney += 200>><<museumAntiqueStatus `antique${V.phase}` "found">><<wearProp `antique ${V.phase}`>>
+<<set $antiquemoney += 200>>
+<<set _antique to `antique${$phase}`>>
+<<museumAntiqueStatus _antique "talk">>
 
-You take the $phase with you.
+<<if $phase is "shovelhandle">>
+	<<set _antique to "shovel handle">>
+<<elseif $phase is "rustypickaxe">>
+	<<set _antique to "rusty pickaxe">>
+<</if>>
+
+<<set _antique_prop to `antique ${_antique}`>>
+<<wearProp _antique_prop>>
+
+You take the _antique with you.
 
 <br><br>
 <<endevent>>
-<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
+<<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
 <br>
-<<link [[Leave|Mine]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 
 
 
@@ -249,9 +266,9 @@ The tentacles retreat back into the darkness. <<tearful>> you run until you reac
 <br><br>
 <<clotheson>>
 <<endcombat>>
-<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
+<<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
 <br>
-<<link [[Leave|Mine]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 
 
 
@@ -292,14 +309,14 @@ The slimes retreat away from you. <<tearful>> you run until you reach a drier ca
 <br><br>
 <<clotheson>>
 <<endcombat>>
-<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
+<<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
 <br>
-<<link [[Leave|Mine]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 
 
 
 :: Mine Collapse Intro
-<<effects>><<set $mine.tunnel.intro to 1>>
+<<effects>><<set $mine.tunnel.intro to 1>><<set $mine.tunnel.collapse to 0>>
 
 You take a look at your surroundings. The tunnel leads to a collapsed section. You try to see what's behind it. You can just barely make out a cave behind it.
 
@@ -313,24 +330,24 @@ You take a look at your surroundings. The tunnel leads to a collapsed section. Y
 
 You're at the collapsed tunnel. 
 
-<<if pregnancyEnding()>>
+<<if isPregnancyEnding()>>
 	<<mine_pregnancy>>
 <<elseif $stress gte $stressmax>>
 	<<mine_passout>>
 <</if>>
 
 <<if $mine.tunnel.collapse lte 3>>
-	<span class="red">An impassable wall of rock stands before you.<span>
+	<span class="red">An impassable wall of rock stands before you.</span>
 <<elseif $mine.tunnel.collapse lte 6>>
-	<span class="blue">There's still plenty of rock left.<span>
+	<span class="blue">There's still plenty of rock left.</span>
 <<else>>
-	<span class="blue">You can see more tunnel behind the rocks.<span>
+	<span class="blue">You can see more tunnel behind the rocks.</span>
 <</if>>
 
 <br><br>
-<<link [[Clear the rocks (1:00)|Mine Clear]]>><<pass 30>><<tiredness 20>><</link>><<gggtiredness>>
+<<icon "rubble.png">><<link [[Clear the rocks (1:00)|Mine Clear]]>><<pass 30>><<tiredness 20>><</link>><<gggtiredness>>
 <br>
-<<link [[Leave|Mine]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 
 
 
@@ -342,20 +359,20 @@ You work on clearing the rocks out of the tunnel. It's exhausting work, <span cl
 <<set $mine.tunnel.collapse += 1>>
 
 <<if $mine.tunnel.collapse lte 4>>
-	<span class="red">An impassable wall of rock stands before you.<span>
+	<span class="red">An impassable wall of rock stands before you.</span>
 <<elseif $mine.tunnel.collapse lte 7>>
-	<span class="blue">There's still plenty of rock left.<span>
+	<span class="blue">There's still plenty of rock left.</span>
 <<elseif $mine.tunnel.collapse lte 9>>
-	<span class="blue">You can see more tunnel behind the rocks.<span>
+	<span class="blue">You can see more tunnel behind the rocks.</span>
 <<else>>
-	<span class="green">There's a big enough gap to go through.<span>
+	<span class="green">There's a big enough gap to go through.</span>
 <</if>>
 
 <<if $mine.tunnel.collapse lte 10>>
 	<br><br>
 	<<link [[Clear the rocks (1:00)|Mine Clear]]>><<pass 30>><<tiredness 20>><</link>><<gggtiredness>>
 	<br>
-	<<link [[Leave|Mine]]>><</link>>
+	<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 <<else>>
 	<br><br>
 	<<link [[Go in|Mine Flood]]>><</link>>
@@ -368,16 +385,16 @@ You work on clearing the rocks out of the tunnel. It's exhausting work, <span cl
 
 You follow the tunnel and reach a pool of water. <span class="blue">A section of the tunnel is flooded.</span> It leads even further down.
 
-<<if pregnancyEnding()>>
+<<if isPregnancyEnding()>>
 	<<mine_pregnancy>>
 <<elseif $stress gte $stressmax>>
 	<<mine_passout>>
 <</if>>
 
 <br><br>
-<<link [[Try to swim through|Mine Swim]]>><</link>><<swimmingdifficulty 700 1000>>
+<<icon "actions/dive.png">><<link [[Try to swim through|Mine Swim]]>><</link>><<swimmingdifficulty 700 1000>>
 <br>
-<<link [[Leave|Mine]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 
 
 
@@ -428,10 +445,10 @@ You approach the center of the cave, Wet sounds accompany you. As you get close,
 
 
 :: Mine Diamond Take
-<<effects>><<wearProp "antiquepurplediamond">><<earnFeat "Rock Bottom">>
+<<effects>><<wearProp "antiquepurplediamond">><<earnFeat "Rock Bottom">><<set $mine.tunnel.diamond to 1>>
 
-You reach out to touch the diamond, as your fingers meet the diamond. <<orgasm>>
-<br><br>
+You reach out to touch the diamond, as your fingers meet the diamond. 
+<<orgasm>>
 As you recover from your spasms, you realise that touching it made you orgasm. You reach back through the crack and grab a scrap of clothing. You wrap the diamond in the clothing scrap and lift it off its pedestal.
 <br><br>
 You return through the crack and continue down the tunnel, eventually reaching a fork. One of them leads to an incline. You follow the inclining tunnel. The silence is suddenly cut by <span class="red">a loud roar from behind you</span>. <<stress 20>><<gggstress>>
@@ -496,10 +513,9 @@ You end up in a small cave and drop to the ground, trying to cover yourself. The
 <<tearful>> you run until you reach a lit up tunnel.
 <<clotheson>>
 <<endcombat>>
-<br><br>
-<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
+<<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
 <br>
-<<link [[Leave|Mine]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 
 
 
@@ -510,7 +526,7 @@ You end up in a small cave and drop to the ground, trying to cover yourself. The
 <<if $struggle_start is 1>>
 	<<struggle_init>>
 	<<set $struggle.creature to "lurker">>
-	<<struggle_creatures 1 4>>
+	<<struggle_creatures 3 4>>
 	<<set $combat to 1>>
 	<<controlloss>>
 	<<violence 1>>
@@ -539,6 +555,6 @@ The creatures disappear into the tunnels. <<tearful>> you stand up and continue 
 <br><br>
 <<clotheson>>
 <<endcombat>>
-<<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
+<<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>
 <br>
-<<link [[Leave|Mine]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>

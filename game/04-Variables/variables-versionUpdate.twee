@@ -3600,10 +3600,10 @@
 	<<if $objectVersion.museumAntiques lte 14 and $museumAntiques.antiques.antiquewhitescrystal isnot undefined>>
 		<<run delete $museumAntiques.antiques.antiquewhitescrystal>>
 	<</if>>
-	<<if $objectVersion.museumAntiques lt 20 or $objectVersion.museumAntiques is undefined>>
+	<<if $objectVersion.museumAntiques lt 21 or $objectVersion.museumAntiques is undefined>>
 		/*Moved undefined checks for new antiques to the widget below*/
 		<<updateMuseumAntiques>>
-		<<set $objectVersion.museumAntiques to 20>>
+		<<set $objectVersion.museumAntiques to 21>>
 	<</if>>
 
 	<<if $objectVersion.sexToys lt 2 or $objectVersion.sexToys is undefined>>

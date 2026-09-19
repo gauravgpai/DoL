@@ -32,7 +32,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<br><br>
 	<<link [[Next|Mine Job Mining End]]>><</link>>
 <<elseif $mine.hope gte 30 and $mine.song isnot 1>>
-	<<generate1>>
+	<<generate1>><<person1>>
 	<<set $mine.song to 1>>
 	You hear a soft humming. The other slaves start looking around for the source as the humming develops into singing. <<stress -5>><<lstress>>
 	<br><br>
@@ -77,6 +77,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 <</if>>
 <<if $mine.job.mining.shackle is 0>>
 	<<set $mine.job.mining.shackle to 8>>
+	<<unbind>>
 	With a heavy strike, <span class="green">your shackles break from your feet.</span>
 	<br><br>
 	You look around and see none of the guards are looking at you. You notice a ring of keys on the belt of one of the guards.
@@ -140,9 +141,10 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<<link [[Next|Mine Job Mining]]>><<endevent>><</link>>
 <</addinlineevent>>
 
-<<if $mine.favor.job is "gem" and $mine.favor.night isnot 1>>
+<<if $mine.favor.job.night is "gem" and $mine.favor.night isnot 1 and $mine.distraction.night is "inprogress">>
 	<<addinlineevent "favor_gem">>
 		<<set $mine.favor.night to 1>>
+		<<set $mine.distraction.night to "complete">>
 		You find a <span class="blue"><<print either("gem","crystal")>></span>. You look around to see if any guards are watching before grabbing it.
 		<br><br>
 		<<link [[Next|Mine Job Mining]]>><<endevent>><</link>>
@@ -213,7 +215,7 @@ The guards attempt to quell the song, but they fail. Every attempt makes the son
 <<else>>
 	They can't stop everyone.
 <</if>>
-<<mine_hope 3>><<ggghope>><<stress -20>><<gggstress>><<trauma -20>><<gggtrauma>>
+<<mine_hope 3>><<ggghope>><<stress -20>><<lllstress>><<trauma -20>><<llltrauma>>
 <br><br>
 The song continues until it reaches its end. "Get back to work!" the <<person>> shouts. Everyone complies, but there's a renewed sense of life about.
 <br><br>

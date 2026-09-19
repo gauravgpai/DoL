@@ -20,7 +20,7 @@
 
 <<widget "mine_job">>
 	<<if $mine.job.list.length is 0>>
-		<<set $mine.job.list to ["mining", "minecart", "cleaning"]>>
+		<<set $mine.job.list to ["mining", "minecarts", "cleaning"]>>
 	<</if>>
 	<<set $mine.job.current to $mine.job.list.pluck()>>
 
@@ -151,14 +151,7 @@
 
 <<widget "mine_gem_collect">>
 	You pick up a
-	<<switch _args[0]>>
-		<<case 1>>
-			<<set _gemSize to "small">>
-		<<case 2>>
-			<<set _gemSize to "medium">>
-		<<case 3>>
-			<<set _gemSize to "large">>
-	<</switch>>
+	<<mine_gem_check _args[0]>>
 	<<set _gemType to either("gem", "crystal")>>
 	<<set $mine.heldGem to _gemSize + _gemType>>
 	$mine.heldGem. It might be worth something on the black market.
@@ -177,21 +170,32 @@
 	<</if>>
 <</widget>>
 
+<<widget "mine_gem_check">>
+	<<switch _args[0]>>
+		<<case 1>>
+			<<set _gemSize to "small">>
+		<<case 2>>
+			<<set _gemSize to "medium">>
+		<<case 3>>
+			<<set _gemSize to "large">>
+	<</switch>>
+<</widget>>
+
 <<widget "mine_pit">>
-	<<set _pits to ["nothing"]>>
+	<<set _pits to ["Nothing"]>>
 	<<set _coveredPits to 0>>
-	<<if $settings.slimesEnabled and $hallucinations gte 1>>
-		<<set _pit.push["slimes"]>>
+	<<if true or $settings.slimesEnabled and $hallucinations gte 1>>
+		<<set _pits.push["Slimes"]>>
 	<<else>>
 		<<set _coveredPits++>>
 	<</if>>
-	<<if $settings.tentaclesEnabled and $hallucinations gte 2>>
-		<<set _pit.push["tentacles"]>>
+	<<if true or $settings.tentaclesEnabled and $hallucinations gte 2>>
+		<<set _pits.push["Tentacles"]>>
 	<<else>>
 		<<set _coveredPits++>>
 	<</if>>
-	<<if $settings.swarmsEnabled and $settings.spidersEnabled>>
-		<<set _pit.push["spiders"]>>
+	<<if true or $settings.swarmsEnabled and $settings.spidersEnabled>>
+		<<set _pits.push["Spiders"]>>
 	<<else>>
 		<<set _coveredPits++>>
 	<</if>>

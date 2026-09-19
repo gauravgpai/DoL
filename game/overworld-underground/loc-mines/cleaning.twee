@@ -135,19 +135,21 @@ You make it look like you're cleaning and try to keep out of sight of the guards
 	<<link [[Next|Mine Job Cleaning]]>><<endevent>><</link>>
 <</addinlineevent>>
 
-<<addinlineevent "map">>
-	<<generate1>><<person1>>
-	A <<person>> starts watching you from across the room. You ignore <<him>> and continue. As you avert your eyes away from <<him>>, you notice a small part of an old paper slipped behind a pin-up.
-	<br><br>
-	<<if $history gte 300>>
-		<<set $mine.setup.map to 1>>
-		<span class="green">It's an old map of the tunnels!</span>
-	<<else>>
-		<span class="red">You can't get a better look while the guard is watching.</span><span class="blue">You could maybe have figured out what it is if you were better with history.</span>
-	<</if>>
-	<br><br>
-	<<link [[Next|Mine Job Cleaning]]>><<endevent>><</link>>
-<</addinlineevent>>
+<<if $mine.setup.map>>
+	<<addinlineevent "map">>
+		<<generate1>><<person1>>
+		A <<person>> starts watching you from across the room. You ignore <<him>> and continue. As you avert your eyes away from <<him>>, you notice a small part of an old paper slipped behind a pin-up.
+		<br><br>
+		<<if $history gte 300>>
+			<<set $mine.setup.map to 1>>
+			<span class="green">It's an old map of the tunnels!</span>
+		<<else>>
+			<span class="red">You can't get a better look while the guard is watching.</span><span class="blue">You could maybe have figured out what it is if you were better with history.</span>
+		<</if>>
+		<br><br>
+		<<link [[Next|Mine Job Cleaning]]>><<endevent>><</link>>
+	<</addinlineevent>>
+<</if>>
 
 <<addinlineevent "nothing" 1.5>>
 	You go on without interruption.

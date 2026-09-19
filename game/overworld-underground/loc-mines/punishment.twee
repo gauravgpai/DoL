@@ -26,7 +26,8 @@ You're dragged into a room with several grates in the ground.
 	"I guess we're spoiled for choice," the <<person>> chuckles.
 <</if>>
 <br><br>
-<<link [[Next|Mine Punishment Pit _pits.pluck()]]>><<endevent>><</link>>
+<<set _link to `Mine Punishment Pit ${_pits.pluck()}`>>
+<<link [[Next|Mine Punishment Pit Spiders]]>><<endevent>><</link>>
 
 
 
@@ -40,15 +41,15 @@ You look up and see the guards pulling a tarp over the grate, plunging you into 
 <br><br>
 Silence befalls you. The only things that accompany you are your own thoughts. You reflect on everything that has brought you to this moment. <<gggstress>><<stress 100>>
 <br><br>
-You think about your life and wonder if you'll ever be free of Bailey's torment. <<gggtrauma>><<trauma 25>>
+You think about your life and wonder if you'll ever be free of Bailey's torment. <<gggtrauma>><<trauma 500>>
 <br><br>
-You think about the other orphans in the same situation as you. <<gggtrauma>><<trauma 25>>
+You think about the other orphans in the same situation as you. <<gggtrauma>><<trauma 500>>
 
 <br><br>
 <<link [[Wait (2:00)|Mine Punishment Pit End]]>><<pass 2 hours>><</link>>
 <<if $trauma gte 2500>>
 	<br>
-	<<link [[Cry|Mine Punishment Pit Nothing Cry]]>><<trauma -25>><</link>><<llltrauma>>
+	<<link [[Cry|Mine Punishment Pit Nothing Cry]]>><<trauma -100>><</link>><<llltrauma>>
 <</if>>
 
 
@@ -75,7 +76,7 @@ You look up and see the guards pulling a tarp over the grate, plunging you into 
 You try to scrape the slime off of you <span class="red">but it doesn't come off.</span> As you keep trying to get rid of it, <span class="red">you feel something move in the slime.</span>
 <br><br>
 You look down to try and see what it is, but it's too dark. You feel something press up against you.
-
+<br><br>
 <<link [[Next|Mine Punishment Pit Slimes Rape]]>><<set $molestationstart to 1>><</link>>
 
 
@@ -240,7 +241,7 @@ After a while of waiting, the tarp is pulled off, and a length of rope is droppe
 
 
 :: Mine Punishment Creature Feature Intro
-<<effects>><<set $mine.creature_feature to 1>>
+<<effects>>
 
 They drag you into a small cave with an old elevator tucked into the wall. The <<person1>><<person>> grabs a bag from a bin and a lantern off the wall.
 <br><br>
