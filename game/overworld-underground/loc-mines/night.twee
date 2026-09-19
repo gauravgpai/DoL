@@ -16,7 +16,7 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 	<<generate1>>
 	You clutch your stomach and go to your knees, a <<person1>><<person>> looks through the gate and notices you. <<He>> quickly opens the gate and rushes to your side. You slip out of consciousness as <<he>> lifts you.
 	<br><br>
-	<<link [[Next|Mine Birth]]>><<endevent>><</link>>
+	<<link [[Next|Mine Birth]]>><</link>>
 <<elseif $stress gte $stressmax>>
 	You've pushed yourself too much.
 	<br><br>

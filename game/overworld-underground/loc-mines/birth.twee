@@ -1,12 +1,12 @@
 :: Mine Birth
 <<effects>><<set $first_birth to !$pregnancyStats.humanToysUnlocked>>
-<<generate2>>
 <<if $mine.birth isnot 1>>
+	<<generate2>>
 	<<set $mine.birth to 1>>
-	<<generate1>><<saveNPC 0 "mine_doctor">><<person1>>
+	<<saveNPC 1 "mine_doctor">><<person2>>
 	You regain consciousness with two voices filling the darkness. "I'm not a doctor. I've never done anything beyond helping small injuries and giving pain meds," a <<male>> voice says. "Don't care. You're the best we got," replies a <<person2>><<male>> voice.
 <<else>>
-	<<loadNPC 0 "mine_doctor">><<person2>>
+	<<loadNPC 1 "mine_doctor">><<person2>>
 	You regain consciousness with two voices filling the darkness. "Tend to your patient doctor", says a <<male>> voice. "I keep telling you, I'm not a doctor," a <<person1>><<male>> voice replies. You hear a scoff.
 <</if>>
 <br><br>
@@ -73,7 +73,7 @@ You awaken in a dark cave.
 :: Mine Birth 4
 <<effects>>
 
-The <<person>> helps you stand. You put your clothing back on. <<storeon "hospital_birth">>
+The <<person>> helps you stand. You put your clothing back on. <<storeon "mine_birth">>
 
 <<if $first_birth or playerNormalPregnancyTotal() is 0>>
 	You feel your insides drop as you stand, but <<he>> assures you that's normal.
@@ -141,6 +141,7 @@ A <<person2>><<person>> walks into the cave. "Follow me," <<he>> says. You reluc
 	The <<person>> brings you to a cave full of people. The guard at the gate opens it and closes it behind you.
 	<br><br>
 	<<link [[Next|Mine Night]]>><<endevent>><</link>>
+	<<exit>>
 <</if>>
 
 <<switch $mine.job.current>>
@@ -148,7 +149,7 @@ A <<person2>><<person>> walks into the cave. "Follow me," <<he>> says. You reluc
 		The <<person>> brings you to a group of slaves. <<He>> chains you to the rest of them and walks off.
 		<br><br>
 		<<link [[Next|Mine Job Mining]]>><<endevent>><</link>>
-	<<case "minecart">>
+	<<case "minecarts">>
 		The <<person>> brings you to a minecart track and attaches a chain hanging off a rail on the ceiling to your shackles and walks off.
 		<br><br>
 		<<link [[Next|Mine Job Minecarts]]>><<endevent>><</link>>
