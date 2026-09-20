@@ -1631,112 +1631,121 @@
 			<</if>>
 		<</if>>
 
-		<<if $leftaction is "leftmasturbateanus">>
+		<<if $leftaction is "leftmasturbateanus" and $rightaction is "rightmasturbateanus">>
 			<<set $leftaction to 0>><<set $leftactiondefault to "leftmasturbateanus">>
-			<<if $anususe is 0 and !playerChastity("anus")>>
-				<<combatpromiscuity3>>
-				<<set $_genitals_exposed to $worn.over_lower.vagina_exposed gte 1 and ($worn.lower.vagina_exposed gte 1 or setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt gte 1) and $worn.under_lower.vagina_exposed gte 1>>
-
-				<<if $_genitals_exposed>>
-					<<if playerHasButtPlug()>>
-						<<if $arousal gte ($arousalmax/5)*4>>
-							You pull your $worn.butt_plug.name in and out of your exposed anus and shiver in anticipation.
-						<<else>>
-							You pull your $worn.butt_plug.name in and out of your exposed anus.
-						<</if>>
-					<<else>>
-						<<if $arousal gte ($arousalmax/5)*4>>
-							You run your fingers in and out of your exposed anus and shiver in anticipation.
-						<<else>>
-							You run your fingers in and out of your exposed anus.
-						<</if>>
-					<</if>>
-					<<arousal 40 "masturbationAnal">><<submission 2>>
-				<<elseif $worn.lower.vagina_exposed is 0 and setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt lt 1>>
-					<<if playerHasButtPlug()>>
-						You run your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.lower.name.
-					<<else>>
-						You run your fingers over your anus, feeling its shape beneath your $worn.lower.name.
-					<</if>>
-					<<arousal 20 "masturbationAnal">>
-				<<elseif $worn.under_lower.vagina_exposed is 0>>
-					<<if playerHasButtPlug()>>
-						You run your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.under_lower.name.
-					<<else>>
-						You run your fingers over your anus, feeling its shape beneath your $worn.under_lower.name.
-					<</if>>
-					<<arousal 20 "masturbationAnal">>
-				<<elseif $worn.genitals.vagina_exposed is 0>>
-					<<if playerHasButtPlug()>>
-						You run your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.genitals.name.
-					<<else>>
-						You run your fingers over your anus, feeling its shape beneath your $worn.genitals.name.
-					<</if>>
-					<<arousal 20 "masturbationAnal">>
-				<<else>>
-					<<if playerHasButtPlug()>>
-						You run your fingers over your $worn.butt_plug.name<<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>>, feeling its shape beneath your clothing<</if>>.
-					<<else>>
-						You run your fingers over your anus<<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>>, feeling its shape beneath your clothing<</if>>.
-					<</if>>
-					<<arousal 5 "masturbationAnal">>
-				<</if>>
-				<<submission 3>><<set $speechmasturbate to 1>>
-			<</if>>
-		<</if>>
-
-		<<if $rightaction is "rightmasturbateanus">>
 			<<set $rightaction to 0>><<set $rightactiondefault to "rightmasturbateanus">>
 			<<if $anususe is 0 and !playerChastity("anus")>>
 				<<combatpromiscuity3>>
+				<<combatpromiscuity3>>
 				<<set $_genitals_exposed to $worn.over_lower.vagina_exposed gte 1 and ($worn.lower.vagina_exposed gte 1 or setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt gte 1) and $worn.under_lower.vagina_exposed gte 1>>
 
 				<<if $_genitals_exposed>>
 					<<if playerHasButtPlug()>>
 						<<if $arousal gte ($arousalmax/5)*4>>
-							You pull your $worn.butt_plug.name in and out of your exposed anus and shiver in anticipation.
+							You pull your $worn.butt_plug.name in and out of your exposed anus with both hands and shiver in anticipation.
 						<<else>>
-							You pull your $worn.butt_plug.name in and out of your exposed anus.
+							You pull your $worn.butt_plug.name in and out of your exposed anus with both hands.
 						<</if>>
 					<<else>>
 						<<if $arousal gte ($arousalmax/5)*4>>
-							You run your fingers in and out of your exposed anus and shiver in anticipation.
+							You run all your fingers in and out of your exposed anus and shiver in anticipation.
 						<<else>>
-							You run your fingers in and out of your exposed anus.
+							You run all your fingers in and out of your exposed anus.
 						<</if>>
 					<</if>>
 					<<arousal 40 "masturbationAnal">><<submission 2>>
 				<<elseif $worn.lower.vagina_exposed is 0 and setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt lt 1>>
 					<<if playerHasButtPlug()>>
-						You run your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.lower.name.
+						You run all your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.lower.name.
 					<<else>>
-						You run your fingers over your anus, feeling its shape beneath your $worn.lower.name.
+						You run all your fingers over your anus, feeling its shape beneath your $worn.lower.name.
 					<</if>>
 					<<arousal 20 "masturbationAnal">>
 				<<elseif $worn.under_lower.vagina_exposed is 0>>
 					<<if playerHasButtPlug()>>
-						You run your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.under_lower.name.
+						You run all your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.under_lower.name.
 					<<else>>
-						You run your fingers over your anus, feeling its shape beneath your $worn.under_lower.name.
+						You run all your fingers over your anus, feeling its shape beneath your $worn.under_lower.name.
 					<</if>>
 					<<arousal 20 "masturbationAnal">>
 				<<elseif $worn.genitals.vagina_exposed is 0>>
 					<<if playerHasButtPlug()>>
-						You run your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.genitals.name.
+						You run all your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.genitals.name.
 					<<else>>
-						You run your fingers over your anus, feeling its shape beneath your $worn.genitals.name.
+						You run all your fingers over your anus, feeling its shape beneath your $worn.genitals.name.
 					<</if>>
 					<<arousal 20 "masturbationAnal">>
 				<<else>>
 					<<if playerHasButtPlug()>>
-						You run your fingers over your $worn.butt_plug.name<<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>>, feeling its shape beneath your clothing<</if>>.
+						You run all your fingers over your $worn.butt_plug.name<<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>>, feeling its shape beneath your clothing<</if>>.
 					<<else>>
-						You run your fingers over your anus<<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>>, feeling its shape beneath your clothing<</if>>.
+						You run all your fingers over your anus<<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>>, feeling its shape beneath your clothing<</if>>.
 					<</if>>
 					<<arousal 5 "masturbationAnal">>
 				<</if>>
 				<<submission 3>><<set $speechmasturbate to 1>>
 			<</if>>
+		<<else>>
+			<<set _actions to ["left", "right"]>>
+			<<for _i = 0; _i < _actions.length; _i++>>
+				<<if _actions[_i] is "left" and $leftaction is "leftmasturbateanus">>
+					<<set $leftaction to 0>><<set $leftactiondefault to "leftmasturbateanus">>
+				<<elseif _actions[_i] is "right" and $rightaction is "rightmasturbateanus">>
+					<<set $rightaction to 0>><<set $rightactiondefault to "rightmasturbateanus">>
+				<<else>>
+					<<continue>>
+				<</if>>
+				<<if $anususe is 0 and !playerChastity("anus")>>
+					<<combatpromiscuity3>>
+					<<set $_genitals_exposed to $worn.over_lower.vagina_exposed gte 1 and ($worn.lower.vagina_exposed gte 1 or setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt gte 1) and $worn.under_lower.vagina_exposed gte 1>>
+
+					<<if $_genitals_exposed>>
+						<<if playerHasButtPlug()>>
+							<<if $arousal gte ($arousalmax/5)*4>>
+								You pull your $worn.butt_plug.name in and out of your exposed anus and shiver in anticipation.
+							<<else>>
+								You pull your $worn.butt_plug.name in and out of your exposed anus.
+							<</if>>
+						<<else>>
+							<<if $arousal gte ($arousalmax/5)*4>>
+								You run your fingers in and out of your exposed anus and shiver in anticipation.
+							<<else>>
+								You run your fingers in and out of your exposed anus.
+							<</if>>
+						<</if>>
+						<<arousal 40 "masturbationAnal">><<submission 2>>
+					<<elseif $worn.lower.vagina_exposed is 0 and setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt lt 1>>
+						<<if playerHasButtPlug()>>
+							You run your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.lower.name.
+						<<else>>
+							You run your fingers over your anus, feeling its shape beneath your $worn.lower.name.
+						<</if>>
+						<<arousal 20 "masturbationAnal">>
+					<<elseif $worn.under_lower.vagina_exposed is 0>>
+						<<if playerHasButtPlug()>>
+							You run your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.under_lower.name.
+						<<else>>
+							You run your fingers over your anus, feeling its shape beneath your $worn.under_lower.name.
+						<</if>>
+						<<arousal 20 "masturbationAnal">>
+					<<elseif $worn.genitals.vagina_exposed is 0>>
+						<<if playerHasButtPlug()>>
+							You run your fingers over your $worn.butt_plug.name, feeling its shape beneath your $worn.genitals.name.
+						<<else>>
+							You run your fingers over your anus, feeling its shape beneath your $worn.genitals.name.
+						<</if>>
+						<<arousal 20 "masturbationAnal">>
+					<<else>>
+						<<if playerHasButtPlug()>>
+							You run your fingers over your $worn.butt_plug.name<<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>>, feeling its shape beneath your clothing<</if>>.
+						<<else>>
+							You run your fingers over your anus<<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>>, feeling its shape beneath your clothing<</if>>.
+						<</if>>
+						<<arousal 5 "masturbationAnal">>
+					<</if>>
+					<<submission 3>><<set $speechmasturbate to 1>>
+				<</if>>
+			<</for>>
 		<</if>>
 
 		<<effectsremovebuttplug>>
