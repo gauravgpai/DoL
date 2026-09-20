@@ -1,0 +1,22 @@
+:: Widgets reaction-BlackWolf [widget]
+
+/* PC lines (plead / demand / forgive / moan). */
+
+<<widget "reaction-blackwolf-plead">>
+	<<set _possibleSentences to [{ sentence: `"Gently, please..."`, dialogueID: "blackwolf_plead_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-blackwolf-demand">>
+	<<set _possibleSentences to [{ sentence: `"Down. DOWN!"`, dialogueID: "blackwolf_demand_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-blackwolf-moan">>
+	<<if $wolfpackleader is 1>>
+		<<set _possibleSentences to [{ sentence: `"Good <<nnpc_gendery "Black Wolf">>. Keep going."`, dialogueID: "blackwolf_moan_leader" }]>>
+	<<else>>
+		<<set _possibleSentences to [{ sentence: `"<<print ($settings.pregnancySpeechEnabled ? "Breed" : "Fuck")>> me, alpha!"`, dialogueID: "blackwolf_moan_default" }]>>
+	<</if>>
+	<<pcLine _possibleSentences>>
+<</widget>>

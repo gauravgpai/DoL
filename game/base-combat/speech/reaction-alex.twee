@@ -1,0 +1,18 @@
+:: Widgets reaction-Alex [widget]
+
+/* PC lines (plead / demand / forgive / moan). */
+
+<<widget "reaction-alex-plead">>
+	<<set _possibleSentences to [{ sentence: `"Alex, control yourself!"`, dialogueID: "alex_plead_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-alex-demand">>
+	<<set _possibleSentences to [{ sentence: `"Alex, you idiot! Control yourself."`, dialogueID: "alex_demand_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-alex-moan">>
+	<<set _possibleSentences to [{ sentence: `"I couldn't ask for a better partner."`, dialogueID: "alex_moan_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>

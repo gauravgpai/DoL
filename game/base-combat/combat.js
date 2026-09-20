@@ -70,6 +70,7 @@ DefineMacroS("namedNpcComments", namedNpcComments);
  * Resolves a named NPC's reaction to something that just happened in combat.
  *
  * `<<namedNpcReaction _n "kissSkin" "thighs">>` -> `<<reaction-avery-kissSkin "thighs">>`
+ * Spaces in the NPC's name are dropped: Black Wolf + "plead" -> `<<reaction-blackwolf-plead>>`.
  *
  * @param {string | number} index NPC index or identifier
  * @param {string} event What just happened, e.g. "kissSkin".
@@ -79,7 +80,7 @@ DefineMacroS("namedNpcComments", namedNpcComments);
 function namedNpcReaction(index, event, subject) {
 	const npcName = V.NPCList[index]?.fullDescription;
 	if (!npcName || !event || !setup.NPCNameList.includes(npcName)) return "";
-	const macro = `reaction-${npcName.toLowerCase()}-${event}`;
+	const macro = `reaction-${npcName.toLowerCase().replace(/\s/g, "")}-${event}`;
 	if (!Macro.has(macro)) return "";
 	return `<<${macro}${subject === undefined ? "" : " " + JSON.stringify(subject)}>>`;
 }

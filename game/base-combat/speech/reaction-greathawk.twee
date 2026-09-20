@@ -1,0 +1,18 @@
+:: Widgets reaction-GreatHawk [widget]
+
+/* PC lines (plead / demand / forgive / moan). */
+
+<<widget "reaction-greathawk-plead">>
+	<<set _possibleSentences to [{ sentence: `"Y-you're going to take care of me, right?"`, dialogueID: "greathawk_plead_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-greathawk-demand">>
+	<<set _possibleSentences to [{ sentence: `"Stop pecking me!"`, dialogueID: "greathawk_demand_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-greathawk-moan">>
+	<<set _possibleSentences to [{ sentence: `"You're not a terror. You're all I need."`, dialogueID: "greathawk_moan_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>

@@ -3,3 +3,39 @@
 <<widget "reaction-sydney-expose">>
 	<<sydneyExpose>>
 <</widget>>
+
+/* PC lines (plead / demand / forgive / moan). */
+
+<<widget "reaction-sydney-plead">>
+	<<run statusCheck("Sydney")>>
+	<<if _sydneyStatus.includes("corrupt")>>
+		<<set _possibleSentences to [{ sentence: `"I thought... you said lust was a sin..."`, dialogueID: "sydney_plead_corrupt" }]>>
+	<<else>>
+		<<set _possibleSentences to [{ sentence: `"I'm sorry, I'll be pure! Please stop!"`, dialogueID: "sydney_plead_default" }]>>
+	<</if>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-sydney-demand">>
+	<<run statusCheck("Sydney")>>
+	<<if _sydneyStatus.includes("corrupt")>>
+		<<set _possibleSentences to [{ sentence: `"I miss when you were pure. At least you didn't pull shit like this."`, dialogueID: "sydney_demand_corrupt" }]>>
+	<<else>>
+		<<set _possibleSentences to [{ sentence: `"What sort of punishment is this? Get off me!"`, dialogueID: "sydney_demand_default" }]>>
+	<</if>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-sydney-moan">>
+	<<run statusCheck("Sydney")>>
+	<<if !_sydneyChastity>>
+		<<if _sydneyStatus.includes("corrupt")>>
+			<<set _possibleSentences to [{ sentence: `"You're the most delicious sin of all."`, dialogueID: "sydney_moan_corrupt" }]>>
+		<<else>>
+			<<set _possibleSentences to [{ sentence: `"Forever, as one."`, dialogueID: "sydney_moan_default" }]>>
+		<</if>>
+	<<else>>
+		<<set _possibleSentences to [{ sentence: `"You make me so lustful."`, dialogueID: "sydney_moan_chastity" }]>>
+	<</if>>
+	<<pcLine _possibleSentences>>
+<</widget>>

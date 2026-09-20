@@ -13,3 +13,34 @@
 		<br><br>
 	<</if>>
 <</widget>>
+
+/* PC lines (plead / demand / forgive / moan). */
+
+<<widget "reaction-gwylan-plead">>
+	<<if $abomination is 1>>
+		<<set _possibleSentences to [{ sentence: `"Gwylan, come back! I'm scared!"`, dialogueID: "gwylan_plead_abomination" }]>>
+	<<elseif $hypnosis_traits.devotion gte 1 or $combat_hypnosis>>
+		<<set _possibleSentences to [{ sentence: `"Gwylan, please, I can't think straight!"`, dialogueID: "gwylan_plead_hypnosis" }]>>
+	<<else>>
+		<<set _possibleSentences to [{ sentence: `"Gwylan, please, this doesn't feel right!"`, dialogueID: "gwylan_plead_default" }]>>
+	<</if>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-gwylan-demand">>
+	<<if $abomination is 1>>
+		<<set _possibleSentences to [{ sentence: `"Gwylan, I know you're in there! Take control!"`, dialogueID: "gwylan_demand_abomination" }]>>
+	<<elseif $hypnosis_traits.devotion gte 4 or $combat_hypnosis>>
+		<<set _possibleSentences to [{ sentence: `"Gwylan, stop! Get out of my head!"`, dialogueID: "gwylan_demand_hypnosis" }]>>
+	<<elseif $gwylanSeen.includes("romance")>>
+		<<set _possibleSentences to [{ sentence: `"Gwylan, stop this! You promised!"`, dialogueID: "gwylan_demand_romance" }]>>
+	<<else>>
+		<<set _possibleSentences to [{ sentence: `"Gwylan, stop this!"`, dialogueID: "gwylan_demand_default" }]>>
+	<</if>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-gwylan-moan">>
+	<<set _possibleSentences to [{ sentence: `"I think I'm bewitched."`, dialogueID: "gwylan_moan_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>

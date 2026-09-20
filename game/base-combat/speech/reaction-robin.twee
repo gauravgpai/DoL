@@ -1,0 +1,22 @@
+:: Widgets reaction-Robin [widget]
+
+/* PC lines (plead / demand / forgive / moan). */
+
+<<widget "reaction-robin-plead">>
+	<<set _possibleSentences to [{ sentence: `"Robin, please stop!"`, dialogueID: "robin_plead_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-robin-demand">>
+	<<set _possibleSentences to [{ sentence: `"Robin, stop! I don't want this!"`, dialogueID: "robin_demand_default" }]>>
+	<<pcLine _possibleSentences>>
+<</widget>>
+
+<<widget "reaction-robin-moan">>
+	<<if C.npc.Robin.dom gte 70>>
+		<<set _possibleSentences to [{ sentence: `"You know just how to turn me on."`, dialogueID: "robin_moan_dom" }]>>
+	<<else>>
+		<<set _possibleSentences to [{ sentence: `"I'm gonna melt, you're making me so happy."`, dialogueID: "robin_moan_default" }]>>
+	<</if>>
+	<<pcLine _possibleSentences>>
+<</widget>>

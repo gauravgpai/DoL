@@ -1060,9 +1060,7 @@
 			<<if !_pcLineReplaced>>
 				<<switch _loveInterest>>
 					<<case "Robin">>
-						<<if $npc.includes("Robin")>>
-							"Robin, please stop!"
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"Please, no! I'm saving that for Robin!"
@@ -1108,9 +1106,7 @@
 							<</if>>
 						<</if>>
 					<<case "Kylar">>
-						<<if $npc.includes("Kylar")>>
-							"Kylar... I thought you loved me..."
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"Please, I wanted Kylar to be the one to take me!"
@@ -1214,9 +1210,7 @@
 							<<status 1>><<gcool>>
 						<</if>>
 					<<case "Eden">>
-						<<if $npc.includes("Eden")>>
-							"N...not so rough, Eden..."
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"I wanted to share this moment with Eden! Please don't take my virginity!"
@@ -1262,9 +1256,7 @@
 							<</if>>
 						<</if>>
 					<<case "Black Wolf">>
-						<<if $npc.includes("Black Wolf")>>
-							"Gently, please..."
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"I was saving this for my wolf! Please no!"
@@ -1358,9 +1350,7 @@
 						<</if>>
 
 					<<case "Great Hawk">>
-						<<if $npc.includes("Great Hawk")>>
-							"Y-you're going to take care of me, right?"
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"Please stop! I'm saving myself for my <<hawkText>> spouse!"
@@ -1408,9 +1398,7 @@
 						<<famebestiality $enemyno>>
 
 					<<case "Alex">>
-						<<if $npc.includes("Alex")>>
-							"Alex, control yourself!"
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"N-not there, that's for Alex!"
@@ -1457,14 +1445,7 @@
 						<</if>>
 
 					<<case "Sydney">>
-						<<run statusCheck("Sydney")>>
-						<<if $npc.includes("Sydney")>>
-							<<if _sydneyStatus.includes("corrupt")>>
-								"I thought... you said lust was a sin..."
-							<<else>>
-								"I'm sorry, I'll be pure! Please stop!"
-							<</if>>
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $templePromised is "Sydney">>
 								<<if (($player.virginity.vaginal is true or $player.virginity.temple is true) and $vaginastate is "imminent") or (($player.virginity.penile is true and $player.virginity.temple is true) and ($penisstate is "imminent" or $penisstate is "otheranusimminent"))>>
 									<<if $awarelevel gte 1>>
@@ -1565,15 +1546,7 @@
 						<</if>>
 
 					<<case "Gwylan">>
-						<<if $npc.includes("Gwylan")>>
-							<<if $abomination is 1>>
-								"Gwylan, come back! I'm scared!"
-							<<elseif $hypnosis_traits.devotion gte 1 or $combat_hypnosis>>
-								"Gwylan, please, I can't think straight!"
-							<<else>>
-								"Gwylan, please, this doesn't feel right!"
-							<</if>>
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"N-not there, I'm saving that for a special moment with Gwylan!"
@@ -1807,45 +1780,6 @@
 	You <<voice "moan">>.
 	<<if $npc.includes(_loveInterest) and random(0,100) lte 45>>
 		<<pcLineHook "moan">>
-		<<if !_pcLineReplaced>>
-			<<switch _loveInterest>>
-				<<case "Robin">>
-					<<if C.npc.Robin.dom gte 70>>
-						<<set $speechspecialdialogue to "robin_moan_dom">>
-						"You know just how to turn me on."
-					<<else>>
-						<<set $speechspecialdialogue to "robin_moan_default">>
-						"I'm gonna melt, you're making me so happy."
-					<</if>>
-				<<case "Sydney">>
-					<<run statusCheck("Sydney")>>
-					<<if !_sydneyChastity>>
-						<<if _sydneyStatus.includes("corrupt")>>
-							"You're the most delicious sin of all."
-						<<else>>
-							"Forever, as one."
-						<</if>>
-					<<else>>
-						"You make me so lustful."
-					<</if>>
-				<<case "Black Wolf">>
-					<<if $wolfpackleader is 1>>
-						"Good <<nnpc_gendery "Black Wolf">>. Keep going."
-					<<else>>
-						"<<print ($settings.pregnancySpeechEnabled ? "Breed" : "Fuck")>> me, alpha!"
-					<</if>>
-				<<case "Great Hawk">>
-					"You're not a terror. You're all I need."
-				<<case "Eden">>
-					"I belong to you, and you alone."
-				<<case "Alex">>
-					"I couldn't ask for a better partner."
-				<<case "Kylar">>
-					"You're the only one I need, Kylar."
-				<<case "Gwylan">>
-					"I think I'm bewitched."
-			<</switch>>
-		<</if>>
 	<<elseif $enemytype is "beast">>
 		<<if $vaginastate is "imminent">>
 			<<if $player.virginity.vaginal is true>>
@@ -2512,9 +2446,7 @@
 			<<if !_pcLineReplaced>>
 				<<switch _loveInterest>>
 					<<case "Robin">>
-						<<if $npc.includes("Robin")>>
-							"Robin, stop! I don't want this!"
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"Robin is the only one that deserves my virginity!"
@@ -2561,9 +2493,7 @@
 						<</if>>
 
 					<<case "Kylar">>
-						<<if $npc.includes("Kylar")>>
-							"I'm not in the mood for your shit right now, Kylar."
-						<<elseif $vaginastate is "imminent">>
+						<<if $vaginastate is "imminent">>
 							<<if $player.virginity.vaginal is true>>
 								<<if $awarelevel gte 1>>
 									"If you make me bleed, Kylar will make you bleed!"
@@ -2673,9 +2603,7 @@
 						<</if>>
 
 					<<case "Eden">>
-						<<if $npc.includes("Eden")>>
-							"I'm not your prey today, leave me alone."
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"Eden will be the one to take me, not you!"
@@ -2722,9 +2650,7 @@
 						<</if>>
 
 					<<case "Black Wolf">>
-						<<if $npc.includes("Black Wolf")>>
-							"Down. DOWN!"
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"My wolf is more worthy of my virginity than you!"
@@ -2819,9 +2745,7 @@
 						<</if>>
 
 					<<case "Great Hawk">>
-						<<if $npc.includes("Great Hawk")>>
-							"Stop pecking me!"
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"Stop! I'm saving my virginity for my <<hawkText>> spouse!"
@@ -2869,9 +2793,7 @@
 						<<famebestiality $enemyno>>
 
 					<<case "Alex">>
-						<<if $npc.includes("Alex")>>
-							"Alex, you idiot! Control yourself."
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"My virginity belongs to Alex!"
@@ -2918,14 +2840,7 @@
 						<</if>>
 
 					<<case "Sydney">>
-						<<run statusCheck("Sydney")>>
-						<<if $npc.includes("Sydney")>>
-							<<if _sydneyStatus.includes("corrupt")>>
-								"I miss when you were pure. At least you didn't pull shit like this."
-							<<else>>
-								"What sort of punishment is this? Get off me!"
-							<</if>>
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $templePromised is "Sydney">>
 								<<if (($player.virginity.vaginal is true or $player.virginity.temple is true) and $vaginastate is "imminent") or (($player.virginity.penile is true and $player.virginity.temple is true) and ($penisstate is "imminent" or $penisstate is "otheranusimminent"))>>
 									<<if $awarelevel gte 1>>
@@ -3026,17 +2941,7 @@
 						<</if>>
 
 					<<case "Gwylan">>
-						<<if $npc.includes("Gwylan")>>
-							<<if $abomination is 1>>
-								"Gwylan, I know you're in there! Take control!"
-							<<elseif $hypnosis_traits.devotion gte 4 or $combat_hypnosis>>
-								"Gwylan, stop! Get out of my head!"
-							<<elseif $gwylanSeen.includes("romance")>>
-								"Gwylan, stop this! You promised!"
-							<<else>>
-								"Gwylan, stop this!"
-							<</if>>
-						<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
+						<<if $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 							<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 								<<if $awarelevel gte 1>>
 									"My virginity belongs to Gwylan alone!"
