@@ -2592,12 +2592,7 @@
 	<<if isPregnancyEnding()>>
 		<<pregnancyPassout "street">>
 	<<else>>
-		<<if $bus is "barb" and $mine?.freed isnot 1 and dangerEvent()>>
-			<<link [[Next|Flats Auction]]>><</link>>
-			<br>
-		<<else>>
-			<<link [[Everything fades to black...|Passout street]]>><</link>>
-		<</if>>
+		<<link [[Everything fades to black...|Passout street]]>><</link>>
 	<</if>>
 <</widget>>
 
