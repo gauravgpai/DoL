@@ -4841,6 +4841,7 @@ function initHead() {
 			location: 0,
 			iconFile: "mining-helmet.png",
 			accIcon: "mining-helmet-acc.png",
+			detailIcon: "mining-helmet-detail.png",
 		}),
 	];
 	setup.clothes.head = clothing;
