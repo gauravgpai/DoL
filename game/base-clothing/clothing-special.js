@@ -403,6 +403,7 @@ function initSpecialClothes() {
 			requirements: () => V.mine?.freed,
 			hint: "break the chains that bind",
 			shop: ["forest"],
+			subsetOf: ["bad_end"],
 			feat: true,
 			featCost: 5,
 			icon: "clothes",
