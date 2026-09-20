@@ -14,7 +14,9 @@
 			<<case "averyHotTubVoyeur">>
 				"Don't worry, <<pcpetname "Avery">>," <<he>> murmurs. "They won't be watching for long." There's a mischievous gleam in <<his>> eyes.
 			<<default>>
+				<<cleareventpool>>
 				<<averyBaseSpeech>>
+				<<runeventpool>>
 		<</switch>>
 	<<elseif $speechNPCAnusVirgin is 1>>
 		<<if $speechpenisvirgin is 1 and $player.virginity.penile is "Avery">>
@@ -170,7 +172,7 @@
 			<<acceptance "breasts_big" 10>><<gacceptance>>
 		<</if>>
 	<<elseif $speechpenisbig is 1>>
-		<<print either(
+		<<print speechPick(
 			`"How do you expect a refined person such as myself to handle something so massive and vulgar?" <<he>> teases, <<his>> breath hitching.`,
 			`"You're absurdly large," <<he>> smirks coyly. "Are you trying to intimidate me, <<pcpetname "Avery">>?"`,
 			`"I don't usually accommodate such excessive proportions, but for you..." <<he>> trails off with a smirk.`,
@@ -178,44 +180,6 @@
 			`"A bit excessive, isn't it?" <<he>> licks <<his>> lips. "Don't worry, I've always preferred the grander things in life."`
 		)>>
 	/* Avery hits chastity device  */
-	<<elseif $speechchastity is 1>>
-		<<if $averySeen.includes("player_virgin")>> /* Avery knows about the vow */
-			<<if $averyragerevealed is 1>>
-				<<print either(
-					`<<He>> scowls. "You and your bloody temple nonsense. It's taking everything in me not to drag you to a locksmith right now."`,
-					`"Your god isn't the one providing for you, <<pcpetname "Avery">>. Take this wretched thing off."`,
-					`"You think a <<= C.npc.Avery.rage gte 20 ? "ridiculous" : "silly">> temple vow gives you an excuse to waste my time? Get rid of this."`
-					)>>
-			<<else>>
-				<<print either(
-					`"A <<= $worn.genitals.name is "gold chastity belt" ? "bit of gold" : "piece of iron">> won't protect your purity for long, <<pcpetname "Avery">>. You belong to me, after all."`,
-					`"I do wonder how long it will take for me to make you break this little vow of yours<<if $brokenVowCount?.Avery gt 1>> this time<</if>>>."`,
-					`"This device is rather tiresome. I do hope you reconsider that silly vow of yours soon."`
-					)>>
-			<</if>>
-		<<elseif $averyragerevealed is 1>>
-			<<print either(
-				`<<He>> scowls. "What is this ridiculous thing doing on you?"`,
-				`"You're making a complete mockery of my time with this nonsense."`,
-				`"You little brat. Was this truly necessary?"`
-				)>>
-		<<else>>
-			<<print either(
-				`<<He>> frowns. "A <<printChastity>>? I didn't realize you were into this sort of tease."`,
-				`<<He>> smirks. "Playing hard to get, are we? How adorable."`,
-				`"Trying to protect yourself? It only makes me want to claim you more."`
-				)>>
-		<</if>>
-	/* Avery flaunts pussy */
-	<<elseif $speechvaginaflaunt is 1>>
-		<<print either(
-			`<<He>> smiles. "Well? Don't just stare like a beggar outside a shop window."`,
-			`<<He>> laughs. "A privilege like this doesn't come cheap, <<pcpetname "Avery">>. You would do well to remember that."`,
-			`<<He>> smiles salaciously, letting <<his>> fingers trace the edge of <<his>> <<pussy>>. "I expect you to appreciate every inch of what you're being offered right now."`,
-			`"Keep your eyes right here," <<he>> coos. "I want to watch your mouth water."`,
-			`"Take a good look, <<pcpetname "Avery">>. This is the only view that should matter to you," <<he>> drawls.`
-			)>>
-	/* Reacting to PC's scream for help  */
 	<<elseif $speechscream is 1>>
 		<<if C.npc.Avery.rage gte 60 or $enemyanger gt 100>>
 			/* Avery is either infuriated by you or furious in combat */
@@ -316,12 +280,12 @@
 		<<set $speechsextoy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if C.npc.Avery.rage lte 60>>
-			<<He>> looks at your $_sexToy and speaks. "<<print either(
+			<<He>> looks at your $_sexToy and speaks. "<<print speechPick(
 				`Well, this is a nice change of pace.`,
 				`Everyone has their tools of the trade.`
 			)>>"
 		<<else>>
-			<<He>> looks at your $_sexToy and speaks. "<<print either(
+			<<He>> looks at your $_sexToy and speaks. "<<print speechPick(
 				`Oh, no. I'm paying you too much for this.`,
 				`You put that back this instant.`
 			)>>"
@@ -330,16 +294,6 @@
 				<<set $enemyanger += 30>><<set $enemytrust -= 30>>
 			<</if>>
 		<</if>>
-	<<elseif $speechdildovagina is 1 or $speechdildoanus is 1>>
-		<<if random(0,1) is 0>>
-			"<<= either("Oh, fuck","Yes")>>..." <<he>> <<= either("moans","groans","gasps")>>. "<<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 20 ? "That's it" : "Good <<girl>>">>, just like that."
-		<<else>>
-			"Yes," <<he>> <<= either("hisses","groans","moans","breathes")>>. <<= $averyragerevealed gte 1 and (C.npc.Avery.rage gte 60 or C.npc.Avery.lust gte 40) ? "It's hard to keep the toy still with how roughly <<he>> rides it." : "<<He>> seems briefly lost in the sensation.">>
-		<</if>>
-
-	<<elseif $speechstroker is 1>>
-		"Yes," <<he>> <<= either("hisses","groans","moans","breathes")>>. <<= $averyragerevealed gte 1 and (C.npc.Avery.rage gte 60 or C.npc.Avery.lust gte 40 or $enemyarousal gte ($enemyarousalmax / 5) * 4) ? "It's hard to keep the toy still with how roughly <<he>> thrusts into it." : "<<He>> seems briefly lost in the sensation.">>
-	/* PC apologizes after saving Avery  */
 	<<elseif $speechapologise is 1 and $avery_fate is "saved">>
 		<<if C.npc.Avery.rage lt 20 and !$consensual>>
 			"...I'll give you one chance to make this up to me, <<pcpetname "Avery">>," <<he>> says with a huff, appearing to calm somewhat. <<note "Avery's Saviour" "teal">>
@@ -352,8 +306,8 @@
 		<</if>>
 	/* Growling at Avery with the Wolf TF in a consensual encounter  */
 	<<elseif $speechgrowl is 1 and $consensual>>
-		<<print either(
-			`<<He>> sighs dramatically. "You're much too expensive of a pet to be acting feral."`,
+		<<print speechPick(
+			`<<He>> sighs dramatically. "You're much too expensive of a pet to be acting feral."`, 
 			`"My, my. Someone is feeling feisty today. Shall I fetch your leash?"`,
 			`"Careful now. I'd hate to have to buy you a muzzle."`,
 			`"Is my little puppy throwing a tantrum? Come, let me smooth it over."`,
@@ -361,15 +315,15 @@
 			)>>
 	<<elseif $speechgrowlheat is 1 or $speechgrowlrut is 1>>
 		<<if C.npc.Avery.rage lt 20>>
-			<<print either(
-				`"You sound so terribly fragile," <<he>> purrs, stroking your hair. "Let me make it all better."`,
+			<<print speechPick(
+				`"You sound so terribly fragile," <<he>> purrs, stroking your hair. "Let me make it all better."`, 
 				`"There's no need to whine,<<if C.npc.Avery.love gte 60>> my sweet<</if>> puppy," <<he>> coos. "I'll give you exactly what you need."`
 			)>>
 		<<else>>
-			<<print either(
-				`<<He>> coos, stroking your flushed cheek. "My poor, desperate puppy. Does it ache that badly?"`,
-				`<<He>> purrs. "You sound so terribly desperate, <<pcpetname "Avery">>. Shall I put you out of your misery?"`,
-				`"Hush now, <<pcpetname "Avery">>. You don't have to beg so hard," <<he>> whispers against your ear. "I'm right here."`,
+			<<print speechPick(
+				`<<He>> coos, stroking your flushed cheek. "My poor, desperate puppy. Does it ache that badly?"`, 
+				`<<He>> purrs. "You sound so terribly desperate, <<pcpetname "Avery">>. Shall I put you out of your misery?"`, 
+				`"Hush now, <<pcpetname "Avery">>. You don't have to beg so hard," 	<<he>> whispers against your ear. "I'm right here."`, 
 			)>>
 		<</if>>
 
@@ -523,19 +477,19 @@
 	/* PC apologizing more than once */
 	<<elseif $speechapologiseno is 1>>
 		<<if $enemyanger lte 20>>
-			<<print either(
+			<<print speechPick(
 				`"Look at you, grovelling so eagerly," <<he>> coos. "Hush now, I already forgave you."`,
 				`"As cute as it is to see you so eager to stay in my good graces, once was enough."`,
 				`<<He>> laughs, thoroughly amused. "I already accepted your apology, <<pcpetname "Avery">>. There's no need to keep grovelling."`
 				)>>
 		<<elseif $enemyanger lte 100>>
-			<<print either(
+			<<print speechPick(
 				`"It's almost cute how quickly you resort to groveling." <<He>> smiles coldly. "Almost."`,
 				`"I do find your desperation entertaining," <<he>> chuckles dryly. "But my forgiveness isn't in endless supply."`,
 				`"I'm afraid my goodwill isn't a renewable resource, <<pcpetname "Avery">>," <<he>> sneers.`
 			)>>
 		<<else>>
-			<<print either(
+			<<print speechPick(
 				`"I should have fucking known you were lying!" <<He>> looks furious.`,
 				`"If you think I'll fall for that again, you're more foolish than I thought!"`,
 				`"You think you can just apologise every time you cross me?" <<he>> scoffs. "I am not falling for your tricks twice."`,
@@ -546,38 +500,38 @@
 	/* PC apologizing when Avery has the unforgiving trait  */
 	<<elseif $speechapologiseunforgiving is 1 and $consensual>>
 		<<if $enemyanger lte 20 or C.npc.Avery.rage lt 20>>
-			<<print either(
-				`"No need to waste your breath, <<pcpetname "Avery">>," <<he>> says with a smile.`,
-				`"If you were actually sorry, you wouldn't have done it in the first place," <<he>> says with a raised brow.`,
+			<<print speechPick(
+				`"No need to waste your breath, <<pcpetname "Avery">>," <<he>> says with a smile.`, 
+				`"If you were actually sorry, you wouldn't have done it in the first place," <<he>> says with a raised brow.`, 
 				)>>
 		<<elseif $enemyanger lte 100 or C.npc.Avery.rage lt 60>>
-			<<print either(
+			<<print speechPick(
 				`"You'll get no less than what you've earned, <<girl>>."`,
 				`"Don't waste your breath," <<he>> says with a nasty smirk.`,
 				)>>
 		<<else>>
-			<<print either(
-				`"Shut the fuck up," <<he>> hisses. "That's enough out of you."`,
-				`"If you were actually sorry, you wouldn't have done it in the first place, you little <<= either("<<bitch>>","<<bastard>>","<<cunt>>")>>."`,
+			<<print speechPick(
+				`"Shut the fuck up," <<he>> hisses. "That's enough out of you."`, 
+				`"If you were actually sorry, you wouldn't have done it in the first place, you little <<= either("<<bitch>>","<<bastard>>","<<cunt>>")>>."`, 
 				)>>
 		<</if>>
 	<<elseif $speechapologiseunforgiving is 1 and !$consensual>>
 		<<if $enemyanger lte 20 or C.npc.Avery.rage lt 20>>
-			<<print either(
-				`"Don't waste your breath, <<pcpetname "Avery">>," <<he>> says with a forced smile that promises pain.`,
-				`"If you were actually sorry, you wouldn't have done it in the first place," <<he>> says with a merciless stare.`,
+			<<print speechPick(
+				`"Don't waste your breath, <<pcpetname "Avery">>," <<he>> says with a forced smile that promises pain.`, 
+				`"If you were actually sorry, you wouldn't have done it in the first place," <<he>> says with a merciless stare.`, 
 				`"Oh, you're sorry? Prove it," <<he>> <<= either("hisses","snarls","growls")>>. "Don't fight back, <<girl>>."`
 				)>>
 		<<elseif $enemyanger lte 100 or C.npc.Avery.rage lt 60>>
-			<<print either(
+			<<print speechPick(
 				`"You'll get no less than what you've earned, <<girl>>!"`,
 				`"Don't waste your breath," <<he>> says with a nasty smirk.`,
 				`"Just stay still and take it, you filthy little <<= either("slut","<<bitch>>","whore","tramp","fucktoy")>>!"`
 				)>>
 		<<else>>
-			<<print either(
-				`"Shut the fuck up!" <<he>> hisses. "Do you really think you can apologise your way out of this?"`,
-				`"If you were actually sorry, you wouldn't have done it in the first place, <<= either("<<bitch>>","whore","you little <<cunt>>")>>!"`,
+			<<print speechPick(
+				`"Shut the fuck up!" <<he>> hisses. "Do you really think you can apologise your way out of this?"`, 
+				`"If you were actually sorry, you wouldn't have done it in the first place, <<= either("<<bitch>>","whore","you little <<cunt>>")>>!"`, 
 				`"I've had it with your bullshit," <<he>> hisses. "Stay still if you know what's good for you!"`
 				)>>
 		<</if>>
@@ -603,24 +557,24 @@
 	<<elseif $speechcum is 1>>
 		<<if $consensual>>
 			<<if $orgasmcount gte 2>>
-				<<print either(
+				<<print speechPick(
 					`"<<= $orgasmcount gte 4 ? "Another" : $orgasmcount is 3 ? "A third" : "A second">> one?" <<He>> grins. "How flattering."`,
 					`"Again? Who knew you were so <<= C.npc.Avery.rage gte 40 ? "easy" : "sensitive">>?"`
 				)>>
 			<<else>>
-				<<print either(
+				<<print speechPick(
 					`"There we are." <<He>> <<laughs>> quietly. "Let it all out, <<pcpetname "Avery">>."`,
 					`"Somehow I thought you'd last longer than this." <<He>> seems smug.`,
 					`"You make the <<= C.npc.Avery.rage gte 40 ? "most alluring" : "sweetest">> faces when you cum."`
 				)>>
 			<</if>>
 		<<elseif $orgasmcount gte 2>>
-			<<print either(
+			<<print speechPick(
 				`"<<= $orgasmcount gte 4 ? "Another" : $orgasmcount is 3 ? "A third" : "A second">> one?" <<He>> <<laughs>>.`,
 				`"Again? Who knew you were so easy?" <<He>> smirks. "Or could it be that you just like being punished?"`
 			)>>
 		<<else>>
-			<<print either(
+			<<print speechPick(
 				`"Really?" <<He>> barks a mocking laugh. "Now? You little <<slut>>!"`,
 				C.npc.Avery.rage >= 60
 				? `"See what you get if you behave, <<bitch>>?"`
@@ -643,530 +597,6 @@
 		<<else>>
 			"So much sweetness going to waste..." <<he>> smiles coyly. "Shall I help you keep things tidy by drinking straight from the source, <<pcpetname "Avery">>?"
 		<</if>>
-	<<elseif $speechvagina is 1 or $speechpenis is 1 or $speechanus is 1>>
-		<<cleareventpool>>
-		<<addinlineevent "avery_speech_vagina_touch" 1>>
-			"Such a sweet little <<= either("pussy","cunt")>> you have...<<if npcHasStrapon() or C.npc.Avery.penis isnot "none">> Makes me want to fuck it proper,<</if>>" <<he>> says.
-		<</addinlineevent>>
-
-		/* Player is a virgin */
-		<<if ($player.vaginaExist and $player.virginity.vaginal is true) or (($player.penisExist and $parasite.clit.name isnot "parasite") and $player.virginity.penile is true)>>
-			<<if not $averySeen.includes("virginKnown")>> /* Avery doesn't know you're a virgin */
-				<<set $averySeen.pushUnique("virginKnown")>>
-				/* Dialogue only triggers at consensual or noncon + low anger */
-				<<if $consensual or (!$consensual and $enemyanger lte 20)>>
-					<<addinlineevent "avery_speech_virgin" 3>>
-						"Oh, could it be...?" <<His>> fingers <<if $speechpenis is 1>>rub the tip of your penis, playing with your foreskin and glans<<else>>poke about inside you, pressing against your hymen<</if>> and making you jolt. "Still a virgin, are you?
-						<<if $fame.sex gte 400 or $fame.prostitution gte 400>>
-							Color me surprised, you little <<= $fame.sex gt $fame.prostitution ? "slut" : "whore">>.
-						<<elseif $fame.rape gte 400 or $fame.exhibitionism gte 400>>
-							I'm shocked, considering your...reputation."
-						<<else>>
-							Interesting..." <<His>> gaze darkens a shade with desire.
-						<</if>>
-					<</addinlineevent>>
-				<</if>>
-			<<else>> /* Avery knows you're a virgin */
-				<<addinlineevent "avery_speech_virgin_known" 1.5>>
-					"How would you feel if I were to take your virginity here and now, <<pcpetname "Avery">>?" <<he>> asks as <<he>> <<if $speechpenis is 1>>plays with your foreskin and glans<<else>>presses against your hymen<</if>>, making you jolt. <<He>> <<if $averyragerevealed is 1>>doesn't sound like <<hes>> joking.<<else>>smiles. "...I'm only joking, of course."<</if>>
-				<</addinlineevent>>
-
-			<</if>>
-		<</if>>
-
-		/* Avery has a vagina, OR Avery doesn't have a vagina but has lost their anal virginity */
-		<<if $speechpenis is 1>>
-			<<addinlineevent "avery_speech_penis_npc" 1>>
-				<<if C.npc.Avery.vagina isnot "none" or (C.npc.Avery.vagina is "none" and C.npc.Avery.virginity.anal isnot true)>>
-					"Such <<= $player.penissize gte 3 ? "thick" : $player.penissize gte 1 ? "an enticing" : "a sweet little">> <<= either("cock","penis")>> you have. Makes me want to fuck it proper," <<he>> says. <<insecurity "penis_small" 1>><<ginsecurity "penis_small">>
-				<<else>>
-					"Such <<= $player.penissize gte 3 ? "thick" : $player.penissize gte 1 ? "an enticing" : "a sweet little">> <<= either("cock","penis")>> you have, <<pcpetname "Avery">>," <<he>> says. <<insecurity "penis_small" 1>><<ginsecurity "penis_small">>
-				<</if>>
-			<</addinlineevent>>
-		<</if>>
-
-
-		/* Arousal-based dialogue */
-		<<if $arousal gte 6000>>
-			<<addinlineevent "avery_speech_fingering_aroused" 2>>
-				<<print either(
-					`"So desperate," <<he>> <<if C.npc.Avery.rage gte 20>>sneers. "You hardly deserve this release after the way you've behaved."<<else>>muses. "Perhaps I should charge you for this rather than the other way around."<</if>>`,
-					`<<His>> <<if $speechanus is 1>>fingers press deeper<<else>>thumb brushes <<if $speechvagina is 1>>your clit<<else>>the head of your penis<</if>><</if>>, feeling you shudder. "I could <<if C.npc.Avery.rage gte 20>>stop right now and leave you begging. You'd do well to remember that."<<else>>tip you over the edge so easily..."<</if>>`
-				)>>
-			<</addinlineevent>>
-			<<if C.npc.Avery.rage gte 20>>
-				<<addinlineevent "avery_speech_fingering_aroused_enraged_1" 1>>
-					<<if $speechanus is 1>>"Clenching around my fingers<<else>>"<<if $speechvagina is 1>>Dripping<<else>>Leaking<</if>> everywhere<</if>> like a desperate little slut," <<he>> scoffs. "If only you were half as eager to please me as your body is."
-				<</addinlineevent>>
-				<<addinlineevent "avery_speech_fingering_aroused_enraged_2" 1>>
-					<<if $speechpenis is 1>>
-						<<He>> scoffs. "I spend a fortune providing for you, and you repay me by acting out, throbbing in my palm in the meanwhile."
-					<<else>>
-						<<He>> <<= either("scoffs","huffs")>>. "I spend a fortune providing for you, and you repay me by acting out, melting all over my hand in the meanwhile."
-					<</if>>
-				<</addinlineevent>>
-				<<addinlineevent "avery_speech_fingering_aroused_enraged_3" 1>>
-					"Remember this feeling the next time you think to cross me," <<he>> warns, <<if $speechpenis is 1>>stroking <<his>> hand harshly along your length.<<else>>twisting <<his>> fingers harshly inside you.<</if>>
-				<</addinlineevent>>
-			<<else>>
-				<<addinlineevent "avery_speech_fingering_aroused_calm" 2>>
-					<<print either(
-						`"You're <<if $speechanus is 1>>clenching so tightly around me<<else>><<if $speechvagina is 1>>dripping<<else>>leaking<</if>> everywhere<</if>>," <<he>> <<laughs>>. "I suppose I can't blame you, considering whose hands are on you."`,
-						`"My investment seems to be yielding quite the <<if $speechanus is 1>>reaction<<else>>mess<</if>>, <<pcpetname "Avery">>."`
-					)>>
-				<</addinlineevent>>
-				<<addinlineevent "avery_speech_fingering_aroused_calm_3" 1>>
-					<<if $speechpenis is 1>>
-						"I expect you to remember who has you falling apart like this, <<pcpetname "Avery">>," <<he>> says, tightening <<his>> grip around your length.
-					<<else>>
-						"I expect you to remember exactly who has you falling apart like this, my <<pcpetname "Avery">>," <<he>> says, twisting <<his>> fingers inside you.
-					<</if>>
-				<</addinlineevent>>
-			<</if>>
-		<<elseif C.npc.Avery.rage gte 20>>
-
-			<<addinlineevent "avery_speech_fingering_cold_enraged" 4>>
-				<<print either(
-					`"Your attitude is dreadful, but you still feel exquisite <<if $speechpenis is 1>>in my hand<<else>>around my fingers<</if>>," <<he>> admits with a frustrated sigh.`,
-					`"I'd usually make this last, but frankly you haven't been worth the extra effort lately," <<he>> remarks icily.`,
-					`"You ought to be far more grateful I'm still willing to touch you when you behave like a spoiled brat."`,
-					`"I was going to be gentle, but I think a harsher pace suits your current attitude," <<he>> says, <<if $speechpenis is 1>>stroking your length<<else>>driving <<his>> fingers in<</if>> faster.`
-				)>>
-			<</addinlineevent>>
-			<<addinlineevent "avery_speech_fingering_cold_enraged_5" 1>>
-				<<He>> barks a laugh. "All that stubbornness and your
-				<<if $speechvagina is 1>>
-					cunt still grips and pulls my fingers deeper like it's starving for them."
-				<<elseif $speechpenis is 1>>
-					cock still strains in my grip like it was always meant to."
-				<<else>>
-					ass still clenches and pulls my fingers deeper like it needs them."
-				<</if>>
-			<</addinlineevent>>
-		<<else>>
-			<<addinlineevent "avery_speech_fingering_cold_calm" 4>>
-				<<print either(
-					`"You feel exquisite <<if $speechvagina is 1 or $speechanus is 1>>around me<</if>><<if $dateCount?.Avery gte 3>>, as always<</if>>," <<he>> breathes.`,
-					`"I could play with you like this all day... if I didn't have more important matters to attend to."`,
-					`"You should feel honored. I don't give my attention so freely to just anyone." <<He>> <<= either("smirks","smiles","winks")>>.`,
-					`"I could speed up... but I think I'd rather take my time with you," <<he>> teases.`
-				)>>
-			<</addinlineevent>>
-			<<addinlineevent "avery_speech_fingering_cold_calm_5" 1>>
-				<<if $speechpenis is 1>>
-					"You were built to throb in my hand like this, <<pcpetname "Avery">>. Don't you think?"
-				<<else>>
-					"You were built to feel this full, <<pcpetname "Avery">>. Don't you think?"
-				<</if>>
-			<</addinlineevent>>
-		<</if>>
-
-		/* Anus play */
-		<<if C.npc.Avery.rage lt 20 or $enemyanger lte 20>>
-			<<addinlineevent "avery_speech_anus" 1>>
-				"Let's see what we have here..."
-			<</addinlineevent>>
-		<</if>>
-
-		<<runeventpool>>
-	<<elseif $speechthroat is 1>>
-		<<if $choketrait gt 0>>
-			<<if $consensual>>
-				<<if C.npc.Avery.rage gte 20>>
-					<<He>> sneers, <<his>> grip tightening mercilessly. "You act out just to get my hand around your throat, don't you? What a needy little <<slut>>."
-				<<else>>
-					"Since you've been so accommodating lately," <<he>> purrs, tightening <<his>> grip, "I suppose I can indulge your little <<= either("sickness","perversion")>>."
-				<</if>>
-			<<elseif $enemyanger lte 20>>
-				"There's no need to look so conflicted," <<he>> coos. "It is only natural for a toy to melt under its owner's grip. Even when forced."
-			<<else>>
-				"You thrash and cry, and yet your pulse is fluttering so beautifully against my palm. I find that rather telling, don't you?"
-			<</if>>
-		<<elseif $consensual>>
-			<<if C.npc.Avery.rage gte 20>>
-				"Don't think this makes up for your recent behaviour. I can cut off your air just easily as your allowance."
-			<<else>>
-				"I can feel how fast your heart is beating," <<he>> murmurs, thumb pressing into your pulse. "Are you frightened of me, <<pcpetname "Avery">>? How flattering."
-			<</if>>
-		<<elseif $enemyanger lte 20>>
-			"I'd hate to leave marks on something so pretty," <<he>> muses. "So I suggest you stop making this so difficult for both of us."
-		<<else>>
-			"I am sick of your insolence. If I have to physically choke the disobedience out of you. I will."
-		<</if>>
-	<<elseif $speechvaginafoot is 1 or $speechpenisfoot is 1>>
-		<<set _probablyNudeFeet to _avery.clothes.lower.name is "naked" or _avery.clothes.lower.name is "pyjama bottoms">>
-		<<set _feetChoiceSentence to [
-			`"My, so responsive. And so little effort on my part."`,
-			`"Don't look so embarrassed. You're <<= $speechvaginafoot is 1 and $speechpenisfoot isnot 1 ? "taking it" : "responding">> so well."`,
-			`"I could make you finish like this if I wanted to. Should I?"`,
-		]>>
-		<<if _probablyNudeFeet>>
-			<<set _feetChoiceSentence.push(`"Don't squirm," <<he>> tuts, nudging your tip with the pad of <<his>> toe.`)>>
-		<<else>>
-			<<set _feetChoiceSentence.push(`"My poor shoes," <<he>> sighs, deeply unbothered.`)>>
-		<</if>>
-		<<print _feetChoiceSentence.random()>>
-	<<elseif $speecharms is 1>>
-		<<if !$consensual>>
-			"Keep still, you little <<= C.npc.Avery.rage gte 60 ? "<<bastard>>" : C.npc.Avery.rage gte 20 ? "<<cunt>>" : "brat">>!" <<He>> grips your wrists tight. <<pain 1>><<gpain>>
-		<<elseif $enemyanger lte 20>>
-			"Stay still, <<pcpetname "Avery">>. Move, and I'll be very upset with you."
-		<<elseif $enemyanger lte 100>>
-			"Quit your wriggling and behave yourself," <<he>> says, eyes narrowed.
-		<<else>>
-			"That's enough of that! Stay still, you little brat," <<he>> hisses.
-		<</if>>
-	<<elseif $speechclit is 1 or $speechfutapenis is 1 or $speechglans>>
-		<<cleareventpool>>
-		<<addinlineevent "avery_speech_outer_genitals_1" 1>>
-			<<if $speechfutapenis is 1>>
-				"Such a fascinating combination, isn't it?" <<he>> muses with a smirk. "And every inch of both belongs entirely to me."
-			<<else>>
-				"A <<if $speechglans is 1>>sensitive little tip<<else>>delicate little thing<</if>>, isn't it?" <<he>> muses with a smirk, applying pressure<<if $speechglans is 1>> to the head<</if>>. "And it belongs entirely to me."
-			<</if>>
-		<</addinlineevent>>
-		<<addinlineevent "avery_speech_outer_genitals" 4>>
-			<<print either(
-				`"Don't be shy," <<he>> coos, rubbing slow circles <<if $speechglans is 1>>over the head <</if>>with <<his>> thumb. "Move those hips and <<if $speechclit is 1>>grind against my thumb<<else>>press into my hand<<=$speechfutapenis is 1 ? "s": "">><</if>> for me."`,
-				`"Does my pretty <<girl>> like when I play with <<if $speechfutapenis is 1>>both of <<pher>> gifts<<else>><<pher>> <<= $speechclit is 1 ? "clit" : "tip">><</if>> like this?" <<he>> purrs, pressing firmer. "I can feel you throbbing <<if $speechfutapenis is 1>>in both places<<else>>right against my thumb<</if>>."`,
-				`"Look how sweet you look, squirming <<if $speechfutapenis is 1>>while I handle both<<else>>beneath my thumb<</if>>," <<he>> muses with a smug smile.`,
-				`<<He>> watches your expression closely <<if $speechglans is 1 or $speechclit is 1>>as <<he>> strokes <<if $speechclit is 1>>your clit<<else>>the head of your penis<</if>><</if>>. "Mm, look at that <<= either("pretty","lovely","gorgeous")>> face. Don't hold back on my account."`
-			)>>
-		<</addinlineevent>>
-		<<runeventpool>>
-	<<elseif $speechbottom is 1>>
-		<<if C.npc.Avery.rage gte 60>>
-			<<print either(
-				`"Do not mistake my interest in your body as tolerance of your insolence, <<pcpetname "Avery">>."`,
-				`<<He>> sneers. "A terrible attitude, but at least this asset retains its physical value."`,
-				`"Such soft skin for someone so rough around the edges."`,
-				`"Do you have any idea how much stress relief someone in my position requires? Hold still and do your job, <<pcpetname "Avery">>."`
-			)>>
-		<<elseif C.npc.Avery.rage gte 20>>
-			<<print either(
-				`"Be a good <<girl>>, or I'll be forced to leave my mark right here."`,
-				`"Don't make me regret being gentle with you," <<he>> warns with a sharp squeeze.`,
-				`"You'd best behave yourself, <<pcpetname "Avery">>, before I decide you need a thorough spanking."`,
-				`<<He>> regards you with a sharp look. "Try not to earn yourself a harsh lesson, <<pcpetname "Avery">>."`
-			)>>
-		<<else>>
-			<<print either(
-				`<<He>> smirks. "Do you have any idea how enticing you look from behind, <<pcpetname "Avery">>?"`,
-				`<<He>> <<= either("smiles playfully","smiles impishly","gives a satisfied smile","<<laughs>> quietly")>> as <<his>> fingers knead your <<bottom>>. "I suppose I'm just getting my money's worth, <<pcpetname "Avery">>."`,
-				`"I really ought to be doing something productive," <<he>> whispers, burying <<his>> face in your neck while squeezing your <<bottom>>, "but this is far more entertaining."`,
-				`<<His>> gaze darkens with desire as <<he>> holds you flush against <<him>>.`,
-			)>>
-		<</if>>
-	<<elseif $speechhair is 1>>
-		<<if $avery_mansion?.jobs?.includes("hairlength") and $hairlength gte 400>>
-			"Didn't I tell you to keep your hair shorter than this?" <<he>> says<<= C.npc.Avery.rage gte 60 ? " with a scowl. <<He>> tugs on it punitively. <<pain 1>><<gpain>>" : C.npc.Avery.rage gte 20 ? " with a frown." : ", one eyebrow raised.">>.
-		<<else>>
-			"<<= $hairlength lt 200 ? "Just long" : "Long" >> enough to pull on," <<he>> <<= $averyragerevealed is 1 ? "says with a smirk" : "murmurs with a laugh">>.
-		<</if>>
-	<<elseif $speechmasturbate>>
-		<<print either(
-			`"I'm almost tempted to tell you to keep your hands off, just to see how you'd react...<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>or if you'd even obey, for that matter.<</if>>"`,
-			`"Impatient?" <<He>> <<if C.npc.Avery.rage gte 40>>raises an eyebrow<<else>><<= either("smiles","smirks","<<laughs>>")>><</if>>. "Or can you just not help yourself?"`
-			)>>
-	<<elseif $speechhandjobpenis is 1 or $speechhandjobvagina is 1>>
-		<<cleareventpool>>
-		<<addinlineevent "avery_speech_handjob" 2>>
-			<<print either(
-				`"Just like that..." <<he>> murmurs<<if C.npc.Avery.rage lt 60>>, sounding pleased<</if>>.`,
-				`"A little faster for me, won't you?"`
-			)>>
-		<</addinlineevent>>
-
-		/* Hand skill is C or higher */
-		<<if currentSkillValue("handskill") gte 400>>
-			<<if $enemyanger lte 20>>
-				<<addinlineevent "avery_speech_handjob_high_handskill_calm" 3>>
-					<<print either(
-						`"That's a good <<girl>>..."`,
-						`<<He>> breathes. "Mm. Rub <<if $speechhandjobpenis is 1>>the tip<<else>>my clit<</if>> for me. Just like that... good <<girl>>."`,
-						`<<He>> coos. "Look at you working so diligently. How adorable."`
-					)>>
-				<</addinlineevent>>
-			<<else>>
-				<<addinlineevent "avery_speech_handjob_high_handskill_angry" 1>>
-					"To think someone so innocent-looking has such filthy, talented hands," <<he>> muses with a laugh.
-				<</addinlineevent>>
-			<</if>>
-		<<else>>
-			<<addinlineevent "avery_speech_handjob_low_handskill" 1>>
-				"You're still new at this, aren't you?" <<He>> <<laughs>>. "Don't worry, you'll learn."
-			<</addinlineevent>>
-		<</if>>
-
-		/* PC is blushing */
-		<<if $arousal gte 4000>>
-			<<addinlineevent "avery_speech_handjob_blush" 1>>
-				"Look how flustered you are just taking care of my needs," <<he>> purrs. "Should I take care of yours when we're through here, <<pcpetname "Avery">>?"
-			<</addinlineevent>>
-		<</if>>
-
-		/* If Avery is approaching orgasm */
-		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-			<<addinlineevent "avery_speech_handjob_orgasm_rage" 1>>
-				<<if $averyragerevealed is 1>>
-					"Fuck..." <<he>> <<= either("groans","pants","moans","breathes")>> as <<his>> hips twitch <<if $speechhandjobpenis is 1>>into your grip<<else>>against your hand<</if>>. "You feel so fucking good."
-				<<else>>
-					"Goodness..." <<he>> <<= either("groans","pants","moans","breathes")>> as <<his>> hips twitch <<if $speechhandjobpenis is 1>>into your grip<<else>>against your hand<</if>>. "You feel so heavenly."
-				<</if>>
-			<</addinlineevent>>
-		<</if>>
-
-		<<runeventpool>>
-	<<elseif $speechheadsuckle is 1>>
-		<<if C.npc.Avery.rage gte 60>>
-			<<He>> <<= either("hisses","groans","grunts")>> with pleasure. "Keep going. Don't you dare stop, <<girl>>."
-		<<elseif C.npc.Avery.rage gte 20>>
-			<<He>> <<= either("hisses","grunts","murmurs","hums")>> with pleasure. "There we are, just like that... Keep going, <<pcpetname "Avery">>."
-		<<else>>
-			<<He>> <<= either("sighs","murmurs","hums")>> with pleasure. "There we are, that's a good <<pcpetname "Avery" "my">>..."
-		<</if>>
-	<<elseif $speechheadnipple is 1>>
-		<<if C.npc.Avery.rage gte 60>>
-			"You can do better than this,"
-			<<if $consensual>>
-				<<he>> <<= either("mutters","says with a scoff","sneers")>>. "I didn't do all this just to <<= either("play with","fuck")>> a doll."
-			<<else>>
-				<<he>> <<= either("growls","barks")>>. "And you'd better not bite. I promise you'll regret it."
-			<</if>>
-		<<elseif C.npc.Avery.rage gte 20>>
-			<<if $speech_attitude is "bratty">>
-				"At least when your smart mouth is occupied, I don't have to tolerate your petty defiance," <<he>> <<= either("sighs","says with a snort")>>.
-			<<else>>
-				"Finally you're using that mouth of yours for something productive," <<he>> <<= either("drawls","says","remarks")>>.
-			<</if>>
-		<<elseif currentSkillValue("oralskill") gte 400>>
-			"Very good." <<He>> smiles. "You know how to use that<<if C.npc.Avery.love gte 30 or C.npc.Avery.lust gte 20>> <<= either("sweet","pretty","precious")>> little<</if>> mouth of yours well..."
-		<<else>>
-			"Haven't done this much before, have you?" <<He>> <<= either("smiles","<<laughs>>")>>. "How <<= either("cute","adorable")>>. We'll have to keep practicing."
-		<</if>>
-	<<elseif $speechheadnippleclosed is 1>>
-		<<if $avery_mansion>>
-			<<avery_mansion_housework_total>>
-		<</if>>
-		<<if C.npc.Avery.rage gte 60>>
-			"You'll defy me even in this?" <<He>> <<= either("barks a humourless laugh","sneers","scoffs","snarls")>>. "You do so love defying me every chance you get, don't you?<<if _avery_mansion_housework_total gte 7>> In every single way!<</if>>"
-		<<elseif C.npc.Avery.rage gte 20>>
-			"Enough games, <<pcpetname "Avery">>," <<he>> <<= either("growls","sneers","hisses")>>. "You know what I want from you, so do it<<= C.npc.Avery.rage gte 50 ? "!" : ".">>"
-		<<else>>
-			"Playing a little game, are you?" <<He>> <<= either("<<laughs>>","snorts","scoffs lightly")>>. "Cute. But I think that's enough of that. You know what to do, <<pcpetname "Avery">>."
-		<</if>>
-	<<elseif $speechheadchest is 1 or $speechheadbreasts is 1>>
-		<<if $avery_mansion>>
-			<<avery_mansion_housework_total>>
-		<</if>>
-
-		<<if C.npc.Avery.rage gte 60 or $enemyanger gt 100>>
-			"Suck on it. <<= either("You aren't so dense as to be incapable of <i>that</i> much","You can do <i>that</i> much, at least","It's the least you can do")>>," <<he>> says with a <<= either("derisive snort","derisive laugh","roll of the eyes","scoff")>>.
-		<<elseif C.npc.Avery.rage gte 20 or $enemyanger gt 20>>
-			"Come, now. Suck on it like a good <<pcpetname "Avery" "my">>," <<he>> <<= either("says","murmurs")>>. "I know that you can behave. <<= _avery_mansion_housework_total is 0 ? "You've done it before." : "Or else I'll teach you to.">>"
-		<<else>>
-			"Suck on it like a good <<pcpetname "Avery" "my">>," <<he>> <<= either("coos","murmurs","whispers")>> with a <<= either("smile","quiet laugh")>>.
-		<</if>>
-	<<elseif $speechleglock is 1>>
-		<<cleareventpool>>
-
-		<<if $wolfgirl gte 2 and $averyragerevealed is 1 and (playerAwareTheyAreInHeat() or playerRutMinArousal() or playerHeatMinArousal())>>
-			<<addinlineevent "avery_speech_leglock_wolf_tf" 2>>
-				"Like a little <<bitch>> in heat," <<he>> rumbles<<if C.npc.Avery.rage lt 60>>, sounding amused<</if>>. "And out of your mind with it, too."
-			<</addinlineevent>>
-		<</if>>
-
-
-		<<addinlineevent "avery_speech_leglock" 1>>
-			<<if $consensual>>
-				<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
-					"Ah..." <<He>> smirks at you. "How pleasant to see you know your place after all."
-				<<else>>
-					"That desperate to be filled, are you?" <<He>> <<laughs>>.<<if $averyragerevealed gte 1>> "You are a little <<slut>>, aren't you?"<</if>>
-				<</if>>
-			<<else>>
-				<<if C.npc.Avery.rage gte 20>>
-					"Finally," <<he>> growls, jerking into you roughly. "Better late than never that you remember what you're here for."
-				<<else>>
-					"Yes," <<he>> hisses. "There you are. It didn't take too long to remember your place, did it?"
-				<</if>>
-			<</if>>
-		<</addinlineevent>>
-
-		<<runeventpool>>
-	<<elseif $speechcheeks is 1>>
-		<<cleareventpool>>
-		<<addinlineevent "avery_speech_grinding" 1>>
-			"Your little <<bottomsimple>> feels as good as it looks." <<He>> rocks against you a little harder.
-		<</addinlineevent>>
-
-		<<if $enemyarousal gte ($enemyarousalmax / 5) * 3 or C.npc.Avery.lust gte 20>>
-			<<addinlineevent "avery_speech_grinding_horny" 1>>
-				"I'm going to have more of this from you." <<He>> grinds against you roughly. "And more than just this, <<pcpetname "Avery">>... Just you wait."
-			<</addinlineevent>>
-		<</if>>
-
-		<<addinlineevent "avery_speech_grinding_bottomsize" 1>>
-			<<if $bottomsize lte 1>> /* Slender and slim */
-				"Small it may be," <<he>> teases, "but your <<bottomsimple>> is a <<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 60 ? "pleasant fuck" : "pleasure">> regardless."
-			<<elseif $bottomsize lte 5>> /* Modest, Cushioned, Soft, Round */
-				<<= $averyragerevealed gte 1 ? `"Fuck..." <<He>>` : '<<He>> curses under <<his>> breath and'>> rocks against you harder. "Your <<bottomsimple>> is a treat.<<if $avery_mansion or $averyragerevealed gte 1>> And it's all mine.<</if>>"
-			<<else>> /* Plump, Large and Huge */
-				"Your <<bottomsimple>> is so <<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 40 ? "fuckable" : "soft">>." <<He>> groans. "Wrapped around me, and with only your cheeks alone..."
-			<</if>>
-		<</addinlineevent>>
-
-		<<runeventpool>>
-	<<elseif $speechthigh is 1>>
-		<<if $position is "missionary" and $enemyarousal gte ($enemyarousalmax / 5) * 3>>
-			<<He>> starts rocking against your thigh roughly, <<his>> <<= either("grunting", "moaning","panting")>> growing loud.
-		<<else>> /* Doggy */
-			<<if $enemyarousal gte ($enemyarousalmax / 5) * 3 and $rng gte 51>>
-				<<He>> starts thrusting between your thighs roughly. You hear <<his>> <<= either("grunting", "moaning","panting")>> in your ear.
-			<<elseif currentSkillValue("thighskill") gte 400>>
-				"Yes, keep them together like that," <<he>> hisses with pleasure.<<if C.npc.Avery.love gte 40>> "Good <<girl>>."<</if>>
-			<<else>>
-				"Squeeze your thighs together tighter," <<he>> murmurs. <<He>> makes a pleased sound when you do.
-			<</if>>
-		<</if>>
-	<<elseif $speechfeet is 1>>
-		<<He>> <<= either("grunts","groans","pants")>> as <<he>> rocks <<his>> hips against your foot.
-	<<elseif $speechvaginamouth is 1 or $speechfacesit is 1>>
-		<<cleareventpool>>
-		<<if ($consensual and C.npc.Avery.rage gte 60) or (!$consensual and $enemyanger gt 100)>>
-			<<addinlineevent "avery_speech_cunnilingus_high_rage" 3>>
-				<<print either(
-					`"If I have to force you to satisfy me, I promise it won't be pleasant<<if !$consensual and $enemyanger gt 100>> for you<</if>>."`,
-					`"I am offering you a single chance to <<if $consensual and C.npc.Avery.rage gte 60>>show me you still know how to behave<<else>>submit<</if>>, <<pcpetname "Avery">>. Put that tongue to work."`,
-					`"You're begging for a beating, but I think I'll smother your pride first."`
-				)>>
-			<</addinlineevent>>
-		<<elseif ($consensual and C.npc.Avery.rage gte 20) or (!$consensual and $enemyanger gt 20)>>
-			<<addinlineevent "avery_speech_cunnilingus_mid_rage" 3>>
-				<<print either(
-					`"You've been quite a headache today, <<pcpetname "Avery">>. <<if !$consensual and $enemyanger gt 20>>Stop resisting and <<else>>You had best <</if>>make this worth my while."`,
-					`<<He>> sneers. "I expect you to accommodate me until I forget how infuriating you've been<<if !$consensual and $enemyanger gt 20>>, like it or not<</if>>."`,
-					`"Does <<if !$consensual and $enemyanger gt 20>>being made to submit<<else>>submitting to me<</if>> like this sting your pride, <<pcpetname "Avery">>? Good."`
-				)>>
-			<</addinlineevent>>
-		<<else>>
-			<<addinlineevent "avery_speech_cunnilingus_low_rage" 3>>
-				<<print either(
-					`"You seem thirsty, <<pcpetname "Avery">>. Let<<if $consensual>>'s see if I can <<else>> me <</if>>quench that for you."`,
-					`"I expect you to take your time and do a thorough job<<if !$consensual>>, whether you want to or not<</if>>."`,
-					`<<if $consensual>>"Let's see what that sweet tongue of yours can do <<else>>"Don't make me force that sweet tongue of yours <</if>>, <<pcpetname "Avery">>."`
-				)>>
-			<</addinlineevent>>
-		<</if>>
-		<<runeventpool>>
-	<<elseif $speechvaginavagina is 1 or $speechpenispenis is 1>>
-		<<cleareventpool>>
-
-
-		<<if _avery.lefthand is 0 or _avery.righthand is 0>>
-			/* Avery's hands aren't busy */
-			<<addinlineevent "avery_speech_frottage_handsfree" 1>>
-				<<His>> hands rest on your hips as <<he>> ruts against you.
-			<</addinlineevent>>
-		<</if>>
-
-		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-			<<addinlineevent "avery_speech_frottage_aroused" 2>>
-				<<His>> hips move more unevenly the closer <<he>> gets.
-			<</addinlineevent>>
-		<</if>>
-
-		<<if C.npc.Avery.rage lt 20 or $enemyanger lt 20>>
-			<<addinlineevent "avery_speech_frottage_low_rage" 2>>
-				<<print either(
-					`"Move your hips more to the—" <<He>> makes a soft sound of pleasure. "Yes," <<he>> <<= either("hisses","breathes")>>, "just like that."`,
-					`"A little faster<<if C.npc.Avery.love gte 30>>, my<<if C.npc.Avery.love gte 60 and random(1,2) is 1>> little<</if>><</if>>—" <<He>> makes a soft sound of pleasure. "Yes," <<he>> <<= either("hisses","breathes")>>, "just like that."`
-				)>>
-			<</addinlineevent>>
-		<</if>>
-		<<if _eventpool.length gt 0>>
-			<<runeventpool>>
-		<</if>>
-	<<elseif $speechtribentrance is 1>>
-		<<if C.npc.Avery.rage gte 60 or $enemyanger gt 100>>
-			"Spread your legs and stay still, <<pcpetname "Avery">>," <<he>> commands.<<if C.npc.Avery.lust gte 20>> There's an eager and almost dangerous gleam in <<his>> eyes.<</if>>
-		<<else>>
-			"Spread your legs for me, <<pcpetname "Avery">>," <<he>> <<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 20 ? "says" : "coos">>. "A little more..."<<if C.npc.Avery.lust gte 20>> There's an eager gleam in <<his>> eyes.<</if>>
-		<</if>>
-	<<elseif $speechfencingentrance is 1>>
-		<<if C.npc.Avery.rage gte 60 or $enemyanger gt 100>>
-			"Stay still, <<pcpetname "Avery">>," <<he>> commands.<<if C.npc.Avery.lust gte 20>> There's an eager and almost dangerous gleam in <<his>> eyes.<</if>>
-		<<else>>
-			"Stay still for me, <<pcpetname "Avery">>," <<he>> <<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 20 ? "says" : "coos">>.<<if C.npc.Avery.lust gte 20>> There's an eager gleam in <<his>> eyes.<</if>>
-		<</if>>
-	<<elseif $speechchestrub is 1 or $speechbreastrub is 1>>
-		<<cleareventpool>>
-		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-			<<addinlineevent "avery_speech_paizuri_aroused" 2>>
-				"When I'm finished, shall I cover your <<if $speechchestrub is 1>>chest<<else>>breasts<</if>> in cum, or your face?" <<He>> <<= either("<<laughs>>","smirks","grins","hums with amusement")>>. "<<= C.npc.Avery.dom gte 30 ? "I haven't decided yet." : "What do you think?">>"
-			<</addinlineevent>>
-		<</if>>
-
-		<<if C.npc.Avery.rage lt 20 or $enemyanger lte 20>>
-			<<addinlineevent "avery_speech_paizuri_low_rage" 2>>
-				<<print either(
-					`"Look at that." <<He>> <<= either("seems amused","smiles","<<laughs>>")>>. "Quite the obscene sight, isn't it?<<if C.npc.Avery.dom gte 20>> And you're just letting it happen, aren't you?<</if>>"`,
-					`"What a marvelous view." <<He>> <<= either("seems amused","smiles","<<laughs>>")>>. "And with my cock so close to your mouth..."<<if C.npc.Avery.lust gte 20>> There's an intrigued gleam in <<his>> eyes.<</if>>`
-				)>>
-			<</addinlineevent>>
-		<<else>>
-			<<addinlineevent "avery_speech_paizuri_high_rage" 1>>
-				"Don't move, <<pcpetname "Avery">>." <<He>> <<= either("raises an eyebrow","purses <<his>> lips")>> at you. "Surely you're capable of at least that much?"
-			<</addinlineevent>>
-		<</if>>
-
-		<<if $breastsize gte 9>> /* Massive, Huge, Gigantic and Enormous */
-			<<addinlineevent "avery_speech_paizuri_big_breasts" 1>>
-				<<He>> seems briefly mesmerized by the way your breasts bounce with each thrust.
-			<</addinlineevent>>
-		<<elseif $breastsize gte 4>> /* Pert, Modest, Full, Large, Ample */
-			<<addinlineevent "avery_speech_paizuri_medium_breasts" 1>>
-				<<He>> watches your breasts bounce with each thrust with a pleased look on <<his>> face.
-			<</addinlineevent>>
-		<<elseif $breastsize gte 1 and C.npc.Avery.penissize gte 2>>
-			/* Avery's penis is greater than tiny and breasts are Small, Tiny, Budding */
-			<<addinlineevent "avery_speech_paizuri_small_breasts" 1>>
-				"You <<= C.npc.Avery.penissize gte 3 ? "can hardly" : "almost can't">> get your<<if C.npc.Avery.love gte 40>> pretty little<</if>> tits around it..." <<He>> <<laughs>><<if $averyragerevealed gte 1>> smugly<</if>>.
-			<</addinlineevent>>
-		<</if>>
-
-		<<runeventpool>>
-	<<elseif $speechanallick is 1>>
-		<<if C.npc.Avery.rage gte 60>>
-			"I'm not letting you go until you worked out that tongue of yours."
-		<<else>> /* a mid-rage variation would be welcome */
-			"Let's see how good that tongue of yours is, <<pcpetname "Avery">>."
-		<</if>>
-	<<elseif $speechanalkiss is 1>>
-		<<if C.npc.Avery.dom gte 75>>
-			<<if C.npc.Avery.rage gte 60>>
-				"Keep that up, pet, and maybe I'll forgive you."
-			<<elseif C.npc.Avery.rage gte 20>>
-				<<He>> smirks. "It's a pleasant surprise to see you worshipping me the way you ought to, despite yourself."
-			<<else>>
-				<<He>> smirks. "I appreciate your dedication to worshipping me.<<if $averyragerevealed is 1>> As you should.<</if>>"
-			<</if>>
-		<<elseif C.npc.Avery.rage gte 60>>
-			<<He>> scowls. "You will remain there until I feel generous enough to accept your apology."
-		<<elseif C.npc.Avery.rage gte 20>>
-			"Unfortunately, it will take more than just a few kisses to make up for your behaviour as of late. Keep going."
-		<<else>>
-			<<He>> <<laughs>>. "How well-behaved, <<pcpetname "Avery">>."
-		<</if>>
-	<<elseif $speechmouthotheranus is 1>>
-		<<if C.npc.Avery.rage gte 60>>
-			"The perfect position to remind you where you truly stand, <<girl>>."
-		<<elseif C.npc.Avery.rage gte 20>>
-			"Considering how insufferable you've been of late, I expect you to get to work."
-		<<else>>
-			"You're such a chore. Time for you to make it up to me."
-		<</if>>
-	/* Penetrating or being penetrated and pulling out or fighting off being stripped or covering your genitals - basically bratty actions - */
 	<<elseif $speechvaginaescape is 1 or $speechpenisescape is 1 or $speechotheranusescape is 1 or $speechanusescape is 1 or $speechstripstruggle is 1 or $speechcoverpenis is 1 or $speechcovervagina is 1>>
 		<<if $consensual>>
 			<<if $averyragerevealed is 1>>
@@ -1179,308 +609,6 @@
 		<<else>>
 			"Oh, come now, <<pcpetname "Avery">>," <<he>> says, scowling. "Do you intend to defy me every step of the way?"
 		<</if>>
-	<<elseif $speechpenispenetrated is 1 or $speechotheranuspenetrated is 1 or $speechvaginapenetrated is 1 or $speechanuspenetrated is 1>>
-		<<cleareventpool>>
-		<<set _playerPenetrates to $speechpenispenetrated is 1 or $speechotheranuspenetrated is 1>> /* If player uses their penis */
-		<<set _orifice to $speechvaginapenetrated is 1 ? "vagina" : $speechanuspenetrated is 1 ? "anus" : "none">> /* If Avery is in your pussy or anus - none means PC is doing the penetration */
-		<<set _isCooperating to ["cooperate", "otheranuscooperate"].includes($penisaction) or $anusaction is "cooperate" or $vaginaaction is "cooperate">>
-
-		<<addinlineevent "avery_speech_penetration_generic" 1>>
-			<<= $averyragerevealed is 1 ? `"Fuck..." <<he>>` : "<<He>>">> moans. "You feel so good <<if _playerPenetrates>>inside<<else>>around<</if>> me, <<pcpetname "Avery">>."
-		<</addinlineevent>>
-
-		<<if C.npc.Avery.rage gte 60>>
-			<<addinlineevent "avery_speech_penetration_high_rage" 1>>"Your mouth might be useless, but your <<if _playerPenetrates>><<= either("cock","<<penisSimple>>")>><<else>><<if _orifice is "vagina">><<= either("pussy","cunt")>><<else>>ass<</if>><</if>> makes keeping you around worth it..."<</addinlineevent>>
-		<<elseif C.npc.Avery.rage gte 20 and _isCooperating>>
-			<<addinlineevent "avery_speech_penetration_mid_rage" 1>>
-				"Oh, fuck..." <<he>> <<= either("moans","groans","gasps")>>. "Good <<girl>>, just like that."
-			<</addinlineevent>>
-		<<elseif C.npc.Avery.rage lt 20 and _isCooperating>>
-			<<addinlineevent "avery_speech_penetration_low_rage" 1>>
-				"Yes..." <<he>> <<= either("moans","groans","gasps")>>. "Good <<girl>>, just like that."
-			<</addinlineevent>>
-		<</if>>
-
-		/* Special cases where Avery is the penetrator */
-		<<if !_playerPenetrates>>
-			<<if C.npc.Avery.rage gte 60>>
-				<<addinlineevent "avery_speech_penetrating_high_rage" 4>>
-					<<print either(
-						`<<He>> <<if $position is "doggy">>pulls your rear flush with brutal force<<else>>grinds down into you without an ounce of gentleness<</if>>. "You act like trash, so I'm going to use you like trash."`,
-						`<<He>> spits, <<if $position is "doggy">>dragging your hips back aggressively<<else>>wrenching your legs further apart<</if>>. "The only time you aren't a complete disappointment is when you're on your <<if $position is "doggy">>hands and knees<<else>>back<</if>>, taking my cock."`,
-						`<<He>> pants angrily, <<if $position is "doggy">>pulling your hips back<<else>>staring down at you<</if>>. "Fuck... I should throw you out on the street, but you take a fucking too well."`,
-						`<<He>> sneers, <<if $position is "doggy">>digging <<his>> nails into your hips<<else>>pressing <<his>> weight down brutally<</if>>. "You're lucky this <<if $speechvaginapenetrated is 1>><<= either("pussy","cunt","hole")>><<else>><<= either("ass","backdoor","hole")>><</if>> is tight enough to save you."`
-					)>>
-				<</addinlineevent>>
-				<<if $enemyanger lte 20>>
-					<<addinlineevent "avery_speech_penetrating_high_rage_low_anger" 1>>
-						<<He>> <<if $position is "doggy">>sneers, yanking your hips higher<<else>>presses <<his>> forehead to yours, smiling coldly<</if>>. "All that attitude, and you still let me use your body like a cheap fucktoy. Where is that stubborn pride now, <<pcpetname "Avery">>?"
-					<</addinlineevent>>
-				<</if>>
-			<<elseif C.npc.Avery.rage gte 20>>
-				<<addinlineevent "avery_speech_penetrating_mid_rage" 5>>
-					<<print either(
-						`<<if $position is "doggy">><<He>> groans, pulling your hips back roughly.<<else>><<His>> breath hitches, looking into your eyes.<</if>> "Keep gripping me like that. It almost makes me forget how infuriating you've been."`,
-						`<<He>> <<if $position is "doggy">>digs <<his>> fingers into your hips<<else>>stares down at your flushed face<</if>>. "If only your attitude were as accommodating as your body."`,
-						`<<He>> <<if $position is "doggy">>grips your waist firmly from behind<<else>> leans down over your chest, scowling<</if>>. "You're lucky this feels so fucking good, or you'd be over my knee right now instead."`,
-						`<<He>> slaps your <<if $position is "doggy">>hip sharply. "Arch your back<<else>>thigh sharply. "Spread those legs<</if>> properly. You have a lot of making up to do, <<pcpetname "Avery">>."`,
-						`<<He>> lets out a frustrated sigh that melts into a moan, watching <<if $position is "doggy">><<his>> <<= either("length","<<npcPenisSimple>>")>> drive into you,<<else>>your expression.<</if>> "Why must you be so difficult when you take me so perfectly?"`
-					)>>
-				<</addinlineevent>>
-			<<else>>
-				<<addinlineevent "avery_speech_penetrating_low_rage" 2>>
-					<<print either(
-						`<<He>> lets out a breathy chuckle, <<if $position is "doggy">>holding your hips tight against <<his>><<else>>gazing down into your eyes<</if>>. "I could stay buried inside you all day, <<pcpetname "Avery">>."`,
-						`"I think I might fuck every coherent thought right out of that pretty little head of yours, <<pcpetname "Avery">>," <<he>> breathes, <<if $position is "doggy">>pulling your hips back and grinding deep<<else>>pinning you down and burying <<himself>> to the hilt<</if>>.`
-					)>>
-				<</addinlineevent>>
-				<<addinlineevent "avery_speech_penetrating_low_rage_3" 1>>
-					<<if $position is "doggy">>
-						<<He>> gives your ass a firm squeeze. "You look right at home on your hands and knees, <<pcpetname "Avery">>."
-					<<else>>
-						<<He>> watches your face, hips moving deliberately. "You look right at home underneath me, <<pcpetname "Avery">>."
-					<</if>>
-				<</addinlineevent>>
-				<<addinlineevent "avery_speech_penetrating_low_rage_6" 2>>
-					<<print either(
-						`<<He>> coos, thoroughly captivated by <<if $position is "doggy">>the sight of <<his>> <<= either("length","<<npcPenisSimple>>")>> disappearing<<else>>your expression as <<he>> drives deep<</if>> into you. "Look at how beautifully you take me."`,
-						`<<He>> chuckles, pressing a kiss to your <<= $position is "doggy" ? "shoulder" : "forehead">>. "Keep <<if $position is "doggy">>pushing back on me<<else>>looking at me<</if>> like that and I might never pull out."`
-					)>>
-				<</addinlineevent>>
-			<</if>>
-		<</if>>
-
-		<<runeventpool>>
-
-
-	<<elseif $speechmouthpenetrated is 1>>
-		<<cleareventpool>>
-		<<addinlineevent "avery_speech_in_mouth_rage" 1>>
-			<<if $averyragerevealed is 1>>
-				"Your mouth <<= C.npc.Avery.rage gte 60 ? "is actually good for something other than refusing me for once" : "makes it all worthwhile">>," <<he>> says with a breathy laugh.
-			<<else>>
-				"Your mouth is a treasure..." <<he>> moans.
-			<</if>>
-		<</addinlineevent>>
-		<<if !npcHasStrapon()>>
-			<<addinlineevent "avery_speech_in_mouth_no_strapon" 1>>
-				"<<= $averyragerevealed is 1 ? "I want" : "I'd like">> you to <<= _avery.penis isnot "none" ? "swallow every drop" : "swallow it all">> once I'm finished," <<he>> says, <<= $averyragerevealed is 1 ? "smiling" : "smirking">> down at you.
-			<</addinlineevent>>
-		<</if>>
-		<<runeventpool>>
-	/* Avery about to penetrate your vagina or anus */
-	<<elseif $speechvaginaimminent is 1 or $speechanusimminent is 1>>
-		/* Avery about to enter either your vagina or anus */
-		<<cleareventpool>>
-		<<addinlineevent "avery_speech_penis_imminent" 1>>
-			"Be a good <<girl>> and let me take care of you."
-		<</addinlineevent>>
-
-		<<addinlineevent "avery_speech_penis_imminent_rage" 1>>
-			<<if C.npc.Avery.rage gte 60>>
-				"Relax, because I won't be stopping if you start crying, <<pcpetname "Avery">>."
-			<<elseif C.npc.Avery.rage gte 20>>
-				"Nervous? Don't be." <<He>> smirks at you. "Even if it hurts, I'll make sure it feels good, too."
-			<<else>>
-				"I'll be gentle." <<He>> smiles at you. "Now, relax for me..."
-			<</if>>
-		<</addinlineevent>>
-
-		<<if ($player.virginity.anal is true and $speechanusimminent is 1) or ($player.virginity.vaginal is true and $speechvaginaimminent is 1)>>
-			<<addinlineevent "avery_speech_penis_imminent_virgin_rage" 1>>
-				<<if $averyragerevealed is 1>>
-					<<He>> smirks. "I think it's time I finally broke in this untouched <<if $speechvaginaimminent is 1>><<= either("pussy","cunt","hole")>><<else>><<= either("ass","backdoor","hole")>><</if>> of yours..."
-				<<else>>
-					<<He>> smiles. "I promise to be gentle, <<pcpetname "Avery">>... <<if C.npc.Avery.lust gte 20 or $enemyarousal gte $enemyarousalmax / 4>>at least until you're <<if $speechvaginaimminent is 1>>slick<<else>>relaxed<</if>> enough for a much rougher pace.<</if>>"
-				<</if>>
-			<</addinlineevent>>
-		<</if>>
-		<<runeventpool>>
-	<<elseif $speechpenisimminent is 1 or $speechotheranusimminent is 1>>
-		<<cleareventpool>>
-		<<addinlineevent "avery_speech_npc_penis_imminent" 1>>
-			<<if C.npc.Avery.rage gte 20>>
-				"Stay still," <<he>> says, looking down at you. "You'll feel good, too, if you do as I say, <<pcpetname "Avery">>."
-			<<else>>
-				"I'll make you feel so good, <<pcpetname "Avery">>," <<he>> coos, rolling <<his>> <<if $speechpenisimminent is 1>><<pussy>><<else>>ass<</if>> against your tip. "Just stay still for me..."
-			<</if>>
-		<</addinlineevent>>
-
-		<<if $player.virginity.penile is true>>
-			<<addinlineevent "avery_speech_npc_penis_imminent_virgin_rage" 1>>
-				<<if $averyragerevealed is 1>>
-					<<He>> smirks. "I think it's time I finally took this untouched <<penis>> of yours..."
-				<<else>>
-					<<He>> smiles. "I promise to be gentle, <<pcpetname "Avery">>... <<if C.npc.Avery.lust gte 20 or $enemyarousal gte $enemyarousalmax / 4>>at least until you're ready for a much rougher pace.<</if>>"
-				<</if>>
-			<</addinlineevent>>
-		<</if>>
-		<<runeventpool>>
-	<<elseif $speechmouthimminent is 1>>
-		<<if C.npc.Avery.rage gte 60>>
-			"Open that <<= either("slutty","whore")>> mouth of yours, <<girl>>."
-		<<else>>
-			<<print either(
-				`"Open wide for me, <<pcpetname "Avery">>," <<he>> coos.`,
-				`"You'll be a good <<girl>> and do as I tell you, won't you?"`
-			)>>
-		<</if>>
-	<<elseif $speechvaginaentrance is 1 or $speechanusentrance is 1>>
-		<<cleareventpool>>
-		<<if C.npc.Avery.rage lt 20 or $enemyanger lte 20>>
-			<<addinlineevent "avery_speech_penis_to_entrance_low_rage" 1>>
-				"Are you ready for me, <<pcpetname "Avery">>?" <<he>> purrs.
-			<</addinlineevent>>
-		<</if>>
-		<<if $averyragerevealed is 1 and (C.npc.Avery.lust gte 60 or $enemyarousal gte ($enemyarousalmax / 5) * 3)>>
-			<<addinlineevent "avery_speech_penis_to_entrance_aroused" 1>>
-				"I think I'm in the mood to fuck this needy little <<if $speechvaginaentrance is 1>><<= either("pussy","cunt","hole")>><<else>><<= either("ass","bottom","hole")>><</if>> of yours..." <<he>> says.
-			<</addinlineevent>>
-		<</if>>
-		<<if _eventpool.length gt 0>>
-			<<runeventpool>>
-		<</if>>
-	<<elseif $speechmouthentrance is 1>>
-		<<cleareventpool>>
-		<<if ($consensual and C.npc.Avery.rage gte 60) or (!$consensual and $enemyanger gt 100)>>
-			<<addinlineevent "avery_speech_penis_to_mouth_high_rage" 3>>
-				<<print either(
-					`"If I have to force my way past those teeth, I promise it won't be pleasant<<if !$consensual>> for you<</if>>."`,
-					`"I am offering you a single chance to <<if $consensual>>show me you still know how to behave<<else>>submit quietly<</if>>, <<pcpetname "Avery">>. Open your mouth."`,
-					`<<He>> sneers as <<he>> slaps <<his>> <<npcPenisSimple>> over your cheek harshly. "You're begging for a beating, but I think I'll <<if $consensual>>make you<<else>>force you to<</if>> swallow your pride first."`
-				)>>
-			<</addinlineevent>>
-		<<elseif ($consensual and C.npc.Avery.rage gte 20) or (!$consensual and $enemyanger gt 20)>>
-			<<addinlineevent "avery_speech_penis_to_mouth_mid_rage" 3>>
-				<<print either(
-					`"You've been quite a headache today, <<pcpetname "Avery">>. <<if $consensual>>You had best<<else>>Stop misbehaving and<</if>> make this worth my while."`,
-					`<<He>> sneers. "I expect you to work that tongue until I forget how infuriating you've been<<if !$consensual>>, like it or not<</if>>."`,
-					`<<He>> smiles icily as <<he>> slaps <<his>> <<= _avery.penis isnot "none" ? "length" : "toy">> over your cheek. "Did that sting your pride, <<pcpetname "Avery">>? Good.<<if !$consensual>> Now open up.<</if>>"`
-				)>>
-			<</addinlineevent>>
-		<<else>>
-			<<addinlineevent "avery_speech_penis_to_mouth_low_rage" 3>>
-				<<print either(
-					`<<He>> <<if $consensual>>smiles playfully<<else>>smirks<</if>> as <<he>> slaps <<his>> <<= _avery.penis isnot "none" ? "length" : "toy">> over your cheek. "<<if $consensual>>Does that make your mouth water, <<pcpetname "Avery">>?"<<else>>Don't pretend this doesn't make your mouth water, <<pcpetname "Avery">>."<</if>>`,
-					`<<He>> drags <<his>> <<= _avery.penis isnot "none" ? "shaft" : "strap-on">> slowly across your lips. "I expect you to take your time and do a thorough job<<if !$consensual>>, whether you want to or not<</if>>."`,
-					`"Open wide, <<pcpetname "Avery">>. <<if $consensual>>Let's see<<else>>Don't make me force<</if>> that sweet tongue of yours."`
-				)>>
-			<</addinlineevent>>
-		<</if>>
-		<<runeventpool>>
-	/* Avery is withholding from penetration */
-	<<elseif $speechvaginawithhold is 1 or $speechanuswithhold is 1 or $speechpeniswithhold is 1 or $speechotheranuswithhold is 1>>
-		<<cleareventpool>>
-		<<set _aboutToPenetrate to $speechvaginawithhold is 1 or $speechanuswithhold is 1>>
-		<<set _peenVirgin to ($speechpeniswithhold is 1 or $speechotheranuswithhold is 1) and $player.virginity.penile is true>>
-		<<set _vaginaVirgin to $speechvaginawithhold is 1 and $player.virginity.vaginal is true>>
-		<<set _assVirgin to $speechanuswithhold is 1 and $player.virginity.anal is true>>
-
-		/* Virginity talk */
-		<<if _peenVirgin and $averySeen.includes("virginKnown")>>
-			<<addinlineevent "avery_speech_withhold_penis_virgin" 1>>
-				<<if C.npc.Avery.rage gte 60>>
-					<<He>> growls as <<he>> does, obviously annoyed. "I'll hold off for now, but I will have it sooner or later, <<pcpetname "Avery">>." <<He>> smirks<<if C.npc.Avery.love lt 50>> cruelly<</if>>. "It may as well be now."
-				<<elseif C.npc.Avery.rage gte 20>>
-					<<He>> huffs as <<he>> does, obviously impatient. "I don't see why you're so attached to remaining chaste. You're going to lose it eventually... Why not give it to me?" <<He>> smirks.
-				<<else>>
-					<<He>> sighs as <<he>> does, obviously disappointed. "Oh, very well<<if !$averyragerevealed>>, if it's so important to you<</if>>."
-				<</if>>
-			<</addinlineevent>>
-		<</if>>
-
-		<<if _assVirgin and $averySeen.includes("virginKnown")>>
-			<<addinlineevent "avery_speech_withhold_anus_virgin" 1>>
-				<<if C.npc.Avery.rage gte 60>>
-					"Scared it will hurt? Given how infuriating you've been, a little pain is precisely what you deserve. Consider yourself lucky I'm waiting until next time."
-				<<elseif C.npc.Avery.rage gte 20>>
-					"Scared of a tiny bit of discomfort? How adorable. You're making a fuss over nothing, <<pcpetname "Avery">>. It's hardly as bad as you think."
-				<<else>>
-					"Scared of a little ache, my <<pcpetname "Avery" "my">>? Don't be. When we finally do this, I promise <<if $averyragerevealed is 1>>the only thing aching will be how badly you want me deeper<<else>>to be as gentle as you need<</if>>."
-				<</if>>
-			<</addinlineevent>>
-		<</if>>
-
-		<<if _vaginaVirgin and $averySeen.includes("virginKnown")>>
-			<<addinlineevent "avery_speech_withhold_vagina_virgin" 1>>
-				<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 60>>
-					"Withhold all you like, <<pcpetname "Avery">>. Every second you make me wait only makes me want to ruin you even more."
-				<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
-					<<He>> <<= either("smirks","sighs")>>. "Why cling to your virginity so stubbornly? You are going to lose it eventually, <<pcpetname "Avery">>... Why not give it to someone who can provide for you?"
-				<<elseif $averyragerevealed is 1>>
-					<<He>> smirks, <<his>> tip nudging against your entrance. "There's something almost adorable about how desperately you cling to your purity, my <<pcpetname "Avery" "my">>. All the more reason to savor corrupting it."
-				<<else>>
-					<<He>> smiles, <<his>> tip dragging deliberately against your folds. "There's something almost adorable about how dearly you cherish your purity, my <<pcpetname "Avery" "my">>. I suppose I can indulge your shyness, though you're only delaying the inevitable."
-				<</if>>
-			<</addinlineevent>>
-		<</if>>
-
-		/* Temple vow */
-		<<if $player.virginity.temple is true and $averySeen.includes("player_virgin")>>
-			<<addinlineevent "avery_speech_withhold_temple" 1>>
-				<<if $brokenVowCount?.Avery gt 1>>
-					/* Avery already broke the vow  */
-					<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 60>>
-						<<He>> scoffs. "Once was enough to know your vow has no real hold on you, <<pcpetname "Avery">>. Give in before my generosity runs out entirely."
-					<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
-						<<He>> watches you closely. "I already know exactly what you look like when you give in, <<pcpetname "Avery">>. Every sound you make. Every filthy detail you'd rather forget. Making me wait is just wasting time we could spend far more pleasantly."
-					<<elseif $averyragerevealed is 1>>
-						<<He>> laughs. "Once a principle is broken it has a way of staying broken, my <<pcpetname "Avery" "my">>. Your body already remembers how good the fall felt. Sin for me again and let me remind you of the rest."
-					<<else>>
-						<<He>> chuckles. "Once a principle is broken it has a way of staying broken, my <<pcpetname "Avery" "my">>. Take your time. I already know how this ends."
-					<</if>>
-				<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 60>>
-					<<He>> smiles thinly. "You ought to be grateful I'm still holding back, <<pcpetname "Avery">>. Give in to sin before my generosity runs out."
-				<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
-					<<He>> clicks <<his>> tongue. "How maddening. How long do you intend to hide behind empty words to a silent god? I'm right here, and I can make you feel so much better."
-				<<elseif $averyragerevealed is 1>>
-					<<He>> watches you knowingly. "I can appreciate a person of principle. It makes your inevitable fall so much sweeter, <<pcpetname "Avery">>."
-				<<else>>
-					<<He>> <<laughs>> under <<his>> breath. "I can appreciate a person of principle. We'll simply take things at your pace, my <<pcpetname "Avery" "my">>."
-				<</if>>
-			<</addinlineevent>>
-		<</if>>
-
-		/* High dom or high lust */
-		<<addinlineevent "avery_speech_withhold_dom_lust" 1>>
-			<<if C.npc.Avery.dom gte 75 or C.npc.Avery.lust gte 60>>
-				<<if C.npc.Avery.rage gte 20>>
-					<<He>> smiles seductively, rolling <<if _aboutToPenetrate>>the tip against you<<else>><<his>> <<= $speechpeniswithhold is 1 ? "folds" : "entrance">> against your tip<</if>>. "Why deny yourself, <<pcpetname "Avery">>? Be a good <<girl>> and push inside me. I'll take good care of you."
-				<<else>>
-					<<He>> smirks, grinding <<if _aboutToPenetrate>>the tip<<else>><<his>> <<= $speechpeniswithhold is 1 ? "folds" : "entrance">> against your tip<</if>> with firm pressure. "I'm offering you a chance to make amends, <<pcpetname "Avery">>. Take me in and I'll fuck every bit of that attitude right out of you."
-				<</if>>
-			<<elseif C.npc.Avery.rage gte 20>>
-				<<He>> huffs in annoyance. "Making me settle for scraps after the headache you gave me? You're a wicked little tease, <<pcpetname "Avery">>."
-			<<else>>
-				<<He>> tilts <<his>> head, amused. "Are you punishing yourself, <<pcpetname "Avery">>? <<if $averyragerevealed is 1>>Refusing <<if _aboutToPenetrate>>my <<npcPenisSimple>> when you've earned every inch of it...<<else>>to sink that <<= $player.penisExist ? "cock" : "toy">> into me when you've earned the privilege..."<</if>>"<<else>>Denying yourself what you've earned..."<</if>>
-			<</if>>
-		<</addinlineevent>>
-
-		/* Generic cases */
-		<<set _averyAnalCurious to C.npc.Avery.virginity.anal and $speechotheranuswithhold is 1>>
-		<<set _withholdWeight to (_averyAnalCurious ? 3 : 1)>>
-		<<addinlineevent "avery_speech_withhold_generic" _withholdWeight>>
-			<<if _averyAnalCurious>>
-				<<He>> huffs as <<he>> does. "Not going to let me satisfy my curiosity? How cruel of you, <<pcpetname "Avery">>."
-			<<elseif C.npc.Avery.rage gte 60>>
-				<<if $speechvaginawithhold is 1 or $speechanuswithhold is 1>>
-					"You have a lot of nerve, <<girl>>," <<he>> grits out. "You're lucky I'm in a forgiving mood this time."
-				<<elseif $speechpeniswithhold is 1 or $speechotheranuswithhold is 1>>
-					<<He>> growls as <<he>> does, obviously annoyed. "You little <<= either("bitch","shit","<<bastard>>","tramp","wretch")>>. You're lucky I'm the <<= either("patient","tolerant")>> sort."
-				<</if>>
-			<<elseif C.npc.Avery.rage gte 20>>
-				<<if $speechvaginawithhold is 1 or $speechanuswithhold is 1>>
-					"Fine." <<He>> <<= either("rolls <<his>> eyes","huffs","scoffs")>>. "Though I expect an apology if you change your mind."
-				<<elseif $speechpeniswithhold is 1 or $speechotheranuswithhold is 1>>
-					<<He>> huffs as <<he>> does, obviously impatient. "You could be fucking me right now, and you aren't. <<if C.npc.Avery.love gte 60>>You can be cute when you act foolish<<else>>I know you're a little fool<</if>>, <<pcpetname "Avery">>, but really!"
-				<</if>>
-			<<elseif $speechvaginawithhold is 1 or $speechanuswithhold is 1>>
-				"Very well, if you insist." <<He>> sounds disappointed<<if $averyragerevealed gte 1>> and lets out a huff<</if>>. "Though you're missing out, you know."
-			<<elseif $speechpeniswithhold is 1 or $speechotheranuswithhold is 1>>
-				<<He>> sighs as <<he>> does, obviously disappointed. "You're going to turn me down now?" <<He>> clicks <<his>> tongue.<<if $averyragerevealed gte 1>> "If you insist on being boring, so be it."<</if>>
-			<</if>>
-		<</addinlineevent>>
-		<<runeventpool>>
 	<<elseif $speechsteal is 1>>
 		<<if crimeSumCurrent() gte 2000 and $averyCrimeTracker gte 2000>>
 			<<He>> snarls. "It's bad enough you're a little sneak. <<= $averyCrimeTracker gte 2000 ? "I shouldn't be surprised that" : "Worse still that">> you're even stealing from me now!"
@@ -1493,7 +621,7 @@
 		<</if>>
 	<<elseif $speechbeat is 1>>
 		<<if $masochism_level gte 1>>
-			<<print either(
+			<<print speechPick(
 				`"Did you act out on purpose just to force my hand?" <<he>> accuses, eyes narrowing.`,
 				`<<He>> scoffs. "Is there truly no way to make you regret your actions?" `,
 				`"If pain turns you on, <<pcpetname "Avery">>, I am more than happy to give you a proper dose."`,
@@ -1506,7 +634,7 @@
 				`"You think your sickness protects you from my wrath?" <<he>> barks a laugh. "It only removes any reason for me to hold back."`,
 				)>>
 		<<else>>
-			<<print either(
+			<<print speechPick(
 				`"Does it hurt? Good. Every second of this pain is well-earned for how you've behaved."`,
 				`"Pain seems to be the only language a stubborn, ungrateful brat like you understands."`,
 				`"I will break that disobedient streak out of you if it's the last thing I do."`,
@@ -1521,7 +649,7 @@
 		<</if>>
 	<<elseif $speechhit is 1>>
 		<<if $avery_mansion>>
-			<<print either(
+			<<print speechPick(
 				`"Did your gutter upbringing teach you to strike anyone who tries to provide for you?"`,
 				`"You violent little beast! I should have known better than to deal with a street rat!"`,
 				`"Keep those filthy fists to yourself before I break them," <<he>> warns.`,
@@ -1529,7 +657,7 @@
 				`"I'll break every single finger on that hand before I let you hit me again."`,
 			)>>
 		<<else>>
-			<<print either(
+			<<print speechPick(
 				`"I give you a life of luxury and you treat me with street-level savagery?!"`,
 				`"I saved you from a pathetic existence and this is how you treat me?"`,
 				`"You'll be on your knees begging for my forgiveness before this day is over, I swear it."`,
@@ -1539,24 +667,24 @@
 		<</if>>
 	<<elseif $speechstruggle is 1>>
 		<<if C.npc.Avery.rage gte 60>>
-			<<print either(
+			<<print speechPick(
 				`"I am sick of your fucking defiance. Be still."`,
 				`"Stop struggling and accept your place, you insolent brat!"`
 			)>>
 		<<elseif C.npc.Avery.rage gte 20>>
-			<<print either(
+			<<print speechPick(
 				`"Do you really want to make this harder on yourself than it needs to be?"`,
 				`"Cease this childish struggling at once, unless you want me to get truly angry."`
 			)>>
 		<<else>>
-			<<print either(
+			<<print speechPick(
 				`"You won't get anywhere squirming like that, <<pcpetname "Avery">>."`,
 				`"My, aren't we feisty today? Calm down and let me handle you."`
 			)>>
 		<</if>>
 	<<elseif $speechspank is 1>>
 		<<if $avery_mansion>>
-			<<print either(
+			<<print speechPick(
 				`"You're becoming far too spoiled living here. A little swing will do you good."`,
 				`"My home isn't a place for disobedience or insolence. Perhaps a little discipline will help you remember that."`,
 				`"Good behavior isn't optional in my household. I'll keep correcting you until you understand that."`,
@@ -1565,7 +693,7 @@
 			)>>
 		<<else>>
 			<<set _beastTF to $cat gte 6 or $wolfgirl gte 6 or $cow gte 6 or $fox gte 6 or $harpy gte 6>>
-			<<print either(
+			<<print speechPick(
 				`"A few hard swats to your bottom should settle that bratty attitude before our next date."`,
 				`"You're far too old to be over my knee like a child, but you leave me no choice."`,
 				`"A sore bottom should remind you how to behave when we go out in public, <<pcpetname "Avery">>."`,
@@ -1573,63 +701,866 @@
 				`"You should be thanking me. Most wouldn't bother trying to <<= _beastTF ? "domesticate" : $speech_attitude is "bratty" ? "tame" : "improve">> the likes of you."`,
 			)>>
 		<</if>>
-	<<elseif $speechcoverface is 1>>
-		<<if $consensual and $averyragerevealed is 1>>
-			"Put your hands down, <<pcpetname "Avery">>. I insist on seeing your face while I have my way with you."
-		<<elseif $consensual and $averyragerevealed isnot 1>>
-			"Oh, don't be shy with me, <<pcpetname "Avery">>. There's nothing to be embarrassed about when you're in my hands."
-		<<elseif !$consensual and C.npc.Avery.rage gte 60>>
-			"Don't hide your face now. If you had the audacity to disobey, you will look at me while I discipline you."
-		<<elseif !$consensual and C.npc.Avery.rage lt 60>>
-			"A bit late to feel bashful about your behaviour, isn't it? Move your hands and face what you've done."
-		<</if>>
-
 	<<else>>
-		/* Generic comments - make an exception for TFs -*/
-		<<set _playerMaxPain to $pain gte 100 and $willpowerpain is 0>>
-		<<set _playerIsCumming to $arousal gte ($arousalmax / 5) * 4>>
-		<<set _highArousalReaction to _playerIsCumming and $consensual or (!$consensual and $enemyanger lte 20)>>
-		<<set _playerTrauma to $dissociation gte 1>>
+		<<cleareventpool>>
+		<<if $speechchastity is 1>>
+			<<if $averySeen.includes("player_virgin")>> /* Avery knows about the vow */
+				<<if $averyragerevealed is 1>>
+					<<addinlineevent 0.333>><<He>> scowls. "You and your bloody temple nonsense. It's taking everything in me not to drag you to a locksmith right now."<</addinlineevent>>
+					<<addinlineevent 0.333>>"Your god isn't the one providing for you, <<pcpetname "Avery">>. Take this wretched thing off."<</addinlineevent>>
+					<<addinlineevent 0.333>>"You think a <<= C.npc.Avery.rage gte 20 ? "ridiculous" : "silly">> temple vow gives you an excuse to waste my time? Get rid of this."<</addinlineevent>>
+				<<else>>
+					<<addinlineevent 0.333>>"A <<= $worn.genitals.name is "gold chastity belt" ? "bit of gold" : "piece of iron">> won't protect your purity for long, <<pcpetname "Avery">>. You belong to me, after all."<</addinlineevent>>
+					<<addinlineevent 0.333>>"I do wonder how long it will take for me to make you break this little vow of yours<<if $brokenVowCount?.Avery gt 1>> this time<</if>>."<</addinlineevent>>
+					<<addinlineevent 0.333>>"This device is rather tiresome. I do hope you reconsider that silly vow of yours soon."<</addinlineevent>>
+				<</if>>
+			<<elseif $averyragerevealed is 1>>
+				<<addinlineevent 0.333>><<He>> scowls. "What is this ridiculous thing doing on you?"<</addinlineevent>>
+				<<addinlineevent 0.333>>"You're making a complete mockery of my time with this nonsense."<</addinlineevent>>
+				<<addinlineevent 0.333>>"You little brat. Was this truly necessary?"<</addinlineevent>>
+			<<else>>
+				<<addinlineevent 0.333>><<He>> frowns. "A <<printChastity>>? I didn't realize you were into this sort of tease."<</addinlineevent>>
+				<<addinlineevent 0.333>><<He>> smirks. "Playing hard to get, are we? How adorable."<</addinlineevent>>
+				<<addinlineevent 0.333>>"Trying to protect yourself? It only makes me want to claim you more."<</addinlineevent>>
+			<</if>>
+		/* Avery flaunts pussy */
+		<</if>>
+		<<if $speechvaginaflaunt is 1>>
+			<<addinlineevent 0.2>><<He>> smiles. "Well? Don't just stare like a beggar outside a shop window."<</addinlineevent>>
+			<<addinlineevent 0.2>><<He>> laughs. "A privilege like this doesn't come cheap, <<pcpetname "Avery">>. You would do well to remember that."<</addinlineevent>>
+			<<addinlineevent 0.2>><<He>> smiles salaciously, letting <<his>> fingers trace the edge of <<his>> <<pussy>>. "I expect you to appreciate every inch of what you're being offered right now."<</addinlineevent>>
+			<<addinlineevent 0.2>>"Keep your eyes right here," <<he>> coos. "I want to watch your mouth water."<</addinlineevent>>
+			<<addinlineevent 0.2>>"Take a good look, <<pcpetname "Avery">>. This is the only view that should matter to you," <<he>> drawls.<</addinlineevent>>
+		/* Reacting to PC's scream for help  */
+		<</if>>
+		<<if $speechdildovagina is 1 or $speechdildoanus is 1>>
+			<<addinlineevent "avery_speech_dildovagina">>
+				<<if random(0,1) is 0>>
+					"<<= either("Oh, fuck","Yes")>>..." <<he>> <<= either("moans","groans","gasps")>>. "<<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 20 ? "That's it" : "Good <<girl>>">>, just like that."
+				<<else>>
+					"Yes," <<he>> <<= either("hisses","groans","moans","breathes")>>. <<= $averyragerevealed gte 1 and (C.npc.Avery.rage gte 60 or C.npc.Avery.lust gte 40) ? "It's hard to keep the toy still with how roughly <<he>> rides it." : "<<He>> seems briefly lost in the sensation.">>
+				<</if>>
 
-		/* When PC is about to cum */
-		<<if _highArousalReaction or _playerMaxPain or _playerTrauma>>
-			<<cleareventpool>>
-			<<if _highArousalReaction>>
-				<<addinlineevent "avery_speech_arousal" 2>>
-					<<print either(
-						`"Close, <<pcpetname "Avery">>?" <<His>> eyes rove over your body hungrily. "Don't hold back on my account."`,
-						`"Cum for me, <<pcpetname "Avery">>." <<He>> <<= C.npc.Avery.rage gte 20 ? "smirks" : "smiles">>, watching you with a new interest.<<if $averyragerevealed is 1>> "And moan my name when you do."<</if>>`
-					)>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechstroker is 1>>
+			<<addinlineevent "avery_speech_stroker">>
+				"Yes," <<he>> <<= either("hisses","groans","moans","breathes")>>. <<= $averyragerevealed gte 1 and (C.npc.Avery.rage gte 60 or C.npc.Avery.lust gte 40 or $enemyarousal gte ($enemyarousalmax / 5) * 4) ? "It's hard to keep the toy still with how roughly <<he>> thrusts into it." : "<<He>> seems briefly lost in the sensation.">>
+			/* PC apologizes after saving Avery  */
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechvagina is 1 or $speechpenis is 1 or $speechanus is 1>>
+			<<addinlineevent "avery_speech_vagina_touch" 1>>
+				"Such a sweet little <<= either("pussy","cunt")>> you have...<<if npcHasStrapon() or C.npc.Avery.penis isnot "none">> Makes me want to fuck it proper,<</if>>" <<he>> says.
+			<</addinlineevent>>
+
+			/* Player is a virgin */
+			<<if ($player.vaginaExist and $player.virginity.vaginal is true) or (($player.penisExist and $parasite.clit.name isnot "parasite") and $player.virginity.penile is true)>> 
+				<<if not $averySeen.includes("virginKnown")>> /* Avery doesn't know you're a virgin */
+					/* Dialogue only triggers at consensual or noncon + low anger */
+					<<if $consensual or (!$consensual and $enemyanger lte 20)>>
+						<<addinlineevent "avery_speech_virgin" 3>>
+							<<set $averySeen.pushUnique("virginKnown")>>
+							"Oh, could it be...?" <<His>> fingers <<if $speechpenis is 1>>rub the tip of your penis, playing with your foreskin and glans<<else>>poke about inside you, pressing against your hymen<</if>> and making you jolt. "Still a virgin, are you? 
+							<<if $fame.sex gte 400 or $fame.prostitution gte 400>>
+								Color me surprised, you little <<= $fame.sex gt $fame.prostitution ? "slut" : "whore">>.
+							<<elseif $fame.rape gte 400 or $fame.exhibitionism gte 400>>
+								I'm shocked, considering your...reputation."
+							<<else>>
+								Interesting..." <<His>> gaze darkens a shade with desire.
+							<</if>>
+						<</addinlineevent>>
+					<</if>>
+				<<else>> /* Avery knows you're a virgin */
+					<<addinlineevent "avery_speech_virgin_known" 1.5>>
+						"How would you feel if I were to take your virginity here and now, <<pcpetname "Avery">>?" <<he>> asks as <<he>> <<if $speechpenis is 1>>plays with your foreskin and glans<<else>>presses against your hymen<</if>>, making you jolt. <<He>> <<if $averyragerevealed is 1>>doesn't sound like <<hes>> joking.<<else>>smiles. "...I'm only joking, of course."<</if>>
+					<</addinlineevent>>
+
+				<</if>>
+			<</if>>
+
+			/* Avery has a vagina, OR Avery doesn't have a vagina but has lost their anal virginity */
+			<<if $speechpenis is 1>>
+				<<addinlineevent "avery_speech_penis_npc" 1>>
+					<<if C.npc.Avery.vagina isnot "none" or (C.npc.Avery.vagina is "none" and C.npc.Avery.virginity.anal isnot true)>>
+						"Such <<= $player.penissize gte 3 ? "thick" : $player.penissize gte 1 ? "an enticing" : "a sweet little">> <<= either("cock","penis")>> you have. Makes me want to fuck it proper," <<he>> says. <<insecurity "penis_small" 1>><<ginsecurity "penis_small">>
+					<<else>>
+						"Such <<= $player.penissize gte 3 ? "thick" : $player.penissize gte 1 ? "an enticing" : "a sweet little">> <<= either("cock","penis")>> you have, <<pcpetname "Avery">>," <<he>> says. <<insecurity "penis_small" 1>><<ginsecurity "penis_small">>
+					<</if>>
 				<</addinlineevent>>
 			<</if>>
-			<<if _playerTrauma>>
-				<<if $dissociation gte 2>>
-					<<if $avery_fate is "saved">>
-						<<if C.npc.Avery.rage gte 60>>
-							<<His>> brows furrow and <<he>> frowns. "You're trying to punish me, aren't you? Playing hard to get?" <<He>> <<= either("clicks <<his>> tongue","huffs")>>. "Well, that's enough, <<pcpetname "Avery">>. You can stop now, I get the picture."
-						<<elseif C.npc.Avery.rage gte 20>>
-							<<He>> hums. "<<= either("Silly little thing","Poor little fool")>>. Come back to me, <<pcpetname "Avery">>. I miss your <<= $speech_attitude is "meek" or $speech_attitude_avery ? "sweetness" : $speech_attitude is "bratty" ? "fire" : "passion">>."
+
+
+			/* Arousal-based dialogue */
+			<<if $arousal gte 6000>>
+				<<addinlineevent>>"So desperate," <<he>> <<if C.npc.Avery.rage gte 20>>sneers. "You hardly deserve this release after the way you've behaved."<<else>>muses. "Perhaps I should charge you for this rather than the other way around."<</if>><</addinlineevent>>
+				<<addinlineevent>><<His>> <<if $speechanus is 1>>fingers press deeper<<else>>thumb brushes <<if $speechvagina is 1>>your clit<<else>>the head of your penis<</if>><</if>>, feeling you shudder. "I could <<if C.npc.Avery.rage gte 20>>stop right now and leave you begging. You'd do well to remember that."<<else>>tip you over the edge so easily..."<</if>><</addinlineevent>>
+				<<if C.npc.Avery.rage gte 20>>
+					<<addinlineevent "avery_speech_fingering_aroused_enraged_1" 1>>
+						<<if $speechanus is 1>>"Clenching around my fingers<<else>>"<<if $speechvagina is 1>>Dripping<<else>>Leaking<</if>> everywhere<</if>> like a desperate little slut," <<he>> scoffs. "If only you were half as eager to please me as your body is."
+					<</addinlineevent>>
+					<<addinlineevent "avery_speech_fingering_aroused_enraged_2" 1>>
+						<<if $speechpenis is 1>>
+							<<He>> scoffs. "I spend a fortune providing for you, and you repay me by acting out, throbbing in my palm in the meanwhile."
 						<<else>>
-							<<He>> sighs. "Oh, dear... You've gone somewhere else entirely. Come back to me, won't you, <<pcpetname "Avery">>?"
+							<<He>> <<= either("scoffs","huffs")>>. "I spend a fortune providing for you, and you repay me by acting out, melting all over my hand in the meanwhile."
 						<</if>>
-					<<elseif C.npc.Avery.rage gte 60>>
-						<<He>> mutters. "I can't help but wonder what it would be like if you were always so compliant with me."
-					<<elseif C.npc.Avery.rage gte 20>>
-						<<He>> calls your name. "You're in something of a state, aren't you? You ought to have that taken care of."
+					<</addinlineevent>>
+					<<addinlineevent "avery_speech_fingering_aroused_enraged_3" 1>>
+						"Remember this feeling the next time you think to cross me," <<he>> warns, <<if $speechpenis is 1>>stroking <<his>> hand harshly along your length.<<else>>twisting <<his>> fingers harshly inside you.<</if>>
+					<</addinlineevent>>
+				<<else>>
+					<<addinlineevent>>"You're <<if $speechanus is 1>>clenching so tightly around me<<else>><<if $speechvagina is 1>>dripping<<else>>leaking<</if>> everywhere<</if>>," <<he>> <<laughs>>. "I suppose I can't blame you, considering whose hands are on you."<</addinlineevent>>
+					<<addinlineevent>>"My investment seems to be yielding quite the <<if $speechanus is 1>>reaction<<else>>mess<</if>>, <<pcpetname "Avery">>."<</addinlineevent>>
+					<<addinlineevent "avery_speech_fingering_aroused_calm_3" 1>>
+						<<if $speechpenis is 1>>
+							"I expect you to remember who has you falling apart like this, <<pcpetname "Avery">>," <<he>> says, tightening <<his>> grip around your length.
+						<<else>>
+							"I expect you to remember exactly who has you falling apart like this, my <<pcpetname "Avery">>," <<he>> says, twisting <<his>> fingers inside you.
+						<</if>>
+					<</addinlineevent>>
+				<</if>>
+			<<elseif C.npc.Avery.rage gte 20>>
+
+				<<addinlineevent>>"Your attitude is dreadful, but you still feel exquisite <<if $speechpenis is 1>>in my hand<<else>>around my fingers<</if>>," <<he>> admits with a frustrated sigh.<</addinlineevent>>
+				<<addinlineevent>>"I'd usually make this last, but frankly you haven't been worth the extra effort lately," <<he>> remarks icily.<</addinlineevent>>
+				<<addinlineevent>>"You ought to be far more grateful I'm still willing to touch you when you behave like a spoiled brat."<</addinlineevent>>
+				<<addinlineevent>>"I was going to be gentle, but I think a harsher pace suits your current attitude," <<he>> says, <<if $speechpenis is 1>>stroking your length<<else>>driving <<his>> fingers in<</if>> faster.<</addinlineevent>>
+				<<addinlineevent "avery_speech_fingering_cold_enraged_5" 1>>
+					<<He>> barks a laugh. "All that stubbornness and your 
+					<<if $speechvagina is 1>>cunt still grips and pulls my fingers deeper like it's starving for them."<<elseif $speechpenis is 1>>cock still strains in my grip like it was always meant to."<<else>>ass still clenches and pulls my fingers deeper like it needs them."<</if>>
+				<</addinlineevent>>
+				
+			<<else>>
+				<<addinlineevent>>"You feel exquisite <<if $speechvagina is 1 or $speechanus is 1>>around me<</if>><<if $dateCount?.Avery gte 3>>, as always<</if>>," <<he>> breathes.<</addinlineevent>>
+				<<addinlineevent>>"I could play with you like this all day... if I didn't have more important matters to attend to."<</addinlineevent>>
+				<<addinlineevent>>"You should feel honored. I don't give my attention so freely to just anyone." <<He>> <<= either("smirks","smiles","winks")>>.<</addinlineevent>>
+				<<addinlineevent>>"I could speed up... but I think I'd rather take my time with you," <<he>> teases.<</addinlineevent>>
+				<<addinlineevent "avery_speech_fingering_cold_calm_5" 1>>
+					<<if $speechpenis is 1>>
+						"You were built to throb in my hand like this, <<pcpetname "Avery">>. Don't you think?"
 					<<else>>
-						<<His>> voice rings. "<<pcPetname "Avery">>? Are you still with me? Get a hold of yourself."
+						"You were built to feel this full, <<pcpetname "Avery">>. Don't you think?"
 					<</if>>
-				<<elseif $dissociation eq 1>>
-					<<if $avery_fate is "saved">>
-						<<He>> raises an eyebrow.
-					<<elseif C.npc.Avery.rage gte 60>>
-						<<He>> mumbles. "I can't help but wonder what it would be like if you were always so compliant with me."
-					<<elseif C.npc.Avery.rage gte 20>>
-						"Those eyes. What am I to do with you?"
+				<</addinlineevent>>
+			<</if>>
+
+			/* Anus play */
+			<<if C.npc.Avery.rage lt 20 or $enemyanger lte 20>>
+				<<addinlineevent "avery_speech_anus" 1>>
+					"Let's see what we have here..."
+				<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speechthroat is 1>>
+			<<addinlineevent "avery_speech_throat">>
+				<<if $choketrait gt 0>>
+					<<if $consensual>>
+						<<if C.npc.Avery.rage gte 20>>
+							<<He>> sneers, <<his>> grip tightening mercilessly. "You act out just to get my hand around your throat, don't you? What a needy little <<slut>>."
+						<<else>>
+							"Since you've been so accommodating lately," <<he>> purrs, tightening <<his>> grip, "I suppose I can indulge your little <<= either("sickness","perversion")>>."
+						<</if>>
+					<<elseif $enemyanger lte 20>>
+						"There's no need to look so conflicted," <<he>> coos. "It is only natural for a toy to melt under its owner's grip. Even when forced."
 					<<else>>
-						"There, there," <<he>> says. "It will be over soon enough."
+						"You thrash and cry, and yet your pulse is fluttering so beautifully against my palm. I find that rather telling, don't you?"
+					<</if>>
+				<<elseif $consensual>>
+					<<if C.npc.Avery.rage gte 20>>
+						"Don't think this makes up for your recent behaviour. I can cut off your air just easily as your allowance."
+					<<else>>
+						"I can feel how fast your heart is beating," <<he>> murmurs, thumb pressing into your pulse. "Are you frightened of me, <<pcpetname "Avery">>? How flattering."
+					<</if>>
+				<<elseif $enemyanger lte 20>>
+					"I'd hate to leave marks on something so pretty," <<he>> muses. "So I suggest you stop making this so difficult for both of us."
+				<<else>>
+					"I am sick of your insolence. If I have to physically choke the disobedience out of you. I will."
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechvaginafoot is 1 or $speechpenisfoot is 1>>
+			<<set _probablyNudeFeet to _avery.clothes.lower.name is "naked" or _avery.clothes.lower.name is "pyjama bottoms">>
+			<<addinlineevent>>"My, so responsive. And so little effort on my part."<</addinlineevent>>
+			<<addinlineevent>>"Don't look so embarrassed. You're <<= $speechvaginafoot is 1 and $speechpenisfoot isnot 1 ? "taking it" : "responding">> so well."<</addinlineevent>>
+			<<addinlineevent>>"I could make you finish like this if I wanted to. Should I?"<</addinlineevent>>
+			<<if _probablyNudeFeet>>
+				<<addinlineevent>>"Don't squirm," <<he>> tuts, nudging your tip with the pad of <<his>> toe.<</addinlineevent>>
+			<<else>>
+				<<addinlineevent>>"My poor shoes," <<he>> sighs, deeply unbothered.<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speecharms is 1>>
+			<<addinlineevent "avery_speech_arms">>
+				<<if !$consensual>>
+					"Keep still, you little <<= C.npc.Avery.rage gte 60 ? "<<bastard>>" : C.npc.Avery.rage gte 20 ? "<<cunt>>" : "brat">>!" <<He>> grips your wrists tight. <<pain 1>><<gpain>>
+				<<elseif $enemyanger lte 20>>
+					"Stay still, <<pcpetname "Avery">>. Move, and I'll be very upset with you."
+				<<elseif $enemyanger lte 100>>
+					"Quit your wriggling and behave yourself," <<he>> says, eyes narrowed.
+				<<else>>
+					"That's enough of that! Stay still, you little brat," <<he>> hisses.
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechclit is 1 or $speechfutapenis is 1 or $speechglans>>
+			<<addinlineevent "avery_speech_outer_genitals_1" 1>>
+				<<if $speechfutapenis is 1>>
+					"Such a fascinating combination, isn't it?" <<he>> muses with a smirk. "And every inch of both belongs entirely to me."
+				<<else>>
+					"A <<if $speechglans is 1>>sensitive little tip<<else>>delicate little thing<</if>>, isn't it?" <<he>> muses with a smirk, applying pressure<<if $speechglans is 1>> to the head<</if>>. "And it belongs entirely to me."
+				<</if>>
+			<</addinlineevent>>
+			<<addinlineevent>>"Don't be shy," <<he>> coos, rubbing slow circles <<if $speechglans is 1>>over the head <</if>>with <<his>> thumb. "Move those hips and <<if $speechclit is 1>>grind against my thumb<<else>>press into my hand<<=$speechfutapenis is 1 ? "s": "">><</if>> for me."<</addinlineevent>>
+			<<addinlineevent>>"Does my pretty <<girl>> like when I play with <<if $speechfutapenis is 1>>both of <<pher>> gifts<<else>><<pher>> <<= $speechclit is 1 ? "clit" : "tip">><</if>> like this?" <<he>> purrs, pressing firmer. "I can feel you throbbing <<if $speechfutapenis is 1>>in both places<<else>>right against my thumb<</if>>."<</addinlineevent>>
+			<<addinlineevent>>"Look how sweet you look, squirming <<if $speechfutapenis is 1>>while I handle both<<else>>beneath my thumb<</if>>," <<he>> muses with a smug smile.<</addinlineevent>>
+			<<addinlineevent>><<He>> watches your expression closely <<if $speechglans is 1 or $speechclit is 1>>as <<he>> strokes <<if $speechclit is 1>>your clit<<else>>the head of your penis<</if>><</if>>. "Mm, look at that <<= either("pretty","lovely","gorgeous")>> face. Don't hold back on my account."<</addinlineevent>>
+		<</if>>
+		<<if $speechbottom is 1>>
+			<<if C.npc.Avery.rage gte 60>>
+				<<addinlineevent 0.25>>"Do not mistake my interest in your body as tolerance of your insolence, <<pcpetname "Avery">>."<</addinlineevent>>
+				<<addinlineevent 0.25>><<He>> sneers. "A terrible attitude, but at least this asset retains its physical value."<</addinlineevent>>
+				<<addinlineevent 0.25>>"Such soft skin for someone so rough around the edges."<</addinlineevent>>
+				<<addinlineevent 0.25>>"Do you have any idea how much stress relief someone in my position requires? Hold still and do your job, <<pcpetname "Avery">>."<</addinlineevent>>
+			<<elseif C.npc.Avery.rage gte 20>>
+				<<addinlineevent 0.25>>"Be a good <<girl>>, or I'll be forced to leave my mark right here."<</addinlineevent>>
+				<<addinlineevent 0.25>>"Don't make me regret being gentle with you," <<he>> warns with a sharp squeeze.<</addinlineevent>>
+				<<addinlineevent 0.25>>"You'd best behave yourself, <<pcpetname "Avery">>, before I decide you need a thorough spanking."<</addinlineevent>>
+				<<addinlineevent 0.25>><<He>> regards you with a sharp look. "Try not to earn yourself a harsh lesson, <<pcpetname "Avery">>."<</addinlineevent>>
+			<<else>>
+				<<addinlineevent 0.25>><<He>> smirks. "Do you have any idea how enticing you look from behind, <<pcpetname "Avery">>?"<</addinlineevent>>
+				<<addinlineevent 0.25>><<He>> <<= either("smiles playfully","smiles impishly","gives a satisfied smile","<<laughs>> quietly")>> as <<his>> fingers knead your <<bottom>>. "I suppose I'm just getting my money's worth, <<pcpetname "Avery">>."<</addinlineevent>>
+				<<addinlineevent 0.25>>"I really ought to be doing something productive," <<he>> whispers, burying <<his>> face in your neck while squeezing your <<bottom>>, "but this is far more entertaining."<</addinlineevent>>
+				<<addinlineevent 0.25>><<His>> gaze darkens with desire as <<he>> holds you flush against <<him>>.<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speechmasturbate>>
+			<<addinlineevent 0.5>>"I'm almost tempted to tell you to keep your hands off, just to see how you'd react...<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>or if you'd even obey, for that matter.<</if>>"<</addinlineevent>>
+			<<addinlineevent 0.5>>"Impatient?" <<He>> <<if C.npc.Avery.rage gte 40>>raises an eyebrow<<else>><<= either("smiles","smirks","<<laughs>>")>><</if>>. "Or can you just not help yourself?"<</addinlineevent>>
+		<</if>>
+		<<if $speechhandjobpenis is 1 or $speechhandjobvagina is 1>>
+			<<addinlineevent>>"Just like that..." <<he>> murmurs<<if C.npc.Avery.rage lt 60>>, sounding pleased<</if>>.<</addinlineevent>>
+			<<addinlineevent>>"A little faster for me, won't you?"<</addinlineevent>>
+
+			/* Hand skill is C or higher */
+			<<if currentSkillValue("handskill") gte 400>>
+				<<if $enemyanger lte 20>>
+					<<addinlineevent>>"That's a good <<girl>>..."<</addinlineevent>>
+					<<addinlineevent>><<He>> breathes. "Mm. Rub <<if $speechhandjobpenis is 1>>the tip<<else>>my clit<</if>> for me. Just like that... good <<girl>>."<</addinlineevent>>
+					<<addinlineevent>><<He>> coos. "Look at you working so diligently. How adorable."<</addinlineevent>>
+				<<else>>
+					<<addinlineevent "avery_speech_handjob_high_handskill_angry" 1>>
+						"To think someone so innocent-looking has such filthy, talented hands," <<he>> muses with a laugh.
+					<</addinlineevent>>
+				<</if>>
+			<<else>>
+				<<addinlineevent "avery_speech_handjob_low_handskill" 1>>
+					"You're still new at this, aren't you?" <<He>> <<laughs>>. "Don't worry, you'll learn."
+				<</addinlineevent>>
+			<</if>>
+		
+			/* PC is blushing */
+			<<if $arousal gte 4000>>
+				<<addinlineevent "avery_speech_handjob_blush" 1>>
+					"Look how flustered you are just taking care of my needs," <<he>> purrs. "Should I take care of yours when we're through here, <<pcpetname "Avery">>?"
+				<</addinlineevent>>
+			<</if>>
+
+			/* If Avery is approaching orgasm */
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addinlineevent "avery_speech_handjob_orgasm_rage" 1>>
+					<<if $averyragerevealed is 1>>
+						"Fuck..." <<he>> <<= either("groans","pants","moans","breathes")>> as <<his>> hips twitch <<if $speechhandjobpenis is 1>>into your grip<<else>>against your hand<</if>>. "You feel so fucking good."
+					<<else>>
+						"Goodness..." <<he>> <<= either("groans","pants","moans","breathes")>> as <<his>> hips twitch <<if $speechhandjobpenis is 1>>into your grip<<else>>against your hand<</if>>. "You feel so heavenly."
+					<</if>>
+				<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speechheadsuckle is 1>>
+			<<addinlineevent "avery_speech_headsuckle">>
+				<<if C.npc.Avery.rage gte 60>>
+					<<He>> <<= either("hisses","groans","grunts")>> with pleasure. "Keep going. Don't you dare stop, <<girl>>."
+				<<elseif C.npc.Avery.rage gte 20>>
+					<<He>> <<= either("hisses","grunts","murmurs","hums")>> with pleasure. "There we are, just like that... Keep going, <<pcpetname "Avery">>."
+				<<else>>
+					<<He>> <<= either("sighs","murmurs","hums")>> with pleasure. "There we are, that's a good <<pcpetname "Avery" "my">>..."
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechheadnipple is 1>>
+			<<addinlineevent "avery_speech_headnipple">>
+				<<if C.npc.Avery.rage gte 60>>
+					"You can do better than this," 
+					<<if $consensual>>
+						<<he>> <<= either("mutters","says with a scoff","sneers")>>. "I didn't do all this just to <<= either("play with","fuck")>> a doll."
+					<<else>>
+						<<he>> <<= either("growls","barks")>>. "And you'd better not bite. I promise you'll regret it."
+					<</if>>
+				<<elseif C.npc.Avery.rage gte 20>>
+					<<if $speech_attitude is "bratty">>
+						"At least when your smart mouth is occupied, I don't have to tolerate your petty defiance," <<he>> <<= either("sighs","says with a snort")>>.
+					<<else>>
+						"Finally you're using that mouth of yours for something productive," <<he>> <<= either("drawls","says","remarks")>>.
+					<</if>>
+				<<elseif currentSkillValue("oralskill") gte 400>>
+					"Very good." <<He>> smiles. "You know how to use that<<if C.npc.Avery.love gte 30 or C.npc.Avery.lust gte 20>> <<= either("sweet","pretty","precious")>> little<</if>> mouth of yours well..."
+				<<else>>
+					"Haven't done this much before, have you?" <<He>> <<= either("smiles","<<laughs>>")>>. "How <<= either("cute","adorable")>>. We'll have to keep practicing."
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechheadnippleclosed is 1>>
+			<<addinlineevent "avery_speech_headnippleclosed">>
+				<<if $avery_mansion>>
+					<<avery_mansion_housework_total>>
+				<</if>>
+				<<if C.npc.Avery.rage gte 60>>
+					"You'll defy me even in this?" <<He>> <<= either("barks a humourless laugh","sneers","scoffs","snarls")>>. "You do so love defying me every chance you get, don't you?<<if _avery_mansion_housework_total gte 7>> In every single way!<</if>>"
+				<<elseif C.npc.Avery.rage gte 20>>
+					"Enough games, <<pcpetname "Avery">>," <<he>> <<= either("growls","sneers","hisses")>>. "You know what I want from you, so do it<<= C.npc.Avery.rage gte 50 ? "!" : ".">>"
+				<<else>>
+					"Playing a little game, are you?" <<He>> <<= either("<<laughs>>","snorts","scoffs lightly")>>. "Cute. But I think that's enough of that. You know what to do, <<pcpetname "Avery">>."
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechheadchest is 1 or $speechheadbreasts is 1>>
+			<<addinlineevent "avery_speech_headchest">>
+				<<if $avery_mansion>>
+					<<avery_mansion_housework_total>>
+				<</if>>
+				
+				<<if C.npc.Avery.rage gte 60 or $enemyanger gt 100>>
+					"Suck on it. <<= either("You aren't so dense as to be incapable of <i>that</i> much","You can do <i>that</i> much, at least","It's the least you can do")>>," <<he>> says with a <<= either("derisive snort","derisive laugh","roll of the eyes","scoff")>>.
+				<<elseif C.npc.Avery.rage gte 20 or $enemyanger gt 20>>
+					"Come, now. Suck on it like a good <<pcpetname "Avery" "my">>," <<he>> <<= either("says","murmurs")>>. "I know that you can behave. <<= _avery_mansion_housework_total is 0 ? "You've done it before." : "Or else I'll teach you to.">>"
+				<<else>>
+					"Suck on it like a good <<pcpetname "Avery" "my">>," <<he>> <<= either("coos","murmurs","whispers")>> with a <<= either("smile","quiet laugh")>>.
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechleglock is 1>>
+			<<if $wolfgirl gte 2 and $averyragerevealed is 1 and (playerAwareTheyAreInHeat() or playerRutMinArousal() or playerHeatMinArousal())>>
+				<<addinlineevent "avery_speech_leglock_wolf_tf" 2>>
+					"Like a little <<bitch>> in heat," <<he>> rumbles<<if C.npc.Avery.rage lt 60>>, sounding amused<</if>>. "And out of your mind with it, too."
+				<</addinlineevent>>
+			<</if>>
+
+
+			<<addinlineevent "avery_speech_leglock" 1>>
+				<<if $consensual>>
+					<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
+						"Ah..." <<He>> smirks at you. "How pleasant to see you know your place after all."
+					<<else>>
+						"That desperate to be filled, are you?" <<He>> <<laughs>>.<<if $averyragerevealed gte 1>> "You are a little <<slut>>, aren't you?"<</if>>
+					<</if>>
+				<<else>>
+					<<if C.npc.Avery.rage gte 20>>
+						"Finally," <<he>> growls, jerking into you roughly. "Better late than never that you remember what you're here for."
+					<<else>>
+						"Yes," <<he>> hisses. "There you are. It didn't take too long to remember your place, did it?"
 					<</if>>
 				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechcheeks is 1>>
+			<<addinlineevent "avery_speech_grinding" 1>>
+				"Your little <<bottomsimple>> feels as good as it looks." <<He>> rocks against you a little harder.
+			<</addinlineevent>>
+
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 3 or C.npc.Avery.lust gte 20>>
+				<<addinlineevent "avery_speech_grinding_horny" 1>>
+					"I'm going to have more of this from you." <<He>> grinds against you roughly. "And more than just this, <<pcpetname "Avery">>... Just you wait."
+				<</addinlineevent>>
+			<</if>>
+
+			<<addinlineevent "avery_speech_grinding_bottomsize" 1>>
+				<<if $bottomsize lte 1>> /* Slender and slim */
+					"Small it may be," <<he>> teases, "but your <<bottomsimple>> is a <<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 60 ? "pleasant fuck" : "pleasure">> regardless."
+				<<elseif $bottomsize lte 5>> /* Modest, Cushioned, Soft, Round */
+					<<= $averyragerevealed gte 1 ? `"Fuck..." <<He>>` : '<<He>> curses under <<his>> breath and'>> rocks against you harder. "Your <<bottomsimple>> is a treat.<<if $avery_mansion or $averyragerevealed gte 1>> And it's all mine.<</if>>"
+				<<else>> /* Plump, Large and Huge */
+					"Your <<bottomsimple>> is so <<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 40 ? "fuckable" : "soft">>." <<He>> groans. "Wrapped around me, and with only your cheeks alone..."
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechthigh is 1>>
+			<<addinlineevent "avery_speech_thigh">>
+				<<if $position is "missionary" and $enemyarousal gte ($enemyarousalmax / 5) * 3>>
+					<<He>> starts rocking against your thigh roughly, <<his>> <<= either("grunting", "moaning","panting")>> growing loud.
+				<<else>> /* Doggy */
+					<<if $enemyarousal gte ($enemyarousalmax / 5) * 3 and $rng gte 51>>
+						<<He>> starts thrusting between your thighs roughly. You hear <<his>> <<= either("grunting", "moaning","panting")>> in your ear.
+					<<elseif currentSkillValue("thighskill") gte 400>>
+						"Yes, keep them together like that," <<he>> hisses with pleasure.<<if C.npc.Avery.love gte 40>> "Good <<girl>>."<</if>>
+					<<else>>
+						"Squeeze your thighs together tighter," <<he>> murmurs. <<He>> makes a pleased sound when you do.
+					<</if>>
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechfeet is 1>>
+			<<addinlineevent "avery_speech_feet">>
+				<<He>> <<= either("grunts","groans","pants")>> as <<he>> rocks <<his>> hips against your foot.
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechvaginamouth is 1 or $speechfacesit is 1>> 
+			<<if ($consensual and C.npc.Avery.rage gte 60) or (!$consensual and $enemyanger gt 100)>>
+				<<addinlineevent>>"If I have to force you to satisfy me, I promise it won't be pleasant<<if !$consensual and $enemyanger gt 100>> for you<</if>>."<</addinlineevent>>
+				<<addinlineevent>>"I am offering you a single chance to <<if $consensual and C.npc.Avery.rage gte 60>>show me you still know how to behave<<else>>submit<</if>>, <<pcpetname "Avery">>. Put that tongue to work."<</addinlineevent>>
+				<<addinlineevent>>"You're begging for a beating, but I think I'll smother your pride first."<</addinlineevent>>
+			<<elseif ($consensual and C.npc.Avery.rage gte 20) or (!$consensual and $enemyanger gt 20)>>
+				<<addinlineevent>>"You've been quite a headache today, <<pcpetname "Avery">>. <<if !$consensual and $enemyanger gt 20>>Stop resisting and <<else>>You had best <</if>>make this worth my while."<</addinlineevent>>
+				<<addinlineevent>><<He>> sneers. "I expect you to accommodate me until I forget how infuriating you've been<<if !$consensual and $enemyanger gt 20>>, like it or not<</if>>."<</addinlineevent>>
+				<<addinlineevent>>"Does <<if !$consensual and $enemyanger gt 20>>being made to submit<<else>>submitting to me<</if>> like this sting your pride, <<pcpetname "Avery">>? Good."<</addinlineevent>>
+			<<else>>
+				<<addinlineevent>>"You seem thirsty, <<pcpetname "Avery">>. Let<<if $consensual>>'s see if I can <<else>> me <</if>>quench that for you."<</addinlineevent>>
+				<<addinlineevent>>"I expect you to take your time and do a thorough job<<if !$consensual>>, whether you want to or not<</if>>."<</addinlineevent>>
+				<<addinlineevent>><<if $consensual>>"Let's see what that sweet tongue of yours can do <<else>>"Don't make me force that sweet tongue of yours <</if>>, <<pcpetname "Avery">>."<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speechvaginavagina is 1 or $speechpenispenis is 1>>
+			<<if _avery.lefthand is 0 or _avery.righthand is 0>>
+				/* Avery's hands aren't busy */
+				<<addinlineevent "avery_speech_frottage_handsfree" 1>>
+					<<His>> hands rest on your hips as <<he>> ruts against you.
+				<</addinlineevent>>
+			<</if>>
+
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addinlineevent "avery_speech_frottage_aroused" 2>>
+					<<His>> hips move more unevenly the closer <<he>> gets.
+				<</addinlineevent>>
+			<</if>>
+
+			<<if C.npc.Avery.rage lt 20 or $enemyanger lt 20>>
+				<<addinlineevent>>"Move your hips more to the—" <<He>> makes a soft sound of pleasure. "Yes," <<he>> <<= either("hisses","breathes")>>, "just like that."<</addinlineevent>>
+				<<addinlineevent>>"A little faster<<if C.npc.Avery.love gte 30>>, my<<if C.npc.Avery.love gte 60 and random(1,2) is 1>> little<</if>><</if>>—" <<He>> makes a soft sound of pleasure. "Yes," <<he>> <<= either("hisses","breathes")>>, "just like that."<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speechtribentrance is 1>>
+			<<addinlineevent "avery_speech_tribentrance">>
+				<<if C.npc.Avery.rage gte 60 or $enemyanger gt 100>>
+					"Spread your legs and stay still, <<pcpetname "Avery">>," <<he>> commands.<<if C.npc.Avery.lust gte 20>> There's an eager and almost dangerous gleam in <<his>> eyes.<</if>>
+				<<else>>
+					"Spread your legs for me, <<pcpetname "Avery">>," <<he>> <<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 20 ? "says" : "coos">>. "A little more..."<<if C.npc.Avery.lust gte 20>> There's an eager gleam in <<his>> eyes.<</if>>
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechfencingentrance is 1>>
+			<<addinlineevent "avery_speech_fencingentrance">>
+				<<if C.npc.Avery.rage gte 60 or $enemyanger gt 100>>
+					"Stay still, <<pcpetname "Avery">>," <<he>> commands.<<if C.npc.Avery.lust gte 20>> There's an eager and almost dangerous gleam in <<his>> eyes.<</if>>
+				<<else>>
+					"Stay still for me, <<pcpetname "Avery">>," <<he>> <<= $averyragerevealed gte 1 and C.npc.Avery.rage gte 20 ? "says" : "coos">>.<<if C.npc.Avery.lust gte 20>> There's an eager gleam in <<his>> eyes.<</if>>
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechchestrub is 1 or $speechbreastrub is 1>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addinlineevent "avery_speech_paizuri_aroused" 2>>
+					"When I'm finished, shall I cover your <<if $speechchestrub is 1>>chest<<else>>breasts<</if>> in cum, or your face?" <<He>> <<= either("<<laughs>>","smirks","grins","hums with amusement")>>. "<<= C.npc.Avery.dom gte 30 ? "I haven't decided yet." : "What do you think?">>"
+				<</addinlineevent>>
+			<</if>>
+
+			<<if C.npc.Avery.rage lt 20 or $enemyanger lte 20>>
+				<<addinlineevent>>"Look at that." <<He>> <<= either("seems amused","smiles","<<laughs>>")>>. "Quite the obscene sight, isn't it?<<if C.npc.Avery.dom gte 20>> And you're just letting it happen, aren't you?<</if>>"<</addinlineevent>>
+				<<addinlineevent>>"What a marvelous view." <<He>> <<= either("seems amused","smiles","<<laughs>>")>>. "And with my cock so close to your mouth..."<<if C.npc.Avery.lust gte 20>> There's an intrigued gleam in <<his>> eyes.<</if>><</addinlineevent>>
+			<<else>>
+				<<addinlineevent "avery_speech_paizuri_high_rage" 1>>
+					"Don't move, <<pcpetname "Avery">>." <<He>> <<= either("raises an eyebrow","purses <<his>> lips")>> at you. "Surely you're capable of at least that much?"
+				<</addinlineevent>>
+			<</if>>
+
+			<<if $breastsize gte 9>> /* Massive, Huge, Gigantic and Enormous */
+				<<addinlineevent "avery_speech_paizuri_big_breasts" 1>>
+					<<He>> seems briefly mesmerized by the way your breasts bounce with each thrust.
+				<</addinlineevent>>
+			<<elseif $breastsize gte 4>> /* Pert, Modest, Full, Large, Ample */
+				<<addinlineevent "avery_speech_paizuri_medium_breasts" 1>>
+					<<He>> watches your breasts bounce with each thrust with a pleased look on <<his>> face.
+				<</addinlineevent>>
+			<<elseif $breastsize gte 1 and C.npc.Avery.penissize gte 2>> 
+				/* Avery's penis is greater than tiny and breasts are Small, Tiny, Budding */
+				<<addinlineevent "avery_speech_paizuri_small_breasts" 1>>
+					"You <<= C.npc.Avery.penissize gte 3 ? "can hardly" : "almost can't">> get your<<if C.npc.Avery.love gte 40>> pretty little<</if>> tits around it..." <<He>> <<laughs>><<if $averyragerevealed gte 1>> smugly<</if>>.
+				<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speechanallick is 1>>
+			<<addinlineevent "avery_speech_anallick">>
+				<<if C.npc.Avery.rage gte 60>>
+					"I'm not letting you go until you worked out that tongue of yours."
+				<<else>> /* a mid-rage variation would be welcome */
+					"Let's see how good that tongue of yours is, <<pcpetname "Avery">>."
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechanalkiss is 1>>
+			<<addinlineevent "avery_speech_analkiss">>
+				<<if C.npc.Avery.dom gte 75>>
+					<<if C.npc.Avery.rage gte 60>>
+						"Keep that up, pet, and maybe I'll forgive you."
+					<<elseif C.npc.Avery.rage gte 20>>
+						<<He>> smirks. "It's a pleasant surprise to see you worshipping me the way you ought to, despite yourself."
+					<<else>>
+						<<He>> smirks. "I appreciate your dedication to worshipping me.<<if $averyragerevealed is 1>> As you should.<</if>>"
+					<</if>>
+				<<elseif C.npc.Avery.rage gte 60>>
+					<<He>> scowls. "You will remain there until I feel generous enough to accept your apology."
+				<<elseif C.npc.Avery.rage gte 20>>
+					"Unfortunately, it will take more than just a few kisses to make up for your behaviour as of late. Keep going."
+				<<else>>
+					<<He>> <<laughs>>. "How well-behaved, <<pcpetname "Avery">>."
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechmouthotheranus is 1>>
+			<<addinlineevent "avery_speech_mouthotheranus">>
+				<<if C.npc.Avery.rage gte 60>>
+					"The perfect position to remind you where you truly stand, <<girl>>."
+				<<elseif C.npc.Avery.rage gte 20>>
+					"Considering how insufferable you've been of late, I expect you to get to work."
+				<<else>>
+					"You're such a chore. Time for you to make it up to me."
+				<</if>>
+			/* Penetrating or being penetrated and pulling out or fighting off being stripped or covering your genitals - basically bratty actions - */
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechpenispenetrated is 1 or $speechotheranuspenetrated is 1 or $speechvaginapenetrated is 1 or $speechanuspenetrated is 1>>
+			<<set _playerPenetrates to $speechpenispenetrated is 1 or $speechotheranuspenetrated is 1>> /* If player uses their penis */
+			<<set _orifice to $speechvaginapenetrated is 1 ? "vagina" : $speechanuspenetrated is 1 ? "anus" : "none">> /* If Avery is in your pussy or anus - none means PC is doing the penetration */
+			<<set _isCooperating to ["cooperate", "otheranuscooperate"].includes($penisaction) or $anusaction is "cooperate" or $vaginaaction is "cooperate">>
+
+			<<addinlineevent "avery_speech_penetration_generic" 1>>
+				<<= $averyragerevealed is 1 ? `"Fuck..." <<he>>` : "<<He>>">> moans. "You feel so good <<if _playerPenetrates>>inside<<else>>around<</if>> me, <<pcpetname "Avery">>."
+			<</addinlineevent>>
+
+			<<if C.npc.Avery.rage gte 60>>
+				<<addinlineevent "avery_speech_penetration_high_rage" 1>>
+					"Your mouth might be useless, but your <<if _playerPenetrates>><<= either("cock","<<penisSimple>>")>><<else>><<if _orifice is "vagina">><<= either("pussy","cunt")>><<else>>ass<</if>><</if>> makes keeping you around worth it..."
+				<</addinlineevent>>
+			<<elseif C.npc.Avery.rage gte 20 and _isCooperating>>
+				<<addinlineevent "avery_speech_penetration_mid_rage" 1>>
+					"Oh, fuck..." <<he>> <<= either("moans","groans","gasps")>>. "Good <<girl>>, just like that."
+				<</addinlineevent>>
+			<<elseif C.npc.Avery.rage lt 20 and _isCooperating>>
+				<<addinlineevent "avery_speech_penetration_low_rage" 1>>
+					"Yes..." <<he>> <<= either("moans","groans","gasps")>>. "Good <<girl>>, just like that."
+				<</addinlineevent>>
+			<</if>>
+
+			/* Special cases where Avery is the penetrator */
+			<<if !_playerPenetrates>>
+				<<if C.npc.Avery.rage gte 60>>
+					<<addinlineevent>><<He>> <<if $position is "doggy">>pulls your rear flush with brutal force<<else>>grinds down into you without an ounce of gentleness<</if>>. "You act like trash, so I'm going to use you like trash."<</addinlineevent>>
+					<<addinlineevent>><<He>> spits, <<if $position is "doggy">>dragging your hips back aggressively<<else>>wrenching your legs further apart<</if>>. "The only time you aren't a complete disappointment is when you're on your <<if $position is "doggy">>hands and knees<<else>>back<</if>>, taking my cock."<</addinlineevent>>
+					<<addinlineevent>><<He>> pants angrily, <<if $position is "doggy">>pulling your hips back<<else>>staring down at you<</if>>. "Fuck... I should throw you out on the street, but you take a fucking too well."<</addinlineevent>>
+					<<addinlineevent>><<He>> sneers, <<if $position is "doggy">>digging <<his>> nails into your hips<<else>>pressing <<his>> weight down brutally<</if>>. "You're lucky this <<if $speechvaginapenetrated is 1>><<= either("pussy","cunt","hole")>><<else>><<= either("ass","backdoor","hole")>><</if>> is tight enough to save you."<</addinlineevent>>
+					<<if $enemyanger lte 20>>
+						<<addinlineevent "avery_speech_penetrating_high_rage_low_anger" 1>>
+							<<He>> <<if $position is "doggy">>sneers, yanking your hips higher<<else>>presses <<his>> forehead to yours, smiling coldly<</if>>. "All that attitude, and you still let me use your body like a cheap fucktoy. Where is that stubborn pride now, <<pcpetname "Avery">>?"
+						<</addinlineevent>>
+					<</if>>
+				<<elseif C.npc.Avery.rage gte 20>>
+					<<addinlineevent>><<if $position is "doggy">><<He>> groans, pulling your hips back roughly.<<else>><<His>> breath hitches, looking into your eyes.<</if>> "Keep gripping me like that. It almost makes me forget how infuriating you've been."<</addinlineevent>>
+					<<addinlineevent>><<He>> <<if $position is "doggy">>digs <<his>> fingers into your hips<<else>>stares down at your flushed face<</if>>. "If only your attitude were as accommodating as your body."<</addinlineevent>>
+					<<addinlineevent>><<He>> <<if $position is "doggy">>grips your waist firmly from behind<<else>> leans down over your chest, scowling<</if>>. "You're lucky this feels so fucking good, or you'd be over my knee right now instead."<</addinlineevent>>
+					<<addinlineevent>><<He>> slaps your <<if $position is "doggy">>hip sharply. "Arch your back<<else>>thigh sharply. "Spread those legs<</if>> properly. You have a lot of making up to do, <<pcpetname "Avery">>."<</addinlineevent>>
+					<<addinlineevent>><<He>> lets out a frustrated sigh that melts into a moan, watching <<if $position is "doggy">><<his>> <<= either("length","<<npcPenisSimple>>")>> drive into you,<<else>>your expression.<</if>> "Why must you be so difficult when you take me so perfectly?"<</addinlineevent>>
+				<<else>>
+					<<addinlineevent>><<He>> lets out a breathy chuckle, <<if $position is "doggy">>holding your hips tight against <<his>><<else>>gazing down into your eyes<</if>>. "I could stay buried inside you all day, <<pcpetname "Avery">>."<</addinlineevent>>
+					<<addinlineevent>>"I think I might fuck every coherent thought right out of that pretty little head of yours, <<pcpetname "Avery">>," <<he>> breathes, <<if $position is "doggy">>pulling your hips back and grinding deep<<else>>pinning you down and burying <<himself>> to the hilt<</if>>.<</addinlineevent>>
+					<<addinlineevent "avery_speech_penetrating_low_rage_3" 1>>
+						<<if $position is "doggy">>
+							<<He>> gives your ass a firm squeeze. "You look right at home on your hands and knees, <<pcpetname "Avery">>."
+						<<else>>
+							<<He>> watches your face, hips moving deliberately. "You look right at home underneath me, <<pcpetname "Avery">>."
+						<</if>>
+					<</addinlineevent>>
+					<<addinlineevent>><<He>> coos, thoroughly captivated by <<if $position is "doggy">>the sight of <<his>> <<= either("length","<<npcPenisSimple>>")>> disappearing<<else>>your expression as <<he>> drives deep<</if>> into you. "Look at how beautifully you take me."<</addinlineevent>>
+					<<addinlineevent>><<He>> chuckles, pressing a kiss to your <<= $position is "doggy" ? "shoulder" : "forehead">>. "Keep <<if $position is "doggy">>pushing back on me<<else>>looking at me<</if>> like that and I might never pull out."<</addinlineevent>>
+				<</if>>
+			<</if>>
+		<</if>>
+		<<if $speechmouthpenetrated is 1>>
+			<<addinlineevent "avery_speech_in_mouth_rage" 1>>
+				<<if $averyragerevealed is 1>>
+					"Your mouth <<= C.npc.Avery.rage gte 60 ? "is actually good for something other than refusing me for once" : "makes it all worthwhile">>," <<he>> says with a breathy laugh.
+				<<else>>
+					"Your mouth is a treasure..." <<he>> moans.
+				<</if>>
+			<</addinlineevent>>
+			<<if !npcHasStrapon()>>
+				<<addinlineevent "avery_speech_in_mouth_no_strapon" 1>>
+					"<<= $averyragerevealed is 1 ? "I want" : "I'd like">> you to <<= _avery.penis isnot "none" ? "swallow every drop" : "swallow it all">> once I'm finished," <<he>> says, <<= $averyragerevealed is 1 ? "smiling" : "smirking">> down at you.
+				<</addinlineevent>>
+			<</if>>
+		/* Avery about to penetrate your vagina or anus */
+		<</if>>
+		<<if $speechvaginaimminent is 1 or $speechanusimminent is 1>>
+			/* Avery about to enter either your vagina or anus */
+			<<addinlineevent "avery_speech_penis_imminent" 1>>
+				"Be a good <<girl>> and let me take care of you."
+			<</addinlineevent>>
+			
+			<<addinlineevent "avery_speech_penis_imminent_rage" 1>>
+				<<if C.npc.Avery.rage gte 60>>
+					"Relax, because I won't be stopping if you start crying, <<pcpetname "Avery">>."
+				<<elseif C.npc.Avery.rage gte 20>>
+					"Nervous? Don't be." <<He>> smirks at you. "Even if it hurts, I'll make sure it feels good, too."
+				<<else>>
+					"I'll be gentle." <<He>> smiles at you. "Now, relax for me..."
+				<</if>>
+			<</addinlineevent>>
+
+			<<if ($player.virginity.anal is true and $speechanusimminent is 1) or ($player.virginity.vaginal is true and $speechvaginaimminent is 1)>>
+				<<addinlineevent "avery_speech_penis_imminent_virgin_rage" 1>>
+					<<if $averyragerevealed is 1>>
+						<<He>> smirks. "I think it's time I finally broke in this untouched <<if $speechvaginaimminent is 1>><<= either("pussy","cunt","hole")>><<else>><<= either("ass","backdoor","hole")>><</if>> of yours..."
+					<<else>>
+						<<He>> smiles. "I promise to be gentle, <<pcpetname "Avery">>... <<if C.npc.Avery.lust gte 20 or $enemyarousal gte $enemyarousalmax / 4>>at least until you're <<if $speechvaginaimminent is 1>>slick<<else>>relaxed<</if>> enough for a much rougher pace.<</if>>"
+					<</if>>
+				<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speechpenisimminent is 1 or $speechotheranusimminent is 1>>
+			<<addinlineevent "avery_speech_npc_penis_imminent" 1>>
+				<<if C.npc.Avery.rage gte 20>>
+					"Stay still," <<he>> says, looking down at you. "You'll feel good, too, if you do as I say, <<pcpetname "Avery">>."
+				<<else>>
+					"I'll make you feel so good, <<pcpetname "Avery">>," <<he>> coos, rolling <<his>> <<if $speechpenisimminent is 1>><<pussy>><<else>>ass<</if>> against your tip. "Just stay still for me..."
+				<</if>>
+			<</addinlineevent>>
+
+			<<if $player.virginity.penile is true>>
+				<<addinlineevent "avery_speech_npc_penis_imminent_virgin_rage" 1>>
+					<<if $averyragerevealed is 1>>
+						<<He>> smirks. "I think it's time I finally took this untouched <<penis>> of yours..."
+					<<else>>
+						<<He>> smiles. "I promise to be gentle, <<pcpetname "Avery">>... <<if C.npc.Avery.lust gte 20 or $enemyarousal gte $enemyarousalmax / 4>>at least until you're ready for a much rougher pace.<</if>>"
+					<</if>>
+				<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speechmouthimminent is 1>>
+			<<if C.npc.Avery.rage gte 60>>
+				<<addinlineevent>>"Open that <<= either("slutty","whore")>> mouth of yours, <<girl>>."<</addinlineevent>>
+			<<else>>
+				<<addinlineevent 0.5>>"Open wide for me, <<pcpetname "Avery">>," <<he>> coos.<</addinlineevent>>
+				<<addinlineevent 0.5>>"You'll be a good <<girl>> and do as I tell you, won't you?"<</addinlineevent>>
+			<</if>>	
+		<</if>>
+		<<if $speechvaginaentrance is 1 or $speechanusentrance is 1>>
+			<<if C.npc.Avery.rage lt 20 or $enemyanger lte 20>>
+				<<addinlineevent "avery_speech_penis_to_entrance_low_rage" 1>>
+					"Are you ready for me, <<pcpetname "Avery">>?" <<he>> purrs.
+				<</addinlineevent>>			
+			<</if>>
+			<<if $averyragerevealed is 1 and (C.npc.Avery.lust gte 60 or $enemyarousal gte ($enemyarousalmax / 5) * 3)>>
+				<<addinlineevent "avery_speech_penis_to_entrance_aroused" 1>>
+					"I think I'm in the mood to fuck this needy little <<if $speechvaginaentrance is 1>><<= either("pussy","cunt","hole")>><<else>><<= either("ass","bottom","hole")>><</if>> of yours..." <<he>> says.
+				<</addinlineevent>>
+			<</if>>
+		<</if>>
+		<<if $speechmouthentrance is 1>>
+			<<if ($consensual and C.npc.Avery.rage gte 60) or (!$consensual and $enemyanger gt 100)>>
+				<<addinlineevent>>"If I have to force my way past those teeth, I promise it won't be pleasant<<if !$consensual>> for you<</if>>."<</addinlineevent>>
+				<<addinlineevent>>"I am offering you a single chance to <<if $consensual>>show me you still know how to behave<<else>>submit quietly<</if>>, <<pcpetname "Avery">>. Open your mouth."<</addinlineevent>>
+				<<addinlineevent>><<He>> sneers as <<he>> slaps <<his>> <<npcPenisSimple>> over your cheek harshly. "You're begging for a beating, but I think I'll <<if $consensual>>make you<<else>>force you to<</if>> swallow your pride first."<</addinlineevent>>
+			<<elseif ($consensual and C.npc.Avery.rage gte 20) or (!$consensual and $enemyanger gt 20)>>
+				<<addinlineevent>>"You've been quite a headache today, <<pcpetname "Avery">>. <<if $consensual>>You had best<<else>>Stop misbehaving and<</if>> make this worth my while."<</addinlineevent>>
+				<<addinlineevent>><<He>> sneers. "I expect you to work that tongue until I forget how infuriating you've been<<if !$consensual>>, like it or not<</if>>."<</addinlineevent>>
+				<<addinlineevent>><<He>> smiles icily as <<he>> slaps <<his>> <<= _avery.penis isnot "none" ? "length" : "toy">> over your cheek. "Did that sting your pride, <<pcpetname "Avery">>? Good.<<if !$consensual>> Now open up.<</if>>"<</addinlineevent>>
+			<<else>>
+				<<addinlineevent>><<He>> <<if $consensual>>smiles playfully<<else>>smirks<</if>> as <<he>> slaps <<his>> <<= _avery.penis isnot "none" ? "length" : "toy">> over your cheek. "<<if $consensual>>Does that make your mouth water, <<pcpetname "Avery">>?"<<else>>Don't pretend this doesn't make your mouth water, <<pcpetname "Avery">>."<</if>><</addinlineevent>>
+				<<addinlineevent>><<He>> drags <<his>> <<= _avery.penis isnot "none" ? "shaft" : "strap-on">> slowly across your lips. "I expect you to take your time and do a thorough job<<if !$consensual>>, whether you want to or not<</if>>."<</addinlineevent>>
+				<<addinlineevent>>"Open wide, <<pcpetname "Avery">>. <<if $consensual>>Let's see<<else>>Don't make me force<</if>> that sweet tongue of yours."<</addinlineevent>>
+			<</if>>
+		/* Avery is withholding from penetration */
+		<</if>>
+		<<if $speechvaginawithhold is 1 or $speechanuswithhold is 1 or $speechpeniswithhold is 1 or $speechotheranuswithhold is 1>>
+			<<set _aboutToPenetrate to $speechvaginawithhold is 1 or $speechanuswithhold is 1>>
+			<<set _peenVirgin to ($speechpeniswithhold is 1 or $speechotheranuswithhold is 1) and $player.virginity.penile is true>>
+			<<set _vaginaVirgin to $speechvaginawithhold is 1 and $player.virginity.vaginal is true>>
+			<<set _assVirgin to $speechanuswithhold is 1 and $player.virginity.anal is true>>
+
+			/* Virginity talk */
+			<<if _peenVirgin and $averySeen.includes("virginKnown")>>
+				<<addinlineevent "avery_speech_withhold_penis_virgin" 1>>
+					<<if C.npc.Avery.rage gte 60>>
+						<<He>> growls as <<he>> does, obviously annoyed. "I'll hold off for now, but I will have it sooner or later, <<pcpetname "Avery">>." <<He>> smirks<<if C.npc.Avery.love lt 50>> cruelly<</if>>. "It may as well be now."
+					<<elseif C.npc.Avery.rage gte 20>>
+						<<He>> huffs as <<he>> does, obviously impatient. "I don't see why you're so attached to remaining chaste. You're going to lose it eventually... Why not give it to me?" <<He>> smirks.
+					<<else>>
+						<<He>> sighs as <<he>> does, obviously disappointed. "Oh, very well<<if !$averyragerevealed>>, if it's so important to you<</if>>."
+					<</if>>
+				<</addinlineevent>>
+			<</if>>
+
+			<<if _assVirgin and $averySeen.includes("virginKnown")>>
+				<<addinlineevent "avery_speech_withhold_anus_virgin" 1>>
+					<<if C.npc.Avery.rage gte 60>>
+						"Scared it will hurt? Given how infuriating you've been, a little pain is precisely what you deserve. Consider yourself lucky I'm waiting until next time."
+					<<elseif C.npc.Avery.rage gte 20>>
+						"Scared of a tiny bit of discomfort? How adorable. You're making a fuss over nothing, <<pcpetname "Avery">>. It's hardly as bad as you think."
+					<<else>>
+						"Scared of a little ache, my <<pcpetname "Avery" "my">>? Don't be. When we finally do this, I promise <<if $averyragerevealed is 1>>the only thing aching will be how badly you want me deeper<<else>>to be as gentle as you need<</if>>."
+					<</if>>
+				<</addinlineevent>>
+			<</if>>
+
+			<<if _vaginaVirgin and $averySeen.includes("virginKnown")>>
+				<<addinlineevent "avery_speech_withhold_vagina_virgin" 1>>
+					<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 60>>
+						"Withhold all you like, <<pcpetname "Avery">>. Every second you make me wait only makes me want to ruin you even more."
+					<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
+						<<He>> <<= either("smirks","sighs")>>. "Why cling to your virginity so stubbornly? You are going to lose it eventually, <<pcpetname "Avery">>... Why not give it to someone who can provide for you?"
+					<<elseif $averyragerevealed is 1>>
+						<<He>> smirks, <<his>> tip nudging against your entrance. "There's something almost adorable about how desperately you cling to your purity, my <<pcpetname "Avery" "my">>. All the more reason to savor corrupting it."
+					<<else>>
+						<<He>> smiles, <<his>> tip dragging deliberately against your folds. "There's something almost adorable about how dearly you cherish your purity, my <<pcpetname "Avery" "my">>. I suppose I can indulge your shyness, though you're only delaying the inevitable."
+					<</if>>
+				<</addinlineevent>>
+			<</if>>
+
+			/* Temple vow */
+			<<if $player.virginity.temple is true and $averySeen.includes("player_virgin")>>
+				<<addinlineevent "avery_speech_withhold_temple" 1>>
+					<<if $brokenVowCount?.Avery gt 1>>
+						/* Avery already broke the vow  */
+						<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 60>>
+							<<He>> scoffs. "Once was enough to know your vow has no real hold on you, <<pcpetname "Avery">>. Give in before my generosity runs out entirely."
+						<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
+							<<He>> watches you closely. "I already know exactly what you look like when you give in, <<pcpetname "Avery">>. Every sound you make. Every filthy detail you'd rather forget. Making me wait is just wasting time we could spend far more pleasantly."
+						<<elseif $averyragerevealed is 1>>
+							<<He>> laughs. "Once a principle is broken it has a way of staying broken, my <<pcpetname "Avery" "my">>.  Your body already remembers how good the fall felt. Sin for me again and let me remind you of the rest."
+						<<else>>
+							<<He>> chuckles. "Once a principle is broken it has a way of staying broken, my <<pcpetname "Avery" "my">>. Take your time. I already know how this ends."
+						<</if>>
+					<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 60>>
+						<<He>> smiles thinly. "You ought to be grateful I'm still holding back, <<pcpetname "Avery">>. Give in to sin before my generosity runs out."
+					<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
+						<<He>> clicks <<his>> tongue. "How maddening. How long do you intend to hide behind empty words to a silent god? I'm right here, and I can make you feel so much better."
+					<<elseif $averyragerevealed is 1>>
+						<<He>> watches you knowingly. "I can appreciate a person of principle. It makes your inevitable fall so much sweeter, <<pcpetname "Avery">>."
+					<<else>>
+						<<He>> <<laughs>> under <<his>> breath. "I can appreciate a person of principle. We'll simply take things at your pace, my <<pcpetname "Avery" "my">>."
+					<</if>>
+				<</addinlineevent>>
+			<</if>>
+
+			/* High dom or high lust */
+			<<addinlineevent "avery_speech_withhold_dom_lust" 1>>
+				<<if C.npc.Avery.dom gte 75 or C.npc.Avery.lust gte 60>>
+					<<if C.npc.Avery.rage gte 20>>
+						<<He>> smiles seductively, rolling <<if _aboutToPenetrate>>the tip against you<<else>><<his>> <<= $speechpeniswithhold is 1 ? "folds" : "entrance">> against your tip<</if>>. "Why deny yourself, <<pcpetname "Avery">>? Be a good <<girl>> and push inside me. I'll take good care of you."
+					<<else>>
+						<<He>> smirks, grinding <<if _aboutToPenetrate>>the tip<<else>><<his>> <<= $speechpeniswithhold is 1 ? "folds" : "entrance">> against your tip<</if>> with firm pressure. "I'm offering you a chance to make amends, <<pcpetname "Avery">>. Take me in and I'll fuck every bit of that attitude right out of you."
+					<</if>>
+				<<elseif C.npc.Avery.rage gte 20>>
+					<<He>> huffs in annoyance. "Making me settle for scraps after the headache you gave me? You're a wicked little tease, <<pcpetname "Avery">>."
+				<<else>>
+					<<He>> tilts <<his>> head, amused. "Are you punishing yourself, <<pcpetname "Avery">>? <<if $averyragerevealed is 1>>Refusing <<if _aboutToPenetrate>>my <<npcPenisSimple>> when you've earned every inch of it...<<else>>to sink that <<= $player.penisExist ? "cock" : "toy">> into me when you've earned the privilege..."<</if>>"<<else>>Denying yourself what you've earned..."<</if>>
+				<</if>>
+			<</addinlineevent>>
+
+			/* Generic cases */
+			<<set _averyAnalCurious to C.npc.Avery.virginity.anal and $speechotheranuswithhold is 1>>
+			<<set _withholdWeight to (_averyAnalCurious ? 3 : 1)>>
+			<<addinlineevent "avery_speech_withhold_generic" _withholdWeight>>
+				<<if _averyAnalCurious>>
+					<<He>> huffs as <<he>> does. "Not going to let me satisfy my curiosity? How cruel of you, <<pcpetname "Avery">>."
+				<<elseif C.npc.Avery.rage gte 60>>
+					<<if $speechvaginawithhold is 1 or $speechanuswithhold is 1>>
+						"You have a lot of nerve, <<girl>>," <<he>> grits out. "You're lucky I'm in a forgiving mood this time."
+					<<elseif $speechpeniswithhold is 1 or $speechotheranuswithhold is 1>>
+						<<He>> growls as <<he>> does, obviously annoyed. "You little <<= either("bitch","shit","<<bastard>>","tramp","wretch")>>. You're lucky I'm the <<= either("patient","tolerant")>> sort."
+					<</if>>
+				<<elseif C.npc.Avery.rage gte 20>>
+					<<if $speechvaginawithhold is 1 or $speechanuswithhold is 1>>
+						"Fine." <<He>> <<= either("rolls <<his>> eyes","huffs","scoffs")>>. "Though I expect an apology if you change your mind."
+					<<elseif $speechpeniswithhold is 1 or $speechotheranuswithhold is 1>>
+						<<He>> huffs as <<he>> does, obviously impatient. "You could be fucking me right now, and you aren't. <<if C.npc.Avery.love gte 60>>You can be cute when you act foolish<<else>>I know you're a little fool<</if>>, <<pcpetname "Avery">>, but really!"
+					<</if>>
+				<<elseif $speechvaginawithhold is 1 or $speechanuswithhold is 1>>
+					"Very well, if you insist." <<He>> sounds disappointed<<if $averyragerevealed gte 1>> and lets out a huff<</if>>. "Though you're missing out, you know."
+				<<elseif $speechpeniswithhold is 1 or $speechotheranuswithhold is 1>>
+					<<He>> sighs as <<he>> does, obviously disappointed. "You're going to turn me down now?" <<He>> clicks <<his>> tongue.<<if $averyragerevealed gte 1>> "If you insist on being boring, so be it."<</if>>
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechhair is 1>>
+			<<addinlineevent "avery_speech_hair">>
+				<<if $avery_mansion?.jobs?.includes("hairlength") and $hairlength gte 400>>
+					"Didn't I tell you to keep your hair shorter than this?" <<he>> says<<= C.npc.Avery.rage gte 60 ? " with a scowl. <<He>> tugs on it punitively. <<pain 1>><<gpain>>" : C.npc.Avery.rage gte 20 ? " with a frown." : ", one eyebrow raised.">>.
+				<<else>>
+					"<<= $hairlength lt 200 ? "Just long" : "Long" >> enough to pull on," <<he>> <<= $averyragerevealed is 1 ? "says with a smirk" : "murmurs with a laugh">>.
+				<</if>>
+			<</addinlineevent>>
+		<</if>>
+		<<if $speechcoverface is 1>>
+			<<addinlineevent "avery_speech_coverface">>
+				<<if $consensual and $averyragerevealed is 1>>
+					"Put your hands down, <<pcpetname "Avery">>. I insist on seeing your face while I have my way with you."
+				<<elseif $consensual and $averyragerevealed isnot 1>>
+					"Oh, don't be shy with me, <<pcpetname "Avery">>. There's nothing to be embarrassed about when you're in my hands."
+				<<elseif !$consensual and C.npc.Avery.rage gte 60>>
+					"Don't hide your face now. If you had the audacity to disobey, you will look at me while I discipline you."
+				<<elseif !$consensual and C.npc.Avery.rage lt 60>>
+					"A bit late to feel bashful about your behaviour, isn't it? Move your hands and face what you've done."
+				<</if>>	
+				
+			<</addinlineevent>>
+		<</if>>
+		/* A pool with nothing new to say takes a breather: the turn goes quiet instead of repeating. */
+		<<if !speechPoolFresh()>>
+			<<cleareventpool>>
+		<</if>>
+		<<set _idleTurn to _eventpool.length is 0>>
+
+		/* Ambient comments only compete on a quiet turn, as in vanilla: the PC's state first, otherwise Avery's casual comments. */
+		<<if _idleTurn>>
+			<<set _playerMaxPain to $pain gte 100 and $willpowerpain is 0>>
+			<<set _playerIsCumming to $arousal gte ($arousalmax / 5) * 4>>
+			<<set _highArousalReaction to _playerIsCumming and $consensual or (!$consensual and $enemyanger lte 20)>>
+			<<set _playerTrauma to $dissociation gte 1>>
+
+			/* When PC is about to cum */
+			<<if _highArousalReaction>>
+				<<addinlineevent>>"Close, <<pcpetname "Avery">>?" <<His>> eyes rove over your body hungrily. "Don't hold back on my account."<</addinlineevent>>
+				<<addinlineevent>>"Cum for me, <<pcpetname "Avery">>." <<He>> <<= C.npc.Avery.rage gte 20 ? "smirks" : "smiles">>, watching you with a new interest.<<if $averyragerevealed is 1>> "And moan my name when you do."<</if>><</addinlineevent>>
+			<</if>>
+			<<if _playerTrauma>>
+				<<addinlineevent "avery_speech_trauma">>
+					<<if $dissociation gte 2>>
+						<<if $avery_fate is "saved">>
+							<<if C.npc.Avery.rage gte 60>>
+								<<His>> brows furrow and <<he>> frowns. "You're trying to punish me, aren't you? Playing hard to get?" <<He>> <<= either("clicks <<his>> tongue","huffs")>>. "Well, that's enough, <<pcpetname "Avery">>. You can stop now, I get the picture."
+							<<elseif C.npc.Avery.rage gte 20>>
+								<<He>> hums. "<<= either("Silly little thing","Poor little fool")>>. Come back to me, <<pcpetname "Avery">>. I miss your <<= $speech_attitude is "meek" or $speech_attitude_avery ? "sweetness" : $speech_attitude is "bratty" ? "fire" : "passion">>."
+							<<else>>
+								<<He>> sighs. "Oh, dear... You've gone somewhere else entirely. Come back to me, won't you, <<pcpetname "Avery">>?"
+							<</if>>
+						<<elseif C.npc.Avery.rage gte 60>>
+							<<He>> mutters. "I can't help but wonder what it would be like if you were always so compliant with me."
+						<<elseif C.npc.Avery.rage gte 20>>
+							<<He>> calls your name. "You're in something of a state, aren't you? You ought to have that taken care of."
+						<<else>>
+							<<His>> voice rings. "<<pcPetname "Avery">>? Are you still with me? Get a hold of yourself."
+						<</if>>
+					<<elseif $dissociation eq 1>>
+						<<if $avery_fate is "saved">>
+							<<He>> raises an eyebrow.
+						<<elseif C.npc.Avery.rage gte 60>>
+							<<He>> mumbles. "I can't help but wonder what it would be like if you were always so compliant with me."
+						<<elseif C.npc.Avery.rage gte 20>>
+							"Those eyes. What am I to do with you?"
+						<<else>>
+							"There, there," <<he>> says. "It will be over soon enough."
+						<</if>>
+					<</if>>
+				<</addinlineevent>>
 			<</if>>
 
 			<<if _playerMaxPain>>
@@ -1644,12 +1575,16 @@
 						"You look adorable when you're crying," <<he>> <<= $averyragerevealed gte 1 ? "muses." : "murmurs, more to <<himself>> than you.">>
 					<</addinlineevent>>
 					<<if $averyragerevealed is 1 and C.npc.Avery.lust gte 30>>
-						<<addinlineevent "avery_speech_pain_midlove_lustful" 1.5>>"You look adorable when you're crying," <<he>> muses. "I ought to bring you to tears more often."<</addinlineevent>>
+						<<addinlineevent "avery_speech_pain_midlove_lustful" 1.5>>
+							"You look adorable when you're crying," <<he>> muses. "I ought to bring you to tears more often."
+						<</addinlineevent>>
 					<</if>>
 				<</if>>
 
 				<<if (C.npc.Avery.dom gte 75 or _avery.traits.includes("unforgiving")) and $enemyanger gt 100>>
-					<<addinlineevent "avery_speech_pain_midlove_high_dom" 1>>"Good," <<he>> smirks. "That'll teach you to behave."<</addinlineevent>>
+					<<addinlineevent "avery_speech_pain_midlove_high_dom" 1>>
+						"Good," <<he>> smirks. "That'll teach you to behave."
+					<</addinlineevent>>
 				<</if>>
 
 				<<if C.npc.Avery.rage gte 60 and !$consensual>>
@@ -1670,15 +1605,18 @@
 					<</addinlineevent>>
 				<</if>>
 			<</if>>
-			<<if _eventpool.length gt 0>>
-				<<runeventpool>>
+			<<if !(_highArousalReaction or _playerMaxPain or _playerTrauma)>>
+				<<averyBaseSpeech>>
 			<</if>>
-
-		/* Avery's casual comments */
-		<<else>>
-			<<averyBaseSpeech>>
 		<</if>>
-		<<set _noNameComment to true>>
+		<<rng>>
+		<<if _eventpool.length is 0>>
+			<<set _noNameComment to true>>
+		<<elseif _idleTurn and $rng lte 40>>
+			<<set _noNameComment to true>>
+		<<else>>
+			<<runeventpool>>
+		<</if>>
 	<</if>>
 
 	<<if _avery.mouth is "thigh">>
@@ -1698,7 +1636,7 @@
 <<widget "averyUndergroundBrothelSpeech">>
 	/* Save this for a potential `$encounterDialogue` */
 	<<if $consensual and $avery_mansion?.rage?.apologetic>>
-		<<print either(
+		<<print speechPick(
 			`"Look at me, <<pcpetname "Avery">>, not them," <<he>> <<= either("coos","whispers","murmurs")>>.`,
 			`"I'll take care of you," <<he>> <<= either("coos","whispers","murmurs")>>.`,
 		)>>
@@ -1712,42 +1650,30 @@
 <<widget "averyMansionChaseSpeech">>
 	<<cleareventpool>>
 	<<if $avery_mansion?.chase?.health gte 3>>
-		<<addinlineevent "avery_speech_chase_full_hp" 10>>
-			<<print either(
-				`"Don't you know that I own you?"`,
-				`"I've had it up to here with you, <<girl>>!"`,
-				`"You can't follow a single order, can you?"`,
-				`"This is only your just deserts, you uppity little <<= either("slut","<<bitch>>","<<bastard>>","shit","whore","tramp")>>."`
-			)>>
-		<</addinlineevent>>
+		<<addinlineevent 2.5>>"Don't you know that I own you?"<</addinlineevent>>
+		<<addinlineevent 2.5>>"I've had it up to here with you, <<girl>>!"<</addinlineevent>>
+		<<addinlineevent 2.5>>"You can't follow a single order, can you?"<</addinlineevent>>
+		<<addinlineevent 2.5>>"This is only your just deserts, you uppity little <<= either("slut","<<bitch>>","<<bastard>>","shit","whore","tramp")>>."<</addinlineevent>>
 	<<else>>
-		<<addinlineevent "avery_speech_chase_weakened" 10>>
-			<<print either(
-				`"If you insist on defying me, then you're just asking to be punished!"`,
-				`"I'm sick and tired of your defiance!"`,
-				`"I've had it up to here with you, <<girl>>!"`,
-				`"You worthless fucking <<= either("trash","tramp","<<bitch>>","<<bastard>>","wretch","guttersnipe")>>!"`
-			)>>
-		<</addinlineevent>>
+		<<addinlineevent 2.5>>"If you insist on defying me, then you're just asking to be punished!"<</addinlineevent>>
+		<<addinlineevent 2.5>>"I'm sick and tired of your defiance!"<</addinlineevent>>
+		<<addinlineevent 2.5>>"I've had it up to here with you, <<girl>>!"<</addinlineevent>>
+		<<addinlineevent 2.5>>"You worthless fucking <<= either("trash","tramp","<<bitch>>","<<bastard>>","wretch","guttersnipe")>>!"<</addinlineevent>>
 	<</if>>
 
 	<<if ($avery_mansion?.chase?.trap_done ?? []).includes("garage") and not ($avery_mansion?.chase?.trap ?? []).includes("garage")>>
-		<<addinlineevent "avery_speech_chase_cars_keyed" 9>>
-			<<print either(
-				`"You're going to regret what you did to my cars!" <<he>> screams.`,
-				`"My cars are worth more than you are, you little fucking <<= either("slut","<<bitch>>","shit","<<bastard>>","whore","guttersnipe")>>!"`,
-				`"You have no idea what you've done to my cars," <<he>> spits. "But you'll learn soon enough!"`
-			)>>
-		<</addinlineevent>>
+		<<addinlineevent 3>>"You're going to regret what you did to my cars!" <<he>> screams.<</addinlineevent>>
+		<<addinlineevent 3>>"My cars are worth more than you are, you little fucking <<= either("slut","<<bitch>>","shit","<<bastard>>","whore","guttersnipe")>>!"<</addinlineevent>>
+		<<addinlineevent 3>>"You have no idea what you've done to my cars," <<he>> spits. "But you'll learn soon enough!"<</addinlineevent>>
 	<</if>>
 	<<runeventpool>>
 
 <</widget>>
 
+/* Avery's casual comments. Registers into the current speech pool; the caller clears and runs it. */
 <<widget "averyBaseSpeech">>
 	<<set _avery to $NPCList.find(npc => npc.fullDescription === "Avery")>>
 
-	<<cleareventpool>>
 	<<averyTfComments>>
 
 	/* Worn items */
@@ -1755,12 +1681,8 @@
 	<<if ["collar with leash", "free use collar with leash", "leather collar with leash", "spiked collar with leash"].includes($worn.neck.name)>>
 		/* Special leather collar */
 		<<if $worn.neck.name is "leather collar with leash">>
-			<<addinlineevent "avery_speech_leather_collar" 2>>
-				<<print either(
-					`"Wearing a collar for me, <<pcpetname "Avery">>?" <<he>> smiles. "You look adorable wearing this, but a pet of mine deserves a proper collar set with real diamonds."`,
-					`<<He>> <<if $position is "missionary">>tugs the collar by the lead, smirking down<<else>>yanks the lead back sharply, forcing your spine to arch<</if>>. "Leashed and right where I want you... Though a pet of mine deserves a collar encrusted with diamonds, don't you think?"`
-				)>>
-			<</addinlineevent>>
+			<<addinlineevent>>"Wearing a collar for me, <<pcpetname "Avery">>?" <<he>> smiles. "You look adorable wearing this, but a pet of mine deserves a proper collar set with real diamonds."<</addinlineevent>>
+			<<addinlineevent>><<He>> <<if $position is "missionary">>tugs the collar by the lead, smirking down<<else>>yanks the lead back sharply, forcing your spine to arch<</if>>. "Leashed and right where I want you... Though a pet of mine deserves a collar encrusted with diamonds, don't you think?"<</addinlineevent>>
 		<</if>>
 
 		<<if $consensual>>
@@ -2032,13 +1954,9 @@
 
 	/* High allure + low rage */
 	<<if $allure gte 6000 * $settings.allureModifier and C.npc.Avery.rage lt 20>>
-		<<addinlineevent "avery_speech_allure" 3>>
-			<<print either(
-				`"You must turn a lot of heads, looking the way you do. And yet, here you are, with me..." <<He>> smirks.<<if $averyragerevealed is 1>> "But then again, of course you are."<</if>>`,
-				`"What a <<cute>> thing you are..." <<he>> murmurs, eyes roving over your face.`,
-				`<<His>> eyes travel your form, and you feel <<his>> gaze like a physical touch.`
-			)>>
-		<</addinlineevent>>
+		<<addinlineevent>>"You must turn a lot of heads, looking the way you do. And yet, here you are, with me..." <<He>> smirks.<<if $averyragerevealed is 1>> "But then again, of course you are."<</if>><</addinlineevent>>
+		<<addinlineevent>>"What a <<cute>> thing you are..." <<he>> murmurs, eyes roving over your face.<</addinlineevent>>
+		<<addinlineevent>><<His>> eyes travel your form, and you feel <<his>> gaze like a physical touch.<</addinlineevent>>
 	<</if>>
 
 	/* Dungeon-specific */
@@ -2052,12 +1970,8 @@
 				<</if>>
 
 				<<if C.npc.Avery.rage gte 60>>
-					<<addinlineevent "avery_speech_dungeon_in_high_rage_sex" 6>>
-						<<print either(
-							`"I've been looking forward to having you here," <<he>> says with a sadistic smile. "With more than one way to punish you within easy reach, should you act out of line."`,
-							`"So long as you're good, <<pcpetname "Avery">>, you have little reason to fear being punished..." <<His>> smirk turns sadistic. "Though I suspect, based on your recent behaviour, you very much want to be."`
-						)>>
-					<</addinlineevent>>
+					<<addinlineevent 3>>"I've been looking forward to having you here," <<he>> says with a sadistic smile. "With more than one way to punish you within easy reach, should you act out of line."<</addinlineevent>>
+					<<addinlineevent 3>>"So long as you're good, <<pcpetname "Avery">>, you have little reason to fear being punished..." <<His>> smirk turns sadistic. "Though I suspect, based on your recent behaviour, you very much want to be."<</addinlineevent>>
 				<<elseif C.npc.Avery.rage gte 20>>
 					<<addinlineevent "avery_speech_dungeon_in_mid_rage_sex" 3>>
 						"Nowhere better than home to give you the punishment you've well earned," <<he>> says with a <<laugh>>. "Unless you've decided you want to be a good <<girl>> tonight?"
@@ -2095,12 +2009,8 @@
 						"Quit fighting me," <<he>> snarls. "I pay for you to do as I say, so give up and take it already!"
 					<</addinlineevent>>
 				<<else>>
-					<<addinlineevent "avery_speech_dungeon_in_high_anger_rape" 2>>
-						<<print either(
-							`"Behave yourself, or I'll have you on the rack<<if $avery_dungeon?.tool is "whip">> again<</if>>, you <<= either("whore","slut","<<bitch>>")>>!"`,
-							`"You're not the one in charge here, <<bitch>>—submit!"`
-						)>>
-					<</addinlineevent>>
+					<<addinlineevent>>"Behave yourself, or I'll have you on the rack<<if $avery_dungeon?.tool is "whip">> again<</if>>, you <<= either("whore","slut","<<bitch>>")>>!"<</addinlineevent>>
+					<<addinlineevent>>"You're not the one in charge here, <<bitch>>—submit!"<</addinlineevent>>
 				<</if>>
 			<<else>>
 				<<addinlineevent "avery_speech_dungeon_out_rape" 1>>
@@ -2120,83 +2030,61 @@
 	<<if C.npc.Avery.rage gte 60>>
 		<<if $consensual>>
 			<<if C.npc.Avery.love gte 60>>
-				<<addinlineevent "avery_speech_generic_high_rage_love" 2>>
-					<<print either(
-						`"It's truly a shame a <<cute>> thing like you is almost more trouble than you're worth..."`,
-						`"Don't forget that you're mine, <<pcpetname "Avery">>."`
-					)>>
-				<</addinlineevent>>
+				<<addinlineevent>>"It's truly a shame a <<cute>> thing like you is almost more trouble than you're worth..."<</addinlineevent>>
+				<<addinlineevent>>"Don't forget that you're mine, <<pcpetname "Avery">>."<</addinlineevent>>
 			<<else>>
-				<<addinlineevent "avery_speech_generic_high_rage" 1>>
-					<<print either(
-						`"Time to remind you what your purpose is..."`,
-						`"You're lucky I've still an ounce of leniency in me yet."`,
-						`"Behave yourself and maybe you'll be a step closer to earning my forgiveness."`,
-						`"Be a good <<girl>>, and it will all be over soon."`,
-						`<<He>> doesn't say anything, just stares at you coldly.`,
-						`"I wonder sometimes if you act out just to end up here."`,
-						`"You're forgiven a little more with every sound you make. Keep going."`,
-						`"Good <<girl>>. See how much better things go when you stop fighting me?"`,
-						`"You're going to think about this the next time you decide to defy me."`,
-						`"You have no idea what you do to me. It's deeply inconvenient."`
-					)>>
-				<</addinlineevent>>
+				<<addinlineevent 0.1>>"Time to remind you what your purpose is..."<</addinlineevent>>
+				<<addinlineevent 0.1>>"You're lucky I've still an ounce of leniency in me yet."<</addinlineevent>>
+				<<addinlineevent 0.1>>"Behave yourself and maybe you'll be a step closer to earning my forgiveness."<</addinlineevent>>
+				<<addinlineevent 0.1>>"Be a good <<girl>>, and it will all be over soon."<</addinlineevent>>
+				<<addinlineevent 0.1>><<He>> doesn't say anything, just stares at you coldly.<</addinlineevent>>
+				<<addinlineevent 0.1>>"I wonder sometimes if you act out just to end up here."<</addinlineevent>>
+				<<addinlineevent 0.1>>"You're forgiven a little more with every sound you make. Keep going."<</addinlineevent>>
+				<<addinlineevent 0.1>>"Good <<girl>>. See how much better things go when you stop fighting me?"<</addinlineevent>>
+				<<addinlineevent 0.1>>"You're going to think about this the next time you decide to defy me."<</addinlineevent>>
+				<<addinlineevent 0.1>>"You have no idea what you do to me. It's deeply inconvenient."<</addinlineevent>>
 			<</if>>
 		<<else>>
-			<<addinlineevent "avery_speech_generic_high_rage_rape" 1>>
-				<<if $enemyhealth gte $enemyhealthmax or $enemyanger lte 20>>
-					<<print either(
-						`<<He>> gives you a stern look. "You'd best not defy me, <<pcpetname "Avery">>."`,
-						`"Enough with your disobedience, <<girl>>."`,
-						`"Keep resisting me, and I'll make you regret it. I'm already tempted enough as it is."`,
-						`<<He>> <<laughs>> derisively. "Don't act as if you don't want this, <<pcpetname "Avery">>."`,
-						`"Obey me, or you'll regret it. My patience is not unending, <<girl>>."`,
-						`"You're on thin ice, <<pcpetname "Avery">>." <<He>> flashes a mean smirk. "But it's not too late to make it up to me."`,
-						`"Don't you know that I own you?"`
-					)>>
-				<<elseif $enemyhealth gte $enemyhealthmax / 2 or $enemyanger lte 100>>
-					<<print either(
-						`"I'd think carefully about the price of defying me."`,
-						`"<<= $avery_fate is "saved" ? "Apologise, behave" : "Behave">> yourself, and maybe you can still earn my forgiveness."`,
-						`"You really enjoy testing my patience like this? Big mistake."`,
-						`"If you insist on defying me, then you're just asking to be punished!"`,
-						`"I promise that you don't want to make me your enemy," <<he>> says with a threatening glint in <<his>> eye`,
-						`"Classless trash like you ought to be glad for my attention, so act like it!"`
-					)>>
-				<<else>>
-					<<print either(
-						`"This is only your just deserts, you uppity little <<= either("slut","bitch","shit","whore","tramp","fucktoy","wretch","guttersnipe")>>!"`,
-						`"Behave!" <<he>> growls.`,
-						`"I've had it with your bullshit," <<he>> hisses. "Stay still if you know what's good for you!"`,
-						`"I'm sick and tired of your disobedience!"`,
-						`"You worthless fucking <<= either("trash","tramp","wretch","guttersnipe")>>!"`,
-						`"Just stay still and take it, you filthy little <<= either("slut","bitch","whore","tramp","fucktoy")>>!"`
-					)>>
-				<</if>>
-			<</addinlineevent>>
+			<<if $enemyhealth gte $enemyhealthmax or $enemyanger lte 20>>
+				<<addinlineevent 0.143>><<He>> gives you a stern look. "You'd best not defy me, <<pcpetname "Avery">>."<</addinlineevent>>
+				<<addinlineevent 0.143>>"Enough with your disobedience, <<girl>>."<</addinlineevent>>
+				<<addinlineevent 0.143>>"Keep resisting me, and I'll make you regret it. I'm already tempted enough as it is."<</addinlineevent>>
+				<<addinlineevent 0.143>><<He>> <<laughs>> derisively. "Don't act as if you don't want this, <<pcpetname "Avery">>."<</addinlineevent>>
+				<<addinlineevent 0.143>>"Obey me, or you'll regret it. My patience is not unending, <<girl>>."<</addinlineevent>>
+				<<addinlineevent 0.143>>"You're on thin ice, <<pcpetname "Avery">>." <<He>> flashes a mean smirk. "But it's not too late to make it up to me."<</addinlineevent>>
+				<<addinlineevent 0.143>>"Don't you know that I own you?"<</addinlineevent>>
+			<<elseif $enemyhealth gte $enemyhealthmax / 2 or $enemyanger lte 100>>
+				<<addinlineevent 0.167>>"I'd think carefully about the price of defying me."<</addinlineevent>>
+				<<addinlineevent 0.167>>"<<= $avery_fate is "saved" ? "Apologise, behave" : "Behave">> yourself, and maybe you can still earn my forgiveness."<</addinlineevent>>
+				<<addinlineevent 0.167>>"You really enjoy testing my patience like this? Big mistake."<</addinlineevent>>
+				<<addinlineevent 0.167>>"If you insist on defying me, then you're just asking to be punished!"<</addinlineevent>>
+				<<addinlineevent 0.167>>"I promise that you don't want to make me your enemy," <<he>> says with a threatening glint in <<his>> eye<</addinlineevent>>
+				<<addinlineevent 0.167>>"Classless trash like you ought to be glad for my attention, so act like it!"<</addinlineevent>>
+			<<else>>
+				<<addinlineevent 0.167>>"This is only your just deserts, you uppity little <<= either("slut","bitch","shit","whore","tramp","fucktoy","wretch","guttersnipe")>>!"<</addinlineevent>>
+				<<addinlineevent 0.167>>"Behave!" <<he>> growls.<</addinlineevent>>
+				<<addinlineevent 0.167>>"I've had it with your bullshit," <<he>> hisses. "Stay still if you know what's good for you!"<</addinlineevent>>
+				<<addinlineevent 0.167>>"I'm sick and tired of your disobedience!"<</addinlineevent>>
+				<<addinlineevent 0.167>>"You worthless fucking <<= either("trash","tramp","wretch","guttersnipe")>>!"<</addinlineevent>>
+				<<addinlineevent 0.167>>"Just stay still and take it, you filthy little <<= either("slut","bitch","whore","tramp","fucktoy")>>!"<</addinlineevent>>
+			<</if>>
 		<</if>>
 	<<elseif C.npc.Avery.rage gte 20>>
-		<<addinlineevent "avery_speech_generic_mid_rage" 1>>
-			<<if C.npc.Avery.love gte 60>>
-				<<print either(
-					`"If only we had time for more than this... A shame."`,
-					`"So <<cute>>...and all mine."`
-				)>>
-			<<else>>
-				<<print either(
-					`"You had better behave yourself. I don't want to have to punish you, <<pcpetname "Avery">>."`,
-					`"You're not a bad <<girl>>, are you?"`,
-					`"You're <<cute>>, but you'll need more than this if you want my forgiveness."`,
-					`"I needed this..."`,
-					`"At least you're good for something."`,
-					`"There. See? You can be good when you want to be."`,
-					`"I'd really rather not have to be angry with you, <<pcpetname "Avery">>."`,
-					`"This is all I wanted from you today. Was that so hard?"`,
-					`"Don't make me regret going easy on you."`,
-					`"You're fortunate I'm so fond of you."`
-				)>>
-			<</if>>
-		<</addinlineevent>>
+		<<if C.npc.Avery.love gte 60>>
+			<<addinlineevent 0.5>>"If only we had time for more than this... A shame."<</addinlineevent>>
+			<<addinlineevent 0.5>>"So <<cute>>...and all mine."<</addinlineevent>>
+		<<else>>
+			<<addinlineevent 0.1>>"You had better behave yourself. I don't want to have to punish you, <<pcpetname "Avery">>."<</addinlineevent>>
+			<<addinlineevent 0.1>>"You're not a bad <<girl>>, are you?"<</addinlineevent>>
+			<<addinlineevent 0.1>>"You're <<cute>>, but you'll need more than this if you want my forgiveness."<</addinlineevent>>
+			<<addinlineevent 0.1>>"I needed this..."<</addinlineevent>>
+			<<addinlineevent 0.1>>"At least you're good for something."<</addinlineevent>>
+			<<addinlineevent 0.1>>"There. See? You can be good when you want to be."<</addinlineevent>>
+			<<addinlineevent 0.1>>"I'd really rather not have to be angry with you, <<pcpetname "Avery">>."<</addinlineevent>>
+			<<addinlineevent 0.1>>"This is all I wanted from you today. Was that so hard?"<</addinlineevent>>
+			<<addinlineevent 0.1>>"Don't make me regret going easy on you."<</addinlineevent>>
+			<<addinlineevent 0.1>>"You're fortunate I'm so fond of you."<</addinlineevent>>
+		<</if>>
 	<<elseif C.npc.Avery.love gte 60>>
 		<<addinlineevent "avery_speech_generic_low_rage_love_1" 1>>
 			"You seem so fragile like this. <<= $speech_attitude is "meek" or $speech_attitude_avery ? "More so than usual" : $speech_attitude is "bratty" ? "Unlike usual" : "It's quite charming">>..."
@@ -2209,23 +2097,17 @@
 			<</if>>
 		<</addinlineevent>>
 	<<else>>
-		<<addinlineevent "avery_speech_generic_low_rage" 1>>
-			<<print either(
-				`<<He>> murmurs, "I wonder..." But <<he>> doesn't finish the thought, just <<= either("smirks lecherously","smiles secretively")>> at you.`,
-				`"Oh, I could just eat you up..."`,
-				`"What sweet sounds..."`,
-				`"Good <<girl>>..."`,
-				`"Memories of you like this will tide me over the next time I'm <<= either("swamped with paperwork","stuck in traffic","forced to sit through another boring meeting")>>... For a while, at least."`,
-				`"How did I ever manage without you..."`,
-				`"I don't think I'll ever tire of this."`,
-				`"I've been thinking about this all day, if you must know."`,
-				`"I picked well, didn't I?" <<he>> muses, <<= either("an impish","a coy","a sly")>> smile crossing <<his>> lips.`,
-				`"I've acquired many fine things in life. None of them look quite like this."`
-			)>>
-		<</addinlineevent>>
+		<<addinlineevent 0.1>><<He>> murmurs, "I wonder..." But <<he>> doesn't finish the thought, just <<= either("smirks lecherously","smiles secretively")>> at you.<</addinlineevent>>
+		<<addinlineevent 0.1>>"Oh, I could just eat you up..."<</addinlineevent>>
+		<<addinlineevent 0.1>>"What sweet sounds..."<</addinlineevent>>
+		<<addinlineevent 0.1>>"Good <<girl>>..."<</addinlineevent>>
+		<<addinlineevent 0.1>>"Memories of you like this will tide me over the next time I'm <<= either("swamped with paperwork","stuck in traffic","forced to sit through another boring meeting")>>... For a while, at least."<</addinlineevent>>
+		<<addinlineevent 0.1>>"How did I ever manage without you..."<</addinlineevent>>
+		<<addinlineevent 0.1>>"I don't think I'll ever tire of this."<</addinlineevent>>
+		<<addinlineevent 0.1>>"I've been thinking about this all day, if you must know."<</addinlineevent>>
+		<<addinlineevent 0.1>>"I picked well, didn't I?" <<he>> muses, <<= either("an impish","a coy","a sly")>> smile crossing <<his>> lips.<</addinlineevent>>
+		<<addinlineevent 0.1>>"I've acquired many fine things in life. None of them look quite like this."<</addinlineevent>>
 	<</if>>
-
-	<<runeventpool>>
 <</widget>>
 
 /* Transformation comments are weighted at 3 */

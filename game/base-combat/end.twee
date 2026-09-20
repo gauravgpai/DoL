@@ -702,6 +702,9 @@
 	<<unset $gwylanUniqueComments>>
 	<<unset $robinUniqueComments>>
 	<<unset $averyUniqueComments>>
+	<<unset $whitneyUniqueComments>>
+	<<unset $speechSaid>>
+	<<unset $speechResting>>
 	<<unset $noBodyWriting>>
 	<<unset $noAdmire>>
 	<<unset $breakIgnore>>

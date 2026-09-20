@@ -61,12 +61,12 @@
 		<<set $speechsextoy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if !$player.penisExist and $NPCList[0].vagina isnot "none" and random(0,2) isnot 0>>
-			<<print either(
+			<<print speechPick(
 				`<<He>> looks at your $_sexToy and speaks. "U-use it. Please, use me, use it."`,
 				`<<He>> looks at your $_sexToy and speaks. "It's a sign of our love, right?"`
 			)>>
 		<<elseif $player.penisExist or $NPCList[0].penis isnot "none" and random(0,2) isnot 0>>
-			<<print either(
+			<<print speechPick(
 				`<<He>> looks at your $_sexToy and speaks. "What... am I doing wrong...?"`,
 				`<<He>> looks at your $_sexToy and speaks. "If it makes you happy, my love, but..."`
 			)>>
