@@ -2834,20 +2834,20 @@
 
 	The corresponding upper check is called "undertop"
  -->
-<<widget "undies">><<silently>>
+<<widget "undies">>
 	<<outfitChecks>>
 	<<if !$worn.under_lower.type.includes("naked")>>
 		<<if _args[0] and _args[0] gte 1>>
-			<<set _text_output to $worn.under_lower.name_simple>>
-		<<else>>
-			<<set _text_output to $worn.under_lower.name>>
-		<</if>>
-	<<elseif !$worn.genitals.type.includes("naked")>>
-		<<set _text_output to $worn.genitals.name>>
-	<<else>>
-		<<genitals _args[0]>>
-	<</if>>
-<</silently>><<print _text_output>><</widget>>
+			$worn.under_lower.name_simple\
+		<<else>>\
+			$worn.under_lower.name\
+		<</if>>\
+	<<elseif !$worn.genitals.type.includes("naked")>>\
+		$worn.genitals.name\
+	<<else>>\
+		<<genitals _args[0]>>\
+	<</if>>\
+<</widget>>\
 
 <<widget "bottoms">><<silently>>
 	<<outfitChecks>>
