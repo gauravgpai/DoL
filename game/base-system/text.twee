@@ -2775,29 +2775,29 @@
 		<<ampm `_args[1] ? _args[1] : 21` 00>>"
 <</widget>>
 
-<<widget "exposedupper">><<silently>>
+<<widget "exposedupper">>
 	<<if $worn.over_upper.exposed is 0>>
-		<<set _text_output to $worn.over_upper.name>>
-	<<elseif $worn.upper.exposed is 0>>
-		<<set _text_output to $worn.upper.name>>
-	<<elseif $worn.under_upper.exposed is 0>>
-		<<set _text_output to $worn.under_upper.name>>
-	<<else>>
-		<<breasts>>
-	<</if>>
-<</silently>>_text_output<</widget>>
+		$worn.over_upper.name\
+	<<elseif $worn.upper.exposed is 0>>\
+		$worn.upper.name\
+	<<elseif $worn.under_upper.exposed is 0>>\
+		$worn.under_upper.name>>\
+	<<else>>\
+		<<breasts>>\
+	<</if>>\
+<</widget>>
 
-<<widget "exposedlower">><<silently>>
-	<<if $worn.over_lower.exposed is 0>>
-		<<set _text_output to $worn.over_lower.name>>
-	<<elseif $worn.lower.exposed is 0>>
-		<<set _text_output to $worn.lower.name>>
-	<<elseif $worn.under_lower.exposed is 0>>
-		<<set _text_output to $worn.under_lower.name>>
-	<<else>>
-		<<genitals>>
-	<</if>>
-<</silently>>_text_output<</widget>>
+<<widget "exposedlower">>\
+	<<if $worn.over_lower.exposed is 0>>\
+		$worn.over_lower.name\
+	<<elseif $worn.lower.exposed is 0>>\
+		$worn.lower.name\
+	<<elseif $worn.under_lower.exposed is 0>>\
+		$worn.under_lower.name\
+	<<else>>\
+		<<genitals>>\
+	<</if>>\
+<</widget>>
 
 <<widget "groin">><<silently>>
 	<<genitals>>
