@@ -1475,7 +1475,7 @@
 			<<print setup.breastsizes[$player.breastsize]>>
 			<<if !_breastSensitivityDescribed or _args[0]>><<breastsensitivity>><</if>>
 			<<print " breasts">>\
-		<</if>>
+		<</if>>\
 	<<elseif $options.debugdisable is "f">>
 		<<print "ERROR - $$player.breastsize is not a number: $player.breastsize">>
 	<</if>>\
