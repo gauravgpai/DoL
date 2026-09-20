@@ -473,7 +473,7 @@ The hallway outside connects to the rest of the orphanage.
 	<br>
 <</if>>
 
-<<if $debug is 1>>
+<<if $debug>>
 	<<link [[Turn off debug mode|Bedroom]]>><<set $debug to 0>><</link>>
 	<br>
 <</if>>
