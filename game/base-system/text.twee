@@ -1522,15 +1522,15 @@
 <</silently>><<if !_mouthSensitivityDescribed>><<mouthsensitivity>><</if>><<print _text_output>><</widget>>
 
 
-<!-- Prints the current state of the player's under_upper clothing, assuping the over_upper clothing has been destroyed.
+<!-- Prints the current state of the player's under_upper clothing, assuming the over_upper clothing has been destroyed.
 	The corresponding lower check is called "undies" -->
-<<widget "undertop">><<silently>>
+<<widget "undertop">>
 	<<if $worn.under_upper.exposed lte 0>>
-		<<set _text_output to $worn.under_upper.name>>
+		$worn.under_upper.name\
 	<<else>>
-		<<breasts>>
+		<<breasts>>\
 	<</if>>
-<</silently>><<print _text_output>><</widget>>
+<</widget>>
 
 <<widget "underoutfit">><<silently>>
 	<<outfitChecks>>
