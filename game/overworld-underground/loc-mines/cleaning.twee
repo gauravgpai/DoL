@@ -284,6 +284,7 @@ You climb the table as instructed. You're surrounded by <<people>>. Their eyes s
 <<if $enemyhealth lte 0>>
 	<<set $mine.job.mining.shackle to 8>>
 	<<tearful>> you knock them away. While they're stunned, you grab the keys off the <<person1>><<person>>'s belt. You quickly unlock the shackles around your ankles and rush into the tunnels.
+	<<mine_unshackle>>
 	<<clotheson>>
 	<<link [[Next|Mine Job Cleaning Escape]]>><</link>>
 <<elseif $enemyarousal gte $enemyarousalmax>>

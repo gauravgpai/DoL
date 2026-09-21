@@ -15,7 +15,7 @@
 
 
 :: Mine Job Mining Passout
-<<effects>><<generate1>><<unbind>>
+<<effects>><<generate1>><<mine_unshackle>>
 
 You wake up to a <<person1>><<person>> dragging you across the hard rock. <span class="blue">Your shackles are gone</span>. You try to struggle from <<his>> grasp. <<He>> lets you go and drops on top of you.
 

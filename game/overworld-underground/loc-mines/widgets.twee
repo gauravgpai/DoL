@@ -245,3 +245,8 @@
 		<br>
 	<</for>>
 <</widget>>
+
+<<widget "mine_unshackle">>
+	<<set $mine.job.mining.shackle to 8>>
+	<<unbind>>
+<</widget>>

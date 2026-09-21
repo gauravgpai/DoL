@@ -335,7 +335,7 @@ You pull on the brake and the cart comes to a quick stop. With a heavy exhale, y
 
 
 :: Mine Job Minecarts Cart Free
-<<effects>>
+<<effects>><<mine_unshackle>>
 
 You let go of the brake and watch as the cart continues to gain speed. You catch a glimpse of the end of the rail keeping you chained. You just barely prepare for it before you're violently pulled out of the cart and onto the hard ground. <<pain 5>><<gpain>>
 <br><br>

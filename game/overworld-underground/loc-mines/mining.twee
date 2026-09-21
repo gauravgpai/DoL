@@ -76,8 +76,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	You start to bash your shackles with the pickaxe, but you pretend to mine when guards are looking.
 <</if>>
 <<if $mine.job.mining.shackle is 0>>
-	<<set $mine.job.mining.shackle to 8>>
-	<<unbind>>
+	<<mine_unshackle>>
 	With a heavy strike, <span class="green">your shackles break from your feet.</span>
 	<br><br>
 	You look around and see none of the guards are looking at you. You notice a ring of keys on the belt of one of the guards.
