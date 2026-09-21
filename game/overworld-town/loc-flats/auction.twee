@@ -246,7 +246,7 @@ You journey for several minutes, occasionally hearing the hum of machinery, but 
 
 
 :: Flats Auction 7
-<<location "mines">><<effects>>
+<<location "mines">><<set $outside to 0>><<effects>>
 
 "Almost there," the <<person5>><<person>> says. "Stop."
 <br><br>
