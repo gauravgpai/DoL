@@ -119,7 +119,7 @@ class Coordinate {
 	}
 
 	/**
-	 * Removes numbers that is at least Distance away from Number from Locations
+	 * Checks if coord is in adjacent room
 	 *
 	 * @param {Coordinate} coord Coord to check proximity of
 	 * @returns {boolean} Return true if coord is in adjacent room
@@ -272,7 +272,7 @@ class MineMaze {
 	 * Moves each Guard
 	 */
 	moveGuards() {
-		for (let i = 0; i < V.mine.maze.Guards.length; i++) {
+		for (let i = 0; i < this.Guards.length; i++) {
 			if (this.Guards[i].Stun === 0) this.Guards[i].move();
 		}
 	}
@@ -282,7 +282,7 @@ class MineMaze {
 	 */
 	guardsWithPC() {
 		const guards = [];
-		for (let i = 0; i < V.mine.maze.Guards.length; i++) {
+		for (let i = 0; i < this.Guards.length; i++) {
 			if (this.Guards[i].Location.equals(this.PC) && this.Guards[i].Stun === 0) guards.push(i);
 		}
 

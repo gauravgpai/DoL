@@ -205,7 +205,7 @@ You pick up a pickaxe and try to break the object out of the rock wall.
 
 :: Mine Antique
 <<effects>>
-<<set $antiquemoney += 200>>
+<<set $antiquemoney += 20>>
 <<set _antique to `antique${$phase}`>>
 <<museumAntiqueStatus _antique "talk">>
 
@@ -481,6 +481,7 @@ You end up in a small cave and drop to the ground, trying to cover yourself. The
 	<<neutral 1>>
 	<<molested>>
 	<<maninit>>
+	<<npcexpose>>
 	<<set $speechdisable to 1>>
 	<<set $noBodyWriting to 1>>
 <</if>>

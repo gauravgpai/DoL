@@ -126,10 +126,10 @@ You are on Barb Street. Silver blocks of flats tower all around, most separated 
 		<</if>>
 		<<if $mine?.bailey>>
 			<<if $mine.intro>>
-				<<icon "pickaxe.png">><<link [[Mine (0:02)|Mine]]>><<pass 2>><</link>>
+				<<icon "pickaxe.png">><<link [[Mine (0:02)|Mine]]>><<pass 2>><<location "mines">><</link>>
 				<br>
 			<<else>>
-				<<icon "pickaxe.png">><<link [[Mine (0:02)|Mine Return]]>><<pass 2>><</link>>
+				<<icon "pickaxe.png">><<link [[Mine (0:02)|Mine Return]]>><<pass 2>><<location "mines">><</link>>
 				<br>
 			<</if>>
 		<</if>>

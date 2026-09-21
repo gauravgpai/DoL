@@ -324,6 +324,7 @@ Before you can turn back a shape rushes from the darkness
 	<<neutral 1>>
 	<<molested>>
 	<<maninit>>
+	<<npcexpose>>
 	<<set $speechdisable to 1>>
 	<<set $noBodyWriting to 1>>
 <</if>>

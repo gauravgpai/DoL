@@ -78,6 +78,7 @@ You make it look like you're cleaning and try to keep out of sight of the guards
 	<br><br>
 	<<He>> pulls out a sundress. "Put this on," <<he>> barks.
 	<br><br>
+	<<set $skulduggerydifficulty to 400>>
 	<<link [[Steal the bottle|Mine Job Cleaning Sundress]]>><<set $phase to 0>><</link>><<skulduggerydifficulty>>
 	<br>
 	<<link [[Just put it on|Mine Job Cleaning Sundress]]>><<set $phase to 1>><</link>>
@@ -189,20 +190,19 @@ You make it look like you're cleaning and try to keep out of sight of the guards
 
 <<He>> shoves it into your hands.
 <<if $phase is 0>>
-	You pretend to drop it, but when you pick it up, you attempt to sneak the bottle out of 	box. You grab the bottle
+	You pretend to drop it, but when you pick it up, you attempt to sneak the bottle out of the box. You grab the bottle
 	<<skulduggerycheck>>
-<<if $skulduggerysuccess is 1>>
-	<<set $mine.job.cleaning.chemical to 1>>
-	<span class="green">and slip it into the sundress.</span>
+	<<if $skulduggerysuccess is 1>>
+		<<set $mine.job.cleaning.chemical to 1>>
+		<span class="green">and slip it into the sundress.</span>
 		<br><br>
-	<<skulduggeryuse>>
-<<else>>
-<span class="red">but the guard's hand grabs your wrist.</span> You look up to see <<his>> baton swing directly into your face, causing you to fall to the floor.</span><<pain 20>><<gggpain>>
-<br><br>
-	<<skulduggeryuse>>
-	<br><br>
-	"Put it on!" <<he>> yells.
-<</if>>	
+		<<skulduggeryuse>>
+	<<else>>
+		<span class="red">but the guard's hand grabs your wrist.</span> You look up to see <<his>> baton swing directly into your face, causing you to fall to the floor.<<pain 20>><<gggpain>>
+		<br><br>
+		<<skulduggeryuse>>
+		"Put it on!" <<he>> yells.
+	<</if>>	
 <</if>>
 
 You reluctantly strip off your clothing and slip the sundress on.
@@ -283,16 +283,15 @@ You climb the table as instructed. You're surrounded by <<people>>. Their eyes s
 
 <<if $enemyhealth lte 0>>
 	<<set $mine.job.mining.shackle to 8>>
-<<tearful>> you knock them away. While they're stunned, you grab the keys off the <<person1>><<person>>'s belt. You quickly unlock the shackles around your ankles and rush into the tunnels.
-<<clotheson>>
-<br><br>
-<<link [[Next|Mine Job Cleaning Escape]]>><</link>>
+	<<tearful>> you knock them away. While they're stunned, you grab the keys off the <<person1>><<person>>'s belt. You quickly unlock the shackles around your ankles and rush into the tunnels.
+	<<clotheson>>
+	<<link [[Next|Mine Job Cleaning Escape]]>><</link>>
 <<elseif $enemyarousal gte $enemyarousalmax>>
-"Hope you learned your lesson <<bitch>>," the <<person1>><<person>> says. The guards return to what they were doing.
-<br><br>
-<<tearful>> you stand up and return to your work.
-<br><br>
-<<link [[Next|Mine Job Cleaning]]>><</link>>
+	"Hope you learned your lesson <<bitch>>," the <<person1>><<person>> says. The guards return to what they were doing.
+	<br><br>
+	<<tearful>> you stand up and return to your work.
+	<br><br>
+	<<link [[Next|Mine Job Cleaning]]>><</link>>
 <</if>>
 <<endcombat>>
 

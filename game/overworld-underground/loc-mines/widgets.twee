@@ -162,11 +162,11 @@
 <<widget "mine_gem_value">>
 	<<set _gem_value to 0>>
 	<<if $mine.heldGem.includes("small")>>
-		<<set _gem_value to 25>>
-	<<elseif $mine.heldGem.includes("medium")>>
 		<<set _gem_value to 50>>
-	<<elseif $mine.heldGem.includes("large")>>
+	<<elseif $mine.heldGem.includes("medium")>>
 		<<set _gem_value to 100>>
+	<<elseif $mine.heldGem.includes("large")>>
+		<<set _gem_value to 200>>
 	<</if>>
 <</widget>>
 

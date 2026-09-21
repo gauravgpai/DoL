@@ -11,12 +11,12 @@
 		<<generate2>><<generate3>><<generate4>>
 		You run into the <<person>> and knock <<him>> down. Three other guards come to <<his>> aid.
 		<br><br>
-		<<link [[Next|Mine Revolt Fight]]>><<set $fightstart to 1>><</link>>
+		<<link [[Next|Mine Revolt Fight]]>><<set $fightstart to 1>><<set $phase to 4>><</link>>
 	<<case 2>>
 		<<generate2>>
 		You run into the <<person>> and knock <<him>> down. Another guard comes to <<his>> aid.
 		<br><br>
-		<<link [[Next|Mine Revolt Fight]]>><<set $fightstart to 1>><</link>>
+		<<link [[Next|Mine Revolt Fight]]>><<set $fightstart to 1>><<set $phase to 2>><</link>>
 	<<case 3>>
 		You grab a disused shovel and bash <<him>> on the head. <<He>> falls to the ground unconscious. <<mine_hope 3>><<ggghope>>
 		<br><br>
@@ -32,13 +32,18 @@
 
 :: Mine Revolt Fight
 
-<<if $molestationstart is 1>>
-	<<set $molestationstart to 0>>
+<<if $fightstart is 1>>
+	<<set $fightstart to 0>>
+	<<set $enemyno to $phase>>
 	<<controlloss>>
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
 	<<maninit>>
+	<<set $enemytrust -= 100>>
+	<<set $enemyanger += 200>>
+	<<npcidlegenitals>>
+	<<person1>>
 <</if>>
 
 <<effects>>
