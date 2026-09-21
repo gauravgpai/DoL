@@ -76,7 +76,7 @@ You are in a small cave. Various tunnels branch off.
 	<<run V.mine.maze.stun()>>
 <</if>>
 
-<<set _player_dir to $mine.maze.PC.possibleDirections()>>
+<<set _player_dir to $mine.maze.PC.possibleDirections(MineMaze.MAZE_SIZE)>>
 <<if _player_dir.includes("up")>>
 	<<link [[Move North|Mine Escape Maze]]>><<run V.mine.maze.PC.up()>><</link>>
 	<br>

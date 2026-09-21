@@ -14,16 +14,17 @@ class Coordinate {
 	y;
 
 	/**
+	 * @param {number} Size Size of grid
 	 * @param {Coordinate} [PC] PC location
-	 * @param {number} [Distance] Minimum distance
+	 * @param {number} [Distance] Minimum distance from PC
 	 */
-	constructor(PC = null, Distance = 0) {
+	constructor(Size, PC = null, Distance = 0) {
 		if (PC) {
-			this.x = this.proximityGenerator(PC.x, Distance);
-			this.y = this.proximityGenerator(PC.y, Distance);
+			this.x = this.proximityGenerator(PC.x, Distance, Size);
+			this.y = this.proximityGenerator(PC.y, Distance, Size);
 		} else {
-			this.x = Math.floor(Math.random() * MineMaze.MAZE_SIZE);
-			this.y = Math.floor(Math.random() * MineMaze.MAZE_SIZE);
+			this.x = Math.floor(Math.random() * Size);
+			this.y = Math.floor(Math.random() * Size);
 		}
 	}
 
@@ -39,11 +40,12 @@ class Coordinate {
 	 *
 	 * @param {number} Number Number to generate from
 	 * @param {number} Distance Minimum Distance from PC
+	 * @param {number} Size Size of grid
 	 * @returns {number} Generated number
 	 */
-	proximityGenerator(Number, Distance) {
+	proximityGenerator(Number, Distance, Size) {
 		const Locations = [];
-		for (let i = 0; i < MineMaze.MAZE_SIZE; i++) Locations.push(i);
+		for (let i = 0; i < Size; i++) Locations.push(i);
 
 		Coordinate.distanceRemover(Number, Distance, Locations);
 		Locations.reverse();
@@ -105,15 +107,16 @@ class Coordinate {
 	/**
 	 * Generates an Array of possible directions
 	 *
+	 * @param {number} Size Size of grid
 	 * @returns {string[]} Array of moveable directions
 	 */
-	possibleDirections() {
+	possibleDirections(Size) {
 		const dir = [];
 
 		if (this.x !== 0) dir.push("left");
-		if (this.x !== MineMaze.MAZE_SIZE - 1) dir.push("right");
+		if (this.x !== Size - 1) dir.push("right");
 		if (this.y !== 0) dir.push("up");
-		if (this.y !== MineMaze.MAZE_SIZE - 1) dir.push("down");
+		if (this.y !== Size - 1) dir.push("down");
 
 		return dir;
 	}
@@ -133,6 +136,7 @@ class Coordinate {
 		return false;
 	}
 }
+window.Coordinate = Coordinate;
 
 class MineMazeNPC {
 	/**
@@ -185,7 +189,7 @@ class MineMazeNPC {
 	 */
 	constructor(NPC, PC) {
 		this.NPC = NPC;
-		this.Location = new Coordinate(PC, MineMazeNPC.PC_PROXIMITY);
+		this.Location = new Coordinate(MineMaze.MAZE_SIZE, PC, MineMazeNPC.PC_PROXIMITY);
 	}
 
 	/**
@@ -193,7 +197,7 @@ class MineMazeNPC {
 	 */
 	move() {
 		if (random(1, 5) !== 5) {
-			const guardDir = this.Location.possibleDirections().pluck();
+			const guardDir = this.Location.possibleDirections(MineMaze.MAZE_SIZE).pluck();
 			switch (guardDir) {
 				case "up":
 					this.Location.up();
@@ -263,9 +267,9 @@ class MineMaze {
 	 * @param {object[]} Guards NPC Objects for guards
 	 */
 	constructor(Guards) {
-		this.PC = new Coordinate();
+		this.PC = new Coordinate(MineMaze.MAZE_SIZE);
 		Guards.forEach(x => this.Guards.push(new MineMazeNPC(x, this.PC)));
-		this.Exit = new Coordinate(this.PC, MineMaze.PC_PROXIMITY);
+		this.Exit = new Coordinate(MineMaze.MAZE_SIZE, this.PC, MineMaze.PC_PROXIMITY);
 	}
 
 	/**
