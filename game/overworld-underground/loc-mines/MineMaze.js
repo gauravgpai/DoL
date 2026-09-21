@@ -45,9 +45,9 @@ class Coordinate {
 		const Locations = [];
 		for (let i = 0; i < MineMaze.MAZE_SIZE; i++) Locations.push(i);
 
-		this.distanceRemover(Number, Distance, Locations);
+		Coordinate.distanceRemover(Number, Distance, Locations);
 		Locations.reverse();
-		this.distanceRemover(Number, Distance, Locations);
+		Coordinate.distanceRemover(Number, Distance, Locations);
 		Locations.delete(Number);
 		return Locations.random();
 	}
@@ -59,7 +59,7 @@ class Coordinate {
 	 * @param {number} Distance Minimum Distance from PC
 	 * @param {number[]} Locations Array of x/y values
 	 */
-	distanceRemover(Number, Distance, Locations) {
+	static distanceRemover(Number, Distance, Locations) {
 		let Found;
 		const ToDelete = [];
 		for (let i = 0; i < Locations.length; i++) {
@@ -390,7 +390,6 @@ function resetMineMazeNPCMethods(obj) {
 function resetCoordinateMethods(obj) {
 	obj.equals = Coordinate.prototype.equals;
 	obj.proximityGenerator = Coordinate.prototype.proximityGenerator;
-	obj.distanceRemover = Coordinate.prototype.distanceRemover;
 	obj.up = Coordinate.prototype.up;
 	obj.down = Coordinate.prototype.down;
 	obj.left = Coordinate.prototype.left;
