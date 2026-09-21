@@ -250,3 +250,13 @@
 	<<set $mine.job.mining.shackle to 8>>
 	<<unbind>>
 <</widget>>
+
+<<widget "mine_shackle_text">>
+	<<if $mine.job.mining.shackle gte 6>>
+		<span class="red">Your shackles are very sturdy.</span>
+	<<elseif $mine.job.mining.shackle gte 3>>
+		<span class="blue">Your shackles are dented.</span>
+	<<else>>
+		<span class="blue">Your shackles are cracked.</span>
+	<</if>>
+<</widget>>

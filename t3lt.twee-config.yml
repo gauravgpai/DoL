@@ -11739,6 +11739,10 @@ sugarcube-2:
       description: |-
         Removes bindings and resets $mine.job.mining.shackle
       name: mine_unshackle
+    mine_shackle_text:
+      description: |-
+        Prints status text of mine shackles
+      name: mine_shackle_text
     mirror:
       description: |-
         Prints wrapper for mirror options
