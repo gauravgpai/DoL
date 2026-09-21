@@ -42,7 +42,7 @@ The stone walls of the tunnels are broken up by wooden supports. Three <<people>
 
 
 :: Mine Return
-<<effects>><<set $mine.intro to 1>>
+<<effects>><<set $mine.intro to 1>><<set $outside to 0>>
 
 You approach the metal door leading to the mines. It's covered in police tape. You look around to make sure nobody is watching and tear it off. You take a deep breath and pull open the door and walk through. <<stress 2>><<gstress>>
 <br><br>
@@ -54,7 +54,7 @@ You're hit by a familiar stale air as you slowly walk down the staircase.
 
 
 :: Mine
-<<effects>>
+<<effects>><<set $outside to 0>>
 
 You're in the mines. It's completely silent.
 
@@ -76,7 +76,7 @@ You're in the mines. It's completely silent.
 	<</if>>
 <</if>>
 <br>
-<<icon "get-out.png">><<link [[Leave|Barb Street]]>><</link>>
+<<icon "get-out.png">><<link [[Leave|Barb Street]]>><<set $outside to 1>><</link>>
 
 
 

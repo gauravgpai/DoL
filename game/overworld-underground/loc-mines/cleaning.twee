@@ -64,7 +64,7 @@ You walk with them back to the sleeping cave. When everyone is inside, the guard
 		"You scrub boot prints off the floor."
 	)>>
 <<else>>
-You make it look like you're cleaning and try to keep out of sight of the guards. You hope the guards don't notice.
+	You make it look like you're cleaning and try to keep out of sight of the guards. You hope the guards don't notice.
 <</if>>
 <br><br>
 
@@ -160,13 +160,13 @@ You make it look like you're cleaning and try to keep out of sight of the guards
 
 <<addinlineevent "scream" 1.5>>
 	You hear a scream echo through the tunnels and into the guard room. One of the guards chuckles. <<stress 10>><<trauma 5>><<ggstress>><<gtrauma>>
-		<br><br>
+	<br><br>
 	<<link [[Next|Mine Job Cleaning]]>><<endevent>><</link>>
 <</addinlineevent>>
 
 <<addinlineevent "explosion" 1.5>>
 	The rumbling of a distant explosion threatens to send you to the ground, but you manage to keep your footing. <<stress 10>><<ggstress>>
-		<br><br>
+	<br><br>
 	<<link [[Next|Mine Job Cleaning]]>><<endevent>><</link>>
 <</addinlineevent>>
 
