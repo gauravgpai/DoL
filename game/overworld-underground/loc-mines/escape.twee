@@ -1,6 +1,6 @@
 :: Mine Escape
 <<effects>>
-<<generate1>><<generate2>><<generate3>><<generate4>>
+<<generate1>><<generate2>><<generate3>><<generate4>><<generate5>><<generate6>>
 Not wanting to take the risk, you rush off into the tunnels. You run through the winding tunnels, trying to find an exit. 
 As you emerge into a small cave, <span class="red">you realize you've already been here. You're lost</span>.
 <br><br>
@@ -11,7 +11,7 @@ As you emerge into a small cave, <span class="red">you realize you've already be
 :: Mine Escape Maze
 <<effects>>
 <<if !$mine.maze>>
-	<<run V.mine.maze = new MineMaze([V.NPCList[0], V.NPCList[1], V.NPCList[2], V.NPCList[3]]);>>
+	<<run V.mine.maze = new MineMaze(Object.values(V.NPCList));>>
 	<<set _start_turn to 1>>
 <<else>>
 	<<run resetMazeMethods()>>
