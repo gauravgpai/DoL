@@ -23,13 +23,17 @@ function rollFishSize(bus, fishKey) {
 		preferredMatchCount++;
 	}
 
-	const slope = Math.clamp(preferredMatchCount, 0, 2) - 1;
-	const rand = State.random();
-	const sizeRoll = slope === 0 ? rand : (slope / 2 - 1 + Math.sqrt((1 - slope / 2) ** 2 + 2 * slope * rand)) / slope;
-	const size = lerp(sizeRoll, fishConfig.minSize, fishConfig.maxSize);
+	// Baitfish are hard to come by, so making the fish that require them larger is nice for people trying to find max size of all fish
+	if (fishConfig.requiresBaitFish) {
+		preferredMatchCount += 0.75;
+	}
 
-	// Rounds 98%+ sized to 100% so people don't get fish that are super super close to max size, but aren't the max size.
-	if (size >= fishConfig.minSize + 0.98 * (fishConfig.maxSize - fishConfig.minSize)) {
+	const targetMean = lerp(Math.min(preferredMatchCount, 3) / 3, 0.45, 0.75);
+	const sizeRoll = State.random() ** ((1 - targetMean) / targetMean);
+	const size = Math.ceil(lerp(sizeRoll, fishConfig.minSize, fishConfig.maxSize));
+
+	// Rounds fish that are 97%+ sized, or within 3cm of max size, up to 100% so people don't get fish that are super super close to max size, but aren't the max size.
+	if (size >= fishConfig.minSize + 0.97 * (fishConfig.maxSize - fishConfig.minSize) || size >= fishConfig.maxSize - 3) {
 		return fishConfig.maxSize;
 	}
 	return size;
@@ -183,7 +187,7 @@ function rollFish(bus) {
 		}
 	}
 	const fishKey = weightedRandom(...possibleFish);
-	const size = Math.ceil(rollFishSize(bus, fishKey));
+	const size = rollFishSize(bus, fishKey);
 	return {
 		type: fishKey,
 		size,
@@ -192,17 +196,32 @@ function rollFish(bus) {
 window.rollFish = rollFish;
 
 /**
- * Returns the fish found at the location as [fishKey, weight] pairs, weighted by location rarity, for use with weightedRandom.
+ * Returns fish at the location whose preferred location includes the given location,
+ * as [fishKey, weight] pairs for use with weightedRandom.
  *
  * @param {string} location
  * @returns {Array}
  */
-function fishingSurfacingFish(location) {
+function preferredLocationFishList(location) {
 	return Object.entries(setup.fishing.lootTables.fish)
-		.filter(([, fishConfig]) => fishConfig.locations[location] > 0)
+		.filter(([, fishConfig]) => fishConfig.preferredLocation.includes(location))
 		.map(([fishKey, fishConfig]) => [fishKey, fishConfig.locations[location]]);
 }
-window.fishingSurfacingFish = fishingSurfacingFish;
+window.preferredLocationFishList = preferredLocationFishList;
+
+/**
+ * Returns fish at the location whose preferred season includes the current season,
+ * as [fishKey, weight] pairs for use with weightedRandom.
+ *
+ * @param {string} location
+ * @returns {Array}
+ */
+function preferredSeasonFishList(location) {
+	return Object.entries(setup.fishing.lootTables.fish)
+		.filter(([, fishConfig]) => fishConfig.locations[location] > 0 && fishConfig.preferredSeason.includes(Time.season))
+		.map(([fishKey, fishConfig]) => [fishKey, fishConfig.locations[location]]);
+}
+window.preferredSeasonFishList = preferredSeasonFishList;
 
 /**
  * If a fish you just hooked should be caught with the minigame.
@@ -295,6 +314,7 @@ function updateFishRecord(fishKey, fishSize, bus) {
 	V.fishing.waitsSinceLastCatch = 0;
 
 	const fishRecord = V.fishing.record[fishKey];
+	T.wasFishCaughtLargest = fishRecord.numCaught === 0 || fishSize > fishRecord.largest;
 	fishRecord.numCaught += 1;
 	fishRecord.largest = Math.max(fishRecord.largest, fishSize);
 	if (!fishRecord.foundIn.includes(bus)) {
