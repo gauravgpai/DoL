@@ -702,7 +702,7 @@
 	<<unset $averyUniqueComments>>
 	<<unset $whitneyUniqueComments>>
 	<<unset $speechSaid>>
-	<<unset $speechResting>>
+	<<unset $speechRestTurns>>
 	<<unset $noBodyWriting>>
 	<<unset $noAdmire>>
 	<<unset $breakIgnore>>
@@ -848,7 +848,6 @@
 	<<unset $speechNPCKissVirgin>>
 	<<unset $speechNPCHandholdingVirgin>>
 
-	<<unset $speechSpecialDialogue>>
 
 	<<set $npcspeechcycle += 1>>
 	<<if $npcspeechcycle gte 7>>
@@ -871,7 +870,6 @@
 	<<unset $speechapologise>>
 	<<unset $speechplead>>
 	<<unset $speechmoan>>
-	<<unset $speechSpecialDialogue>>
 	<<unset $speechdemand>>
 	<<unset $speechcoverface>>
 	<<unset $speechcoverpenis>>

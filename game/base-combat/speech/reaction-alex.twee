@@ -2,14 +2,14 @@
 
 /* PC lines (plead / demand / forgive / moan). */
 
-<<widget "pcLine-alex-plead">>
-	<<speechLine>>"Alex, control yourself!"<</speechLine>>
+<<widget "pc-line-alex-plead">>
+	<<addSpeechLine>>"Alex, control yourself!"<</addSpeechLine>>
 <</widget>>
 
-<<widget "pcLine-alex-demand">>
-	<<speechLine>>"Alex, you idiot! Control yourself."<</speechLine>>
+<<widget "pc-line-alex-demand">>
+	<<addSpeechLine>>"Alex, you idiot! Control yourself."<</addSpeechLine>>
 <</widget>>
 
-<<widget "pcLine-alex-moan">>
-	<<speechLine>>"I couldn't ask for a better partner."<</speechLine>>
+<<widget "pc-line-alex-moan">>
+	<<addSpeechLine>>"I couldn't ask for a better partner."<</addSpeechLine>>
 <</widget>>

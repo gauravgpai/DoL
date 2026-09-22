@@ -2,14 +2,14 @@
 
 /* PC lines (plead / demand / forgive / moan). */
 
-<<widget "pcLine-eden-plead">>
-	<<speechLine>>"N...not so rough, Eden..."<</speechLine>>
+<<widget "pc-line-eden-plead">>
+	<<addSpeechLine>>"N...not so rough, Eden..."<</addSpeechLine>>
 <</widget>>
 
-<<widget "pcLine-eden-demand">>
-	<<speechLine>>"I'm not your prey today, leave me alone."<</speechLine>>
+<<widget "pc-line-eden-demand">>
+	<<addSpeechLine>>"I'm not your prey today, leave me alone."<</addSpeechLine>>
 <</widget>>
 
-<<widget "pcLine-eden-moan">>
-	<<speechLine>>"I belong to you, and you alone."<</speechLine>>
+<<widget "pc-line-eden-moan">>
+	<<addSpeechLine>>"I belong to you, and you alone."<</addSpeechLine>>
 <</widget>>

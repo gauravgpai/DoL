@@ -842,11 +842,11 @@
 			<<switch _loveInterest>>
 				<<case "Avery">>
 					<<if $npc.includes("Avery")>>
-						<<pcLine-avery-forgive>>
+						<<pc-line-avery-forgive>>
 					<</if>>
 				<<case "Whitney">>
 					<<if $npc.includes("Whitney")>>
-						<<pcLine-whitney-forgive>>
+						<<pc-line-whitney-forgive>>
 					<</if>>
 				<<default>>
 					"Even though you're doing such a horrible thing, don't worry," you say. "I forgive you."
@@ -1070,7 +1070,7 @@
 			<<switch _loveInterest>>
 				<<case "Robin">>
 					<<if $npc.includes("Robin")>>
-						<<pcLine-robin-plead>>
+						<<pc-line-robin-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -1118,7 +1118,7 @@
 					<</if>>
 				<<case "Kylar">>
 					<<if $npc.includes("Kylar")>>
-						<<pcLine-kylar-plead>>
+						<<pc-line-kylar-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -1175,7 +1175,7 @@
 					<</if>>
 				<<case "Whitney">>
 					<<if $npc.includes("Whitney")>>
-						<<pcLine-whitney-plead>>
+						<<pc-line-whitney-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -1226,7 +1226,7 @@
 					<</if>>
 				<<case "Eden">>
 					<<if $npc.includes("Eden")>>
-						<<pcLine-eden-plead>>
+						<<pc-line-eden-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -1274,7 +1274,7 @@
 					<</if>>
 				<<case "Black Wolf">>
 					<<if $npc.includes("Black Wolf")>>
-						<<pcLine-blackwolf-plead>>
+						<<pc-line-blackwolf-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -1323,7 +1323,7 @@
 					<<famebestiality $enemyno>>
 				<<case "Avery">>
 					<<if $npc.includes("Avery")>>
-						<<pcLine-avery-plead>>
+						<<pc-line-avery-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -1372,7 +1372,7 @@
 
 				<<case "Great Hawk">>
 					<<if $npc.includes("Great Hawk")>>
-						<<pcLine-greathawk-plead>>
+						<<pc-line-greathawk-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -1422,7 +1422,7 @@
 
 				<<case "Alex">>
 					<<if $npc.includes("Alex")>>
-						<<pcLine-alex-plead>>
+						<<pc-line-alex-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -1471,7 +1471,7 @@
 
 				<<case "Sydney">>
 					<<if $npc.includes("Sydney")>>
-						<<pcLine-sydney-plead>>
+						<<pc-line-sydney-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $templePromised is "Sydney">>
 							<<if (($player.virginity.vaginal is true or $player.virginity.temple is true) and $vaginastate is "imminent") or (($player.virginity.penile is true and $player.virginity.temple is true) and ($penisstate is "imminent" or $penisstate is "otheranusimminent"))>>
@@ -1574,7 +1574,7 @@
 
 				<<case "Gwylan">>
 					<<if $npc.includes("Gwylan")>>
-						<<pcLine-gwylan-plead>>
+						<<pc-line-gwylan-plead>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -1794,25 +1794,25 @@
 		<<speechPool "pc">>
 		<<switch _loveInterest>>
 			<<case "Robin">>
-				<<pcLine-robin-moan>>
+				<<pc-line-robin-moan>>
 			<<case "Sydney">>
-				<<pcLine-sydney-moan>>
+				<<pc-line-sydney-moan>>
 			<<case "Whitney">>
-				<<pcLine-whitney-moan>>
+				<<pc-line-whitney-moan>>
 			<<case "Black Wolf">>
-				<<pcLine-blackwolf-moan>>
+				<<pc-line-blackwolf-moan>>
 			<<case "Great Hawk">>
-				<<pcLine-greathawk-moan>>
+				<<pc-line-greathawk-moan>>
 			<<case "Eden">>
-				<<pcLine-eden-moan>>
+				<<pc-line-eden-moan>>
 			<<case "Avery">>
-				<<pcLine-avery-moan>>
+				<<pc-line-avery-moan>>
 			<<case "Alex">>
-				<<pcLine-alex-moan>>
+				<<pc-line-alex-moan>>
 			<<case "Kylar">>
-				<<pcLine-kylar-moan>>
+				<<pc-line-kylar-moan>>
 			<<case "Gwylan">>
-				<<pcLine-gwylan-moan>>
+				<<pc-line-gwylan-moan>>
 		<</switch>>
 		<<speechSay>>
 	<<elseif $enemytype is "beast">>
@@ -2481,7 +2481,7 @@
 			<<switch _loveInterest>>
 				<<case "Robin">>
 					<<if $npc.includes("Robin")>>
-						<<pcLine-robin-demand>>
+						<<pc-line-robin-demand>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -2530,7 +2530,7 @@
 
 				<<case "Kylar">>
 					<<if $npc.includes("Kylar")>>
-						<<pcLine-kylar-demand>>
+						<<pc-line-kylar-demand>>
 					<<elseif $vaginastate is "imminent">>
 						<<if $player.virginity.vaginal is true>>
 							<<if $awarelevel gte 1>>
@@ -2592,7 +2592,7 @@
 
 				<<case "Whitney">>
 					<<if $npc.includes("Whitney")>>
-						<<pcLine-whitney-demand>>
+						<<pc-line-whitney-demand>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -2644,7 +2644,7 @@
 
 				<<case "Eden">>
 					<<if $npc.includes("Eden")>>
-						<<pcLine-eden-demand>>
+						<<pc-line-eden-demand>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -2693,7 +2693,7 @@
 
 				<<case "Black Wolf">>
 					<<if $npc.includes("Black Wolf")>>
-						<<pcLine-blackwolf-demand>>
+						<<pc-line-blackwolf-demand>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -2743,7 +2743,7 @@
 
 				<<case "Avery">>
 					<<if $npc.includes("Avery")>>
-						<<pcLine-avery-demand>>
+						<<pc-line-avery-demand>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -2792,7 +2792,7 @@
 
 				<<case "Great Hawk">>
 					<<if $npc.includes("Great Hawk")>>
-						<<pcLine-greathawk-demand>>
+						<<pc-line-greathawk-demand>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -2842,7 +2842,7 @@
 
 				<<case "Alex">>
 					<<if $npc.includes("Alex")>>
-						<<pcLine-alex-demand>>
+						<<pc-line-alex-demand>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -2891,7 +2891,7 @@
 
 				<<case "Sydney">>
 					<<if $npc.includes("Sydney")>>
-						<<pcLine-sydney-demand>>
+						<<pc-line-sydney-demand>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $templePromised is "Sydney">>
 							<<if (($player.virginity.vaginal is true or $player.virginity.temple is true) and $vaginastate is "imminent") or (($player.virginity.penile is true and $player.virginity.temple is true) and ($penisstate is "imminent" or $penisstate is "otheranusimminent"))>>
@@ -2994,7 +2994,7 @@
 
 				<<case "Gwylan">>
 					<<if $npc.includes("Gwylan")>>
-						<<pcLine-gwylan-demand>>
+						<<pc-line-gwylan-demand>>
 					<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 						<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
 							<<if $awarelevel gte 1>>
@@ -3172,7 +3172,7 @@
 	<<rng>>
 	<<if $rng lte 15>>
 		<<switch $NPCList[$mouthtarget]?.fullDescription>>
-			<<case "Whitney">><<pcLine-whitney-mock $mockaction>>
+			<<case "Whitney">><<pc-line-whitney-mock $mockaction>>
 		<</switch>>
 	<</if>>
 	<<if hasSpeechLines()>>

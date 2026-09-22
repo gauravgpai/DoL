@@ -2,18 +2,44 @@
 
 /* PC lines (plead / demand / forgive / moan). */
 
-<<widget "pcLine-robin-plead">>
-	<<speechLine>>"Robin, please stop!"<</speechLine>>
+<<widget "pc-line-robin-plead">>
+	<<addSpeechLine>>"Robin, please stop!"<</addSpeechLine>>
 <</widget>>
 
-<<widget "pcLine-robin-demand">>
-	<<speechLine>>"Robin, stop! I don't want this!"<</speechLine>>
+<<widget "pc-line-robin-demand">>
+	<<addSpeechLine>>"Robin, stop! I don't want this!"<</addSpeechLine>>
 <</widget>>
 
-<<widget "pcLine-robin-moan">>
+<<widget "pc-line-robin-moan">>
 	<<if C.npc.Robin.dom gte 70>>
-		<<speechLine>><<set $speechSpecialDialogue to "robin_moan_dom">>"You know just how to turn me on."<</speechLine>>
+		<<addPairedSpeechLine>>
+			<<pcLine>>"You know just how to turn me on."
+		<<npcLine>>
+			<<if C.npc.Robin.trauma gte 20>>
+				<<He>> heaves. "Because you're the only one that matters to me."
+				<<set _moanHeal to true>>
+			<<else>>
+				<<print pickSpeechLine("Robin", 
+					`<<He>> giggles. "Anything for you."`,
+					`<<He>> smiles, beaming with pride and joy.`
+				)>>
+			<</if>>
+		<</addPairedSpeechLine>>
 	<<else>>
-		<<speechLine>><<set $speechSpecialDialogue to "robin_moan_default">>"I'm gonna melt, you're making me so happy."<</speechLine>>
+		<<addPairedSpeechLine>>
+			<<pcLine>>"I'm gonna melt, you're making me so happy."
+		<<npcLine>>
+			<<if C.npc.Robin.trauma gte 60>>
+				<<His>> eyes become glassy. "I'm very happy too you're here with me."
+				<<set _moanHeal to true>>
+			<<elseif C.npc.Robin.trauma gte 20>>
+				<<He>> lets out a dry chuckle. "I-is that so? You're making me very happy too."
+				<<set _moanHeal to true>>
+			<<elseif C.npc.Robin.dom lte 30>>
+				"Y-you're making me happy too," <<he>> says, cheeks flushing red.
+			<<else>>
+				"Aww. I'll make sure you don't wash away when you become a puddle," <<he>> chuckles.
+			<</if>>
+		<</addPairedSpeechLine>>
 	<</if>>
 <</widget>>

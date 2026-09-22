@@ -9,72 +9,72 @@
 	<<if C.npc.Robin.trauma gte 20 and $rng gte 90 and !$weekly.robinMemory>>
 		<<speechPool "Robin">>
 		<<if $robinPunishments.includes("mansion")>>
-			<<speechLine>>
+			<<addSpeechLine>>
 				<<if C.npc.Robin.dom gte 70>>
 					"I'd choose your touch over those... those rich creeps any day." <<He>> catches <<himself>> before saying anything harsher.
 				<<else>>
 					"Even after what happened at that party... I still like your touch the most," <<he>> whispers.
 				<</if>>
 				<<robinMemoryHeal "healedMansion">>
-			<</speechLine>>
+			<</addSpeechLine>>
 		<</if>>
 		<<if $robinPunishments.includes("landfill") and C.npc.Robin.love gte 60>>
-			<<speechLine>>
+			<<addSpeechLine>>
 				<<if C.npc.Robin.trauma gte 60>>
 					"I need you so badly," <<he>> <<= either("whispers","sobs","heaves")>>. "Those feelings were never just the mist."
 				<<else>>
 					"I know I was under the pink mist's influence back then, but... I do love you. So, so much." <<He>> smiles, <<his>> eyes glassy.
 				<</if>>
 				<<robinMemoryHeal "healedMist">>
-			<</speechLine>>
+			<</addSpeechLine>>
 		<</if>>
 		<<if $robinSeen.includes("pilloryRescue")>>
-			<<speechLine>>
+			<<addSpeechLine>>
 				<<if $robinSeen.includes("pilloryNaked")>>
 					"As long as you come for me, I know I'm safe in your hands," <<he>> whispers.
 				<<else>>
 					"My hero..." Robin's voice trembles. "You saved me from the wretched people of this town. I'm yours."
 				<</if>>
 				<<robinMemoryHeal "healedPilloryRescue">>
-			<</speechLine>>
+			<</addSpeechLine>>
 		<</if>>
 		<<if $robinSeen.includes("ubMetal")>>
-			<<speechLine>>
+			<<addSpeechLine>>
 				<<print pickSpeechLine("Robin", 
 					`"Take your time..." <<he>> <<= either("smiles warmly","whispers","murmurs")>>. "We don't have to put on a show anymore."`,
 					`"You don't have to rush..." <<he>> <<= either("smiles warmly","whispers","murmurs")>>. "No one is forcing you to perform."`
 				)>>
 				<<robinMemoryHeal "healedUbMetal">>
-			<</speechLine>>
+			<</addSpeechLine>>
 		<</if>>
 		<<if $robinSeen.includes("ubDouble") and (C.npc.Robin.virginity.anal is "player" or C.npc.Robin.virginity.vaginal is "player" or C.npc.Robin.virginity.penile is "player" or C.npc.Robin.dom gte 70)>>
-			<<speechLine>>
+			<<addSpeechLine>>
 				<<if C.npc.Robin.virginity.anal is "player" or C.npc.Robin.virginity.vaginal is "player" or C.npc.Robin.virginity.penile is "player">>
 					"I'm so glad I gave my virginity to you before those creeps could take it." <<He>> smiles.
 				<<elseif C.npc.Robin.dom gte 70>>
 					"Those people are nothing compared to you... to what we have, and what we're sharing right now." <<He>> smiles.
 				<</if>>
 				<<robinMemoryHeal "healedUbDouble">>
-			<</speechLine>>
+			<</addSpeechLine>>
 		<</if>>
 		<<if $robinSeen.includes("ubMachine") and (!$robinSeen.includes("ubMachineRobinBegged") or C.npc.Robin.trauma gte 60)>>
-			<<speechLine>>
+			<<addSpeechLine>>
 				<<if $robinSeen.includes("ubMachineRobinBegged")>>
 					"I'm sorry for what I said back then," <<he>> whispers. "I hope you've forgiven me..."
 				<<else>>
 					"You held back for me back then," <<he>> heaves. "I'll make it up to you tenfold."
 				<</if>>
 				<<robinMemoryHeal "healedUbMachine">>
-			<</speechLine>>
+			<</addSpeechLine>>
 		<</if>>
 		<<if $robinSeen.includes("ubEscapeAlone")>>
-			<<speechLine>>
+			<<addSpeechLine>>
 				"My hero..." <<he>> <<= either("whispers","sobs","heaves")>>. "They can't keep us apart anymore."
 				<<robinMemoryHeal "healedUbEscape">>
-			<</speechLine>>
+			<</addSpeechLine>>
 		<</if>>
 		<<if $robinSeen.includes("ubEscapeTogether")>>
-			<<speechLine>>
+			<<addSpeechLine>>
 				<<if $robinSeen.includes("ubHuntEscape")>>
 					"My hero..." Robin's voice trembles. "You came back and saved me. Let me make you feel just as cherished."
 				<<elseif $robinSeen.includes("ubMetalEscape")>>
@@ -83,7 +83,7 @@
 					"I'm so glad we made it out of that horrible place," <<he>> whispers. <<if C.npc.Robin.dom gte 70>>"I won't let Bailey take us again."<<else>>"I never want to go back."<</if>>
 				<</if>>
 				<<robinMemoryHeal "healedUbEscape">>
-			<</speechLine>>
+			<</addSpeechLine>>
 		<</if>>
 		<<if hasSpeechLines()>>
 			<<set _robinMemory to true>>
@@ -286,31 +286,8 @@
 			)>>
 		<</if>>
 	<<elseif $speechmoan is 1>>
-		<<if isLoveInterest("Robin") and ($speechSpecialDialogue is "robin_moan_dom" or $speechSpecialDialogue is "robin_moan_default")>>
-			<<switch $speechSpecialDialogue>>
-				<<case "robin_moan_dom">>
-					<<if C.npc.Robin.trauma gte 20>>
-						<<He>> heaves. "Because you're the only one that matters to me."
-						<<set _moanHeal to true>>
-					<<else>>
-						<<print pickSpeechLine("Robin", 
-							`<<He>> giggles. "Anything for you."`,
-							`<<He>> smiles, beaming with pride and joy.`
-						)>>
-					<</if>>
-				<<case "robin_moan_default">>
-					<<if C.npc.Robin.trauma gte 60>>
-						<<His>> eyes become glassy. "I'm very happy too you're here with me."
-						<<set _moanHeal to true>>
-					<<elseif C.npc.Robin.trauma gte 20>>
-						<<He>> lets out a dry chuckle. "I-is that so? You're making me very happy too."
-						<<set _moanHeal to true>>
-					<<elseif C.npc.Robin.dom lte 30>>
-						"Y-you're making me happy too," <<he>> says, cheeks flushing red.
-					<<else>>
-						"Aww. I'll make sure you don't wash away when you become a puddle," <<he>> chuckles.
-					<</if>>
-			<</switch>>
+		<<if isLoveInterest("Robin") and hasPairedSpeechLine()>>
+			<<sayPairedSpeechLine>>
 			<<set _moanDom to true>>
 		<<elseif C.npc.Robin.dom gte 70>>
 			<<print pickSpeechLine("Robin", 
@@ -364,90 +341,90 @@
 		<<speechPool "Robin">>
 		<<if $speechvaginaflaunt is 1>>
 			<<if C.npc.Robin.dom gte 70>>
-				<<speechLine>>"You can do more than just stare, you know!" <<he>> says.<</speechLine>>
-				<<speechLine>><<He>> sways <<his>> hips and gives you a playful wink.<</speechLine>>
+				<<addSpeechLine>>"You can do more than just stare, you know!" <<he>> says.<</addSpeechLine>>
+				<<addSpeechLine>><<He>> sways <<his>> hips and gives you a playful wink.<</addSpeechLine>>
 				<<if $fame.sex gte 600>>
-					<<speechLine>>"Would you say mine's your favourite?" <<He>> smiles.<</speechLine>>
+					<<addSpeechLine>>"Would you say mine's your favourite?" <<He>> smiles.<</addSpeechLine>>
 				<</if>>
 				<<if $player.penisExist>>
-					<<speechLine>>"Don't make me wait any longer," <<he>> says.<</speechLine>>
+					<<addSpeechLine>>"Don't make me wait any longer," <<he>> says.<</addSpeechLine>>
 				<</if>>
 			<<elseif C.npc.Robin.dom lte 30>>
 				<<if !$robinSeen.includes("vaginaFlaunt")>>
-					<<speechLine>><<set $robinSeen.pushUnique("vaginaFlaunt")>>"I can't believe I'm baring myself to you like this..." <<He>> laughs.<</speechLine>>
+					<<addSpeechLine>><<set $robinSeen.pushUnique("vaginaFlaunt")>>"I can't believe I'm baring myself to you like this..." <<He>> laughs.<</addSpeechLine>>
 				<<else>>
-					<<speechLine>>"D-do you like it?" <<He>> asks as <<his>> cheeks redden.<</speechLine>>
-					<<speechLine>>"I'd never show this to anyone but you. You're special to me." <<He>> smiles, the blush in <<his>> cheeks deepening.<</speechLine>>
-					<<speechLine>>"I still can't believe I'm baring myself to you like this..." <<He>> smiles.<</speechLine>>
+					<<addSpeechLine>>"D-do you like it?" <<He>> asks as <<his>> cheeks redden.<</addSpeechLine>>
+					<<addSpeechLine>>"I'd never show this to anyone but you. You're special to me." <<He>> smiles, the blush in <<his>> cheeks deepening.<</addSpeechLine>>
+					<<addSpeechLine>>"I still can't believe I'm baring myself to you like this..." <<He>> smiles.<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<speechLine>>"This is so naughty... but it's what you wanted to see, right?" <<he>> says.<</speechLine>>
-				<<speechLine>>"Do you like what you see?" <<He>> smiles.<</speechLine>>
-				<<speechLine>>"You're making me feel all funny down there, you know?" <<He>> smiles.<</speechLine>>
+				<<addSpeechLine>>"This is so naughty... but it's what you wanted to see, right?" <<he>> says.<</addSpeechLine>>
+				<<addSpeechLine>>"Do you like what you see?" <<He>> smiles.<</addSpeechLine>>
+				<<addSpeechLine>>"You're making me feel all funny down there, you know?" <<He>> smiles.<</addSpeechLine>>
 				<<if $player.penisExist>>
-					<<speechLine>>"I'd like to have you inside me," <<he>> smiles, the blush in <<his>> cheeks deepening.<</speechLine>>
+					<<addSpeechLine>>"I'd like to have you inside me," <<he>> smiles, the blush in <<his>> cheeks deepening.<</addSpeechLine>>
 				<</if>>
 			<</if>>
 		<</if>>
 		<<if $speechvagina is 1 and $player.virginity.vaginal is true>>
 			<<if C.npc.Robin.dom gte 70>>
-				<<speechLine>>"Oh! I didn't know you were still a virgin!" <<His>> fingers hit against your hymen. "I will try to be careful!"<</speechLine>>
+				<<addSpeechLine>>"Oh! I didn't know you were still a virgin!" <<His>> fingers hit against your hymen. "I will try to be careful!"<</addSpeechLine>>
 			<<else>>
-				<<speechLine>>"Am I doing alright?" <<He>> looks at you concerned, fingers poking against your hymen. "I don't want to hurt you there."<</speechLine>>
+				<<addSpeechLine>>"Am I doing alright?" <<He>> looks at you concerned, fingers poking against your hymen. "I don't want to hurt you there."<</addSpeechLine>>
 			<</if>>
 		<</if>>
 		<<if $speechheadsuckle is 1>>
 			<<rng>>
 			<<if C.npc.Robin.trauma gte 20 and $rng gte 67>>
-				<<speechLine>>"I'd never let anyone else do this," <<he>> sighs contentedly. "Only you."<</speechLine>>
-				<<speechLine>>"I hope my milk is still good, despite everything that's happened..." <<He>> manages a thin smile.<</speechLine>>
+				<<addSpeechLine>>"I'd never let anyone else do this," <<he>> sighs contentedly. "Only you."<</addSpeechLine>>
+				<<addSpeechLine>>"I hope my milk is still good, despite everything that's happened..." <<He>> manages a thin smile.<</addSpeechLine>>
 			<<elseif $robinSeen.includes("forestMilking") and $rng gte 34>>
-				<<speechLine>>"Is this because of what happened during the picnic?" <<He>> <<= either("asks","chuckles")>>.<</speechLine>>
-				<<speechLine>>"So this is why you wanted me to drink your breastmilk during the picnic..." <<He>> ponders. "It actually feels nice..."<</speechLine>>
+				<<addSpeechLine>>"Is this because of what happened during the picnic?" <<He>> <<= either("asks","chuckles")>>.<</addSpeechLine>>
+				<<addSpeechLine>>"So this is why you wanted me to drink your breastmilk during the picnic..." <<He>> ponders. "It actually feels nice..."<</addSpeechLine>>
 			<<elseif C.npc.Robin.dom gte 70>>
-				<<speechLine>>"Shouldn't we be saving that for the baby?" <<He>> chuckles. "I don't want to be competing with our child."<</speechLine>>
-				<<speechLine>>"You're enjoying this so much, I'm starting to think my hot chocolate stand should use my milk instead," <<he>> <<= either("chuckles","snickers")>>. <<if !$robinUniqueComments.includes("suckleDom")>><<set $robinUniqueComments.pushUnique("suckleDom")>><<npcincr Robin dom 1>><<gdom>><</if>><</speechLine>>
+				<<addSpeechLine>>"Shouldn't we be saving that for the baby?" <<He>> chuckles. "I don't want to be competing with our child."<</addSpeechLine>>
+				<<addSpeechLine>>"You're enjoying this so much, I'm starting to think my hot chocolate stand should use my milk instead," <<he>> <<= either("chuckles","snickers")>>. <<if !$robinUniqueComments.includes("suckleDom")>><<set $robinUniqueComments.pushUnique("suckleDom")>><<npcincr Robin dom 1>><<gdom>><</if>><</addSpeechLine>>
 			<<elseif C.npc.Robin.dom lte 30>>
-				<<speechLine>>"I don't mind..." <<He>> murmurs.<</speechLine>>
-				<<speechLine>>"Isn't that for the baby?" <<He>> asks hesitantly.<</speechLine>>
+				<<addSpeechLine>>"I don't mind..." <<He>> murmurs.<</addSpeechLine>>
+				<<addSpeechLine>>"Isn't that for the baby?" <<He>> asks hesitantly.<</addSpeechLine>>
 			<<else>>
-				<<speechLine>>"Are you sure we shouldn't save it for the baby?" <<He>> <<= either("asks","chuckles","giggles")>>.<</speechLine>>
-				<<speechLine>>"Do I really taste that good?" <<He>> <<= either("giggles","chuckles","smiles")>>. "<<= either("Save some for the baby, alright?","Just don't forget our little one needs it too.")>>"<</speechLine>>
+				<<addSpeechLine>>"Are you sure we shouldn't save it for the baby?" <<He>> <<= either("asks","chuckles","giggles")>>.<</addSpeechLine>>
+				<<addSpeechLine>>"Do I really taste that good?" <<He>> <<= either("giggles","chuckles","smiles")>>. "<<= either("Save some for the baby, alright?","Just don't forget our little one needs it too.")>>"<</addSpeechLine>>
 			<</if>>
 		<</if>>
 		<<if $speechheadnipple is 1>>
 			<<if C.npc.Robin.dom gte 70>>
 				<<if currentSkillValue("oralskill") gte 400>>
-					<<speechLine>>"I really like how warm your mouth feels!" <<he>> <<= either("moans","chuckles","giggles")>>.<</speechLine>>
-					<<speechLine>>"Please don't stop," <<he>> moans. "I really love the way you do that."<</speechLine>>
+					<<addSpeechLine>>"I really like how warm your mouth feels!" <<he>> <<= either("moans","chuckles","giggles")>>.<</addSpeechLine>>
+					<<addSpeechLine>>"Please don't stop," <<he>> moans. "I really love the way you do that."<</addSpeechLine>>
 				<<else>>
-					<<speechLine>>"So my hero can be a little clumsy too, just like me," <<he>> <<= either("chuckles","giggles","teases you")>>. <<if !$robinUniqueComments.includes("nippleDom")>><<set $robinUniqueComments.pushUnique("nippleDom")>><<npcincr Robin dom 1>><<gdom>><</if>><</speechLine>>
-					<<speechLine>>"You can keep trying, but nothing's going to come out, you know!" <<He>> pouts, then <<= either("giggles","chuckles")>>.<</speechLine>>
+					<<addSpeechLine>>"So my hero can be a little clumsy too, just like me," <<he>> <<= either("chuckles","giggles","teases you")>>. <<if !$robinUniqueComments.includes("nippleDom")>><<set $robinUniqueComments.pushUnique("nippleDom")>><<npcincr Robin dom 1>><<gdom>><</if>><</addSpeechLine>>
+					<<addSpeechLine>>"You can keep trying, but nothing's going to come out, you know!" <<He>> pouts, then <<= either("giggles","chuckles")>>.<</addSpeechLine>>
 				<</if>>
 			<<elseif C.npc.Robin.dom lte 30>>
 				<<if currentSkillValue("oralskill") gte 400>>
-					<<speechLine>>"T-that feels nice," <<he>> murmurs.<</speechLine>>
-					<<speechLine>>"This feels... This feels a little dirty," <<he>> admits as <<his>> cheeks redden.<</speechLine>>
+					<<addSpeechLine>>"T-that feels nice," <<he>> murmurs.<</addSpeechLine>>
+					<<addSpeechLine>>"This feels... This feels a little dirty," <<he>> admits as <<his>> cheeks redden.<</addSpeechLine>>
 				<<else>>
-					<<speechLine>><<His>> cheeks remain flushed despite the conflicted look on <<his>> face.<</speechLine>>
-					<<speechLine>>"You're making me blush," <<he>> <<= either("murmurs","whispers","smiles bashfully")>>.<</speechLine>>
+					<<addSpeechLine>><<His>> cheeks remain flushed despite the conflicted look on <<his>> face.<</addSpeechLine>>
+					<<addSpeechLine>>"You're making me blush," <<he>> <<= either("murmurs","whispers","smiles bashfully")>>.<</addSpeechLine>>
 				<</if>>
 			<<else>>
 				<<if currentSkillValue("oralskill") gte 400>>
-					<<speechLine>><<He>> smiles as <<he>> sighs in pleasure.<</speechLine>>
-					<<speechLine>>"You're awfully affectionate today." <<He>> <<= either("giggles","chuckles","smiles")>>.<</speechLine>>
+					<<addSpeechLine>><<He>> smiles as <<he>> sighs in pleasure.<</addSpeechLine>>
+					<<addSpeechLine>>"You're awfully affectionate today." <<He>> <<= either("giggles","chuckles","smiles")>>.<</addSpeechLine>>
 				<<else>>
-					<<speechLine>><<He>> <<= either("gasps","chuckles","giggles")>>. "That tickles!"<</speechLine>>
-					<<speechLine>>"Is that all you're going to do?" <<he>> <<= either("chuckles","giggles","teases you")>>.<</speechLine>>
+					<<addSpeechLine>><<He>> <<= either("gasps","chuckles","giggles")>>. "That tickles!"<</addSpeechLine>>
+					<<addSpeechLine>>"Is that all you're going to do?" <<he>> <<= either("chuckles","giggles","teases you")>>.<</addSpeechLine>>
 				<</if>>
 			<</if>>
 		<</if>>
 		<<if $speechvaginavagina is 1 and C.npc.Robin.dom gte 70 and $fame.sex gte 600>>
-			<<speechLine>>"So... where would you rank mine?" <<He>> smiles.<</speechLine>>
+			<<addSpeechLine>>"So... where would you rank mine?" <<He>> smiles.<</addSpeechLine>>
 		<</if>>
 		<<if $speechanallick is 1 and C.npc.Robin.dom lte 30>>
-			<<speechLine>>"It feels a bit ticklish!" <<He>> <<= either("giggles", "smiles", "chuckles")>>.<</speechLine>>
-			<<speechLine>>"This feels a bit naughty," <<he>> <<= either("gasps", "says in surprise")>>.<</speechLine>>
+			<<addSpeechLine>>"It feels a bit ticklish!" <<He>> <<= either("giggles", "smiles", "chuckles")>>.<</addSpeechLine>>
+			<<addSpeechLine>>"This feels a bit naughty," <<he>> <<= either("gasps", "says in surprise")>>.<</addSpeechLine>>
 		<</if>>
 		/* Once every line for this situation has been said, the turn goes to an ambient line or the mouth action instead of a repeat. */
 		<<run takeSpeechBreather()>>

@@ -552,6 +552,21 @@ sugarcube-2:
     actorAroused:
       name: actorAroused
       tags: ["unused"]
+    addSpeechLine:
+      container: true
+      description: |-
+        Adds a line to the current speech pool.
+
+        `<<addSpeechLine [weight]>>…<</addSpeechLine>>`
+        - **weight** _optional_: `number` - weight, default 1
+      parameters:
+        - '|+ number'
+    addPairedSpeechLine:
+      container: true
+      description: |-
+        Adds a PC line to the current speech pool together with the named NPC's reply to it. If the line plays, the NPC says the reply with `<<sayPairedSpeechLine>>`.
+
+        `<<addPairedSpeechLine>><<pcLine>>the PC's line<<npcLine>>the NPC's reply<</addPairedSpeechLine>>`
     add_bodywriting:
       name: add_bodywriting
     add_link:
@@ -11973,7 +11988,13 @@ sugarcube-2:
     museumtalk:
       name: museumtalk
     namedNpcComments:
-      name: namedNpcComments
+      description: |-
+        Plays the named NPC's speech lines for this turn. NPCs without a speech widget set `_noNameComment`, so generic comments or mouth actions play instead.
+
+        `<<namedNpcComments npc>>`
+        - **npc**: `string` - the NPC's `fullDescription`
+      parameters:
+        - string
     namedNpcEjaculation:
       name: namedNpcEjaculation
     namedNpcReaction:
@@ -11992,11 +12013,9 @@ sugarcube-2:
           - `kissImminent`
           - `kissSkin`
           - `undress`
-        - **detail**: `string` - the body part, for `kissSkin` and `fondle`
+        - **detail** _optional_: `string` - the body part, for `kissSkin` and `fondle`
       parameters:
-        - number
-        - string
-        - string|null
+        - 'number &+ "choke"|"expose"|"fondle"|"initiative"|"kiss"|"kissDeep"|"kissImminent"|"kissSkin"|"undress" |+ string'
     namedNpcPregnancy:
       name: namedNpcPregnancy
     nDays:
@@ -12561,6 +12580,9 @@ sugarcube-2:
         - **slot**: `number` - The Slot the NPC will be put into (zero based)
       parameters:
         - text |+ number
+    npcLine:
+      description: |-
+        The named NPC's reply, inside `<<addPairedSpeechLine>>`.
     npc_attempt_sex:
       name: npc_attempt_sex
     npc_pillory:
@@ -13716,72 +13738,81 @@ sugarcube-2:
         - '"Wraith" |+ "angry"|"nice"'
         - '"Gwylan" |+ "bad"|"naughty"|"good"|"dear"|"my"|"simple"|"name"'
       tags: ["text"]
-    pcLine-alex-demand:
-      name: pcLine-alex-demand
-    pcLine-alex-moan:
-      name: pcLine-alex-moan
-    pcLine-alex-plead:
-      name: pcLine-alex-plead
-    pcLine-avery-demand:
-      name: pcLine-avery-demand
-    pcLine-avery-forgive:
-      name: pcLine-avery-forgive
-    pcLine-avery-moan:
-      name: pcLine-avery-moan
-    pcLine-avery-plead:
-      name: pcLine-avery-plead
-    pcLine-blackwolf-demand:
-      name: pcLine-blackwolf-demand
-    pcLine-blackwolf-moan:
-      name: pcLine-blackwolf-moan
-    pcLine-blackwolf-plead:
-      name: pcLine-blackwolf-plead
-    pcLine-eden-demand:
-      name: pcLine-eden-demand
-    pcLine-eden-moan:
-      name: pcLine-eden-moan
-    pcLine-eden-plead:
-      name: pcLine-eden-plead
-    pcLine-greathawk-demand:
-      name: pcLine-greathawk-demand
-    pcLine-greathawk-moan:
-      name: pcLine-greathawk-moan
-    pcLine-greathawk-plead:
-      name: pcLine-greathawk-plead
-    pcLine-gwylan-demand:
-      name: pcLine-gwylan-demand
-    pcLine-gwylan-moan:
-      name: pcLine-gwylan-moan
-    pcLine-gwylan-plead:
-      name: pcLine-gwylan-plead
-    pcLine-kylar-demand:
-      name: pcLine-kylar-demand
-    pcLine-kylar-moan:
-      name: pcLine-kylar-moan
-    pcLine-kylar-plead:
-      name: pcLine-kylar-plead
-    pcLine-robin-demand:
-      name: pcLine-robin-demand
-    pcLine-robin-moan:
-      name: pcLine-robin-moan
-    pcLine-robin-plead:
-      name: pcLine-robin-plead
-    pcLine-sydney-demand:
-      name: pcLine-sydney-demand
-    pcLine-sydney-moan:
-      name: pcLine-sydney-moan
-    pcLine-sydney-plead:
-      name: pcLine-sydney-plead
-    pcLine-whitney-demand:
-      name: pcLine-whitney-demand
-    pcLine-whitney-forgive:
-      name: pcLine-whitney-forgive
-    pcLine-whitney-moan:
-      name: pcLine-whitney-moan
-    pcLine-whitney-mock:
-      name: pcLine-whitney-mock
-    pcLine-whitney-plead:
-      name: pcLine-whitney-plead
+    pcLine:
+      description: |-
+        The PC's line, inside `<<addPairedSpeechLine>>`.
+    pc-line-alex-demand:
+      name: pc-line-alex-demand
+    pc-line-alex-moan:
+      name: pc-line-alex-moan
+    pc-line-alex-plead:
+      name: pc-line-alex-plead
+    pc-line-avery-demand:
+      name: pc-line-avery-demand
+    pc-line-avery-forgive:
+      name: pc-line-avery-forgive
+    pc-line-avery-moan:
+      name: pc-line-avery-moan
+    pc-line-avery-plead:
+      name: pc-line-avery-plead
+    pc-line-blackwolf-demand:
+      name: pc-line-blackwolf-demand
+    pc-line-blackwolf-moan:
+      name: pc-line-blackwolf-moan
+    pc-line-blackwolf-plead:
+      name: pc-line-blackwolf-plead
+    pc-line-eden-demand:
+      name: pc-line-eden-demand
+    pc-line-eden-moan:
+      name: pc-line-eden-moan
+    pc-line-eden-plead:
+      name: pc-line-eden-plead
+    pc-line-greathawk-demand:
+      name: pc-line-greathawk-demand
+    pc-line-greathawk-moan:
+      name: pc-line-greathawk-moan
+    pc-line-greathawk-plead:
+      name: pc-line-greathawk-plead
+    pc-line-gwylan-demand:
+      name: pc-line-gwylan-demand
+    pc-line-gwylan-moan:
+      name: pc-line-gwylan-moan
+    pc-line-gwylan-plead:
+      name: pc-line-gwylan-plead
+    pc-line-kylar-demand:
+      name: pc-line-kylar-demand
+    pc-line-kylar-moan:
+      name: pc-line-kylar-moan
+    pc-line-kylar-plead:
+      name: pc-line-kylar-plead
+    pc-line-robin-demand:
+      name: pc-line-robin-demand
+    pc-line-robin-moan:
+      name: pc-line-robin-moan
+    pc-line-robin-plead:
+      name: pc-line-robin-plead
+    pc-line-sydney-demand:
+      name: pc-line-sydney-demand
+    pc-line-sydney-moan:
+      name: pc-line-sydney-moan
+    pc-line-sydney-plead:
+      name: pc-line-sydney-plead
+    pc-line-whitney-demand:
+      name: pc-line-whitney-demand
+    pc-line-whitney-forgive:
+      name: pc-line-whitney-forgive
+    pc-line-whitney-moan:
+      name: pc-line-whitney-moan
+    pc-line-whitney-mock:
+      description: |-
+        Whitney's variants of the PC's mock line, added to the "pc" speech pool.
+
+        `<<pc-line-whitney-mock mockAction>>`
+        - **mockAction**: `string` - the insecurity the PC mocked, from `$mockaction`
+      parameters:
+        - '"penis"|"vagina"|"weak"|"looks"|"skill"|"ethics"'
+    pc-line-whitney-plead:
+      name: pc-line-whitney-plead
     pcPetname:
       description: |-
         Print's capitalised prose of named NPC's pet name for pc's
@@ -16615,23 +16646,19 @@ sugarcube-2:
       name: speech-whitney
     speech-zephyr:
       name: speech-zephyr
-    speechLine:
-      container: true
+    sayPairedSpeechLine:
       description: |-
-        Adds a line to the current speech pool.
-
-        `<<speechLine [weight]>>…<</speechLine>>`
-        - **weight**: `number` - weight, default 1
-      parameters:
-        - number|null
+        Says the named NPC's reply to the PC line played this turn, if that line had one. Prints nothing otherwise.
     speechPool:
       description: |-
-        Starts the speaker's pool of speech lines for this turn. Fill it with `<<speechLine>>` and say one with `<<speechSay>>`.
+        Starts the speaker's pool of speech lines for this turn. Fill it with `<<addSpeechLine>>` and say one with `<<speechSay>>`.
 
         `<<speechPool speaker>>`
-        - **speaker**: `string` - a named NPC, or `"pc"`
+        - **speaker**: `string` - whose lines the pool holds
+          - `"pc"`: the player's lines
+          - %namedNPCDesc%
       parameters:
-        - string
+        - '%namedNPC%|"pc"'
     speechSay:
       description: |-
         Picks a line from the current speech lines pool that its speaker has not said this combat, prints it and remembers it. Prints nothing when the pool is empty.
@@ -16640,9 +16667,9 @@ sugarcube-2:
         Ends a speech widget's turn: says a line from the pool, or sets `_noNameComment` so the generic comment or mouth action runs instead.
 
         `<<speechSayOrPass [quietTurn]>>`
-        - **quietTurn**: `boolean` - whether only ambient lines are in the pool
+        - **quietTurn** _optional_: `boolean` - whether only ambient lines are in the pool
       parameters:
-        - boolean|null
+        - '|+ bool'
     speechWraith:
       description: |-
         Prints up to two relevant wraith lines

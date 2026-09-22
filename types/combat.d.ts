@@ -134,14 +134,14 @@ declare module "twine-sugarcube" {
 		tentacleAnus: string | 0;
 		tentaclePenis: string | 0;
 		swarm: Swarm;
-		speechSaid?: Record<string, string[]>;
-		speechResting?: Record<string, number>;
-		speechSpecialDialogue?: string;
+		speechSaid?: Partial<Record<SpeechSpeaker, string[]>>;
+		speechRestTurns?: Partial<Record<SpeechSpeaker, number>>;
 	}
 
 	export interface SugarCubeTemporaryVariables {
 		crOverrides?: CombatRendererOverrides;
-		speechPool?: { speaker: string; lines: SpeechLine[] };
+		speechPool?: { speaker: SpeechSpeaker; lines: SpeechLine[] };
+		pairedSpeechLine?: string;
 	}
 
 	export interface SugarCubeSetupObject {
@@ -230,9 +230,13 @@ declare global {
 		};
 	}
 
+	export type SpeechSpeaker = NpcNames | "pc";
+
 	export interface SpeechLine {
 		content: string;
 		weight: number;
+		hash: string;
+		reply?: string;
 	}
 }
 
