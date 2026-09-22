@@ -136,7 +136,7 @@ You walk with them back to the sleeping cave. When everyone is inside, the guard
 	<<link [[Next|Mine Job Cleaning]]>><<endevent>><</link>>
 <</addinlineevent>>
 
-<<if $mine.setup.map>>
+<<if !$mine.setup.map>>
 	<<addinlineevent "map">>
 		<<generate1>><<person1>>
 		A <<person>> starts watching you from across the room. You ignore <<him>> and continue. As you avert your eyes away from <<him>>, you notice a small part of an old paper slipped behind a pin-up.

@@ -13589,7 +13589,7 @@ function initUpper() {
 			altposition: "none",
 			altdisabled: ["sleeves"],
 			altsleeve: "none",
-			breast_img: { 0: null, 1: null, 2: 2, 3: 3, 4: 3, 5: 4, 6: 4 },
+			breast_img: { 0: null, 1: null, 2: null, 3: 3, 4: 3, 5: 4, 6: 4 },
 			location: 0,
 			iconFile: "boiler-suit.png",
 			accIcon: 0,
