@@ -13,7 +13,7 @@
 			<<set $gwylanUniqueComments.pushUnique("wraithPain")>>
 			<<He>> grunts in pain, on the verge of collapsing. "Come on... exert your will!"
 		<<else>>
-			<<print speechPick(
+			<<print pickSpeechLine("Gwylan", 
 				`<<He>> growls. "You can't have <<phim>>."`,
 				`<<He>> growls. "You're stronger than it. I know you are."`,
 				`<<He>> demands. "Begone!"`,
@@ -27,7 +27,7 @@
 			)>>
 		<</if>>
 	<<elseif $abomination is 1>>
-		<<print speechPick(
+		<<print pickSpeechLine("Gwylan", 
 			`<<He>> giggles. "You awoke this beast and you must sate it."`,
 			`<<He>> breathes heavily. "Energy like this cannot be destroyed. It has to be spent."`,
 			`<<He>> lets out a soft moan. "I can't help it. I need you."`,
@@ -136,7 +136,7 @@
 				<<set $gwylanUniqueComments.pushUnique("no_cum")>>
 				"Oh dear, nothing came out. Had enough?"
 			<<else>>
-				<<print speechPick(
+				<<print pickSpeechLine("Gwylan", 
 					`"I'm sure I can coax something out..."`,
 					`"Tsk. No good."`,
 					`"Perhaps you need a supplement."`,
@@ -186,7 +186,7 @@
 				<<elseif _gwylanStatus.includes("heat")>>
 					<<He>> breathes heavily as <<he>> feels your semen fill <<his>> womb. <<He>> sighs with relief. "I needed this. I needed your seed inside me."
 				<<else>>
-					<<print speechPick(
+					<<print pickSpeechLine("Gwylan", 
 						`<<He>> shakes with arousal as you fill <<him>>. "<<pcPetname 'Gwylan' 'good'>>, fill me up."`,
 						`<<He>> grinds your hips together and places a hand over <<his>> <<bellyDescription 'Gwylan'>>. "Warm."`
 					)>>
@@ -215,13 +215,13 @@
 		<</if>>
 	<<elseif $speechspank is 1>>
 		<<if $speechmoan is 1>>
-			<<print speechPick(
+			<<print pickSpeechLine("Gwylan", 
 				`<<He>> smirks. "Oh, you like that?"`,
 				`<<He>> giggles. "<<pcPetname 'Gwylan' 'bad'>>."`,
 				`<<He>> giggles. "Your voice is so sweet in between the pain. Sing for me again."`
 			)>>
 		<<else>>
-			<<print speechPick(
+			<<print pickSpeechLine("Gwylan", 
 				`<<He>> speaks. "Just hold still, it'll be over soon."`,
 				`<<He>> speaks. "You need to be disciplined. <<pcPetname 'Gwylan' 'bad'>>."`,
 				`<<He>> giggles. "Let me hear how much it hurts."`
@@ -271,7 +271,7 @@
 	<<elseif $speechaskrough is 1>>
 		<<He>> giggles. "How can I say no? I'll make sure the pain is sweet."
 	<<elseif $speechbeat is 1>>
-		<<print speechPick(
+		<<print pickSpeechLine("Gwylan", 
 			`<<He>> frowns. "Stop resisting me, <<pcpetname 'Gwylan' 'naughty'>>."`,
 			`<<He>> frowns. "Just submit, and the pain will all go away."`,
 			`<<He>> frowns. "Why are you struggling? Isn't this what you wanted, dear?"`,
@@ -351,234 +351,232 @@
 		<<set $gwylanUniqueComments.pushUnique("silenced")>>
 		"You should have listened, naughty <<girl>>."
 	<<else>>
-		<<cleareventpool>>
+		<<speechPool "Gwylan">>
 		<<if $speechpenispenetrated is 1>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				<<if _gwylanStatus.includes("wantsPregnancy") and $settings.pregnancySpeechEnabled and !npcIsPregnant("Gwylan")>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addinlineevent>><<He>> whines and pants with each thrust. Fluids drool from <<his>> <<npcVagina>>. "Plant your seed in me. Breed me, <<pcpetname 'Gwylan'>>. I need it."<</addinlineevent>>
+						<<speechLine>><<He>> whines and pants with each thrust. Fluids drool from <<his>> <<npcVagina>>. "Plant your seed in me. Breed me, <<pcpetname 'Gwylan'>>. I need it."<</speechLine>>
 					<<else>>
-						<<addinlineevent>><<He>> shivers as <<he>> notices your arousal. "I want you to breed me. Give me everything."<</addinlineevent>>
+						<<speechLine>><<He>> shivers as <<he>> notices your arousal. "I want you to breed me. Give me everything."<</speechLine>>
 					<</if>>
 				<<elseif _gwylanStatus.includes("heat")>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addinlineevent>><<He>> whines and pants with each thrust. Fluids drool from <<his>> <<npcVagina>>. "F-finish inside. I need it."<</addinlineevent>>
+						<<speechLine>><<He>> whines and pants with each thrust. Fluids drool from <<his>> <<npcVagina>>. "F-finish inside. I need it."<</speechLine>>
 					<<else>>
-						<<addinlineevent>><<He>> shivers as <<he>> notices your arousal. "You better not pull out."<</addinlineevent>>
+						<<speechLine>><<He>> shivers as <<he>> notices your arousal. "You better not pull out."<</speechLine>>
 					<</if>>
 				<<else>>
 					<<if $settings.pregnancySpeechEnabled>>
-						<<addinlineevent>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. It's okay, you can finish inside. I won't get pregnant."<</addinlineevent>>
+						<<speechLine>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. It's okay, you can finish inside. I won't get pregnant."<</speechLine>>
 					<<else>>
-						<<addinlineevent>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. It's okay, you can finish inside."<</addinlineevent>>
+						<<speechLine>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. It's okay, you can finish inside."<</speechLine>>
 					<</if>>
 				<</if>>
 			<<elseif $arousal gte ($arousalmax / 5) * 2>>
 				<<if _gwylanStatus.includes("wantsPregnancy") and $settings.pregnancySpeechEnabled and !npcIsPregnant("Gwylan")>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addinlineevent>><<He>> whines and pants with each thrust. Fluids drool from <<his>> <<npcVagina>>. "Plant your seed in me. Breed me, <<pcpetname 'Gwylan'>>. I need it."<</addinlineevent>>
+						<<speechLine>><<He>> whines and pants with each thrust. Fluids drool from <<his>> <<npcVagina>>. "Plant your seed in me. Breed me, <<pcpetname 'Gwylan'>>. I need it."<</speechLine>>
 					<<else>>
-						<<addinlineevent>><<He>> shivers. "I want you to breed me. Give me everything."<</addinlineevent>>
+						<<speechLine>><<He>> shivers. "I want you to breed me. Give me everything."<</speechLine>>
 					<</if>>
 				<<elseif _gwylanStatus.includes("heat")>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addinlineevent>><<He>> whines and pants with each thrust. Fluids drool from <<his>> <<npcVagina>>. "I want your semen inside me."<</addinlineevent>>
+						<<speechLine>><<He>> whines and pants with each thrust. Fluids drool from <<his>> <<npcVagina>>. "I want your semen inside me."<</speechLine>>
 					<<else>>
-						<<addinlineevent>><<He>> shivers. "You better not pull out."<</addinlineevent>>
+						<<speechLine>><<He>> shivers. "You better not pull out."<</speechLine>>
 					<</if>>
 				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-					<<addinlineevent>><<He>> giggles. "I hope you're enjoying this as much as I am."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "I hope you're enjoying this as much as I am."<</speechLine>>
 				<<else>>
-					<<addinlineevent>><<He>> giggles. "You look adorable <<if $position is 'missionary'>>down<<else>>back<</if>> there."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "You look adorable <<if $position is 'missionary'>>down<<else>>back<</if>> there."<</speechLine>>
 				<</if>>
 			<<else>>
-				<<addinlineevent>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</addinlineevent>>
+				<<speechLine>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if $speechotheranuspenetrated is 1>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
-				<<addinlineevent>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. Come on, let it out."<</addinlineevent>>
+				<<speechLine>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. Come on, let it out."<</speechLine>>
 			<<elseif $arousal gte ($arousalmax / 5) * 2>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-					<<addinlineevent>><<He>> giggles. "I hope you're enjoying this as much as I am."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "I hope you're enjoying this as much as I am."<</speechLine>>
 				<<else>>
-					<<addinlineevent>><<He>> giggles. "You look adorable <<if $position is 'missionary'>>down<<else>>back<</if>> there."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "You look adorable <<if $position is 'missionary'>>down<<else>>back<</if>> there."<</speechLine>>
 				<</if>>
 			<<else>>
-				<<addinlineevent>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</addinlineevent>>
+				<<speechLine>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if $speechvaginapenetrated is 1>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				<<if _gwylanStatus.includes("wantsPregnancy") and $settings.pregnancySpeechEnabled and !playerIsPregnant()>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addinlineevent>><<He>> whines and pants with each thrust. "You'll let me finish inside, right <<pcpetname 'Gwylan'>>? You want to be bred, don't you?"<</addinlineevent>>
+						<<speechLine>><<He>> whines and pants with each thrust. "You'll let me finish inside, right <<pcpetname 'Gwylan'>>? You want to be bred, don't you?"<</speechLine>>
 					<<else>>
-						<<addinlineevent>><<His>> face turns a deep red as <<he>> giggles. "You look like you want me to breed you. I'll do my best for <<pcpetname 'Gwylan' 'my'>>."<</addinlineevent>>
+						<<speechLine>><<His>> face turns a deep red as <<he>> giggles. "You look like you want me to breed you. I'll do my best for <<pcpetname 'Gwylan' 'my'>>."<</speechLine>>
 					<</if>>
 				<<elseif _gwylanStatus.includes("heat")>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addinlineevent>><<He>> whines and pants with each thrust.<</addinlineevent>>
+						<<speechLine>><<He>> whines and pants with each thrust.<</speechLine>>
 					<<else>>
-						<<addinlineevent>><<He>> shivers as <<he>> notices your arousal.<</addinlineevent>>
+						<<speechLine>><<He>> shivers as <<he>> notices your arousal.<</speechLine>>
 					<</if>>
 				<<else>>
 					<<if $settings.pregnancySpeechEnabled and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addinlineevent>><<He>> puts a hand to <<his>> mouth and giggles. "I'm nearly there. Don't worry, I won't get you pregnant."<</addinlineevent>>
+						<<speechLine>><<He>> puts a hand to <<his>> mouth and giggles. "I'm nearly there. Don't worry, I won't get you pregnant."<</speechLine>>
 					<<else>>
-						<<addinlineevent>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. It's okay, you can finish first."<</addinlineevent>>
+						<<speechLine>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. It's okay, you can finish first."<</speechLine>>
 					<</if>>
 				<</if>>
 			<<elseif $arousal gte ($arousalmax / 5) * 2>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-					<<addinlineevent>><<He>> giggles. "I hope you're enjoying this as much as I am."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "I hope you're enjoying this as much as I am."<</speechLine>>
 				<<else>>
-					<<addinlineevent>><<He>> giggles. "You look adorable <<if $position is 'missionary'>>down<<else>>up<</if>> there."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "You look adorable <<if $position is 'missionary'>>down<<else>>up<</if>> there."<</speechLine>>
 				<</if>>
 			<<else>>
-				<<addinlineevent>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</addinlineevent>>
+				<<speechLine>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if $speechanuspenetrated is 1>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
-				<<addinlineevent>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close."<</addinlineevent>>
+				<<speechLine>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close."<</speechLine>>
 			<<elseif $arousal gte ($arousalmax / 5) * 2>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-					<<addinlineevent>><<He>> giggles. "I hope you're enjoying this as much as I am."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "I hope you're enjoying this as much as I am."<</speechLine>>
 				<<else>>
-					<<addinlineevent>><<He>> giggles. "You look adorable <<if $position is 'missionary'>>down<<else>>up<</if>> there."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "You look adorable <<if $position is 'missionary'>>down<<else>>up<</if>> there."<</speechLine>>
 				<</if>>
 			<<else>>
-				<<addinlineevent>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</addinlineevent>>
+				<<speechLine>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if $speechmouthpenetrated is 1>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<addinlineevent>><<He>> pets your head and exhales sharply. "<<pcPetname 'Gwylan' 'good'>>, I'm almost there."<</addinlineevent>>
+				<<speechLine>><<He>> pets your head and exhales sharply. "<<pcPetname 'Gwylan' 'good'>>, I'm almost there."<</speechLine>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
 				<<if $transformationParts.traits.fangs isnot "disabled">>
-					<<addinlineevent>><<He>> pets your head. "Watch those fangs. I feel you nibbling."<</addinlineevent>>
+					<<speechLine>><<He>> pets your head. "Watch those fangs. I feel you nibbling."<</speechLine>>
 				<<else>>
-					<<addinlineevent>><<He>> pets your head. "Just like that."<</addinlineevent>>
+					<<speechLine>><<He>> pets your head. "Just like that."<</speechLine>>
 				<</if>>
 			<<else>>
-				<<addinlineevent>><<He>> pets your head. "<<pcPetname 'Gwylan' 'good'>>."<</addinlineevent>>
+				<<speechLine>><<He>> pets your head. "<<pcPetname 'Gwylan' 'good'>>."<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if ($speechvaginamouth is 1 or $speechanallick is 1 or $speechanalkiss is 1 or $speechmouthotheranus is 1 or $speechthroat is 1 or $speechfacesit is 1)>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<addinlineevent>><<He>> moans softly, placing both hands on your head. "G-<<pcpetname 'Gwylan' 'good'>>, keep going just like that."<</addinlineevent>>
+				<<speechLine>><<He>> moans softly, placing both hands on your head. "G-<<pcpetname 'Gwylan' 'good'>>, keep going just like that."<</speechLine>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
 				<<if $cat gte 6>>
-					<<addinlineevent>><<He>> giggles. "Try licking a different spot, your rough tongue is starting to hurt."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "Try licking a different spot, your rough tongue is starting to hurt."<</speechLine>>
 				<<else>>
-					<<addinlineevent>><<He>> giggles. "You're good with that tongue."<</addinlineevent>>
+					<<speechLine>><<He>> giggles. "You're good with that tongue."<</speechLine>>
 				<</if>>
 			<<else>>
-				<<addinlineevent>><<He>> giggles. "Do you like licking me all over? Aren't I a tasty treat?"<</addinlineevent>>
+				<<speechLine>><<He>> giggles. "Do you like licking me all over? Aren't I a tasty treat?"<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if ($speechvaginavagina is 1 or $speechtribentrance is 1)>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<addinlineevent>><<He>> pants. "Just... a little more rubbing."<</addinlineevent>>
+				<<speechLine>><<He>> pants. "Just... a little more rubbing."<</speechLine>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<addinlineevent>><<He>> pants. "It feels good, doesn't it?"<</addinlineevent>>
+				<<speechLine>><<He>> pants. "It feels good, doesn't it?"<</speechLine>>
 			<<else>>
-				<<addinlineevent>><<He>> smiles. "This isn't always the most effective method of pleasuring, but I know how to make it work."<</addinlineevent>>
+				<<speechLine>><<He>> smiles. "This isn't always the most effective method of pleasuring, but I know how to make it work."<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if ($speechvaginaimminent is 1 or $speechpenisimminent is 1 or $speechvaginaentrance is 1 or $speechpenisentrance is 1)>>
 			<<if $speechvaginaimminent is 1 or $speechvaginaentrance is 1>>
 				<<if $novaginal and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-					<<addinlineevent>><<He>> pouts. "You're such a tease, not letting me put it in."<</addinlineevent>>
+					<<speechLine>><<He>> pouts. "You're such a tease, not letting me put it in."<</speechLine>>
 				<<else>>
-					<<addinlineevent>><<He>> speaks. "Is this enough for you?"<</addinlineevent>>
+					<<speechLine>><<He>> speaks. "Is this enough for you?"<</speechLine>>
 				<</if>>
 			<<else>>
 				<<if $nopenile and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-					<<addinlineevent>><<He>> pouts. "You're such a tease, not wanting to fill me."<</addinlineevent>>
+					<<speechLine>><<He>> pouts. "You're such a tease, not wanting to fill me."<</speechLine>>
 				<<else>>
-					<<addinlineevent>><<He>> speaks. "Waiting for an invitation, dear?"<</addinlineevent>>
+					<<speechLine>><<He>> speaks. "Waiting for an invitation, dear?"<</speechLine>>
 				<</if>>
 			<</if>>
 		<</if>>
 		<<if ($speechotheranusimminent is 1 or $speechotheranusentrance is 1)>>
 			<<if $nopenile and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<addinlineevent>><<He>> pouts. "You're such a tease, not wanting to fill me."<</addinlineevent>>
+				<<speechLine>><<He>> pouts. "You're such a tease, not wanting to fill me."<</speechLine>>
 			<<else>>
-				<<addinlineevent>><<He>> speaks. "Waiting for an invitation, dear?"<</addinlineevent>>
+				<<speechLine>><<He>> speaks. "Waiting for an invitation, dear?"<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if ($speechanusimminent is 1 or $speechanusentrance is 1)>>
 			<<if $novaginal and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<addinlineevent>><<He>> pouts. "You're such a tease, not letting me put it in."<</addinlineevent>>
+				<<speechLine>><<He>> pouts. "You're such a tease, not letting me put it in."<</speechLine>>
 			<<else>>
-				<<addinlineevent>><<He>> speaks. "Is this enough for you?"<</addinlineevent>>
+				<<speechLine>><<He>> speaks. "Is this enough for you?"<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if ($speechhandjobpenis is 1 or $speechhandjobvagina is 1 or $speechcheeks is 1 or $speechthigh is 1 or $speechfeet is 1 or $speechchestrub is 1 or $speechbreastrub is 1)>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<addinlineevent>><<He>> pants. "Not bad, <<pcpetname 'Gwylan' 'name'>>."<</addinlineevent>>
+				<<speechLine>><<He>> pants. "Not bad, <<pcpetname 'Gwylan' 'name'>>."<</speechLine>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<addinlineevent>><<He>> smiles. "Trying to take care of me? Alright, go on."<</addinlineevent>>
+				<<speechLine>><<He>> smiles. "Trying to take care of me? Alright, go on."<</speechLine>>
 			<<else>>
-				<<addinlineevent>><<He>> giggles. "What do you think you're doing, getting all handsy with me?"<</addinlineevent>>
+				<<speechLine>><<He>> giggles. "What do you think you're doing, getting all handsy with me?"<</speechLine>>
 			<</if>>
 		<</if>>
 		<<if $speechvaginaflaunt is 1>>
-			<<addinlineevent>><<He>> blushes. "Enjoying the view?"<</addinlineevent>>
-			<<addinlineevent>><<He>> giggles. "I feel your eyes all over me, and I like it."<</addinlineevent>>
-			<<addinlineevent>><<He>> giggles. "Do I look good?"<</addinlineevent>>
+			<<speechLine>><<He>> blushes. "Enjoying the view?"<</speechLine>>
+			<<speechLine>><<He>> giggles. "I feel your eyes all over me, and I like it."<</speechLine>>
+			<<speechLine>><<He>> giggles. "Do I look good?"<</speechLine>>
 		<</if>>
 
-		/* A pool with nothing new to say takes a breather: the turn goes quiet instead of repeating. */
-		<<if !speechPoolFresh()>>
-			<<cleareventpool>>
-		<</if>>
-		<<set _idleTurn to _eventpool.length is 0>>
-		/* Ambient lines only compete on a quiet turn, as in vanilla. */
-		<<if _idleTurn>>
+		/* Once every line for this situation has been said, the turn goes to an ambient line or the mouth action instead of a repeat. */
+		<<run takeSpeechBreather()>>
+		<<set _quietTurn to !hasSpeechLines()>>
+		/* Ambient lines only compete on a quiet turn. */
+		<<if _quietTurn>>
 
 			<<if !$gwylanUniqueComments.includes("clothes")>>
 				<<if $worn.upper.name is "chain tunic">>
-					<<addinlineevent 3>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> runs <<his>> hands over the $worn.upper.name. <<He>> almost seems nostalgic. <<His>> touch softens, becoming more tender.<<set $enemyanger -= 25>><</addinlineevent>>
+					<<speechLine 3>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> runs <<his>> hands over the $worn.upper.name. <<He>> almost seems nostalgic. <<His>> touch softens, becoming more tender.<<set $enemyanger -= 25>><</speechLine>>
 				<</if>>
 				<<if $worn.head.name is "sage witch hat">>
-					<<addinlineevent>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> runs a hand over the brim of your $worn.head.name and smiles. "You look good in this! You should wear it more."<</addinlineevent>>
+					<<speechLine>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> runs a hand over the brim of your $worn.head.name and smiles. "You look good in this! You should wear it more."<</speechLine>>
 				<</if>>
 				<<if $worn.upper.type.includes("holy")>>
-					<<addinlineevent>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> runs <<his>> hands over your $worn.upper.name. "If this is what you want, I'll help you get a little dirty."<</addinlineevent>>
+					<<speechLine>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> runs <<his>> hands over your $worn.upper.name. "If this is what you want, I'll help you get a little dirty."<</speechLine>>
 				<</if>>
 				<<if $worn.neck.name is "holy pendant">>
-					<<addinlineevent>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your $worn.upper.name and giggles. "I hope you're not basophobic."<</addinlineevent>>
+					<<speechLine>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your $worn.upper.name and giggles. "I hope you're not basophobic."<</speechLine>>
 				<</if>>
 				<<if $worn.neck.name is "stone pendant">>
 					<<if $gwylanTalked.includes("stone pendant")>>
-						<<addinlineevent>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your $worn.upper.name and smiles. "I'm glad you found an intact one. I thought the stone pendants were all destroyed."<</addinlineevent>>
+						<<speechLine>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your $worn.upper.name and smiles. "I'm glad you found an intact one. I thought the stone pendants were all destroyed."<</speechLine>>
 					<<else>>
-						<<addinlineevent>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your $worn.upper.name. "Where did you find that? You'd better tell me later."<</addinlineevent>>
+						<<speechLine>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your $worn.upper.name. "Where did you find that? You'd better tell me later."<</speechLine>>
 					<</if>>
 				<</if>>
 				<<if $worn.neck.name is "dark pendant">>
-					<<addinlineevent>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your $worn.upper.name. "I hope you know what you're doing with that."<</addinlineevent>>
+					<<speechLine>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your $worn.upper.name. "I hope you know what you're doing with that."<</speechLine>>
 				<</if>>
 				<<if $worn.lower.name is "naked" and playerHasStrapon()>>
-					<<addinlineevent>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your <<penisSimple>>. "Sure, why not."<</addinlineevent>>
+					<<speechLine>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks at your <<penisSimple>>. "Sure, why not."<</speechLine>>
 				<</if>>
 				<<if $exposed gte 2>>
-					<<addinlineevent>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks over your body, and giggles. "I want to feel your skin on mine."<</addinlineevent>>
+					<<speechLine>><<set $gwylanUniqueComments.pushUnique("clothes")>><<He>> looks over your body, and giggles. "I want to feel your skin on mine."<</speechLine>>
 				<</if>>
 
 				<<for $_labelClothes, $_valueClothes range $worn>>
 					<<if setup.specialClothes.some(item => item.name === $_valueClothes.name and !$gwylanTalked.includesAny(item.sets))>>
-						<<addinlineevent "gwylan_speech_clothes_special" 4>>
+						<<speechLine 4>>
 							<<set $gwylanUniqueComments.pushUnique("clothes")>>
 							<<set $_plural to $worn[$_labelClothes].plural ? "those" : "that">>
-							<<print speechPick(
+							<<print pickSpeechLine("Gwylan", 
 								`<<He>> looks at your ` + $worn[$_labelClothes].name + `. "Where did you find ` + $_plural + `? You'd better tell me later."`,
 								`<<He>> looks at your ` + $worn[$_labelClothes].name + `. "I see a story behind ` + $_plural + `. Let's talk about it when we're done."`
 							)>>
-						<</addinlineevent>>
+						<</speechLine>>
 						<<break>>
 					<</if>>
 				<</for>>
@@ -586,59 +584,52 @@
 				/* Todo: Gwylan - Lots more clothing comments */
 			<</if>>
 
-			<<addinlineevent>><<He>> whispers. "You can just lay there, and I'll take care of you."<</addinlineevent>>
-			<<addinlineevent>><<He>> whispers. "Share your burden with me."<</addinlineevent>>
+			<<speechLine>><<He>> whispers. "You can just lay there, and I'll take care of you."<</speechLine>>
+			<<speechLine>><<He>> whispers. "Share your burden with me."<</speechLine>>
 
 			<<if $gwylanSeen.includes("ritual_sex") and !$gwylanSeen.includes("partners")>>
-				<<addinlineevent>><<He>> speaks. "Remember, no kissing."<</addinlineevent>>
+				<<speechLine>><<He>> speaks. "Remember, no kissing."<</speechLine>>
 			<</if>>
 
 			<<if $enemyanger gte 15>>
-				<<addinlineevent>>"Just hold still and let me work."<</addinlineevent>>
+				<<speechLine>>"Just hold still and let me work."<</speechLine>>
 			<</if>>
 
 			<<if $consensual isnot 1 and $enemyanger gte 20>>
-				<<addinlineevent 3>><<He>> speaks. "Don't try to resist, dear."<</addinlineevent>>
-				<<addinlineevent 3>><<He>> speaks. "Just give in to me. I'll make everything okay."<</addinlineevent>>
-				<<addinlineevent 3>><<He>> speaks. "Shh, don't think about it. Just keep your eyes on mine."<</addinlineevent>>
-				<<addinlineevent 3>><<He>> speaks. "Sink deeper with me. The pain will go away."<</addinlineevent>>
-				<<addinlineevent 3>><<He>> speaks. "We all have to suffer a little."<</addinlineevent>>
+				<<speechLine 3>><<He>> speaks. "Don't try to resist, dear."<</speechLine>>
+				<<speechLine 3>><<He>> speaks. "Just give in to me. I'll make everything okay."<</speechLine>>
+				<<speechLine 3>><<He>> speaks. "Shh, don't think about it. Just keep your eyes on mine."<</speechLine>>
+				<<speechLine 3>><<He>> speaks. "Sink deeper with me. The pain will go away."<</speechLine>>
+				<<speechLine 3>><<He>> speaks. "We all have to suffer a little."<</speechLine>>
 				<<if $gwylanSeen.includes("yearning")>>
-					<<addinlineevent 3>><<He>> speaks. "You owe me this much after what you did, dear."<</addinlineevent>>
-					<<addinlineevent 4>><<He>> speaks. "Your kiss poisoned me. You will take responsibility."<</addinlineevent>>
+					<<speechLine 3>><<He>> speaks. "You owe me this much after what you did, dear."<</speechLine>>
+					<<speechLine 4>><<He>> speaks. "Your kiss poisoned me. You will take responsibility."<</speechLine>>
 				<</if>>
 				<<if $gwylanSeen.includes("romance")>>
-					<<addinlineevent 3>><<He>> speaks. "Forever means forever, dear. Through sickness and health."<</addinlineevent>>
+					<<speechLine 3>><<He>> speaks. "Forever means forever, dear. Through sickness and health."<</speechLine>>
 				<</if>>
 			<</if>>
 
 			<<if $combat_silenced>>
-				<<addinlineevent 2>><<He>> giggles. "Aww, you look like you have something to say. Don't worry, your lovely voice is safe with me."<</addinlineevent>>
+				<<speechLine 2>><<He>> giggles. "Aww, you look like you have something to say. Don't worry, your lovely voice is safe with me."<</speechLine>>
 			<</if>>
 
 			<<if _gwylanTF.known is true and _gwylanTF.tail is "revealed">>
 				<<if _gwylanStatus.includes("heat")>>
-					<<addinlineevent>><<His>> face is deeply flushed, and <<he>> lets out a low whine. You wonder if <<hes>> in <<if C.npc.Gwylan.pronoun is 'm'>>rut<<else>>heat<</if>>.<</addinlineevent>>
+					<<speechLine>><<His>> face is deeply flushed, and <<he>> lets out a low whine. You wonder if <<hes>> in <<if C.npc.Gwylan.pronoun is 'm'>>rut<<else>>heat<</if>>.<</speechLine>>
 				<</if>>
-				<<addinlineevent>>One of <<his>> fox ears twitches.<</addinlineevent>>
+				<<speechLine>>One of <<his>> fox ears twitches.<</speechLine>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-					<<addinlineevent>><<His>> tail sways back and forth quickly.<</addinlineevent>>
+					<<speechLine>><<His>> tail sways back and forth quickly.<</speechLine>>
 				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-					<<addinlineevent>><<His>> tail sways back and forth.<</addinlineevent>>
+					<<speechLine>><<His>> tail sways back and forth.<</speechLine>>
 				<<else>>
-					<<addinlineevent>><<His>> tail sways back and forth slowly.<</addinlineevent>>
+					<<speechLine>><<His>> tail sways back and forth slowly.<</speechLine>>
 				<</if>>
 			<</if>>
 
 			/* Todo: Gwylan - Lots more misc comments */
 		<</if>>
-		<<rng>>
-		<<if _eventpool.length is 0>>
-			<<set _noNameComment to true>>
-		<<elseif _idleTurn and $rng lte 40>>
-			<<set _noNameComment to true>>
-		<<else>>
-			<<runeventpool>>
-		<</if>>
+		<<speechSayOrPass _quietTurn>>
 	<</if>>
 <</widget>>

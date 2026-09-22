@@ -19,13 +19,13 @@
 				<<elseif C.npc.Robin.dom gte 50>>
 					<<print $_stringsPre + `"That waif's grown a spine thanks to you. Shame <<nnpc_he 'Robin'>> won't save you."`>>
 				<<else>>
-					<<print $_stringsPre + speechPick(
+					<<print $_stringsPre + pickSpeechLine("Bailey", 
 						`"That worthless brat can't save you."`,
 						`"What do you expect that waif to do? Cry until I stop?"`
 					)>>
 				<</if>>
 			<<case "Black Wolf" "Great Hawk">>
-				<<print $_stringsPre + speechPick(
+				<<print $_stringsPre + pickSpeechLine("Bailey", 
 					`"People would pay extra to see you ${$player.penisExist ? "fuck" : "get fucked by"} some beast."`,
 					`"Animals get put down. You get put to work."`
 				)>>
@@ -41,7 +41,7 @@
 				<</if>>
 			<<case "Kylar">>
 				<<if $kylar_abduction_bailey is 1>>
-					<<print $_stringsPre + speechPick(
+					<<print $_stringsPre + pickSpeechLine("Bailey", 
 						`"Call for <<nnpc_him 'Kylar'>> louder. Maybe <<nnpc_hes 'Kylar'>> outside the window."`,
 						`"That little freak is probably watching. Let <<nnpc_him 'Kylar'>>."`
 					)>>
@@ -50,7 +50,7 @@
 				<</if>>
 			<<case "Sydney">>
 				<<if $temple_bailey>>
-					<<print $_stringsPre + speechPick(
+					<<print $_stringsPre + pickSpeechLine("Bailey", 
 						`"Save it for confession."`,
 						`"That brat would pray for you. I'd rather <<nnpc_he 'Sydney'>> paid for you."`
 					)>>
@@ -68,7 +68,7 @@
 					<<print $_stringsPre + `"If <<nnpc_he _loveInterest>> cared about you, <<nnpc_he _loveInterest>> would pay for you."`>>
 				<</if>>
 			<<case "Alex">>
-				<<print $_stringsPre + speechPick(
+				<<print $_stringsPre + pickSpeechLine("Bailey", 
 					`"What do you think that idiot ${C.npc.Alex.pronoun is "f" ? "cowgirl" : "cowboy"} is going to do?"`,
 					`"Your farmer's probably face-down in a bottle somewhere."`,
 					`"That drunk couldn't find you if you were standing in <<nnpc_his 'Alex'>> field."`
@@ -77,12 +77,12 @@
 				<<print $_stringsPre + `"If <<nnpc_he _loveInterest>> cared about you, <<nnpc_he _loveInterest>> would pay for you."`>>
 		<</switch>>
 	<<elseif $speechgenitals is 1>>
-		<<print speechPick(
+		<<print pickSpeechLine("Bailey", 
 			`<<He>> looks at your <<genitals>>. "That'll sell."`,
 			`<<He>> looks at your <<genitals>>. "You'll earn your keep."`
 		)>>
 	<<elseif $speechbreasts is 1>>
-		<<print speechPick(
+		<<print pickSpeechLine("Bailey", 
 			`<<He>> looks at your <<breasts>>. "That'll sell."`,
 			`<<He>> looks at your <<breasts>>. "You'll earn your keep."`
 		)>>
@@ -94,14 +94,14 @@
 		<</if>>
 	<<elseif $speechplead is 1>>
 		<<if $enemyanger lte 60>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Save your breath."`,
 				`"Quit whining. You'll live."`,
 				`"Begging won't change what you owe me."`,
 				`"Beg harder, maybe I'm feeling generous."`
 			)>>
 		<<else>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Every word out of your mouth adds to what you owe."`,
 				`"You'll shut up and take it if you know what's good for you."`,
 				`"Begging won't save you, you little shit."`
@@ -109,13 +109,13 @@
 		<</if>>
 	<<elseif $speechmoan is 1>>
 		<<if $enemyanger lte 60>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Keep it down."`,
 				`"Save the moaning for clients."`,
 				`"Save the racket for someone who pays."`
 			)>>
 		<<else>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Shut your mouth, brat."`,
 				`"Not another sound, you little shit."`,
 				`"One more sound and I'll give you something to moan about."`
@@ -123,13 +123,13 @@
 		<</if>>
 	<<elseif $speechdemand is 1>>
 		<<if $enemyanger lte 60>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"You don't give orders here."`,
 				`"You're in no position to negotiate."`,
 				`"That mouth is going to cost you, brat."`
 			)>>
 		<<else>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Mouthy little shit."`,
 				`"Shut your goddamn mouth."`,
 				`"You don't get to make demands. You never did."`
@@ -138,34 +138,34 @@
 	<<elseif $speechscream is 1>>
 		<<set $speechscream to 0>>
 		<<if $enemyanger lte 60>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Shut up."`,
 				`"Be quiet."`,
 				`"No one's coming."`,
 				`"Who exactly do you think is going to help you?"`
 			)>>
 		<<else>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Shut up."`,
 				`"Be. Quiet."`,
 				`"Noisy little shit."`
 			)>>
 		<</if>>
 	<<elseif $speechforgive is 1>>
-		<<print `<<He>> sneers. ` + speechPick(
+		<<print `<<He>> sneers. ` + pickSpeechLine("Bailey", 
 			`"I don't need your forgiveness."`,
 			`"Forgive me? For what?"`,
 			`"Close your damn mouth, or I'll close it for you."`
 		)>>
 	<<elseif $speechapologiseunforgiving is 1>>
-		<<print $_stringsPre + speechPick(
+		<<print $_stringsPre + pickSpeechLine("Bailey", 
 			`"Shut up. I've heard it all before."`,
 			`"Did you really think I would fall for that?"`,
 			`"Do you think I give a damn, you little shit?"`,
 			`"Save it. If you were sorry, you'd stop struggling."`
 		)>>
 	<<elseif $speechgrowl is 1 or $speechgrowlheat is 1 or $speechgrowlrut is 1>>
-		<<print $_stringsPre + speechPick(
+		<<print $_stringsPre + pickSpeechLine("Bailey", 
 			`"You little mutt."`,
 			`"I'll muzzle you if I have to."`,
 			`"Bite if you want. See what it costs you."`,
@@ -173,7 +173,7 @@
 		)>>
 	<<elseif $speechstruggle is 1>>
 		<<if $enemyanger lte 60>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Stop struggling."`,
 				`"You're wasting both our time."`,
 				`"You're not going anywhere."`,
@@ -181,7 +181,7 @@
 				`"Stop fighting me."`
 			)>>
 		<<else>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Quit moving, you little shit."`,
 				`"Stop squirming, damn brat."`,
 				`"That's enough."`,
@@ -191,12 +191,12 @@
 		<</if>>
 	<<elseif $speechspank is 1>>
 		<<if $enemyanger lte 60>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"What have we learned?"`,
 				`"Count it against what you owe."`
 			)>>
 		<<else>>
-			<<print $_stringsPre + speechPick(
+			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Harder? Fine."`,
 				`"You asked for this."`,
 				`"This is for wasting my time."`,
@@ -205,57 +205,53 @@
 			)>>
 		<</if>>
 	<<elseif $speechcum is 1>>
-		<<print $_stringsPre + speechPick(
+		<<print $_stringsPre + pickSpeechLine("Bailey", 
 			`"I hope you appreciate that."`,
 			`"Just something to remember me by."`,
 			`"We'll call that your going away gift."`
 		)>>
 	<<else>>
-		<<cleareventpool>>
+		<<speechPool "Bailey">>
 		<<if $arousal gte 9500>>
-			<<addinlineevent>><<print $_stringsPre + `"Nice look. Some people would pay big to see you hot and bothered like this."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"Should've brought a camera. Your profile would look great with this expression."`>><</addinlineevent>>
+			<<speechLine>><<print $_stringsPre + `"Nice look. Some people would pay big to see you hot and bothered like this."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"Should've brought a camera. Your profile would look great with this expression."`>><</speechLine>>
 		<<elseif $enemyanger lte 60>>
-			<<addinlineevent>><<print $_stringsPre + `"Don't make this harder than it needs to be."`>><</addinlineevent>>
+			<<speechLine>><<print $_stringsPre + `"Don't make this harder than it needs to be."`>><</speechLine>>
 			<<if $hairlength gte 600>>
-				<<addinlineevent>><<print $_stringsPre + `"Kept your hair long? I know someone who will like that."`>><</addinlineevent>>
+				<<speechLine>><<print $_stringsPre + `"Kept your hair long? I know someone who will like that."`>><</speechLine>>
 			<</if>>
 			<<if $player.breastsize gte 6 or $player.penissize gte 4>>
-				<<addinlineevent>><<print $_stringsPre + `"Cows fetch a high price these days, you know."`>><</addinlineevent>>
+				<<speechLine>><<print $_stringsPre + `"Cows fetch a high price these days, you know."`>><</speechLine>>
 			<</if>>
 			<<if $athletics gte 750 or $physique gte $physiquesize * 0.75>>
-				<<addinlineevent>><<print $_stringsPre + `"You're strong. Good. Some people pay for the fight."`>><</addinlineevent>>
+				<<speechLine>><<print $_stringsPre + `"You're strong. Good. Some people pay for the fight."`>><</speechLine>>
 			<</if>>
-			<<addinlineevent>><<print $_stringsPre + `"Just relax. I'll handle everything like always."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"You were always the best looking little ` + ["bastard","shit","<<bitch>>"][random(0,2)] + `."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"It's easier this way. Trust me."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"Stay still."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"You're learning. Good."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"Keep still. I'm almost done with you."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"Hold still. You're wasting both our time."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"You've always been the most difficult one. I hope you know that."`>><</addinlineevent>>
+			<<speechLine>><<print $_stringsPre + `"Just relax. I'll handle everything like always."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"You were always the best looking little ` + ["bastard","shit","<<bitch>>"][random(0,2)] + `."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"It's easier this way. Trust me."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"Stay still."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"You're learning. Good."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"Keep still. I'm almost done with you."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"Hold still. You're wasting both our time."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"You've always been the most difficult one. I hope you know that."`>><</speechLine>>
 		<<else>>
 			<<if $enemyanger lte 70>>
-				<<addinlineevent>><<print $_stringsPre + `"Maybe I should inspect you before we go."`>><</addinlineevent>>
+				<<speechLine>><<print $_stringsPre + `"Maybe I should inspect you before we go."`>><</speechLine>>
 			<</if>>
-			<<addinlineevent>><<print $_stringsPre + `"Why do you shits have to make it harder on yourselves?"`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"I told you to hold still."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"You're making it harder on both of us."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"You chose this."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"Are you going to listen to me now?"`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"I have someone willing to pay big for you."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"You're coming with me, and that's that."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"You owe me for the inconvenience."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"Keep fighting. See where it gets you."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"You're costing me money every time you move."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"This would be over already if you'd just behave."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"Stop squirming, you're not going anywhere."`>><</addinlineevent>>
-			<<addinlineevent>><<print $_stringsPre + `"Every second you fight me is a second you owe me."`>><</addinlineevent>>
+			<<speechLine>><<print $_stringsPre + `"Why do you shits have to make it harder on yourselves?"`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"I told you to hold still."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"You're making it harder on both of us."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"You chose this."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"Are you going to listen to me now?"`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"I have someone willing to pay big for you."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"You're coming with me, and that's that."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"You owe me for the inconvenience."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"Keep fighting. See where it gets you."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"You're costing me money every time you move."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"This would be over already if you'd just behave."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"Stop squirming, you're not going anywhere."`>><</speechLine>>
+			<<speechLine>><<print $_stringsPre + `"Every second you fight me is a second you owe me."`>><</speechLine>>
 		<</if>>
-		<<if _eventpool.length gt 0>>
-			<<runeventpool>>
-		<<else>>
-			<<set _noNameComment to true>>
-		<</if>>
+		<<speechSayOrPass>>
 	<</if>>
 <</widget>>

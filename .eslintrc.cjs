@@ -407,10 +407,7 @@ module.exports = {
 		isPossibleLoveInterestVirginity: "readonly",
 		wearingCondom: "readonly",
 		npcHasStrapon: "readonly",
-		// Sex/Combat Dialogue
-		speechHistory: "readonly",
-		speechUnsaid: "readonly",
-		speechPoolFresh: "readonly",
+		rollWeightedRandomFromArray: "readonly",
 	},
 
 	ignorePatterns: [
@@ -499,6 +496,7 @@ module.exports = {
 					"ChildParent",
 					"DonorSpecies",
 					"ChildSpecies",
+					"SpeechLine",
 				],
 			},
 		],

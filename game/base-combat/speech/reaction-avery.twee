@@ -53,11 +53,11 @@
 
 <<widget "reaction-avery-choke">>
 	<<if _daddy>>
-		<<cleareventpool>>
-		<<addinlineevent "avery_daddy_choke_classic" 0.5>>
+		<<speechPool "Avery">>
+		<<speechLine 0.5>>
 			<<He>> <<laughs>>. "Let's see if you can still beg for <<nnpc_mummy "Avery">> with <<his>> hand around your throat."
-		<</addinlineevent>>
-		<<addinlineevent "avery_daddy_choke_variations" 2>>
+		<</speechLine>>
+		<<speechLine 2>>
 			<<if C.npc.Avery.rage gte 60>>
 				"I'll give you what you want," <<he>> murmurs darkly, "but not because you begged me to." <<His>> hand squeezes around your throat a little harder.
 			<<elseif C.npc.Avery.rage gte 20>>
@@ -65,73 +65,65 @@
 			<<else>>
 				"As you wish, <<pcpetname "Avery">>," <<he>> purrs. "Leave it to <<nnpc_mummy "Avery">>."
 			<</if>>
-		<</addinlineevent>>
-		<<runeventpool>>
+		<</speechLine>>
+		<<speechSay>>
 	<</if>>
 <</widget>>
 
 /* PC lines (plead / demand / forgive / moan). */
 
-<<widget "reaction-avery-plead">>
-	<<set _possibleSentences to []>>
+<<widget "pcLine-avery-plead">>
 	<<if !$avery_mansion>>
-		<<set _possibleSentences.push({ sentence: `"Was this all the date was for...?"`, dialogueID: "avery_plead_premansion" })>>
+		<<speechLine>><<set $speechSpecialDialogue to "avery_plead_premansion">>"Was this all the date was for...?"<</speechLine>>
 	<<else>>
 		<<if isAveryHuntingPlayer()>>
-			<<set _possibleSentences.push({ sentence: `"I'm sorry! I didn't mean to!"`, dialogueID: "avery_plead_hunting_1" })>>
-			<<set _possibleSentences.push({ sentence: `"Please, I promise I'll do better! I promise...!"`, dialogueID: "avery_plead_hunting_2" })>>
+			<<speechLine>><<set $speechSpecialDialogue to "avery_plead_hunting_1">>"I'm sorry! I didn't mean to!"<</speechLine>>
+			<<speechLine>><<set $speechSpecialDialogue to "avery_plead_hunting_2">>"Please, I promise I'll do better! I promise...!"<</speechLine>>
 		<<elseif $averyromance is 1>>
-			<<set _possibleSentences.push({ sentence: `"I love you, Avery. Please don't do this to me!"`, dialogueID: "avery_plead_romance" })>>
+			<<speechLine>><<set $speechSpecialDialogue to "avery_plead_romance">>"I love you, Avery. Please don't do this to me!"<</speechLine>>
 		<<else>>
-			<<set _possibleSentences.push({ sentence: `"I'm sorry, Avery, please forgive me...!"`, dialogueID: "avery_plead_mansion" })>>
+			<<speechLine>><<set $speechSpecialDialogue to "avery_plead_mansion">>"I'm sorry, Avery, please forgive me...!"<</speechLine>>
 		<</if>>
 	<</if>>
-	<<pcLine _possibleSentences>>
 <</widget>>
 
-<<widget "reaction-avery-demand">>
-	<<set _possibleSentences to []>>
+<<widget "pcLine-avery-demand">>
 	<<if !$avery_mansion>>
-		<<set _possibleSentences.push({ sentence: `"You don't pay me enough to treat me like this!"`, dialogueID: "avery_demand_default"})>>
+		<<speechLine>><<set $speechSpecialDialogue to "avery_demand_default">>"You don't pay me enough to treat me like this!"<</speechLine>>
 	<<else>>
 		<<if isAveryHuntingPlayer()>>
-			<<set _possibleSentences.push({ sentence: `"Get the hell away from me! You're taking this too far, Avery!"`, dialogueID: "avery_demand_hunting"})>>
+			<<speechLine>><<set $speechSpecialDialogue to "avery_demand_hunting">>"Get the hell away from me! You're taking this too far, Avery!"<</speechLine>>
 		<<elseif $averyromance is 1>>
-			<<set _possibleSentences.push({ sentence: `"I told you I loved you, but I won't hesitate to leave if you don't stop this right now!"`, dialogueID: "avery_demand_romance"})>>
+			<<speechLine>><<set $speechSpecialDialogue to "avery_demand_romance">>"I told you I loved you, but I won't hesitate to leave if you don't stop this right now!"<</speechLine>>
 		<<else>>
-			<<set _possibleSentences.push({ sentence: `"Stop it, Avery! I'm<<if $averySeen.includes("walkParkSOYes") or $averyromance>> your <<girlfriend>>,<</if>> not your punching bag!"`, dialogueID: "avery_demand_mansion"})>>
+			<<speechLine>><<set $speechSpecialDialogue to "avery_demand_mansion">>"Stop it, Avery! I'm<<if $averySeen.includes("walkParkSOYes") or $averyromance>> your <<girlfriend>>,<</if>> not your punching bag!"<</speechLine>>
 		<</if>>
 	<</if>>
-	<<pcLine _possibleSentences>>
 <</widget>>
 
-<<widget "reaction-avery-forgive">>
+<<widget "pcLine-avery-forgive">>
 	<<if $avery_fate is undefined>>
-		<<set _possibleSentences to [{ sentence: `"You're just angry," you say. "Everyone gets angry sometimes. I forgive you."` }]>>
-		<<pcLine _possibleSentences>>
+		<<speechLine>>"You're just angry," you say. "Everyone gets angry sometimes. I forgive you."<</speechLine>>
 	<<else>>
-		<<set _possibleSentences to [{ sentence: `"Now I understand why you get so angry, Avery," you say. "And I forgive you."` }]>>
-		<<pcLine _possibleSentences>>
+		<<speechLine>>"Now I understand why you get so angry, Avery," you say. "And I forgive you."<</speechLine>>
 	<</if>>
 <</widget>>
 
-<<widget "reaction-avery-moan">>
-	<<set _possibleSentences to []>>
+<<widget "pcLine-avery-moan">>
 	<<set _daddy to $submissive gte 1150 and random(1, 4) is 1>>
 	<<if $avery_fate is "ascended">>
-		<<set _possibleSentences.push({ sentence: `"I'm all yours, Hound."`, dialogueID: "avery_moan_ascended"})>>
+		<<speechLine>><<set $speechSpecialDialogue to "avery_moan_ascended">>"I'm all yours, Hound."<</speechLine>>
 	<<elseif $averyromance>>
-		<<set _possibleSentences.push({ sentence: `"I love you, Avery."`, dialogueID: "avery_moan_romance"})>>
+		<<speechLine>><<set $speechSpecialDialogue to "avery_moan_romance">>"I love you, Avery."<</speechLine>>
 	<<elseif _daddy>>
-		<<set _possibleSentences.push({ sentence: `"Put me in my place, <<nnpc_mummy "Avery">>."`, dialogueID: "avery_moan_daddy"})>>
+		<<speechLine>><<set $speechSpecialDialogue to "avery_moan_daddy">>"Put me in my place, <<nnpc_mummy "Avery">>."<</speechLine>>
 	<<elseif isLoveInterest("Avery")>> 
 		<<if !$avery_mansion>>
-			<<set _possibleSentences.push({ sentence: `"Take me away from that place, take me with you."`, dialogueID: "avery_moan_premansion"})>>
+			<<speechLine>><<set $speechSpecialDialogue to "avery_moan_premansion">>"Take me away from that place, take me with you."<</speechLine>>
 		<<else>>
-			<<set _possibleSentences.push({ sentence: `"Let me show you how grateful I am, use me as much as you want."`, dialogueID: "avery_moan_mansion"})>>
+			<<speechLine>><<set $speechSpecialDialogue to "avery_moan_mansion">>"Let me show you how grateful I am, use me as much as you want."<</speechLine>>
 		<</if>>
 	<<else>>
-		<<set _possibleSentences.push({ sentence: `"You're worth more than any payout."`, dialogueID: "avery_moan_default"})>>
+		<<speechLine>><<set $speechSpecialDialogue to "avery_moan_default">>"You're worth more than any payout."<</speechLine>>
 	<</if>>
-	<<pcLine _possibleSentences>>
 <</widget>>

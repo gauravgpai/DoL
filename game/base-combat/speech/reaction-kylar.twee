@@ -2,17 +2,14 @@
 
 /* PC lines (plead / demand / forgive / moan). */
 
-<<widget "reaction-kylar-plead">>
-	<<set _possibleSentences to [{ sentence: `"Kylar... I thought you loved me..."`, dialogueID: "kylar_plead_default" }]>>
-	<<pcLine _possibleSentences>>
+<<widget "pcLine-kylar-plead">>
+	<<speechLine>>"Kylar... I thought you loved me..."<</speechLine>>
 <</widget>>
 
-<<widget "reaction-kylar-demand">>
-	<<set _possibleSentences to [{ sentence: `"I'm not in the mood for your shit right now, Kylar."`, dialogueID: "kylar_demand_default" }]>>
-	<<pcLine _possibleSentences>>
+<<widget "pcLine-kylar-demand">>
+	<<speechLine>>"I'm not in the mood for your shit right now, Kylar."<</speechLine>>
 <</widget>>
 
-<<widget "reaction-kylar-moan">>
-	<<set _possibleSentences to [{ sentence: `"You're the only one I need, Kylar."`, dialogueID: "kylar_moan_default" }]>>
-	<<pcLine _possibleSentences>>
+<<widget "pcLine-kylar-moan">>
+	<<speechLine>>"You're the only one I need, Kylar."<</speechLine>>
 <</widget>>

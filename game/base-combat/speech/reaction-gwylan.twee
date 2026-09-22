@@ -16,31 +16,28 @@
 
 /* PC lines (plead / demand / forgive / moan). */
 
-<<widget "reaction-gwylan-plead">>
+<<widget "pcLine-gwylan-plead">>
 	<<if $abomination is 1>>
-		<<set _possibleSentences to [{ sentence: `"Gwylan, come back! I'm scared!"`, dialogueID: "gwylan_plead_abomination" }]>>
+		<<speechLine>>"Gwylan, come back! I'm scared!"<</speechLine>>
 	<<elseif $hypnosis_traits.devotion gte 1 or $combat_hypnosis>>
-		<<set _possibleSentences to [{ sentence: `"Gwylan, please, I can't think straight!"`, dialogueID: "gwylan_plead_hypnosis" }]>>
+		<<speechLine>>"Gwylan, please, I can't think straight!"<</speechLine>>
 	<<else>>
-		<<set _possibleSentences to [{ sentence: `"Gwylan, please, this doesn't feel right!"`, dialogueID: "gwylan_plead_default" }]>>
+		<<speechLine>>"Gwylan, please, this doesn't feel right!"<</speechLine>>
 	<</if>>
-	<<pcLine _possibleSentences>>
 <</widget>>
 
-<<widget "reaction-gwylan-demand">>
+<<widget "pcLine-gwylan-demand">>
 	<<if $abomination is 1>>
-		<<set _possibleSentences to [{ sentence: `"Gwylan, I know you're in there! Take control!"`, dialogueID: "gwylan_demand_abomination" }]>>
+		<<speechLine>>"Gwylan, I know you're in there! Take control!"<</speechLine>>
 	<<elseif $hypnosis_traits.devotion gte 4 or $combat_hypnosis>>
-		<<set _possibleSentences to [{ sentence: `"Gwylan, stop! Get out of my head!"`, dialogueID: "gwylan_demand_hypnosis" }]>>
+		<<speechLine>>"Gwylan, stop! Get out of my head!"<</speechLine>>
 	<<elseif $gwylanSeen.includes("romance")>>
-		<<set _possibleSentences to [{ sentence: `"Gwylan, stop this! You promised!"`, dialogueID: "gwylan_demand_romance" }]>>
+		<<speechLine>>"Gwylan, stop this! You promised!"<</speechLine>>
 	<<else>>
-		<<set _possibleSentences to [{ sentence: `"Gwylan, stop this!"`, dialogueID: "gwylan_demand_default" }]>>
+		<<speechLine>>"Gwylan, stop this!"<</speechLine>>
 	<</if>>
-	<<pcLine _possibleSentences>>
 <</widget>>
 
-<<widget "reaction-gwylan-moan">>
-	<<set _possibleSentences to [{ sentence: `"I think I'm bewitched."`, dialogueID: "gwylan_moan_default" }]>>
-	<<pcLine _possibleSentences>>
+<<widget "pcLine-gwylan-moan">>
+	<<speechLine>>"I think I'm bewitched."<</speechLine>>
 <</widget>>

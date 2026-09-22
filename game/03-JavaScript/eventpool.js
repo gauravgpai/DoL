@@ -139,13 +139,6 @@ Macro.add("runeventpool", {
 			delete V.eventPoolOverride;
 		}
 
-		// In NNPC's speech widget, skips events that have already run this combat.
-		if (!pick && T.speechNpc) {
-			const nameOf = event => event.name || event.content;
-			pick = rollWeightedRandomFromArray(speechUnsaid(T.eventpool, nameOf));
-			if (pick) speechHistory().push(nameOf(pick));
-		}
-
 		if (!pick) pick = rollWeightedRandomFromArray(T.eventpool);
 
 		if (!pick) throw new Error("Event pool is empty");

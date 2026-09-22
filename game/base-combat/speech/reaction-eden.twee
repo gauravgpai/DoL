@@ -2,17 +2,14 @@
 
 /* PC lines (plead / demand / forgive / moan). */
 
-<<widget "reaction-eden-plead">>
-	<<set _possibleSentences to [{ sentence: `"N...not so rough, Eden..."`, dialogueID: "eden_plead_default" }]>>
-	<<pcLine _possibleSentences>>
+<<widget "pcLine-eden-plead">>
+	<<speechLine>>"N...not so rough, Eden..."<</speechLine>>
 <</widget>>
 
-<<widget "reaction-eden-demand">>
-	<<set _possibleSentences to [{ sentence: `"I'm not your prey today, leave me alone."`, dialogueID: "eden_demand_default" }]>>
-	<<pcLine _possibleSentences>>
+<<widget "pcLine-eden-demand">>
+	<<speechLine>>"I'm not your prey today, leave me alone."<</speechLine>>
 <</widget>>
 
-<<widget "reaction-eden-moan">>
-	<<set _possibleSentences to [{ sentence: `"I belong to you, and you alone."`, dialogueID: "eden_moan_default" }]>>
-	<<pcLine _possibleSentences>>
+<<widget "pcLine-eden-moan">>
+	<<speechLine>>"I belong to you, and you alone."<</speechLine>>
 <</widget>>

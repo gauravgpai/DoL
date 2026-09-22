@@ -696,9 +696,7 @@
 	<<unset $corruptionEvent>>
 	<<unset $speechNPCKissVirgin>>
 	<<unset $speechNPCHandholdingVirgin>>
-	<<unset $sydneyComments>>
 	<<unset $sydneyUniqueComments>>
-	<<unset $gwylanComments>>
 	<<unset $gwylanUniqueComments>>
 	<<unset $robinUniqueComments>>
 	<<unset $averyUniqueComments>>
@@ -850,7 +848,7 @@
 	<<unset $speechNPCKissVirgin>>
 	<<unset $speechNPCHandholdingVirgin>>
 
-	<<unset $speechspecialdialogue>> /* For nnpcs */
+	<<unset $speechSpecialDialogue>>
 
 	<<set $npcspeechcycle += 1>>
 	<<if $npcspeechcycle gte 7>>
@@ -873,9 +871,8 @@
 	<<unset $speechapologise>>
 	<<unset $speechplead>>
 	<<unset $speechmoan>>
-	<<unset $speechspecialdialogue>> /* For nnpcs */
+	<<unset $speechSpecialDialogue>>
 	<<unset $speechdemand>>
-	<<unset $speechspecialdialogue>> /* For nnpcs */
 	<<unset $speechcoverface>>
 	<<unset $speechcoverpenis>>
 	<<unset $speechcovervagina>>
