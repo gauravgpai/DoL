@@ -344,7 +344,7 @@ You bring it over to the <<person>> and set it down on the table. "Good <<girl>>
 	<br><br>
 	<<link [[Next|Mine Job Cleaning Corner Rape]]>><<set $molestationstart to 1>><</link>>
 <<else>>
-	You attempt to shove him away from you.
+	You attempt to shove <<him>> away from you.
 	<<if $physiqueSuccess>>
 		<span class="green"><<He>> falls to the floor, looks at you and decides you're not worth the effort.</span>
 		<br><br>
