@@ -914,6 +914,7 @@
 				<<set _netConfig =			{ name : "Nets",		displayType : "grade",	currentValue : $prof.net,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
 				<<set _batonConfig =		{ name : "Batons",		displayType : "grade",	currentValue : $prof.baton,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
 				<<set _whipConfig =			{ name : "Whips",		displayType : "grade",	currentValue : $prof.whip,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
+				<<set _pickaxeConfig =		{ name : "Pickaxes",	displayType : "grade",	currentValue : $prof.pickaxe,	modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
 				<<set _hiddenConfig =		{ name : "<i>????</i>",	displayType : "grade",	currentValue : 0,				modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
 			<</silently>>
 			<<characteristic-box _sprayConfig>>

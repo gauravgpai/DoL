@@ -189,11 +189,12 @@ You get closer to the <<person1>><<person>>.
 
 
 :: Mine Job Mining Distraction Set
-<<effects>><<set $mine.distraction.mining to $phase>>
+<<effects>><<set $mine.distraction.mining to $phase>><<unset $mine.favor.mining>>
 
 You tell <<him>> you want the distraction to happen <<mine_distract_time>>. <<He>> nods.
 <br><br>
 <<He>> looks at the guards and quickly looks away, acting like you weren't talking to <<him>>.
+<<clearNPC "mine_mining">>
 <<endevent>>
 <br><br>
 <<link [[Next|Mine Job Mining]]>><</link>>
@@ -229,7 +230,6 @@ The song continues until it reaches its end. "Get back to work!" the <<person>> 
 <<effects>>
 
 <<if $phase is 0>>
-	<<clearNPC "mine_mining">>
 	<<saveNPC 0 "mine_mining">>
 	<<set $mine.favor.mining to 1>>
 	<<if $speech_attitude is "meek">>

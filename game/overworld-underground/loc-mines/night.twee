@@ -107,7 +107,7 @@ You walk up to the <<person1>><<person>>. "Ready to cash in your favor?" <<he>> 
 
 
 :: Mine Night Distraction Set
-<<effects>><<set $mine.distraction.night to $phase>>
+<<effects>><<set $mine.distraction.night to $phase>><<unset $mine.favor.mining>>
 
 You tell <<him>> you want the distraction to happen <<mine_distract_time>>. <<He>> nods, "It'll happen sometime <<mine_distract_time>>. Good luck with whatever you've got planned."
 <br><br>

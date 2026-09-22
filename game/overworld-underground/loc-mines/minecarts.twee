@@ -31,7 +31,8 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<<if $mine.favor.minecarts is 1>>
 		<br>
 		<<link [[Ask for a distraction|Mine Job Minecarts Distraction]]>><</link>>
-	<<elseif $mine.favor.job is "note">>
+	<</if>>
+	<<if $mine.favor.job is "note">>
 		<br>
 		<<link [[Search for the person|Mine Job Minecarts Note]]>><</link>>
 	<</if>>
@@ -198,11 +199,12 @@ Fear washes over <<his>> face, <<he>> opens his mouth to speak but looks down at
 
 
 :: Mine Job Minecarts Distraction Set
-<<effects>><<set $mine.distraction.minecarts to $phase>>
+<<effects>><<set $mine.distraction.minecarts to $phase>><<unset $mine.favor.mining>>
 
 You tell <<him>> you want the distraction to happen <<mine_distract_time>>. <<He>> nods.
 <br><br>
 <<He>> nods and returns to <<his>> work.
+<<clearNPC "mine_minecarts">>
 <<endevent>>
 <br><br>
 <<link [[Next|Mine Job Minecarts]]>><</link>>
@@ -210,7 +212,7 @@ You tell <<him>> you want the distraction to happen <<mine_distract_time>>. <<He
 
 
 :: Mine Job Minecarts Clothes
-<<effects>><<upperstrip>><<lowerstrip>>
+<<effects>><<upperstrip>><<lowerstrip>><<saveNPC 0 "mine_minecarts">>
 
 You remove your clothes and toss them to <<him>>. <<He>> looks at you in shock, "Thank you," <<he>> says quietly as <<he>> puts the clothes on.
 <br><br>
