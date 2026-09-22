@@ -249,29 +249,14 @@
 
 :: Widgets physicalAdjustments [widget]
 <<widget "physicalAdjustments">>
-	<<if $sexStats and $sexStats.pills>>
-		<<set _pills to $sexStats.pills.pills>>
-	<</if>>
 	/*Breasts*/
 	<<switch $sexStats.pills.mostTaken["breast"]>>
 		<<case "growth">>
-			<<if _pills["breast growth"].doseTaken gte 1>>
-				<<set _breastMulti to 1 + (2.25 * $sexStats.pills["pills"]["breast growth"].doseTaken)>>
-			<<else>>
-				<<set _breastMulti to 1>>
-			<</if>>
+			<<set _breastMulti to 1 + (2.25 * $sexStats.pills["pills"]["breast growth"].doseTaken)>>
 		<<case "reduction">>
-			<<if _pills["breast reduction"].doseTaken gte 1>>
-				<<set _breastMulti to -1 + (-2.25 * $sexStats.pills["pills"]["breast reduction"].doseTaken)>>
-			<<else>>
-				<<set _breastMulti to 1>>
-			<</if>>
+			<<set _breastMulti to -1 + (-2.25 * $sexStats.pills["pills"]["breast reduction"].doseTaken)>>
 		<<case "blocker">>
-			<<if _pills["breast blocker"].doseTaken gte 1>>
-				<<set _breastMulti to 0>>
-			<<else>>
-				<<set _breastMulti to 1>>
-			<</if>>
+			<<set _breastMulti to 0>>
 		<<default>>
 			<<set _breastMulti to 1>>
 	<</switch>>
@@ -347,25 +332,13 @@
 
 	<<switch $sexStats.pills.mostTaken["penis"]>>
 		<<case "growth">>
-			<<if _pills["penis growth"].doseTaken gte 1>>
-				<<set _penisMulti to 1 + (2.25 * $sexStats.pills["pills"]["penis growth"].doseTaken)>>
-			<<else>>
-				<<set _penisMulti to 1>>
-			<</if>>
+			<<set _penisMulti to 1 + (2.25 * $sexStats.pills["pills"]["penis growth"].doseTaken)>>
 			<<set $sexStats.pills["pills"]["penis growth"].overdose += $sexStats.pills["pills"]["penis growth"].doseTaken>>
 		<<case "reduction">>
-			<<if _pills["penis reduction"].doseTaken gte 1>>
-				<<set _penisMulti to -1 + (-2.25 * $sexStats.pills["pills"]["penis reduction"].doseTaken)>>
-			<<else>>
-				<<set _penisMulti to 1>>
-			<</if>>
+			<<set _penisMulti to -1 + (-2.25 * $sexStats.pills["pills"]["penis reduction"].doseTaken)>>
 			<<set $sexStats.pills["pills"]["penis reduction"].overdose += $sexStats.pills["pills"]["penis reduction"].doseTaken>>
 		<<case "blocker">>
-			<<if _pills["penis blocker"].doseTaken gte 1>>
-				<<set _penisMulti to 0>>
-			<<else>>
-				<<set _penisMulti to 1>>
-			<</if>>
+			<<set _penisMulti to 0>>
 		<<default>>
 			<<set _penisMulti to 1>>
 	<</switch>>
@@ -444,7 +417,7 @@
 			<<set $penisgrowthtimer -= 1300>>
 			<<set $penisshrinkmessage to $player.penissize>><<set $effectsmessage to 1>>
 		<</if>>
-		<<set $penisgrowthtimer to Math.clamp($penisgrowthtimer, 0, 1500)>>
+		<<set $penisgrowthtimer to Math.clamp($penisgrowthtimer, 0, 1000)>>
 
 	<</if>>
 	<<set $player.penissize to Math.clamp($player.penissize, 0, 6)>>
@@ -452,23 +425,11 @@
 	/*Bottom*/
 	<<switch $sexStats.pills.mostTaken["bottom"]>>
 		<<case "growth">>
-			<<if _pills["bottom blocker"].doseTaken gte 1>>
-				<<set _bottomMulti to 1 + (2.25 * $sexStats.pills["pills"]["bottom growth"].doseTaken)>>
-			<<else>>
-				<<set _penisMulti to 1>>
-			<</if>>
+			<<set _bottomMulti to 1 + (2.25 * $sexStats.pills["pills"]["bottom growth"].doseTaken)>>
 		<<case "reduction">>
-			<<if _pills["bottom blocker"].doseTaken gte 1>>
-				<<set _bottomMulti to -1 + (-2.25 * $sexStats.pills["pills"]["bottom reduction"].doseTaken)>>
-			<<else>>
-				<<set _penisMulti to 1>>
-			<</if>>
+			<<set _bottomMulti to -1 + (-2.25 * $sexStats.pills["pills"]["bottom reduction"].doseTaken)>>
 		<<case "blocker">>
-			<<if _pills["bottom blocker"].doseTaken gte 1>>
-				<<set _bottomMulti to 0>>
-			<<else>>
-				<<set _penisMulti to 1>>
-			<</if>>
+			<<set _bottomMulti to 0>>
 		<<default>>
 			<<set _bottomMulti to 1>>
 	<</switch>>

@@ -2505,7 +2505,8 @@ function earnHourlyFeats() {
 			const fishConfig = setup.fishing.lootTables.fish[key];
 			const fishRecord = V.fishing.record[key];
 			if (!fishRecord) return false;
-			return fishRecord.largest >= fishConfig.maxSize;
+			const largestSizePercent = (fishRecord.largest - fishConfig.minSize) / (fishConfig.maxSize - fishConfig.minSize);
+			return largestSizePercent >= 0.98;
 		})
 	) {
 		earnFeat("Master Baiter");

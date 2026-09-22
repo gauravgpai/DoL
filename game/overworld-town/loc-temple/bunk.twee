@@ -1,5 +1,4 @@
 :: Temple Bunk
-<<set $location to "temple">>
 <<bedclotheson "Temple Bunk Bed">>
 <<effects>>
 
@@ -81,7 +80,6 @@ You are beside your bunk in the temple quarters. There's a cupboard for your clo
 <br><br>
 
 :: Temple Bunk Bed
-<<set $location to "temple">>
 <<effects>>
 <<wearoutfit>>
 
