@@ -36,7 +36,7 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 		<br>
 	<<elseif $mine.bomb.progress isnot undefined>>
 		<<if $mine.bomb.parts gt 0>>
-			<<icon "wrench.png">><<link [[Work on bomb|Mine Bomb Work]]>><</link>>
+			<<icon "wrench.png">><<link [[Work on the bomb|Mine Bomb Work]]>><<set $mine.bomb.parts-->><</link>>
 		<<else>>
 			<span class="blue">You need parts to continue working on the bomb.</span>
 		<</if>>

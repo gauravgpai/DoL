@@ -29,7 +29,7 @@
 			<<He>> leads you through the caves to a large group of slaves, all swinging pickaxes into the rock wall.
 			<br><br>
 			<<link [[Next|Mine Job Mining Intro]]>><</link>>
-		<<case "minecart">>
+		<<case "minecarts">>
 			<<He>> leads you through the caves to a minecart track. You look up to see a rail on the rock ceiling that goes along the tunnel.
 			<br><br>
 			<<link [[Next|Mine Job Minecarts Intro]]>><</link>>
