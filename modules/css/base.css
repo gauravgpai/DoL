@@ -18,28 +18,13 @@ h4 {
 	display: block;
 }
 
-/* Scrollbars */
-* {
-	scrollbar-color: var(--750) transparent;
-	scrollbar-width: thin;
+::-webkit-scrollbar {
+	background-color: var(--850);
+	width: 10px;
 }
 
-*::-webkit-scrollbar {
-	width: 8px;
-	height: 8px;
-}
-
-*::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-	background: var(--750);
-	border-radius: 4px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-	background: var(--700);
+::-webkit-scrollbar-thumb {
+	background-color: var(--750);
 }
 
 a {
@@ -275,6 +260,7 @@ button:disabled {
 	border-right: 1px solid var(--300);
 	position: relative;
 	white-space: nowrap;
+	overflow: hidden;
 }
 
 .widerButton button {
@@ -1628,6 +1614,7 @@ body.has-images #storyCaptionContent {
 	height: calc(100% - 170px - 1.32em);
 	padding: 5px;
 	overflow-y: scroll;
+	scrollbar-color: var(--750) var(--850);
 	width: 280px;
 	box-sizing: border-box;
 }

@@ -1467,19 +1467,17 @@
 	<</if>>
 <</silently>>_text_output<</widget>>
 
-<<widget "breasts">>
+<<widget "breasts">><<silently>>
 	<<if Number.isInteger($player.breastsize)>>
 		<<if $player.breastsize lte 0>>
-			<<print "nipples">>
+			<<set _text_output to "nipples">>
 		<<else>>
-			<<print setup.breastsizes[$player.breastsize]>>
-			<<if !_breastSensitivityDescribed or _args[0]>><<breastsensitivity>><</if>>
-			<<print " breasts">>\
+			<<set _text_output to setup.breastsizes[$player.breastsize] + " breasts">>
 		<</if>>
 	<<elseif $options.debugdisable is "f">>
-		<<print "ERROR - $$player.breastsize is not a number: $player.breastsize">>
-	<</if>>\
-<</widget>>
+		<<set _text_output to "ERROR - $$player.breastsize is not a number: $player.breastsize">>
+	<</if>>
+<</silently>><<if !_breastSensitivityDescribed or _args[0]>><<breastsensitivity>><</if>><<print _text_output>><</widget>>
 
 <<widget "breastssimple">><<silently>>
 	<<if Number.isInteger($player.breastsize)>>
@@ -5005,11 +5003,7 @@
 	<<else>>
 		<<set _na to 0>>
 	<</if>>
-  <<if $NPCList[_na].name_known is 1 and $NPCList[_na].fullDescription is "Black Wolf">>
-    <<set _text_output to $NPCList[_na].fullDescription>>
-  <<else>>
-    <<set _text_output to $NPCList[_na].type>>
-  <</if>>
+	<<set _text_output to $NPCList[_na].type>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "beasttypes">> <<beasttype>>'s<</widget>>

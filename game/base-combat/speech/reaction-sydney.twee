@@ -1,5 +1,0 @@
-:: Widgets reaction-Sydney [widget]
-
-<<widget "reaction-sydney-expose">>
-	<<sydneyExpose>>
-<</widget>>

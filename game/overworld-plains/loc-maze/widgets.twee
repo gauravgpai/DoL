@@ -22,7 +22,7 @@
 	<<else>>
 		You turn and run through the branching corridors of the maze. You manage to lose the creature, with difficulty.<<beastescape>>
 		<br><br>
-		<<link [[Next|Maze Painting]]>><</link>>
+		<<link [[Next|Maze Final]]>><</link>>
 		<br>
 	<</if>>
 <</widget>>

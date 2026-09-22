@@ -84,7 +84,7 @@
 <</addinlineevent>>
 
 /* Fisher event start */
-<<if $daily.fishing.fishingBeach.fisher.phase is undefined and fishingMinutesIntoSession(30) and Time.hour gte 6 and Time.hour lt 20 and !["heavyPrecipitation", "storm", "thunderstorm"].includes(Weather.name)>>
+<<if $daily.fishing.fishingBeach.fisher.phase is undefined and fishingMinutesIntoSession(30) and Time.hour lt 20 and !["heavyPrecipitation", "storm", "thunderstorm"].includes(Weather.name)>>
 	<<addinlineevent "fisherArrive" 0.5>>
 		<<include "Fishing Beach Fisher Arrive">>
 	<</addinlineevent>>
@@ -108,10 +108,6 @@
 			<<include "Fishing Beach Fisher Leave Weather">>
 		<</addinlineevent>>
 	<</if>>
-
-	<<if Time.hour gte 22>>
-		<<set $eventPoolOverride to "fisherLeaveNight">>
-	<</if>>
 <</if>>
 
 /* Fisher attacks if player is exposed */
@@ -124,29 +120,27 @@
 /* Bystander notices exposed player */
 <<if $exposed gte 1 and Weather.dayState is "day">>
 	<<addinlineevent "exposedNoticed" fishingDangerEventWeight(1)>>
-		<<beachExposedNoticed>>
+		<<beachex1>>
 	<</addinlineevent>>
 	<<addinlineevent "exposedMolestation" fishingDangerEventWeight(1)>>
-		<<beachExposedMolestation>>
+		<<beachex2>>
 	<</addinlineevent>>
 <</if>>
 
 /* Wind blows skirt */
 <<addinlineevent "beachWind" .2>>
-	<<beachDayWind>>
+	<<beachday4>>
 <</addinlineevent>>
 
 /* Wave soaks the PC */
-<<if isPlayerFishingAlone()>>
-	<<addinlineevent "beachWave" .2>>
-		<<include "Fishing Beach Wave">>
-	<</addinlineevent>>
-<</if>>
+<<addinlineevent "beachWave" .2>>
+	<<include "Fishing Beach Wave">>
+<</addinlineevent>>
 
 /* Dog tearing at clothing */
 <<if [undefined, "finished"].includes($daily.fishing.fishingBeach.fisher.phase) and !$worn.lower.type.includes("naked")>>
 	<<addinlineevent "beachDog" fishingDangerEventWeight(0.75)>>
-		<<beachDayDogTug>>
+		<<beachday2>>
 	<</addinlineevent>>
 <</if>>
 
@@ -160,7 +154,7 @@
 
 	/* See a parent on the beach */
 	<<addinlineevent "beachParent" 1>>
-		<<beachDayParent>>
+		<<beachday3>>
 	<</addinlineevent>>
 
 	/* Classmates approach */
@@ -172,7 +166,7 @@
 
 <<if Weather.dayState is "night">>
 	<<addinlineevent "nightDog" fishingDangerEventWeight(0.75)>>
-		<<beachNightDog>>
+		<<beachnight1>>
 	<</addinlineevent>>
 	<<addinlineevent "beachNightTentacles" fishingDangerEventWeight(0.75)>>
 		<<include "Fishing Beach Tentacles">>
