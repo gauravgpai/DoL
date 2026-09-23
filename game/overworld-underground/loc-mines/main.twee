@@ -399,9 +399,10 @@ You follow the tunnel and reach a pool of water. <span class="blue">A section of
 
 
 :: Mine Swim
-<<effects>>
-
-You enter the water. It's surprisingly warm. You take a deep breath before you dive below the surface. You swim down and follow the tunnel.
+You enter the water. It's surprisingly warm.
+<br><br>
+<<water>><<effects>>
+You take a deep breath before you dive below the surface. You swim down and follow the tunnel.
 <br><br>
 <<if $swimmingSuccess>>
 	<span class="green">You continue and eventually reach an incline and an unflooded section of tunnel.</span>
