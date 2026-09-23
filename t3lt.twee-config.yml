@@ -2057,6 +2057,18 @@ sugarcube-2:
     bleedingWardStart:
       description: |-
         Freezes the story variables, then morphs the pc into an old seabird
+    bloodmoon_tourist_beachpark:
+      name: bloodmoon_tourist_beachpark
+    bloodmoonTourist1:
+      name: bloodmoonTourist1
+    bloodmoonTourist2:
+      name: bloodmoonTourist2
+    bloodmoonTourist3:
+      name: bloodmoonTourist3
+    bloodmoonTourist4:
+      name: bloodmoonTourist4
+    bloodmoonTouristPark:
+      name: bloodmoonTouristPark
     blindfoldintro:
       name: blindfoldintro
     blindfoldremove:

@@ -882,6 +882,16 @@
 		<<default>>
 			<span class="red">ERROR: You have somehow managed to pass beyond the concepts of time and weather. Please inform Vrelnir unless you just used a cheat.</span>
 	<</switch>>
+	<<if $location is "park" && Weather.bloodMoon is true && !Weather.isOvercast>>
+		<<addinlineevent "bloodmoonTouristPark" 10000>>
+			<<cleareventpool>>
+			<<addevent "bloodmoonTourist1">>
+			<<addevent "bloodmoonTourist2">>
+			<<addevent "bloodmoonTourist3">>
+			<<addevent "bloodmoonTourist4">>
+			<<runeventpool>>
+		<</addinlineevent>>
+	<</if>>
 	<<runeventpool>>
 	<br><br>
 <</widget>>
