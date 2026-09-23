@@ -134,12 +134,74 @@ declare module "twine-sugarcube" {
 		tentacleAnus: string | 0;
 		tentaclePenis: string | 0;
 		swarm: Swarm;
+		speechAnusEscape?: number;
+		speechAnusVirgin?: number;
+		speechApologise?: number;
+		speechApologiseAgain?: number;
+		speechApologiseUnforgiving?: number;
+		speechAskRough?: number;
+		speechPlayerBeaten?: number;
+		speechExposeBreasts?: number;
+		speechCoverFace?: number;
+		speechCoverPenis?: number;
+		speechCoverVagina?: number;
+		speechCrossdressAngry?: number;
+		speechCrossdressAroused?: number;
+		speechCrossdressDisappointed?: number;
+		speechCrossdressShock?: number;
+		speechPlayerOrgasm?: number;
+		speechDemand?: number;
+		speechFallenTransform?: number;
+		speechForgive?: number;
+		speechExposeGenitals?: number;
+		speechGrowl?: number;
+		speechGrowlHeat?: number;
+		speechGrowlRut?: number;
+		speechHermAngry?: number;
+		speechHermAroused?: number;
+		speechHermDisappointed?: number;
+		speechHermShock?: number;
+		speechPlayerHits?: number;
+		speechKissVirgin?: number;
+		speechLactate?: number;
+		speechMasturbate?: number;
+		speechMoan?: number;
+		speechOralVirgin?: number;
+		speechLINameDrop?: number;
+		speechNPCAnusVirgin?: number;
+		speechNPCHandholdingVirgin?: number;
+		speechNPCKissVirgin?: number;
+		speechNPCOralVirgin?: number;
+		speechNPCPenisVirgin?: number;
+		speechNPCVaginaVirgin?: number;
+		speechOtherAnusEscape?: number;
+		speechPenisBig?: number;
+		speechPenisEscape?: number;
+		speechPenisSmall?: number;
+		speechPenisVirgin?: number;
+		speechPlead?: number;
+		speechPregnant?: number;
+		speechScreamForHelp?: number;
+		speechNoticeSexToy?: number;
+		speechSpank?: number;
+		speechPepperSpray?: number;
+		speechSteal?: number;
+		speechStripStruggle?: number;
+		speechStruggle?: number;
+		speechTempleVirgin?: number;
+		speechVaginaEscape?: number;
+		speechVaginaFlaunt?: number;
+		speechVaginaVirgin?: number;
+		speechChokedWheeze?: number;
+		speechChokedAlready?: number;
+		speechChokedMoan?: number;
 		speechSaid?: Partial<Record<SpeechSpeaker, string[]>>;
-		speechRestTurns?: Partial<Record<SpeechSpeaker, number>>;
+		speechRestingGroups?: Partial<Record<SpeechSpeaker, string[]>>;
 	}
 
 	export interface SugarCubeTemporaryVariables {
 		crOverrides?: CombatRendererOverrides;
+		noNameComment?: boolean;
 		speechPool?: { speaker: SpeechSpeaker; lines: SpeechLine[] };
 		pairedSpeechLine?: string;
 	}
@@ -147,6 +209,8 @@ declare module "twine-sugarcube" {
 	export interface SugarCubeSetupObject {
 		positions: Positions[];
 		legPositions: LegPositions[];
+		speechEvent: Record<string, () => boolean | number | undefined>;
+		speechPriority: Record<string, number>;
 	}
 }
 
@@ -235,7 +299,9 @@ declare global {
 	export interface SpeechLine {
 		content: string;
 		weight: number;
+		priority: number;
 		hash: string;
+		group?: string;
 		reply?: string;
 	}
 }

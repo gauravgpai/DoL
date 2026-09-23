@@ -32,13 +32,74 @@ function isSpeechSpeaker(speaker) {
  *
  * @param {string} content the line
  * @param {number} weight
+ * @param {number} priority how much the line should be prioritized (100 being highest priority), found in setup.speechPriority
+ * @param {string} [group] the line's group
  * @param {string} [reply] NNPC's reply, said later in the turn by <<sayPairedSpeechLine>>.
  * @returns {SpeechLine}
  */
-function createSpeechLine(content, weight, reply) {
-	const line = { content, weight, hash: getSpeechLineHash(content) };
+function createSpeechLine(content, weight, priority, group, reply) {
+	const line = { content, weight, priority, hash: getSpeechLineHash(content) };
+	if (group) line.group = group;
 	if (reply) line.reply = reply;
 	return line;
+}
+
+/**
+ * How much a speech line outranks the others in the pool.
+ *
+ * @param {string} event
+ * @returns {number}
+ */
+function getSpeechEventPriority(event) {
+	return setup.speechPriority[event];
+}
+
+/**
+ * Whether combat/sex flagged the event this turn.
+ *
+ * @param {string} event
+ * @returns {boolean}
+ */
+function hasSpeechEventFired(event) {
+	return !!setup.speechEvent[event]();
+}
+
+/**
+ * Checks that the event is one setup.speechEvent lists, catching typos.
+ *
+ * @param {string} event
+ * @returns {boolean}
+ */
+function isSpeechEvent(event) {
+	return Object.hasOwn(setup.speechEvent, event);
+}
+
+/**
+ * The lines that outrank the rest of the pool. Everything below them is not said this turn.
+ *
+ * @param {SpeechLine[]} lines
+ * @returns {SpeechLine[]}
+ */
+function getTopSpeechLines(lines) {
+	const top = lines.reduce((highest, line) => Math.max(highest, line.priority), 0);
+	return lines.filter(line => line.priority === top);
+}
+
+/**
+ * Groups lines by the situation they answer.
+ *
+ * @param {SpeechLine[]} lines
+ * @returns {{ group: string, lines: SpeechLine[] }[]}
+ */
+function groupSpeechLines(lines) {
+	/** @type {Map<string, SpeechLine[]>} */
+	const groups = new Map();
+	for (const line of lines) {
+		const group = line.group ?? "";
+		if (!groups.has(group)) groups.set(group, []);
+		groups.get(group).push(line);
+	}
+	return Array.from(groups.entries(), ([group, groupLines]) => ({ group, lines: groupLines }));
 }
 
 /**
@@ -93,6 +154,7 @@ function pickSpeechLineFrom(speaker, lines) {
 		forgetSpeechLines(speaker, lines);
 		fresh = lines.length > 1 ? lines.filter(line => line.hash !== lastSaid) : lines;
 	}
+	if (fresh.length === 0) fresh = lines;
 	const picked = rollWeightedRandomFromArray(fresh);
 	getSpeechHistory(speaker).push(picked.hash);
 	return picked;
@@ -109,8 +171,20 @@ function pickSpeechLine(speaker, ...texts) {
 	if (!isSpeechSpeaker(speaker)) throw new Error(`pickSpeechLine: "${speaker}" is not a named NPC or "pc"`);
 	return pickSpeechLineFrom(
 		speaker,
-		texts.map(text => createSpeechLine(text, 1))
+		texts.map(text => createSpeechLine(text, 1, setup.speechPriority.ongoing))
 	).content;
+}
+
+/**
+ * Picks the line to say out of a shared group.
+ *
+ * @param {SpeechSpeaker} speaker
+ * @param {SpeechLine[]} lines
+ * @returns {SpeechLine}
+ */
+function pickGroupedSpeechLine(speaker, lines) {
+	const group = rollWeightedRandomFromArray(groupSpeechLines(getTopSpeechLines(lines)));
+	return pickSpeechLineFrom(speaker, group.lines);
 }
 
 /* The speech pool. Lines are added with <<addSpeechLine>> and one is played with <<speechSay>>. */
@@ -130,29 +204,36 @@ function startSpeechPool(speaker) {
  * @returns {boolean}
  */
 function hasSpeechLines() {
-	return T.speechPool?.lines?.length > 0;
+	return T.speechPool?.lines.length > 0;
 }
 
 /**
- * If the speaker has already said every line in the pool, clears the pool for this turn and the next
- * so generic comments or mouth actions play instead of a repeat.
- *
- * @returns {boolean} true if the pool was cleared
+ * Drops the situations the speaker has already used up and resets its history, so the turn
+ * falls through to a lower priority line, an ambient line, or a mouth action rather than repeating a line.
  */
 function takeSpeechBreather() {
-	if (!hasSpeechLines()) return false;
+	if (!hasSpeechLines()) return;
 	const { speaker, lines } = T.speechPool;
-	if (!V.speechRestTurns) V.speechRestTurns = {};
-	if (V.speechRestTurns[speaker] > 0) {
-		V.speechRestTurns[speaker]--;
-	} else if (getUnsaidSpeechLines(speaker, lines).length > 0) {
-		return false;
-	} else {
-		forgetSpeechLines(speaker, lines);
-		V.speechRestTurns[speaker] = 1;
+	if (!V.speechRestingGroups) V.speechRestingGroups = {};
+	const resting = V.speechRestingGroups[speaker] ?? [];
+	let pool = lines.filter(line => !resting.includes(line.group ?? ""));
+	V.speechRestingGroups[speaker] = [];
+	while (pool.length) {
+		const dry = groupSpeechLines(getTopSpeechLines(pool)).filter(group => getUnsaidSpeechLines(speaker, group.lines).length === 0);
+		if (dry.length === 0) break;
+		for (const group of dry) {
+			forgetSpeechLines(speaker, group.lines);
+			V.speechRestingGroups[speaker].push(group.group);
+		}
+		const dropped = new Set(dry.flatMap(group => group.lines));
+		pool = pool.filter(line => !dropped.has(line));
 	}
-	startSpeechPool(speaker);
-	return true;
+	T.speechPool.lines = pool;
+}
+
+/** @returns {boolean} Whether the pool holds nothing but ambient lines. */
+function isSpeechPoolAmbient() {
+	return T.speechPool.lines.every(line => line.priority === setup.speechPriority.ambient);
 }
 
 Macro.add("speechPool", {
@@ -162,11 +243,53 @@ Macro.add("speechPool", {
 	},
 });
 
+/**
+ * A line's weight. Default 1.
+ *
+ * @param {any[]} args
+ * @returns {number}
+ */
+function getSpeechLineWeight(args) {
+	const weight = args.find(arg => typeof arg === "number");
+	return weight ?? 1;
+}
+
 Macro.add("addSpeechLine", {
 	tags: null,
 	handler() {
 		if (!T.speechPool) return this.error("no <<speechPool>> started");
-		T.speechPool.lines.push(createSpeechLine(this.payload[0].contents, typeof this.args[0] === "number" ? this.args[0] : 1));
+		T.speechPool.lines.push(createSpeechLine(this.payload[0].contents, getSpeechLineWeight(this.args), setup.speechPriority.ongoing));
+	},
+});
+
+/* Event speech lines are ones that have priority over each other, as well as ongoing sex lines and ambient lines. */
+Macro.add("addEventSpeechLine", {
+	tags: null,
+	handler() {
+		if (!T.speechPool) return this.error("no <<speechPool>> started");
+		const events = this.args.filter(arg => typeof arg === "string");
+		if (events.length === 0) return this.error("needs the name of the event the line answers");
+		const unknown = events.filter(event => !isSpeechEvent(event));
+		if (unknown.length) return this.error(`not a speech event, add it to setup.speechEvent: "${unknown.join('", "')}"`);
+		const fired = events.filter(hasSpeechEventFired);
+		if (fired.length === 0) return;
+		T.speechPool.lines.push(
+			createSpeechLine(
+				this.payload[0].contents,
+				getSpeechLineWeight(this.args),
+				Math.max(...fired.map(getSpeechEventPriority)),
+				Array.from(new Set(events)).sort().join(" ")
+			)
+		);
+	},
+});
+
+/* Ambient speech lines are neither prioritized "event" lines nor "ongoing" sex act lines. */
+Macro.add("addAmbientSpeechLine", {
+	tags: null,
+	handler() {
+		if (!T.speechPool) return this.error("no <<speechPool>> started");
+		T.speechPool.lines.push(createSpeechLine(this.payload[0].contents, getSpeechLineWeight(this.args), setup.speechPriority.ambient));
 	},
 });
 
@@ -184,16 +307,38 @@ Macro.add("addPairedSpeechLine", {
 		const [before, pcLine, npcLine] = this.payload;
 		if (before.contents.trim()) return this.error("put PC's line inside <<pcLine>>");
 		if (pcLine?.name !== "pcLine" || npcLine?.name !== "npcLine") return this.error("needs a <<pcLine>> then an <<npcLine>>");
-		T.speechPool.lines.push(createSpeechLine(pcLine.contents, 1, npcLine.contents));
+		T.speechPool.lines.push(createSpeechLine(pcLine.contents, 1, setup.speechPriority.ongoing, undefined, npcLine.contents));
 	},
 });
 
+/**
+ * Says one line from the pool.
+ *
+ * @param {HTMLElement|DocumentFragment} output
+ */
+function saySpeechLine(output) {
+	if (!hasSpeechLines()) return;
+	const line = pickGroupedSpeechLine(T.speechPool.speaker, T.speechPool.lines);
+	if (line.reply) T.pairedSpeechLine = line.reply;
+	jQuery(output).wiki(line.content);
+}
+
 Macro.add("speechSay", {
 	handler() {
-		if (!hasSpeechLines()) return;
-		const line = pickSpeechLineFrom(T.speechPool.speaker, T.speechPool.lines);
-		if (line.reply) T.pairedSpeechLine = line.reply;
-		jQuery(this.output).wiki(line.content);
+		saySpeechLine(this.output);
+	},
+});
+
+/* Says a line from the pool, or sets _noNameComment.
+When the pool holds nothing but ambient lines, there is a 40% chance of the mouth action instead. */
+Macro.add("speechSayOrPass", {
+	handler() {
+		jQuery.wiki("<<rng>>");
+		if (!hasSpeechLines() || (isSpeechPoolAmbient() && V.rng <= 40)) {
+			T.noNameComment = true;
+			return;
+		}
+		saySpeechLine(this.output);
 	},
 });
 
@@ -212,3 +357,4 @@ window.pickSpeechLine = pickSpeechLine;
 window.hasPairedSpeechLine = hasPairedSpeechLine;
 window.hasSpeechLines = hasSpeechLines;
 window.takeSpeechBreather = takeSpeechBreather;
+window.isSpeechPoolAmbient = isSpeechPoolAmbient;

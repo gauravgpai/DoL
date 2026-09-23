@@ -51,14 +51,3 @@
 	<</switch>>
 <</widget>>
 
-/* Plays a line from the pool. If the pool is empty, generic comments or mouth actions play instead.
-   Pass true when the pool only has ambient lines, with a 40% chance of a mouth action instead.
-   <<speechSayOrPass _quietTurn>> */
-<<widget "speechSayOrPass">>
-	<<rng>>
-	<<if !hasSpeechLines() or (_args[0] and $rng lte 40)>>
-		<<set _noNameComment to true>>
-	<<else>>
-		<<speechSay>>
-	<</if>>
-<</widget>>

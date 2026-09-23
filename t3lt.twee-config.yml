@@ -552,21 +552,42 @@ sugarcube-2:
     actorAroused:
       name: actorAroused
       tags: ["unused"]
-    addSpeechLine:
+    addAmbientSpeechLine:
       container: true
       description: |-
-        Adds a line to the current speech pool.
+        Adds a line to the current speech pool that is not a prioritized event line (<<addEventSpeechLine>>) or an ongoing action line (<<addSpeechLine>>).
 
-        `<<addSpeechLine [weight]>>…<</addSpeechLine>>`
+        `<<addAmbientSpeechLine [weight]>>…<</addAmbientSpeechLine>>`
         - **weight** _optional_: `number` - weight, default 1
       parameters:
         - '|+ number'
+    addEventSpeechLine:
+      container: true
+      description: |-
+        Adds a line to the current speech pool of a prioritized event, such as taking virginity. Event's priority can be found in `setup.speechPriority`. Nothing is added when none of the named events fired this turn.
+
+        `<<addEventSpeechLine event... [weight]>>…<</addEventSpeechLine>>`
+        - **event**: `string` - the sex/combat event the line answers
+        - **weight** _optional_: `number` - weight, default 1
+      parameters:
+        - 'string |+ number'
+        - 'string &+ string |+ number'
+        - 'string &+ string &+ string |+ number'
     addPairedSpeechLine:
       container: true
       description: |-
         Adds a PC line to the current speech pool together with the named NPC's reply to it. If the line plays, the NPC says the reply with `<<sayPairedSpeechLine>>`.
 
         `<<addPairedSpeechLine>><<pcLine>>the PC's line<<npcLine>>the NPC's reply<</addPairedSpeechLine>>`
+    addSpeechLine:
+      container: true
+      description: |-
+        Adds a line about the ongoing sex act to the current speech pool.
+
+        `<<addSpeechLine [weight]>>…<</addSpeechLine>>`
+        - **weight** _optional_: `number` - weight, default 1
+      parameters:
+        - '|+ number'
     add_bodywriting:
       name: add_bodywriting
     add_link:
@@ -16651,7 +16672,7 @@ sugarcube-2:
         Says the named NPC's reply to the PC line played this turn, if that line had one. Prints nothing otherwise.
     speechPool:
       description: |-
-        Starts the speaker's pool of speech lines for this turn. Fill it with `<<addSpeechLine>>` and say one with `<<speechSay>>`.
+        Starts the speaker's pool of speech lines for this turn. Fill it with `<<addSpeechLine>>`, `<<addEventSpeechLine>>` and `<<addAmbientSpeechLine>>`. Say a line with `<<speechSay>>`.
 
         `<<speechPool speaker>>`
         - **speaker**: `string` - whose lines the pool holds
@@ -16661,15 +16682,12 @@ sugarcube-2:
         - '%namedNPC%|"pc"'
     speechSay:
       description: |-
-        Picks a line from the current speech lines pool that its speaker has not said this combat, prints it and remembers it. Prints nothing when the pool is empty.
+        Says a line from the current speech lines pool, remembering and skipping lines that the speaker has already said this combat. Prints nothing when the pool is empty.
     speechSayOrPass:
       description: |-
-        Ends a speech widget's turn: says a line from the pool, or sets `_noNameComment` so the generic comment or mouth action runs instead.
+        Says a line from the current speech pool, or passes to `_noNameComment`, meaning a 60% chance of an ambient line or a 40% chance of a mouth action.
 
-        `<<speechSayOrPass [quietTurn]>>`
-        - **quietTurn** _optional_: `boolean` - whether only ambient lines are in the pool
-      parameters:
-        - '|+ bool'
+        `<<speechSayOrPass>>`
     speechWraith:
       description: |-
         Prints up to two relevant wraith lines

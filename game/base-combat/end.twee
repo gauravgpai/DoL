@@ -702,7 +702,7 @@
 	<<unset $averyUniqueComments>>
 	<<unset $whitneyUniqueComments>>
 	<<unset $speechSaid>>
-	<<unset $speechRestTurns>>
+	<<unset $speechRestingGroups>>
 	<<unset $noBodyWriting>>
 	<<unset $noAdmire>>
 	<<unset $breakIgnore>>
@@ -828,6 +828,7 @@
 	<<unset $speechBreastRub>>
 	<<unset $speechVaginaFlaunt>>
 	<<unset $speechPenisBig>>
+	<<unset $speechPenisSmall>>
 	<<unset $speechPenisEscape>>
 	<<unset $speechVaginaEscape>>
 	<<unset $speechAnusEscape>>
