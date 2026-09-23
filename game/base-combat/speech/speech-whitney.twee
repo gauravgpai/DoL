@@ -5,12 +5,12 @@
 		<<He>> laughs. "No one can call you a virgin after this. You're my dirty slut now."
 	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Whitney">>
 		<<He>> laughs. "Was this off limits? I want to hear you squeal, <<bitch>>!"
-	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Whitney">>
+	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Whitney">>
 		<<He>> laughs. "I bet you'll get addicted in no time!"
 	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Whitney">>
 		<<He>> laughs. "Why are you looking at me like that? I can't be your first, slut."
-	<<elseif $speechNamedrop is 1>>
-		<<set $speechNamedrop to 0>>
+	<<elseif $speechLINameDrop is 1>>
+		<<set $speechLINameDrop to 0>>
 		<<if _loveInterest is "Black Wolf">>
 			<<print `<<He>> laughs. "` + [`Did you just admit to fucking a dog? You're making this too easy.`, `I think I need to remind you whose <<bitch>> you actually are.`][random(0,1)] + `"`>>
 		<<elseif _loveInterest is "Great Hawk">>
@@ -29,8 +29,8 @@
 		<<else>>
 			<<He>> laughs. "I don't care about your little crush. You belong to me."
 		<</if>>
-	<<elseif $speechSexToy is 1>>
-		<<set $speechSexToy to 0>>
+	<<elseif $speechNoticeSexToy is 1>>
+		<<set $speechNoticeSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<print `<<He>> looks at your $_sexToy and grins. "` + [`Good slut.`, `I knew you were a dirty slut.`, `Don't get any bright ideas.`, `What's wrong, is your slutty mouth getting tired?`][random(0,3)] + `"`>>
 	<<elseif $speechChastity is 1>>

@@ -255,7 +255,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 			"<<He>> crushes your hand in <<his>> grip.",
 			"<<He>> bends your fingers back."
 		)>>
-		<<violence 10>><<hitstat>><<set $speechBeat to 1>>
+		<<violence 10>><<hitstat>><<set $speechPlayerBeaten to 1>>
 	<<elseif $rng gte 96>>
 		<span class="purple"><<He>> releases your <<print ($_hand is "left" ? "right" : "left")>> hand.</span>
 		<<combat-reset-hand _args[0]>>
@@ -991,7 +991,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 				<<neutral 2 _n>>
 			<<else>>
 				<span class="lewd">revealing your <<breasts>>.</span>
-				<<neutral 3 _n>><<set $speechBreasts to 1>>
+				<<neutral 3 _n>><<set $speechExposeBreasts to 1>>
 			<</if>>
 		<<case "midriff">>
 			<<if $_target is "upper">>
@@ -1009,7 +1009,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 				<<neutral 2 _n>>
 			<<else>>
 				revealing your <span class="lewd"><<genitals>>.</span>
-				<<neutral 5 _n>><<set $speechGenitals to 1>>
+				<<neutral 5 _n>><<set $speechExposeGenitals to 1>>
 			<</if>>
 		<<case "thighs">>
 			<<He>> pulls your $_clothing_upper.name down to your knees with <<his>> $_hand hand.
@@ -1080,7 +1080,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 						<<neutral 2 _n>>
 					<<else>>
 						<span class="lewd">exposing your <<breasts>>.</span>
-						<<neutral 3 _n>><<set $speechBreasts to 1>>
+						<<neutral 3 _n>><<set $speechExposeBreasts to 1>>
 					<</if>>
 				<</if>>
 			<<case "chest">>
@@ -1115,7 +1115,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 				<<neutral 2 _n>>
 			<<else>>
 				<span class="lewd">revealing your <<breasts>>.</span>
-				<<neutral 3 _n>><<set $speechBreasts to 1>>
+				<<neutral 3 _n>><<set $speechExposeBreasts to 1>>
 			<</if>>
 		<<case "midriff">>
 			<<He>> pulls your $_clothing.name down past your midriff with <<his>> $_hand hand.
@@ -1128,7 +1128,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 				<<neutral 2 _n>>
 			<<else>>
 				revealing your <span class="lewd"><<genitals>>.</span>
-				<<neutral 5 _n>><<set $speechGenitals to 1>>
+				<<neutral 5 _n>><<set $speechExposeGenitals to 1>>
 			<</if>>
 		<<case "thighs">>
 			<<He>> pulls your $_clothing.name down to your knees with <<his>> $_hand hand.
@@ -1158,7 +1158,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 			<<case "chest">>
 				<<if _toplessExposed>>
 					<<He>> lifts up your $_clothing.name with <<his>> $_hand hand, <span class="lewd">exposing your <<breasts>>.</span>
-					<<neutral 2 _n>><<set $speechBreasts to 1>>
+					<<neutral 2 _n>><<set $speechExposeBreasts to 1>>
 				<<else>>
 					<<He>> lifts your $_clothing.name over your chest with <<his>> $_hand hand, exposing your <<exposedupper>>.
 					<<neutral 1 _n>>
@@ -1185,7 +1185,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<<He>> pulls your $_clothing.name to the side, <span class="lewd">revealing your <<genitals>>.</span>
 		<<set $_clothing.state to "totheside">>
 		<<combat-reset-hand $_hand>><<neutral 5 _n>>
-		<<set $_clothing.vagina_exposed to 1>><<set $_clothing.anus_exposed to 1>><<set $_clothing.exposed to 1>><<set $speechGenitals to 1>>
+		<<set $_clothing.vagina_exposed to 1>><<set $_clothing.anus_exposed to 1>><<set $_clothing.exposed to 1>><<set $speechExposeGenitals to 1>>
 	<</if>>
 <</widget>>
 
@@ -1293,7 +1293,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<<neutral 2 _n>>
 	<<else>>
 		<span class="lewd"><<genitals>>.</span>
-		<<neutral 5 _n>><<set $speechGenitals to 1>>
+		<<neutral 5 _n>><<set $speechExposeGenitals to 1>>
 	<</if>>
 <</widget>>
 
@@ -2391,7 +2391,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<<else>>
 			<<if $walltype is "front">>
 				<<He>> slaps your face.
-				<<violence 10>><<bruise face>><<hitstat>><<set $speechBeat to 1>>
+				<<violence 10>><<bruise face>><<hitstat>><<set $speechPlayerBeaten to 1>>
 				<<bodypart_admire_chance random_cheek>>
 			<<else>>
 				<<He>> slaps your <<bottom>>.
@@ -2402,7 +2402,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 	<<elseif $enemyanger + $rng lte 175>>
 		<<if $walltype is "front">>
 			<<He>> digs <<his>> nails into your <<breasts>> while groping, giving no heed to your comfort.
-			<<violence 10>><<bruise chest>><<hitstat>><<set $speechBeat to 1>>
+			<<violence 10>><<bruise chest>><<hitstat>><<set $speechPlayerBeaten to 1>>
 			<<bodypart_admire_chance back>>
 		<<else>>
 			<<He>> digs <<his>> nails into your <<bottom>> while groping, giving no heed to your comfort.
@@ -2412,31 +2412,31 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 	<<elseif $enemyanger + $rng lte 180>>
 		<<if $walltype is "front">>
 			<<He>> smacks your <<breasts>>.
-			<<violence 10>><<bruise chest>><<hitstat>><<set $speechBeat to 1>>
+			<<violence 10>><<bruise chest>><<hitstat>><<set $speechPlayerBeaten to 1>>
 			<<bodypart_admire_chance back>>
 		<<else>>
 			<<He>> smacks your thighs.
-			<<violence 10>><<bruise thigh>><<hitstat>><<set $speechBeat to 1>>
+			<<violence 10>><<bruise thigh>><<hitstat>><<set $speechPlayerBeaten to 1>>
 			<<bodypart_admire_chance random_thigh>>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 185 and !(playerBellySize(true) gte 8)>>
 		<<if $position is "wall" and $walltype isnot "front">>
 			<<He>> beats your thigh.
-			<<bruise thigh>><<hitstat>><<violence 10>><<set $speechBeat to 1>>
+			<<bruise thigh>><<hitstat>><<violence 10>><<set $speechPlayerBeaten to 1>>
 			<<bodypart_admire_chance random_thigh>>
 		<<else>>
 			<<He>> punches your tummy.
-			<<violence 20>><<bruise tummy>><<hitstat>><<set $speechBeat to 1>>
+			<<violence 20>><<bruise tummy>><<hitstat>><<set $speechPlayerBeaten to 1>>
 			<<bodypart_admire_chance back>>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 190>>
 		<<if $position is "wall" and $walltype isnot "front">>
 			<<He>> <<print either("spanks","whacks","slaps","smacks","thwacks")>> your <<bottom>>.
-			<<violence 20>><<bruise bottom>><<hitstat>><<set $speechBeat to 1>>
+			<<violence 20>><<bruise bottom>><<hitstat>><<set $speechPlayerBeaten to 1>>
 			<<bodypart_admire_chance random_bottom>>
 		<<else>>
 			<<He>> slaps your <<breasts>>.
-			<<violence 20>><<bruise chest>><<hitstat>><<set $speechBeat to 1>><<playWithBreasts>>
+			<<violence 20>><<bruise chest>><<hitstat>><<set $speechPlayerBeaten to 1>><<playWithBreasts>>
 			<<bodypart_admire_chance breasts>>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 195>>
@@ -2468,33 +2468,33 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 			<<if $position is "wall" and $walltype isnot "front">>
 				<<if $player.penisExist>>
 					<<He>> scratches your helpless <<bottom>>.
-					<<violence 20>><<bruise bottom>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise bottom>><<hitstat>><<set $speechPlayerBeaten to 1>>
 				<<elseif $player.vaginaExist>>
 					<<He>> scratches your helpless <<bottom>>.
-					<<violence 20>><<bruise bottom>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise bottom>><<hitstat>><<set $speechPlayerBeaten to 1>>
 				<</if>>
 				<<bodypart_admire_chance random_bottom>>
 			<<else>>
 				<<rng>>
 				<<if $rng gte 81>>
 					<<He>> punches your nose.
-					<<violence 20>><<bruise face>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise face>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance forehead>>
 				<<elseif $rng gte 61>>
 					<<He>> punches the back of your neck.
-					<<violence 20>><<bruise neck>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise neck>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance back>>
 				<<elseif $rng gte 41>>
 					<<He>> punches your cheek.
-					<<violence 20>><<bruise face>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise face>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance random_cheek>>
 				<<elseif $rng gte 21>>
 					<<He>> punches your jaw.
-					<<violence 20>><<bruise face>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise face>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance breasts>>
 				<<else>>
 					<<He>> jabs the front of your neck.
-					<<violence 20>><<bruise neck>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise neck>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance random_shoulder>>
 				<</if>>
 			<</if>>
@@ -2502,33 +2502,33 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 			<<if $position is "wall" and $walltype isnot "front">>
 				<<if $player.penisExist and (!$player.vaginaExist or random(0,100) gte 50)>>
 					<<He>> jabs your gooch.
-					<<violence 20>><<bruise penis>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise penis>><<hitstat>><<set $speechPlayerBeaten to 1>>
 				<<elseif $player.vaginaExist>>
 					<<He>> jabs your gooch.
-					<<violence 20>><<bruise vagina>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise vagina>><<hitstat>><<set $speechPlayerBeaten to 1>>
 				<</if>>
 				<<bodypart_admire_chance pubic>>
 			<<else>>
 				<<rng>>
 				<<if $rng gte 81>>
 					<<He>> scratches the side of your face.
-					<<violence 20>><<bruise face>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise face>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance random_cheek>>
 				<<elseif $rng gte 61>>
 					<<He>> scratches the back of your neck.
-					<<violence 20>><<bruise neck>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise neck>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance back>>
 				<<elseif $rng gte 41>>
 					<<He>> scratches your cheek.
-					<<violence 20>><<bruise face>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise face>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance random_cheek>>
 				<<elseif $rng gte 21>>
 					<<He>> scratches your jaw.
-					<<violence 20>><<bruise face>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise face>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance random_shoulder>>
 				<<else>>
 					<<He>> scratches the front of your neck.
-					<<violence 20>><<bruise neck>><<hitstat>><<set $speechBeat to 1>>
+					<<violence 20>><<bruise neck>><<hitstat>><<set $speechPlayerBeaten to 1>>
 					<<bodypart_admire_chance back>>
 				<</if>>
 			<</if>>
@@ -3730,7 +3730,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 						<<else>>
 							<span class="red">It tastes strange.</span>
 						<</if>>
-						<<submission 30 _n>><<takeVirginity $NPCList[_n].fullDescription "oral">><<violence 1>><<set $speechMouthVirgin to 1>>
+						<<submission 30 _n>><<takeVirginity $NPCList[_n].fullDescription "oral">><<violence 1>><<set $speechOralVirgin to 1>>
 					<</if>>
 					<<oralstat>><<set $NPCList[_n].penis to "mouth">><<bruise face>><<raped>><<set $mouthstate to "penetrated">>
 				<<elseif $mouthsubmit>>
@@ -5222,7 +5222,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<</if>>
 		<<rng>>
 		<<if $NPCList[_n].mouth is "kiss">>
-			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechMouthVirgin isnot 1>>
+			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1>>
 				<<if $_preventKiss>>
 					<span class="red"><<He>> pulls <<his>> mouth away from yours and looks angry.</span>
 					<<set $enemytrust -= 200>><<set $enemyanger += 200>><<set $mouthuse to 0>><<set $NPCList[_n].mouth to 0>><<set $mouthstate to 0>>
@@ -5258,7 +5258,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<</if>>
 		<<rng>>
 		<<if $NPCList[_n].mouth is "kissimminent">>
-			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechMouthVirgin isnot 1 and !$_preventKiss>>
+			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1 and !$_preventKiss>>
 				<<if $rng gte 101>>
 					<span class="lblue"><<He>> pulls <<his>> mouth away from yours.</span>
 					<<set $NPCList[_n].mouth to 0>><<set $mouthuse to 0>><<set $mouthstate to 0>>
@@ -5304,7 +5304,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<</if>>
 		<<rng>>
 		<<if $NPCList[_n].mouth is "kissentrance">>
-			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechMouthVirgin isnot 1 and !$_preventKiss>>
+			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1 and !$_preventKiss>>
 				<<if $rng gte 101>>
 					<span class="lblue"><<He>> pulls <<his>> mouth away from yours.</span>
 					<<set $NPCList[_n].mouth to 0>><<set $mouthuse to 0>><<set $mouthstate to 0>>
@@ -5343,7 +5343,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<</if>>
 		<<rng>>
 		<<if $NPCList[_n].mouth is "chest">>
-			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechMouthVirgin isnot 1>>
+			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1>>
 				<<if $enemyanger gte 100>>
 					<<if $milk_amount gte 1>>
 						<<He>> sucks your <<nipple>>. <<Hes>> rough, biting and squeezing. Milk leaks from the tip.
@@ -5375,7 +5375,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<</if>>
 		<<rng>>
 		<<if $NPCList[_n].mouth is "chestimminent">>
-			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechMouthVirgin isnot 1>>
+			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1>>
 				<<if $lactating is 1 and $settings.breastFeedingEnabled and $milk_amount gte 1>>
 					<span class="pink"><<He>> takes your <<nipple>> into <<his>> mouth. You feel milk leak from your tip.</span>
 					<<breastfeed>>
@@ -5404,7 +5404,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<</if>>
 		<<rng>>
 		<<if $NPCList[_n].mouth is "chestentrance">>
-			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechMouthVirgin isnot 1>>
+			<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1>>
 				<<if $enemyanger gte 100>>
 					<<He>> bites your <<nipple>>, hard enough to hurt.
 					<<set $NPCList[_n].mouth to "chestimminent">><<set $cheststate to "chestimminent">>
@@ -5467,7 +5467,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 				<<else>>
 					<<He>> speaks. "It's so tight! This must be the first time your ass has been used like this. I've got plenty more work to do before you're properly broken in."
 				<</if>>
-			<<elseif $speechMouthVirgin is 1 and $NPCList[_n].penis is "mouth" and !_npc_speech>>
+			<<elseif $speechOralVirgin is 1 and $NPCList[_n].penis is "mouth" and !_npc_speech>>
 				<<if npcHasStrapon(_n)>>
 					<<if $enemyanger lte 60>>
 						<<He>> speaks. "Is this your first time giving head?"
@@ -5481,9 +5481,9 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 						<<He>> speaks. "Is this the first time you've tasted dick? You'll be a cum-addicted cock slave soon."
 					<</if>>
 				<</if>>
-			<<elseif $speechSpray is 1 and !_npc_speech>>
+			<<elseif $speechPepperSpray is 1 and !_npc_speech>>
 				<<sprayspeech>>
-			<<elseif $speechCum is 1 and $rng gte 61 and $speechorgasmrepeat lte 1 and $speechorgasmcount lte 6 and !_npc_speech>>
+			<<elseif $speechPlayerOrgasm is 1 and $rng gte 61 and $speechorgasmrepeat lte 1 and $speechorgasmcount lte 6 and !_npc_speech>>
 				<<cumspeech>>
 			<<elseif $rng gte 91 and !_npc_speech>>
 				<<if not $gloryhole>>
@@ -6479,10 +6479,10 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 			<<if $position is "wall" and $walltype isnot "front" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals">>
 				<<if $player.penisExist>>
 					<<He>> kicks your <<penis>>.
-					<<violence 20>><<hitstat>><<bruise penis>><<set $speechBeat to 1>>
+					<<violence 20>><<hitstat>><<bruise penis>><<set $speechPlayerBeaten to 1>>
 				<<elseif $player.vaginaExist>>
 					<<He>> kicks your <<pussy>>.
-					<<violence 20>><<hitstat>><<bruise vagina>><<set $speechBeat to 1>>
+					<<violence 20>><<hitstat>><<bruise vagina>><<set $speechPlayerBeaten to 1>>
 				<</if>>
 			<<elseif $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head" and $mouthuse is 0 and !$worn.face.type.includes("face_covering") and !$worn.face.type.includes("gag")>>
 				<<if $rng % 2 is 0 and $settings.facesitEnabled>>
@@ -6514,14 +6514,14 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<<if $position is "wall" and $walltype isnot "front">>
 			<<if $player.penisExist>>
 				<<He>> kicks your <<penis>>.
-				<<violence 20>><<hitstat>><<bruise penis>><<set $speechBeat to 1>>
+				<<violence 20>><<hitstat>><<bruise penis>><<set $speechPlayerBeaten to 1>>
 			<<elseif $player.vaginaExist>>
 				<<He>> kicks your <<pussy>>.
-				<<violence 20>><<hitstat>><<bruise vagina>><<set $speechBeat to 1>>
+				<<violence 20>><<hitstat>><<bruise vagina>><<set $speechPlayerBeaten to 1>>
 			<</if>>
 		<<else>>
 			<<He>> kicks you in the face.
-			<<violence 10>><<bruise face>><<set $speechBeat to 1>><<hitstat>>
+			<<violence 10>><<bruise face>><<set $speechPlayerBeaten to 1>><<hitstat>>
 		<</if>>
 	<</if>>
 <</widget>>

@@ -301,10 +301,10 @@
 	<<unset $nomask>>
 	<<unset $nomaskasked>>
 	<<set $askedtochoke to 0>>
-	<<unset $speechWheeze>>
-	<<unset $speechWheezeLewd>>
-	<<unset $speechWheezeAskChokeRough>>
-	<<unset $speechWheezeAction>>
+	<<unset $speechChokedWheeze>>
+	<<unset $speechChokedMoan>>
+	<<unset $speechChokedAlready>>
+	<<unset $speechChokedAction>>
 	<<set $speechorgasmweakcumcount to 0>>
 	<<set $speechorgasmnocumcount to 0>>
 	<<set $speechorgasmcount to 0>>
@@ -461,7 +461,7 @@
 	<<unset $speechHermShock>>
 	<<unset $speechHermDisappointed>>
 
-	<<unset $speechSexToy>>
+	<<unset $speechNoticeSexToy>>
 	<<unset $speechSexToyState>>
 
 	<<set $prop to []>>
@@ -728,9 +728,9 @@
 	<<set $trueconsensual to 0>>
 	<<unset $consensualGuaranteed>>
 
-	<<unset $speechCum>>
+	<<unset $speechPlayerOrgasm>>
 	<<set $speechorgasmcount to 0>>
-	<<unset $speechMilk>>
+	<<unset $speechLactate>>
 
 	<<set $npc_named to 0>>
 	<<unset $setupMidOrgasm>>
@@ -782,8 +782,8 @@
 	<<unset $speechAnus>>
 	<<unset $speechVaginaMouth>>
 	<<unset $speechVaginaVagina>>
-	<<unset $speechBeat>>
-	<<unset $speechHit>>
+	<<unset $speechPlayerBeaten>>
+	<<unset $speechPlayerHits>>
 	<<unset $speechTribEntrance>>
 	<<unset $speechFaceSit>>
 	<<unset $speechMouthOtherAnus>>
@@ -832,14 +832,14 @@
 	<<unset $speechVaginaEscape>>
 	<<unset $speechAnusEscape>>
 	<<unset $speechSteal>>
-	<<unset $speechNamedrop>>
+	<<unset $speechLINameDrop>>
 	<<unset $speechAdmired>>
 	<<unset $speechAskRough>>
 
-	<<unset $speechWheeze>>
-	<<unset $speechWheezeLewd>>
-	<<unset $speechWheezeAskChokeRough>>
-	<<unset $speechWheezeAction>>
+	<<unset $speechChokedWheeze>>
+	<<unset $speechChokedMoan>>
+	<<unset $speechChokedAlready>>
+	<<unset $speechChokedAction>>
 
 	<<unset $speechNPCPenisVirgin>>
 	<<unset $speechNPCVaginaVirgin>>
@@ -860,13 +860,13 @@
 		<<set $enemyarousal to 0>>
 	<</if>>
 
-	<<unset $speechCum>>
+	<<unset $speechPlayerOrgasm>>
 	<<set $speechorgasmrepeat to 0>>
-	<<unset $speechMilk>>
+	<<unset $speechLactate>>
 
-	<<unset $speechGenitals>>
-	<<unset $speechBreasts>>
-	<<unset $speechScream>>
+	<<unset $speechExposeGenitals>>
+	<<unset $speechExposeBreasts>>
+	<<unset $speechScreamForHelp>>
 	<<unset $speechApologise>>
 	<<unset $speechPlead>>
 	<<unset $speechMoan>>
@@ -874,13 +874,13 @@
 	<<unset $speechCoverFace>>
 	<<unset $speechCoverPenis>>
 	<<unset $speechCoverVagina>>
-	<<unset $speechApologiseNo>>
+	<<unset $speechApologiseAgain>>
 	<<unset $speechApologiseUnforgiving>>
 	<<unset $speechForgive>>
-	<<unset $speechSpray>>
+	<<unset $speechPepperSpray>>
 	<<unset $speechVaginaVirgin>>
 	<<unset $speechAnusVirgin>>
-	<<unset $speechMouthVirgin>>
+	<<unset $speechOralVirgin>>
 	<<unset $speechPenisVirgin>>
 	<<unset $speechKissVirgin>>
 	<<unset $speechTempleVirgin>>

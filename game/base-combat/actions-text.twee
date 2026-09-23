@@ -836,7 +836,7 @@
 		"You don't know any better. You're just a <<beasttype>>," you say. "I forgive you."
 	<<else>>
 		<<if _loveInterest isnot undefined>> 
-			<<set $speechNamedrop to $npc.includes(_loveInterest) ? 0 : 1>>
+			<<set $speechLINameDrop to $npc.includes(_loveInterest) ? 0 : 1>>
 			<<rng>>
 			<<speechPool "pc">>
 			<<switch _loveInterest>>
@@ -1059,8 +1059,8 @@
 		<</if>>
 	<<else>>
 		<<if _loveInterest isnot undefined and random(0, 100) lte 15>>
-			<<set $speechNamedrop to $npc.includes(_loveInterest) ? 0 : 1>>
-			<<if $speechNamedrop is 0>>
+			<<set $speechLINameDrop to $npc.includes(_loveInterest) ? 0 : 1>>
+			<<if $speechLINameDrop is 0>>
 				You speak.
 			<<else>>
 				You <<voice "plead">>.
@@ -1170,7 +1170,7 @@
 							"K...Kylar... help me..."
 						<</if>>
 					<</if>>
-					<<if $location is "school" and $speechNamedrop is 1 and Time.schoolDay>>
+					<<if $location is "school" and $speechLINameDrop is 1 and Time.schoolDay>>
 						<<status -1>><<lcool>>
 					<</if>>
 				<<case "Whitney">>
@@ -2470,8 +2470,8 @@
 			<</if>>
 
 		<<elseif _loveInterest isnot undefined and random(0,100) lte 15>>
-			<<set $speechNamedrop to $npc.includes(_loveInterest) ? 0 : 1>>
-			<<if $speechNamedrop is 0>>
+			<<set $speechLINameDrop to $npc.includes(_loveInterest) ? 0 : 1>>
+			<<if $speechLINameDrop is 0>>
 				You speak.
 			<<else>>
 				You <<voice "demand">>.
@@ -2586,7 +2586,7 @@
 							"Kylar will... hurt you for this...!"
 						<</if>>
 					<</if>>
-					<<if $location is "school" and $speechNamedrop is 1 and Time.schoolDay>>
+					<<if $location is "school" and $speechLINameDrop is 1 and Time.schoolDay>>
 						<<status -1>><<lcool>>
 					<</if>>
 

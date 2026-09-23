@@ -5,12 +5,12 @@
 		<<He>> smiles. "Your first time? I'll work extra hard to make it memorable."
 	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Alex">>
 		<<He>> smiles. "It's tight. I won't tell anyone you let me fuck your bottom."
-	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Alex">>
+	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Alex">>
 		<<He>> smiles. "You haven't used your mouth like this before, have you? Just keep your chompers away."
 	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Alex">>
 		<<He>> smiles. "Town <<girls>> are so cute."
-	<<elseif $speechNamedrop is 1>>
-		<<set $speechNamedrop to 0>>
+	<<elseif $speechLINameDrop is 1>>
+		<<set $speechLINameDrop to 0>>
 		<<if $alex_countdown is undefined and $farm_stage gte 7>>
 			<<switch _loveInterest>>
 				<<case "Black Wolf">>
@@ -28,8 +28,8 @@
 					"I think I had one too many," <<he>> says, holding <<his>> forehead.
 			<</switch>>
 		<</if>>
-	<<elseif $speechSexToy is 1>>
-		<<set $speechSexToy to 0>>
+	<<elseif $speechNoticeSexToy is 1>>
+		<<set $speechNoticeSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if C.npc.Alex.dom gte 30>>
 			<<print pickSpeechLine("Alex", 

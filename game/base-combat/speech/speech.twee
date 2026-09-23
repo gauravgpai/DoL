@@ -60,8 +60,8 @@
 			<<set $speechorgasmrepeat += 1>>
 		<</if>>
 	<<else>> <!-- gender appearance is female and either the player does not have a dick or the npc is not aware of it -->
-		<<if $speechMilk and $rng gte 71>>
-			<<switch $speechMilk>>
+		<<if $speechLactate and $rng gte 71>>
+			<<switch $speechLactate>>
 				<<case 1>>"<<pShes>> milking!"
 				<<case 2>>"Couldn't wait for me to put my mouth on it first?"
 				<<default>>"Holy shit, that was so much."
@@ -329,7 +329,7 @@
 			`"Both? I hope there's nothing else wrong with you."`,
 			`"Why do I never get anyone normal?"`,
 		][random(0,4)]>>
-	<<elseif ($speechSexToyState is "aroused" or $speechSexToy is 1) and random(0,2) isnot 0 and ($rightarm is "heldSexToy" or $leftarm is "heldSexToy")>>
+	<<elseif ($speechSexToyState is "aroused" or $speechNoticeSexToy is 1) and random(0,2) isnot 0 and ($rightarm is "heldSexToy" or $leftarm is "heldSexToy")>>
 		<<if $rightarm is "heldSexToy" and $leftarm is "heldSexToy">>
 			<<set $_sexToy to "sex toys">>
 		<<elseif $rightarm is "heldSexToy">>
@@ -393,7 +393,7 @@
 			`"I bet you're loving how fucking shocked I am. You won't be smiling when I'm through with you."`,
 			`"Put that shit away, you fucking slut."`,
 		][random(0,4)]>>
-	<<elseif $speechGenitals is 1>>
+	<<elseif $speechExposeGenitals is 1>>
 		/* ToDo: Strapon - check if any one this needs its own strapon text */
 		<<if $worn.genitals.type.includesAll("chastity", "hidden")>>
 			<<if $enemyanger lte 0>>
@@ -578,7 +578,7 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechBreasts is 1>>
+	<<elseif $speechExposeBreasts is 1>>
 		<<if $player.gender_appearance is "m">>
 			<<if $player.breastsize lte 0>>
 				<<He>> ?admires your newly-exposed <<breasts>>.
@@ -605,8 +605,8 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechScream is 1>>
-		<<set $speechScream to 0>>
+	<<elseif $speechScreamForHelp is 1>>
+		<<set $speechScreamForHelp to 0>>
 		<<He>> speaks.
 		<<print [
 			`"Shut your fucking mouth."`,
@@ -640,8 +640,8 @@
 			<</switch>>
 		<</if>>
 
-	<<elseif $speechWheeze is 1>>
-		<<set $speechWheeze to 0>>
+	<<elseif $speechChokedWheeze is 1>>
+		<<set $speechChokedWheeze to 0>>
 		<<if $enemyanger lte 20>>
 			<<if $rng lte 7>>
 				<<He>> speaks. "Just a little longer, baby."
@@ -698,8 +698,8 @@
 		<</if>>
 		<<ginsecurity "penis_big">><<insecurity "penis_big" 1>>
 
-	<<elseif $speechNamedrop is 1>>
-		<<set $speechNamedrop to 0>>
+	<<elseif $speechLINameDrop is 1>>
+		<<set $speechLINameDrop to 0>>
 		<<if _loveInterest is "Black Wolf">>
 			<<if $enemyanger lte 20>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -2547,7 +2547,7 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechBeat is 1>>
+	<<elseif $speechPlayerBeaten is 1>>
 		<<He>> speaks.
 		<<print [
 			`"That's the least you deserve, <<bitch>>!"`,
@@ -2562,7 +2562,7 @@
 			`"Afraid of me yet?"`,
 		][random(0,9)]>>
 
-	<<elseif $speechHit is 1>>
+	<<elseif $speechPlayerHits is 1>>
 		<<if $enemyanger lte 20>>
 			<<He>> is annoyed by your attack.
 			<<print [
@@ -3290,7 +3290,7 @@
 			][random(0,2)]>>
 		<</if>>
 
-	<<elseif $speechApologiseNo is 1>>
+	<<elseif $speechApologiseAgain is 1>>
 		<<He>> speaks.
 		<<if $enemyanger lte 20>>
 			<<print [
@@ -4816,7 +4816,7 @@
 		<<He>> grins. "Is this your first time? Lucky break!"
 	<<elseif $speechAnusVirgin gte 1>>
 		<<He>> grins. "First time taking it up this hole, huh? I'll show you how great it is!"
-	<<elseif $speechMouthVirgin gte 1>>
+	<<elseif $speechOralVirgin gte 1>>
 		<<He>> grins. "You've never used your mouth like this before, have you? I'll make it extra sweet, just for you."
 	<<elseif $speechKissVirgin is 1>>
 		<<He>> moans into your mouth. "I'll get you addicted to kissing. Or maybe you'll just be addicted to me."
@@ -4826,7 +4826,7 @@
 		<<He>> whines. "Oh, you were a virgin? Come on! I knew I should've used my dick."
 	<<elseif $speechPenisVirgin is 2>>
 		<<He>> whines. "Oh, you were a virgin? Come on! I knew I should've used my <<if $NPCList[0].vagina isnot "none">>pussy<<else>>ass<</if>>."
-	<<elseif $speechSpray is 1>>
+	<<elseif $speechPepperSpray is 1>>
 		<<He>> yelps.
 		<<if $speechSprayCyclePlant is 1>>
 			"Cut that out!"
@@ -4834,7 +4834,7 @@
 			<<set $speechSprayCyclePlant to 1>>
 			"Agh! What is that, attack pollen? Can humans do that?!"
 		<</if>>
-	<<elseif $speechCum is 1>>
+	<<elseif $speechPlayerOrgasm is 1>>
 		<<if $exposed gte 2 and $player.penisExist>>
 			<<if $semen_amount lte (($semen_volume / 24) * 6) or $orgasmcount gte 24 or $femaleclimax or _deniedOrgasm>>
 				<<He>> blinks. "Where's the, y'know... the cum? Is that it?"
@@ -4884,17 +4884,17 @@
 	<<elseif $alarm is 1 and isLoveInterest("Eden") and $location is "forest">>
 		<<He>> yelps. "What are you doing, shouting for the freak? Don't you know how dangerous <<nnpc_he "Eden">> is?!"
 		<<set $enemytrust -= 30>>
-	<<elseif $speechNamedrop is 1 and _loveInterest is "Eden" and $location is "forest">>
+	<<elseif $speechLINameDrop is 1 and _loveInterest is "Eden" and $location is "forest">>
 		<<He>> flinches at your words. "Oh shit, you know the <<nnpc_title "Eden">>? This is... dangerous."
 		<<set $enemytrust -= 20>>
-	<<elseif $speechNamedrop is 1 and _loveInterest is "Black Wolf" and $location is "forest">>
+	<<elseif $speechLINameDrop is 1 and _loveInterest is "Black Wolf" and $location is "forest">>
 		<<He>> grins. "The alpha won't even recognise you when I'm done with you!"
-	<<elseif $speechNamedrop is 1 and _loveInterest is "Alex" and $location is "moor">>
+	<<elseif $speechLINameDrop is 1 and _loveInterest is "Alex" and $location is "moor">>
 		<<He>> grins. "A farmer, huh? Maybe I'll cultivate you, cow<<girl>>."
-	<<elseif $speechNamedrop is 1 and _loveInterest is "Great Hawk" and $location is "moor">>
+	<<elseif $speechLINameDrop is 1 and _loveInterest is "Great Hawk" and $location is "moor">>
 		<<He>> flinches at your words. "Oh shit, you know the sky terror? This is... dangerous."
 		<<set $enemytrust -= 20>>
-	<<elseif $speechNamedrop is 1 and _loveInterest is "Gwylan">>
+	<<elseif $speechLINameDrop is 1 and _loveInterest is "Gwylan">>
 		<<His>> vegetation turns pale. "Th-the witch? You're <<nnpc_his "Gwylan">> charge? Shit."
 		<<set $enemytrust -= 20>>
 	<<elseif random(1,10) is 10 and $NPCList[_n].penis isnot "chest" and $NPCList[_n].location.genitals isnot "head" and $mouthstate is 0 and !$worn.face.type.includes("face_covering") and !$worn.face.type.includes("gag")>>

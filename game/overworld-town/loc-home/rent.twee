@@ -1185,26 +1185,26 @@ You trip a couple of times, prompting Bailey to drag you back to your feet and s
 	<<if $timer gte 1>>
 		<<switch $baileySpoke>>
 			<<case 2>>
-				<<if $speechPlead is 1 or $speechApologiseNo is 1 or $speechScream is 1 or $speechDemand is 1 or $speechApologiseUnforgiving is 1>>
+				<<if $speechPlead is 1 or $speechApologiseAgain is 1 or $speechScreamForHelp is 1 or $speechDemand is 1 or $speechApologiseUnforgiving is 1>>
 					"Save your breath," Bailey says. "If you really want to save <<nnpc_him "Robin">>, it's not too late to pay."
 				<<else>>
 					"I told you, all that time ago," Bailey says. "Get me my money... or I'll find a way to extract value from you."
 				<</if>>
 			<<case 1>>
-				<<if $speechPlead is 1 or $speechApologiseNo is 1 or $speechApologiseUnforgiving is 1>>
+				<<if $speechPlead is 1 or $speechApologiseAgain is 1 or $speechApologiseUnforgiving is 1>>
 					Bailey rolls <<his>> eyes. "If you'd paid me on time, maybe you wouldn't be crying your eyes out now."
 					<<set $baileySpoke++>>
-				<<elseif $speechScream is 1 or $speechDemand is 1>>
+				<<elseif $speechScreamForHelp is 1 or $speechDemand is 1>>
 					"You think you're going to convince me with shouting?" Bailey sneers.
 					<<set $baileySpoke++>>
 				<<else>>
 					"Don't know why you took this waif's debt in the first place if you weren't ready to pay it," Bailey sneers.
 				<</if>>
 			<<default>>
-				<<if $speechPlead is 1 or $speechApologiseNo is 1 or $speechApologiseUnforgiving is 1>>
+				<<if $speechPlead is 1 or $speechApologiseAgain is 1 or $speechApologiseUnforgiving is 1>>
 					Bailey scoffs at you. "Oh, now you're sorry? Now that there's consequences?"
 					<<set $baileySpoke++>>
-				<<elseif $speechScream is 1 or $speechDemand is 1>>
+				<<elseif $speechScreamForHelp is 1 or $speechDemand is 1>>
 					"Shut up," Bailey snaps at you. "You didn't pay the price, so <<nnpc_he "Robin">> will."
 					<<set $baileySpoke++>>
 				<<else>>

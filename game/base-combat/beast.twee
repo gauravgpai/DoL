@@ -2035,7 +2035,7 @@
 					<<if $worn.over_upper.open is 1>>
 						<<if $worn.over_upper.state_top is "chest">>
 							<<bHe>> tugs your $worn.over_lower.name, pulling down your $worn.over_upper.name and <span class="lewd">revealing your <<breasts>>.</span>
-							<<set $worn.over_upper.state_top to "midriff">><<set $worn.over_upper.exposed to 2>><<neutral 3>><<set $speechBreasts to 1>>
+							<<set $worn.over_upper.state_top to "midriff">><<set $worn.over_upper.exposed to 2>><<neutral 3>><<set $speechExposeBreasts to 1>>
 							<<if $worn.over_upper.state is "chest">>
 								<<set $worn.over_upper.state to "midriff">>
 							<</if>>
@@ -2061,7 +2061,7 @@
 								<<neutral 2>>
 							<<else>>
 								<span class="lewd"><<genitals>>.</span>
-								<<neutral 5>><<set $speechGenitals to 1>>
+								<<neutral 5>><<set $speechExposeGenitals to 1>>
 							<</if>>
 							<<set $worn.over_upper.state_top to "thighs">><<set $worn.over_upper.state to "thighs">><<set $worn.over_lower.vagina_exposed to 1>><<set $worn.over_lower.anus_exposed to 1>><<set $worn.over_lower.exposed to 2>>
 							<<if $worn.over_lower.state is "waist">>
@@ -2099,7 +2099,7 @@
 							$worn.under_lower.name.
 						<<else>>
 							<span class="lewd"><<genitals>>.</span>
-							<<neutral 5>><<set $speechGenitals to 1>>
+							<<neutral 5>><<set $speechExposeGenitals to 1>>
 						<</if>>
 						<<set $worn.over_lower.state to "thighs">><<set $worn.over_lower.vagina_exposed to 1>><<set $worn.over_lower.anus_exposed to 1>><<set $worn.over_lower.exposed to 2>>
 					<<elseif $worn.over_lower.state is "thighs">>
@@ -2142,7 +2142,7 @@
 					<<if $worn.upper.open is 1>>
 						<<if $worn.upper.state_top is "chest">>
 							<<bHe>> tugs your $worn.lower.name, pulling down your $worn.upper.name and <span class="lewd">revealing your <<breasts>>.</span>
-							<<set $worn.upper.state_top to "midriff">><<set $worn.upper.exposed to 2>><<neutral 3>><<set $speechBreasts to 1>>
+							<<set $worn.upper.state_top to "midriff">><<set $worn.upper.exposed to 2>><<neutral 3>><<set $speechExposeBreasts to 1>>
 							<<if $worn.upper.state is "chest">>
 								<<set $worn.upper.state to "midriff">>
 							<</if>>
@@ -2165,7 +2165,7 @@
 								<<neutral 2>>
 							<<else>>
 								<span class="lewd"><<genitals>>.</span>
-								<<neutral 5>><<set $speechGenitals to 1>>
+								<<neutral 5>><<set $speechExposeGenitals to 1>>
 							<</if>>
 							<<set $worn.upper.state_top to "thighs">><<set $worn.upper.state to "thighs">><<set $worn.lower.vagina_exposed to 1>><<set $worn.lower.anus_exposed to 1>><<set $worn.lower.exposed to 2>>
 							<<if $worn.lower.state is "waist">>
@@ -2202,7 +2202,7 @@
 							<<neutral 2>>
 						<<else>>
 							<span class="lewd"><<genitals>>.</span>
-							<<neutral 5>><<set $speechGenitals to 1>>
+							<<neutral 5>><<set $speechExposeGenitals to 1>>
 						<</if>>
 						<<set $worn.lower.state to "thighs">><<set $worn.lower.vagina_exposed to 1>><<set $worn.lower.anus_exposed to 1>><<set $worn.lower.exposed to 2>>
 					<<elseif $worn.lower.state is "thighs">>
@@ -2240,7 +2240,7 @@
 			<<if setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt is 1>>
 				<<if $worn.under_lower.state is "waist">>
 					<<bHe>> pulls your $worn.under_lower.name down your thighs, <span class="lewd">revealing your <<genitals>>.</span>
-					<<set $worn.under_lower.state to "thighs">><<neutral 5>><<set $worn.under_lower.vagina_exposed to 1>><<set $worn.under_lower.anus_exposed to 1>><<set $worn.under_lower.exposed to 1>><<set $speechGenitals to 1>>
+					<<set $worn.under_lower.state to "thighs">><<neutral 5>><<set $worn.under_lower.vagina_exposed to 1>><<set $worn.under_lower.anus_exposed to 1>><<set $worn.under_lower.exposed to 1>><<set $speechExposeGenitals to 1>>
 				<<elseif $worn.under_lower.state is "thighs">>
 					<<bHe>> pulls your $worn.under_lower.name down to your knees.
 					<<set $worn.under_lower.state to "knees">><<neutral 1>>
@@ -2254,7 +2254,7 @@
 			<<elseif $worn.lower.state isnot "waist">>
 				<<if $worn.under_lower.state is "waist">>
 					<<bHe>> pulls your $worn.under_lower.name down your thighs, <span class="lewd">revealing your <<genitals>>.</span>
-					<<set $worn.under_lower.state to "thighs">><<neutral 5>><<set $worn.under_lower.vagina_exposed to 1>><<set $worn.under_lower.anus_exposed to 1>><<set $worn.under_lower.exposed to 1>><<set $speechGenitals to 1>>
+					<<set $worn.under_lower.state to "thighs">><<neutral 5>><<set $worn.under_lower.vagina_exposed to 1>><<set $worn.under_lower.anus_exposed to 1>><<set $worn.under_lower.exposed to 1>><<set $speechExposeGenitals to 1>>
 				<<elseif $worn.under_lower.state is "thighs">>
 					<<bHe>> pulls your $worn.under_lower.name down to your knees.
 					<<set $worn.under_lower.state to "knees">><<neutral 1>>

@@ -5,12 +5,12 @@
 		<<He>> smirks. "Far from satisfactory. Come see me again for further improvement."
 	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Leighton">>
 		<<He>> smirks. "You'll need plenty of training."
-	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Leighton">>
+	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Leighton">>
 		<<He>> smirks. "You lack skill... For now."
 	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Leighton">>
 		<<He>> smirks. "Not terrible for a first time."
-	<<elseif $speechNamedrop is 1>>
-		<<set $speechNamedrop to 0>>
+	<<elseif $speechLINameDrop is 1>>
+		<<set $speechLINameDrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Robin">>
 				<<He>> smirks. "Another student? Perhaps I should invite <<nnpc_him "Robin">> to my office."
@@ -29,8 +29,8 @@
 			<<default>>
 				<<He>> smirks. "I'm not familiar. This is a private matter, anyway."
 		<</switch>>
-	<<elseif $speechSexToy is 1>>
-		<<set $speechSexToy to 0>>
+	<<elseif $speechNoticeSexToy is 1>>
+		<<set $speechNoticeSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<He>> looks at your $_sexToy and smirks. "I can teach you a thing or two with that."
 	<<else>>

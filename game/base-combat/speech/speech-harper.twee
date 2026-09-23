@@ -11,12 +11,12 @@
 		<<else>>
 			<<He>> smiles. "You're overdue for a prostate examination. Please, try to relax."
 		<</if>>
-	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Harper">>
+	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Harper">>
 		<<He>> smiles. "Say 'Ahh'..."
 	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Harper">>
 		<<He>> smiles. "How's my bedside manner?"
-	<<elseif $speechNamedrop is 1>>
-		<<set $speechNamedrop to 0>>
+	<<elseif $speechLINameDrop is 1>>
+		<<set $speechLINameDrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Gwylan">>
 				<<He>> speaks. "Interesting. You've a very healthy imagination, to give your hallucination such a name."

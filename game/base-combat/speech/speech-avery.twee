@@ -66,7 +66,7 @@
 		<<else>>
 			<<He>> sneers. "Did you really think any part of my investment was off-limits?"
 		<</if>>
-	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Avery">>
+	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Avery">>
 		<<if $consensual>>
 			<<He>> laughs. "Have you never done this before? Don't worry. I'll teach you."
 		<<else>>
@@ -101,7 +101,7 @@
 	<<elseif $speechHermAroused is 1>>
 		"My, what an exquisite rarity you turned out to be..."
 	/* PC wears a chastity device */
-	<<elseif $speechGenitals is 1 and playerChastity()>>
+	<<elseif $speechExposeGenitals is 1 and playerChastity()>>
 		<<if !$averySeen.includes("chastity")>> /* Avery hasn't seen the chastity device yet */
 			<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
 				<<He>> looks surprised when <<he>> notices your <<printChastity>>, but the surprise soon turns to irritation. "What<<if C.npc.Avery.rage gte 60>> the fuck<</if>> is this?" <<He>> gives it a frustrated yank. <<arousal 50>> <<garousal>>
@@ -118,11 +118,11 @@
 		<<else>>
 			"I see you still have this <<printChastity>>," <<he>> says, regarding it with distaste. "You really should have it removed."
 		<</if>>
-	<<elseif $speechGenitals is 1 and !playerChastity() and $averySeen.includes("chastity")>>/* PC removed the device */
+	<<elseif $speechExposeGenitals is 1 and !playerChastity() and $averySeen.includes("chastity")>>/* PC removed the device */
 		<<He>> looks surprised when <<he>> notices your chastity device gone. "I see you finally had that<<if C.npc.Avery.rage gte 60>> bloody<</if>> thing removed. Good <<girl>>," <<he>> says with a <<= C.npc.Avery.rage gte 20 ? `smirk` : `smile`>>.
 		<<npcincr Avery rage -5>><<larage>>
 		<<set $averySeen.delete("chastity")>>
-	<<elseif $speechGenitals is 1 and ($player.vaginaExist or (!playerHasStrapon() and $player.penisExist))>>
+	<<elseif $speechExposeGenitals is 1 and ($player.vaginaExist or (!playerHasStrapon() and $player.penisExist))>>
 		<<set _usesPenis to !playerHasStrapon() and $player.penisExist and (!$player.vaginaExist or random(0,1))>>
 		<<set _aroused to _usesPenis ? $arousal gte 6000 : $vaginaWetness gte 75>>
 		<<if _aroused>>
@@ -150,7 +150,7 @@
 			<<He>> looks at your pregnant belly. "I do hope you'll remain discreet, <<pcpetname "Avery">>."
 		<</if>>
 	/* Breasts exposed  */
-	<<elseif $speechBreasts is 1>>
+	<<elseif $speechExposeBreasts is 1>>
 		<<if $player.breastsize lte 0>>
 			"It's really quite cute how bare you are," <<he>> chuckles. "Do those tight little buds ache under my gaze, <<pcpetname "Avery">>?"
 		<<elseif $player.breastsize lte 1>>
@@ -180,7 +180,7 @@
 			`"A bit excessive, isn't it?" <<he>> licks <<his>> lips. "Don't worry, I've always preferred the grander things in life."`
 		)>>
 	/* Avery hits chastity device  */
-	<<elseif $speechScream is 1>>
+	<<elseif $speechScreamForHelp is 1>>
 		<<if C.npc.Avery.rage gte 60 or $enemyanger gt 100>>
 			/* Avery is either infuriated by you or furious in combat */
 			<<He>> seethes. "Keep shrieking and I'll give you something to actually scream about!"
@@ -191,8 +191,8 @@
 			<<He>> scowls. "Quiet down before you make this ten times worse for yourself."
 		<</if>>
 	/* Reacting to PC speaking while choked */
-	<<elseif $speechWheeze is 1>>
-		<<switch $speechWheezeAction>>
+	<<elseif $speechChokedWheeze is 1>>
+		<<switch $speechChokedAction>>
 			<<case "plead">>
 				<<if C.npc.Avery.rage gte 60>>
 					"This punishment was a long time coming, <<girl>>," <<he>> mutters low and dangerous. "It'd be easier for you if you just lie there and take it."
@@ -229,8 +229,8 @@
 				<</if>>
 		<</switch>>
 	/* Same but lewder */
-	<<elseif $speechWheezeLewd is 1 or $speechWheezeAskChokeRough is 1>>
-		<<switch $speechWheezeAction>>
+	<<elseif $speechChokedMoan is 1 or $speechChokedAlready is 1>>
+		<<switch $speechChokedAction>>
 			<<case "moan">>
 				<<if C.npc.Avery.rage gte 60>>
 					"I wonder if you can keep talking if I squeeze any harder..." <<he>> muses. You feel <<his>> pulse quicken through the fingers around your throat.
@@ -246,8 +246,8 @@
 					"Words aren't always important." <<His>> smirk is sadistic. "That pretty little moan of yours was all I needed to hear to know you're enjoying this..."
 				<</if>>
 		<</switch>>
-	<<elseif $speechNamedrop is 1>>
-		<<set $speechNamedrop to 0>>
+	<<elseif $speechLINameDrop is 1>>
+		<<set $speechLINameDrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Robin">>
 				<<if !$avery_mansion>>
@@ -276,8 +276,8 @@
 			<<default>>
 				<<He>> wordlessly eyes you with contempt.
 		<</switch>>
-	<<elseif $speechSexToy is 1>>
-		<<set $speechSexToy to 0>>
+	<<elseif $speechNoticeSexToy is 1>>
+		<<set $speechNoticeSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if C.npc.Avery.rage lte 60>>
 			<<He>> looks at your $_sexToy and speaks. "<<print pickSpeechLine("Avery", 
@@ -354,7 +354,7 @@
 			"And what do you think you're forgiving me for?" <<He>> scoffs. "You're only getting what you earned yourself, you little <<bastard>>."
 		<</if>>
 	/* PC apologizing more than once */
-	<<elseif $speechApologiseNo is 1>>
+	<<elseif $speechApologiseAgain is 1>>
 		<<if $enemyanger lte 20>>
 			<<print pickSpeechLine("Avery", 
 				`"Look at you, grovelling so eagerly," <<he>> coos. "Hush now, I already forgave you."`,
@@ -430,10 +430,10 @@
 			"You want more?" <<He>> <<laughs>>. "I can give you more."
 		<</if>>
 		<<set $averyUniqueComments.pushUnique("asked_rough")>>
-	<<elseif $speechSpray is 1>>
+	<<elseif $speechPepperSpray is 1>>
 		<<He>> jerks <<his>> head back, crying out in pain. "<<= either("What the fuck!?","Bloody hell!")>>" The pain only seems to make <<him>> angrier.
 	/* If PC orgasms */
-	<<elseif $speechCum is 1>>
+	<<elseif $speechPlayerOrgasm is 1>>
 		<<if $consensual>>
 			<<if $orgasmcount gte 2>>
 				<<print pickSpeechLine("Avery", 
@@ -464,13 +464,13 @@
 			"Have nothing else to give?" <<He>> seems smug. "<<= C.npc.Avery.rage gte 40 ? "You're such a <<slut>>" : "How adorable">>."
 		<</if>>
 
-	<<elseif $speechMilk is 1>>
+	<<elseif $speechLactate is 1>>
 		<<if C.npc.Avery.rage gte 20>>
 			"Look at you spilling over," <<he>> smirks<<if _avery.lefthand is 0 or _avery.righthand is 0>>, dabbing a thumb over your nipple and licking it clean<</if>>. "A shame your manners aren't half as sweet as this."
 		<<else>>
 			"A little extra treat for me?" <<he>> smiles<<if _avery.lefthand is 0 or _avery.righthand is 0>>, dabbing a thumb over your nipple and licking it clean<</if>>. "How delightfully sweet, <<pcpetname "Avery">>."
 		<</if>>
-	<<elseif $speechMilk is 2>>
+	<<elseif $speechLactate is 2>>
 		<<if C.npc.Avery.rage gte 20>>
 			"My, my. What a mess," <<he>> sneers playfully. "Shall I lend a hand—or rather, a mouth—to help you keep things tidy, <<pcpetname "Avery">>?"
 		<<else>>
@@ -498,7 +498,7 @@
 		<<else>>
 			<<He>> frowns. "If you needed money, you could have simply asked. You don't pick my pockets."
 		<</if>>
-	<<elseif $speechBeat is 1>>
+	<<elseif $speechPlayerBeaten is 1>>
 		<<if $masochism_level gte 1>>
 			<<print pickSpeechLine("Avery", 
 				`"Did you act out on purpose just to force my hand?" <<he>> accuses, eyes narrowing.`,
@@ -526,7 +526,7 @@
 				`"I will remind you of who holds the authority between us as many times as necessary."`,
 				)>>
 		<</if>>
-	<<elseif $speechHit is 1>>
+	<<elseif $speechPlayerHits is 1>>
 		<<if $avery_mansion>>
 			<<print pickSpeechLine("Avery", 
 				`"Did your gutter upbringing teach you to strike anyone who tries to provide for you?"`,

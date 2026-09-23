@@ -91,18 +91,18 @@
 	<</if>>
 
 	<<if $robinmist>>
-		<<if $speechHit is 1>>
+		<<if $speechPlayerHits is 1>>
 			<<print pickSpeechLine("Robin", 
 				`<<He>> flinches as you strike. "Ugh!"`,
 				`<<He>> recoils as you hit <<him>>.`
 			)>>
-		<<elseif $speechScream is 1>>
+		<<elseif $speechScreamForHelp is 1>>
 			<<print pickSpeechLine("Robin", 
 				`It goes over <<his>> head.`,
 				`<<He>> doesn't react.`,
 				`Robin tries to react to your screams, but fails.`
 			)>>
-		<<elseif $speechSpray is 1>>
+		<<elseif $speechPepperSpray is 1>>
 			"Ouch!" <<He>> recoils with <<his>> hands over eyes. <<stress 6>><<gstress>>
 		<<else>>
 			<br><br>
@@ -149,9 +149,9 @@
 		<<He>> gasps. "You saved yourself for me. I don't deserve something so special. Thank you." Tears roll down <<his>> cheeks.
 	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Robin">>
 		<<He>> gasps. "This is so naughty!"
-	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Robin">>
+	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Robin">>
 		<<He>> gasps. "You're making me feel funny down there."
-	<<elseif $speechBreasts is 1>>
+	<<elseif $speechExposeBreasts is 1>>
 		<<if $player.breastsize gte 5 and !$robinSeen.includes("breastsBig")>>
 			<<set $robinSeen.pushUnique("breastsBig")>>
 			<<His>> eyes widen in surprise. "I didn't expect them to be so big!"
@@ -183,11 +183,11 @@
 	<<elseif _robinMemory>>
 		<<set $weekly.robinMemory to true>>
 		<<speechSay>>
-	<<elseif $speechNamedrop is 1>>
-		<<set $speechNamedrop to 0>>
+	<<elseif $speechLINameDrop is 1>>
+		<<set $speechLINameDrop to 0>>
 		<<He>> speaks. "So you're a cheater in more ways than one. (This line is a placeholder and should be unobtainable.)"
-	<<elseif $speechSexToy is 1>>
-		<<set $speechSexToy to 0>>
+	<<elseif $speechNoticeSexToy is 1>>
+		<<set $speechNoticeSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if C.npc.Robin.dom gte 70>>
 			<<print pickSpeechLine("Robin", 
@@ -205,7 +205,7 @@
 				`<<He>> looks at your $_sexToy and giggles. "This is so dirty... keep going."`
 			)>>
 		<</if>>
-	<<elseif $speechWheeze is 1>>
+	<<elseif $speechChokedWheeze is 1>>
 		<<if C.npc.Robin.dom gte 70>>
 			<<print pickSpeechLine("Robin", 
 				`<<He>> smiles. "Is this too much? But you sound so lovely!"`,
@@ -248,7 +248,7 @@
 				"It's okay! I'm not that mad." <<He>> smiles.
 			<</if>>
 		<</if>>
-	<<elseif $speechApologiseNo is 1>>
+	<<elseif $speechApologiseAgain is 1>>
 		<<if C.npc.Robin.dom gte 70>>
 			<<if $panicviolenceRecent>>
 				"Don't worry, I can handle this," <<he>> reassures you.

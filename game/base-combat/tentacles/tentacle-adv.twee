@@ -211,7 +211,7 @@
 				<</switch>>
 				<<takeVirginity `$abomination is 1 ? $NPCList[0].fullDescription + "'s " + _tentacle.fullDesc : _tentacle.fullDesc` "oral">><<violence 5>>
 				<<if $abomination is 1 and $NPCList[0].type is "plant">>
-					<<set $speechMouthVirgin to 2>>
+					<<set $speechOralVirgin to 2>>
 				<</if>>
 			<<else>>
 				<<switch _tentacle.size>>
@@ -1552,7 +1552,7 @@
 			<<set $rightaction to 0>><<set $rightactiondefault to "righthittentacle">>
 		<</if>>
 		<<defiance `2 * _multi`>>
-		<<set $speechHit to 1 * _multi>><<set $attackstat += 1 * _multi>>
+		<<set $speechPlayerHits to 1 * _multi>><<set $attackstat += 1 * _multi>>
 		<<if $rng lte (currentSkillValue('physique') / 200)>>
 			<span class="green">It trembles before your strength.</span>
 			<<set _tentacle.tentaclehealth -= 1 * _multi>><<tentacle_record "damage" 1 * _multi>>
@@ -1940,7 +1940,7 @@
 	<<if $feetaction is "feethit" and $feetactionTarget is _tentacle.id>>
 		<<set $feetaction to 0>><<set $feetactiondefault to "feethit">>
 		You kick _the _tentacle.fullDesc and it reels away from you.
-		<<defiance 2>><<set $speechHit to 1>><<tentacleadvdisable _tentacle>><<set $attackstat += 1>>
+		<<defiance 2>><<set $speechPlayerHits to 1>><<tentacleadvdisable _tentacle>><<set $attackstat += 1>>
 		<<set _tentacle.tentaclehealth -= 1>><<tentacle_record "damage" 1>>
 		<<if $rng lte (currentSkillValue('physique') / 200)>>
 			<span class="green">It trembles before your strength.</span>

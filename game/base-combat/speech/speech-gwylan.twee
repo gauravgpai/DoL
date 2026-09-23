@@ -68,7 +68,7 @@
 		"I'll remember this gift you've given me."
 	<<elseif $speechAnusVirgin is 1>>
 		"You're an adventurous one. Thank you for trusting me."
-	<<elseif $speechMouthVirgin is 1>>
+	<<elseif $speechOralVirgin is 1>>
 		"Shhh, you're doing great. Relax your jaw."
 	<<elseif $speechNPCKissVirgin is 1>>
 		<<He>> gazes at you lovingly. "Look at how far we've come, now I'm the one eager to kiss." <<He>> giggles.
@@ -80,10 +80,10 @@
 		<</if>>
 	<<elseif $speechCrossdressAroused is 1>>
 		<<He>> thinks for a moment. "Unexpected genitalia, but not unwelcome. I'm nothing if not versatile."
-	<<elseif $speechSpray is 1>>
+	<<elseif $speechPepperSpray is 1>>
 		<<He>> covers <<his>> eyes. "Bweh!"
-	<<elseif $speechNamedrop is 1>>
-		<<set $speechNamedrop to 0>>
+	<<elseif $speechLINameDrop is 1>>
+		<<set $speechLINameDrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Black Wolf" "Great Hawk">>
 				<<He>> giggles. "Hush, I know well the companionship of animals."
@@ -112,15 +112,15 @@
 					<<He>> giggles. "Shhh. No need to invoke more names. It's just us."
 				<</if>>
 		<</switch>>
-	<<elseif $speechSexToy is 1>>
-		<<set $speechSexToy to 0>>
+	<<elseif $speechNoticeSexToy is 1>>
+		<<set $speechNoticeSexToy to 0>>
 		<<set _sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if $location is "forest_shop">>
 			<<He>> looks at your <<print _sexToy>> and smiles. "I'm sure I have something laying around too." <<He>> reaches off to the side, and <<his>> hands find a ?gwylanItem. <<He>> seems to think about it for a moment, before tossing it back into the gloom.
 		<<else>>
 			<<He>> looks at your <<print _sexToy>> and smiles. "Someone came with a plan. Think you'll cum with a plan, too?"
 		<</if>>
-	<<elseif $speechCum is 1>>
+	<<elseif $speechPlayerOrgasm is 1>>
 		<<if _deniedOrgasm and !$gwylanUniqueComments.includes("ear_slime") and $consensual is 1>>
 			<<set $gwylanUniqueComments.pushUnique("ear_slime")>>
 			<<if $gwylanSeen.includes("hypnosis_silence")>>
@@ -203,10 +203,10 @@
 				<<default>> <<He>> whispers. "<<pcPetname 'Gwylan' 'good'>>, let it all out for me."
 			<</switch>>
 		<</if>>
-	<<elseif $speechGenitals is 1 and $worn.genitals.type.includesAll("chastity", "hidden") and !$gwylanUniqueComments.includes("chastity")>>
+	<<elseif $speechExposeGenitals is 1 and $worn.genitals.type.includesAll("chastity", "hidden") and !$gwylanUniqueComments.includes("chastity")>>
 		<<He>> grumbles in irritation upon seeing your <<printChastity>>.
 		<<set $gwylanUniqueComments.pushUnique("chastity")>>
-	<<elseif $speechGenitals is 1 and !playerChastity() and $gwylan.request.event is "chastity">>
+	<<elseif $speechExposeGenitals is 1 and !playerChastity() and $gwylan.request.event is "chastity">>
 		<<He>> smiles in satisfaction upon seeing your <<genitals>> exposed. "Excellent. No more obstructions." <<He>> pats you on the head. "<<pcPetname 'Gwylan' 'good'>>." <<trauma -1>><<ltrauma>>
 		<<if $gwylan.request.command>>
 			<<gwylanRequestEnd "silent">>
@@ -229,7 +229,7 @@
 		<</if>>
 	<<elseif $speechApologise is 1>>
 		<<He>> giggles. "Aww, it's hard for me to stay mad at you when you look at me like that."
-	<<elseif $speechApologiseNo is 1>>
+	<<elseif $speechApologiseAgain is 1>>
 		<<He>> giggles. "Good. Beg more."
 	<<elseif $speechApologiseUnforgiving is 1>>
 		<<He>> scowls. "It will take more than an apology, <<pcpetname 'Gwylan'>>."
@@ -249,9 +249,9 @@
 	<<elseif $speechPregnant is 1 and $settings.pregnancySpeechEnabled and !$gwylanUniqueComments.includes("pregnant")>>
 		<<set $gwylanUniqueComments.pushUnique("pregnant")>>
 		<<He>> giggles. "What a lovely blessing. It must be nice."
-	<<elseif $speechScream is 1>>
+	<<elseif $speechScreamForHelp is 1>>
 		<<He>> giggles. "Be silent, <<pcpetname 'Gwylan'>>. There's no reason to scream."
-	<<elseif $speechWheeze is 1>>
+	<<elseif $speechChokedWheeze is 1>>
 		<<He>> giggles. "Shhhh. Don't try to speak."
 	<<elseif $speechPenisBig is 1 and !$gwylanUniqueComments.includes("big_pp")>>
 		<<set $gwylanUniqueComments.pushUnique("big_pp")>>
@@ -270,7 +270,7 @@
 		<</if>>
 	<<elseif $speechAskRough is 1>>
 		<<He>> giggles. "How can I say no? I'll make sure the pain is sweet."
-	<<elseif $speechBeat is 1>>
+	<<elseif $speechPlayerBeaten is 1>>
 		<<print pickSpeechLine("Gwylan", 
 			`<<He>> frowns. "Stop resisting me, <<pcpetname 'Gwylan' 'naughty'>>."`,
 			`<<He>> frowns. "Just submit, and the pain will all go away."`,
@@ -309,7 +309,7 @@
 		<<He>> giggles. "Hold that brave face, dear. I want to remember it."
 	<<elseif $speechForgive is 1>>
 		<<He>> frowns, and goes silent for a moment. "Do I deserve your forgiveness?"
-	<<elseif $speechHit is 1>>
+	<<elseif $speechPlayerHits is 1>>
 		<<if $rng gte 100>>
 			<<He>> recoils as you strike <<him>>. "Bweh!"
 		<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 4>>

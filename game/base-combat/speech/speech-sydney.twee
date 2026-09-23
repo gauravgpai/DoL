@@ -49,7 +49,7 @@
 				<<He>> gasps. "Are... are you sure I'm still pure...? It feels... too good..." <<He>> holds on to you tightly.
 			<</if>>
 		<</if>>
-	<<elseif $speechMouthVirgin is 1>>
+	<<elseif $speechOralVirgin is 1>>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<He>> moans and places a hand on your head. "This is your first time doing this, isn't it? You're doing great."
 		<<else>>
@@ -77,8 +77,8 @@
 		<<else>>
 			<<He>> gasps. "You're... a <<pcSex>>? Th-that's okay! I don't think of you any differently!"
 		<</if>>
-	<<elseif $speechNamedrop is 1 and $sydneyromance is 1>>
-		<<set $speechNamedrop to 0>>
+	<<elseif $speechLINameDrop is 1 and $sydneyromance is 1>>
+		<<set $speechLINameDrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Black Wolf" "Great Hawk">>
 				<<He>> baulks. "An... animal? What?"
@@ -90,8 +90,8 @@
 				<<He>> freezes. "Wh... who? Who is it?!"
 		<</switch>>
 		<<npcincr Sydney love -10>><<llllove>>
-	<<elseif $speechSexToy is 1>>
-		<<set $speechSexToy to 0>>
+	<<elseif $speechNoticeSexToy is 1>>
+		<<set $speechNoticeSexToy to 0>>
 		<<set _sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<He>> looks at your <<print _sexToy>> and grins. "<<print pickSpeechLine("Sydney", "Oh, I'd like nothing more than to test that out with you.","You got that on a discount, right?")>>"
@@ -100,7 +100,7 @@
 		<<else>>
 			<<He>> looks at your <<print _sexToy>> and blushes. "This feels wrong, but I don't want to stop."
 		<</if>>
-	<<elseif $speechCum is 1>>
+	<<elseif $speechPlayerOrgasm is 1>>
 		<<if $speechSpank is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
@@ -125,7 +125,7 @@
 			<</switch>>
 		<</if>>
 		<<set $sydneySeen.pushUnique("player climax")>>
-	<<elseif $speechGenitals is 1 and playerChastity() and !$sydneySeen.includes("chastity")>>
+	<<elseif $speechExposeGenitals is 1 and playerChastity() and !$sydneySeen.includes("chastity")>>
 		<<if $worn.genitals.name is "chastity parasite">>
 			<!-- +corruption/-purity but never +lust -->
 			<<His>> eyebrows raise in surprise upon seeing your <<printChastity>>. <<set _lustincrdisplay to 1>><<set _lustincr to 1>><<npcincr Sydney purity -2>><<lspurity>>
@@ -203,7 +203,7 @@
 			<<case "corrupt" "corruptLust">>
 				<<He>> speaks. "I know how you can make it up to me."
 		<</switch>>
-	<<elseif $speechApologiseNo is 1>>
+	<<elseif $speechApologiseAgain is 1>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
 				<<He>> looks confused. "You keep saying you're sorry, are you okay? We can stop if you want."
@@ -248,7 +248,7 @@
 					)>>
 				<</if>>
 		<</switch>>
-	<<elseif $speechHit is 1>>
+	<<elseif $speechPlayerHits is 1>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust">>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>

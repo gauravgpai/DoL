@@ -493,7 +493,7 @@
 
 		<<if $leftaction is "lefthit" and $rightaction is "righthit" and $lefttarget is $righttarget>>
 			<<set $leftaction to 0>><<set $rightaction to 0>><<set $leftactiondefault to "lefthit">>
-			<<set $rightactiondefault to "righthit">><<actionshit both>><<defiance 5 $lefttarget>><<set $speechHit to 1>><<set $attackstat += 2>>
+			<<set $rightactiondefault to "righthit">><<actionshit both>><<defiance 5 $lefttarget>><<set $speechPlayerHits to 1>><<set $attackstat += 2>>
 		<</if>>
 
 		<<if $leftaction is "lefthit">>
@@ -509,10 +509,10 @@
 					<<gwillpower>><<willpower 1>>
 				<<else>>
 					The slime tries to prevent you from hitting the <<if $enemytype is "beast">><<beasttype>><<else>><<personselect $lefttarget>><<person>><</if>>, <span class="green">but you make contact regardless.</span>
-					<<actionshit $lefttarget>><<defiance 2 $lefttarget>><<set $speechHit to 1>><<set $attackstat += 1>>
+					<<actionshit $lefttarget>><<defiance 2 $lefttarget>><<set $speechPlayerHits to 1>><<set $attackstat += 1>>
 				<</if>>
 			<<else>>
-				<<actionshit $lefttarget>><<defiance 2 $lefttarget>><<set $speechHit to 1>><<set $attackstat += 1>>
+				<<actionshit $lefttarget>><<defiance 2 $lefttarget>><<set $speechPlayerHits to 1>><<set $attackstat += 1>>
 			<</if>>
 		<</if>>
 
@@ -529,10 +529,10 @@
 					<<gwillpower>><<willpower 1>>
 				<<else>>
 					The slime tries to prevent you from hitting the <<if $enemytype is "beast">><<beasttype>><<else>><<personselect $righttarget>><<person>><</if>>, <span class="green">but you make contact regardless.</span>
-					<<actionshit $righttarget>><<defiance 2 $righttarget>><<set $speechHit to 1>><<set $attackstat += 1>>
+					<<actionshit $righttarget>><<defiance 2 $righttarget>><<set $speechPlayerHits to 1>><<set $attackstat += 1>>
 				<</if>>
 			<<else>>
-				<<actionshit $righttarget>><<set $speechHit to 1>><<defiance 2 $righttarget>><<set $attackstat += 1>>
+				<<actionshit $righttarget>><<set $speechPlayerHits to 1>><<defiance 2 $righttarget>><<set $attackstat += 1>>
 			<</if>>
 		<</if>>
 
@@ -3298,7 +3298,7 @@
 			<<set $mouthaction to 0>><<set _sound to 1>>
 			<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $settings.asphyxiaLevel gte 2>>
 				<<wheeze "plead with <<him>>">>
-				<<set $speechWheezeAction to "plead">>
+				<<set $speechChokedAction to "plead">>
 			<<else>>
 				<<set $mouthactiondefault to "plead">>
 				<<actionsplead>><<set $speechPlead to 1>>
@@ -3313,7 +3313,7 @@
 			<<set $mouthaction to 0>><<set _sound to 1>>
 			<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $settings.asphyxiaLevel gte 2>>
 				<<wheeze "say something sexy" 2>><<set $speechMoan to 1>>
-				<<set $speechWheezeAction to "moan">>
+				<<set $speechChokedAction to "moan">>
 			<<else>>
 				<<set $mouthactiondefault to "moan">>
 				<<actionsmoan>><<set $speechMoan to 1>>
@@ -3328,7 +3328,7 @@
 			<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 			<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $settings.asphyxiaLevel gte 2>>
 				<<wheeze "ask to choke you" 1>>
-				<<set $speechWheezeAction to "askChoke">>
+				<<set $speechChokedAction to "askChoke">>
 			<<else>>
 				<<set $askedtochoke to 1>>
 				<<set $mouthactiondefault to 0>>
@@ -3344,7 +3344,7 @@
 			<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 			<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $settings.asphyxiaLevel gte 2>>
 				<<wheeze "ask to be rougher" 2>>
-				<<set $speechWheezeAction to "askRough">>
+				<<set $speechChokedAction to "askRough">>
 			<<else>>
 				<<askrough>>
 				<<if $role is "islander" and (!$islander_language or $islander_language lt 100)>>
@@ -3368,7 +3368,7 @@
 				<<else>>
 					<<wheeze "demand something">>
 				<</if>>
-				<<set $speechWheezeAction to "demand">>
+				<<set $speechChokedAction to "demand">>
 			<<else>>
 				<<set $mouthactiondefault to "demand">>
 				<<if $submissive gte 850 and $wolfgirl gte 6>>
@@ -3393,7 +3393,7 @@
 			<<set $mouthaction to 0>><<set _sound to 1>>
 			<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $settings.asphyxiaLevel gte 2>>
 				<<wheeze "mock <<him>>">>
-				<<set $speechWheezeAction to "mock">>
+				<<set $speechChokedAction to "mock">>
 			<<else>>
 				<<if _disparage is false>>
 					<<set $mouthactiondefault to "mock">>
@@ -3462,7 +3462,7 @@
 				<</if>>
 				<<submission 30>>
 				<<takeVirginity $NPCList[$mouthtarget].fullDescription "oral">><<bruise face>><<oralstat>><<violence 1>><<raped>>
-				<<set $mouthstate to "penetrated">><<set $speechMouthVirgin to 1>>
+				<<set $mouthstate to "penetrated">><<set $speechOralVirgin to 1>>
 			<</if>>
 		<</if>>
 
@@ -3618,7 +3618,7 @@
 			<<set $mouthaction to 0>><<set _sound to 1>>
 			<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $settings.asphyxiaLevel gte 2>>
 				<<wheeze "scream for help">>
-				<<set $speechWheezeAction to "scream">>
+				<<set $speechChokedAction to "scream">>
 			<<elseif $drugged gt 0 or $arousal gte $arousalmax * 0.9>>
 				You try to scream for help, <span class="pink">but <<= $drugged gt 0 ? "your drugged state of mind" : "your arousal">> makes it sound like a lewd moan.</span>
 				<<neutral 1>><<set $speechMoan to 1>>
@@ -3670,7 +3670,7 @@
 						"Eden! Help!"
 					<</if>>
 				<</if>>
-				<<brat 10>><<set $alarm to 1>><<set $mouthactiondefault to "scream">><<set $speechScream to 1>>
+				<<brat 10>><<set $alarm to 1>><<set $mouthactiondefault to "scream">><<set $speechScreamForHelp to 1>>
 				<<if $NPCList[0].lefthand is 0 and $mouthuse is 0 and $position isnot "wall" and !$robinRentEvent>>
 					<<set $NPCList[0].lefthand to "mouth">><<person1>><<He>> clasps <<his>> hand over your mouth to silence you.
 					<<set $enemytrust -= 40>><<set $mouthuse to "lefthand">>
@@ -3687,7 +3687,7 @@
 			<<set _unforgiver to $NPCList.find(npc => npc.traits.includes("unforgiving"))>>
 			<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $settings.asphyxiaLevel gte 2>>
 				<<wheeze "apologise">>
-				<<set $speechWheezeAction to "apologize">>
+				<<set $speechChokedAction to "apologize">>
 			<<elseif $enemytype is "beast">>
 				You tell <<him>> you're sorry for being bad.
 				<<set $mouthactiondefault to "plead">>
@@ -3722,15 +3722,15 @@
 					<<set $enemyanger -= 50 * (1 + $englishtrait)>>
 				<<else>>
 					<<bHe>> ignores you.
-					<<set $speechApologiseNo to 1>>
+					<<set $speechApologiseAgain to 1>>
 				<</if>>
 			<<else>>
 				<<if $robinmist>>
 					You shout. "I'm sorry I wasn't there for you!"
-					<<set $speechApologiseNo to 1>>
+					<<set $speechApologiseAgain to 1>>
 				<<elseif $robinRentEvent is 1 and $combatPhase is "Robin">>
 					You tell <<him>> you're sorry for not paying <<him>>.
-					<<set $speechApologiseNo to 1>>
+					<<set $speechApologiseAgain to 1>>
 				<<elseif $npc.includes("Ivory Wraith") and $wraithPrison and $wraithPrison.vision and !$wraithApologiseCooldown>>
 					<<if $wraith.state is "haunt">>
 						You tell <<him>> you're sorry for taking everything from <<him>>.
@@ -3743,7 +3743,7 @@
 						<<set $enemyanger -= 100 * (1 + $englishtrait)>>
 					<<else>>
 						<<He>> angrily claws at <<his>> neck.
-						<<set $speechApologiseNo to 1>>
+						<<set $speechApologiseAgain to 1>>
 					<</if>>
 				<<else>>
 					You tell <<him>> you're sorry for being bad.
@@ -3777,7 +3777,7 @@
 						<<set $enemyanger -= 50 * (1 + $englishtrait)>>
 					<<else>>
 						<<He>> ignores you.
-						<<set $speechApologiseNo to 1>>
+						<<set $speechApologiseAgain to 1>>
 					<</if>>
 				<</if>>
 			<</if>>
@@ -3912,7 +3912,7 @@
 				<<set $mouthaction to 0>><<set $mouthactiondefault to "bitepussy">><<personselect $mouthtarget>>
 				You bite down on <<hisselect $mouthtarget>> labia. <<He>> <<if $enemytype is "man">>yelps<<elseif $enemytype is "beast">>growls<<else>>shrieks<</if>> and recoils in agony.
 				<<set $NPCList[$mouthtarget].vagina to 0>><<set $NPCList[$mouthtarget].location.genitals to 0>>
-				<<defiance 20 $mouthtarget>><<attackstat>><<control 15>><<set $mouthuse to 0>><<set $penisbitten to 1>><<set $mouthstate to 0>><<set $speechHit to 1>>
+				<<defiance 20 $mouthtarget>><<attackstat>><<control 15>><<set $mouthuse to 0>><<set $penisbitten to 1>><<set $mouthstate to 0>><<set $speechPlayerHits to 1>>
 				<<if $transformationParts.traits.fangs isnot "disabled">>
 					<<defiance 20 $mouthtarget>>
 					You lick your fangs clean.
@@ -6547,13 +6547,13 @@
 	<<switch _args[1]>>
 		<<case 1>>
 			You try to _action, <span class="purple">but only a wheeze comes out because you are already being choked.</span>
-			<<set $speechWheezeAskChokeRough to 1>>
+			<<set $speechChokedAlready to 1>>
 		<<case 2>>
 			You try to _action, <span class="lewd">but only a lewd moan comes out because the hand around your throat prevents you from talking.</span>
-			<<set $speechWheezeLewd to 1>>
+			<<set $speechChokedMoan to 1>>
 		<<default>>
 			You try to _action, <span class="red">but only a choked wheeze comes out because of the hand squeezing your throat.</span><<gwillpower>><<willpower 1>>
-			<<set $speechWheeze to 1>>
+			<<set $speechChokedWheeze to 1>>
 	<</switch>>
 <</widget>>
 
