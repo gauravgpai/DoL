@@ -1,16 +1,16 @@
 :: Widgets speech-Alex [widget]
 <<widget "speech-alex">>
 	<<set _npc_speech to true>>
-	<<if ($speechpenisvirgin is 1 and $player.virginity.penile is "Alex") or ($speechvaginavirgin is 1 and $player.virginity.vaginal is "Alex")>>
+	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Alex") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Alex")>>
 		<<He>> smiles. "Your first time? I'll work extra hard to make it memorable."
-	<<elseif $speechanusvirgin is 1 and $player.virginity.anal is "Alex">>
+	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Alex">>
 		<<He>> smiles. "It's tight. I won't tell anyone you let me fuck your bottom."
-	<<elseif $speechmouthvirgin is 1 and $player.virginity.oral is "Alex">>
+	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Alex">>
 		<<He>> smiles. "You haven't used your mouth like this before, have you? Just keep your chompers away."
-	<<elseif $speechkissvirgin is 1 and $player.virginity.kiss is "Alex">>
+	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Alex">>
 		<<He>> smiles. "Town <<girls>> are so cute."
-	<<elseif $speechnamedrop is 1>>
-		<<set $speechnamedrop to 0>>
+	<<elseif $speechNamedrop is 1>>
+		<<set $speechNamedrop to 0>>
 		<<if $alex_countdown is undefined and $farm_stage gte 7>>
 			<<switch _loveInterest>>
 				<<case "Black Wolf">>
@@ -28,8 +28,8 @@
 					"I think I had one too many," <<he>> says, holding <<his>> forehead.
 			<</switch>>
 		<</if>>
-	<<elseif $speechsextoy is 1>>
-		<<set $speechsextoy to 0>>
+	<<elseif $speechSexToy is 1>>
+		<<set $speechSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if C.npc.Alex.dom gte 30>>
 			<<print pickSpeechLine("Alex", 

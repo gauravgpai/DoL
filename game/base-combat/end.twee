@@ -198,7 +198,7 @@
 	<<unset $feet_planted>>
 	<<unset $left_guard>>
 	<<unset $right_guard>>
-	<<unset $speechspraycycleplant>>
+	<<unset $speechSprayCyclePlant>>
 	<<unset $newlyWritten>>
 	<<unset $combatBegun>>
 	<<unset $combatPhase>>
@@ -301,10 +301,10 @@
 	<<unset $nomask>>
 	<<unset $nomaskasked>>
 	<<set $askedtochoke to 0>>
-	<<unset $speechwheeze>>
-	<<unset $speechwheezelewd>>
-	<<unset $speechwheezeaskchokerough>>
-	<<unset $speechwheezeaction>>
+	<<unset $speechWheeze>>
+	<<unset $speechWheezeLewd>>
+	<<unset $speechWheezeAskChokeRough>>
+	<<unset $speechWheezeAction>>
 	<<set $speechorgasmweakcumcount to 0>>
 	<<set $speechorgasmnocumcount to 0>>
 	<<set $speechorgasmcount to 0>>
@@ -321,7 +321,7 @@
 	<<unset $penisfucked>>
 	<<unset $vaginafucked>>
 	<<unset $anusfucked>>
-	<<set $speechdisable to 0>>
+	<<set $speechDisable to 0>>
 	<<unset $stealstateleft>>
 	<<unset $stealstateright>>
 	<<unset $position_lock>>
@@ -451,18 +451,18 @@
 	<<set $audienceforceteen to 0>>
 	<<set $audiencepresent to 0>>
 
-	<<unset $speechcrossdressangry>>
-	<<unset $speechcrossdressaroused>>
-	<<unset $speechcrossdressshock>>
-	<<unset $speechcrossdressdisappointed>>
+	<<unset $speechCrossdressAngry>>
+	<<unset $speechCrossdressAroused>>
+	<<unset $speechCrossdressShock>>
+	<<unset $speechCrossdressDisappointed>>
 
-	<<unset $speechhermangry>>
-	<<unset $speechhermaroused>>
-	<<unset $speechhermshock>>
-	<<unset $speechhermdisappointed>>
+	<<unset $speechHermAngry>>
+	<<unset $speechHermAroused>>
+	<<unset $speechHermShock>>
+	<<unset $speechHermDisappointed>>
 
-	<<unset $speechsextoy>>
-	<<unset $speechSextoyState>>
+	<<unset $speechSexToy>>
+	<<unset $speechSexToyState>>
 
 	<<set $prop to []>>
 
@@ -728,9 +728,9 @@
 	<<set $trueconsensual to 0>>
 	<<unset $consensualGuaranteed>>
 
-	<<unset $speechcum>>
+	<<unset $speechCum>>
 	<<set $speechorgasmcount to 0>>
-	<<unset $speechmilk>>
+	<<unset $speechMilk>>
 
 	<<set $npc_named to 0>>
 	<<unset $setupMidOrgasm>>
@@ -758,88 +758,88 @@
 
 :: Widgets End Speech [widget]
 <<widget "manend">>
-	<<unset $speechpenispenetrated>>
-	<<unset $speechvaginapenetrated>>
-	<<unset $speechanuspenetrated>>
-	<<unset $speechmouthpenetrated>>
-	<<unset $speechotheranuspenetrated>>
-	<<unset $speechvaginaimminent>>
-	<<unset $speechpenisimminent>>
-	<<unset $speechanusimminent>>
-	<<unset $speechmouthimminent>>
-	<<unset $speechotheranusimminent>>
-	<<unset $speechvaginaentrance>>
-	<<unset $speechanusentrance>>
-	<<unset $speechmouthentrance>>
-	<<unset $speechpenisentrance>>
-	<<unset $speechotheranusentrance>>
-	<<unset $speechvaginawithhold>>
-	<<unset $speechanuswithhold>>
-	<<unset $speechpeniswithhold>>
-	<<unset $speechotheranuswithhold>>
-	<<unset $speechvagina>>
-	<<unset $speechpenis>>
-	<<unset $speechanus>>
-	<<unset $speechvaginamouth>>
-	<<unset $speechvaginavagina>>
-	<<unset $speechbeat>>
-	<<unset $speechhit>>
-	<<unset $speechtribentrance>>
-	<<unset $speechfacesit>>
-	<<unset $speechmouthotheranus>>
-	<<unset $speechanallick>>
-	<<unset $speechanalkiss>>
+	<<unset $speechPenisPenetrated>>
+	<<unset $speechVaginaPenetrated>>
+	<<unset $speechAnusPenetrated>>
+	<<unset $speechMouthPenetrated>>
+	<<unset $speechOtherAnusPenetrated>>
+	<<unset $speechVaginaImminent>>
+	<<unset $speechPenisImminent>>
+	<<unset $speechAnusImminent>>
+	<<unset $speechMouthImminent>>
+	<<unset $speechOtherAnusImminent>>
+	<<unset $speechVaginaEntrance>>
+	<<unset $speechAnusEntrance>>
+	<<unset $speechMouthEntrance>>
+	<<unset $speechPenisEntrance>>
+	<<unset $speechOtherAnusEntrance>>
+	<<unset $speechVaginaWithhold>>
+	<<unset $speechAnusWithhold>>
+	<<unset $speechPenisWithhold>>
+	<<unset $speechOtherAnusWithhold>>
+	<<unset $speechVagina>>
+	<<unset $speechPenis>>
+	<<unset $speechAnus>>
+	<<unset $speechVaginaMouth>>
+	<<unset $speechVaginaVagina>>
+	<<unset $speechBeat>>
+	<<unset $speechHit>>
+	<<unset $speechTribEntrance>>
+	<<unset $speechFaceSit>>
+	<<unset $speechMouthOtherAnus>>
+	<<unset $speechAnalLick>>
+	<<unset $speechAnalKiss>>
 
-	<<unset $speechfencingentrance>>
-	<<unset $speechpenispenis>>
+	<<unset $speechFencingEntrance>>
+	<<unset $speechPenisPenis>>
 
-	<<unset $speechheadbreasts>>
-	<<unset $speechheadchest>>
-	<<unset $speechheadnipple>>
-	<<unset $speechheadsuckle>>
-	<<unset $speechheadnippleclosed>>
-	<<unset $speechheadsuckleclosed>>
+	<<unset $speechHeadBreasts>>
+	<<unset $speechHeadChest>>
+	<<unset $speechHeadNipple>>
+	<<unset $speechHeadSuckle>>
+	<<unset $speechHeadNippleClosed>>
+	<<unset $speechHeadSuckleClosed>>
 
-	<<unset $speechfeet>>
-	<<unset $speechthigh>>
-	<<unset $speechcheeks>>
-	<<unset $speechhandjobpenis>>
-	<<unset $speechhandjobvagina>>
-	<<unset $speechmasturbate>>
-	<<unset $speechdildovagina>>
-	<<unset $speechdildoanus>>
-	<<unset $speechstroker>>
+	<<unset $speechFeet>>
+	<<unset $speechThigh>>
+	<<unset $speechCheeks>>
+	<<unset $speechHandjobPenis>>
+	<<unset $speechHandjobVagina>>
+	<<unset $speechMasturbate>>
+	<<unset $speechDildoVagina>>
+	<<unset $speechDildoAnus>>
+	<<unset $speechStroker>>
 
-	<<unset $speechthroat>>
-	<<unset $speechvaginafoot>>
-	<<unset $speechpenisfoot>>
-	<<unset $speechchastity>>
+	<<unset $speechThroat>>
+	<<unset $speechVaginaFoot>>
+	<<unset $speechPenisFoot>>
+	<<unset $speechChastity>>
 	<<unset $speechNPCChastity>>
-	<<unset $speechstruggle>>
-	<<unset $speechstripstruggle>>
-	<<unset $speechspank>>
-	<<unset $speecharms>>
-	<<unset $speechclit>>
-	<<unset $speechglans>>
-	<<unset $speechfutapenis>>
-	<<unset $speechbottom>>
-	<<unset $speechhair>>
-	<<unset $speechchestrub>>
-	<<unset $speechbreastrub>>
-	<<unset $speechvaginaflaunt>>
-	<<unset $speechpenisbig>>
-	<<unset $speechpenisescape>>
-	<<unset $speechvaginaescape>>
-	<<unset $speechanusescape>>
-	<<unset $speechsteal>>
-	<<unset $speechnamedrop>>
-	<<unset $speechadmired>>
-	<<unset $speechaskrough>>
+	<<unset $speechStruggle>>
+	<<unset $speechStripStruggle>>
+	<<unset $speechSpank>>
+	<<unset $speechArms>>
+	<<unset $speechClit>>
+	<<unset $speechGlans>>
+	<<unset $speechFutaPenis>>
+	<<unset $speechBottom>>
+	<<unset $speechHair>>
+	<<unset $speechChestRub>>
+	<<unset $speechBreastRub>>
+	<<unset $speechVaginaFlaunt>>
+	<<unset $speechPenisBig>>
+	<<unset $speechPenisEscape>>
+	<<unset $speechVaginaEscape>>
+	<<unset $speechAnusEscape>>
+	<<unset $speechSteal>>
+	<<unset $speechNamedrop>>
+	<<unset $speechAdmired>>
+	<<unset $speechAskRough>>
 
-	<<unset $speechwheeze>>
-	<<unset $speechwheezelewd>>
-	<<unset $speechwheezeaskchokerough>>
-	<<unset $speechwheezeaction>>
+	<<unset $speechWheeze>>
+	<<unset $speechWheezeLewd>>
+	<<unset $speechWheezeAskChokeRough>>
+	<<unset $speechWheezeAction>>
 
 	<<unset $speechNPCPenisVirgin>>
 	<<unset $speechNPCVaginaVirgin>>
@@ -860,96 +860,96 @@
 		<<set $enemyarousal to 0>>
 	<</if>>
 
-	<<unset $speechcum>>
+	<<unset $speechCum>>
 	<<set $speechorgasmrepeat to 0>>
-	<<unset $speechmilk>>
+	<<unset $speechMilk>>
 
-	<<unset $speechgenitals>>
-	<<unset $speechbreasts>>
-	<<unset $speechscream>>
-	<<unset $speechapologise>>
-	<<unset $speechplead>>
-	<<unset $speechmoan>>
-	<<unset $speechdemand>>
-	<<unset $speechcoverface>>
-	<<unset $speechcoverpenis>>
-	<<unset $speechcovervagina>>
-	<<unset $speechapologiseno>>
-	<<unset $speechapologiseunforgiving>>
-	<<unset $speechforgive>>
-	<<unset $speechspray>>
-	<<unset $speechvaginavirgin>>
-	<<unset $speechanusvirgin>>
-	<<unset $speechmouthvirgin>>
-	<<unset $speechpenisvirgin>>
-	<<unset $speechkissvirgin>>
-	<<unset $speechtemplevirgin>>
-	<<unset $speechgrowl>>
-	<<unset $speechgrowlheat>>
-	<<unset $speechgrowlrut>>
-	<<unset $speechpregnant>>
-	<<unset $speechleglock>>
-	<<unset $speechbanish>>
-	<<unset $speechfallentransform>>
+	<<unset $speechGenitals>>
+	<<unset $speechBreasts>>
+	<<unset $speechScream>>
+	<<unset $speechApologise>>
+	<<unset $speechPlead>>
+	<<unset $speechMoan>>
+	<<unset $speechDemand>>
+	<<unset $speechCoverFace>>
+	<<unset $speechCoverPenis>>
+	<<unset $speechCoverVagina>>
+	<<unset $speechApologiseNo>>
+	<<unset $speechApologiseUnforgiving>>
+	<<unset $speechForgive>>
+	<<unset $speechSpray>>
+	<<unset $speechVaginaVirgin>>
+	<<unset $speechAnusVirgin>>
+	<<unset $speechMouthVirgin>>
+	<<unset $speechPenisVirgin>>
+	<<unset $speechKissVirgin>>
+	<<unset $speechTempleVirgin>>
+	<<unset $speechGrowl>>
+	<<unset $speechGrowlHeat>>
+	<<unset $speechGrowlRut>>
+	<<unset $speechPregnant>>
+	<<unset $speechLegLock>>
+	<<unset $speechBanish>>
+	<<unset $speechFallenTransform>>
 
-	<<if $speechcrossdressangry is 2>>
-		<<set $speechcrossdressangry to 1>>
-	<<elseif $speechcrossdressangry is 1>>
-		<<unset $speechcrossdressangry>>
+	<<if $speechCrossdressAngry is 2>>
+		<<set $speechCrossdressAngry to 1>>
+	<<elseif $speechCrossdressAngry is 1>>
+		<<unset $speechCrossdressAngry>>
 	<</if>>
 
-	<<if $speechcrossdressaroused is 2>>
-		<<set $speechcrossdressaroused to 1>>
-	<<elseif $speechcrossdressaroused is 1>>
-		<<unset $speechcrossdressaroused>>
+	<<if $speechCrossdressAroused is 2>>
+		<<set $speechCrossdressAroused to 1>>
+	<<elseif $speechCrossdressAroused is 1>>
+		<<unset $speechCrossdressAroused>>
 	<</if>>
 
-	<<if $speechcrossdressshock is 2>>
-		<<set $speechcrossdressshock to 1>>
-	<<elseif $speechcrossdressshock is 1>>
-		<<unset $speechcrossdressshock>>
+	<<if $speechCrossdressShock is 2>>
+		<<set $speechCrossdressShock to 1>>
+	<<elseif $speechCrossdressShock is 1>>
+		<<unset $speechCrossdressShock>>
 	<</if>>
 
-	<<if $speechcrossdressdisappointed is 2>>
-		<<set $speechcrossdressdisappointed to 1>>
-	<<elseif $speechcrossdressdisappointed is 1>>
-		<<unset $speechcrossdressdisappointed>>
+	<<if $speechCrossdressDisappointed is 2>>
+		<<set $speechCrossdressDisappointed to 1>>
+	<<elseif $speechCrossdressDisappointed is 1>>
+		<<unset $speechCrossdressDisappointed>>
 	<</if>>
 
-	<<if $speechhermangry is 2>>
-		<<set $speechhermangry to 1>>
-	<<elseif $speechhermangry is 1>>
-		<<unset $speechhermangry>>
+	<<if $speechHermAngry is 2>>
+		<<set $speechHermAngry to 1>>
+	<<elseif $speechHermAngry is 1>>
+		<<unset $speechHermAngry>>
 	<</if>>
 
-	<<if $speechhermaroused is 2>>
-		<<set $speechhermaroused to 1>>
-	<<elseif $speechhermaroused is 1>>
-		<<unset $speechhermaroused>>
+	<<if $speechHermAroused is 2>>
+		<<set $speechHermAroused to 1>>
+	<<elseif $speechHermAroused is 1>>
+		<<unset $speechHermAroused>>
 	<</if>>
 
-	<<if $speechhermshock is 2>>
-		<<set $speechhermshock to 1>>
-	<<elseif $speechhermshock is 1>>
-		<<unset $speechhermshock>>
+	<<if $speechHermShock is 2>>
+		<<set $speechHermShock to 1>>
+	<<elseif $speechHermShock is 1>>
+		<<unset $speechHermShock>>
 	<</if>>
 
-	<<if $speechhermdisappointed is 2>>
-		<<set $speechhermdisappointed to 1>>
-	<<elseif $speechhermdisappointed is 1>>
-		<<unset $speechhermdisappointed>>
+	<<if $speechHermDisappointed is 2>>
+		<<set $speechHermDisappointed to 1>>
+	<<elseif $speechHermDisappointed is 1>>
+		<<unset $speechHermDisappointed>>
 	<</if>>
 <</widget>>
 
 <<widget "manspeech">>
 	<<set _n to _args[0]>>
 	<<if $NPCList[_n].speechpenisescape is 1>>
-		<<set $speechpenisescape to 1>>
+		<<set $speechPenisEscape to 1>>
 	<</if>>
 	<<if $NPCList[_n].speechvaginaescape is 1>>
-		<<set $speechvaginaescape to 1>>
+		<<set $speechVaginaEscape to 1>>
 	<</if>>
 	<<if $NPCList[_n].speechanusescape is 1>>
-		<<set $speechanusescape to 1>>
+		<<set $speechAnusEscape to 1>>
 	<</if>>
 <</widget>>

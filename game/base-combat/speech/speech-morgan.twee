@@ -14,24 +14,24 @@
 			`<<He>> babbles under <<his>> breath.`,
 			`<<He>> shakes <<his>> head. "You'll fall. You'll fall, and you won't get back up."`
 		)>>
-	<<elseif ($speechpenisvirgin is 1 and $player.virginity.penile is "Morgan") or ($speechvaginavirgin is 1 and $player.virginity.vaginal is "Morgan")>>
+	<<elseif ($speechPenisVirgin is 1 and $player.virginity.penile is "Morgan") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Morgan")>>
 		<<He>> smiles. "This feels like your first time again. How did you do that <<charles>>?"
-	<<elseif $speechanusvirgin is 1 and $player.virginity.anal is "Morgan">>
+	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Morgan">>
 		<<He>> smiles. "<<charles>>, I got to pop your other cherry too! Isn't it wonderful?"
-	<<elseif $speechmouthvirgin is 1 and $player.virginity.oral is "Morgan">>
+	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Morgan">>
 		<<He>> smiles. "Did you forget how to do this?"
-	<<elseif $speechkissvirgin is 1 and $player.virginity.kiss is "Morgan">>
+	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Morgan">>
 		<<He>> smiles. "Don't you remember my taste?"
-	<<elseif $speechnamedrop is 1>>
-		<<set $speechnamedrop to 0>>
+	<<elseif $speechNamedrop is 1>>
+		<<set $speechNamedrop to 0>>
 		<<switch _loveInterest>>
 			<<default>>
 				<<He>> snarls. "<<charles>>, you belong to <<mummy>>!"
 		<</switch>>
 	<<elseif ($NPCList[_n].vagina is "feet" or $NPCList[_n].penis is "feet") and random(1, 10) is 1 and $settings.footFetishEnabled>>
 		<<He>> moans. "Oh, <<charles>>, your feet...!" /* I hate you I hate you I hate you */
-	<<elseif $speechsextoy is 1>>
-		<<set $speechsextoy to 0>>
+	<<elseif $speechSexToy is 1>>
+		<<set $speechSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<He>> looks at your $_sexToy and speaks. "<<charles>>, what is that?"
 	<<else>>

@@ -40,18 +40,18 @@
 			`<<He>> breathes heavily. "You look so delicious, <<pcpetname "Gwylan">>. Let me taste you."`
 		)>>
 	<<elseif $speechNPCPenisVirgin is 1 or $speechNPCVaginaVirgin is 1>>
-		<<if $speechpenisvirgin is 1 or $speechvaginavirgin is 1 or $speechanusvirgin is 1>>
+		<<if $speechPenisVirgin is 1 or $speechVaginaVirgin is 1 or $speechAnusVirgin is 1>>
 			<<He>> winces. "Oh my. I never quite get used to losing my virginity all over again." <<He>> giggles. "Thank you for going through it with me. You'll be my last first time."
 		<<else>>
 			<<He>> winces. "Oh my. I never quite get used to losing my virginity all over again." <<He>> giggles. "I'm glad I could give you something in return. You'll be my last first time."
 		<</if>>
 	<<elseif $speechNPCAnusVirgin is 1>>
-		<<if $speechpenisvirgin is 1>>
+		<<if $speechPenisVirgin is 1>>
 			<<He>> winces. "Oh dear, I didn't prepare this body for anal yet. I'll be feeling it later." <<He>> smiles after a moment. "Dirty <<girl>>, having your first time like this."
 		<<else>>
 			<<He>> winces. "Oh dear, I didn't prepare this body for anal yet. I'll be feeling it later." <<He>> smiles after a moment. "No, it's alright, keep going."
 		<</if>>
-	<<elseif $speechpenisvirgin is 1 or $speechvaginavirgin is 1>>
+	<<elseif $speechPenisVirgin is 1 or $speechVaginaVirgin is 1>>
 		<<if $fallenangel gte 2>>
 			<<if $transformationParts.fallenAngel.halo isnot "hidden">>
 				<<He>> frowns, <<his>> face no longer illuminated by your halo. "Is this really what you wanted?"
@@ -66,24 +66,24 @@
 			<<He>> places a kiss on your cheek before getting back on all fours.
 		<</if>>
 		"I'll remember this gift you've given me."
-	<<elseif $speechanusvirgin is 1>>
+	<<elseif $speechAnusVirgin is 1>>
 		"You're an adventurous one. Thank you for trusting me."
-	<<elseif $speechmouthvirgin is 1>>
+	<<elseif $speechMouthVirgin is 1>>
 		"Shhh, you're doing great. Relax your jaw."
 	<<elseif $speechNPCKissVirgin is 1>>
 		<<He>> gazes at you lovingly. "Look at how far we've come, now I'm the one eager to kiss." <<He>> giggles.
-	<<elseif $speechhermaroused is 1>>
+	<<elseif $speechHermAroused is 1>>
 		<<if _gwylan.gender is "h">>
 			<<He>> tilts <<his>> head. "We're alike in many ways, aren't we?"
 		<<else>>
 			<<He>> tilts <<his>> head. "Oh, wow! I've never seen a rebis in person before. You're full of surprises."
 		<</if>>
-	<<elseif $speechcrossdressaroused is 1>>
+	<<elseif $speechCrossdressAroused is 1>>
 		<<He>> thinks for a moment. "Unexpected genitalia, but not unwelcome. I'm nothing if not versatile."
-	<<elseif $speechspray is 1>>
+	<<elseif $speechSpray is 1>>
 		<<He>> covers <<his>> eyes. "Bweh!"
-	<<elseif $speechnamedrop is 1>>
-		<<set $speechnamedrop to 0>>
+	<<elseif $speechNamedrop is 1>>
+		<<set $speechNamedrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Black Wolf" "Great Hawk">>
 				<<He>> giggles. "Hush, I know well the companionship of animals."
@@ -112,15 +112,15 @@
 					<<He>> giggles. "Shhh. No need to invoke more names. It's just us."
 				<</if>>
 		<</switch>>
-	<<elseif $speechsextoy is 1>>
-		<<set $speechsextoy to 0>>
+	<<elseif $speechSexToy is 1>>
+		<<set $speechSexToy to 0>>
 		<<set _sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if $location is "forest_shop">>
 			<<He>> looks at your <<print _sexToy>> and smiles. "I'm sure I have something laying around too." <<He>> reaches off to the side, and <<his>> hands find a ?gwylanItem. <<He>> seems to think about it for a moment, before tossing it back into the gloom.
 		<<else>>
 			<<He>> looks at your <<print _sexToy>> and smiles. "Someone came with a plan. Think you'll cum with a plan, too?"
 		<</if>>
-	<<elseif $speechcum is 1>>
+	<<elseif $speechCum is 1>>
 		<<if _deniedOrgasm and !$gwylanUniqueComments.includes("ear_slime") and $consensual is 1>>
 			<<set $gwylanUniqueComments.pushUnique("ear_slime")>>
 			<<if $gwylanSeen.includes("hypnosis_silence")>>
@@ -146,7 +146,7 @@
 		<<elseif $player.penisExist and $orgasmcount gte 18 and !$gwylanUniqueComments.includes("small_cum")>>
 			<<set $gwylanUniqueComments.pushUnique("small_cum")>>
 			"Oh my, it looks like someone's starting to run dry."
-		<<elseif $speechspank is 1>>
+		<<elseif $speechSpank is 1>>
 			<<He>> giggles. "Oh my, what a dirty <<pcpetname 'Gwylan' 'simple'>> you are."
 		<<elseif _gwylan.vagina is "penisimminent" or _gwylan.vagina is "penisentrance">>
 			<<He>> giggles. "Aww, you look like you wanted to finish inside. Poor <<pcpetname 'Gwylan' 'simple'>>."
@@ -192,7 +192,7 @@
 					)>>
 				<</if>>
 			<</if>>
-		<<elseif ($speechvagina is 1 or $speechclit is 1 or $speechpenis is 1 or $speechglans is 1)>>
+		<<elseif ($speechVagina is 1 or $speechClit is 1 or $speechPenis is 1 or $speechGlans is 1)>>
 			<<He>> watches you climax with delight. "Don't feel ashamed, I have magic hands."
 		<<else>>
 			<<switch $speechorgasmcount>>
@@ -203,18 +203,18 @@
 				<<default>> <<He>> whispers. "<<pcPetname 'Gwylan' 'good'>>, let it all out for me."
 			<</switch>>
 		<</if>>
-	<<elseif $speechgenitals is 1 and $worn.genitals.type.includesAll("chastity", "hidden") and !$gwylanUniqueComments.includes("chastity")>>
+	<<elseif $speechGenitals is 1 and $worn.genitals.type.includesAll("chastity", "hidden") and !$gwylanUniqueComments.includes("chastity")>>
 		<<He>> grumbles in irritation upon seeing your <<printChastity>>.
 		<<set $gwylanUniqueComments.pushUnique("chastity")>>
-	<<elseif $speechgenitals is 1 and !playerChastity() and $gwylan.request.event is "chastity">>
+	<<elseif $speechGenitals is 1 and !playerChastity() and $gwylan.request.event is "chastity">>
 		<<He>> smiles in satisfaction upon seeing your <<genitals>> exposed. "Excellent. No more obstructions." <<He>> pats you on the head. "<<pcPetname 'Gwylan' 'good'>>." <<trauma -1>><<ltrauma>>
 		<<if $gwylan.request.command>>
 			<<gwylanRequestEnd "silent">>
 		<<else>>
 			<<gwylanRequestEnd "skip">>
 		<</if>>
-	<<elseif $speechspank is 1>>
-		<<if $speechmoan is 1>>
+	<<elseif $speechSpank is 1>>
+		<<if $speechMoan is 1>>
 			<<print pickSpeechLine("Gwylan", 
 				`<<He>> smirks. "Oh, you like that?"`,
 				`<<He>> giggles. "<<pcPetname 'Gwylan' 'bad'>>."`,
@@ -227,50 +227,50 @@
 				`<<He>> giggles. "Let me hear how much it hurts."`
 			)>>
 		<</if>>
-	<<elseif $speechapologise is 1>>
+	<<elseif $speechApologise is 1>>
 		<<He>> giggles. "Aww, it's hard for me to stay mad at you when you look at me like that."
-	<<elseif $speechapologiseno is 1>>
+	<<elseif $speechApologiseNo is 1>>
 		<<He>> giggles. "Good. Beg more."
-	<<elseif $speechapologiseunforgiving is 1>>
+	<<elseif $speechApologiseUnforgiving is 1>>
 		<<He>> scowls. "It will take more than an apology, <<pcpetname 'Gwylan'>>."
-	<<elseif $speechchastity is 1 and !$gwylanUniqueComments.includes("chastity")>>
+	<<elseif $speechChastity is 1 and !$gwylanUniqueComments.includes("chastity")>>
 		<<set $gwylanUniqueComments.pushUnique("chastity")>>
 			<<if $worn.genitals.name is "chastity parasite">>
 				"I can work with this, I suppose. I'll need to clean myself up afterwards."
 			<<else>>
 				"Troublesome device. If only I had my tools on hand."
 			<</if>>
-	<<elseif ($speechcoverface is 1 or $speechcoverpenis is 1 or $speechcovervagina is 1) and !$gwylanUniqueComments.includes("hide")>>
+	<<elseif ($speechCoverFace is 1 or $speechCoverPenis is 1 or $speechCoverVagina is 1) and !$gwylanUniqueComments.includes("hide")>>
 		<<set $gwylanUniqueComments.pushUnique("hide")>>
 		<<He>> giggles. "Aww, are you shy?"
-	<<elseif $speechhair is 1 and !$gwylanUniqueComments.includes("hair")>>
+	<<elseif $speechHair is 1 and !$gwylanUniqueComments.includes("hair")>>
 		<<set $gwylanUniqueComments.pushUnique("hair")>>
 		<<He>> speaks. "I'd like to brush your hair."
-	<<elseif $speechpregnant is 1 and $settings.pregnancySpeechEnabled and !$gwylanUniqueComments.includes("pregnant")>>
+	<<elseif $speechPregnant is 1 and $settings.pregnancySpeechEnabled and !$gwylanUniqueComments.includes("pregnant")>>
 		<<set $gwylanUniqueComments.pushUnique("pregnant")>>
 		<<He>> giggles. "What a lovely blessing. It must be nice."
-	<<elseif $speechscream is 1>>
+	<<elseif $speechScream is 1>>
 		<<He>> giggles. "Be silent, <<pcpetname 'Gwylan'>>. There's no reason to scream."
-	<<elseif $speechwheeze is 1>>
+	<<elseif $speechWheeze is 1>>
 		<<He>> giggles. "Shhhh. Don't try to speak."
-	<<elseif $speechpenisbig is 1 and !$gwylanUniqueComments.includes("big_pp")>>
+	<<elseif $speechPenisBig is 1 and !$gwylanUniqueComments.includes("big_pp")>>
 		<<set $gwylanUniqueComments.pushUnique("big_pp")>>
 		<<He>> puts <<his>> hand to <<his>> lips. "It's quite large, but I can handle it."
-	<<elseif $speechvaginaescape is 1>>
+	<<elseif $speechVaginaEscape is 1>>
 		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 			<<He>> huffs. "Get back here, I'm not done."
 		<<else>>
 			<<He>> giggles. "Is it too much?"
 		<</if>>
-	<<elseif $speechpenisescape is 1>>
+	<<elseif $speechPenisEscape is 1>>
 		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 			<<He>> huffs. "Put it back in."
 		<<else>>
 			<<He>> giggles. "Get back in there, silly <<girl>>."
 		<</if>>
-	<<elseif $speechaskrough is 1>>
+	<<elseif $speechAskRough is 1>>
 		<<He>> giggles. "How can I say no? I'll make sure the pain is sweet."
-	<<elseif $speechbeat is 1>>
+	<<elseif $speechBeat is 1>>
 		<<print pickSpeechLine("Gwylan", 
 			`<<He>> frowns. "Stop resisting me, <<pcpetname 'Gwylan' 'naughty'>>."`,
 			`<<He>> frowns. "Just submit, and the pain will all go away."`,
@@ -278,13 +278,13 @@
 			`<<He>> frowns. "I take no pleasure in this, dear, so please. Stop this senseless struggling."`,
 			`<<He>> frowns. "I'm sorry. I'll give you something for the pain when we're done."`,
 		)>>
-	<<elseif $speechgrowl is 1>>
+	<<elseif $speechGrowl is 1>>
 		<<He>> giggles. "Oh, what a thrilling growl. Show me those fangs again." <<npcincr Gwylan lust 1>><<glust>><br>
-	<<elseif $speechgrowlheat is 1 or $speechgrowlrut is 1>>
+	<<elseif $speechGrowlHeat is 1 or $speechGrowlRut is 1>>
 		<<He>> giggles. "Oh, what a lovely growl. Shh, I'll make you feel better." <<npcincr Gwylan lust 1>><<glust>><br>
-	<<elseif $speechplead is 1>>
+	<<elseif $speechPlead is 1>>
 		<<He>> giggles. "Hush, dear."
-	<<elseif $speechdemand is 1 and $hypnosis_traits.devotion gte 2 and !$combat_silenced>>
+	<<elseif $speechDemand is 1 and $hypnosis_traits.devotion gte 2 and !$combat_silenced>>
 		<<if $gwylanUniqueComments.includes("demand")>>
 			<br><span class="red"><<He>> stops and glares at you with an unreadable expression.</span> "I warned you."
 			You open your mouth, only for <<his>> finger to trace up your neck.
@@ -304,12 +304,12 @@
 			<<set $gwylanUniqueComments.pushUnique("demand")>>
 			<<He>> giggles. "<<gwylanCommand "Hold your tongue, dear, or I'll hold it for you.">>"
 		<</if>>
-	<<elseif $speechdemand is 1 and !$gwylanUniqueComments.includes("demand")>>
+	<<elseif $speechDemand is 1 and !$gwylanUniqueComments.includes("demand")>>
 		<<set $gwylanUniqueComments.pushUnique("demand")>>
 		<<He>> giggles. "Hold that brave face, dear. I want to remember it."
-	<<elseif $speechforgive is 1>>
+	<<elseif $speechForgive is 1>>
 		<<He>> frowns, and goes silent for a moment. "Do I deserve your forgiveness?"
-	<<elseif $speechhit is 1>>
+	<<elseif $speechHit is 1>>
 		<<if $rng gte 100>>
 			<<He>> recoils as you strike <<him>>. "Bweh!"
 		<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -317,19 +317,19 @@
 		<<else>>
 			<<He>> winces. "Ouch! Oh, <<pcpetname 'Gwylan' 'bad'>>."
 		<</if>>
-	<<elseif ($speechpenispenetrated is 1 or $speechotheranuspenetrated or $speechvaginavagina or (($speechvaginapenetrated or $speechanuspenetrated) and $position is "missionary")) and !$gwylanUniqueComments.includes("scratched")>>
+	<<elseif ($speechPenisPenetrated is 1 or $speechOtherAnusPenetrated or $speechVaginaVagina or (($speechVaginaPenetrated or $speechAnusPenetrated) and $position is "missionary")) and !$gwylanUniqueComments.includes("scratched")>>
 		<<set $gwylanUniqueComments.pushUnique("scratched")>>
 		<<He>> speaks. "Don't be afraid to wrap your arms around me and scratch me up. I'm used to it."
 	<<elseif $gwylanUniqueComments.includes("scratched") and !$gwylanUniqueComments.includes("bite")>>
 		<<set $gwylanUniqueComments.pushUnique("bite")>>
 		<<He>> speaks. "Come to think of it, don't be afraid to bite me, either."
 		<<set $breastbitten to 0>>
-	<<elseif $speechfacesit is 1 and !$gwylanUniqueComments.includes("facesit")>>
+	<<elseif $speechFaceSit is 1 and !$gwylanUniqueComments.includes("facesit")>>
 		<<set $gwylanUniqueComments.pushUnique("facesit")>>
 		<<He>> giggles. "Come on, grab my hips. Work for it."
-	<<elseif ($speechvaginawithhold is 1 or $speechanuswithhold is 1 or $speechpeniswithhold is 1 or $speechotheranuswithhold is 1) and !$gwylanUniqueComments.includes("withhold")>>
+	<<elseif ($speechVaginaWithhold is 1 or $speechAnusWithhold is 1 or $speechPenisWithhold is 1 or $speechOtherAnusWithhold is 1) and !$gwylanUniqueComments.includes("withhold")>>
 		<<set $gwylanUniqueComments.pushUnique("withhold")>>
-		<<if $angel gte 6 and ($speechvaginawithhold is 1 or $speechpeniswithhold is 1)>>
+		<<if $angel gte 6 and ($speechVaginaWithhold is 1 or $speechPenisWithhold is 1)>>
 			<<if $transformationParts.angel.halo isnot "hidden">>
 				<<He>> smiles, and traces your halo with <<his>> finger. "I won't take this from you."
 			<<else>>
@@ -338,13 +338,13 @@
 		<<else>>
 			<<He>> sighs. "Very well, if that's what you want."
 		<</if>>
-	<<elseif $speechleglock is 1 and !$gwylanUniqueComments.includes("leglock")>>
+	<<elseif $speechLegLock is 1 and !$gwylanUniqueComments.includes("leglock")>>
 		<<set $gwylanUniqueComments.pushUnique("leglock")>>
 		<<He>> giggles. "Hold me tight, <<pcpetname 'Gwylan'>>."
-	<<elseif $speechmasturbate is 1 and !$gwylanUniqueComments.includes("masturbate")>>
+	<<elseif $speechMasturbate is 1 and !$gwylanUniqueComments.includes("masturbate")>>
 		<<set $gwylanUniqueComments.pushUnique("masturbate")>>
 		<<He>> giggles. "Move your hands, let me take care of it."
-	<<elseif $speechheadbreasts is 1 and !$gwylanUniqueComments.includes("head_breasts")>>
+	<<elseif $speechHeadBreasts is 1 and !$gwylanUniqueComments.includes("head_breasts")>>
 		<<set $gwylanUniqueComments.pushUnique("head_breasts")>>
 		<<He>> giggles. "Are you warm in there? What's that? I can't hear you."
 	<<elseif $combat_silenced and !$gwylanUniqueComments.includes("silenced")>>
@@ -352,7 +352,7 @@
 		"You should have listened, naughty <<girl>>."
 	<<else>>
 		<<speechPool "Gwylan">>
-		<<if $speechpenispenetrated is 1>>
+		<<if $speechPenisPenetrated is 1>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				<<if _gwylanStatus.includes("wantsPregnancy") and $settings.pregnancySpeechEnabled and !npcIsPregnant("Gwylan")>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -395,7 +395,7 @@
 				<<addSpeechLine>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if $speechotheranuspenetrated is 1>>
+		<<if $speechOtherAnusPenetrated is 1>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				<<addSpeechLine>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. Come on, let it out."<</addSpeechLine>>
 			<<elseif $arousal gte ($arousalmax / 5) * 2>>
@@ -408,7 +408,7 @@
 				<<addSpeechLine>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if $speechvaginapenetrated is 1>>
+		<<if $speechVaginaPenetrated is 1>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				<<if _gwylanStatus.includes("wantsPregnancy") and $settings.pregnancySpeechEnabled and !playerIsPregnant()>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -439,7 +439,7 @@
 				<<addSpeechLine>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if $speechanuspenetrated is 1>>
+		<<if $speechAnusPenetrated is 1>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				<<addSpeechLine>><<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close."<</addSpeechLine>>
 			<<elseif $arousal gte ($arousalmax / 5) * 2>>
@@ -452,7 +452,7 @@
 				<<addSpeechLine>><<He>> smiles. "Doesn't it feel wonderful, being connected like this?"<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if $speechmouthpenetrated is 1>>
+		<<if $speechMouthPenetrated is 1>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 				<<addSpeechLine>><<He>> pets your head and exhales sharply. "<<pcPetname 'Gwylan' 'good'>>, I'm almost there."<</addSpeechLine>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
@@ -465,7 +465,7 @@
 				<<addSpeechLine>><<He>> pets your head. "<<pcPetname 'Gwylan' 'good'>>."<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if ($speechvaginamouth is 1 or $speechanallick is 1 or $speechanalkiss is 1 or $speechmouthotheranus is 1 or $speechthroat is 1 or $speechfacesit is 1)>>
+		<<if ($speechVaginaMouth is 1 or $speechAnalLick is 1 or $speechAnalKiss is 1 or $speechMouthOtherAnus is 1 or $speechThroat is 1 or $speechFaceSit is 1)>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 				<<addSpeechLine>><<He>> moans softly, placing both hands on your head. "G-<<pcpetname 'Gwylan' 'good'>>, keep going just like that."<</addSpeechLine>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
@@ -478,7 +478,7 @@
 				<<addSpeechLine>><<He>> giggles. "Do you like licking me all over? Aren't I a tasty treat?"<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if ($speechvaginavagina is 1 or $speechtribentrance is 1)>>
+		<<if ($speechVaginaVagina is 1 or $speechTribEntrance is 1)>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 				<<addSpeechLine>><<He>> pants. "Just... a little more rubbing."<</addSpeechLine>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
@@ -487,8 +487,8 @@
 				<<addSpeechLine>><<He>> smiles. "This isn't always the most effective method of pleasuring, but I know how to make it work."<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if ($speechvaginaimminent is 1 or $speechpenisimminent is 1 or $speechvaginaentrance is 1 or $speechpenisentrance is 1)>>
-			<<if $speechvaginaimminent is 1 or $speechvaginaentrance is 1>>
+		<<if ($speechVaginaImminent is 1 or $speechPenisImminent is 1 or $speechVaginaEntrance is 1 or $speechPenisEntrance is 1)>>
+			<<if $speechVaginaImminent is 1 or $speechVaginaEntrance is 1>>
 				<<if $novaginal and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 					<<addSpeechLine>><<He>> pouts. "You're such a tease, not letting me put it in."<</addSpeechLine>>
 				<<else>>
@@ -502,21 +502,21 @@
 				<</if>>
 			<</if>>
 		<</if>>
-		<<if ($speechotheranusimminent is 1 or $speechotheranusentrance is 1)>>
+		<<if ($speechOtherAnusImminent is 1 or $speechOtherAnusEntrance is 1)>>
 			<<if $nopenile and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 				<<addSpeechLine>><<He>> pouts. "You're such a tease, not wanting to fill me."<</addSpeechLine>>
 			<<else>>
 				<<addSpeechLine>><<He>> speaks. "Waiting for an invitation, dear?"<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if ($speechanusimminent is 1 or $speechanusentrance is 1)>>
+		<<if ($speechAnusImminent is 1 or $speechAnusEntrance is 1)>>
 			<<if $novaginal and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 				<<addSpeechLine>><<He>> pouts. "You're such a tease, not letting me put it in."<</addSpeechLine>>
 			<<else>>
 				<<addSpeechLine>><<He>> speaks. "Is this enough for you?"<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if ($speechhandjobpenis is 1 or $speechhandjobvagina is 1 or $speechcheeks is 1 or $speechthigh is 1 or $speechfeet is 1 or $speechchestrub is 1 or $speechbreastrub is 1)>>
+		<<if ($speechHandjobPenis is 1 or $speechHandjobVagina is 1 or $speechCheeks is 1 or $speechThigh is 1 or $speechFeet is 1 or $speechChestRub is 1 or $speechBreastRub is 1)>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 				<<addSpeechLine>><<He>> pants. "Not bad, <<pcpetname 'Gwylan' 'name'>>."<</addSpeechLine>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
@@ -525,7 +525,7 @@
 				<<addSpeechLine>><<He>> giggles. "What do you think you're doing, getting all handsy with me?"<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if $speechvaginaflaunt is 1>>
+		<<if $speechVaginaFlaunt is 1>>
 			<<addSpeechLine>><<He>> blushes. "Enjoying the view?"<</addSpeechLine>>
 			<<addSpeechLine>><<He>> giggles. "I feel your eyes all over me, and I like it."<</addSpeechLine>>
 			<<addSpeechLine>><<He>> giggles. "Do I look good?"<</addSpeechLine>>

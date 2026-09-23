@@ -9,8 +9,8 @@
 		<<else>>
 			<<He>> stares you down, silent.
 		<</if>>
-	<<elseif $speechnamedrop is 1>>
-		<<set $speechnamedrop to 0>>
+	<<elseif $speechNamedrop is 1>>
+		<<set $speechNamedrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Gwylan">>
 				<<He>> speaks. "Hah! How's little seabird doing?"

@@ -91,18 +91,18 @@
 	<</if>>
 
 	<<if $robinmist>>
-		<<if $speechhit is 1>>
+		<<if $speechHit is 1>>
 			<<print pickSpeechLine("Robin", 
 				`<<He>> flinches as you strike. "Ugh!"`,
 				`<<He>> recoils as you hit <<him>>.`
 			)>>
-		<<elseif $speechscream is 1>>
+		<<elseif $speechScream is 1>>
 			<<print pickSpeechLine("Robin", 
 				`It goes over <<his>> head.`,
 				`<<He>> doesn't react.`,
 				`Robin tries to react to your screams, but fails.`
 			)>>
-		<<elseif $speechspray is 1>>
+		<<elseif $speechSpray is 1>>
 			"Ouch!" <<He>> recoils with <<his>> hands over eyes. <<stress 6>><<gstress>>
 		<<else>>
 			<br><br>
@@ -134,24 +134,24 @@
 			`"<<if $robinromance is 1>>They're using me against you," Robin sobs.<<else>>"You're my friend," Robin sobs. "I don't want to do this..."<</if>>`
 		)>>
 	<<elseif $speechNPCPenisVirgin is 1 or $speechNPCVaginaVirgin is 1>>
-		<<if $speechvaginavirgin is 1 or $speechanusvirgin is 1>>
+		<<if $speechVaginaVirgin is 1 or $speechAnusVirgin is 1>>
 			<<He>> gasps. "Sorry! It's my first time too! I hope I'm doing well."
 		<<else>>
 			<<He>> marvels. "Sorry! I didn't expect it to feel like this... let's keep going!"
 		<</if>>
 	<<elseif $speechNPCAnusVirgin is 1>>
-		<<if $speechpenisvirgin is 1>>
+		<<if $speechPenisVirgin is 1>>
 			<<He>> grimaces. "This feels a bit weird." Then <<he>> smiles. "I hope I'm not doing a bad job for our first time!"
 		<<else>>
 			<<He>> grimaces. "This feels a bit weird." Then <<he>> brightens up. "I hope I'm doing alright."
 		<</if>>
-	<<elseif ($speechpenisvirgin is 1 and $player.virginity.penile is "Robin") or ($speechvaginavirgin is 1 and $player.virginity.vaginal is "Robin")>>
+	<<elseif ($speechPenisVirgin is 1 and $player.virginity.penile is "Robin") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Robin")>>
 		<<He>> gasps. "You saved yourself for me. I don't deserve something so special. Thank you." Tears roll down <<his>> cheeks.
-	<<elseif $speechanusvirgin is 1 and $player.virginity.anal is "Robin">>
+	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Robin">>
 		<<He>> gasps. "This is so naughty!"
-	<<elseif $speechmouthvirgin is 1 and $player.virginity.oral is "Robin">>
+	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Robin">>
 		<<He>> gasps. "You're making me feel funny down there."
-	<<elseif $speechbreasts is 1>>
+	<<elseif $speechBreasts is 1>>
 		<<if $player.breastsize gte 5 and !$robinSeen.includes("breastsBig")>>
 			<<set $robinSeen.pushUnique("breastsBig")>>
 			<<His>> eyes widen in surprise. "I didn't expect them to be so big!"
@@ -161,7 +161,7 @@
 		<<else>>
 			"Your breasts always surprise me," <<he>> says. "But I still love them!"
 		<</if>>
-	<<elseif $speechpenisbig is 1>>
+	<<elseif $speechPenisBig is 1>>
 		<<if C.npc.Robin.penis isnot "none">>
 			<<if C.npc.Robin.penissize gte 3>>
 				<<print pickSpeechLine("Robin", 
@@ -183,11 +183,11 @@
 	<<elseif _robinMemory>>
 		<<set $weekly.robinMemory to true>>
 		<<speechSay>>
-	<<elseif $speechnamedrop is 1>>
-		<<set $speechnamedrop to 0>>
+	<<elseif $speechNamedrop is 1>>
+		<<set $speechNamedrop to 0>>
 		<<He>> speaks. "So you're a cheater in more ways than one. (This line is a placeholder and should be unobtainable.)"
-	<<elseif $speechsextoy is 1>>
-		<<set $speechsextoy to 0>>
+	<<elseif $speechSexToy is 1>>
+		<<set $speechSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if C.npc.Robin.dom gte 70>>
 			<<print pickSpeechLine("Robin", 
@@ -205,7 +205,7 @@
 				`<<He>> looks at your $_sexToy and giggles. "This is so dirty... keep going."`
 			)>>
 		<</if>>
-	<<elseif $speechwheeze is 1>>
+	<<elseif $speechWheeze is 1>>
 		<<if C.npc.Robin.dom gte 70>>
 			<<print pickSpeechLine("Robin", 
 				`<<He>> smiles. "Is this too much? But you sound so lovely!"`,
@@ -222,7 +222,7 @@
 				`"Are you sure you want to be talking right now?" <<he>> says with a teasing smile.`
 			)>>
 		<</if>>
-	<<elseif $speechapologise is 1>>
+	<<elseif $speechApologise is 1>>
 		<<if C.npc.Robin.dom gte 70>>
 			<<if $panicviolenceRecent and C.npc.Robin.trauma gte 20>>
 				"It's okay. We'll get through this together," <<he>> smiles at you.
@@ -248,7 +248,7 @@
 				"It's okay! I'm not that mad." <<He>> smiles.
 			<</if>>
 		<</if>>
-	<<elseif $speechapologiseno is 1>>
+	<<elseif $speechApologiseNo is 1>>
 		<<if C.npc.Robin.dom gte 70>>
 			<<if $panicviolenceRecent>>
 				"Don't worry, I can handle this," <<he>> reassures you.
@@ -268,7 +268,7 @@
 				<<He>> raises an eyebrow and chuckles.
 			<</if>>
 		<</if>>
-	<<elseif $speechaskrough is 1>>
+	<<elseif $speechAskRough is 1>>
 		<<if C.npc.Robin.dom gte 70>>
 			<<print pickSpeechLine("Robin", 
 				`"Since you really want this, I guess I'll have to show you what I've got!"`,
@@ -285,7 +285,7 @@
 				`"You really sure? I mean I can certainly try, but..." <<He>> gives you a hesitant look.`
 			)>>
 		<</if>>
-	<<elseif $speechmoan is 1>>
+	<<elseif $speechMoan is 1>>
 		<<if isLoveInterest("Robin") and hasPairedSpeechLine()>>
 			<<sayPairedSpeechLine>>
 			<<set _moanDom to true>>
@@ -339,7 +339,7 @@
 		<</if>>
 	<<else>>
 		<<speechPool "Robin">>
-		<<if $speechvaginaflaunt is 1>>
+		<<if $speechVaginaFlaunt is 1>>
 			<<if C.npc.Robin.dom gte 70>>
 				<<addSpeechLine>>"You can do more than just stare, you know!" <<he>> says.<</addSpeechLine>>
 				<<addSpeechLine>><<He>> sways <<his>> hips and gives you a playful wink.<</addSpeechLine>>
@@ -366,14 +366,14 @@
 				<</if>>
 			<</if>>
 		<</if>>
-		<<if $speechvagina is 1 and $player.virginity.vaginal is true>>
+		<<if $speechVagina is 1 and $player.virginity.vaginal is true>>
 			<<if C.npc.Robin.dom gte 70>>
 				<<addSpeechLine>>"Oh! I didn't know you were still a virgin!" <<His>> fingers hit against your hymen. "I will try to be careful!"<</addSpeechLine>>
 			<<else>>
 				<<addSpeechLine>>"Am I doing alright?" <<He>> looks at you concerned, fingers poking against your hymen. "I don't want to hurt you there."<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if $speechheadsuckle is 1>>
+		<<if $speechHeadSuckle is 1>>
 			<<rng>>
 			<<if C.npc.Robin.trauma gte 20 and $rng gte 67>>
 				<<addSpeechLine>>"I'd never let anyone else do this," <<he>> sighs contentedly. "Only you."<</addSpeechLine>>
@@ -392,7 +392,7 @@
 				<<addSpeechLine>>"Do I really taste that good?" <<He>> <<= either("giggles","chuckles","smiles")>>. "<<= either("Save some for the baby, alright?","Just don't forget our little one needs it too.")>>"<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if $speechheadnipple is 1>>
+		<<if $speechHeadNipple is 1>>
 			<<if C.npc.Robin.dom gte 70>>
 				<<if currentSkillValue("oralskill") gte 400>>
 					<<addSpeechLine>>"I really like how warm your mouth feels!" <<he>> <<= either("moans","chuckles","giggles")>>.<</addSpeechLine>>
@@ -419,10 +419,10 @@
 				<</if>>
 			<</if>>
 		<</if>>
-		<<if $speechvaginavagina is 1 and C.npc.Robin.dom gte 70 and $fame.sex gte 600>>
+		<<if $speechVaginaVagina is 1 and C.npc.Robin.dom gte 70 and $fame.sex gte 600>>
 			<<addSpeechLine>>"So... where would you rank mine?" <<He>> smiles.<</addSpeechLine>>
 		<</if>>
-		<<if $speechanallick is 1 and C.npc.Robin.dom lte 30>>
+		<<if $speechAnalLick is 1 and C.npc.Robin.dom lte 30>>
 			<<addSpeechLine>>"It feels a bit ticklish!" <<He>> <<= either("giggles", "smiles", "chuckles")>>.<</addSpeechLine>>
 			<<addSpeechLine>>"This feels a bit naughty," <<he>> <<= either("gasps", "says in surprise")>>.<</addSpeechLine>>
 		<</if>>

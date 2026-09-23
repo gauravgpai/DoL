@@ -2,16 +2,16 @@
 <<widget "speech-bailey">>
 	<<set _npc_speech to true>>
 	<<set $_stringsPre to ($enemyanger lte 60 ? "<<He>> snickers. ":"<<He>> snarls. ")>>
-	<<if ($speechpenisvirgin is 1 and $player.virginity.penile is "Bailey") or ($speechvaginavirgin is 1 and $player.virginity.vaginal is "Bailey")>>
+	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Bailey") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Bailey")>>
 		<<print $_stringsPre + `"Fuck. Your value just depreciated a little."`>>
-	<<elseif $speechanusvirgin is 1 and $player.virginity.anal is "Bailey">>
+	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Bailey">>
 		<<print $_stringsPre + `"You should be putting out more if you're this tight. What do you think you're good for?"`>>
-	<<elseif $speechmouthvirgin is 1 and $player.virginity.oral is "Bailey">>
+	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Bailey">>
 		<<print $_stringsPre + `"Don't get any funny ideas. Just take it."`>>
-	<<elseif $speechkissvirgin is 1 and $player.virginity.kiss is "Bailey">>
+	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Bailey">>
 		<<print $_stringsPre + `"Surprised are you? You'll learn to kiss better soon."`>>
-	<<elseif $speechnamedrop is 1>>
-		<<set $speechnamedrop to 0>>
+	<<elseif $speechNamedrop is 1>>
+		<<set $speechNamedrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Robin">>
 				<<if $robinpaid is 1>>
@@ -76,23 +76,23 @@
 			<<default>>
 				<<print $_stringsPre + `"If <<nnpc_he _loveInterest>> cared about you, <<nnpc_he _loveInterest>> would pay for you."`>>
 		<</switch>>
-	<<elseif $speechgenitals is 1>>
+	<<elseif $speechGenitals is 1>>
 		<<print pickSpeechLine("Bailey", 
 			`<<He>> looks at your <<genitals>>. "That'll sell."`,
 			`<<He>> looks at your <<genitals>>. "You'll earn your keep."`
 		)>>
-	<<elseif $speechbreasts is 1>>
+	<<elseif $speechBreasts is 1>>
 		<<print pickSpeechLine("Bailey", 
 			`<<He>> looks at your <<breasts>>. "That'll sell."`,
 			`<<He>> looks at your <<breasts>>. "You'll earn your keep."`
 		)>>
-	<<elseif $speechpregnant is 1 and $settings.pregnancySpeechEnabled>>
+	<<elseif $speechPregnant is 1 and $settings.pregnancySpeechEnabled>>
 		<<if getChildrenAt("home").length>>
 			<<print `<<He>> sighs at your pregnant belly. "Knocked up. Typical."`>>
 		<<else>>
 			<<print `<<He>> looks at your pregnant belly. "Couldn't keep your legs together, could you?"`>>
 		<</if>>
-	<<elseif $speechplead is 1>>
+	<<elseif $speechPlead is 1>>
 		<<if $enemyanger lte 60>>
 			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Save your breath."`,
@@ -107,7 +107,7 @@
 				`"Begging won't save you, you little shit."`
 			)>>
 		<</if>>
-	<<elseif $speechmoan is 1>>
+	<<elseif $speechMoan is 1>>
 		<<if $enemyanger lte 60>>
 			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Keep it down."`,
@@ -121,7 +121,7 @@
 				`"One more sound and I'll give you something to moan about."`
 			)>>
 		<</if>>
-	<<elseif $speechdemand is 1>>
+	<<elseif $speechDemand is 1>>
 		<<if $enemyanger lte 60>>
 			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"You don't give orders here."`,
@@ -135,8 +135,8 @@
 				`"You don't get to make demands. You never did."`
 			)>>
 		<</if>>
-	<<elseif $speechscream is 1>>
-		<<set $speechscream to 0>>
+	<<elseif $speechScream is 1>>
+		<<set $speechScream to 0>>
 		<<if $enemyanger lte 60>>
 			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Shut up."`,
@@ -151,27 +151,27 @@
 				`"Noisy little shit."`
 			)>>
 		<</if>>
-	<<elseif $speechforgive is 1>>
+	<<elseif $speechForgive is 1>>
 		<<print `<<He>> sneers. ` + pickSpeechLine("Bailey", 
 			`"I don't need your forgiveness."`,
 			`"Forgive me? For what?"`,
 			`"Close your damn mouth, or I'll close it for you."`
 		)>>
-	<<elseif $speechapologiseunforgiving is 1>>
+	<<elseif $speechApologiseUnforgiving is 1>>
 		<<print $_stringsPre + pickSpeechLine("Bailey", 
 			`"Shut up. I've heard it all before."`,
 			`"Did you really think I would fall for that?"`,
 			`"Do you think I give a damn, you little shit?"`,
 			`"Save it. If you were sorry, you'd stop struggling."`
 		)>>
-	<<elseif $speechgrowl is 1 or $speechgrowlheat is 1 or $speechgrowlrut is 1>>
+	<<elseif $speechGrowl is 1 or $speechGrowlHeat is 1 or $speechGrowlRut is 1>>
 		<<print $_stringsPre + pickSpeechLine("Bailey", 
 			`"You little mutt."`,
 			`"I'll muzzle you if I have to."`,
 			`"Bite if you want. See what it costs you."`,
 			`"This is what I get for taking in strays."`
 		)>>
-	<<elseif $speechstruggle is 1>>
+	<<elseif $speechStruggle is 1>>
 		<<if $enemyanger lte 60>>
 			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"Stop struggling."`,
@@ -189,7 +189,7 @@
 				`"You're only making it worse for yourself."`
 			)>>
 		<</if>>
-	<<elseif $speechspank is 1>>
+	<<elseif $speechSpank is 1>>
 		<<if $enemyanger lte 60>>
 			<<print $_stringsPre + pickSpeechLine("Bailey", 
 				`"What have we learned?"`,
@@ -204,7 +204,7 @@
 				`"You've been difficult. This is what happens."`
 			)>>
 		<</if>>
-	<<elseif $speechcum is 1>>
+	<<elseif $speechCum is 1>>
 		<<print $_stringsPre + pickSpeechLine("Bailey", 
 			`"I hope you appreciate that."`,
 			`"Just something to remember me by."`,

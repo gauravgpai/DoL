@@ -6,7 +6,7 @@
 		<<set $sydneyUniqueComments to []>>
 	<</if>>
 	<<if $speechNPCPenisVirgin is 1 or $speechNPCVaginaVirgin is 1>>
-		<<if $speechpenisvirgin is 1 or $speechvaginavirgin is 1 or $speechanusvirgin is 1>>
+		<<if $speechPenisVirgin is 1 or $speechVaginaVirgin is 1 or $speechAnusVirgin is 1>>
 			<<if _sydneyStatus.includes("corrupt")>>
 				<<if $sydneySeen.includes("corruptroom")>>
 					<<He>> moans, looking to you with pure ecstasy. "The feeling of you ruining me gets better each time. We belong to each other, now and forever!" <<He>> holds on to you tight. <<set $corruptionEvent to 1>><<npcincr Sydney purity -5>><<llspurity>>
@@ -36,7 +36,7 @@
 			<</if>>
 		<</if>>
 	<<elseif $speechNPCAnusVirgin is 1>>
-		<<if $speechpenisvirgin is 1>>
+		<<if $speechPenisVirgin is 1>>
 			<<if _sydneyStatus.includes("corrupt")>>
 				<<He>> moans. "This is your first time doing this too, isn't it? Don't slow down. Please!" <<He>> wraps <<his>> legs around you.
 			<<else>>
@@ -49,7 +49,7 @@
 				<<He>> gasps. "Are... are you sure I'm still pure...? It feels... too good..." <<He>> holds on to you tightly.
 			<</if>>
 		<</if>>
-	<<elseif $speechmouthvirgin is 1>>
+	<<elseif $speechMouthVirgin is 1>>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<He>> moans and places a hand on your head. "This is your first time doing this, isn't it? You're doing great."
 		<<else>>
@@ -57,7 +57,7 @@
 		<</if>>
 	<<elseif $speechNPCKissVirgin is 1>>
 		<<He>> gazes at you lovingly. "That was my first kiss..." <<he>> giggles.
-	<<elseif $speechhermaroused is 1>>
+	<<elseif $speechHermAroused is 1>>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<if _sydney.gender is "h">>
 				<<He>> gasps. "Woah! <<nnpc_Mum "Sirris">> always told me I was special, but you have both too!"
@@ -71,14 +71,14 @@
 				<<He>> gasps. "B...both? I didn't know that was possible!"
 			<</if>>
 		<</if>>
-	<<elseif $speechcrossdressaroused is 1>>
+	<<elseif $speechCrossdressAroused is 1>>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<He>> gasps. "All this time, you were a <<pcSex>>? Well, that doesn't change how I feel about you."
 		<<else>>
 			<<He>> gasps. "You're... a <<pcSex>>? Th-that's okay! I don't think of you any differently!"
 		<</if>>
-	<<elseif $speechnamedrop is 1 and $sydneyromance is 1>>
-		<<set $speechnamedrop to 0>>
+	<<elseif $speechNamedrop is 1 and $sydneyromance is 1>>
+		<<set $speechNamedrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Black Wolf" "Great Hawk">>
 				<<He>> baulks. "An... animal? What?"
@@ -90,8 +90,8 @@
 				<<He>> freezes. "Wh... who? Who is it?!"
 		<</switch>>
 		<<npcincr Sydney love -10>><<llllove>>
-	<<elseif $speechsextoy is 1>>
-		<<set $speechsextoy to 0>>
+	<<elseif $speechSexToy is 1>>
+		<<set $speechSexToy to 0>>
 		<<set _sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<He>> looks at your <<print _sexToy>> and grins. "<<print pickSpeechLine("Sydney", "Oh, I'd like nothing more than to test that out with you.","You got that on a discount, right?")>>"
@@ -100,8 +100,8 @@
 		<<else>>
 			<<He>> looks at your <<print _sexToy>> and blushes. "This feels wrong, but I don't want to stop."
 		<</if>>
-	<<elseif $speechcum is 1>>
-		<<if $speechspank is 1>>
+	<<elseif $speechCum is 1>>
+		<<if $speechSpank is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<He>> looks down at you with confusion. "This is supposed to be painful, what... what is this?" <<npcincr Sydney purity -2>><<lspurity>>
@@ -125,7 +125,7 @@
 			<</switch>>
 		<</if>>
 		<<set $sydneySeen.pushUnique("player climax")>>
-	<<elseif $speechgenitals is 1 and playerChastity() and !$sydneySeen.includes("chastity")>>
+	<<elseif $speechGenitals is 1 and playerChastity() and !$sydneySeen.includes("chastity")>>
 		<<if $worn.genitals.name is "chastity parasite">>
 			<!-- +corruption/-purity but never +lust -->
 			<<His>> eyebrows raise in surprise upon seeing your <<printChastity>>. <<set _lustincrdisplay to 1>><<set _lustincr to 1>><<npcincr Sydney purity -2>><<lspurity>>
@@ -134,8 +134,8 @@
 		<</if>>
 		<<set $sydneySeen.pushUnique("chastity")>>
 		<<set $sydneyUniqueComments.pushUnique("chastity")>>
-	<<elseif $speechspank is 1>>
-		<<if $speechmoan is 1>>
+	<<elseif $speechSpank is 1>>
+		<<if $speechMoan is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<print pickSpeechLine("Sydney", 
@@ -196,23 +196,23 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-	<<elseif $speechapologise is 1>>
+	<<elseif $speechApologise is 1>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
 				<<He>> looks confused. "Why are you sorry? Everything's okay, I promise."
 			<<case "corrupt" "corruptLust">>
 				<<He>> speaks. "I know how you can make it up to me."
 		<</switch>>
-	<<elseif $speechapologiseno is 1>>
+	<<elseif $speechApologiseNo is 1>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
 				<<He>> looks confused. "You keep saying you're sorry, are you okay? We can stop if you want."
 			<<case "corrupt" "corruptLust">>
 				<<He>> speaks. "Yes, keep saying that, you look so delightfully helpless."
 		<</switch>>
-	<<elseif $speechapologiseunforgiving is 1>>
+	<<elseif $speechApologiseUnforgiving is 1>>
 		<<He>> frowns. "You haven't earned forgiveness."
-	<<elseif $speechchastity is 1 and !$sydneyUniqueComments.includes("chastity")>>
+	<<elseif $speechChastity is 1 and !$sydneyUniqueComments.includes("chastity")>>
 		<<set $sydneyUniqueComments.pushUnique("chastity")>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
@@ -248,7 +248,7 @@
 					)>>
 				<</if>>
 		<</switch>>
-	<<elseif $speechhit is 1>>
+	<<elseif $speechHit is 1>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust">>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -275,7 +275,7 @@
 					<<He>> winces. "Ow! That one really hurt!"
 				<</if>>
 		<</switch>>
-	<<elseif ($speechcoverface is 1 or $speechcoverpenis is 1 or $speechcovervagina is 1) and !$sydneyUniqueComments.includes("hide")>>
+	<<elseif ($speechCoverFace is 1 or $speechCoverPenis is 1 or $speechCoverVagina is 1) and !$sydneyUniqueComments.includes("hide")>>
 		<<set $sydneyUniqueComments.pushUnique("hide")>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust">>
@@ -285,14 +285,14 @@
 			<<default>>
 				<<He>> notices your attempts to cover yourself. "It's okay, I don't mind seeing you like this anymore. We can both trust each other, right?"
 		<</switch>>
-	<<elseif $speechhair is 1 and !$sydneyUniqueComments.includes("hair")>>
+	<<elseif $speechHair is 1 and !$sydneyUniqueComments.includes("hair")>>
 		<<set $sydneyUniqueComments.pushUnique("hair")>>
 		<<if _sydney.hairColour isnot "strawberryblond">>
 			<<He>> speaks. "I've always loved your hair. That's why I didn't hesitate to take your advice on my appearance."
 		<<else>>
 			<<He>> speaks. "I've always loved your hair."
 		<</if>>
-	<<elseif ($speechvaginawithhold is 1 or $speechanuswithhold is 1 or $speechpeniswithhold is 1 or $speechotheranuswithhold is 1) and !$sydneyUniqueComments.includes("withhold")>>
+	<<elseif ($speechVaginaWithhold is 1 or $speechAnusWithhold is 1 or $speechPenisWithhold is 1 or $speechOtherAnusWithhold is 1) and !$sydneyUniqueComments.includes("withhold")>>
 		<<set $sydneyUniqueComments.pushUnique("withhold")>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
@@ -302,7 +302,7 @@
 		<</switch>>
 	<<else>>
 		<<speechPool "Sydney">>
-		<<if $speechpenispenetrated is 1>>
+		<<if $speechPenisPenetrated is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -334,7 +334,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if $speechotheranuspenetrated is 1>>
+		<<if $speechOtherAnusPenetrated is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -362,7 +362,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if $speechvaginapenetrated is 1>>
+		<<if $speechVaginaPenetrated is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -394,7 +394,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if $speechanuspenetrated is 1>>
+		<<if $speechAnusPenetrated is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -430,7 +430,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if $speechmouthpenetrated is 1>>
+		<<if $speechMouthPenetrated is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -458,7 +458,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if ($speechvaginamouth is 1 or $speechanallick is 1 or $speechanalkiss is 1 or $speechmouthotheranus is 1 or $speechthroat is 1 or $speechfacesit is 1)>>
+		<<if ($speechVaginaMouth is 1 or $speechAnalLick is 1 or $speechAnalKiss is 1 or $speechMouthOtherAnus is 1 or $speechThroat is 1 or $speechFaceSit is 1)>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -486,7 +486,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if ($speechvaginavagina is 1 or $speechtribentrance is 1)>>
+		<<if ($speechVaginaVagina is 1 or $speechTribEntrance is 1)>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -514,7 +514,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if ($speechvaginaimminent is 1 or $speechpenisimminent is 1 or $speechvaginaentrance is 1 or $speechpenisentrance is 1) and !_sydneyChastity>>
+		<<if ($speechVaginaImminent is 1 or $speechPenisImminent is 1 or $speechVaginaEntrance is 1 or $speechPenisEntrance is 1) and !_sydneyChastity>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust" "neutral" "neutralLust">>
 					<<if _sydneyVirgin>>
@@ -541,7 +541,7 @@
 						<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 							<<addSpeechLine>><<He>> moans. "Stop teasing me!"<</addSpeechLine>>
 						<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-							<<if $speechvaginaimminent is 1>>
+							<<if $speechVaginaImminent is 1>>
 								<<addSpeechLine>><<He>> speaks. "I want to be inside you."<</addSpeechLine>>
 							<<else>>
 								<<addSpeechLine>><<He>> speaks. "I want you inside me."<</addSpeechLine>>
@@ -552,7 +552,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if ($speechotheranusimminent is 1 or $speechotheranusentrance is 1) and !_sydney.chastity.anus.includes("shield")>>
+		<<if ($speechOtherAnusImminent is 1 or $speechOtherAnusEntrance is 1) and !_sydney.chastity.anus.includes("shield")>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust" "neutral" "neutralLust">>
 					<<if _sydney.virginity.anal is true>>
@@ -582,7 +582,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if ($speechanusimminent is 1 or $speechanusentrance is 1)>>
+		<<if ($speechAnusImminent is 1 or $speechAnusEntrance is 1)>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust" "neutral" "neutralLust">>
 					<<if _sydneyVirgin>>
@@ -612,7 +612,7 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-		<<if ($speechhandjobpenis is 1 or $speechhandjobvagina is 1 or $speechcheeks is 1 or $speechthigh is 1 or $speechfeet is 1 or $speechchestrub is 1 or $speechbreastrub is 1)>>
+		<<if ($speechHandjobPenis is 1 or $speechHandjobVagina is 1 or $speechCheeks is 1 or $speechThigh is 1 or $speechFeet is 1 or $speechChestRub is 1 or $speechBreastRub is 1)>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -641,8 +641,8 @@
 			<</switch>>
 
 		<</if>>
-		<<if ($speechfutapenis is 1 or $speechvagina is 1 or $speechclit is 1 or $speechpenis is 1 or $speechglans is 1 or $speechanus is 1 or $speechbottom is 1)>>
-			<<if $speechfutapenis is 1>>
+		<<if ($speechFutaPenis is 1 or $speechVagina is 1 or $speechClit is 1 or $speechPenis is 1 or $speechGlans is 1 or $speechAnus is 1 or $speechBottom is 1)>>
+			<<if $speechFutaPenis is 1>>
 				<<if _sydney.gender is "h">>
 					<<switch _sydneyStatus>>
 						<<case "pure" "pureLust">>
@@ -675,7 +675,7 @@
 							<<addSpeechLine>><<He>> speaks. "I'm almost jealous. I wish I knew what both felt like."<</addSpeechLine>>
 					<</switch>>
 				<</if>>
-			<<elseif $speechvagina is 1 or $speechclit is 1>>
+			<<elseif $speechVagina is 1 or $speechClit is 1>>
 				<<switch _sydneyStatus>>
 					<<case "pure" "pureLust">>
 						<<addSpeechLine>><<He>> speaks. "Am... am I doing this right?"<</addSpeechLine>>
@@ -690,7 +690,7 @@
 						<<addSpeechLine>><<He>> speaks. "I think I'm getting the hang of this!"<</addSpeechLine>>
 						<<addSpeechLine>><<He>> speaks. "How deep should I go?"<</addSpeechLine>>
 				<</switch>>
-			<<elseif $speechpenis is 1 or $speechglans is 1>>
+			<<elseif $speechPenis is 1 or $speechGlans is 1>>
 				<<if playerHasStrapon()>>
 					<<switch _sydneyStatus>>
 						<<case "pure" "pureLust">>
@@ -717,7 +717,7 @@
 							<<addSpeechLine>><<He>> speaks. "Does it feel good when I work it like this?"<</addSpeechLine>>
 					<</switch>>
 				<</if>>
-			<<elseif $speechanus is 1 or $speechbottom is 1>>
+			<<elseif $speechAnus is 1 or $speechBottom is 1>>
 				<<switch _sydneyStatus>>
 					<<case "pure" "pureLust">>
 						<<addSpeechLine>><<He>> speaks. "Am... am I doing this right?"<</addSpeechLine>>
@@ -734,7 +734,7 @@
 				<</switch>>
 			<</if>>
 		<</if>>
-		<<if $speechvaginaflaunt is 1>>
+		<<if $speechVaginaFlaunt is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
 					<<addSpeechLine>><<He>> covers <<his>> blush. "D-don't just stare at it..."<</addSpeechLine>>

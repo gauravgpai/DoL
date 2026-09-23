@@ -836,7 +836,7 @@
 		"You don't know any better. You're just a <<beasttype>>," you say. "I forgive you."
 	<<else>>
 		<<if _loveInterest isnot undefined>> 
-			<<set $speechnamedrop to $npc.includes(_loveInterest) ? 0 : 1>>
+			<<set $speechNamedrop to $npc.includes(_loveInterest) ? 0 : 1>>
 			<<rng>>
 			<<speechPool "pc">>
 			<<switch _loveInterest>>
@@ -1059,8 +1059,8 @@
 		<</if>>
 	<<else>>
 		<<if _loveInterest isnot undefined and random(0, 100) lte 15>>
-			<<set $speechnamedrop to $npc.includes(_loveInterest) ? 0 : 1>>
-			<<if $speechnamedrop is 0>>
+			<<set $speechNamedrop to $npc.includes(_loveInterest) ? 0 : 1>>
+			<<if $speechNamedrop is 0>>
 				You speak.
 			<<else>>
 				You <<voice "plead">>.
@@ -1170,7 +1170,7 @@
 							"K...Kylar... help me..."
 						<</if>>
 					<</if>>
-					<<if $location is "school" and $speechnamedrop is 1 and Time.schoolDay>>
+					<<if $location is "school" and $speechNamedrop is 1 and Time.schoolDay>>
 						<<status -1>><<lcool>>
 					<</if>>
 				<<case "Whitney">>
@@ -2470,8 +2470,8 @@
 			<</if>>
 
 		<<elseif _loveInterest isnot undefined and random(0,100) lte 15>>
-			<<set $speechnamedrop to $npc.includes(_loveInterest) ? 0 : 1>>
-			<<if $speechnamedrop is 0>>
+			<<set $speechNamedrop to $npc.includes(_loveInterest) ? 0 : 1>>
+			<<if $speechNamedrop is 0>>
 				You speak.
 			<<else>>
 				You <<voice "demand">>.
@@ -2586,7 +2586,7 @@
 							"Kylar will... hurt you for this...!"
 						<</if>>
 					<</if>>
-					<<if $location is "school" and $speechnamedrop is 1 and Time.schoolDay>>
+					<<if $location is "school" and $speechNamedrop is 1 and Time.schoolDay>>
 						<<status -1>><<lcool>>
 					<</if>>
 
@@ -3679,7 +3679,7 @@
 	<<if $mouthstate is "kissentrance">>
 		You gently brush your lips against <<hers>>.
 		<<if $player.virginity.kiss is true>>
-			<<set $speechkissvirgin to 1>>
+			<<set $speechKissVirgin to 1>>
 		<</if>>
 		<<if $NPCList[$mouthtarget].mouth is "kissentrance">>
 			<<if $npcrow.includes($mouthtarget)>>

@@ -1,16 +1,16 @@
 :: Widgets speech-Eden [widget]
 <<widget "speech-eden">>
 	<<set _npc_speech to true>>
-	<<if ($speechpenisvirgin is 1 and $player.virginity.penile is "Eden") or ($speechvaginavirgin is 1 and $player.virginity.vaginal is "Eden")>>
+	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Eden") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Eden")>>
 		<<He>> speaks. "I felt your virginity. I couldn't help it. I needed to take you."
-	<<elseif $speechanusvirgin is 1 and $player.virginity.anal is "Eden">>
+	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Eden">>
 		<<He>> speaks. "I know this hurts now, but you'll get used to it soon."
-	<<elseif $speechmouthvirgin is 1 and $player.virginity.oral is "Eden">>
+	<<elseif $speechMouthVirgin is 1 and $player.virginity.oral is "Eden">>
 		<<He>> speaks. "Damn, you feel great. We're definitely doing this more often."
-	<<elseif $speechkissvirgin is 1 and $player.virginity.kiss is "Eden">>
+	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Eden">>
 		<<He>> speaks. "How was that? I'm not done, though."
-	<<elseif $speechnamedrop is 1>>
-		<<set $speechnamedrop to 0>>
+	<<elseif $speechNamedrop is 1>>
+		<<set $speechNamedrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Black Wolf" "Great Hawk">>
 				<<He>> speaks. "That thing will tear you apart the first chance it gets! Stay away from it."
@@ -19,8 +19,8 @@
 			<<default>>
 				<<He>> speaks. "Whoever that is, forget them." <<He>> sounds hurt.
 		<</switch>>
-	<<elseif $speechsextoy is 1>>
-		<<set $speechsextoy to 0>>
+	<<elseif $speechSexToy is 1>>
+		<<set $speechSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		Eden looks at your $_sexToy. "Toys like that aren't necessary," <<he>> says. "They might even get in the way."
 	<<else>>
