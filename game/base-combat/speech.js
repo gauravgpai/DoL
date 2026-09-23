@@ -2,7 +2,7 @@
  * Combat speech lines. A speaker is a named NPC ("Avery") or the player ("pc")
  * Each turn a speaker gathers the lines it could say into a pool.
  * One line is picked that the speaker has not said yet this combat.
- * What each speaker has said lives in $speechSaid as a hash and is unset by <<endevent>>.
+ * What each speaker has said lives in $speechSaidLines as a hash and is unset by <<endevent>>.
  */
 
 /**
@@ -86,12 +86,12 @@ function getTopSpeechLines(lines) {
 }
 
 /**
- * Groups lines by the situation they answer.
+ * Groups lines by the event they answer.
  *
  * @param {SpeechLine[]} lines
  * @returns {{ group: string, lines: SpeechLine[] }[]}
  */
-function groupSpeechLines(lines) {
+function groupSpeechLinesByEvent(lines) {
 	/** @type {Map<string, SpeechLine[]>} */
 	const groups = new Map();
 	for (const line of lines) {
@@ -109,9 +109,9 @@ function groupSpeechLines(lines) {
  * @returns {string[]}
  */
 function getSpeechHistory(speaker) {
-	if (!V.speechSaid) V.speechSaid = {};
-	if (!V.speechSaid[speaker]) V.speechSaid[speaker] = [];
-	return V.speechSaid[speaker];
+	if (!V.speechSaidLines) V.speechSaidLines = {};
+	if (!V.speechSaidLines[speaker]) V.speechSaidLines[speaker] = [];
+	return V.speechSaidLines[speaker];
 }
 
 /**
@@ -134,7 +134,7 @@ function getUnsaidSpeechLines(speaker, lines) {
  */
 function forgetSpeechLines(speaker, lines) {
 	const hashes = lines.map(line => line.hash);
-	V.speechSaid[speaker] = getSpeechHistory(speaker).filter(hash => !hashes.includes(hash));
+	V.speechSaidLines[speaker] = getSpeechHistory(speaker).filter(hash => !hashes.includes(hash));
 }
 
 /**
@@ -183,7 +183,7 @@ function pickSpeechLine(speaker, ...texts) {
  * @returns {SpeechLine}
  */
 function pickGroupedSpeechLine(speaker, lines) {
-	const group = rollWeightedRandomFromArray(groupSpeechLines(getTopSpeechLines(lines)));
+	const group = rollWeightedRandomFromArray(groupSpeechLinesByEvent(getTopSpeechLines(lines)));
 	return pickSpeechLineFrom(speaker, group.lines);
 }
 
@@ -208,7 +208,7 @@ function hasSpeechLines() {
 }
 
 /**
- * Drops the situations the speaker has already used up and resets its history, so the turn
+ * Drops the groups the speaker has already used up and resets their history, so the turn
  * falls through to a lower priority line, an ambient line, or a mouth action rather than repeating a line.
  */
 function takeSpeechBreather() {
@@ -219,7 +219,7 @@ function takeSpeechBreather() {
 	let pool = lines.filter(line => !resting.includes(line.group ?? ""));
 	V.speechRestingGroups[speaker] = [];
 	while (pool.length) {
-		const dry = groupSpeechLines(getTopSpeechLines(pool)).filter(group => getUnsaidSpeechLines(speaker, group.lines).length === 0);
+		const dry = groupSpeechLinesByEvent(getTopSpeechLines(pool)).filter(group => getUnsaidSpeechLines(speaker, group.lines).length === 0);
 		if (dry.length === 0) break;
 		for (const group of dry) {
 			forgetSpeechLines(speaker, group.lines);

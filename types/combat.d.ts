@@ -195,7 +195,7 @@ declare module "twine-sugarcube" {
 		speechChokedWheeze?: number;
 		speechChokedAlready?: number;
 		speechChokedMoan?: number;
-		speechSaid?: Partial<Record<SpeechSpeaker, string[]>>;
+		speechSaidLines?: Partial<Record<SpeechSpeaker, string[]>>;
 		speechRestingGroups?: Partial<Record<SpeechSpeaker, string[]>>;
 	}
 

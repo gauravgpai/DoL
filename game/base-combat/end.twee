@@ -701,7 +701,7 @@
 	<<unset $robinUniqueComments>>
 	<<unset $averyUniqueComments>>
 	<<unset $whitneyUniqueComments>>
-	<<unset $speechSaid>>
+	<<unset $speechSaidLines>>
 	<<unset $speechRestingGroups>>
 	<<unset $noBodyWriting>>
 	<<unset $noAdmire>>
