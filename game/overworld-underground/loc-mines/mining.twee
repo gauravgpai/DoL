@@ -146,7 +146,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<<addinlineevent "favor_gem">>
 		<<set $mine.favor.night to 1>>
 		<<set $mine.distraction.night to "complete">>
-		You find a <span class="blue"><<print either("gem","crystal")>></span>. You look around to see if any guards are watching before grabbing it.
+		You find a <span class="blue"><<print either("gem","crystal")>>.</span> You look around to see if any guards are watching before grabbing it.
 		<br><br>
 		<<link [[Next|Mine Job Mining]]>><<endevent>><</link>>
 	<</addinlineevent>>

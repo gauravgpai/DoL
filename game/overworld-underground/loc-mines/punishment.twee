@@ -57,7 +57,7 @@ You think about the other orphans in the same situation as you. <<gggtrauma>><<t
 :: Mine Punishment Pit Nothing Cry
 <<effects>>
 
-<span class="red">It's all too much</span>, you start to break down in tears. You hear the guards outside start to laugh at your misery. <<ggstress>><<stress 20>>
+<span class="red">It's all too much,</span> you start to break down in tears. You hear the guards outside start to laugh at your misery. <<ggstress>><<stress 20>>
 <br><br>
 Eventually they get tired of it and stop laughing. Despite everything, you feel better having let it all out. <<llltrauma>><<trauma -50>>
 
@@ -364,7 +364,7 @@ Before you can turn back a shape rushes from the darkness
 :: Mine Punishment Creature Feature Finish
 <<effects>><<unset $mine.creature>>
 
-You approach the pedestal. You don't hesitate to dump out the bag. <span class="blue">Large chunks of meat fall out</span>. Before you can do anything, <span class="red">growls emanate from the tunnels around you</span>.
+You approach the pedestal. You don't hesitate to dump out the bag. <span class="blue">Large chunks of meat fall out.</span> Before you can do anything, <span class="red">growls emanate from the tunnels around you.</span>
 <br><br>
 Not wanting to stay here, you run back the way you came. As you run, you hear horrible noises as things start to consume the meat.
 <br><br>
@@ -375,7 +375,7 @@ Not wanting to stay here, you run back the way you came. As you run, you hear ho
 :: Mine Punishment Creature Feature Finish 2
 <<effects>>
 
-You run through the winding tunnels. You take a second to regain your breath. As soon as you stop, <span class="red">you hear a loud growl from behind</span>, you look back to see a creature, larger than the rest.
+You run through the winding tunnels. You take a second to regain your breath. As soon as you stop, <span class="red">you hear a loud growl from behind,</span> you look back to see a creature, larger than the rest.
 <br><br>
 You continue running down the tunnel before it can start running towards you. You hear it give chase, but you make it back to the elevator in time. The elevator starts up with a clunk. You slowly ascend, leaving large roars behind.
 <br><br>

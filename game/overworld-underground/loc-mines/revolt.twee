@@ -94,14 +94,14 @@
 
 You grab the keys off the guard's belt.
 <<if $mine.hope gte 30 and $mine.song>>
-	You turn to the line of slaves. One of them shouts, "Look behind you!" You quickly turn to see a <<person>> lunging at you, <span class="green">but you're able to dodge out of the way in time</span>.
+	You turn to the line of slaves. One of them shouts, "Look behind you!" You quickly turn to see a <<person>> lunging at you, <span class="green">but you're able to dodge out of the way in time.</span>
 	<br><br>
 	<<He>> crashes to the ground. You take the chance to toss the keys to one of the slaves who immediately starts helping others unlock their shackles. <<mine_hope 3>><<ggghope>>
 	<br><br>
 	<<link [[Next|Mine Revolt Free]]>><<endevent>><</link>>
 <<else>>
 	<<shackle_feet>>
-	You turn to the line of slaves. One of them is staring behind you. You quickly turn to see a <<person>> lunging at you. <span class="red">You try to dodge but <<he>> tackles you to the ground</span>.<<pain 10>><<ggpain>>
+	You turn to the line of slaves. One of them is staring behind you. You quickly turn to see a <<person>> lunging at you. <span class="red">You try to dodge but <<he>> tackles you to the ground.</span><<pain 10>><<ggpain>>
 	<br><br>
 	You crash to the ground. <<He>> takes the chance to shackle you. <<He>> pulls you up and drags you into the tunnels. <<mine_hope -3>><<lllhope>>
 	<br><br>
@@ -113,7 +113,7 @@ You grab the keys off the guard's belt.
 :: Mine Revolt Free
 <<effects>><<generate1>>
 
-Guards start pouring into the tunnel, <span class="blue">but they're overwhelmed by the slaves</span>. A yell cuts through the noise. You look at the source and see a <<person1>><<person>> flanked by half a dozen guards. They're all holding guns.
+Guards start pouring into the tunnel, <span class="blue">but they're overwhelmed by the slaves.</span> A yell cuts through the noise. You look at the source and see a <<person1>><<person>> flanked by half a dozen guards. They're all holding guns.
 <br><br>
 "You all will put your shackles back on, or we will open fire," the <<person>> yells. Silence envelops the tunnel.
 <br><br>
@@ -137,11 +137,11 @@ You step towards the pile of unlocked shackles and put one on. The rest of the s
 :: Mine Revolt Gun Forward
 <<effects>>
 
-You step forward. The guards surrounding the <<person>> look at each other, confused. "Okay… You chose this," <<he>> says. A singular click cuts through the silence, followed by a series of frantic clicks. <span class="green">The guns don't work</span>. Fear fills the faces of the guards. <<mine_hope 3>><<ggghope>>
+You step forward. The guards surrounding the <<person>> look at each other, confused. "Okay… You chose this," <<he>> says. A singular click cuts through the silence, followed by a series of frantic clicks. <span class="green">The guns don't work.</span> Fear fills the faces of the guards. <<mine_hope 3>><<ggghope>>
 <br><br>
 The guards retreat into the tunnels immediately, followed by the pursuing slaves.
 <<if $mine.setup.map>>
-	<span class="blue">You remember the map in the guard's room</span>. You can use it to find your way out. 
+	<span class="blue">You remember the map in the guard's room.</span> You can use it to find your way out. 
 	Not wasting any time, you rush to the guard's room and grab the map before returning to the tunnel.
 <</if>>
 <br><br>
@@ -201,7 +201,7 @@ You pull out the bomb you made and walk up to the gate. The guards look at you i
 <br><br>
 You set down the bomb, right in front of the gate. You look up and see that the guards are already long gone. Not wanting to waste time, you arm the bomb and run for cover. The other slaves are way ahead of you. You brace yourself and cover your ears before a loud boom shakes your surroundings.
 <br><br>
-You look to see the damage, <span class="green">the gate has been blown off, along with a large amount of rock</span>.
+You look to see the damage, <span class="green">the gate has been blown off, along with a large amount of rock.</span>
 <br><br>
 Before you can go through, a horde of people rush past you, almost knocking you down. You don't hesitate to follow. You reach a staircase leading to a metal door. You quickly walk up and go through and emerge at the bottom of the flats on Barb Street.
 <br><br>

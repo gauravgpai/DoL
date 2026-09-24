@@ -156,7 +156,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 
 <<if !$mine.tunnel.intro>>
 	<<addinlineevent "collapsed">>
-		As you're exploring, you come across a steep decline. It's covered in mud. You cautiously step onto it before <span class="red">you slip on the mud and slide down the tunnel</span>. 
+		As you're exploring, you come across a steep decline. It's covered in mud. You cautiously step onto it before <span class="red">you slip on the mud and slide down the tunnel.</span> 
 		You eventually reach the bottom and land on some hard rock. <<pain 10>><<ggpain>>
 		<br><br>
 		<<link [[Recover|Mine Collapse Intro]]>><</link>>
@@ -354,7 +354,7 @@ You're at the collapsed tunnel.
 :: Mine Clear
 <<effects>>
 
-You work on clearing the rocks out of the tunnel. It's exhausting work, <span class="blue">but you're making progress</span>.
+You work on clearing the rocks out of the tunnel. It's exhausting work, <span class="blue">but you're making progress.</span>
 
 <<set $mine.tunnel.collapse += 1>>
 
@@ -452,7 +452,7 @@ You reach out to touch the diamond, as your fingers meet the diamond.
 <<orgasm>>
 As you recover from your spasms, you realise that touching it made you orgasm. You reach back through the crack and grab a scrap of clothing. You wrap the diamond in the clothing scrap and lift it off its pedestal.
 <br><br>
-You return through the crack and continue down the tunnel, eventually reaching a fork. One of them leads to an incline. You follow the inclining tunnel. The silence is suddenly cut by <span class="red">a loud roar from behind you</span>. <<stress 20>><<gggstress>>
+You return through the crack and continue down the tunnel, eventually reaching a fork. One of them leads to an incline. You follow the inclining tunnel. The silence is suddenly cut by <span class="red">a loud roar from behind you.</span> <<stress 20>><<gggstress>>
 <br><br>
 <<link [[Run|Mine Diamond Escape]]>><</link>>
 
@@ -461,13 +461,13 @@ You return through the crack and continue down the tunnel, eventually reaching a
 :: Mine Diamond Escape
 <<effects>>
 
-You run as fast as you can through the tunnel. The incline gets steeper and steeper. <span class="red">Another loud roar comes from behind you. It's louder than the last</span>.
+You run as fast as you can through the tunnel. The incline gets steeper and steeper. <span class="red">Another loud roar comes from behind you. It's louder than the last.</span>
 <br><br>
-The tunnel eventually levels out. You see light in the tunnel ahead, you're about to rush into it as <span class="red">yet another loud roar comes from right behind you</span>.
+The tunnel eventually levels out. You see light in the tunnel ahead, you're about to rush into it as <span class="red">yet another loud roar comes from right behind you.</span>
 <br><br>
 You look around to see a large monster standing right behind you. You scramble away as it swings its arm into one of the wooden supports. The tunnel starts to rumble. You rush to the light as the tunnel starts to collapse.
 <br><br>
-You end up in a small cave and drop to the ground, trying to cover yourself. The rumbling stops. You look back to see the tunnel you came from is gone. It's as though it never existed to begin with. You look around. <span class="green">You're back at the entrance</span>. How did you get here?
+You end up in a small cave and drop to the ground, trying to cover yourself. The rumbling stops. You look back to see the tunnel you came from is gone. It's as though it never existed to begin with. You look around. <span class="green">You're back at the entrance.</span> How did you get here?
 <br><br>
 <<link [[Next|Mine]]>><<endevent>><</link>>
 
