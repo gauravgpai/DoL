@@ -1491,6 +1491,10 @@ sugarcube-2:
           - **notes** _optional_: `string` - additional text to include
       parameters:
         - '|+ string |+ ...(var|bareword|text)'
+    baileyConfiscationList:
+      name: baileyConfiscationList
+    baileyConfiscationListFull:
+      name: baileyConfiscationListFull
     baitMobileDropdown:
        name: baitMobileDropdown
     baitMobileSidebar:
@@ -3986,6 +3990,14 @@ sugarcube-2:
       name: cream_walk
     creampie:
       name: creampie
+    createThugTrap:
+      description: |-
+        Creates a trap at the current sub-location, for Bailey's thugs
+
+        `<<createThugTrap location?>>`
+        - **location**: _optional_: `string` - location override
+      parameters:
+        - "|+ string"
     creatureActivity:
       name: creatureActivity
     creatureContainersProgressDay:
@@ -8542,6 +8554,10 @@ sugarcube-2:
       description: |-
         Prints `| + Thigh skill`
       tags: ["text"]
+    gthuganger:
+      description: |-
+        Prints `| + Thug Anger`
+      tags: ["text"]
     gtiredness:
       description: |-
         Prints `| + Fatigue`
@@ -10784,6 +10800,10 @@ sugarcube-2:
       description: |-
         Prints `| - - - Suspicion`
       tags: ["text"]
+    lllthuganger:
+      description: |-
+        Prints `| - - - Thug Anger`
+      tags: ["text"]
     llltiredness:
       description: |-
         Prints `| - - - Fatigue`
@@ -10907,6 +10927,10 @@ sugarcube-2:
     llsuspicion:
       description: |-
         Prints `| - - Suspicion`
+      tags: ["text"]
+    llthuganger:
+      description: |-
+        Prints `| - - Thug Anger`
       tags: ["text"]
     lltiredness:
       description: |-
@@ -11239,6 +11263,10 @@ sugarcube-2:
     lsuspicion:
       description: |-
         Prints `| - Suspicion`
+      tags: ["text"]
+    lthuganger:
+      description: |-
+        Prints `| - Thug Anger`
       tags: ["text"]
     ltiredness:
       description: |-
@@ -12448,12 +12476,13 @@ sugarcube-2:
         The widget is used as such
 
         ```
-        <<npc namedNPCName>>
+        <<npc namedNPCName slot>>
         ``` 
         - **namedNPCName**: `npcObject` - The NPC to instanciate
           - %namedNPCDesc%
+        - **slot**: _optional_: `number` - Slot to assign NPC to
       parameters:
-        - "%namedNPC%"
+        - "%namedNPC% |+ number"
     npc_attempt_sex:
       name: npc_attempt_sex
     npc_pillory:
@@ -17465,6 +17494,24 @@ sugarcube-2:
       description: |-
         Prints a random spoken threat of active NPC towards player
       tags: ["text"]
+    thuganger:
+      description: |-
+        Changes anger for Bailey's thugs. Thug anger is a range from 0-5
+
+        `<<thuganger change>>`
+        - **change**: `number`|`"passive"`
+          - `number` - +/- change to apply
+          - `"passive"` - meant for passive increase at the end of the day. cannot increase anger past 4
+      parameters:
+        - 'number|"passive"'
+    thugrentdue:
+      name: thugrentdue
+    thugrentduerobin:
+      name: thugrentduerobin
+    thugrentnopay:
+      name: thugrentnopay
+    thugrentnopayrobin:
+      name: thugrentnopayrobin
     timeAfterXHours:
       description: |-
         Prints formatted time after X hours would pass

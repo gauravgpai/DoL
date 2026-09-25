@@ -102,7 +102,21 @@
 			<<if !_avery_pay>>
 				<<if $rentday isnot undefined>>
 					<<if $renttime lte 0>>
-						<li>Bailey is looking for you and wants <<printmoney $rentmoney>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.</li>
+						<li>Bailey is looking for you and wants <<printmoney $rentmoney>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.
+						<<if $rentthug>>
+							<<if $renttime is 0>>
+								<span class="green"><<nnpc_His "Bailey">> thugs aren't after you yet.</span>
+							<<else>>
+								<<switch $rentthug?.anger>>
+									<<case 0>><span class="teal"><<nnpc_His "Bailey">> thugs are looking for you.</span>
+									<<case 1>><span class="lblue"><<nnpc_His "Bailey">> thugs are focused on finding you.</span>
+									<<case 2>><span class="blue"><<nnpc_His "Bailey">> thugs are frustrated by you.</span>
+									<<case 3>><span class="purple"><<nnpc_His "Bailey">> thugs are making your capture a priority.</span>
+									<<case 4>><span class="pink"><<nnpc_His "Bailey">> thugs are developing a vendetta against you.</span>
+									<<default>><span class="red"><<nnpc_His "Bailey">> thugs view catching you as their number one priority.</span>
+								<</switch>>
+							<</if>>
+						<</if>></li>
 					<<else>>
 						<li>Bailey wants <<printmoney $rentmoney>> on <<rentday>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.</li>
 					<</if>>

@@ -1197,6 +1197,11 @@ function minutePassed(minutes) {
 		V.stress += Math.floor(minutes * 40);
 	}
 
+	// Thug traps
+	for (let i = 0; i < V.rentthug?.traps.length; i++) {
+		if (Time.date.timeStamp >= V.rentthug.traps[i].endTime) V.rentthug.traps.deleteAt([i]);
+	}
+
 	// Tanning
 	Skin.applyTanningGain(minutes);
 
@@ -2710,6 +2715,7 @@ function inRentPausedBadEnd() {
 /* Not seen bailey for more than 2 weeks, tracks missed rent */
 function passRentTick() {
 	V.renttime--;
+	wikifier("thuganger", "passive")
 	if (V.renttime < 0 && V.renttime % 7 === 0) {
 		V.baileyRefusedToPayTotal += V.rentmoney + (V.babyRent || 0);
 		V.baileyRefusedToPayTotalStat += V.rentmoney + (V.babyRent || 0);

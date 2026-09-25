@@ -616,7 +616,7 @@ The midwife places a mask over your face. You feel your consciousness fade. Seve
 
 :: Pregnancy Birth Hospital 3
 <<set $outside to 0>><<set $location to "hospital">><<effects>>
-<<endevent>>
+<<endevent>><<canvas-model-override "belly" 0>>
 <<generate1>><<person1>>
 
 <<set $litter_size to getLabouringLitter("pc").length>>
@@ -686,7 +686,7 @@ The midwife places a mask over your face. You feel your consciousness fade. Seve
 	<br><br>
 <</if>>
 
-<<link [[Next|Pregnancy Birth Hospital 5]]>><<storeon "hospital_birth">><<pass 24 hour>><<stress -40>><</link>>
+<<link [[Next|Pregnancy Birth Hospital 5]]>><<storeon "hospital_birth">><<pass 24 hour>><<stress -40>><<tiredness -1000>><</link>>
 <br><br>
 
 
@@ -872,7 +872,11 @@ You arrive at Domus Street. Bailey holds open the car door for you.
 	<br><br>
 <</if>>
 
-<<link [[Next|Orphanage]]>><<unset $litter_size>><<unset $first_birth>><<endevent>><<set $ward_unlocked to true>><<unset $bornChildrenIds>><</link>>
+<<if $renttime lte 0 or $rentPregInterruption>>
+	<<link [[Next|Rent Pregnant Return]]>><<unset $first_birth>><<endevent>><<set $ward_unlocked to true>><<unset $bornChildrenIds>><</link>>
+<<else>>
+	<<link [[Next|Orphanage]]>><<unset $litter_size>><<unset $first_birth>><<endevent>><<set $ward_unlocked to true>><<unset $bornChildrenIds>><</link>>
+<</if>>
 
 :: Pregnancy Birth Hospital Wolf
 <<set $outside to 0>><<set $location to "hospital">><<effects>>

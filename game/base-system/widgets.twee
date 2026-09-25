@@ -5441,3 +5441,57 @@
 	<<set _multi to $purity gte 1000 ? 2 : 1>>
 	<<defiance `($purity / 100) * _multi`>>
 <</widget>>
+
+<<widget "thuganger">>
+	<<if $rentthug>>
+		<<if _args[0] is "passive" and $renttime lt -1>>
+			<<if $rentthug.anger lt 4 and $rentthug.angerCountdown lte 0>>
+				<<set $rentthug.anger++>>
+				<<switch $rentthug.anger>>
+					<<case 2>>
+						<<set $rentthug.angerCountdown to 1>>
+					<<case 3>>
+						<<set $rentthug.angerCountdown to 2>>
+					<<default>>
+				<</switch>>
+			<<elseif $rentthug.angerCountdown lt 0>>
+				<<set $rentthug.angerCountdown-->>
+			<</if>>
+		<<elseif Number.isInteger(_args[0])>>
+			<<set $rentthug.anger to Math.clamp($rentthug.anger + _args[0], 0, 5)>>
+			<<switch $rentthug.anger>>
+				<<case 1 2>>
+					<<set $rentthug.angerCountdown to 1>>
+				<<case 3>>
+					<<set $rentthug.angerCountdown to 2>>
+				<<default>>
+			<</switch>>
+			<<set $rentthug.traps to []>>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "createThugTrap">>
+	<<if $rentthug>>
+		<<set _location to _args[0] or $bus>>
+		/* Deletes existing trap at location */
+		<<if $rentthug.traps.find(trap => trap.location === _location)>>
+			<<set _refreshTrap to true>>
+			<<set $rentthug.traps.deleteAt([$rentthug.traps.findIndex(trap => trap.location === _location)])>>
+		<</if>>
+		/* Sets new trap */
+		<<set $rentthug.traps.push({
+			location: _location,
+			endTime: new DateTime(Time.date).addHours(($rentthug.anger is 5 ? 3 : 2) / (Time.daystate is "night" ? 2 : 1)).timeStamp
+		})>>
+		/* Clears old traps if needed */
+		<<if $rentthug.traps.length gte 4>><<set $rentthug.traps.deleteAt([0])>><</if>>
+
+		<<if _refreshTrap>>
+			<span class="blue"><i>Bailey's thugs are now actively looking for you on <<print _location.toUpperFirst()>> Street. You probably shouldn't return here for some time.</i></span>
+		<<else>>
+			<span class="blue"><i>Since you were seen by Bailey's thugs on <<print _location.toUpperFirst()>> Street, they are likely to be looking for you around here for some time.</i></span>
+		<</if>>
+		<br><br>
+	<</if>>
+<</widget>>

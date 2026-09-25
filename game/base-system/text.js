@@ -881,3 +881,7 @@ statDisplay.create("gggwarmth", () => statDisplay.statChange("Warmth", 3, "orang
 statDisplay.create("lwarmth", () => statDisplay.statChange("Warmth", -1, "teal"));
 statDisplay.create("llwarmth", () => statDisplay.statChange("Warmth", -2, "teal"));
 statDisplay.create("lllwarmth", () => statDisplay.statChange("Warmth", -3, "teal"));
+statDisplay.create("gthuganger", () => statDisplay.statChange("Thug Anger", 1, "red", () => V.rentthug));
+statDisplay.create("lthuganger", () => statDisplay.statChange("Thug Anger", -1, "green", () => V.rentthug));
+statDisplay.create("llthuganger", () => statDisplay.statChange("Thug Anger", -2, "green", () => V.rentthug));
+statDisplay.create("lllthuganger", () => statDisplay.statChange("Thug Anger", -3, "green", () => V.rentthug));
