@@ -90,8 +90,8 @@ You climb aboard the bus. Tickets cost £1.
 <br><br>
 <<if $stress gte $stressmax>>
 	<<passoutbus>>
-<<elseif $renttime lt 0 and $rentthug?.anger gt 0 and $rng gte 100 - ($rentthug.anger * 10)>>
-	<<if $rentthug.anger lte 3>>
+<<elseif $rentTime lt 0 and $rentThug?.anger gt 0 and $rng gte 100 - ($rentThug.anger * 10)>>
+	<<if $rentThug.anger lte 3>>
 		<<generate1>><<generate2>>
 		You notice two shady people entering the bus, a <<person1>><<person>> and a <<person2>><<person>>. They pass over a few empty seats and methodically scan over the other occupants.
 		<br><br>

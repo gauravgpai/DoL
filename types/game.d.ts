@@ -33,9 +33,9 @@ declare module "twine-sugarcube" {
 		physiquechange: 1;
 		home_event_timer: number;
 
-		renttime: number;
+		rentTime: number;
 		babyRent: number;
-		rentmoney: number;
+		rentMoney: number;
 		baileyRefusedToPayTotal: number;
 		baileyRefusedToPayTotalStat: number;
 

@@ -2897,7 +2897,7 @@
 				<<set _difficulty to $NPCList[0].skills.security>>
 				<<set _difficulty += $liquidcount * 20>>
 				<<set _stalked to ($NPCList[0].fullDescription isnot "Ivory Wraith" and ($NPCList[0].legs is "run" or $NPCList[0].bold gte random(1, 1000))
-				or $NPCList[0].fullDescription is "Ivory Wraith" and C.npc["Ivory Wraith"].lust gte random(5,15))>>
+				or $NPCList[0].fullDescription is "Ivory Wraith" and C.npc["Ivory Wraith"].lust gte random(5, 15))>>
 				<<if currentSkillValue('skulduggery') gte random(1, _difficulty)>>
 					<<set _hide_success to true>>
 				<</if>>
@@ -4986,7 +4986,7 @@
 
 		<<if $mouthaction is "pay">>
 			<<set $mouthaction to 0>><<set $mouthactiondefault to "rest">>
-			<<if $money gte $rentmoney + ($babyRent or 0)>>
+			<<if $money gte $rentMoney + ($babyRent or 0)>>
 				<<set $speechpay to 1>>
 				<<if $speech_attitude is "meek">>
 					"S-stop!" you shout. "I'll pay you, so... j-just let Robin go."

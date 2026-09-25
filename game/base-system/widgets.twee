@@ -2891,8 +2891,8 @@
 	<</if>>
 <</widget>>
 
-<<widget "rentday">>
-	<<set $_text_output to ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][$rentday-1]>>
+<<widget "rentDay">>
+	<<set $_text_output to ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][$rentDay-1]>>
 	<<print $_text_output>>
 <</widget>>
 
@@ -4878,9 +4878,9 @@
 
 <<widget "cheatStart">>
 	<<set $cheatsEnabled to true>><<money 500000 "debug">>
-	<<set $rentmoney to 10000>><<rentmod>>
-	<<set $renttime to 7>><<set $rentday to Time.weekDay>>
-	<<set $rentstage to 1>>
+	<<set $rentMoney to 10000>><<rentmod>>
+	<<set $rentTime to 7>><<set $rentDay to Time.weekDay>>
+	<<set $rentStage to 1>>
 <</widget>>
 
 <<widget "cheatAveryMansion">>
@@ -5559,49 +5559,49 @@
 <</widget>>
 
 <<widget "thuganger">>
-	<<if $rentthug>>
-		<<if _args[0] is "passive" and $renttime lt -1>>
-			<<if $rentthug.anger lt 4 and $rentthug.angerCountdown lte 0>>
-				<<set $rentthug.anger++>>
-				<<switch $rentthug.anger>>
+	<<if $rentThug>>
+		<<if _args[0] is "passive" and $rentTime lt -1>>
+			<<if $rentThug.anger lt 4 and $rentThug.angerCountdown lte 0>>
+				<<set $rentThug.anger++>>
+				<<switch $rentThug.anger>>
 					<<case 2>>
-						<<set $rentthug.angerCountdown to 1>>
+						<<set $rentThug.angerCountdown to 1>>
 					<<case 3>>
-						<<set $rentthug.angerCountdown to 2>>
+						<<set $rentThug.angerCountdown to 2>>
 					<<default>>
 				<</switch>>
-			<<elseif $rentthug.angerCountdown lt 0>>
-				<<set $rentthug.angerCountdown-->>
+			<<elseif $rentThug.angerCountdown gt 0>>
+				<<set $rentThug.angerCountdown-->>
 			<</if>>
 		<<elseif Number.isInteger(_args[0])>>
-			<<set $rentthug.anger to Math.clamp($rentthug.anger + _args[0], 0, 5)>>
-			<<switch $rentthug.anger>>
+			<<set $rentThug.anger to Math.clamp($rentThug.anger + _args[0], 0, 5)>>
+			<<switch $rentThug.anger>>
 				<<case 1 2>>
-					<<set $rentthug.angerCountdown to 1>>
+					<<set $rentThug.angerCountdown to 1>>
 				<<case 3>>
-					<<set $rentthug.angerCountdown to 2>>
+					<<set $rentThug.angerCountdown to 2>>
 				<<default>>
 			<</switch>>
-			<<set $rentthug.traps to []>>
+			<<set $rentThug.traps to []>>
 		<</if>>
 	<</if>>
 <</widget>>
 
 <<widget "createThugTrap">>
-	<<if $rentthug>>
+	<<if $rentThug>>
 		<<set _location to _args[0] or $bus>>
 		/* Deletes existing trap at location */
-		<<if $rentthug.traps.find(trap => trap.location === _location)>>
+		<<if $rentThug.traps.find(trap => trap.location === _location)>>
 			<<set _refreshTrap to true>>
-			<<set $rentthug.traps.deleteAt([$rentthug.traps.findIndex(trap => trap.location === _location)])>>
+			<<set $rentThug.traps.deleteAt([$rentThug.traps.findIndex(trap => trap.location === _location)])>>
 		<</if>>
 		/* Sets new trap */
-		<<set $rentthug.traps.push({
+		<<set $rentThug.traps.push({
 			location: _location,
-			endTime: new DateTime(Time.date).addHours(($rentthug.anger is 5 ? 3 : 2) / (Time.daystate is "night" ? 2 : 1)).timeStamp
+			endTime: new DateTime(Time.date).addHours(($rentThug.anger is 5 ? 3 : 2) / (Time.dayState is "night" ? 2 : 1)).timeStamp
 		})>>
 		/* Clears old traps if needed */
-		<<if $rentthug.traps.length gte 4>><<set $rentthug.traps.deleteAt([0])>><</if>>
+		<<if $rentThug.traps.length gte 4>><<set $rentThug.traps.deleteAt([0])>><</if>>
 
 		<<if _refreshTrap>>
 			<span class="blue"><i>Bailey's thugs are now actively looking for you on <<print _location.toUpperFirst()>> Street. You probably shouldn't return here for some time.</i></span>

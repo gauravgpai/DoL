@@ -7634,4 +7634,9 @@
 	<<if $ironmanmode and $options.maxStates is 1>>
 		<<set $options.maxStates to 5>>
 	<</if>>
+
+	<<set $rentDay ??= $rentday>><<unset $rentday>>
+	<<set $rentTime ??= $renttime>><<unset $renttime>>
+	<<set $rentMoney ??= $rentmoney>><<unset $rentmoney>>
+	<<set $rentStage ??= $rentstage>><<unset $rentstage>>
 <</widget>>

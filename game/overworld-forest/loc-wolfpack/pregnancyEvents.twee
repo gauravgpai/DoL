@@ -428,7 +428,7 @@ You reach out for your pups, but the Black Wolf pulls away. The pups whine and w
 
 :: Pregnancy Birth Wolf Cave 3
 <<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
-<<set $wolfevent to 1>><<canvas-model-override "belly" 0>>
+<<set $wolfevent to 1>>
 Overwhelmed by the stress, relief, and flood of emotion, you break into tears. You gather your pups and hold them close, making sure they find comfort in your warmth. Their whimpering settles down as they bask in your embrace. You're whimpering yourself, but can't contain a big smile drawing on your tear-covered face.
 <br><br>
 

@@ -357,8 +357,8 @@
 			<<run _increaseAllure.push(`Alluring shoes ${"+".repeat(Math.floor($worn.feet.reveal / 200))}`)>>
 			<<run _increaseAttractive.push(`Attractive shoes ${"+".repeat(Math.floor($worn.feet.reveal / 200))}`)>>
 		<</if>>
-		<<if $renttime lt 0>>
-			<<run _increaseAllure.push(`Hunted by Bailey's thugs${$rentthug.anger gte 1 ? " " + "+".repeat($rentthug.anger) : ""}`)>>
+		<<if $rentTime lt 0 and $rentThug>>
+			<<run _increaseAllure.push(`Hunted by Bailey's thugs${$rentThug.anger gte 1 ? " " + "+".repeat($rentThug.anger) : ""}`)>>
 		<</if>>
 		<<if Weather.dayState is "night">>
 			<<run _increaseAllure.push("Night")>>

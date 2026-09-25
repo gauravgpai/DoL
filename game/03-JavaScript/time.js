@@ -1201,8 +1201,8 @@ function minutePassed(minutes) {
 	}
 
 	// Thug traps
-	for (let i = 0; i < V.rentthug?.traps.length; i++) {
-		if (Time.date.timeStamp >= V.rentthug.traps[i].endTime) V.rentthug.traps.deleteAt([i]);
+	for (let i = 0; i < V.rentThug?.traps.length; i++) {
+		if (Time.date.timeStamp >= V.rentThug.traps[i].endTime) V.rentThug.traps.deleteAt([i]);
 	}
 
 	// Tanning
@@ -2727,10 +2727,10 @@ function inRentPausedBadEnd() {
 
 /* Not seen bailey for more than 2 weeks, tracks missed rent */
 function passRentTick() {
-	V.renttime--;
-	wikifier("thuganger", "passive")
-	if (V.renttime < 0 && V.renttime % 7 === 0) {
-		V.baileyRefusedToPayTotal += V.rentmoney + (V.babyRent || 0);
-		V.baileyRefusedToPayTotalStat += V.rentmoney + (V.babyRent || 0);
+	V.rentTime--;
+	wikifier("thuganger", "passive");
+	if (V.rentTime < 0 && V.rentTime % 7 === 0) {
+		V.baileyRefusedToPayTotal += V.rentMoney + (V.babyRent || 0);
+		V.baileyRefusedToPayTotalStat += V.rentMoney + (V.babyRent || 0);
 	}
 }

@@ -17639,6 +17639,8 @@ sugarcube-2:
       description: |-
         Prints a random spoken threat of active NPC towards player
       tags: ["text"]
+    thugAmbush:
+      name: thugAmbush
     thuganger:
       description: |-
         Changes anger for Bailey's thugs. Thug anger is a range from 0-5
@@ -17649,6 +17651,18 @@ sugarcube-2:
           - `"passive"` - meant for passive increase at the end of the day. cannot increase anger past 4
       parameters:
         - 'number|"passive"'
+    thugConfront:
+      name: thugConfront
+    thugExhibition:
+      name: thugExhibition
+    thugHound:
+      name: thugHound
+    thugPatrol:
+      name: thugPatrol
+    thugPersistent:
+      name: thugPersistent
+    thugRentIntro:
+      name: thugRentIntro
     thugrentdue:
       name: thugrentdue
     thugrentduerobin:
@@ -17657,6 +17671,14 @@ sugarcube-2:
       name: thugrentnopay
     thugrentnopayrobin:
       name: thugrentnopayrobin
+    thugStalk:
+      name: thugStalk
+    thugStalkDuo:
+      name: thugStalkDuo
+    thugTrapCar:
+      name: thugTrapCar
+    thugWander:
+      name: thugWander
     timeAfterXHours:
       description: |-
         Prints formatted time after X hours would pass
