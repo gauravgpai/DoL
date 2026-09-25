@@ -118,7 +118,7 @@
 							<</if>>
 						<</if>></li>
 					<<else>>
-						<li>Bailey wants <<printmoney $rentMoney>> on <<rentDay>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.</li>
+						<li>Bailey wants <<printmoney $rentMoney>> on <<rentday>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.</li>
 					<</if>>
 				<<elseif $rentMoney isnot undefined>>
 					<li>Bailey wants <<printmoney $rentMoney>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.</li>

@@ -1481,6 +1481,12 @@ sugarcube-2:
       name: baileyConfiscationList
     baileyConfiscationListFull:
       name: baileyConfiscationListFull
+    baileyConfiscationNotice:
+      name: baileyConfiscationNotice
+    baileyRentConfiscation:
+      name: baileyRentConfiscation
+    baileyRentReclaimOption:
+      name: baileyRentReclaimOption
     baitMobileDropdown:
        name: baitMobileDropdown
     baitMobileSidebar:
