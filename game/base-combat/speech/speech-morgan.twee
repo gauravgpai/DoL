@@ -1,6 +1,39 @@
 :: Widgets speech-Morgan [widget]
 <<widget "speech-morgan">>
 	<<set _npc_speech to true>>
+	<<speechPool "Morgan">>
+	<<if $player.virginity.anal is "Morgan">>
+		<<addEventSpeechLine "anusVirgin">>
+			<<He>> smiles. "<<charles>>, I got to pop your other cherry too! Isn't it wonderful?"
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.oral is "Morgan">>
+		<<addEventSpeechLine "oralVirgin">>
+			<<He>> smiles. "Did you forget how to do this?"
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.kiss is "Morgan">>
+		<<addEventSpeechLine "kissVirgin">>
+			<<He>> smiles. "Don't you remember my taste?"
+		<</addEventSpeechLine>>
+	<</if>>
+	<<addEventSpeechLine "LINameDrop">>
+		<<set $speechLINameDrop to 0>>
+		<<switch _loveInterest>>
+			<<default>>
+				<<He>> snarls. "<<charles>>, you belong to <<mummy>>!"
+		<</switch>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "noticeSexToy">>
+		<<set $speechNoticeSexToy to 0>>
+		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
+		<<He>> looks at your $_sexToy and speaks. "<<charles>>, what is that?"
+	<</addEventSpeechLine>>
+	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Morgan") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Morgan")>>
+		<<addEventSpeechLine "penisVirgin" "vaginaVirgin">>
+			<<He>> smiles. "This feels like your first time again. How did you do that <<charles>>?"
+		<</addEventSpeechLine>>
+	<</if>>
 	<<if $possessed>>
 		<<print pickSpeechLine("Morgan", 
 			`<<He>> roars. "I won't let you hurt <<phim>>!"`,
@@ -14,26 +47,10 @@
 			`<<He>> babbles under <<his>> breath.`,
 			`<<He>> shakes <<his>> head. "You'll fall. You'll fall, and you won't get back up."`
 		)>>
-	<<elseif ($speechPenisVirgin is 1 and $player.virginity.penile is "Morgan") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Morgan")>>
-		<<He>> smiles. "This feels like your first time again. How did you do that <<charles>>?"
-	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Morgan">>
-		<<He>> smiles. "<<charles>>, I got to pop your other cherry too! Isn't it wonderful?"
-	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Morgan">>
-		<<He>> smiles. "Did you forget how to do this?"
-	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Morgan">>
-		<<He>> smiles. "Don't you remember my taste?"
-	<<elseif $speechLINameDrop is 1>>
-		<<set $speechLINameDrop to 0>>
-		<<switch _loveInterest>>
-			<<default>>
-				<<He>> snarls. "<<charles>>, you belong to <<mummy>>!"
-		<</switch>>
+	<<elseif hasSpeechLines()>>
+		<<speechSay>>
 	<<elseif ($NPCList[_n].vagina is "feet" or $NPCList[_n].penis is "feet") and random(1, 10) is 1 and $settings.footFetishEnabled>>
 		<<He>> moans. "Oh, <<charles>>, your feet...!" /* I hate you I hate you I hate you */
-	<<elseif $speechNoticeSexToy is 1>>
-		<<set $speechNoticeSexToy to 0>>
-		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
-		<<He>> looks at your $_sexToy and speaks. "<<charles>>, what is that?"
 	<<else>>
 		<<set _noNameComment to true>>
 	<</if>>

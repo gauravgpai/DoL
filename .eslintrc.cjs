@@ -497,6 +497,7 @@ module.exports = {
 					"DonorSpecies",
 					"ChildSpecies",
 					"SpeechLine",
+					"SpeechEventLines",
 					"SpeechSpeaker",
 				],
 			},

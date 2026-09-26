@@ -1062,7 +1062,7 @@
 				<<elseif $npc[0] is "Kylar" and !$kylarSeen.includes("crossdress")>>
 					<<set $kylarSeen.pushUnique("crossdress")>>
 					<<set _kylar to statusCheck("Kylar")>>
-					<<if _kylar.gender isnot $player.sex or _kylar.gender is "h">>
+					<<if playerCanBreedWith("Kylar") or ($player.penisExist and $settings.npcAnalPregnancyEnabled)>>
 						Your <<genitals 1>> was clearly not what <<he>> was expecting. <<if _kylar.gender isnot "h">><span class="purple"><<His>> hands shake as <<he>> looks at you with wide eyes. <<He>> seems thrilled.</span><</if>>
 						<<set $enemyarousal += 50>><<set $speechCrossdressAroused to 2>>
 					<<else>>

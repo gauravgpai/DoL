@@ -1,21 +1,39 @@
 :: Widgets speech-Harper [widget]
 <<widget "speech-harper">>
 	<<set _npc_speech to true>>
-	<<if $speechPenisVirgin is 1 and $player.virginity.penile is "Harper">>
-		<<He>> smiles. "Hold still. I need to check your blood pressure."
-	<<elseif ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Harper")>>
-		<<He>> smiles. "This will only hurt a bit."
-	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Harper">>
+	<<speechPool "Harper">>
+	<<if $player.virginity.penile is "Harper">>
+		<<addEventSpeechLine "penisVirgin">>
+			<<He>> smiles. "Hold still. I need to check your blood pressure."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.vaginal is "Harper">>
+		<<addEventSpeechLine "vaginaVirgin">>
+			<<He>> smiles. "This will only hurt a bit."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.anal is "Harper">>
 		<<if $player.sex is "f">>
-			<<He>> smiles. "I'm going to administer a suppository. Please, try to relax."
+			<<addEventSpeechLine "anusVirgin">>
+				<<He>> smiles. "I'm going to administer a suppository. Please, try to relax."
+			<</addEventSpeechLine>>
 		<<else>>
-			<<He>> smiles. "You're overdue for a prostate examination. Please, try to relax."
+			<<addEventSpeechLine "anusVirgin">>
+				<<He>> smiles. "You're overdue for a prostate examination. Please, try to relax."
+			<</addEventSpeechLine>>
 		<</if>>
-	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Harper">>
-		<<He>> smiles. "Say 'Ahh'..."
-	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Harper">>
-		<<He>> smiles. "How's my bedside manner?"
-	<<elseif $speechLINameDrop is 1>>
+	<</if>>
+	<<if $player.virginity.oral is "Harper">>
+		<<addEventSpeechLine "oralVirgin">>
+			<<He>> smiles. "Say 'Ahh'..."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.kiss is "Harper">>
+		<<addEventSpeechLine "kissVirgin">>
+			<<He>> smiles. "How's my bedside manner?"
+		<</addEventSpeechLine>>
+	<</if>>
+	<<addEventSpeechLine "LINameDrop">>
 		<<set $speechLINameDrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Gwylan">>
@@ -25,7 +43,6 @@
 			<<default>>
 				<<He>> nods. "Prior attachments. Noted."
 		<</switch>>
-	<<else>>
-		<<set _noNameComment to true>>
-	<</if>>
+	<</addEventSpeechLine>>
+	<<speechSayOrPass>>
 <</widget>>

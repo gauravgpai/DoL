@@ -3,13 +3,19 @@
 /* PC lines (plead / demand / forgive / moan). */
 
 <<widget "pc-line-kylar-plead">>
-	<<addSpeechLine>>"Kylar... I thought you loved me..."<</addSpeechLine>>
+	<<addSpeechLine>>
+		"Kylar... I thought you loved me..."
+	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-kylar-demand">>
-	<<addSpeechLine>>"I'm not in the mood for your shit right now, Kylar."<</addSpeechLine>>
+	<<addSpeechLine>>
+		"I'm not in the mood for your shit right now, Kylar."
+	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-kylar-moan">>
-	<<addSpeechLine>>"You're the only one I need, Kylar."<</addSpeechLine>>
+	<<addSpeechLine>>
+		"You're the only one I need, Kylar."
+	<</addSpeechLine>>
 <</widget>>

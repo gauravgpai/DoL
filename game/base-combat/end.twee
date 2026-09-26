@@ -702,7 +702,7 @@
 	<<unset $averyUniqueComments>>
 	<<unset $whitneyUniqueComments>>
 	<<unset $speechSaidLines>>
-	<<unset $speechRestingGroups>>
+	<<unset $speechCooldowns>>
 	<<unset $noBodyWriting>>
 	<<unset $noAdmire>>
 	<<unset $breakIgnore>>

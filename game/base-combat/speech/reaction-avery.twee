@@ -171,9 +171,13 @@
 
 <<widget "pc-line-avery-forgive">>
 	<<if $avery_fate is undefined>>
-		<<addSpeechLine>>"You're just angry," you say. "Everyone gets angry sometimes. I forgive you."<</addSpeechLine>>
+		<<addSpeechLine>>
+			"You're just angry," you say. "Everyone gets angry sometimes. I forgive you."
+		<</addSpeechLine>>
 	<<else>>
-		<<addSpeechLine>>"Now I understand why you get so angry, Avery," you say. "And I forgive you."<</addSpeechLine>>
+		<<addSpeechLine>>
+			"Now I understand why you get so angry, Avery," you say. "And I forgive you."
+		<</addSpeechLine>>
 	<</if>>
 <</widget>>
 

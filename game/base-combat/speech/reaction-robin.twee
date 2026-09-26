@@ -3,11 +3,15 @@
 /* PC lines (plead / demand / forgive / moan). */
 
 <<widget "pc-line-robin-plead">>
-	<<addSpeechLine>>"Robin, please stop!"<</addSpeechLine>>
+	<<addSpeechLine>>
+		"Robin, please stop!"
+	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-robin-demand">>
-	<<addSpeechLine>>"Robin, stop! I don't want this!"<</addSpeechLine>>
+	<<addSpeechLine>>
+		"Robin, stop! I don't want this!"
+	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-robin-moan">>

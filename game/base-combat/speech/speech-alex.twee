@@ -1,15 +1,23 @@
 :: Widgets speech-Alex [widget]
 <<widget "speech-alex">>
 	<<set _npc_speech to true>>
-	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Alex") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Alex")>>
-		<<He>> smiles. "Your first time? I'll work extra hard to make it memorable."
-	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Alex">>
-		<<He>> smiles. "It's tight. I won't tell anyone you let me fuck your bottom."
-	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Alex">>
-		<<He>> smiles. "You haven't used your mouth like this before, have you? Just keep your chompers away."
-	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Alex">>
-		<<He>> smiles. "Town <<girls>> are so cute."
-	<<elseif $speechLINameDrop is 1>>
+	<<speechPool "Alex">>
+	<<if $player.virginity.anal is "Alex">>
+		<<addEventSpeechLine "anusVirgin">>
+			<<He>> smiles. "It's tight. I won't tell anyone you let me fuck your bottom."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.oral is "Alex">>
+		<<addEventSpeechLine "oralVirgin">>
+			<<He>> smiles. "You haven't used your mouth like this before, have you? Just keep your chompers away."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.kiss is "Alex">>
+		<<addEventSpeechLine "kissVirgin">>
+			<<He>> smiles. "Town <<girls>> are so cute."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<addEventSpeechLine "LINameDrop">>
 		<<set $speechLINameDrop to 0>>
 		<<if $alex_countdown is undefined and $farm_stage gte 7>>
 			<<switch _loveInterest>>
@@ -28,7 +36,8 @@
 					"I think I had one too many," <<he>> says, holding <<his>> forehead.
 			<</switch>>
 		<</if>>
-	<<elseif $speechNoticeSexToy is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "noticeSexToy">>
 		<<set $speechNoticeSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if C.npc.Alex.dom gte 30>>
@@ -50,6 +59,14 @@
 				`<<He>> looks at your $_sexToy and smiles. "So this is what sells in town."`
 			)>>
 		<</if>>
+	<</addEventSpeechLine>>
+	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Alex") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Alex")>>
+		<<addEventSpeechLine "penisVirgin" "vaginaVirgin">>
+			<<He>> smiles. "Your first time? I'll work extra hard to make it memorable."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if hasSpeechLines()>>
+		<<speechSay>>
 	<<else>>
 		<<set _noNameComment to true>>
 	<</if>>

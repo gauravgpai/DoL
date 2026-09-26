@@ -5,12 +5,296 @@
  * What each speaker has said lives in $speechSaidLines as a hash and is unset by <<endevent>>.
  */
 
-/**
- * Hashes a line's text.
- *
- * @param {string} text
- * @returns {string}
- */
+/* Sets up Sex/combat events to have different priorities. */
+setup.speechEvent = {
+	anusVirgin: () => V.speechAnusVirgin,
+	kissVirgin: () => V.speechKissVirgin,
+	NPCAnusVirgin: () => V.speechNPCAnusVirgin,
+	NPCHandholdingVirgin: () => V.speechNPCHandholdingVirgin,
+	NPCKissVirgin: () => V.speechNPCKissVirgin,
+	NPCOralVirgin: () => V.speechNPCOralVirgin,
+	NPCPenisVirgin: () => V.speechNPCPenisVirgin,
+	NPCVaginaVirgin: () => V.speechNPCVaginaVirgin,
+	oralVirgin: () => V.speechOralVirgin,
+	penisVirgin: () => V.speechPenisVirgin,
+	templeVirgin: () => V.speechTempleVirgin,
+	vaginaVirgin: () => V.speechVaginaVirgin,
+
+	fallenTransform: () => V.speechFallenTransform,
+
+	/* Crossdress/Herm reveals are set to 2 and move to 1 with <<endevent>>. The line lands the turn after the reveal. */
+	crossdressAngry: () => V.speechCrossdressAngry === 1,
+	crossdressAroused: () => V.speechCrossdressAroused === 1,
+	crossdressDisappointed: () => V.speechCrossdressDisappointed === 1,
+	crossdressShock: () => V.speechCrossdressShock === 1,
+	hermAngry: () => V.speechHermAngry === 1,
+	hermAroused: () => V.speechHermAroused === 1,
+	hermDisappointed: () => V.speechHermDisappointed === 1,
+	hermShock: () => V.speechHermShock === 1,
+
+	exposeBreasts: () => V.speechExposeBreasts,
+	exposeGenitals: () => V.speechExposeGenitals,
+	LINameDrop: () => V.speechLINameDrop,
+	noticeSexToy: () => V.speechNoticeSexToy,
+	penisBig: () => V.speechPenisBig,
+	penisSmall: () => V.speechPenisSmall,
+	pregnant: () => V.speechPregnant,
+
+	apologise: () => V.speechApologise,
+	apologiseAgain: () => V.speechApologiseAgain,
+	apologiseUnforgiving: () => V.speechApologiseUnforgiving,
+	askRough: () => V.speechAskRough,
+	chokedWheeze: () => V.speechChokedWheeze,
+	chokedAlready: () => V.speechChokedAlready,
+	chokedMoan: () => V.speechChokedMoan,
+	demand: () => V.speechDemand,
+	forgive: () => V.speechForgive,
+	growl: () => V.speechGrowl,
+	growlHeat: () => V.speechGrowlHeat,
+	growlRut: () => V.speechGrowlRut,
+	lactate: () => V.speechLactate,
+	masturbate: () => V.speechMasturbate,
+	moan: () => V.speechMoan,
+	pepperSpray: () => V.speechPepperSpray,
+	playerOrgasm: () => V.speechPlayerOrgasm,
+	plead: () => V.speechPlead,
+	screamForHelp: () => V.speechScreamForHelp,
+	vaginaFlaunt: () => V.speechVaginaFlaunt,
+
+	anusEscape: () => V.speechAnusEscape,
+	coverFace: () => V.speechCoverFace,
+	coverPenis: () => V.speechCoverPenis,
+	coverVagina: () => V.speechCoverVagina,
+	penisEscape: () => V.speechPenisEscape,
+	playerBeaten: () => V.speechPlayerBeaten,
+	playerHits: () => V.speechPlayerHits,
+	spank: () => V.speechSpank,
+	steal: () => V.speechSteal,
+	stripStruggle: () => V.speechStripStruggle,
+	struggle: () => V.speechStruggle,
+	vaginaEscape: () => V.speechVaginaEscape,
+
+	/* Ongoing acts */
+	analKiss: () => V.speechAnalKiss,
+	analLick: () => V.speechAnalLick,
+	anus: () => V.speechAnus,
+	anusEntrance: () => V.speechAnusEntrance,
+	anusImminent: () => V.speechAnusImminent,
+	anusPenetrated: () => V.speechAnusPenetrated,
+	anusWithhold: () => V.speechAnusWithhold,
+	arms: () => V.speechArms,
+	bottom: () => V.speechBottom,
+	breastRub: () => V.speechBreastRub,
+	chastity: () => V.speechChastity,
+	cheeks: () => V.speechCheeks,
+	chestRub: () => V.speechChestRub,
+	clit: () => V.speechClit,
+	dildoAnus: () => V.speechDildoAnus,
+	dildoVagina: () => V.speechDildoVagina,
+	faceSit: () => V.speechFaceSit,
+	feet: () => V.speechFeet,
+	fencingEntrance: () => V.speechFencingEntrance,
+	futaPenis: () => V.speechFutaPenis,
+	glans: () => V.speechGlans,
+	hair: () => V.speechHair,
+	handjobPenis: () => V.speechHandjobPenis,
+	handjobVagina: () => V.speechHandjobVagina,
+	headBreasts: () => V.speechHeadBreasts,
+	headChest: () => V.speechHeadChest,
+	headNipple: () => V.speechHeadNipple,
+	headNippleClosed: () => V.speechHeadNippleClosed,
+	headSuckle: () => V.speechHeadSuckle,
+	legLock: () => V.speechLegLock,
+	mouthEntrance: () => V.speechMouthEntrance,
+	mouthImminent: () => V.speechMouthImminent,
+	mouthOtherAnus: () => V.speechMouthOtherAnus,
+	mouthPenetrated: () => V.speechMouthPenetrated,
+	NPCChastity: () => V.speechNPCChastity,
+	otherAnusEntrance: () => V.speechOtherAnusEntrance,
+	otherAnusImminent: () => V.speechOtherAnusImminent,
+	otherAnusPenetrated: () => V.speechOtherAnusPenetrated,
+	otherAnusWithhold: () => V.speechOtherAnusWithhold,
+	penis: () => V.speechPenis,
+	penisEntrance: () => V.speechPenisEntrance,
+	penisFoot: () => V.speechPenisFoot,
+	penisImminent: () => V.speechPenisImminent,
+	penisPenetrated: () => V.speechPenisPenetrated,
+	penisPenis: () => V.speechPenisPenis,
+	penisWithhold: () => V.speechPenisWithhold,
+	stroker: () => V.speechStroker,
+	thigh: () => V.speechThigh,
+	throat: () => V.speechThroat,
+	tribEntrance: () => V.speechTribEntrance,
+	vagina: () => V.speechVagina,
+	vaginaEntrance: () => V.speechVaginaEntrance,
+	vaginaFoot: () => V.speechVaginaFoot,
+	vaginaImminent: () => V.speechVaginaImminent,
+	vaginaMouth: () => V.speechVaginaMouth,
+	vaginaPenetrated: () => V.speechVaginaPenetrated,
+	vaginaVagina: () => V.speechVaginaVagina,
+	vaginaWithhold: () => V.speechVaginaWithhold,
+};
+
+/* <<speechSay>> picks from the event lines with the highest priority.
+<<addEventSpeechLine>> adds event lines.
+<<addSpeechLine>> adds non-event lines.
+
+Table sets priority for all events as well as a cooldown for ongoing events so that these lines repeat less. */
+
+setup.speechPriority = Object.fromEntries(
+	[
+		/* A virginity being taken is always highest priority. */
+		[
+			100,
+			0,
+			[
+				"anusVirgin",
+				"kissVirgin",
+				"oralVirgin",
+				"penisVirgin",
+				"templeVirgin",
+				"vaginaVirgin",
+				"NPCAnusVirgin",
+				"NPCHandholdingVirgin",
+				"NPCKissVirgin",
+				"NPCOralVirgin",
+				"NPCPenisVirgin",
+				"NPCVaginaVirgin",
+			],
+		],
+
+		/* Fallen Angel transformation plays below virginity. NNPC Virginity lines should account for it. */
+		[95, 0, ["fallenTransform"]],
+
+		/* Herm/Crossdressing reveal have high priority because they only happen once and then the NNPC should remember. */
+		[
+			90,
+			0,
+			["crossdressAngry", "crossdressAroused", "crossdressDisappointed", "crossdressShock", "hermAngry", "hermAroused", "hermDisappointed", "hermShock"],
+		],
+
+		/* These events only happen once per combat, so these lines have higher priority. */
+		[80, 0, ["exposeBreasts", "exposeGenitals", "LINameDrop", "penisBig", "penisSmall", "pregnant", "noticeSexToy"]],
+
+		/* NNPC reacting to PC's speech and noise choices have medium-high priority. */
+		[
+			70,
+			0,
+			[
+				"apologise",
+				"apologiseAgain",
+				"apologiseUnforgiving",
+				"askRough",
+				"playerOrgasm",
+				"demand",
+				"forgive",
+				"growl",
+				"growlHeat",
+				"growlRut",
+				"lactate",
+				"moan",
+				"plead",
+				"screamForHelp",
+				"pepperSpray",
+				"chokedWheeze",
+				"chokedAlready",
+				"chokedMoan",
+				"masturbate",
+				"vaginaFlaunt",
+			],
+		],
+
+		/* PC's actions that are medium priority. */
+		[
+			60,
+			0,
+			[
+				"anusEscape",
+				"playerBeaten",
+				"coverFace",
+				"coverPenis",
+				"coverVagina",
+				"playerHits",
+				"penisEscape",
+				"spank",
+				"steal",
+				"stripStruggle",
+				"struggle",
+				"vaginaEscape",
+			],
+		],
+
+		/* Ongoing acts have a 3 turn cooldown between lines. */
+		[
+			10,
+			3,
+			[
+				"analKiss",
+				"analLick",
+				"anus",
+				"anusEntrance",
+				"anusImminent",
+				"anusPenetrated",
+				"anusWithhold",
+				"arms",
+				"bottom",
+				"breastRub",
+				"chastity",
+				"cheeks",
+				"chestRub",
+				"clit",
+				"dildoAnus",
+				"dildoVagina",
+				"faceSit",
+				"feet",
+				"fencingEntrance",
+				"futaPenis",
+				"glans",
+				"hair",
+				"handjobPenis",
+				"handjobVagina",
+				"headBreasts",
+				"headChest",
+				"headNipple",
+				"headNippleClosed",
+				"headSuckle",
+				"legLock",
+				"mouthEntrance",
+				"mouthImminent",
+				"mouthOtherAnus",
+				"mouthPenetrated",
+				"NPCChastity",
+				"otherAnusEntrance",
+				"otherAnusImminent",
+				"otherAnusPenetrated",
+				"otherAnusWithhold",
+				"penis",
+				"penisEntrance",
+				"penisFoot",
+				"penisImminent",
+				"penisPenetrated",
+				"penisPenis",
+				"penisWithhold",
+				"stroker",
+				"thigh",
+				"throat",
+				"tribEntrance",
+				"vagina",
+				"vaginaEntrance",
+				"vaginaFoot",
+				"vaginaImminent",
+				"vaginaMouth",
+				"vaginaPenetrated",
+				"vaginaVagina",
+				"vaginaWithhold",
+			],
+		],
+
+		/* <<addSpeechLine>> lines */
+		[10, 0, ["nonEvent"]],
+	].flatMap(([priority, cooldown, events]) => events.map(event => [event, { priority, cooldown }]))
+);
+
 function getSpeechLineHash(text) {
 	let hash = 5381;
 	for (let i = 0; i < text.length; i++) hash = (Math.imul(hash, 33) ^ text.charCodeAt(i)) >>> 0;
@@ -18,60 +302,54 @@ function getSpeechLineHash(text) {
 }
 
 /**
- * Checks that the speaker is a named NPC or the player, catching typos.
- *
- * @param {string} speaker
- * @returns {boolean}
- */
-function isSpeechSpeaker(speaker) {
-	return speaker === "pc" || setup.NPCNameList.includes(speaker);
-}
-
-/**
- * Builds a line for the pool and gives it a hash ID.
+ * Adds a line with no event that the speaker can say on any turn and gives it a hash ID.
  *
  * @param {string} content the line
  * @param {number} weight
- * @param {number} priority how much the line should be prioritized (100 being highest priority), found in setup.speechPriority
- * @param {string} [group] the line's group
  * @param {string} [reply] NNPC's reply, said later in the turn by <<sayPairedSpeechLine>>.
  * @returns {SpeechLine}
  */
-function createSpeechLine(content, weight, priority, group, reply) {
-	const line = { content, weight, priority, hash: getSpeechLineHash(content) };
-	if (group) line.group = group;
+function createNonEventSpeechLine(content, weight, reply) {
+	const line = { content, weight, priority: setup.speechPriority.nonEvent.priority, event: "", hash: getSpeechLineHash(content) };
 	if (reply) line.reply = reply;
 	return line;
 }
 
 /**
- * How much a speech line outranks the others in the pool.
+ * Adds a line with an event and gives it a hash ID. Event lines have priority. Ongoing event lines have cooldowns.
+ *
+ * @param {string} content the line
+ * @param {number} weight
+ * @param {string[]} declaredEvents events the line is offered for
+ * @param {string[]} firedEvents the declared events that fired this turn
+ * @returns {SpeechLine}
+ */
+function createEventSpeechLine(content, weight, declaredEvents, firedEvents) {
+	return {
+		content,
+		weight,
+		priority: Math.max(...firedEvents.map(getSpeechEventPriority)),
+		event: [...declaredEvents].sort().join(" "),
+		hash: getSpeechLineHash(content),
+	};
+}
+
+function getSpeechEventPriority(event) {
+	return setup.speechPriority[event].priority;
+}
+
+/**
+ * How many turns the speaker skips this event after just speaking about it. 0 for events with no cooldowns.
  *
  * @param {string} event
  * @returns {number}
  */
-function getSpeechEventPriority(event) {
-	return setup.speechPriority[event];
+function getSpeechEventCooldown(event) {
+	return setup.speechPriority[event].cooldown;
 }
 
-/**
- * Whether combat/sex flagged the event this turn.
- *
- * @param {string} event
- * @returns {boolean}
- */
 function hasSpeechEventFired(event) {
 	return !!setup.speechEvent[event]();
-}
-
-/**
- * Checks that the event is one setup.speechEvent lists, catching typos.
- *
- * @param {string} event
- * @returns {boolean}
- */
-function isSpeechEvent(event) {
-	return Object.hasOwn(setup.speechEvent, event);
 }
 
 /**
@@ -80,50 +358,56 @@ function isSpeechEvent(event) {
  * @param {SpeechLine[]} lines
  * @returns {SpeechLine[]}
  */
-function getTopSpeechLines(lines) {
-	const top = lines.reduce((highest, line) => Math.max(highest, line.priority), 0);
-	return lines.filter(line => line.priority === top);
+function getHighestPrioritySpeechLines(lines) {
+	const highestPriority = lines.reduce((highest, line) => Math.max(highest, line.priority), 0);
+	return lines.filter(line => line.priority === highestPriority);
+}
+
+/**
+ * Drops the events the speaker has no new lines for this combat. This way, a lower priority one can play.
+ * Repeats the event pool only if there's nothing else to say.
+ *
+ * @param {SpeechSpeaker} speaker
+ * @param {SpeechLine[]} lines
+ * @returns {SpeechLine[]}
+ */
+function getSpeechLinesWithSomethingNew(speaker, lines) {
+	const somethingNew = groupSpeechLinesByEvent(lines)
+		.filter(eventLines => getUnsaidSpeechLines(speaker, eventLines.lines).length > 0)
+		.flatMap(eventLines => eventLines.lines);
+	return somethingNew.length > 0 ? somethingNew : lines;
 }
 
 /**
  * Groups lines by the event they answer.
  *
  * @param {SpeechLine[]} lines
- * @returns {{ group: string, lines: SpeechLine[] }[]}
+ * @returns {SpeechEventLines[]}
  */
 function groupSpeechLinesByEvent(lines) {
 	/** @type {Map<string, SpeechLine[]>} */
 	const groups = new Map();
 	for (const line of lines) {
-		const group = line.group ?? "";
-		if (!groups.has(group)) groups.set(group, []);
-		groups.get(group).push(line);
+		if (!groups.has(line.event)) groups.set(line.event, []);
+		groups.get(line.event).push(line);
 	}
-	return Array.from(groups.entries(), ([group, groupLines]) => ({ group, lines: groupLines }));
+	return Array.from(groups.entries(), ([event, eventLines]) => ({ event, lines: eventLines }));
 }
 
 /**
- * Returns the hashes of the lines the speaker has said this combat.
+ * The hashes the speaker has said this combat, creating the record if this is the first line.
  *
  * @param {SpeechSpeaker} speaker
- * @returns {string[]}
  */
-function getSpeechHistory(speaker) {
+function getSaidSpeechHashes(speaker) {
 	if (!V.speechSaidLines) V.speechSaidLines = {};
 	if (!V.speechSaidLines[speaker]) V.speechSaidLines[speaker] = [];
 	return V.speechSaidLines[speaker];
 }
 
-/**
- * Filters out the lines the speaker has already said this combat.
- *
- * @param {SpeechSpeaker} speaker
- * @param {SpeechLine[]} lines
- * @returns {SpeechLine[]}
- */
 function getUnsaidSpeechLines(speaker, lines) {
-	const said = getSpeechHistory(speaker);
-	return lines.filter(line => !said.includes(line.hash));
+	const saidHashes = getSaidSpeechHashes(speaker);
+	return lines.filter(line => !saidHashes.includes(line.hash));
 }
 
 /**
@@ -134,217 +418,221 @@ function getUnsaidSpeechLines(speaker, lines) {
  */
 function forgetSpeechLines(speaker, lines) {
 	const hashes = lines.map(line => line.hash);
-	V.speechSaidLines[speaker] = getSpeechHistory(speaker).filter(hash => !hashes.includes(hash));
+	V.speechSaidLines[speaker] = getSaidSpeechHashes(speaker).filter(hash => !hashes.includes(hash));
 }
 
 /**
- * Picks a random line the speaker hasn't said yet and marks it as said.
- * Once every line has been said, the history for these lines is reset so the speaker doesn't run dry.
- * The last line said is excluded from the reset so it can't play twice in a row.
+ * Clears these lines from the speaker's history so they can be said again.
+ * Only exception is he line just said, so it doesn't repeat.
+ *
+ * @param {SpeechSpeaker} speaker
+ * @param {SpeechLine[]} lines
+ * @returns {SpeechLine[]}
+ */
+function refreshSaidSpeechLines(speaker, lines) {
+	const saidHashes = getSaidSpeechHashes(speaker);
+	const lastSaidHash = saidHashes[saidHashes.length - 1];
+	forgetSpeechLines(speaker, lines);
+	const sayableAgain = lines.filter(line => line.hash !== lastSaidHash);
+	return sayableAgain.length > 0 ? sayableAgain : lines;
+}
+
+/**
+ * Picks a line the speaker has not said this combat and records it as said, before it is printed.
  *
  * @param {SpeechSpeaker} speaker
  * @param {SpeechLine[]} lines
  * @returns {SpeechLine}
  */
-function pickSpeechLineFrom(speaker, lines) {
-	let fresh = getUnsaidSpeechLines(speaker, lines);
-	if (fresh.length === 0) {
-		const said = getSpeechHistory(speaker);
-		const lastSaid = said[said.length - 1];
-		forgetSpeechLines(speaker, lines);
-		fresh = lines.length > 1 ? lines.filter(line => line.hash !== lastSaid) : lines;
-	}
-	if (fresh.length === 0) fresh = lines;
-	const picked = rollWeightedRandomFromArray(fresh);
-	getSpeechHistory(speaker).push(picked.hash);
-	return picked;
+function pickAndRecordSpeechLine(speaker, lines) {
+	const unsaidLines = getUnsaidSpeechLines(speaker, lines);
+	const line = rollWeightedRandomFromArray(unsaidLines.length > 0 ? unsaidLines : refreshSaidSpeechLines(speaker, lines));
+	getSaidSpeechHashes(speaker).push(line.hash);
+	return line;
 }
 
 /**
- * Same as pickSpeechLineFrom, but for plain strings. Use instead of either() so lines don't repeat.
+ * Picks between plain strings without repeating. Use instead of either() for wording variants inside one line.
  *
  * @param {SpeechSpeaker} speaker
  * @param {...string} texts
- * @returns {string}
  */
 function pickSpeechLine(speaker, ...texts) {
-	if (!isSpeechSpeaker(speaker)) throw new Error(`pickSpeechLine: "${speaker}" is not a named NPC or "pc"`);
-	return pickSpeechLineFrom(
+	return pickAndRecordSpeechLine(
 		speaker,
-		texts.map(text => createSpeechLine(text, 1, setup.speechPriority.ongoing))
+		texts.map(text => createNonEventSpeechLine(text, 1))
 	).content;
 }
 
-/**
- * Picks the line to say out of a shared group.
- *
- * @param {SpeechSpeaker} speaker
- * @param {SpeechLine[]} lines
- * @returns {SpeechLine}
- */
-function pickGroupedSpeechLine(speaker, lines) {
-	const group = rollWeightedRandomFromArray(groupSpeechLinesByEvent(getTopSpeechLines(lines)));
-	return pickSpeechLineFrom(speaker, group.lines);
-}
-
-/* The speech pool. Lines are added with <<addSpeechLine>> and one is played with <<speechSay>>. */
-
-/**
- * Starts an empty pool for the speaker. Replaces whatever pool was there before.
- *
- * @param {SpeechSpeaker} speaker
- */
-function startSpeechPool(speaker) {
-	T.speechPool = { speaker, lines: [] };
-}
-
-/**
- * Checks if the pool has any lines in it.
- *
- * @returns {boolean}
- */
 function hasSpeechLines() {
-	return T.speechPool?.lines.length > 0;
+	return T.speechPool.lines.length > 0;
 }
 
 /**
- * Drops the groups the speaker has already used up and resets their history, so the turn
- * falls through to a lower priority line, an ambient line, or a mouth action rather than repeating a line.
+ * How many turns are left before the speaker will talk about each event again, keyed by event and
+ * created on the speaker's first line.
+ *
+ * @param {SpeechSpeaker} speaker
  */
-function takeSpeechBreather() {
-	if (!hasSpeechLines()) return;
-	const { speaker, lines } = T.speechPool;
-	if (!V.speechRestingGroups) V.speechRestingGroups = {};
-	const resting = V.speechRestingGroups[speaker] ?? [];
-	let pool = lines.filter(line => !resting.includes(line.group ?? ""));
-	V.speechRestingGroups[speaker] = [];
-	while (pool.length) {
-		const dry = groupSpeechLinesByEvent(getTopSpeechLines(pool)).filter(group => getUnsaidSpeechLines(speaker, group.lines).length === 0);
-		if (dry.length === 0) break;
-		for (const group of dry) {
-			forgetSpeechLines(speaker, group.lines);
-			V.speechRestingGroups[speaker].push(group.group);
-		}
-		const dropped = new Set(dry.flatMap(group => group.lines));
-		pool = pool.filter(line => !dropped.has(line));
-	}
-	T.speechPool.lines = pool;
+function getSpeechCooldowns(speaker) {
+	if (!V.speechCooldowns) V.speechCooldowns = {};
+	if (!V.speechCooldowns[speaker]) V.speechCooldowns[speaker] = {};
+	return V.speechCooldowns[speaker];
 }
 
-/** @returns {boolean} Whether the pool holds nothing but ambient lines. */
-function isSpeechPoolAmbient() {
-	return T.speechPool.lines.every(line => line.priority === setup.speechPriority.ambient);
+/**
+ * Counts down the events on currently on cooldown.
+ *
+ * @param {SpeechSpeaker} speaker
+ * @returns {Set<string>}
+ */
+function takeCoolingSpeechEvents(speaker) {
+	const cooldowns = getSpeechCooldowns(speaker);
+	const cooling = new Set();
+	for (const [event, turnsLeft] of Object.entries(cooldowns)) {
+		if (turnsLeft <= 0) continue;
+		cooling.add(event);
+		cooldowns[event] = turnsLeft - 1;
+	}
+	return cooling;
+}
+
+/**
+ * Starts the cooldown of a line's events after a line fires.
+ *
+ * @param {SpeechSpeaker} speaker
+ * @param {SpeechLine} line
+ */
+function startSpeechEventCooldowns(speaker, line) {
+	if (!line.event) return;
+	const cooldowns = getSpeechCooldowns(speaker);
+	for (const event of line.event.split(" ")) {
+		const cooldown = getSpeechEventCooldown(event);
+		if (cooldown > 0) cooldowns[event] = cooldown;
+	}
+}
+
+/** @returns {boolean} Whether the pool holds nothing but non-event lines. */
+function speechPoolHasNoEventLines() {
+	return T.speechPool.lines.every(line => !line.event);
 }
 
 Macro.add("speechPool", {
 	handler() {
-		if (!isSpeechSpeaker(this.args[0])) return this.error(`"${this.args[0]}" is not a named NPC or "pc"`);
-		startSpeechPool(this.args[0]);
+		T.speechPool = { speaker: this.args[0], lines: [], cooling: takeCoolingSpeechEvents(this.args[0]) };
 	},
 });
 
 /**
- * A line's weight. Default 1.
+ * Reads a line macro's arguments. Strings are event names. A number is the weight of the line. If not provided, the weight defaults to 1.
  *
- * @param {any[]} args
- * @returns {number}
+ * @param {(string|number)[]} args
+ * @returns {{ events: string[], weight: number }}
  */
-function getSpeechLineWeight(args) {
-	const weight = args.find(arg => typeof arg === "number");
-	return weight ?? 1;
+function readSpeechLineArgs(args) {
+	const last = args[args.length - 1];
+	if (typeof last === "number") return { events: args.slice(0, -1), weight: last };
+	return { events: args, weight: 1 };
+}
+
+/**
+ * Returns the text of each line the macro adds: a line, or one per <<speechLine>>.
+ *
+ * @param {object[]} payload the macro's payload
+ * @returns {string[]}
+ */
+function getSpeechLineContents(payload) {
+	const [shared, ...pieces] = payload;
+	if (pieces.length === 0) return [shared.contents];
+	return pieces.map(piece => shared.contents + piece.contents);
 }
 
 Macro.add("addSpeechLine", {
-	tags: null,
+	tags: ["speechLine"],
 	handler() {
-		if (!T.speechPool) return this.error("no <<speechPool>> started");
-		T.speechPool.lines.push(createSpeechLine(this.payload[0].contents, getSpeechLineWeight(this.args), setup.speechPriority.ongoing));
+		const { weight } = readSpeechLineArgs(this.args);
+		for (const contents of getSpeechLineContents(this.payload)) {
+			T.speechPool.lines.push(createNonEventSpeechLine(contents, weight));
+		}
 	},
 });
 
-/* Event speech lines are ones that have priority over each other, as well as ongoing sex lines and ambient lines. */
+/* Adds a line to the pool only if one of its events happened this turn and is not cooling down. */
 Macro.add("addEventSpeechLine", {
-	tags: null,
+	tags: ["speechLine"],
 	handler() {
-		if (!T.speechPool) return this.error("no <<speechPool>> started");
-		const events = this.args.filter(arg => typeof arg === "string");
+		const { events, weight } = readSpeechLineArgs(this.args);
 		if (events.length === 0) return this.error("needs the name of the event the line answers");
-		const unknown = events.filter(event => !isSpeechEvent(event));
-		if (unknown.length) return this.error(`not a speech event, add it to setup.speechEvent: "${unknown.join('", "')}"`);
-		const fired = events.filter(hasSpeechEventFired);
-		if (fired.length === 0) return;
-		T.speechPool.lines.push(
-			createSpeechLine(
-				this.payload[0].contents,
-				getSpeechLineWeight(this.args),
-				Math.max(...fired.map(getSpeechEventPriority)),
-				Array.from(new Set(events)).sort().join(" ")
-			)
-		);
+		const firedEvents = events.filter(event => !T.speechPool.cooling.has(event) && hasSpeechEventFired(event));
+		if (firedEvents.length === 0) return;
+		for (const contents of getSpeechLineContents(this.payload)) {
+			T.speechPool.lines.push(createEventSpeechLine(contents, weight, events, firedEvents));
+		}
 	},
 });
 
-/* Ambient speech lines are neither prioritized "event" lines nor "ongoing" sex act lines. */
-Macro.add("addAmbientSpeechLine", {
-	tags: null,
-	handler() {
-		if (!T.speechPool) return this.error("no <<speechPool>> started");
-		T.speechPool.lines.push(createSpeechLine(this.payload[0].contents, getSpeechLineWeight(this.args), setup.speechPriority.ambient));
-	},
-});
-
-/* A PC line and the NNPC's reply to it, paired together:
-     <<addPairedSpeechLine>>
-	 <<pcLine>>
-	 the PC's line
-	 <<npcLine>>
-	 the NNPC's reply
-	 <</addPairedSpeechLine>> */
+/* Adds a PC line together with the NPC's reply, which <<sayPairedSpeechLine>> says later in the turn:
+	<<addPairedSpeechLine>>
+	<<pcLine>>
+	the PC's line
+	<<npcLine>>
+	the NPC's reply
+	<</addPairedSpeechLine>> */
 Macro.add("addPairedSpeechLine", {
 	tags: ["pcLine", "npcLine"],
 	handler() {
-		if (!T.speechPool) return this.error("no <<speechPool>> started");
 		const [before, pcLine, npcLine] = this.payload;
 		if (before.contents.trim()) return this.error("put PC's line inside <<pcLine>>");
-		if (pcLine?.name !== "pcLine" || npcLine?.name !== "npcLine") return this.error("needs a <<pcLine>> then an <<npcLine>>");
-		T.speechPool.lines.push(createSpeechLine(pcLine.contents, 1, setup.speechPriority.ongoing, undefined, npcLine.contents));
+		T.speechPool.lines.push(createNonEventSpeechLine(pcLine.contents, 1, npcLine.contents));
 	},
 });
 
 /**
- * Says one line from the pool.
+ * Chooses the line the speaker says this turn:
+ * 1. Drop events whose lines have all been said
+ * 2. Keep only the highest priority lines
+ * 3. Pick one event at random
+ * 4. Pick one of that event's lines by weight, skipping lines already said
  *
- * @param {HTMLElement|DocumentFragment} output
+ * Then starts that event's cooldown and stores any paired reply.
+ *
+ * @returns {string} the line, or "" when the pool is empty
  */
-function saySpeechLine(output) {
-	if (!hasSpeechLines()) return;
-	const line = pickGroupedSpeechLine(T.speechPool.speaker, T.speechPool.lines);
+function takeSpeechLine() {
+	if (!hasSpeechLines()) return "";
+	const { speaker, lines } = T.speechPool;
+	const eventLines = groupSpeechLinesByEvent(getHighestPrioritySpeechLines(getSpeechLinesWithSomethingNew(speaker, lines))).random();
+	const line = pickAndRecordSpeechLine(speaker, eventLines.lines);
+	startSpeechEventCooldowns(speaker, line);
 	if (line.reply) T.pairedSpeechLine = line.reply;
-	jQuery(output).wiki(line.content);
+	return line.content;
 }
 
 Macro.add("speechSay", {
 	handler() {
-		saySpeechLine(this.output);
+		$(this.output).wiki(takeSpeechLine());
 	},
 });
 
-/* Says a line from the pool, or sets _noNameComment.
-When the pool holds nothing but ambient lines, there is a 40% chance of the mouth action instead. */
+/* Says a line from the pool, or "passes" (sets _noNameComment) so the NPC can use their mouth or make a
+generic comment instead.
+It psasses when the pool is empty, or 40% of the time when the pool has no
+event lines.
+Use <<speechSay>> for a speaker who should never pass or use mouth actions. For example, Bailey. */
 Macro.add("speechSayOrPass", {
 	handler() {
-		jQuery.wiki("<<rng>>");
-		if (!hasSpeechLines() || (isSpeechPoolAmbient() && V.rng <= 40)) {
+		$.wiki("<<rng>>");
+		if (!hasSpeechLines() || (speechPoolHasNoEventLines() && V.rng <= 40)) {
 			T.noNameComment = true;
 			return;
 		}
-		saySpeechLine(this.output);
+		$(this.output).wiki(takeSpeechLine());
 	},
 });
 
 Macro.add("sayPairedSpeechLine", {
 	handler() {
-		if (T.pairedSpeechLine) jQuery(this.output).wiki(T.pairedSpeechLine);
+		$(this.output).wiki(T.pairedSpeechLine);
 	},
 });
 
@@ -356,5 +644,3 @@ function hasPairedSpeechLine() {
 window.pickSpeechLine = pickSpeechLine;
 window.hasPairedSpeechLine = hasPairedSpeechLine;
 window.hasSpeechLines = hasSpeechLines;
-window.takeSpeechBreather = takeSpeechBreather;
-window.isSpeechPoolAmbient = isSpeechPoolAmbient;

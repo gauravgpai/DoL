@@ -18,26 +18,42 @@
 
 <<widget "pc-line-gwylan-plead">>
 	<<if $abomination is 1>>
-		<<addSpeechLine>>"Gwylan, come back! I'm scared!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"Gwylan, come back! I'm scared!"
+		<</addSpeechLine>>
 	<<elseif $hypnosis_traits.devotion gte 1 or $combat_hypnosis>>
-		<<addSpeechLine>>"Gwylan, please, I can't think straight!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"Gwylan, please, I can't think straight!"
+		<</addSpeechLine>>
 	<<else>>
-		<<addSpeechLine>>"Gwylan, please, this doesn't feel right!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"Gwylan, please, this doesn't feel right!"
+		<</addSpeechLine>>
 	<</if>>
 <</widget>>
 
 <<widget "pc-line-gwylan-demand">>
 	<<if $abomination is 1>>
-		<<addSpeechLine>>"Gwylan, I know you're in there! Take control!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"Gwylan, I know you're in there! Take control!"
+		<</addSpeechLine>>
 	<<elseif $hypnosis_traits.devotion gte 4 or $combat_hypnosis>>
-		<<addSpeechLine>>"Gwylan, stop! Get out of my head!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"Gwylan, stop! Get out of my head!"
+		<</addSpeechLine>>
 	<<elseif $gwylanSeen.includes("romance")>>
-		<<addSpeechLine>>"Gwylan, stop this! You promised!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"Gwylan, stop this! You promised!"
+		<</addSpeechLine>>
 	<<else>>
-		<<addSpeechLine>>"Gwylan, stop this!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"Gwylan, stop this!"
+		<</addSpeechLine>>
 	<</if>>
 <</widget>>
 
 <<widget "pc-line-gwylan-moan">>
-	<<addSpeechLine>>"I think I'm bewitched."<</addSpeechLine>>
+	<<addSpeechLine>>
+		"I think I'm bewitched."
+	<</addSpeechLine>>
 <</widget>>

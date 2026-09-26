@@ -9,18 +9,26 @@
 <<widget "pc-line-sydney-plead">>
 	<<run statusCheck("Sydney")>>
 	<<if _sydneyStatus.includes("corrupt")>>
-		<<addSpeechLine>>"I thought... you said lust was a sin..."<</addSpeechLine>>
+		<<addSpeechLine>>
+			"I thought... you said lust was a sin..."
+		<</addSpeechLine>>
 	<<else>>
-		<<addSpeechLine>>"I'm sorry, I'll be pure! Please stop!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"I'm sorry, I'll be pure! Please stop!"
+		<</addSpeechLine>>
 	<</if>>
 <</widget>>
 
 <<widget "pc-line-sydney-demand">>
 	<<run statusCheck("Sydney")>>
 	<<if _sydneyStatus.includes("corrupt")>>
-		<<addSpeechLine>>"I miss when you were pure. At least you didn't pull shit like this."<</addSpeechLine>>
+		<<addSpeechLine>>
+			"I miss when you were pure. At least you didn't pull shit like this."
+		<</addSpeechLine>>
 	<<else>>
-		<<addSpeechLine>>"What sort of punishment is this? Get off me!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"What sort of punishment is this? Get off me!"
+		<</addSpeechLine>>
 	<</if>>
 <</widget>>
 
@@ -28,11 +36,17 @@
 	<<run statusCheck("Sydney")>>
 	<<if !_sydneyChastity>>
 		<<if _sydneyStatus.includes("corrupt")>>
-			<<addSpeechLine>>"You're the most delicious sin of all."<</addSpeechLine>>
+			<<addSpeechLine>>
+				"You're the most delicious sin of all."
+			<</addSpeechLine>>
 		<<else>>
-			<<addSpeechLine>>"Forever, as one."<</addSpeechLine>>
+			<<addSpeechLine>>
+				"Forever, as one."
+			<</addSpeechLine>>
 		<</if>>
 	<<else>>
-		<<addSpeechLine>>"You make me so lustful."<</addSpeechLine>>
+		<<addSpeechLine>>
+			"You make me so lustful."
+		<</addSpeechLine>>
 	<</if>>
 <</widget>>

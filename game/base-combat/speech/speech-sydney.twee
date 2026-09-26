@@ -5,7 +5,8 @@
 	<<if !$sydneyUniqueComments>>
 		<<set $sydneyUniqueComments to []>>
 	<</if>>
-	<<if $speechNPCPenisVirgin is 1 or $speechNPCVaginaVirgin is 1>>
+	<<speechPool "Sydney">>
+	<<addEventSpeechLine "NPCPenisVirgin" "NPCVaginaVirgin">>
 		<<if $speechPenisVirgin is 1 or $speechVaginaVirgin is 1 or $speechAnusVirgin is 1>>
 			<<if _sydneyStatus.includes("corrupt")>>
 				<<if $sydneySeen.includes("corruptroom")>>
@@ -35,7 +36,8 @@
 				<</if>>
 			<</if>>
 		<</if>>
-	<<elseif $speechNPCAnusVirgin is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "NPCAnusVirgin">>
 		<<if $speechPenisVirgin is 1>>
 			<<if _sydneyStatus.includes("corrupt")>>
 				<<He>> moans. "This is your first time doing this too, isn't it? Don't slow down. Please!" <<He>> wraps <<his>> legs around you.
@@ -49,15 +51,18 @@
 				<<He>> gasps. "Are... are you sure I'm still pure...? It feels... too good..." <<He>> holds on to you tightly.
 			<</if>>
 		<</if>>
-	<<elseif $speechOralVirgin is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "oralVirgin">>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<He>> moans and places a hand on your head. "This is your first time doing this, isn't it? You're doing great."
 		<<else>>
 			<<He>> gasps. "Is... is this your first time doing thi—" <<He>> stifles further lewd noises by placing <<his>> hands over <<his>> mouth.
 		<</if>>
-	<<elseif $speechNPCKissVirgin is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "NPCKissVirgin">>
 		<<He>> gazes at you lovingly. "That was my first kiss..." <<he>> giggles.
-	<<elseif $speechHermAroused is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "hermAroused">>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<if _sydney.gender is "h">>
 				<<He>> gasps. "Woah! <<nnpc_Mum "Sirris">> always told me I was special, but you have both too!"
@@ -71,26 +76,31 @@
 				<<He>> gasps. "B...both? I didn't know that was possible!"
 			<</if>>
 		<</if>>
-	<<elseif $speechCrossdressAroused is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "crossdressAroused">>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<He>> gasps. "All this time, you were a <<pcSex>>? Well, that doesn't change how I feel about you."
 		<<else>>
 			<<He>> gasps. "You're... a <<pcSex>>? Th-that's okay! I don't think of you any differently!"
 		<</if>>
-	<<elseif $speechLINameDrop is 1 and $sydneyromance is 1>>
-		<<set $speechLINameDrop to 0>>
-		<<switch _loveInterest>>
-			<<case "Black Wolf" "Great Hawk">>
-				<<He>> baulks. "An... animal? What?"
-			<<case "Whitney">>
-				<<He>> baulks. "H... <<nnpc_him "Whitney">>?!"
-			<<case "Robin" "Kylar">>
-				<<He>> freezes. "I... thought you were just friends. You mean...?"
-			<<default>>
-				<<He>> freezes. "Wh... who? Who is it?!"
-		<</switch>>
-		<<npcincr Sydney love -10>><<llllove>>
-	<<elseif $speechNoticeSexToy is 1>>
+	<</addEventSpeechLine>>
+	<<if $sydneyromance is 1>>
+		<<addEventSpeechLine "LINameDrop">>
+			<<set $speechLINameDrop to 0>>
+			<<switch _loveInterest>>
+				<<case "Black Wolf" "Great Hawk">>
+					<<He>> baulks. "An... animal? What?"
+				<<case "Whitney">>
+					<<He>> baulks. "H... <<nnpc_him "Whitney">>?!"
+				<<case "Robin" "Kylar">>
+					<<He>> freezes. "I... thought you were just friends. You mean...?"
+				<<default>>
+					<<He>> freezes. "Wh... who? Who is it?!"
+			<</switch>>
+			<<npcincr Sydney love -10>><<llllove>>
+		<</addEventSpeechLine>>
+	<</if>>
+	<<addEventSpeechLine "noticeSexToy">>
 		<<set $speechNoticeSexToy to 0>>
 		<<set _sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if _sydneyStatus.includes("corrupt")>>
@@ -100,7 +110,8 @@
 		<<else>>
 			<<He>> looks at your <<print _sexToy>> and blushes. "This feels wrong, but I don't want to stop."
 		<</if>>
-	<<elseif $speechPlayerOrgasm is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "playerOrgasm">>
 		<<if $speechSpank is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
@@ -125,16 +136,20 @@
 			<</switch>>
 		<</if>>
 		<<set $sydneySeen.pushUnique("player climax")>>
-	<<elseif $speechExposeGenitals is 1 and playerChastity() and !$sydneySeen.includes("chastity")>>
-		<<if $worn.genitals.name is "chastity parasite">>
-			<!-- +corruption/-purity but never +lust -->
-			<<His>> eyebrows raise in surprise upon seeing your <<printChastity>>. <<set _lustincrdisplay to 1>><<set _lustincr to 1>><<npcincr Sydney purity -2>><<lspurity>>
-		<<else>>
-			<<His>> eyebrows raise in surprise upon seeing your <<printChastity>>. <<npcincr Sydney purity 2>><<gspurity>>
-		<</if>>
-		<<set $sydneySeen.pushUnique("chastity")>>
-		<<set $sydneyUniqueComments.pushUnique("chastity")>>
-	<<elseif $speechSpank is 1>>
+	<</addEventSpeechLine>>
+	<<if playerChastity() and !$sydneySeen.includes("chastity")>>
+		<<addEventSpeechLine "exposeGenitals">>
+			<<if $worn.genitals.name is "chastity parasite">>
+				<!-- +corruption/-purity but never +lust -->
+				<<His>> eyebrows raise in surprise upon seeing your <<printChastity>>. <<set _lustincrdisplay to 1>><<set _lustincr to 1>><<npcincr Sydney purity -2>><<lspurity>>
+			<<else>>
+				<<His>> eyebrows raise in surprise upon seeing your <<printChastity>>. <<npcincr Sydney purity 2>><<gspurity>>
+			<</if>>
+			<<set $sydneySeen.pushUnique("chastity")>>
+			<<set $sydneyUniqueComments.pushUnique("chastity")>>
+		<</addEventSpeechLine>>
+	<</if>>
+	<<addEventSpeechLine "spank">>
 		<<if $speechMoan is 1>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
@@ -196,59 +211,66 @@
 					<</if>>
 			<</switch>>
 		<</if>>
-	<<elseif $speechApologise is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "apologise">>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
 				<<He>> looks confused. "Why are you sorry? Everything's okay, I promise."
 			<<case "corrupt" "corruptLust">>
 				<<He>> speaks. "I know how you can make it up to me."
 		<</switch>>
-	<<elseif $speechApologiseAgain is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "apologiseAgain">>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
 				<<He>> looks confused. "You keep saying you're sorry, are you okay? We can stop if you want."
 			<<case "corrupt" "corruptLust">>
 				<<He>> speaks. "Yes, keep saying that, you look so delightfully helpless."
 		<</switch>>
-	<<elseif $speechApologiseUnforgiving is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "apologiseUnforgiving">>
 		<<He>> frowns. "You haven't earned forgiveness."
-	<<elseif $speechChastity is 1 and !$sydneyUniqueComments.includes("chastity")>>
-		<<set $sydneyUniqueComments.pushUnique("chastity")>>
-		<<switch _sydneyStatus>>
-			<<case "pure" "pureLust" "neutral" "neutralLust">>
-				<<if $worn.genitals.name is "chastity parasite">>
-					<<print `"What is that? Do you need to go to the hospital?"`>>
-				<<elseif _sydneyChastity>>
-					<<print pickSpeechLine("Sydney", 
-						`<<He>> stares at your <<printChastity>>. "We're matching!"`,
-						`<<He>> speaks. "We're both still pure if we both have chastity devices, right?"`,
-						`<<He>> stares at your <<printChastity>>. "At least we don't have to worry since we're both protected."`
-					)>>
-				<<else>>
-					<<print pickSpeechLine("Sydney", 
-						`<<He>> stares at your <<printChastity>>. "You got me to remove mine, but now you have one?"`,
-						`<<He>> stares at your <<printChastity>>. "So this is how it feels."`,
-						`<<He>> stares at your <<printChastity>>. "Oh."`
-					)>>
-				<</if>>
-			<<case "corrupt" "corruptLust">>
-				<<if $worn.genitals.name is "chastity parasite">>
-					"I'm always up for trying new things, but that's a little freaky."
-				<<elseif _sydneyChastity>>
-					<<print pickSpeechLine("Sydney", 
-						`<<He>> speaks. "Okay, hear me out, if we smash the chastity devices together really hard..."`,
-						`<<He>> speaks. "We need to find the keys for our chastity devices soon."`,
-						`<<He>> stares at your <<printChastity>>. "I guess we're both just lusty sinners and can't do anything about it."`
-					)>>
-				<<else>>
-					<<print pickSpeechLine("Sydney", 
-						`<<He>> stares at your <<printChastity>>. "You're kidding me, right?"`,
-						`<<He>> stares at your <<printChastity>>. "Is this a joke?"`,
-						`<<He>> stares at your <<printChastity>>. "Oh you absolute sextease, you got me to remove mine just to—"`
-					)>>
-				<</if>>
-		<</switch>>
-	<<elseif $speechPlayerHits is 1>>
+	<</addEventSpeechLine>>
+	<<if !$sydneyUniqueComments.includes("chastity")>>
+		<<addEventSpeechLine "chastity">>
+			<<set $sydneyUniqueComments.pushUnique("chastity")>>
+			<<switch _sydneyStatus>>
+				<<case "pure" "pureLust" "neutral" "neutralLust">>
+					<<if $worn.genitals.name is "chastity parasite">>
+						<<print `"What is that? Do you need to go to the hospital?"`>>
+					<<elseif _sydneyChastity>>
+						<<print pickSpeechLine("Sydney", 
+							`<<He>> stares at your <<printChastity>>. "We're matching!"`,
+							`<<He>> speaks. "We're both still pure if we both have chastity devices, right?"`,
+							`<<He>> stares at your <<printChastity>>. "At least we don't have to worry since we're both protected."`
+						)>>
+					<<else>>
+						<<print pickSpeechLine("Sydney", 
+							`<<He>> stares at your <<printChastity>>. "You got me to remove mine, but now you have one?"`,
+							`<<He>> stares at your <<printChastity>>. "So this is how it feels."`,
+							`<<He>> stares at your <<printChastity>>. "Oh."`
+						)>>
+					<</if>>
+				<<case "corrupt" "corruptLust">>
+					<<if $worn.genitals.name is "chastity parasite">>
+						"I'm always up for trying new things, but that's a little freaky."
+					<<elseif _sydneyChastity>>
+						<<print pickSpeechLine("Sydney", 
+							`<<He>> speaks. "Okay, hear me out, if we smash the chastity devices together really hard..."`,
+							`<<He>> speaks. "We need to find the keys for our chastity devices soon."`,
+							`<<He>> stares at your <<printChastity>>. "I guess we're both just lusty sinners and can't do anything about it."`
+						)>>
+					<<else>>
+						<<print pickSpeechLine("Sydney", 
+							`<<He>> stares at your <<printChastity>>. "You're kidding me, right?"`,
+							`<<He>> stares at your <<printChastity>>. "Is this a joke?"`,
+							`<<He>> stares at your <<printChastity>>. "Oh you absolute sextease, you got me to remove mine just to—"`
+						)>>
+					<</if>>
+			<</switch>>
+		<</addEventSpeechLine>>
+	<</if>>
+	<<addEventSpeechLine "playerHits">>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust">>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -275,615 +297,1008 @@
 					<<He>> winces. "Ow! That one really hurt!"
 				<</if>>
 		<</switch>>
-	<<elseif ($speechCoverFace is 1 or $speechCoverPenis is 1 or $speechCoverVagina is 1) and !$sydneyUniqueComments.includes("hide")>>
-		<<set $sydneyUniqueComments.pushUnique("hide")>>
-		<<switch _sydneyStatus>>
-			<<case "pure" "pureLust">>
-				<<He>> notices your attempts to cover yourself. "A-are you nervous? That's okay, I am too."
-			<<case "corrupt" "corruptLust">>
-				<<He>> notices your attempts to cover yourself. "Remember when I was the apprehensive one? How things have changed."
-			<<default>>
-				<<He>> notices your attempts to cover yourself. "It's okay, I don't mind seeing you like this anymore. We can both trust each other, right?"
-		<</switch>>
-	<<elseif $speechHair is 1 and !$sydneyUniqueComments.includes("hair")>>
-		<<set $sydneyUniqueComments.pushUnique("hair")>>
-		<<if _sydney.hairColour isnot "strawberryblond">>
-			<<He>> speaks. "I've always loved your hair. That's why I didn't hesitate to take your advice on my appearance."
-		<<else>>
-			<<He>> speaks. "I've always loved your hair."
-		<</if>>
-	<<elseif ($speechVaginaWithhold is 1 or $speechAnusWithhold is 1 or $speechPenisWithhold is 1 or $speechOtherAnusWithhold is 1) and !$sydneyUniqueComments.includes("withhold")>>
-		<<set $sydneyUniqueComments.pushUnique("withhold")>>
+	<</addEventSpeechLine>>
+	<<if !$sydneyUniqueComments.includes("hide")>>
+		<<addEventSpeechLine "coverFace" "coverPenis" "coverVagina">>
+			<<set $sydneyUniqueComments.pushUnique("hide")>>
+			<<switch _sydneyStatus>>
+				<<case "pure" "pureLust">>
+					<<He>> notices your attempts to cover yourself. "A-are you nervous? That's okay, I am too."
+				<<case "corrupt" "corruptLust">>
+					<<He>> notices your attempts to cover yourself. "Remember when I was the apprehensive one? How things have changed."
+				<<default>>
+					<<He>> notices your attempts to cover yourself. "It's okay, I don't mind seeing you like this anymore. We can both trust each other, right?"
+			<</switch>>
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if !$sydneyUniqueComments.includes("hair")>>
+		<<addEventSpeechLine "hair">>
+			<<set $sydneyUniqueComments.pushUnique("hair")>>
+			<<if _sydney.hairColour isnot "strawberryblond">>
+				<<He>> speaks. "I've always loved your hair. That's why I didn't hesitate to take your advice on my appearance."
+			<<else>>
+				<<He>> speaks. "I've always loved your hair."
+			<</if>>
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if !$sydneyUniqueComments.includes("withhold")>>
+		<<addEventSpeechLine "vaginaWithhold" "anusWithhold" "penisWithhold" "otherAnusWithhold">>
+			<<set $sydneyUniqueComments.pushUnique("withhold")>>
+			<<switch _sydneyStatus>>
+				<<case "pure" "pureLust" "neutral" "neutralLust">>
+					<<He>> smiles with glee. "We both have to stay pure, after all." <<npcincr Sydney purity 2>><<gspurity>>
+				<<case "corrupt" "corruptLust">>
+					<<He>> gives an exaggerated sigh, but smiles. "You're such a fucking sextease sometimes!" <<npcincr Sydney purity 2>><<gspurity>>
+			<</switch>>
+		<</addEventSpeechLine>>
+	<</if>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "penisPenetrated">>
+					<<He>> barely manages to speak. "If... if you... I'm going to..."
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "penisPenetrated">>
+					<<He>> speaks. "Th-the temple will punish me for this... but I don't care anymore!"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "penisPenetrated">>
+					<<He>> speaks. "Y...you're really inside..."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<case "corrupt" "corruptLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $rng gte 81 and $settings.pregnancySpeechEnabled>>
+					<<addEventSpeechLine "penisPenetrated">>
+						<<He>> grabs you by the head and pulls your face close to <<hers>>. "I want you to put a child in me. Now."
+					<</addEventSpeechLine>>
+				<<else>>
+					<<addEventSpeechLine "penisPenetrated">>
+						<<He>> moans. "Harder. Harder! I'm almost there!"
+					<</addEventSpeechLine>>
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "penisPenetrated">>
+					<<He>> speaks. "This is worth any punishment the temple will do to me."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "penisPenetrated">>
+					<<He>> speaks. "I love the feeling of you inside me."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<default>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "penisPenetrated">>
+					<<He>> barely manages to speak. "I think I'm... getting close...!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "penisPenetrated">>
+					<<He>> speaks. "We're both sinners now, aren't we?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "penisPenetrated">>
+					<<He>> speaks. "I think I'm getting used to this."
+				<</addEventSpeechLine>>
+			<</if>>
+	<</switch>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "otherAnusPenetrated">>
+					<<He>> barely manages to speak. "If... if you... I'm going to..."
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "otherAnusPenetrated">>
+					<<He>> speaks. "This... still feels so wrong... but..."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "otherAnusPenetrated">>
+					<<He>> speaks. "Y...you're really inside..."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<case "corrupt" "corruptLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "otherAnusPenetrated">>
+					<<He>> moans. "Harder. Harder! I'm almost there!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "otherAnusPenetrated">>
+					<<He>> speaks. "I can't believe I never tried this. You've really opened my eyes."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "otherAnusPenetrated">>
+					<<He>> speaks. "I love the feeling of you inside me."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<default>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "otherAnusPenetrated">>
+					<<He>> barely manages to speak. "I think I'm... getting close...!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "otherAnusPenetrated">>
+					<<He>> speaks. "We're still pure, right? This doesn't count?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "otherAnusPenetrated">>
+					<<He>> speaks. "I think I'm getting used to this."
+				<</addEventSpeechLine>>
+			<</if>>
+	<</switch>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "vaginaPenetrated">>
+					<<He>> barely manages to speak. "Sh... should I... pull out?"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "vaginaPenetrated">>
+					<<He>> speaks. "Th-the temple will punish me for this... but I don't care anymore!"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "vaginaPenetrated">>
+					<<He>> speaks. "I... I'm really inside..."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<case "corrupt" "corruptLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $rng gte 81 and $settings.pregnancySpeechEnabled>>
+					<<addEventSpeechLine "vaginaPenetrated">>
+						<<He>> grabs you by the head and pulls your face close to <<hers>>. "I want to put a child in you."
+					<</addEventSpeechLine>>
+				<<else>>
+					<<addEventSpeechLine "vaginaPenetrated">>
+						<<He>> moans. "I'm almost there! Are you ready?"
+					<</addEventSpeechLine>>
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "vaginaPenetrated">>
+					<<He>> speaks. "This is worth any punishment the temple will do to me."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "vaginaPenetrated">>
+					<<He>> speaks. "I love the feeling of being inside you."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<default>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "vaginaPenetrated">>
+					<<He>> barely manages to speak. "I think I'm... getting close...!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "vaginaPenetrated">>
+					<<He>> speaks. "We're both sinners now, aren't we?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "vaginaPenetrated">>
+					<<He>> speaks. "I'm getting used to this feeling."
+				<</addEventSpeechLine>>
+			<</if>>
+	<</switch>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $settings.pregnancySpeechEnabled and !$player.vaginaExist and _sydney.gender is "m" and knowsAboutAnyPregnancy("pc","Sydney")>>
+					<<addEventSpeechLine "anusPenetrated">>
+						<<He>> barely manages to speak. "Sh... should I... pull out?"
+					<</addEventSpeechLine>>
+				<<else>>
+					<<addEventSpeechLine "anusPenetrated">>
+						<<He>> barely manages to speak. "If... if you... I'm going to..."
+					<</addEventSpeechLine>>
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "anusPenetrated">>
+					<<He>> speaks. "This... still feels so wrong... but..."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "anusPenetrated">>
+					<<He>> speaks. "I...I'm really inside..."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<case "corrupt" "corruptLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $rng gte 81 and $settings.pregnancySpeechEnabled and !$player.vaginaExist and _sydney.gender is "m" and knowsAboutAnyPregnancy("pc","Sydney")>>
+					<<addEventSpeechLine "anusPenetrated">>
+						<<He>> grabs you by the head and pulls your face close to <<hers>>. "I want to put a child in you."
+					<</addEventSpeechLine>>
+				<<else>>
+					<<addEventSpeechLine "anusPenetrated">>
+						<<He>> moans. "I'm almost there! Are you ready?"
+					<</addEventSpeechLine>>
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "anusPenetrated">>
+					<<He>> speaks. "Are you sure this feels good for you?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "anusPenetrated">>
+					<<He>> speaks. "I love being inside you."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<default>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "anusPenetrated">>
+					<<He>> barely manages to speak. "I think I'm... getting close...!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "anusPenetrated">>
+					<<He>> speaks. "We're still pure, right? This doesn't count?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "anusPenetrated">>
+					<<He>> speaks. "I'm getting used to this feeling."
+				<</addEventSpeechLine>>
+			<</if>>
+	<</switch>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "mouthPenetrated">>
+					<<He>> barely manages to speak. "Ah... something's coming..."
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "mouthPenetrated">>
+					<<He>> speaks. "I'm starting to feel weird..."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "mouthPenetrated">>
+					<<He>> giggles. "This tickles!"
+				<</addEventSpeechLine>>
+			<</if>>
+		<<case "corrupt" "corruptLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "mouthPenetrated">>
+					<<He>> moans, grabbing the back of your head. "I'm almost there! Are you ready?"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "mouthPenetrated">>
+					<<He>> speaks. "I hope you don't plan on wasting any."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "mouthPenetrated">>
+					<<He>> speaks. "You look so cute down there."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<default>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "mouthPenetrated">>
+					<<He>> barely manages to speak. "I think I'm... getting close...!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "mouthPenetrated">>
+					<<He>> speaks. "You can breathe, right? I'm not hurting you?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "mouthPenetrated">>
+					<<He>> speaks. "Your mouth is so warm."
+				<</addEventSpeechLine>>
+			<</if>>
+	<</switch>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "vaginaMouth" "analLick" "analKiss" "mouthOtherAnus" "throat" "faceSit">>
+					<<He>> barely manages to speak. "Ah... something's coming..."
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "vaginaMouth" "analLick" "analKiss" "mouthOtherAnus" "throat" "faceSit">>
+					<<He>> speaks. "I'm starting to feel weird..."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "vaginaMouth" "analLick" "analKiss" "mouthOtherAnus" "throat" "faceSit">>
+					<<He>> giggles. "This tickles!"
+				<</addEventSpeechLine>>
+			<</if>>
+		<<case "corrupt" "corruptLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "vaginaMouth" "analLick" "analKiss" "mouthOtherAnus" "throat" "faceSit">>
+					<<He>> moans, grabbing the back of your head. "I'm almost there! Are you ready?"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "vaginaMouth" "analLick" "analKiss" "mouthOtherAnus" "throat" "faceSit">>
+					<<He>> speaks. "Lick harder."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "vaginaMouth" "analLick" "analKiss" "mouthOtherAnus" "throat" "faceSit">>
+					<<He>> speaks. "You look so cute down there."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<default>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "vaginaMouth" "analLick" "analKiss" "mouthOtherAnus" "throat" "faceSit">>
+					<<He>> barely manages to speak. "I think I'm... getting close...!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "vaginaMouth" "analLick" "analKiss" "mouthOtherAnus" "throat" "faceSit">>
+					<<He>> speaks. "You can breathe, right? I'm not hurting you?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "vaginaMouth" "analLick" "analKiss" "mouthOtherAnus" "throat" "faceSit">>
+					<<He>> speaks. "Your tongue is so warm."
+				<</addEventSpeechLine>>
+			<</if>>
+	<</switch>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "vaginaVagina" "tribEntrance">>
+					<<He>> barely manages to speak. "If... if you... I'm going to..."
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "vaginaVagina" "tribEntrance">>
+					<<He>> speaks. "This... still feels so wrong... but..."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "vaginaVagina" "tribEntrance">>
+					<<He>> speaks. "We're... really touching down there..."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<case "corrupt" "corruptLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "vaginaVagina" "tribEntrance">>
+					<<He>> moans. "I'm almost there! Are you ready?"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "vaginaVagina" "tribEntrance">>
+					<<He>> speaks. "Are you sure this feels good for you?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "vaginaVagina" "tribEntrance">>
+					<<He>> speaks. "I love being this close together."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<default>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "vaginaVagina" "tribEntrance">>
+					<<He>> barely manages to speak. "I think I'm... getting close...!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "vaginaVagina" "tribEntrance">>
+					<<He>> speaks. "We're still pure, right? This doesn't count?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "vaginaVagina" "tribEntrance">>
+					<<He>> speaks. "I'm getting used to this feeling."
+				<</addEventSpeechLine>>
+			<</if>>
+	<</switch>>
+	<<if !_sydneyChastity>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
-				<<He>> smiles with glee. "We both have to stay pure, after all." <<npcincr Sydney purity 2>><<gspurity>>
+				<<if _sydneyVirgin>>
+					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+						<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+							<<He>> barely manages to speak. "D...don't... put it in..."
+						<</addEventSpeechLine>>
+					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+						<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+							<<He>> speaks. "J... just the tip, alright?"
+						<</addEventSpeechLine>>
+					<<else>>
+						<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+							<<He>> giggles nervously. "This is dangerous..."
+						<</addEventSpeechLine>>
+					<</if>>
+				<<else>>
+					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+						<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+							<<He>> speaks through gasps and moans. "J...just put it in already. I can't take it anymore!"
+						<</addEventSpeechLine>>
+					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+						<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+							<<He>> smiles at you with pleading eyes and spreads <<his>> legs further. "Wh... what are you waiting for...?"
+						<</addEventSpeechLine>>
+					<<else>>
+						<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+							<<He>> giggles. "G... go ahead. Just be gentle, please."
+						<</addEventSpeechLine>>
+					<</if>>
+				<</if>>
 			<<case "corrupt" "corruptLust">>
-				<<He>> gives an exaggerated sigh, but smiles. "You're such a fucking sextease sometimes!" <<npcincr Sydney purity 2>><<gspurity>>
+				<<if _sydneyVirgin>>
+					<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+						<<He>> moans. "Do it. Deflower me. Make me yours!"
+					<</addEventSpeechLine>>
+				<<else>>
+					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+						<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+							<<He>> moans. "Stop teasing me!"
+						<</addEventSpeechLine>>
+					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+						<<if $speechVaginaImminent is 1>>
+							<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+								<<He>> speaks. "I want to be inside you."
+							<</addEventSpeechLine>>
+						<<else>>
+							<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+								<<He>> speaks. "I want you inside me."
+							<</addEventSpeechLine>>
+						<</if>>
+					<<else>>
+						<<addEventSpeechLine "vaginaImminent" "penisImminent" "vaginaEntrance" "penisEntrance">>
+							<<He>> speaks. "I want to put it in."
+						<</addEventSpeechLine>>
+					<</if>>
+				<</if>>
+		<</switch>>
+	<</if>>
+	<<if !_sydney.chastity.anus.includes("shield")>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust" "neutral" "neutralLust">>
+				<<if _sydney.virginity.anal is true>>
+					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+						<<addEventSpeechLine "otherAnusImminent" "otherAnusEntrance">>
+							<<He>> barely manages to speak. "I... think I'm ready..."
+						<</addEventSpeechLine>>
+					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+						<<addEventSpeechLine "otherAnusImminent" "otherAnusEntrance">>
+							<<He>> speaks. "Be gentle, please..."
+						<</addEventSpeechLine>>
+					<<else>>
+						<<addEventSpeechLine "otherAnusImminent" "otherAnusEntrance">>
+							<<He>> giggles nervously. "I've never even though about doing it this way..."
+						<</addEventSpeechLine>>
+					<</if>>
+				<<else>>
+					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+						<<addEventSpeechLine "otherAnusImminent" "otherAnusEntrance">>
+							<<He>> speaks through gasps and moans. "J...just put it in already. I can't take it anymore!"
+						<</addEventSpeechLine>>
+					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+						<<addEventSpeechLine "otherAnusImminent" "otherAnusEntrance">>
+							<<He>> smiles at you with pleading eyes and spreads <<his>> legs further. "Wh... what are you waiting for...?"
+						<</addEventSpeechLine>>
+					<<else>>
+						<<addEventSpeechLine "otherAnusImminent" "otherAnusEntrance">>
+							<<He>> giggles. "At least it's still pure this way."
+						<</addEventSpeechLine>>
+					<</if>>
+				<</if>>
+			<<case "corrupt" "corruptLust">>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+					<<addEventSpeechLine "otherAnusImminent" "otherAnusEntrance">>
+						<<He>> moans. "Stop teasing me!"
+					<</addEventSpeechLine>>
+				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					<<addEventSpeechLine "otherAnusImminent" "otherAnusEntrance">>
+						<<He>> speaks. "I want you inside me."
+					<</addEventSpeechLine>>
+				<<else>>
+					<<addEventSpeechLine "otherAnusImminent" "otherAnusEntrance">>
+						<<He>> speaks. "I want to put it in."
+					<</addEventSpeechLine>>
+				<</if>>
+		<</switch>>
+	<</if>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust" "neutral" "neutralLust">>
+			<<if _sydneyVirgin>>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+					<<addEventSpeechLine "anusImminent" "anusEntrance">>
+						<<He>> barely manages to speak. "D...don't... put it in..."
+					<</addEventSpeechLine>>
+				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					<<addEventSpeechLine "anusImminent" "anusEntrance">>
+						<<He>> speaks. "J... just the tip, alright?"
+					<</addEventSpeechLine>>
+				<<else>>
+					<<addEventSpeechLine "anusImminent" "anusEntrance">>
+						<<He>> giggles nervously. "This is dangerous..."
+					<</addEventSpeechLine>>
+				<</if>>
+			<<else>>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+					<<addEventSpeechLine "anusImminent" "anusEntrance">>
+						<<He>> speaks through gasps and moans. "J...just let me put it in already! I can't take it anymore!"
+					<</addEventSpeechLine>>
+				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					<<addEventSpeechLine "anusImminent" "anusEntrance">>
+						<<He>> smiles at you pleadingly. "Wh... what are you waiting for...?"
+					<</addEventSpeechLine>>
+				<<else>>
+					<<addEventSpeechLine "anusImminent" "anusEntrance">>
+						<<He>> giggles. "G... go ahead. Just be gentle, please."
+					<</addEventSpeechLine>>
+				<</if>>
+			<</if>>
+		<<case "corrupt" "corruptLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "anusImminent" "anusEntrance">>
+					<<He>> moans. "Stop teasing me!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "anusImminent" "anusEntrance">>
+					<<He>> speaks. "I want to be inside you."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "anusImminent" "anusEntrance">>
+					<<He>> speaks. "I want to put it in."
+				<</addEventSpeechLine>>
+			<</if>>
+	<</switch>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "handjobPenis" "handjobVagina" "cheeks" "thigh" "feet" "chestRub" "breastRub">>
+					<<He>> stifles a moan. "I... I think... something's coming..."
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "handjobPenis" "handjobVagina" "cheeks" "thigh" "feet" "chestRub" "breastRub">>
+					<<He>> gasps. "Th... this is called foreplay, right?"
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "handjobPenis" "handjobVagina" "cheeks" "thigh" "feet" "chestRub" "breastRub">>
+					<<He>> giggles. "I... guess this isn't too impure."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<case "corrupt" "corruptLust">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "handjobPenis" "handjobVagina" "cheeks" "thigh" "feet" "chestRub" "breastRub">>
+					<<He>> speaks through gasps and moans. "Just a little more!"
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "handjobPenis" "handjobVagina" "cheeks" "thigh" "feet" "chestRub" "breastRub">>
+					<<He>> speaks. "You're pretty good at this."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "handjobPenis" "handjobVagina" "cheeks" "thigh" "feet" "chestRub" "breastRub">>
+					<<He>> lets out a clearly fake yawn. "Already bored of the foreplay."
+				<</addEventSpeechLine>>
+			<</if>>
+		<<default>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<addEventSpeechLine "handjobPenis" "handjobVagina" "cheeks" "thigh" "feet" "chestRub" "breastRub">>
+					<<He>> speaks through gasps and moans. "I'm getting close..."
+				<</addEventSpeechLine>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<addEventSpeechLine "handjobPenis" "handjobVagina" "cheeks" "thigh" "feet" "chestRub" "breastRub">>
+					<<He>> speaks. "I think I can handle a little more."
+				<</addEventSpeechLine>>
+			<<else>>
+				<<addEventSpeechLine "handjobPenis" "handjobVagina" "cheeks" "thigh" "feet" "chestRub" "breastRub">>
+					<<He>> giggles. "I wouldn't want anyone else to touch me like this."
+				<</addEventSpeechLine>>
+			<</if>>
+	<</switch>>
+
+	<<if _sydney.gender is "h">>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "Am... am I doing this right?"
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "It's getting harder! And... wetter."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "I'm... not being too rough, am I?"
+				<</addEventSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "I love that you've also got both sets of gear. You really are perfect."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "I'll stick my fingers in your mouth after this, so you can taste yourself."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "It'd be a shame if I just redirected your cumshot right into your own pussy. Then I could clone you!"
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "So, which one do you like more?"
+				<</addEventSpeechLine>>
+			<<default>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "I never would have learned things like this, if not for you."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "I think I'm getting the hang of this!"
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "Does it feel good when I work it like this?"
+				<</addEventSpeechLine>>
+		<</switch>>
+	<<else>> <!-- sydney is not a herm -->
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "Am... am I doing this right?"
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "It's getting harder! And... wetter."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "I'm... not being too rough, am I?"
+				<</addEventSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "I love that you've got both sets of gear. You really are perfect."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "It'd be a shame if I just redirected your cumshot right into your own pussy. Then I could clone you!"
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "So, which one feels better?"
+				<</addEventSpeechLine>>
+			<<default>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "You're so unique. I never learned about this in science class."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "I think I'm getting used to working with both."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "futaPenis">>
+					<<He>> speaks. "I'm almost jealous. I wish I knew what both felt like."
+				<</addEventSpeechLine>>
+		<</switch>>
+	<</if>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<addEventSpeechLine "vagina" "clit">>
+				<<He>> speaks. "Am... am I doing this right?"
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vagina" "clit">>
+				<<He>> giggles. "It's getting wetter!"
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vagina" "clit">>
+				<<He>> speaks. "I'm... not being too rough, am I?"
+			<</addEventSpeechLine>>
+		<<case "corrupt" "corruptLust">>
+			<<addEventSpeechLine "vagina" "clit">>
+				<<He>> speaks. "I'll stick my fingers in your mouth after this, so you can taste yourself."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vagina" "clit">>
+				<<He>> speaks. "Just relax, and let me take care of this."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vagina" "clit">>
+				<<He>> giggles. "Make sure to keep it down!"
+			<</addEventSpeechLine>>
+		<<default>>
+			<<addEventSpeechLine "vagina" "clit">>
+				<<He>> speaks. "I never would have learned things like this, if not for you."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vagina" "clit">>
+				<<He>> speaks. "I think I'm getting the hang of this!"
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vagina" "clit">>
+				<<He>> speaks. "How deep should I go?"
+			<</addEventSpeechLine>>
+	<</switch>>
+	<<if playerHasStrapon()>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "Am... am I doing this right?"
+				<</addEventSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> giggles. "This toy makes me feel hot. I need it inside me."
+				<</addEventSpeechLine>>
+			<<default>>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "I never would have learned things like this, if not for you."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "I think I'm getting the hang of this!"
+				<</addEventSpeechLine>>
 		<</switch>>
 	<<else>>
-		<<speechPool "Sydney">>
-		<<if $speechPenisPenetrated is 1>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "If... if you... I'm going to..."<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "Th-the temple will punish me for this... but I don't care anymore!"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "Y...you're really inside..."<</addSpeechLine>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<if $rng gte 81 and $settings.pregnancySpeechEnabled>>
-							<<addSpeechLine>><<He>> grabs you by the head and pulls your face close to <<hers>>. "I want you to put a child in me. Now."<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> moans. "Harder. Harder! I'm almost there!"<</addSpeechLine>>
-						<</if>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "This is worth any punishment the temple will do to me."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I love the feeling of you inside me."<</addSpeechLine>>
-					<</if>>
-				<<default>>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "I think I'm... getting close...!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "We're both sinners now, aren't we?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I think I'm getting used to this."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if $speechOtherAnusPenetrated is 1>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "If... if you... I'm going to..."<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "This... still feels so wrong... but..."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "Y...you're really inside..."<</addSpeechLine>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> moans. "Harder. Harder! I'm almost there!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "I can't believe I never tried this. You've really opened my eyes."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I love the feeling of you inside me."<</addSpeechLine>>
-					<</if>>
-				<<default>>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "I think I'm... getting close...!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "We're still pure, right? This doesn't count?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I think I'm getting used to this."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if $speechVaginaPenetrated is 1>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "Sh... should I... pull out?"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "Th-the temple will punish me for this... but I don't care anymore!"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I... I'm really inside..."<</addSpeechLine>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<if $rng gte 81 and $settings.pregnancySpeechEnabled>>
-							<<addSpeechLine>><<He>> grabs you by the head and pulls your face close to <<hers>>. "I want to put a child in you."<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> moans. "I'm almost there! Are you ready?"<</addSpeechLine>>
-						<</if>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "This is worth any punishment the temple will do to me."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I love the feeling of being inside you."<</addSpeechLine>>
-					<</if>>
-				<<default>>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "I think I'm... getting close...!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "We're both sinners now, aren't we?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I'm getting used to this feeling."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if $speechAnusPenetrated is 1>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<if $settings.pregnancySpeechEnabled and !$player.vaginaExist and _sydney.gender is "m" and knowsAboutAnyPregnancy("pc","Sydney")>>
-							<<addSpeechLine>><<He>> barely manages to speak. "Sh... should I... pull out?"<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> barely manages to speak. "If... if you... I'm going to..."<</addSpeechLine>>
-						<</if>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "This... still feels so wrong... but..."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I...I'm really inside..."<</addSpeechLine>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<if $rng gte 81 and $settings.pregnancySpeechEnabled and !$player.vaginaExist and _sydney.gender is "m" and knowsAboutAnyPregnancy("pc","Sydney")>>
-							<<addSpeechLine>><<He>> grabs you by the head and pulls your face close to <<hers>>. "I want to put a child in you."<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> moans. "I'm almost there! Are you ready?"<</addSpeechLine>>
-						<</if>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "Are you sure this feels good for you?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I love being inside you."<</addSpeechLine>>
-					<</if>>
-				<<default>>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "I think I'm... getting close...!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "We're still pure, right? This doesn't count?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I'm getting used to this feeling."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if $speechMouthPenetrated is 1>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "Ah... something's coming..."<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "I'm starting to feel weird..."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> giggles. "This tickles!"<</addSpeechLine>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> moans, grabbing the back of your head. "I'm almost there! Are you ready?"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "I hope you don't plan on wasting any."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "You look so cute down there."<</addSpeechLine>>
-					<</if>>
-				<<default>>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "I think I'm... getting close...!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "You can breathe, right? I'm not hurting you?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "Your mouth is so warm."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if ($speechVaginaMouth is 1 or $speechAnalLick is 1 or $speechAnalKiss is 1 or $speechMouthOtherAnus is 1 or $speechThroat is 1 or $speechFaceSit is 1)>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "Ah... something's coming..."<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "I'm starting to feel weird..."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> giggles. "This tickles!"<</addSpeechLine>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> moans, grabbing the back of your head. "I'm almost there! Are you ready?"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "Lick harder."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "You look so cute down there."<</addSpeechLine>>
-					<</if>>
-				<<default>>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "I think I'm... getting close...!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "You can breathe, right? I'm not hurting you?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "Your tongue is so warm."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if ($speechVaginaVagina is 1 or $speechTribEntrance is 1)>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "If... if you... I'm going to..."<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "This... still feels so wrong... but..."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "We're... really touching down there..."<</addSpeechLine>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> moans. "I'm almost there! Are you ready?"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "Are you sure this feels good for you?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I love being this close together."<</addSpeechLine>>
-					<</if>>
-				<<default>>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> barely manages to speak. "I think I'm... getting close...!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "We're still pure, right? This doesn't count?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I'm getting used to this feeling."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if ($speechVaginaImminent is 1 or $speechPenisImminent is 1 or $speechVaginaEntrance is 1 or $speechPenisEntrance is 1) and !_sydneyChastity>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust" "neutral" "neutralLust">>
-					<<if _sydneyVirgin>>
-						<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-							<<addSpeechLine>><<He>> barely manages to speak. "D...don't... put it in..."<</addSpeechLine>>
-						<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-							<<addSpeechLine>><<He>> speaks. "J... just the tip, alright?"<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> giggles nervously. "This is dangerous..."<</addSpeechLine>>
-						<</if>>
-					<<else>>
-						<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-							<<addSpeechLine>><<He>> speaks through gasps and moans. "J...just put it in already. I can't take it anymore!"<</addSpeechLine>>
-						<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-							<<addSpeechLine>><<He>> smiles at you with pleading eyes and spreads <<his>> legs further. "Wh... what are you waiting for...?"<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> giggles. "G... go ahead. Just be gentle, please."<</addSpeechLine>>
-						<</if>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if _sydneyVirgin>>
-						<<addSpeechLine>><<He>> moans. "Do it. Deflower me. Make me yours!"<</addSpeechLine>>
-					<<else>>
-						<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-							<<addSpeechLine>><<He>> moans. "Stop teasing me!"<</addSpeechLine>>
-						<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-							<<if $speechVaginaImminent is 1>>
-								<<addSpeechLine>><<He>> speaks. "I want to be inside you."<</addSpeechLine>>
-							<<else>>
-								<<addSpeechLine>><<He>> speaks. "I want you inside me."<</addSpeechLine>>
-							<</if>>
-						<<else>>
-							<<addSpeechLine>><<He>> speaks. "I want to put it in."<</addSpeechLine>>
-						<</if>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if ($speechOtherAnusImminent is 1 or $speechOtherAnusEntrance is 1) and !_sydney.chastity.anus.includes("shield")>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust" "neutral" "neutralLust">>
-					<<if _sydney.virginity.anal is true>>
-						<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-							<<addSpeechLine>><<He>> barely manages to speak. "I... think I'm ready..."<</addSpeechLine>>
-						<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-							<<addSpeechLine>><<He>> speaks. "Be gentle, please..."<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> giggles nervously. "I've never even though about doing it this way..."<</addSpeechLine>>
-						<</if>>
-					<<else>>
-						<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-							<<addSpeechLine>><<He>> speaks through gasps and moans. "J...just put it in already. I can't take it anymore!"<</addSpeechLine>>
-						<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-							<<addSpeechLine>><<He>> smiles at you with pleading eyes and spreads <<his>> legs further. "Wh... what are you waiting for...?"<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> giggles. "At least it's still pure this way."<</addSpeechLine>>
-						<</if>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> moans. "Stop teasing me!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "I want you inside me."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I want to put it in."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if ($speechAnusImminent is 1 or $speechAnusEntrance is 1)>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust" "neutral" "neutralLust">>
-					<<if _sydneyVirgin>>
-						<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-							<<addSpeechLine>><<He>> barely manages to speak. "D...don't... put it in..."<</addSpeechLine>>
-						<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-							<<addSpeechLine>><<He>> speaks. "J... just the tip, alright?"<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> giggles nervously. "This is dangerous..."<</addSpeechLine>>
-						<</if>>
-					<<else>>
-						<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-							<<addSpeechLine>><<He>> speaks through gasps and moans. "J...just let me put it in already! I can't take it anymore!"<</addSpeechLine>>
-						<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-							<<addSpeechLine>><<He>> smiles at you pleadingly. "Wh... what are you waiting for...?"<</addSpeechLine>>
-						<<else>>
-							<<addSpeechLine>><<He>> giggles. "G... go ahead. Just be gentle, please."<</addSpeechLine>>
-						<</if>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> moans. "Stop teasing me!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "I want to be inside you."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> speaks. "I want to put it in."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-		<</if>>
-		<<if ($speechHandjobPenis is 1 or $speechHandjobVagina is 1 or $speechCheeks is 1 or $speechThigh is 1 or $speechFeet is 1 or $speechChestRub is 1 or $speechBreastRub is 1)>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> stifles a moan. "I... I think... something's coming..."<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> gasps. "Th... this is called foreplay, right?"<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> giggles. "I... guess this isn't too impure."<</addSpeechLine>>
-					<</if>>
-				<<case "corrupt" "corruptLust">>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> speaks through gasps and moans. "Just a little more!"<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "You're pretty good at this."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> lets out a clearly fake yawn. "Already bored of the foreplay."<</addSpeechLine>>
-					<</if>>
-				<<default>>
-					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<addSpeechLine>><<He>> speaks through gasps and moans. "I'm getting close..."<</addSpeechLine>>
-					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<addSpeechLine>><<He>> speaks. "I think I can handle a little more."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<He>> giggles. "I wouldn't want anyone else to touch me like this."<</addSpeechLine>>
-					<</if>>
-			<</switch>>
-
-		<</if>>
-		<<if ($speechFutaPenis is 1 or $speechVagina is 1 or $speechClit is 1 or $speechPenis is 1 or $speechGlans is 1 or $speechAnus is 1 or $speechBottom is 1)>>
-			<<if $speechFutaPenis is 1>>
-				<<if _sydney.gender is "h">>
-					<<switch _sydneyStatus>>
-						<<case "pure" "pureLust">>
-							<<addSpeechLine>><<He>> speaks. "Am... am I doing this right?"<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "It's getting harder! And... wetter."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "I'm... not being too rough, am I?"<</addSpeechLine>>
-						<<case "corrupt" "corruptLust">>
-							<<addSpeechLine>><<He>> speaks. "I love that you've also got both sets of gear. You really are perfect."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "I'll stick my fingers in your mouth after this, so you can taste yourself."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "It'd be a shame if I just redirected your cumshot right into your own pussy. Then I could clone you!"<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "So, which one do you like more?"<</addSpeechLine>>
-						<<default>>
-							<<addSpeechLine>><<He>> speaks. "I never would have learned things like this, if not for you."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "I think I'm getting the hang of this!"<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "Does it feel good when I work it like this?"<</addSpeechLine>>
-					<</switch>>
-				<<else>> <!-- sydney is not a herm -->
-					<<switch _sydneyStatus>>
-						<<case "pure" "pureLust">>
-							<<addSpeechLine>><<He>> speaks. "Am... am I doing this right?"<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "It's getting harder! And... wetter."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "I'm... not being too rough, am I?"<</addSpeechLine>>
-						<<case "corrupt" "corruptLust">>
-							<<addSpeechLine>><<He>> speaks. "I love that you've got both sets of gear. You really are perfect."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "It'd be a shame if I just redirected your cumshot right into your own pussy. Then I could clone you!"<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "So, which one feels better?"<</addSpeechLine>>
-						<<default>>
-							<<addSpeechLine>><<He>> speaks. "You're so unique. I never learned about this in science class."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "I think I'm getting used to working with both."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "I'm almost jealous. I wish I knew what both felt like."<</addSpeechLine>>
-					<</switch>>
-				<</if>>
-			<<elseif $speechVagina is 1 or $speechClit is 1>>
-				<<switch _sydneyStatus>>
-					<<case "pure" "pureLust">>
-						<<addSpeechLine>><<He>> speaks. "Am... am I doing this right?"<</addSpeechLine>>
-						<<addSpeechLine>><<He>> giggles. "It's getting wetter!"<</addSpeechLine>>
-						<<addSpeechLine>><<He>> speaks. "I'm... not being too rough, am I?"<</addSpeechLine>>
-					<<case "corrupt" "corruptLust">>
-						<<addSpeechLine>><<He>> speaks. "I'll stick my fingers in your mouth after this, so you can taste yourself."<</addSpeechLine>>
-						<<addSpeechLine>><<He>> speaks. "Just relax, and let me take care of this."<</addSpeechLine>>
-						<<addSpeechLine>><<He>> giggles. "Make sure to keep it down!"<</addSpeechLine>>
-					<<default>>
-						<<addSpeechLine>><<He>> speaks. "I never would have learned things like this, if not for you."<</addSpeechLine>>
-						<<addSpeechLine>><<He>> speaks. "I think I'm getting the hang of this!"<</addSpeechLine>>
-						<<addSpeechLine>><<He>> speaks. "How deep should I go?"<</addSpeechLine>>
-				<</switch>>
-			<<elseif $speechPenis is 1 or $speechGlans is 1>>
-				<<if playerHasStrapon()>>
-					<<switch _sydneyStatus>>
-						<<case "pure" "pureLust">>
-							<<addSpeechLine>><<He>> speaks. "Am... am I doing this right?"<</addSpeechLine>>
-						<<case "corrupt" "corruptLust">>
-							<<addSpeechLine>><<He>> giggles. "This toy makes me feel hot. I need it inside me."<</addSpeechLine>>
-						<<default>>
-							<<addSpeechLine>><<He>> speaks. "I never would have learned things like this, if not for you."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "I think I'm getting the hang of this!"<</addSpeechLine>>
-					<</switch>>
-				<<else>>
-					<<switch _sydneyStatus>>
-						<<case "pure" "pureLust">>
-							<<addSpeechLine>><<He>> speaks. "Am... am I doing this right?"<</addSpeechLine>>
-							<<addSpeechLine>><<He>> giggles. "It's getting bigger!"<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "I'm... not being too rough, am I?"<</addSpeechLine>>
-						<<case "corrupt" "corruptLust">>
-							<<addSpeechLine>><<He>> speaks. "I'm going to wring you dry."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "Just relax, and let me take care of this."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> giggles. "Make sure to keep it down!"<</addSpeechLine>>
-						<<default>>
-							<<addSpeechLine>><<He>> speaks. "I never would have learned things like this, if not for you."<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "I think I'm getting the hang of this!"<</addSpeechLine>>
-							<<addSpeechLine>><<He>> speaks. "Does it feel good when I work it like this?"<</addSpeechLine>>
-					<</switch>>
-				<</if>>
-			<<elseif $speechAnus is 1 or $speechBottom is 1>>
-				<<switch _sydneyStatus>>
-					<<case "pure" "pureLust">>
-						<<addSpeechLine>><<He>> speaks. "Am... am I doing this right?"<</addSpeechLine>>
-						<<addSpeechLine>><<He>> giggles. "I didn't know this spot could make someone feel good!"<</addSpeechLine>>
-						<<addSpeechLine>><<He>> speaks. "I'm... not being too rough, am I?"<</addSpeechLine>>
-					<<case "corrupt" "corruptLust">>
-						<<addSpeechLine>><<He>> speaks. "Maybe we should stick something bigger in there."<</addSpeechLine>>
-						<<addSpeechLine>><<He>> speaks. "Just relax, and let me take care of this."<</addSpeechLine>>
-						<<addSpeechLine>><<He>> giggles. "Make sure to keep it down!"<</addSpeechLine>>
-					<<default>>
-						<<addSpeechLine>><<He>> speaks. "I never would have learned things like this, if not for you."<</addSpeechLine>>
-						<<addSpeechLine>><<He>> speaks. "I think I'm getting the hang of this!"<</addSpeechLine>>
-						<<addSpeechLine>><<He>> speaks. "How deep should I go?"<</addSpeechLine>>
-				<</switch>>
-			<</if>>
-		<</if>>
-		<<if $speechVaginaFlaunt is 1>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<addSpeechLine>><<He>> covers <<his>> blush. "D-don't just stare at it..."<</addSpeechLine>>
-					<<addSpeechLine>><<He>> giggles. "You're looking at me funny..."<</addSpeechLine>>
-					<<addSpeechLine>><<He>> whispers. "N-no one else has ever seen me like this before..."<</addSpeechLine>>
-				<<case "corrupt" "corruptLust">>
-					<<addSpeechLine>><<He>> uses two fingers to spread <<his>> lips. "Enjoying the view?"<</addSpeechLine>>
-					<<addSpeechLine>><<He>> speaks. "Yeah, I know, it looks perfect doesn't it?"<</addSpeechLine>>
-					<<addSpeechLine>><<He>> giggles. "It's all yours."<</addSpeechLine>>
-				<<default>>
-					<<addSpeechLine>><<He>> speaks. "You're staring. At least let me look at yours, too..."<</addSpeechLine>>
-					<<addSpeechLine>><<He>> speaks. "What are you going to do?"<</addSpeechLine>>
-					<<addSpeechLine>><<He>> speaks. "W...well? Don't just stand there..."<</addSpeechLine>>
-			<</switch>>
-		<</if>>
-		<<if $speechNPCChastity is 1>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust" "neutral" "neutralLust">>
-					<<addSpeechLine>><<He>> speaks. "Sorry about the belt, but I really need to stay safe..."<</addSpeechLine>>
-					<<addSpeechLine>><<He>> speaks. "Please don't hurt yourself trying to mess with my belt."<</addSpeechLine>>
-					<<addSpeechLine>><<He>> speaks. "Th... the belt's not going to make you stop loving me, is it?"<</addSpeechLine>>
-				<<case "corrupt" "corruptLust">>
-					<<addSpeechLine>><<He>> speaks. "I want this thing off, but I know it's for my own good."<</addSpeechLine>>
-					<<addSpeechLine>><<He>> speaks. "Don't hurt yourself against the belt, it's a finger pincher."<</addSpeechLine>>
-					<<addSpeechLine>><<He>> speaks. "I hope the belt's not a dealbreaker."<</addSpeechLine>>
-			<</switch>>
-		<</if>>
-
-		/* Once every line for this situation has been said, the turn goes to an ambient line or the mouth action instead of a repeat. */
-		<<run takeSpeechBreather()>>
-		<<set _quietTurn to !hasSpeechLines()>>
-		/* Ambient lines only compete on a quiet turn. */
-		<<if _quietTurn>>
-			<<if !$sydneyUniqueComments.includes("clothes")>>
-				<<if $worn.upper.name is "nun's habit" or $worn.upper.name is "monk's habit">>
-					<<if _sydneyStatus.includes("corrupt")>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> runs <<his>> hands over your $worn.upper.name. <<He>> almost seems nostalgic. <<npcincr Sydney purity 2>><<gspurity>><</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your $worn.upper.name. "Does... wearing that make this all okay?" <<npcincr Sydney purity 2>><<gspurity>><</addSpeechLine>>
-					<</if>>
-				<<elseif $worn.neck.name is "holy pendant" or $worn.neck.name is "stone pendant">>
-					<<if _sydneyStatus.includes("corrupt")>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<set $sydneySeen.pushUnique("holy pendant")>><<He>> stares at your $worn.neck.name. <<He>> almost seems nostalgic. <<npcincr Sydney purity 2>><<gspurity>><</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<set $sydneySeen.pushUnique("holy pendant")>><<He>> looks over your $worn.neck.name. "Does... wearing that make this all okay?" <<npcincr Sydney purity 2>><<gspurity>><</addSpeechLine>>
-					<</if>>
-				<<elseif $worn.neck.name is "dark pendant">>
-					<<if _sydneyStatus.includes("corrupt")>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<set $sydneySeen.pushUnique("dark pendant")>><<He>> stares at your $worn.neck.name. <<He>> seems to get lost in it for a moment. <<npcincr Sydney purity -2>><<lspurity>><</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<set $sydneySeen.pushUnique("dark pendant")>><<He>> looks over your $worn.neck.name. "It's... so pretty, but also a little unsettling..." <<npcincr Sydney purity -2>><<lspurity>><</addSpeechLine>>
-					<</if>>
-				<<elseif $location is "school" and $exposed lte 0 and !wearingSchoolOutfit()>>
-					<<if _sydneyStatus.includes("corrupt")>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your clothes and giggles. "That's not proper school uniform. Don't worry, I can help you take it off." <<set $combatgoal to "strip">><</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your clothes. "Y-you should really adhere to the dress code, before you get in trouble..."<</addSpeechLine>>
-					<</if>>
-				<<elseif $worn.lower.name is "naked" and playerHasStrapon()>>
-					<<if _sydneyStatus.includes("corrupt")>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your <<penisSimple>> and giggles. "Oh, these toys are fun."<</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your <<penisSimple>> and blushes. "<<nnpc_Mum "Sirris">>'s always talking about these."<</addSpeechLine>>
-					<</if>>
-				<<elseif $exposed gte 1>>
-					<<if _sydneyStatus.includes("corrupt")>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your body and giggles. "You look even better all exposed like this." <<npcincr Sydney lust 1>><<glust>><</addSpeechLine>>
-					<<else>>
-						<<addSpeechLine>><<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> shyly looks over your exposed body. "Y-you're... you look... uhm..." <<He>> looks away for a moment. "You look good." <<npcincr Sydney lust 1>><<npcincr Sydney purity -2>><<gslust>><<lspurity>><</addSpeechLine>>
-					<</if>>
-				<</if>>
-			<</if>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<addSpeechLine>><<He>> murmurs. "Sorry, I don't really know what I'm doing..."<</addSpeechLine>>
-				<<case "corrupt" "corruptLust">>
-					<<addSpeechLine>><<He>> speaks. "We sure know how to have fun."<</addSpeechLine>>
-				<<default>>
-					<<addSpeechLine>>"I used to get so nervous about this kind of thing..."<</addSpeechLine>>
-			<</switch>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<addSpeechLine>><<He>> speaks. "This is... so sinful..."<</addSpeechLine>>
-				<<case "corrupt" "corruptLust">>
-					<<addSpeechLine>><<He>> speaks. "You've opened my eyes, being a sinner is too much fun!"<</addSpeechLine>>
-				<<default>>
-					<<addSpeechLine>><<He>> speaks. "I was always taught that this was sinful, but..."<</addSpeechLine>>
-			<</switch>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<addSpeechLine>><<He>> murmurs. "N...not too rough, please..."<</addSpeechLine>>
-				<<case "corrupt" "corruptLust">>
-					<<addSpeechLine>><<He>> speaks. "I can handle anything you have for me. Come on, show me what you've got!"<</addSpeechLine>>
-				<<default>>
-					<<addSpeechLine>><<He>> speaks. "I... you can be a little rough, if you want..."<</addSpeechLine>>
-			<</switch>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<addSpeechLine>><<He>> takes a deep breath. "I... I can do this."<</addSpeechLine>>
-				<<case "corrupt" "corruptLust">>
-					<<addSpeechLine>><<He>> speaks. "Think you can keep up?"<</addSpeechLine>>
-				<<default>>
-					<<addSpeechLine>><<He>> speaks. "I think I can keep pace with you, now."<</addSpeechLine>>
-			<</switch>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<addSpeechLine>><<He>> takes a deep breath. "We... need to stay quiet..."<</addSpeechLine>>
-				<<case "corrupt" "corruptLust">>
-					<<addSpeechLine>><<He>> giggles. "Shh!"<</addSpeechLine>>
-				<<default>>
-					<<addSpeechLine>><<He>> speaks. "Let's try not to get caught..."<</addSpeechLine>>
-			<</switch>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					<<addSpeechLine>><<He>> looks upwards. "Forgive me..."<</addSpeechLine>>
-				<<case "corrupt" "corruptLust">>
-					<<addSpeechLine>><<He>> giggles. "Looks like I'm due for some discipline. Maybe you can punish me?"<</addSpeechLine>>
-				<<default>>
-					<<addSpeechLine>><<He>> giggles. "I've sinned... is this my punishment?"<</addSpeechLine>>
-			<</switch>>
-			<<if $location is "temple">>
-				<<switch _sydneyStatus>>
-					<<case "pure" "pureLust">>
-						<<addSpeechLine>><<He>> looks upwards. "S...such a sin, doing this on such holy ground..."<</addSpeechLine>>
-					<<case "corrupt" "corruptLust">>
-						<<addSpeechLine>><<He>> giggles. "Let's defile this place."<</addSpeechLine>>
-					<<default>>
-						<<addSpeechLine>><<He>> giggles. "W...we're doing this in the temple, and nothing is stopping us..."<</addSpeechLine>>
-				<</switch>>
-			<<elseif $location is "school">>
-				<<switch _sydneyStatus>>
-					<<case "pure" "pureLust">>
-						<<addSpeechLine>><<He>> looks around nervously. "If... if someone caught us..."<</addSpeechLine>>
-					<<case "corrupt" "corruptLust">>
-						<<addSpeechLine>><<He>> giggles. "I sure hope one of the other students hear us."<</addSpeechLine>>
-					<<default>>
-						<<addSpeechLine>><<He>> looks around. "I hope there's no one waiting in line..."<</addSpeechLine>>
-				<</switch>>
-			<<else>>
-				<<switch _sydneyStatus>>
-					<<case "pure" "pureLust">>
-						<<addSpeechLine>><<He>> looks around nervously. "Here, of all places..."<</addSpeechLine>>
-					<<case "corrupt" "corruptLust">>
-						<<addSpeechLine>><<He>> giggles. "Think anyone will find us?"<</addSpeechLine>>
-					<<default>>
-						<<addSpeechLine>><<He>> looks around. "I think we're safe."<</addSpeechLine>>
-				<</switch>>
-			<</if>>
-		<</if>>
-		<<speechSayOrPass _quietTurn>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "Am... am I doing this right?"
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> giggles. "It's getting bigger!"
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "I'm... not being too rough, am I?"
+				<</addEventSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "I'm going to wring you dry."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "Just relax, and let me take care of this."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> giggles. "Make sure to keep it down!"
+				<</addEventSpeechLine>>
+			<<default>>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "I never would have learned things like this, if not for you."
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "I think I'm getting the hang of this!"
+				<</addEventSpeechLine>>
+				<<addEventSpeechLine "penis" "glans">>
+					<<He>> speaks. "Does it feel good when I work it like this?"
+				<</addEventSpeechLine>>
+		<</switch>>
 	<</if>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<addEventSpeechLine "anus" "bottom">>
+				<<He>> speaks. "Am... am I doing this right?"
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "anus" "bottom">>
+				<<He>> giggles. "I didn't know this spot could make someone feel good!"
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "anus" "bottom">>
+				<<He>> speaks. "I'm... not being too rough, am I?"
+			<</addEventSpeechLine>>
+		<<case "corrupt" "corruptLust">>
+			<<addEventSpeechLine "anus" "bottom">>
+				<<He>> speaks. "Maybe we should stick something bigger in there."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "anus" "bottom">>
+				<<He>> speaks. "Just relax, and let me take care of this."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "anus" "bottom">>
+				<<He>> giggles. "Make sure to keep it down!"
+			<</addEventSpeechLine>>
+		<<default>>
+			<<addEventSpeechLine "anus" "bottom">>
+				<<He>> speaks. "I never would have learned things like this, if not for you."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "anus" "bottom">>
+				<<He>> speaks. "I think I'm getting the hang of this!"
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "anus" "bottom">>
+				<<He>> speaks. "How deep should I go?"
+			<</addEventSpeechLine>>
+	<</switch>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust">>
+			<<addEventSpeechLine "vaginaFlaunt">>
+				<<He>> covers <<his>> blush. "D-don't just stare at it..."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vaginaFlaunt">>
+				<<He>> giggles. "You're looking at me funny..."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vaginaFlaunt">>
+				<<He>> whispers. "N-no one else has ever seen me like this before..."
+			<</addEventSpeechLine>>
+		<<case "corrupt" "corruptLust">>
+			<<addEventSpeechLine "vaginaFlaunt">>
+				<<He>> uses two fingers to spread <<his>> lips. "Enjoying the view?"
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vaginaFlaunt">>
+				<<He>> speaks. "Yeah, I know, it looks perfect doesn't it?"
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vaginaFlaunt">>
+				<<He>> giggles. "It's all yours."
+			<</addEventSpeechLine>>
+		<<default>>
+			<<addEventSpeechLine "vaginaFlaunt">>
+				<<He>> speaks. "You're staring. At least let me look at yours, too..."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vaginaFlaunt">>
+				<<He>> speaks. "What are you going to do?"
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "vaginaFlaunt">>
+				<<He>> speaks. "W...well? Don't just stand there..."
+			<</addEventSpeechLine>>
+	<</switch>>
+	<<switch _sydneyStatus>>
+		<<case "pure" "pureLust" "neutral" "neutralLust">>
+			<<addEventSpeechLine "NPCChastity">>
+				<<He>> speaks. "Sorry about the belt, but I really need to stay safe..."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "NPCChastity">>
+				<<He>> speaks. "Please don't hurt yourself trying to mess with my belt."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "NPCChastity">>
+				<<He>> speaks. "Th... the belt's not going to make you stop loving me, is it?"
+			<</addEventSpeechLine>>
+		<<case "corrupt" "corruptLust">>
+			<<addEventSpeechLine "NPCChastity">>
+				<<He>> speaks. "I want this thing off, but I know it's for my own good."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "NPCChastity">>
+				<<He>> speaks. "Don't hurt yourself against the belt, it's a finger pincher."
+			<</addEventSpeechLine>>
+			<<addEventSpeechLine "NPCChastity">>
+				<<He>> speaks. "I hope the belt's not a dealbreaker."
+			<</addEventSpeechLine>>
+	<</switch>>
+
+	<<set _quietTurn to !hasSpeechLines()>>
+	<<if _quietTurn>>
+		<<if !$sydneyUniqueComments.includes("clothes")>>
+			<<if $worn.upper.name is "nun's habit" or $worn.upper.name is "monk's habit">>
+				<<if _sydneyStatus.includes("corrupt")>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> runs <<his>> hands over your $worn.upper.name. <<He>> almost seems nostalgic. <<npcincr Sydney purity 2>><<gspurity>>
+					<</addSpeechLine>>
+				<<else>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your $worn.upper.name. "Does... wearing that make this all okay?" <<npcincr Sydney purity 2>><<gspurity>>
+					<</addSpeechLine>>
+				<</if>>
+			<<elseif $worn.neck.name is "holy pendant" or $worn.neck.name is "stone pendant">>
+				<<if _sydneyStatus.includes("corrupt")>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<set $sydneySeen.pushUnique("holy pendant")>><<He>> stares at your $worn.neck.name. <<He>> almost seems nostalgic. <<npcincr Sydney purity 2>><<gspurity>>
+					<</addSpeechLine>>
+				<<else>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<set $sydneySeen.pushUnique("holy pendant")>><<He>> looks over your $worn.neck.name. "Does... wearing that make this all okay?" <<npcincr Sydney purity 2>><<gspurity>>
+					<</addSpeechLine>>
+				<</if>>
+			<<elseif $worn.neck.name is "dark pendant">>
+				<<if _sydneyStatus.includes("corrupt")>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<set $sydneySeen.pushUnique("dark pendant")>><<He>> stares at your $worn.neck.name. <<He>> seems to get lost in it for a moment. <<npcincr Sydney purity -2>><<lspurity>>
+					<</addSpeechLine>>
+				<<else>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<set $sydneySeen.pushUnique("dark pendant")>><<He>> looks over your $worn.neck.name. "It's... so pretty, but also a little unsettling..." <<npcincr Sydney purity -2>><<lspurity>>
+					<</addSpeechLine>>
+				<</if>>
+			<<elseif $location is "school" and $exposed lte 0 and !wearingSchoolOutfit()>>
+				<<if _sydneyStatus.includes("corrupt")>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your clothes and giggles. "That's not proper school uniform. Don't worry, I can help you take it off." <<set $combatgoal to "strip">>
+					<</addSpeechLine>>
+				<<else>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your clothes. "Y-you should really adhere to the dress code, before you get in trouble..."
+					<</addSpeechLine>>
+				<</if>>
+			<<elseif $worn.lower.name is "naked" and playerHasStrapon()>>
+				<<if _sydneyStatus.includes("corrupt")>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your <<penisSimple>> and giggles. "Oh, these toys are fun."
+					<</addSpeechLine>>
+				<<else>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your <<penisSimple>> and blushes. "<<nnpc_Mum "Sirris">>'s always talking about these."
+					<</addSpeechLine>>
+				<</if>>
+			<<elseif $exposed gte 1>>
+				<<if _sydneyStatus.includes("corrupt")>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> looks over your body and giggles. "You look even better all exposed like this." <<npcincr Sydney lust 1>><<glust>>
+					<</addSpeechLine>>
+				<<else>>
+					<<addSpeechLine>>
+						<<set $sydneyUniqueComments.pushUnique("clothes")>><<He>> shyly looks over your exposed body. "Y-you're... you look... uhm..." <<He>> looks away for a moment. "You look good." <<npcincr Sydney lust 1>><<npcincr Sydney purity -2>><<gslust>><<lspurity>>
+					<</addSpeechLine>>
+				<</if>>
+			<</if>>
+		<</if>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addSpeechLine>>
+					<<He>> murmurs. "Sorry, I don't really know what I'm doing..."
+				<</addSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addSpeechLine>>
+					<<He>> speaks. "We sure know how to have fun."
+				<</addSpeechLine>>
+			<<default>>
+				<<addSpeechLine>>
+					"I used to get so nervous about this kind of thing..."
+				<</addSpeechLine>>
+		<</switch>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addSpeechLine>>
+					<<He>> speaks. "This is... so sinful..."
+				<</addSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addSpeechLine>>
+					<<He>> speaks. "You've opened my eyes, being a sinner is too much fun!"
+				<</addSpeechLine>>
+			<<default>>
+				<<addSpeechLine>>
+					<<He>> speaks. "I was always taught that this was sinful, but..."
+				<</addSpeechLine>>
+		<</switch>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addSpeechLine>>
+					<<He>> murmurs. "N...not too rough, please..."
+				<</addSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addSpeechLine>>
+					<<He>> speaks. "I can handle anything you have for me. Come on, show me what you've got!"
+				<</addSpeechLine>>
+			<<default>>
+				<<addSpeechLine>>
+					<<He>> speaks. "I... you can be a little rough, if you want..."
+				<</addSpeechLine>>
+		<</switch>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addSpeechLine>>
+					<<He>> takes a deep breath. "I... I can do this."
+				<</addSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addSpeechLine>>
+					<<He>> speaks. "Think you can keep up?"
+				<</addSpeechLine>>
+			<<default>>
+				<<addSpeechLine>>
+					<<He>> speaks. "I think I can keep pace with you, now."
+				<</addSpeechLine>>
+		<</switch>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addSpeechLine>>
+					<<He>> takes a deep breath. "We... need to stay quiet..."
+				<</addSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addSpeechLine>>
+					<<He>> giggles. "Shh!"
+				<</addSpeechLine>>
+			<<default>>
+				<<addSpeechLine>>
+					<<He>> speaks. "Let's try not to get caught..."
+				<</addSpeechLine>>
+		<</switch>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<addSpeechLine>>
+					<<He>> looks upwards. "Forgive me..."
+				<</addSpeechLine>>
+			<<case "corrupt" "corruptLust">>
+				<<addSpeechLine>>
+					<<He>> giggles. "Looks like I'm due for some discipline. Maybe you can punish me?"
+				<</addSpeechLine>>
+			<<default>>
+				<<addSpeechLine>>
+					<<He>> giggles. "I've sinned... is this my punishment?"
+				<</addSpeechLine>>
+		<</switch>>
+		<<if $location is "temple">>
+			<<switch _sydneyStatus>>
+				<<case "pure" "pureLust">>
+					<<addSpeechLine>>
+						<<He>> looks upwards. "S...such a sin, doing this on such holy ground..."
+					<</addSpeechLine>>
+				<<case "corrupt" "corruptLust">>
+					<<addSpeechLine>>
+						<<He>> giggles. "Let's defile this place."
+					<</addSpeechLine>>
+				<<default>>
+					<<addSpeechLine>>
+						<<He>> giggles. "W...we're doing this in the temple, and nothing is stopping us..."
+					<</addSpeechLine>>
+			<</switch>>
+		<<elseif $location is "school">>
+			<<switch _sydneyStatus>>
+				<<case "pure" "pureLust">>
+					<<addSpeechLine>>
+						<<He>> looks around nervously. "If... if someone caught us..."
+					<</addSpeechLine>>
+				<<case "corrupt" "corruptLust">>
+					<<addSpeechLine>>
+						<<He>> giggles. "I sure hope one of the other students hear us."
+					<</addSpeechLine>>
+				<<default>>
+					<<addSpeechLine>>
+						<<He>> looks around. "I hope there's no one waiting in line..."
+					<</addSpeechLine>>
+			<</switch>>
+		<<else>>
+			<<switch _sydneyStatus>>
+				<<case "pure" "pureLust">>
+					<<addSpeechLine>>
+						<<He>> looks around nervously. "Here, of all places..."
+					<</addSpeechLine>>
+				<<case "corrupt" "corruptLust">>
+					<<addSpeechLine>>
+						<<He>> giggles. "Think anyone will find us?"
+					<</addSpeechLine>>
+				<<default>>
+					<<addSpeechLine>>
+						<<He>> looks around. "I think we're safe."
+					<</addSpeechLine>>
+			<</switch>>
+		<</if>>
+	<</if>>
+	<<speechSayOrPass>>
 <</widget>>

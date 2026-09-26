@@ -3,13 +3,19 @@
 /* PC lines (plead / demand / forgive / moan). */
 
 <<widget "pc-line-greathawk-plead">>
-	<<addSpeechLine>>"Y-you're going to take care of me, right?"<</addSpeechLine>>
+	<<addSpeechLine>>
+		"Y-you're going to take care of me, right?"
+	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-greathawk-demand">>
-	<<addSpeechLine>>"Stop pecking me!"<</addSpeechLine>>
+	<<addSpeechLine>>
+		"Stop pecking me!"
+	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-greathawk-moan">>
-	<<addSpeechLine>>"You're not a terror. You're all I need."<</addSpeechLine>>
+	<<addSpeechLine>>
+		"You're not a terror. You're all I need."
+	<</addSpeechLine>>
 <</widget>>

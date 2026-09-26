@@ -1,15 +1,8 @@
 :: Widgets speech-Zephyr [widget]
 <<widget "speech-zephyr">>
 	<<set _npc_speech to true>>
-	<<if $possessed>>
-		<<if $control gte $controlmax>>
-			<<He>> scoffs. "Now leave, and leave <<phim>> be."
-		<<elseif $npcspeechcycle is 0>>
-			<<He>> raises <<his>> telescope to <<his>> eye for a moment, before putting it away.
-		<<else>>
-			<<He>> stares you down, silent.
-		<</if>>
-	<<elseif $speechLINameDrop is 1>>
+	<<speechPool "Zephyr">>
+	<<addEventSpeechLine "LINameDrop">>
 		<<set $speechLINameDrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Gwylan">>
@@ -19,6 +12,17 @@
 			<<default>>
 				<<He>> smirks. "A lover on land or a heart at sea, pick one."
 		<</switch>>
+	<</addEventSpeechLine>>
+	<<if $possessed>>
+		<<if $control gte $controlmax>>
+			<<He>> scoffs. "Now leave, and leave <<phim>> be."
+		<<elseif $npcspeechcycle is 0>>
+			<<He>> raises <<his>> telescope to <<his>> eye for a moment, before putting it away.
+		<<else>>
+			<<He>> stares you down, silent.
+		<</if>>
+	<<elseif hasSpeechLines()>>
+		<<speechSay>>
 	<<else>>
 		<<set _noNameComment to true>>
 	<</if>>

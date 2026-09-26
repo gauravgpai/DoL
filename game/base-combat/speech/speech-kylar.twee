@@ -2,62 +2,72 @@
 <<widget "speech-kylar">>
 	<<set _npc_speech to true>>
 	<<set _kylar to statusCheck("Kylar")>>
-	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Kylar") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Kylar")>>
-		<<He>> gasps. "You were a virgin too," <<he>> says. "We were meant for each other."
-	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Kylar">>
-		<<if $player.vaginaExist and $settings.pregnancySpeechEnabled>>
-			<<He>> gasps. "We can't make babies this way, but I just couldn't resist you."
-		<<elseif !$player.vaginaExist and _kylar.gender is "m" and knowsAboutAnyPregnancy("pc","Kylar") and $settings.pregnancySpeechEnabled>>
-			<<He>> gasps. "Is this how you got pregnant before? But you were still a virgin!"
-		<<else>>
-			<<He>> gasps. "Every part of you, the deepest part of you. I wanna feel it all!"
-		<</if>>
-	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Kylar">>
-		<<He>> gasps. "Finally, you're kissing the most intimate part of me. Just like in my dreams!"
-	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Kylar">>
-		<<He>> gasps. "Iloveyouiloveyouiloveyou!!!"
-		<<set $kylarSeen.pushUnique("saidLove")>>
-	<<elseif $speechCrossdressAroused is 1 and $settings.pregnancySpeechEnabled>>
-		<<if _kylar.gender is "h">>
-			<<He>> gasps. "Oh. I thought you were..." <<He>> shakes <<his>> head with a grin. "Oh well! We can still make a family together...!"
-		<<elseif $player.penisExist>>
-			<<He>> gasps. "You can make me pregnant. I'd given up on making a family, but..." <<He>> starts to cry. "You can make me pregnant...!"
-		<<else>>
-			<<He>> gasps. "I can make you pregnant. I'd given up on making a family, but..." <<He>> starts to cry. "I can make you pregnant...!"
-		<</if>>
-	<<elseif $speechCrossdressDisappointed is 1>>
+	<<speechPool "Kylar">>
+	<<if $player.virginity.anal is "Kylar">>
+		<<addEventSpeechLine "anusVirgin">>
+			<<if $player.vaginaExist and $settings.pregnancySpeechEnabled>>
+				<<He>> gasps. "We can't make babies this way, but I just couldn't resist you."
+			<<elseif !$player.vaginaExist and _kylar.gender is "m" and knowsAboutAnyPregnancy("pc","Kylar") and $settings.pregnancySpeechEnabled>>
+				<<He>> gasps. "Is this how you got pregnant before? But you were still a virgin!"
+			<<else>>
+				<<He>> gasps. "Every part of you, the deepest part of you. I wanna feel it all!"
+			<</if>>
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.oral is "Kylar">>
+		<<addEventSpeechLine "oralVirgin">>
+			<<He>> gasps. "Finally, you're kissing the most intimate part of me. Just like in my dreams!"
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.kiss is "Kylar">>
+		<<addEventSpeechLine "kissVirgin">>
+			<<He>> gasps. "Iloveyouiloveyouiloveyou!!!"
+			<<set $kylarSeen.pushUnique("saidLove")>>
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $settings.pregnancySpeechEnabled>>
+		<<addEventSpeechLine "crossdressAroused">>
+			<<if _kylar.gender is "h">>
+				<<He>> gasps. "Oh. I thought you were..." <<He>> shakes <<his>> head with a grin. "Oh well! We can still make a family together...!"
+			<<elseif $player.penisExist and (C.npc.Kylar.vagina isnot "none" or $settings.npcAnalPregnancyEnabled)>>
+				<<He>> gasps. "You can make me pregnant. I'd given up on making a family, but..." <<He>> starts to cry. "You can make me pregnant...!"
+			<<else>>
+				<<He>> gasps. "I can make you pregnant. I'd given up on making a family, but..." <<He>> starts to cry. "I can make you pregnant...!"
+			<</if>>
+		<</addEventSpeechLine>>
+	<</if>>
+	<<addEventSpeechLine "crossdressDisappointed">>
 		<<if !$player.vaginaExist and knowsAboutAnyPregnancy("pc","Kylar")>>
 			<<He>> sighs. "Oh. I thought you were..." <<He>> suddenly looks excited. "But weren't you pregnant before? Hmm, there's still a chance then."
 		<<else>>
 			<<He>> sighs. "Oh. I thought you were..." <<He>> shakes <<his>> head. "I-it's okay. We can always adopt."
 		<</if>>
-	<<elseif $speechHermAroused is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "hermAroused">>
 		<<if _kylar.gender is "h" and $settings.pregnancySpeechEnabled>>
 			<<He>> gasps. "You have both...? Just like me...? We could make so many children...perfection..."
 		<<else>>
 			<<He>> gasps. "You have both...? I didn't think you could get any more perfect..."
 		<</if>>
-	<<elseif $speechLINameDrop is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "LINameDrop">>
 		<<set $speechLINameDrop to 0>>
-		<<if _loveInterest is "Black Wolf" or _loveInterest is "Great Hawk">>
-			<<His>> eyes narrow. "I can be an animal, too. Watch!"
-		<<elseif random(1, 100) lte 50>>
-			<<switch _loveInterest>>
-				<<case "Robin">>
-					<<He>> growls. "Robin can't take care of you like I can!"
-				<<case "Whitney">>
-					<<He>> freezes. "W... Whitney can't stop me!"
-				<<case "Sydney">>
-					<<He>> growls. "Sydney doesn't know you like I do!"
-					<<set $kylarSeen.pushUnique("sydneyWriting")>>
-				<<default>>
-					<<He>> freezes. "Who... are you talking about...?"
-			<</switch>>
-		<<else>>
-			<<He>> freezes. "You don't need them! You only need me!"
-		<</if>>
+		<<switch _loveInterest>>
+			<<case "Black Wolf" "Great Hawk">>
+				<<His>> eyes narrow. "I can be an animal, too. Watch!"
+			<<case "Robin">>
+				<<He>> growls. "Robin can't take care of you like I can!"
+			<<case "Whitney">>
+				<<He>> freezes. "W... Whitney can't stop me!"
+			<<case "Sydney">>
+				<<He>> growls. "Sydney doesn't know you like I do!"
+				<<set $kylarSeen.pushUnique("sydneyWriting")>>
+			<<default>>
+				<<He>> freezes. "You don't need them! You only need me!"
+		<</switch>>
 		<<npcincr Kylar rage 10>><<ggksuspicion>>
-	<<elseif $speechNoticeSexToy is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "noticeSexToy">>
 		<<set $speechNoticeSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<if !$player.penisExist and $NPCList[0].vagina isnot "none" and random(0,2) isnot 0>>
@@ -73,7 +83,15 @@
 		<<else>>
 			<<He>> looks at your $_sexToy and pouts. "Am I not good enough for you?"
 		<</if>>
-	<<elseif _silent isnot 1>>
+	<</addEventSpeechLine>>
+	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Kylar") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Kylar")>>
+		<<addEventSpeechLine "penisVirgin" "vaginaVirgin">>
+			<<He>> gasps. "You were a virgin too," <<he>> says. "We were meant for each other."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if hasSpeechLines()>>
+		<<speechSay>>
+	<<elseif _silent isnot 1 and $rng gt 40>>
 		<<set $kylarsexcycle to $kylarsexcycle or 0>>
 		<<switch $kylarsexcycle>>
 			<<case 0>>

@@ -1,15 +1,23 @@
 :: Widgets speech-Leighton [widget]
 <<widget "speech-leighton">>
 	<<set _npc_speech to true>>
-	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Leighton") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Leighton")>>
-		<<He>> smirks. "Far from satisfactory. Come see me again for further improvement."
-	<<elseif $speechAnusVirgin is 1 and $player.virginity.anal is "Leighton">>
-		<<He>> smirks. "You'll need plenty of training."
-	<<elseif $speechOralVirgin is 1 and $player.virginity.oral is "Leighton">>
-		<<He>> smirks. "You lack skill... For now."
-	<<elseif $speechKissVirgin is 1 and $player.virginity.kiss is "Leighton">>
-		<<He>> smirks. "Not terrible for a first time."
-	<<elseif $speechLINameDrop is 1>>
+	<<speechPool "Leighton">>
+	<<if $player.virginity.anal is "Leighton">>
+		<<addEventSpeechLine "anusVirgin">>
+			<<He>> smirks. "You'll need plenty of training."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.oral is "Leighton">>
+		<<addEventSpeechLine "oralVirgin">>
+			<<He>> smirks. "You lack skill... For now."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if $player.virginity.kiss is "Leighton">>
+		<<addEventSpeechLine "kissVirgin">>
+			<<He>> smirks. "Not terrible for a first time."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<addEventSpeechLine "LINameDrop">>
 		<<set $speechLINameDrop to 0>>
 		<<switch _loveInterest>>
 			<<case "Robin">>
@@ -29,10 +37,19 @@
 			<<default>>
 				<<He>> smirks. "I'm not familiar. This is a private matter, anyway."
 		<</switch>>
-	<<elseif $speechNoticeSexToy is 1>>
+	<</addEventSpeechLine>>
+	<<addEventSpeechLine "noticeSexToy">>
 		<<set $speechNoticeSexToy to 0>>
 		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
 		<<He>> looks at your $_sexToy and smirks. "I can teach you a thing or two with that."
+	<</addEventSpeechLine>>
+	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Leighton") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Leighton")>>
+		<<addEventSpeechLine "penisVirgin" "vaginaVirgin">>
+			<<He>> smirks. "Far from satisfactory. Come see me again for further improvement."
+		<</addEventSpeechLine>>
+	<</if>>
+	<<if hasSpeechLines()>>
+		<<speechSay>>
 	<<else>>
 		<<set _noNameComment to true>>
 	<</if>>

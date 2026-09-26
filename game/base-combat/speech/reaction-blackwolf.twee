@@ -3,17 +3,25 @@
 /* PC lines (plead / demand / forgive / moan). */
 
 <<widget "pc-line-blackwolf-plead">>
-	<<addSpeechLine>>"Gently, please..."<</addSpeechLine>>
+	<<addSpeechLine>>
+		"Gently, please..."
+	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-blackwolf-demand">>
-	<<addSpeechLine>>"Down. DOWN!"<</addSpeechLine>>
+	<<addSpeechLine>>
+		"Down. DOWN!"
+	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-blackwolf-moan">>
 	<<if $wolfpackleader is 1>>
-		<<addSpeechLine>>"Good <<nnpc_gendery "Black Wolf">>. Keep going."<</addSpeechLine>>
+		<<addSpeechLine>>
+			"Good <<nnpc_gendery "Black Wolf">>. Keep going."
+		<</addSpeechLine>>
 	<<else>>
-		<<addSpeechLine>>"<<print ($settings.pregnancySpeechEnabled ? "Breed" : "Fuck")>> me, alpha!"<</addSpeechLine>>
+		<<addSpeechLine>>
+			"<<print ($settings.pregnancySpeechEnabled ? "Breed" : "Fuck")>> me, alpha!"
+		<</addSpeechLine>>
 	<</if>>
 <</widget>>
