@@ -36,7 +36,7 @@ You open your eyes to see two guards standing over you. The <<person1>><<person>
 <br><br>
 You hear the voice tell you to push over and over again. You don't know if you can, but you try anyway.
 <br><br>
-<<link [[Next (<<print getTimeString(_timeCalc)>>)|Mine Birth 3]]>><<run beginPlayerBirth()>><<pass _timeCalc>><</link>>
+<<link [[Next (<<print getTimeString(_timeCalc)>>)|Mine Birth 3]]>><<run setPlayerLitterBorn()>><<pass _timeCalc>><</link>>
 
 
 
