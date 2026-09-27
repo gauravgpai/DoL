@@ -33,7 +33,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<br><br>
 	<<link [[Focus on moving rocks (1:00)|Mine Job Minecarts Event]]>><<pass 1 hours>><<set $phase to 0>><<tiredness 5>><</link>><<ggtiredness>>
 	<br>
-	<<link [[Pretend to move rocks (1:00)|Mine Job Minecarts Event]]>><<pass 1 hours>><<set $phase to 1>><<stress 5>><</link>><<ggstress>>
+	<<link [[Pretend to move rocks (1:00)|Mine Job Minecarts Event]]>><<pass 1 hours>><<set $phase to 1>><<stress 3>><</link>><<gstress>>
 	<<if $mine.favor.minecarts is 1>>
 		<br>
 		<<link [[Ask for a distraction|Mine Job Minecarts Distraction]]>><</link>>

@@ -47,7 +47,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 	<br><br>
 	<<link [[Focus on mining (1:00)|Mine Job Mining Event]]>><<pass 1 hours>><<set $phase to 0>><<tiredness 5>><</link>><<ggtiredness>>
 	<br>
-	<<link [[Pretend to mine (1:00)|Mine Job Mining Event]]>><<pass 1 hours>><<set $phase to 1>><<stress 5>><</link>><<ggstress>>
+	<<link [[Pretend to mine (1:00)|Mine Job Mining Event]]>><<pass 1 hours>><<set $phase to 1>><<stress 3>><</link>><<gstress>>
 	<br><br>
 	<<mine_shackle_text>>
 	<br>
