@@ -27,7 +27,7 @@ You're dragged into a room with several grates in the ground.
 <</if>>
 <br><br>
 <<set _link to `Mine Punishment Pit ${_pits.pluck()}`>>
-<<link [[Next|Mine Punishment Pit Spiders]]>><<endevent>><</link>>
+<<link [[Next|_link]]>><<endevent>><</link>>
 
 
 
@@ -35,7 +35,7 @@ You're dragged into a room with several grates in the ground.
 :: Mine Punishment Pit Nothing
 <<effects>>
 
-They pull you up to one of the grates, open it and shove you in. You fall a few feet onto the hard rock. <<ggpain>><<pain 5>>
+They pull you up to one of the grates, open it, and shove you in. You fall a few feet onto the hard rock. <<ggpain>><<pain 5>>
 <br><br>
 You look up and see the guards pulling a tarp over the grate, plunging you into darkness. <<ggstress>><<stress 20>>
 <br><br>
@@ -69,7 +69,7 @@ Eventually they get tired of it and stop laughing. Despite everything, you feel 
 :: Mine Punishment Pit Slimes
 <<effects>>
 
-They pull you up to one of the grates, open it and shove you in. You fall a few feet and land in a puddle of slime.
+They pull you up to one of the grates, open it, and shove you in. You fall a few feet and land in a puddle of slime.
 <br><br>
 You look up and see the guards pulling a tarp over the grate, plunging you into darkness. <<ggstress>><<stress 20>>
 <br><br>
@@ -125,7 +125,7 @@ The slimes retreat away from you. <<tearful>> you're left in the dark to your ow
 :: Mine Punishment Pit Tentacles
 <<effects>>
 
-They pull you up to one of the grates, open it and shove you in. You fall a few feet onto the hard rock. <<ggpain>><<pain 5>>
+They pull you up to one of the grates, open it, and shove you in. You fall a few feet onto the hard rock. <<ggpain>><<pain 5>>
 <br><br>
 You look up and see the guards pulling a tarp over the grate, plunging you into darkness. <<ggstress>><<stress 20>>
 <br><br>
@@ -182,7 +182,7 @@ The tentacles retreat back into the crack. <<tearful>> you're left in the dark t
 :: Mine Punishment Pit Spiders
 <<effects>>
 
-They pull you up to one of the grates, open it and shove you in. You fall a few feet and land in a giant web. A bunch of spiders almost immediately start walking across your skin.
+They pull you up to one of the grates, open it, and shove you in. You fall a few feet and land in a giant web. A bunch of spiders almost immediately start walking across your skin.
 <br><br>
 You look up and see the guards pulling a tarp over the grate, plunging you into darkness. <<ggstress>><<stress 20>>
 <br><br>

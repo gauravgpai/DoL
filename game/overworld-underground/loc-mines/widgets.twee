@@ -184,18 +184,18 @@
 <<widget "mine_pit">>
 	<<set _pits to ["Nothing"]>>
 	<<set _coveredPits to 0>>
-	<<if true or $settings.slimesEnabled and $hallucinations gte 1>>
-		<<set _pits.push["Slimes"]>>
+	<<if $settings.slimesEnabled and $hallucinations gte 1>>
+		<<set _pits.push("Slimes")>>
 	<<else>>
 		<<set _coveredPits++>>
 	<</if>>
-	<<if true or $settings.tentaclesEnabled and $hallucinations gte 2>>
-		<<set _pits.push["Tentacles"]>>
+	<<if $settings.tentaclesEnabled and $hallucinations gte 2>>
+		<<set _pits.push("Tentacles")>>
 	<<else>>
 		<<set _coveredPits++>>
 	<</if>>
-	<<if true or $settings.swarmsEnabled and $settings.spidersEnabled>>
-		<<set _pits.push["Spiders"]>>
+	<<if $settings.swarmsEnabled and $settings.spidersEnabled>>
+		<<set _pits.push("Spiders")>>
 	<<else>>
 		<<set _coveredPits++>>
 	<</if>>
