@@ -928,7 +928,7 @@ DefineMacro("wetAll", wetAll);
  * @returns {boolean}
  */
 function pantsable() {
-	return V.worn.lower.set !== V.worn.upper.set && !["shortalls"].includes(V.worn.lower.name);
+	return V.worn.lower.one_piece !== 1 && !["shortalls"].includes(V.worn.lower.name);
 }
 window.pantsable = pantsable;
 
