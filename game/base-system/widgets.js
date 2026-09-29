@@ -928,15 +928,7 @@ DefineMacro("wetAll", wetAll);
  * @returns {boolean}
  */
 function pantsable() {
-	if (setup.clothes.lower[clothesIndex("lower", V.worn.lower)].skirt === 1 && V.worn.lower.set === V.worn.upper.set) {
-		return false;
-	} else if (setup.clothes.lower[clothesIndex("lower", V.worn.lower)].skirt === 1) {
-		return true;
-	} else if (["shortalls"].includes(V.worn.lower.name) || V.worn.lower.set === V.worn.upper.set) {
-		return false;
-	} else {
-		return true;
-	}
+	return V.worn.lower.set !== V.worn.upper.set && !["shortalls"].includes(V.worn.lower.name);
 }
 window.pantsable = pantsable;
 
