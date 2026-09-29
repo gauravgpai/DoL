@@ -456,19 +456,6 @@ function pickAndRecordSpeechLine(speaker, lines) {
 	return line;
 }
 
-/**
- * Picks between plain strings without repeating. Use instead of either() for wording variants inside one line.
- *
- * @param {SpeechSpeaker} speaker
- * @param {...string} texts
- */
-function pickSpeechLine(speaker, ...texts) {
-	return pickAndRecordSpeechLine(
-		speaker,
-		texts.map(text => createNonEventSpeechLine(text, 1))
-	).content;
-}
-
 function hasSpeechLines() {
 	return T.speechPool.lines.length > 0;
 }
@@ -650,5 +637,4 @@ function hasPairedSpeechLine(speaker) {
 	return T.pairedSpeechLine !== undefined && T.pairedSpeechLine.speaker === speaker;
 }
 
-window.pickSpeechLine = pickSpeechLine;
 window.hasSpeechLines = hasSpeechLines;

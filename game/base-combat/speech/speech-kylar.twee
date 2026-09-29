@@ -67,23 +67,29 @@
 		<</switch>>
 		<<npcincr Kylar rage 10>><<ggksuspicion>>
 	<</addEventSpeechLine>>
-	<<addEventSpeechLine "noticeSexToy">>
-		<<set $speechNoticeSexToy to 0>>
-		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
-		<<if !$player.penisExist and $NPCList[0].vagina isnot "none" and random(0,2) isnot 0>>
-			<<print pickSpeechLine("Kylar", 
-				`<<He>> looks at your $_sexToy and speaks. "U-use it. Please, use me, use it."`,
-				`<<He>> looks at your $_sexToy and speaks. "It's a sign of our love, right?"`
-			)>>
-		<<elseif $player.penisExist or $NPCList[0].penis isnot "none" and random(0,2) isnot 0>>
-			<<print pickSpeechLine("Kylar", 
-				`<<He>> looks at your $_sexToy and speaks. "What... am I doing wrong...?"`,
-				`<<He>> looks at your $_sexToy and speaks. "If it makes you happy, my love, but..."`
-			)>>
-		<<else>>
+	<<if !$player.penisExist and $NPCList[0].vagina isnot "none" and random(0,2) isnot 0>>
+		<<addEventSpeechLine "noticeSexToy">>
+			<<set $speechNoticeSexToy to 0>><<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
+		<<speechLine>>
+			<<He>> looks at your $_sexToy and speaks. "U-use it. Please, use me, use it."
+		<<speechLine>>
+			<<He>> looks at your $_sexToy and speaks. "It's a sign of our love, right?"
+		<</addEventSpeechLine>>
+	<<elseif $player.penisExist or $NPCList[0].penis isnot "none" and random(0,2) isnot 0>>
+		<<addEventSpeechLine "noticeSexToy">>
+			<<set $speechNoticeSexToy to 0>><<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
+		<<speechLine>>
+			<<He>> looks at your $_sexToy and speaks. "What... am I doing wrong...?"
+		<<speechLine>>
+			<<He>> looks at your $_sexToy and speaks. "If it makes you happy, my love, but..."
+		<</addEventSpeechLine>>
+	<<else>>
+		<<addEventSpeechLine "noticeSexToy">>
+			<<set $speechNoticeSexToy to 0>><<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
+		<<speechLine>>
 			<<He>> looks at your $_sexToy and pouts. "Am I not good enough for you?"
-		<</if>>
-	<</addEventSpeechLine>>
+		<</addEventSpeechLine>>
+	<</if>>
 	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Kylar") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Kylar")>>
 		<<addEventSpeechLine "penisVirgin" "vaginaVirgin">>
 			<<He>> gasps. "You were a virgin too," <<he>> says. "We were meant for each other."

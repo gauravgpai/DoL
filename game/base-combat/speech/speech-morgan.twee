@@ -35,7 +35,7 @@
 		<</addEventSpeechLine>>
 	<</if>>
 	<<if $possessed>>
-		<<print pickSpeechLine("Morgan", 
+		<<print either(
 			`<<He>> roars. "I won't let you hurt <<phim>>!"`,
 			`<<He>> pleads. "Fight it, <<charles>>! Fight back!"`,
 			`<<He>> spits. "Return to mist!"`,

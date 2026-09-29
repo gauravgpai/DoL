@@ -32,14 +32,12 @@
 				<<elseif C.npc.Robin.dom gte 50>>
 					<<print $_stringsPre>>"That waif's grown a spine thanks to you. Shame <<nnpc_he 'Robin'>> won't save you."
 				<<else>>
-					<<print $_stringsPre>><<print pickSpeechLine("Bailey",
-						`"That worthless brat can't save you."`,
+					<<print $_stringsPre>><<print either(						`"That worthless brat can't save you."`,
 						`"What do you expect that waif to do? Cry until I stop?"`
 					)>>
 				<</if>>
 			<<case "Black Wolf" "Great Hawk">>
-				<<print $_stringsPre>><<print pickSpeechLine("Bailey",
-					`"People would pay extra to see you ${$player.penisExist ? "fuck" : "get fucked by"} some beast."`,
+				<<print $_stringsPre>><<print either(					`"People would pay extra to see you ${$player.penisExist ? "fuck" : "get fucked by"} some beast."`,
 					`"Animals get put down. You get put to work."`
 				)>>
 			<<case "Eden">>
@@ -54,8 +52,7 @@
 				<</if>>
 			<<case "Kylar">>
 				<<if $kylar_abduction_bailey is 1>>
-					<<print $_stringsPre>><<print pickSpeechLine("Bailey",
-						`"Call for <<nnpc_him 'Kylar'>> louder. Maybe <<nnpc_hes 'Kylar'>> outside the window."`,
+					<<print $_stringsPre>><<print either(						`"Call for <<nnpc_him 'Kylar'>> louder. Maybe <<nnpc_hes 'Kylar'>> outside the window."`,
 						`"That little freak is probably watching. Let <<nnpc_him 'Kylar'>>."`
 					)>>
 				<<else>>
@@ -63,8 +60,7 @@
 				<</if>>
 			<<case "Sydney">>
 				<<if $temple_bailey>>
-					<<print $_stringsPre>><<print pickSpeechLine("Bailey",
-						`"Save it for confession."`,
+					<<print $_stringsPre>><<print either(						`"Save it for confession."`,
 						`"That brat would pray for you. I'd rather <<nnpc_he 'Sydney'>> paid for you."`
 					)>>
 				<<else>>
@@ -81,8 +77,7 @@
 					<<print $_stringsPre>>"If <<nnpc_he _loveInterest>> cared about you, <<nnpc_he _loveInterest>> would pay for you."
 				<</if>>
 			<<case "Alex">>
-				<<print $_stringsPre>><<print pickSpeechLine("Bailey",
-					`"What do you think that idiot ${C.npc.Alex.pronoun is "f" ? "cowgirl" : "cowboy"} is going to do?"`,
+				<<print $_stringsPre>><<print either(					`"What do you think that idiot ${C.npc.Alex.pronoun is "f" ? "cowgirl" : "cowboy"} is going to do?"`,
 					`"Your farmer's probably face-down in a bottle somewhere."`,
 					`"That drunk couldn't find you if you were standing in <<nnpc_his 'Alex'>> field."`
 				)>>
@@ -91,15 +86,15 @@
 		<</switch>>
 	<</addEventSpeechLine>>
 	<<addEventSpeechLine "exposeGenitals">>
+	<<speechLine>>
 		<<He>> looks at your <<genitals>>. "That'll sell."
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "exposeGenitals">>
+	<<speechLine>>
 		<<He>> looks at your <<genitals>>. "You'll earn your keep."
 	<</addEventSpeechLine>>
 	<<addEventSpeechLine "exposeBreasts">>
+	<<speechLine>>
 		<<He>> looks at your <<breasts>>. "That'll sell."
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "exposeBreasts">>
+	<<speechLine>>
 		<<He>> looks at your <<breasts>>. "You'll earn your keep."
 	<</addEventSpeechLine>>
 	<<if $settings.pregnancySpeechEnabled>>
@@ -115,67 +110,60 @@
 	<</if>>
 	<<if $enemyanger lte 60>>
 		<<addEventSpeechLine "plead">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Save your breath."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "plead">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Quit whining. You'll live."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "plead">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Begging won't change what you owe me."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "plead">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Beg harder, maybe I'm feeling generous."
 		<</addEventSpeechLine>>
 	<<else>>
 		<<addEventSpeechLine "plead">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Every word out of your mouth adds to what you owe."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "plead">>
+		<<speechLine>>
 			<<print $_stringsPre>>"You'll shut up and take it if you know what's good for you."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "plead">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Begging won't save you, you little shit."
 		<</addEventSpeechLine>>
 	<</if>>
 	<<if $enemyanger lte 60>>
 		<<addEventSpeechLine "moan">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Keep it down."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "moan">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Save the moaning for clients."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "moan">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Save the racket for someone who pays."
 		<</addEventSpeechLine>>
 	<<else>>
 		<<addEventSpeechLine "moan">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Shut your mouth, brat."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "moan">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Not another sound, you little shit."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "moan">>
+		<<speechLine>>
 			<<print $_stringsPre>>"One more sound and I'll give you something to moan about."
 		<</addEventSpeechLine>>
 	<</if>>
 	<<if $enemyanger lte 60>>
 		<<addEventSpeechLine "demand">>
+		<<speechLine>>
 			<<print $_stringsPre>>"You don't give orders here."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "demand">>
+		<<speechLine>>
 			<<print $_stringsPre>>"You're in no position to negotiate."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "demand">>
+		<<speechLine>>
 			<<print $_stringsPre>>"That mouth is going to cost you, brat."
 		<</addEventSpeechLine>>
 	<<else>>
 		<<addEventSpeechLine "demand">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Mouthy little shit."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "demand">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Shut your goddamn mouth."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "demand">>
+		<<speechLine>>
 			<<print $_stringsPre>>"You don't get to make demands. You never did."
 		<</addEventSpeechLine>>
 	<</if>>
@@ -203,102 +191,87 @@
 		<</addEventSpeechLine>>
 	<</if>>
 	<<addEventSpeechLine "forgive">>
+	<<speechLine>>
 		<<He>> sneers. "I don't need your forgiveness."
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "forgive">>
+	<<speechLine>>
 		<<He>> sneers. "Forgive me? For what?"
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "forgive">>
+	<<speechLine>>
 		<<He>> sneers. "Close your damn mouth, or I'll close it for you."
 	<</addEventSpeechLine>>
 	<<addEventSpeechLine "apologiseUnforgiving">>
+	<<speechLine>>
 		<<print $_stringsPre>>"Shut up. I've heard it all before."
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "apologiseUnforgiving">>
+	<<speechLine>>
 		<<print $_stringsPre>>"Did you really think I would fall for that?"
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "apologiseUnforgiving">>
+	<<speechLine>>
 		<<print $_stringsPre>>"Do you think I give a damn, you little shit?"
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "apologiseUnforgiving">>
+	<<speechLine>>
 		<<print $_stringsPre>>"Save it. If you were sorry, you'd stop struggling."
 	<</addEventSpeechLine>>
 	<<addEventSpeechLine "growl" "growlHeat" "growlRut">>
+	<<speechLine>>
 		<<print $_stringsPre>>"You little mutt."
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "growl" "growlHeat" "growlRut">>
+	<<speechLine>>
 		<<print $_stringsPre>>"I'll muzzle you if I have to."
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "growl" "growlHeat" "growlRut">>
+	<<speechLine>>
 		<<print $_stringsPre>>"Bite if you want. See what it costs you."
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "growl" "growlHeat" "growlRut">>
+	<<speechLine>>
 		<<print $_stringsPre>>"This is what I get for taking in strays."
 	<</addEventSpeechLine>>
 	<<if $enemyanger lte 60>>
 		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Stop struggling."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"You're wasting both our time."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"You're not going anywhere."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Don't make this difficult."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Stop fighting me."
 		<</addEventSpeechLine>>
 	<<else>>
 		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Quit moving, you little shit."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Stop squirming, damn brat."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"That's enough."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Don't test my patience."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "struggle">>
+		<<speechLine>>
 			<<print $_stringsPre>>"You're only making it worse for yourself."
 		<</addEventSpeechLine>>
 	<</if>>
 	<<if $enemyanger lte 60>>
 		<<addEventSpeechLine "spank">>
+		<<speechLine>>
 			<<print $_stringsPre>>"What have we learned?"
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "spank">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Count it against what you owe."
 		<</addEventSpeechLine>>
 	<<else>>
 		<<addEventSpeechLine "spank">>
+		<<speechLine>>
 			<<print $_stringsPre>>"Harder? Fine."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "spank">>
+		<<speechLine>>
 			<<print $_stringsPre>>"You asked for this."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "spank">>
+		<<speechLine>>
 			<<print $_stringsPre>>"This is for wasting my time."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "spank">>
+		<<speechLine>>
 			<<print $_stringsPre>>"I'll stop when you've learned your lesson."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "spank">>
+		<<speechLine>>
 			<<print $_stringsPre>>"You've been difficult. This is what happens."
 		<</addEventSpeechLine>>
 	<</if>>
 	<<addEventSpeechLine "playerOrgasm">>
+	<<speechLine>>
 		<<print $_stringsPre>>"I hope you appreciate that."
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "playerOrgasm">>
+	<<speechLine>>
 		<<print $_stringsPre>>"Just something to remember me by."
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "playerOrgasm">>
+	<<speechLine>>
 		<<print $_stringsPre>>"We'll call that your going away gift."
 	<</addEventSpeechLine>>
 	<<if $arousal gte 9500>>

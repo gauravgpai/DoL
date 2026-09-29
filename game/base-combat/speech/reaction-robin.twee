@@ -23,7 +23,7 @@
 				<<He>> heaves. "Because you're the only one that matters to me."
 				<<set _moanHeal to true>>
 			<<else>>
-				<<print pickSpeechLine("Robin", 
+				<<print either(
 					`<<He>> giggles. "Anything for you."`,
 					`<<He>> smiles, beaming with pride and joy.`
 				)>>

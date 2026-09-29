@@ -836,7 +836,6 @@
 		"You don't know any better. You're just a <<beasttype>>," you say. "I forgive you."
 	<<else>>
 		<<if _loveInterest isnot undefined>>
-			<<set $speechLINameDrop to $npc.includes(_loveInterest) ? 0 : 1>>
 			<<rng>>
 			<<speechPool "pc">>
 			<<switch _loveInterest>>
@@ -848,10 +847,12 @@
 					<<if $npc.includes("Whitney")>>
 						<<pc-line-whitney-forgive>>
 					<</if>>
-				<<default>>
-					"Even though you're doing such a horrible thing, don't worry," you say. "I forgive you."
 			<</switch>>
-			<<speechSay>>
+			<<if hasSpeechLines()>>
+				<<speechSay>>
+			<<else>>
+				"Even though you're doing such a horrible thing, don't worry," you say. "I forgive you."
+			<</if>>
 		<<else>>
 			"Even though you're doing such a horrible thing, don't worry," you say. "I forgive you."
 		<</if>>

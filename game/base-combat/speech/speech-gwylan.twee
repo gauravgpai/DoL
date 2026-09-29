@@ -13,7 +13,7 @@
 			<<set $gwylanUniqueComments.pushUnique("wraithPain")>>
 			<<He>> grunts in pain, on the verge of collapsing. "Come on... exert your will!"
 		<<else>>
-			<<print pickSpeechLine("Gwylan", 
+			<<print either(
 				`<<He>> growls. "You can't have <<phim>>."`,
 				`<<He>> growls. "You're stronger than it. I know you are."`,
 				`<<He>> demands. "Begone!"`,
@@ -27,7 +27,7 @@
 			)>>
 		<</if>>
 	<<elseif $abomination is 1>>
-		<<print pickSpeechLine("Gwylan", 
+		<<print either(
 			`<<He>> giggles. "You awoke this beast and you must sate it."`,
 			`<<He>> breathes heavily. "Energy like this cannot be destroyed. It has to be spent."`,
 			`<<He>> lets out a soft moan. "I can't help it. I need you."`,
@@ -162,7 +162,7 @@
 					<<set $gwylanUniqueComments.pushUnique("no_cum")>>
 					"Oh dear, nothing came out. Had enough?"
 				<<else>>
-					<<print pickSpeechLine("Gwylan", 
+					<<print either(
 						`"I'm sure I can coax something out..."`,
 						`"Tsk. No good."`,
 						`"Perhaps you need a supplement."`,
@@ -212,7 +212,7 @@
 					<<elseif _gwylanStatus.includes("heat")>>
 						<<He>> breathes heavily as <<he>> feels your semen fill <<his>> womb. <<He>> sighs with relief. "I needed this. I needed your seed inside me."
 					<<else>>
-						<<print pickSpeechLine("Gwylan", 
+						<<print either(
 							`<<He>> shakes with arousal as you fill <<him>>. "<<pcPetname 'Gwylan' 'good'>>, fill me up."`,
 							`<<He>> grinds your hips together and places a hand over <<his>> <<bellyDescription 'Gwylan'>>. "Warm."`
 						)>>
@@ -246,21 +246,25 @@
 				<</if>>
 			<</addEventSpeechLine>>
 		<</if>>
-		<<addEventSpeechLine "spank">>
-			<<if $speechMoan is 1>>
-				<<print pickSpeechLine("Gwylan", 
-					`<<He>> smirks. "Oh, you like that?"`,
-					`<<He>> giggles. "<<pcPetname 'Gwylan' 'bad'>>."`,
-					`<<He>> giggles. "Your voice is so sweet in between the pain. Sing for me again."`
-				)>>
-			<<else>>
-				<<print pickSpeechLine("Gwylan", 
-					`<<He>> speaks. "Just hold still, it'll be over soon."`,
-					`<<He>> speaks. "You need to be disciplined. <<pcPetname 'Gwylan' 'bad'>>."`,
-					`<<He>> giggles. "Let me hear how much it hurts."`
-				)>>
-			<</if>>
-		<</addEventSpeechLine>>
+		<<if $speechMoan is 1>>
+			<<addEventSpeechLine "spank">>
+			<<speechLine>>
+				<<He>> smirks. "Oh, you like that?"
+			<<speechLine>>
+				<<He>> giggles. "<<pcPetname 'Gwylan' 'bad'>>."
+			<<speechLine>>
+				<<He>> giggles. "Your voice is so sweet in between the pain. Sing for me again."
+			<</addEventSpeechLine>>
+		<<else>>
+			<<addEventSpeechLine "spank">>
+			<<speechLine>>
+				<<He>> speaks. "Just hold still, it'll be over soon."
+			<<speechLine>>
+				<<He>> speaks. "You need to be disciplined. <<pcPetname 'Gwylan' 'bad'>>."
+			<<speechLine>>
+				<<He>> giggles. "Let me hear how much it hurts."
+			<</addEventSpeechLine>>
+		<</if>>
 		<<addEventSpeechLine "apologise">>
 			<<He>> giggles. "Aww, it's hard for me to stay mad at you when you look at me like that."
 		<</addEventSpeechLine>>
@@ -328,13 +332,16 @@
 			<<He>> giggles. "How can I say no? I'll make sure the pain is sweet."
 		<</addEventSpeechLine>>
 		<<addEventSpeechLine "playerBeaten">>
-			<<print pickSpeechLine("Gwylan", 
-				`<<He>> frowns. "Stop resisting me, <<pcpetname 'Gwylan' 'naughty'>>."`,
-				`<<He>> frowns. "Just submit, and the pain will all go away."`,
-				`<<He>> frowns. "Why are you struggling? Isn't this what you wanted, dear?"`,
-				`<<He>> frowns. "I take no pleasure in this, dear, so please. Stop this senseless struggling."`,
-				`<<He>> frowns. "I'm sorry. I'll give you something for the pain when we're done."`,
-			)>>
+		<<speechLine>>
+			<<He>> frowns. "Stop resisting me, <<pcpetname 'Gwylan' 'naughty'>>."
+		<<speechLine>>
+			<<He>> frowns. "Just submit, and the pain will all go away."
+		<<speechLine>>
+			<<He>> frowns. "Why are you struggling? Isn't this what you wanted, dear?"
+		<<speechLine>>
+			<<He>> frowns. "I take no pleasure in this, dear, so please. Stop this senseless struggling."
+		<<speechLine>>
+			<<He>> frowns. "I'm sorry. I'll give you something for the pain when we're done."
 		<</addEventSpeechLine>>
 		<<addEventSpeechLine "growl">>
 			<<He>> giggles. "Oh, what a thrilling growl. Show me those fangs again." <<npcincr Gwylan lust 1>><<glust>><br>
@@ -679,12 +686,11 @@
 			<</addEventSpeechLine>>
 		<</if>>
 		<<addEventSpeechLine "vaginaFlaunt">>
+		<<speechLine>>
 			<<He>> blushes. "Enjoying the view?"
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "vaginaFlaunt">>
+		<<speechLine>>
 			<<He>> giggles. "I feel your eyes all over me, and I like it."
-		<</addEventSpeechLine>>
-		<<addEventSpeechLine "vaginaFlaunt">>
+		<<speechLine>>
 			<<He>> giggles. "Do I look good?"
 		<</addEventSpeechLine>>
 
@@ -744,7 +750,7 @@
 						<<addSpeechLine 4>>
 							<<set $gwylanUniqueComments.pushUnique("clothes")>>
 							<<set $_plural to $worn[$_labelClothes].plural ? "those" : "that">>
-							<<print pickSpeechLine("Gwylan", 
+							<<print either(
 								`<<He>> looks at your ` + $worn[$_labelClothes].name + `. "Where did you find ` + $_plural + `? You'd better tell me later."`,
 								`<<He>> looks at your ` + $worn[$_labelClothes].name + `. "I see a story behind ` + $_plural + `. Let's talk about it when we're done."`
 							)>>
