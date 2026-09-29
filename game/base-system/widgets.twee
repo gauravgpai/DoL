@@ -4982,24 +4982,6 @@
 	<</if>>
 <</widget>>
 
-<<widget "pantsable">>
-	<!-- check if lowerwear allows for player to be pantsed or upskirted
-	_pantsable: lowerwear can be pulled down; _upskirt: skirt can be flipped up -->
-	<<if setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt is 1 and ($worn.lower.set is $worn.upper.set)>>
-		<<set _upskirt to 1>>
-		<<set _pantsable to 0>>
-	<<elseif setup.clothes.lower[clothesIndex('lower', $worn.lower)].skirt is 1>>
-		<<set _upskirt to 1>>
-		<<set _pantsable to 1>>
-	<<elseif ["shortalls"].includes($worn.lower.name) or ($worn.lower.set is $worn.upper.set)>>
-		<<set _upskirt to 0>>
-		<<set _pantsable to 0>>
-	<<else>>
-		<<set _upskirt to 0>>
-		<<set _pantsable to 1>>
-	<</if>>
-<</widget>>
-
 /* 0: difficulty, 1: "locks"/"target", 2: additional progress */
 <<widget "skulduggeryuse">>
 	<<if _args[0]>>

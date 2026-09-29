@@ -921,3 +921,31 @@ function wetAll(amount = 200) {
 	wetLower(amount);
 }
 DefineMacro("wetAll", wetAll);
+
+/**
+ * Checks if pc's lower clothing can be pulled down
+ *
+ * @returns {boolean}
+ */
+function pantsable() {
+	if (setup.clothes.lower[clothesIndex("lower", V.worn.lower)].skirt === 1 && V.worn.lower.set === V.worn.upper.set) {
+		return false;
+	} else if (setup.clothes.lower[clothesIndex("lower", V.worn.lower)].skirt === 1) {
+		return true;
+	} else if (["shortalls"].includes(V.worn.lower.name) || V.worn.lower.set === V.worn.upper.set) {
+		return false;
+	} else {
+		return true;
+	}
+}
+window.pantsable = pantsable;
+
+/**
+ * Checks if pc's lower clothing can be flipped up
+ *
+ * @returns {boolean}
+ */
+function upskirtable() {
+	return setup.clothes.lower[clothesIndex("lower", V.worn.lower)].skirt === 1;
+}
+window.upskirtable = upskirtable;

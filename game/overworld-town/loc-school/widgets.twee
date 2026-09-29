@@ -2436,7 +2436,6 @@
 
 <<widget "eventsenglishsleep">>
 	<<cleareventpool>>
-	<<pantsable>>
 
 	<<addinlineevent "englishCaught">>
 		<<npc Doren>><<person1>>
@@ -2479,9 +2478,9 @@
 		<</addinlineevent>>
 	<</if>>
 
-	<<if _pantsable is 1 or _upskirt is 1>>
+	<<if pantsable() or upskirtable()>>
 		<<addinlineevent "englishPantsing">>
-			Your eyes snap open to the sound of laughter. It only takes you an instant to realise what happened. Your $worn.lower.name <<lowerhas>> been <<print _upskirt is 1 ? "flipped up" : "pulled down">>, <span class="lewd">exposing your <<undies 2>></span>. <<lowerstrip>>
+			Your eyes snap open to the sound of laughter. It only takes you an instant to realise what happened. Your $worn.lower.name <<lowerhas>> been <<print upskirtable() ? "flipped up" : "pulled down">>, <span class="lewd">exposing your <<undies 2>></span>. <<lowerstrip>>
 			<br><br>
 
 			<<link [[Cover yourself|English Pantsing]]>><<set $phase to "cover">><</link>><br>
