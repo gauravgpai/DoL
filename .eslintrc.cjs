@@ -499,6 +499,7 @@ module.exports = {
 					"SpeechLine",
 					"SpeechEventLines",
 					"SpeechSpeaker",
+					"SpeechReply",
 				],
 			},
 		],

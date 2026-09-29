@@ -261,13 +261,13 @@ declare module "twine-sugarcube" {
 		crOverrides?: CombatRendererOverrides;
 		noNameComment?: boolean;
 		speechPool?: { speaker: SpeechSpeaker; lines: SpeechLine[]; cooling: Set<string> };
-		pairedSpeechLine?: string;
+		pairedSpeechLine?: SpeechReply;
 	}
 
 	export interface SugarCubeSetupObject {
 		positions: Positions[];
 		legPositions: LegPositions[];
-		speechEvent: Record<string, () => boolean | number | undefined>;
+		speechEvent: Record<string, (speaker: SpeechSpeaker) => boolean | number | undefined>;
 		speechPriority: Record<string, { priority: number; cooldown: number }>;
 	}
 }
@@ -365,7 +365,12 @@ declare global {
 		priority: number;
 		hash: string;
 		event: string;
-		reply?: string;
+		reply?: SpeechReply;
+	}
+
+	export interface SpeechReply {
+		speaker: NpcNames;
+		content: string;
 	}
 }
 

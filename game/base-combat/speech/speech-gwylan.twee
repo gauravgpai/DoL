@@ -367,8 +367,7 @@
 					<<He>> giggles. "<<gwylanCommand "Hold your tongue, dear, or I'll hold it for you.">>"
 				<</if>>
 			<</addEventSpeechLine>>
-		<</if>>
-		<<if !$gwylanUniqueComments.includes("demand")>>
+		<<elseif !$gwylanUniqueComments.includes("demand")>>
 			<<addEventSpeechLine "demand">>
 				<<set $gwylanUniqueComments.pushUnique("demand")>>
 				<<He>> giggles. "Hold that brave face, dear. I want to remember it."

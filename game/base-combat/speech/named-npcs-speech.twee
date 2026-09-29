@@ -31,7 +31,7 @@
    _args[1] the event
    _args[2] the body part (for kissSkin and fondle) */
 <<widget "namedNpcReaction">>
-	<<switch $NPCList[_args[0]]?.fullDescription>>
+	<<switch $NPCList[_args[0]].fullDescription>>
 		<<case "Avery">>
 			<<switch _args[1]>>
 				<<case "choke">><<reaction-avery-choke>>

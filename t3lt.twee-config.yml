@@ -552,33 +552,6 @@ sugarcube-2:
     actorAroused:
       name: actorAroused
       tags: ["unused"]
-    addEventSpeechLine:
-      container: true
-      description: |-
-        Adds a line to the speech pool, but only when a named event happened this turn. Event lines have different priorities assigned in `setup.speechPriority`. Use `<<speechLine>>` to add several lines for the same event/condition.
-
-        `<<addEventSpeechLine event... [weight]>>…<</addEventSpeechLine>>`
-        - **event**: `string` - the sex/combat event the line answers
-        - **weight** _optional_: `number` - weight, default 1
-      parameters:
-        - 'string |+ number'
-        - 'string &+ string |+ number'
-        - 'string &+ string &+ string |+ number'
-    addPairedSpeechLine:
-      container: true
-      description: |-
-        Adds a PC line to the speech pool. `<<sayPairedSpeechLine>>` says the NNPC's reply.
-
-        `<<addPairedSpeechLine>><<pcLine>>the PC's line<<npcLine>>the NPC's reply<</addPairedSpeechLine>>`
-    addSpeechLine:
-      container: true
-      description: |-
-        Adds a line to the speech pool. Used `<<speechLine>>` to add several lines that share one condition.
-
-        `<<addSpeechLine [weight]>>…<</addSpeechLine>>`
-        - **weight** _optional_: `number` - weight, default 1
-      parameters:
-        - '|+ number'
     add_bodywriting:
       name: add_bodywriting
     add_link:
@@ -600,6 +573,18 @@ sugarcube-2:
       name: addConsumableCosmetics
     addevent:
       name: addevent
+    addEventSpeechLine:
+      container: true
+      description: |-
+        Adds a line to the speech pool when a named event happened this turn. Event lines have different priorities assigned in `setup.speechPriority`. Use `<<speechLine>>` to add several lines for the same event/condition.
+
+        `<<addEventSpeechLine event... [weight]>>…<</addEventSpeechLine>>`
+        - **event**: `string` - the sex/combat event the line answers
+        - **weight** _optional_: `number` - weight, default 1
+      parameters:
+        - 'string |+ number'
+        - 'string &+ string |+ number'
+        - 'string &+ string &+ string |+ number'
     addfemininityfromfactor:
       name: addfemininityfromfactor
       tags: ["unused"]
@@ -625,6 +610,25 @@ sugarcube-2:
 
     addNNPCOutfit:
       name: addNNPCOutfit
+    addPairedSpeechLine:
+      container: true
+      description: |-
+        Adds a PC line to the speech pool, together with a named NPC's reply. That NPC's `<<sayPairedSpeechLine>>` says the paired reply.
+
+        `<<addPairedSpeechLine npc>><<pcLine>>the PC's line<<npcLine>>the NPC's reply<</addPairedSpeechLine>>`
+        - **npc**: `string` - the NPC who replies
+          - %namedNPCDesc%
+      parameters:
+        - '%namedNPC%'
+    addSpeechLine:
+      container: true
+      description: |-
+        Adds a line to the speech pool. Used `<<speechLine>>` to add several lines that share one condition.
+
+        `<<addSpeechLine [weight]>>…<</addSpeechLine>>`
+        - **weight** _optional_: `number` - weight, default 1
+      parameters:
+        - '|+ number'
     addVaginalWetness:
       name: addVaginalWetness
     adjust_school_traits:
@@ -12592,9 +12596,6 @@ sugarcube-2:
         - **slot**: `number` - The Slot the NPC will be put into (zero based)
       parameters:
         - text |+ number
-    npcLine:
-      description: |-
-        The named NPC's reply, inside `<<addPairedSpeechLine>>`.
     npc_attempt_sex:
       name: npc_attempt_sex
     npc_pillory:
@@ -12730,6 +12731,9 @@ sugarcube-2:
       name: npcincr_avery
     npckiss:
       name: npckiss
+    npcLine:
+      description: |-
+        The named NPC's reply, inside `<<addPairedSpeechLine>>`.
     npcList:
       name: npcList
     npcNamed:
@@ -13714,45 +13718,6 @@ sugarcube-2:
         - "number |+ number"
     pbhairinit:
       name: pbhairinit
-    pcFarmBirth:
-      name: pcFarmBirth
-    pcGender:
-      description: |-
-        Prints "girl", "boy", or "orphan", based on the PC's chosen gender
-
-        ONLY to be used when the PC is referring to themself.
-        NPCs should continue to refer to PC by `<<girl>>`, or `<<pcSex>>` if appropriate for the scene.
-      tags: ["text"]
-    pcGenderher:
-      description: |-
-        Prints "her", "his", or "their", based on the PC's chosen gender. ONLY to be used when the PC is referring to themself. NPCs should continue to refer to PC by `<<pher>>` if appropriate for the scene.
-      tags: ["text"]
-    pcow:
-      description: |-
-        Prints "cow" or "bull", based on the PC's gender appearance.
-      tags: ["text"]
-    pcpetname:
-      description: |-
-        Prints named NPC's pet name for pc's
-
-        See `<<pcPetname>>` for capitalised version
-
-        Uses too many versions of NPC's names as inputs. Consider refactoring to use just one
-
-        `<<pcpetname npcName npcEmotionMod?>>`
-        - **npcName**: `string` - example kind to output
-          - `"Avery"` | `"Gwylan"` | `"Wraith"`
-        - **npcEmotionMod** _optional_: `string` - npc's emotional intention when using this pet name
-          - `"angry"` | `"nice"`
-      parameters:
-        - '"Avery"|"Gwylan"|"Wraith"'
-        - '"Avery" |+ "my"'
-        - '"Wraith" |+ "angry"|"nice"'
-        - '"Gwylan" |+ "bad"|"naughty"|"good"|"dear"|"my"|"simple"|"name"'
-      tags: ["text"]
-    pcLine:
-      description: |-
-        The PC's line, inside `<<addPairedSpeechLine>>`.
     pc-line-alex-demand:
       name: pc-line-alex-demand
     pc-line-alex-moan:
@@ -13825,6 +13790,45 @@ sugarcube-2:
         - '"penis"|"vagina"|"weak"|"looks"|"skill"|"ethics"'
     pc-line-whitney-plead:
       name: pc-line-whitney-plead
+    pcFarmBirth:
+      name: pcFarmBirth
+    pcGender:
+      description: |-
+        Prints "girl", "boy", or "orphan", based on the PC's chosen gender
+
+        ONLY to be used when the PC is referring to themself.
+        NPCs should continue to refer to PC by `<<girl>>`, or `<<pcSex>>` if appropriate for the scene.
+      tags: ["text"]
+    pcGenderher:
+      description: |-
+        Prints "her", "his", or "their", based on the PC's chosen gender. ONLY to be used when the PC is referring to themself. NPCs should continue to refer to PC by `<<pher>>` if appropriate for the scene.
+      tags: ["text"]
+    pcLine:
+      description: |-
+        The PC's line, inside `<<addPairedSpeechLine>>`.
+    pcow:
+      description: |-
+        Prints "cow" or "bull", based on the PC's gender appearance.
+      tags: ["text"]
+    pcpetname:
+      description: |-
+        Prints named NPC's pet name for pc's
+
+        See `<<pcPetname>>` for capitalised version
+
+        Uses too many versions of NPC's names as inputs. Consider refactoring to use just one
+
+        `<<pcpetname npcName npcEmotionMod?>>`
+        - **npcName**: `string` - example kind to output
+          - `"Avery"` | `"Gwylan"` | `"Wraith"`
+        - **npcEmotionMod** _optional_: `string` - npc's emotional intention when using this pet name
+          - `"angry"` | `"nice"`
+      parameters:
+        - '"Avery"|"Gwylan"|"Wraith"'
+        - '"Avery" |+ "my"'
+        - '"Wraith" |+ "angry"|"nice"'
+        - '"Gwylan" |+ "bad"|"naughty"|"good"|"dear"|"my"|"simple"|"name"'
+      tags: ["text"]
     pcPetname:
       description: |-
         Print's capitalised prose of named NPC's pet name for pc's
@@ -15040,6 +15044,8 @@ sugarcube-2:
       name: reaction-gwylan-kissDeep
     reaction-sydney-expose:
       name: reaction-sydney-expose
+    reaction-whitney-demand:
+      name: reaction-whitney-demand
     reading_nook_recipe:
       name: reading_nook_recipe
     reb:
@@ -15522,6 +15528,9 @@ sugarcube-2:
       name: say_brown_fox
     sayexhibproud:
       name: sayexhibproud
+    sayPairedSpeechLine:
+      description: |-
+        Says the NPC's paired reply to the PC moan/demand/etc. said this turn during sex/combat. Only works inside an `<<addEventSpeechLine "pairedReply">>` line.
     scarred_inmate:
       name: scarred_inmate
     sceneInseminate:
@@ -16658,9 +16667,6 @@ sugarcube-2:
       name: speech-whitney
     speech-zephyr:
       name: speech-zephyr
-    sayPairedSpeechLine:
-      description: |-
-        Says the NPC's reply to the PC line said this turn during sex/combat.
     speechLine:
       description: |-
         Starts another line inside `<<addSpeechLine>>` or `<<addEventSpeechLine>>`, so one macro can add several lines. Anything written before the first `<<speechLine>>` goes at the start of every line.

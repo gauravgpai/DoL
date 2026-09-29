@@ -16,7 +16,7 @@
 
 <<widget "pc-line-robin-moan">>
 	<<if C.npc.Robin.dom gte 70>>
-		<<addPairedSpeechLine>>
+		<<addPairedSpeechLine "Robin">>
 			<<pcLine>>"You know just how to turn me on."
 		<<npcLine>>
 			<<if C.npc.Robin.trauma gte 20>>
@@ -30,7 +30,7 @@
 			<</if>>
 		<</addPairedSpeechLine>>
 	<<else>>
-		<<addPairedSpeechLine>>
+		<<addPairedSpeechLine "Robin">>
 			<<pcLine>>"I'm gonna melt, you're making me so happy."
 		<<npcLine>>
 			<<if C.npc.Robin.trauma gte 60>>

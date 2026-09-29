@@ -32,6 +32,8 @@ setup.speechEvent = {
 	hermDisappointed: () => V.speechHermDisappointed === 1,
 	hermShock: () => V.speechHermShock === 1,
 
+	pairedReply: speaker => hasPairedSpeechLine(speaker),
+
 	exposeBreasts: () => V.speechExposeBreasts,
 	exposeGenitals: () => V.speechExposeGenitals,
 	LINameDrop: () => V.speechLINameDrop,
@@ -173,6 +175,9 @@ setup.speechPriority = Object.fromEntries(
 			["crossdressAngry", "crossdressAroused", "crossdressDisappointed", "crossdressShock", "hermAngry", "hermAroused", "hermDisappointed", "hermShock"],
 		],
 
+		/* A reply to PC's moans/demands/etc. */
+		[85, 0, ["pairedReply"]],
+
 		/* These events only happen once per combat, so these lines have higher priority. */
 		[80, 0, ["exposeBreasts", "exposeGenitals", "LINameDrop", "penisBig", "penisSmall", "pregnant", "noticeSexToy"]],
 
@@ -306,7 +311,7 @@ function getSpeechLineHash(text) {
  *
  * @param {string} content the line
  * @param {number} weight
- * @param {string} [reply] NNPC's reply, said later in the turn by <<sayPairedSpeechLine>>.
+ * @param {SpeechReply} [reply] NNPC's reply, said later in the turn by <<sayPairedSpeechLine>>.
  * @returns {SpeechLine}
  */
 function createNonEventSpeechLine(content, weight, reply) {
@@ -330,7 +335,7 @@ function createEventSpeechLine(content, weight, declaredEvents, firedEvents) {
 		weight,
 		priority: Math.max(...firedEvents.map(getSpeechEventPriority)),
 		event: [...declaredEvents].sort().join(" "),
-		hash: getSpeechLineHash(content),
+		hash: getSpeechLineHash(declaredEvents.includes("pairedReply") ? T.pairedSpeechLine.content : content),
 	};
 }
 
@@ -348,8 +353,8 @@ function getSpeechEventCooldown(event) {
 	return setup.speechPriority[event].cooldown;
 }
 
-function hasSpeechEventFired(event) {
-	return !!setup.speechEvent[event]();
+function hasSpeechEventFired(event, speaker) {
+	return !!setup.speechEvent[event](speaker);
 }
 
 /**
@@ -563,7 +568,7 @@ Macro.add("addEventSpeechLine", {
 	handler() {
 		const { events, weight } = readSpeechLineArgs(this.args);
 		if (events.length === 0) return this.error("needs the name of the event the line answers");
-		const firedEvents = events.filter(event => !T.speechPool.cooling.has(event) && hasSpeechEventFired(event));
+		const firedEvents = events.filter(event => !T.speechPool.cooling.has(event) && hasSpeechEventFired(event, T.speechPool.speaker));
 		if (firedEvents.length === 0) return;
 		for (const contents of getSpeechLineContents(this.payload)) {
 			T.speechPool.lines.push(createEventSpeechLine(contents, weight, events, firedEvents));
@@ -571,19 +576,20 @@ Macro.add("addEventSpeechLine", {
 	},
 });
 
-/* Adds a PC line together with the NPC's reply, which <<sayPairedSpeechLine>> says later in the turn:
-	<<addPairedSpeechLine>>
+/* Adds a PC line together with the named NPC's reply. Only that NPC's <<sayPairedSpeechLine>> says the reply, later in the turn:
+	<<addPairedSpeechLine "Whitney">>
 	<<pcLine>>
 	the PC's line
 	<<npcLine>>
-	the NPC's reply
+	Whitney's reply
 	<</addPairedSpeechLine>> */
 Macro.add("addPairedSpeechLine", {
 	tags: ["pcLine", "npcLine"],
 	handler() {
 		const [before, pcLine, npcLine] = this.payload;
+		if (!setup.NPCNameList.includes(this.args[0])) return this.error(`needs the name of the NPC who replies, got "${this.args[0]}"`);
 		if (before.contents.trim()) return this.error("put PC's line inside <<pcLine>>");
-		T.speechPool.lines.push(createNonEventSpeechLine(pcLine.contents, 1, npcLine.contents));
+		T.speechPool.lines.push(createNonEventSpeechLine(pcLine.contents, 1, { speaker: this.args[0], content: npcLine.contents }));
 	},
 });
 
@@ -632,15 +638,17 @@ Macro.add("speechSayOrPass", {
 
 Macro.add("sayPairedSpeechLine", {
 	handler() {
-		$(this.output).wiki(T.pairedSpeechLine);
+		$(this.output).wiki(T.pairedSpeechLine.content);
 	},
 });
 
-/** @returns {boolean} Whether the PC line said this turn has a reply from the named NPC. */
-function hasPairedSpeechLine() {
-	return !!T.pairedSpeechLine;
+/**
+ * @param {SpeechSpeaker} speaker
+ * @returns {boolean} Whether the PC line said this turn is waiting for this NNPC speaker's reply.
+ */
+function hasPairedSpeechLine(speaker) {
+	return T.pairedSpeechLine !== undefined && T.pairedSpeechLine.speaker === speaker;
 }
 
 window.pickSpeechLine = pickSpeechLine;
-window.hasPairedSpeechLine = hasPairedSpeechLine;
 window.hasSpeechLines = hasSpeechLines;

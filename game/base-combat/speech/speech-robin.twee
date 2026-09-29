@@ -231,7 +231,7 @@
 			<<if C.npc.Robin.dom gte 70>>
 				<<print pickSpeechLine("Robin", 
 					`<<He>> smiles. "Is this too much? But you sound so lovely!"`,
-					`"Oh? You've got something to say?" <<He>> asks with a teasing smile.`
+					`"Oh? You've got something to say?" <<he>> asks with a teasing smile.`
 				)>>
 			<<elseif C.npc.Robin.dom lte 30>>
 				<<print pickSpeechLine("Robin", 
@@ -311,11 +311,15 @@
 				)>>
 			<</if>>
 		<</addEventSpeechLine>>
+		<<addEventSpeechLine "pairedReply">>
+			<<sayPairedSpeechLine>>
+			<<if !$robinUniqueComments.includes("moanDom")>>
+				<<set $robinUniqueComments.pushUnique("moanDom")>>
+				<<npcincr Robin dom 1>><<gdom>>
+			<</if>>
+		<</addEventSpeechLine>>
 		<<addEventSpeechLine "moan">>
-			<<if isLoveInterest("Robin") and hasPairedSpeechLine()>>
-				<<sayPairedSpeechLine>>
-				<<set _moanDom to true>>
-			<<elseif C.npc.Robin.dom gte 70>>
+			<<if C.npc.Robin.dom gte 70>>
 				<<print pickSpeechLine("Robin", 
 					`<<He>> smiles. "Let me hear more," <<he>> moans back to you.`,
 					`<<He>> giggles. "Keep going. I love hearing that."`,
@@ -355,10 +359,6 @@
 					)>>
 				<</if>>
 			<</if>>
-			<<if _moanDom and !$robinUniqueComments.includes("moanDom")>>
-				<<set $robinUniqueComments.pushUnique("moanDom")>>
-				<<npcincr Robin dom 1>><<gdom>>
-			<</if>>
 			<<if _moanHeal and !$robinUniqueComments.includes("moanHeal")>>
 				<<set $robinUniqueComments.pushUnique("moanHeal")>>
 				<<npcincr Robin trauma -1>><<lrtrauma>>
@@ -388,7 +388,7 @@
 				<</addEventSpeechLine>>
 			<<else>>
 				<<addEventSpeechLine "vaginaFlaunt">>
-					"D-do you like it?" <<He>> asks as <<his>> cheeks redden.
+					"D-do you like it?" <<he>> asks as <<his>> cheeks redden.
 				<</addEventSpeechLine>>
 				<<addEventSpeechLine "vaginaFlaunt">>
 					"I'd never show this to anyone but you. You're special to me." <<He>> smiles, the blush in <<his>> cheeks deepening.
@@ -448,10 +448,10 @@
 			<</addEventSpeechLine>>
 		<<elseif C.npc.Robin.dom lte 30>>
 			<<addEventSpeechLine "headSuckle">>
-				"I don't mind..." <<He>> murmurs.
+				"I don't mind..." <<he>> murmurs.
 			<</addEventSpeechLine>>
 			<<addEventSpeechLine "headSuckle">>
-				"Isn't that for the baby?" <<He>> asks hesitantly.
+				"Isn't that for the baby?" <<he>> asks hesitantly.
 			<</addEventSpeechLine>>
 		<<else>>
 			<<addEventSpeechLine "headSuckle">>
