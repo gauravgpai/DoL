@@ -436,7 +436,7 @@ You look back to see the <<person>> on the ground in shock. <<He>> stands up and
 :: Mine Job Cleaning Escape
 <<effects>><<generate1>><<person1>>
 
-You run through the tunnels, avoiding patrolling guards. You emerge in a tunnel with groups of slaves mining the walls. Noticing a watching guard, you duck behind a wall. You peek behind the wall to make sure <<he>> didn't notice you. You notice a ring of keys on <<his>> belt.
+You run through the tunnels, avoiding patrolling guards. You emerge in a tunnel with groups of slaves mining the walls. Noticing a watching guard, you duck behind a wall. You peek from your cover to make sure <<he>> didn't notice you. You notice a ring of keys on <<his>> belt.
 <br><br>
 <<link [[Run off into the tunnels|Mine Escape]]>><<endevent>><</link>>
 <br>

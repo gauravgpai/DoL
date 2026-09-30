@@ -44,6 +44,11 @@
 
 <<widget "mine_job_link">>
 	<<set _job_link to `Mine Job ${$mine.job.current.toLocaleUpperFirst()} Intro`>>
+
+	<<if $mine.job.current is "mining">>
+		<<set _job_link to `Mine Job Mining Return`>>
+	<</if>>
+
 	<<link [[Next|_job_link]]>><</link>>
 <</widget>>
 

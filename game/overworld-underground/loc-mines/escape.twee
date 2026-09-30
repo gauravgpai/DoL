@@ -25,7 +25,7 @@ As you emerge into a small cave, <span class="red">you realize you've already be
 <<clearnpc>>
 You are in a small cave. Various tunnels branch off.
 <<if $mine.setup.dust gt 0 and $mine.maze.proximityCheck()>>
-	You hear a cough from one of the tunnels.
+	You hear a <<= either("wheeze", "cough")>> from one of the tunnels.
 <</if>>
 
 <<if _start_turn and $mine.setup.lantern>>

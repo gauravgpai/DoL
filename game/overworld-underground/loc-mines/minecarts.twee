@@ -109,9 +109,9 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 		<<generate1>><<generate2>>
 		You overhear two guards talking. You get closer. "Why are these still out here?!" a <<person1>><<person>> yells. "Well I–" a <<person2>><<person>> stammers.
 		<br><br>
-		"Nevermind, I don't care, just put them somewhere safe so the trash doesn't get their grubby mitts on them!" the <<person1>> yells. "I'll get some slaves to help–" the <<person2>><<person>> says quietly.
+		"Nevermind, I don't care, just put them somewhere safe so the trash doesn't get their grubby mitts on them!" the <<person1>><<person>> yells. "I'll get some slaves to help–" the <<person2>><<person>> says quietly.
 		<br><br>
-		"No! You will do it!" the <<person1>> shouts. "But–" the <<person2>><<person>> stammers. "Just finish it you idiot!" the <<person1>> screams as <<he>> walks away.
+		"No! You will do it!" the <<person1>><<person>> shouts. "But–" the <<person2>><<person>> stammers. "Just finish it you idiot!" the <<person1>><<person>> screams as <<he>> walks away.
 		<br><br>
 		"Just finish it you idiot," the <<person2>><<person>> says mockingly. "Ungrateful cretin." <<He>> notices you listening, "You heard <<person1>><<him>>, just finish it." <<person2>><<He>> points to a black crate. "Put it in there." <<He>> gestures towards a small cave.
 		<br><br>
@@ -158,7 +158,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 <</addinlineevent>>
 
 <<addinlineevent "control">>
-	You take a break from pushing a cart to wipe the sweat from your brow and catch your breath. You turn to resume your work only to see <span class="red">the cart going along the track on it's own</span>
+	You take a break from pushing a cart to wipe the sweat from your brow and catch your breath. You turn to resume your work only to see <span class="red">the cart going along the track on it's own!</span>
 	<br><br>
 	You start to chase after it, but it's moving pretty fast at this point. 
 	<br><br>
@@ -194,11 +194,13 @@ You make your way to the <<person1>><<person>>.
 <<if $speech_attitude is "meek">>
 	"Can you distract the guards for me?" you ask.
 <<elseif $speech_attitude is "bratty">>
-	"I need you to distract the guards, you say."
+	"I need you to distract the guards," you say.
 <<else>>
 	"I want you to distract the guards," you say.
 <</if>>
-Fear washes over <<his>> face, <<he>> opens his mouth to speak but looks down at <<his>> legs. "When do you want it done?" <<he>> reluctantly asks.
+Fear washes over <<his>> face, <<he>> opens his mouth to speak but looks down at <<his>> legs.
+<br><br>
+"When do you want it done?" <<he>> reluctantly asks.
 <br><br>
 <<mine_distract_links "Mine Minecarts Distraction Set">>
 
@@ -244,9 +246,10 @@ You quickly push your cart into one of the connected tunnels before the guard ca
 :: Mine Job Minecarts Weapons
 <<effects>>
 
-You open the crate to reveal a bunch of guns, each secured with a heavy lock.
+You open the crate to reveal a bunch of guns, each secured with a heavy lock, too heavy to pick.
 <br><br>
-<<link [[Sabotage them|Mine Job Minecarts Weapons Sabotage]]>><<set $mine.setup.weapons to 1>><</link>>
+<<set $skulduggerydifficulty to 100>>
+<<link [[Try to sabotage them|Mine Job Minecarts Weapons Sabotage]]>><<skulduggerycheck "silent">><</link>><<skulduggerydifficulty>>
 <br>
 <<link [[Close the crate and leave|Mine Job Minecarts]]>><<endevent>><</link>>
 
@@ -255,7 +258,12 @@ You open the crate to reveal a bunch of guns, each secured with a heavy lock.
 :: Mine Job Minecarts Weapons Sabotage
 <<effects>>
 
-You sabotage each gun. Nobody would be able to tell they didn't work just by looking at them.
+<<if $skulduggerysuccess>>
+	<span class="green">You sabotage each gun. Nobody would be able to tell they didn't work just by looking at them.</span>
+	<<set $mine.setup.weapons to 1>>
+<<else>>
+	<span class="red">You can't figure out how to disable them without it being obvious.</span>
+<</if>>
 <br><br>
 "What's taking so long?" the <<person2>><<person>> yells from outside.
 <br><br>
@@ -293,7 +301,9 @@ They start coughing and hacking very loudly. Not wanting to be caught, you make 
 <<else>>
 	"It got away from me," you say.
 <</if>>
-<<He>> sighs. You start to walk away as <<he>> yells, "Don't think you're getting away with that unpunished." <<He>> grabs your neck and disconnects you from the rail before dragging you with <<him>>.
+<<He>> sighs.
+<br><br>
+You start to walk away as <<he>> yells, "Don't think you're getting away with that unpunished." <<He>> grabs your neck and disconnects you from the rail before dragging you with <<him>>.
 <br><br>
 <<link [[Next|Mine Punishment]]>><</link>>
 
@@ -387,7 +397,7 @@ You grab the <<person1>><<person>>'s pants and pull them down, exposing <<him>>.
 :: Mine Job Minecarts Escape
 <<effects>><<generate1>><<person1>>
 
-You run through the tunnels, avoiding patrolling guards. You emerge in a tunnel with groups of slaves mining the walls. Noticing a watching guard, you duck behind a wall. You peek behind the wall to make sure <<he>> didn't notice you. You notice a ring of keys on <<his>> belt.
+You run through the tunnels, avoiding patrolling guards. You emerge in a tunnel with groups of slaves mining the walls. Noticing a watching guard, you duck behind a wall. You peek from your cover to make sure <<he>> didn't notice you. You notice a ring of keys on <<his>> belt.
 <br><br>
 <<link [[Run off into the tunnels|Mine Escape]]>><<endevent>><</link>>
 <br>

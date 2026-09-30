@@ -15,12 +15,21 @@
 
 
 :: Mine Job Mining Passout
-<<effects>><<generate1>><<mine_unshackle>>
+<<effects>><<generate1>>
 
-You wake up to a <<person1>><<person>> dragging you across the hard rock. <span class="blue">Your shackles are gone.</span> You try to struggle from <<his>> grasp. <<He>> lets you go and drops on top of you.
+<<if random(1,3) is 1>>
+	You wake up to a wave of water hitting you. A <<person1>><<person>> stands over you. "No sleeping on the job," <<he>> says angrily. <<stress 20>><<gggstress>><<trauma 20>><<gggtrauma>>
 
-<br><br>
-<<link [[Next|Mine Job Mining Passout Rape]]>><<set $molestationstart to 1>><</link>>
+	<br><br>
+	<<endevent>>
+	<<link [[Next|Mine Job Mining]]>><</link>>
+<<else>>
+	<<mine_unshackle>>
+	You wake up to a <<person1>><<person>> dragging you across the hard rock. <span class="blue">Your shackles are gone.</span> You try to struggle from <<his>> grasp. <<He>> lets you go and drops on top of you.
+
+	<br><br>
+	<<link [[Next|Mine Job Mining Passout Rape]]>><<set $molestationstart to 1>><</link>>
+<</if>>
 
 
 
@@ -73,16 +82,27 @@ You wake up to a <<person1>><<person>> dragging you across the hard rock. <span 
 
 :: Mine Job Minecarts Passout
 <<effects>><<generate1>><<person1>>
-A jostling movement awakens you. You're lying in a metal container. Lights float by overhead.
-<br><br>
 
-A <<person>> peers at you over the rim. "Just in time," <<he>> says. The container comes to a halt, and <<he>> grasps your shoulders. From this high up, you can see more of your surroundings. You're lying in a mine cart, on a track in some forgotten corner of the mines.
-<br><br>
+<<if random(1,3) is 1>>
+	You wake up to a hand slapping you extremely hard. <<pain 10>><<gggpain>><<stress 20>><<gggstress>><<trauma 20>><<gggtrauma>>
+	<br><br>
+	"Get back to work!" <<he>> yells.
 
-<<He>> pulls you from the cart. While you're still unsteady, <<he>> trips you up and pushes <<himself>> atop you.
-<br><br>
-<<endevent>>
-<<link [[Next|Mine Job Minecarts Passout Rape]]>><<set $molestationstart to 1>><</link>>
+	<br><br>
+	<<endevent>>
+	<<link [[Next|Mine Job Minecarts]]>><</link>>
+<<else>>
+	A jostling movement awakens you. You're lying in a metal container. Lights float by overhead.
+	<br><br>
+
+	A <<person>> peers at you over the rim. "Just in time," <<he>> says. The container comes to a halt, and <<he>> grasps your shoulders. From this high up, you can see more of your surroundings. You're lying in a mine cart, on a track in some forgotten corner of the mines.
+	<br><br>
+
+	<<He>> pulls you from the cart. While you're still unsteady, <<he>> trips you up and pushes <<himself>> atop you.
+	<br><br>
+	<<endevent>>
+	<<link [[Next|Mine Job Minecarts Passout Rape]]>><<set $molestationstart to 1>><</link>>
+<</if>>
 
 
 

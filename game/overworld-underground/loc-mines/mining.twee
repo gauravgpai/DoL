@@ -3,7 +3,7 @@
 
 The <<person>> attaches your shackles to those of two other slaves and shoves a pickaxe into your arms.
 <br><br>
-"All right, listen up all of you," <<he>> yells. "You are here to mine. If you slack off, you will be punished. You must give any crystals, gems, or anything shiny to me. If you try to sneak one of them past me, you will be punished."
+"All right, listen up all of you," <<he>> yells. "You are here to mine. If you slack off, you will be punished. You must give any crystals, gems, or anything shiny to me. If you try to sneak one of them past me, you'll get punished."
 <br><br>
 <<endevent>>
 <<link [[Next|Mine Job Mining]]>><</link>>
@@ -111,7 +111,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 
 <<addinlineevent "collapse" 0.5>>
 	<<generatey1>><<generate2>>
-	A nearby <<person1>><<person>> collapses onto the rock. A guard notices almost immediately and walks over. "This isn't break time. Get up," <<person2>><<he>> says as he kicks them. <span class="red"><<person1>><<He>> doesn't react.</span>
+	A nearby <<person1>><<person>> collapses onto the rock. A guard notices almost immediately and walks over. "This isn't break time. Get up," <<person2>><<he>> says as he kicks <<person1>><<him>>. <span class="red"><<He>> doesn't react.</span>
 	<br><br>
 	The guard shouts and two guards come, they unlock the <<person>>'s shackles and drag <<him>> away. <<stress 5>><<gstress>><<trauma 5>><<gtrauma>><<mine_hope -1>><<lhope>>
 	<br><br>
@@ -260,3 +260,13 @@ The song continues until it reaches its end. "Get back to work!" the <<person>> 
 	<<endevent>>
 	<<link [[Next|Mine Job Mining]]>><</link>>
 <</if>>
+
+:: Mine Job Mining Return
+<<effects>><<wearProp "pickaxe">>
+
+The <<person>> attaches your shackles to those of two other slaves and shoves a pickaxe into your arms.
+<br><br>
+"Remember, you're here to mine." <<he>> yells. "You don't want to get punished again."
+<br><br>
+<<endevent>>
+<<link [[Next|Mine Job Mining]]>><</link>>

@@ -49,7 +49,7 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 		<br>
 	<</if>> 
 
-	<<bedicon "zzz">><<link [[Sleep|Mine Sleep]]>><<set $phase to 0>><</link>>
+	<<bedicon "zzz">><<link [[Sleep|Mine Rest]]>><<set $phase to 0>><</link>>
 	<br>
 <</if>>
 
@@ -146,7 +146,7 @@ You attempt to talk with the other slaves, though most are unwilling.
 		<<if $mine.favor.night is undefined>>
 			<<generate1>>
 			<<saveNPC 0 "mine_night">>
-			You walk up to a <<person1>><<person>>, but before you can open your mouth to speak, <<he>> speaks first "You look like someone who can handle <<print $player.gender_appearance is "m" ? "himself" : "herself">>," <<he>> says. "I need a favor, can you get it done?"
+			You walk up to a <<person1>><<person>>, but before you can open your mouth to speak, <<he>> speaks first. "You look like someone who can handle <<print $player.gender_appearance is "m" ? "himself" : "herself">>," <<he>> says. "I need a favor, can you get it done?"
 			<br><br>
 			You open your mouth again, but <<he>> interrupts once more.. "Good. Of course, I'll owe you one afterwards."
 			<br><br>
@@ -255,6 +255,15 @@ You grab a boiler suit out of a bin in the corner and slip it on.
 
 
 
+:: Mine Rest
+<<effects>>
+
+You lie down on the hard rock, it's hard, but you close your eyes to sleep.
+<br><br>
+<<link [[Next|Mine Sleep]]>><</link>>
+
+
+
 :: Mine Sleep
 <<effects>>
 
@@ -281,7 +290,7 @@ You grab a boiler suit out of a bin in the corner and slip it on.
 	<</if>>
 <</for>>
 
-You open your eyes to see the other slaves getting themselves together.
+You open your eyes to see the other slaves getting themselves together. Your back aches. <<pain 3>><<gpain>>
 
 <br><br>
 <<link [[Get up|Mine Night]]>><</link>>

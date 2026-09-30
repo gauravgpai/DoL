@@ -4,7 +4,7 @@
 <<switch _distraction_count>>
 	<<case 0>>
 		<<shackle_feet>>
-		You get surrounded by guards, too many to fight off. They restrain you and lock shackles around your ankles. The <<person>> drags you into the tunnels. <<mine_hope -3>><<lllhope>>
+		You run into the <<person>> and knock <<him>> down. You get surrounded by guards coming to <<his>> aid, too many to fight off. They restrain you and lock shackles around your ankles. The <<person>> drags you into the tunnels. <<mine_hope -3>><<lllhope>>
 		<br><br>
 		<<link [[Next|Mine Punishment]]>><</link>>
 	<<case 1>>

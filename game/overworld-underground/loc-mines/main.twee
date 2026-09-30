@@ -26,7 +26,7 @@ The stone walls of the tunnels are broken up by wooden supports. Three <<people>
 <</if>>
 
 <br><br>
-"From now on you will be given a job every day," <<he>> says as he pulls you through the tunnels. "If you resist, you will be punished. You try to escape, you will be punished. Trust me, you do not want to be punished."
+"From now on you will be given a job every day," <<he>> says as he pulls you through the tunnels. "If you resist, you will be punished. You try to escape, you'll get punished. Trust me, you do not want to be punished."
 
 <<if Time.hour lte 5 or Time.hour gte 21>>
 	<<He>> pulls you to another metal gate, the guard in front of it opens it up. The <<person>> pushes you through. The gate slams and locks behind you.
