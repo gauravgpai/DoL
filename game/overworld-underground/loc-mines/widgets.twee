@@ -122,7 +122,6 @@
 	You stumble towards the exit and barely reach the street before collapsing, your consciousness fading away.
 	<br><br>
 	<<link [[Next|Pregnancy Birth Hospital]]>><<set $stress -= 5000>><<endevent>><<set $phase to 1>><</link>>
-	<<exit>>
 <</widget>>
 
 <<widget "mine_passout">>
@@ -131,7 +130,6 @@
 
 	<<passout>>
 	<<link [[Everything fades to black...|Mine Passout]]>><<endevent>><</link>>
-	<<exit>>
 <</widget>>
 
 <<widget "mine_gem">>
@@ -264,4 +262,10 @@
 	<<else>>
 		<span class="blue">Your shackles are cracked.</span>
 	<</if>>
+<</widget>>
+
+<<widget "mine_orgasm">>
+	<br><br>
+	<<orgasm>>
+	Your moans echo through the tunnels.
 <</widget>>

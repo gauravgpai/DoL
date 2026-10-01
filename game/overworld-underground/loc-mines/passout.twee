@@ -168,7 +168,7 @@ You wake up to a wave of water hitting you. You're surrounded by cackling guards
 :: Mine Passout
 <<effects>>
 
-<<generateRole 0 "strange" "creature">><<person1>>
+<<generateStrangeCreature 1>><<person1>>
 You awaken to a growling from directly above you. You slowly open your eyes to see a strange creature cloaked in darkness, standing over you. Inhuman arms grab you.
 <br><br>
 <<link [[Next|Mine Passout Rape]]>><<set $molestationstart to 1>><</link>>

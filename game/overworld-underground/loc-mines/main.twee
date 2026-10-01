@@ -60,8 +60,14 @@ You're in the mines. It's completely silent.
 
 <<if isPregnancyEnding()>>
 	<<mine_pregnancy>>
+	<<exit>>
 <<elseif $stress gte $stressmax>>
 	<<mine_passout>>
+	<<exit>>
+<</if>>
+
+<<if $arousal gte $arousalmax>>
+	<<mine_orgasm>>
 <</if>>
 
 <br><br>
@@ -87,8 +93,14 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 
 <<if isPregnancyEnding()>>
 	<<mine_pregnancy>>
+	<<exit>>
 <<elseif $stress gte $stressmax>>
 	<<mine_passout>>
+	<<exit>>
+<</if>>
+
+<<if $arousal gte $arousalmax>>
+	<<mine_orgasm>>
 <</if>>
 
 <br><br>
@@ -172,7 +184,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 <</if>>
 
 <<addinlineevent "creature">>
-	<<generateRole 0 "strange" "creature">><<person1>>
+	<<generateStrangeCreature 1>><<person1>>
 	As you're exploring, you come across a dark tunnel. You venture forward, making your way through, but suddenly hear small rocks fall behind you. 
 	You turn to look, but nothing's there. You turn to continue, only to see a shape standing in front of you. It lunges at you, inhuman arms grabbing your body.
 	<br><br>
@@ -332,8 +344,10 @@ You're at the collapsed tunnel.
 
 <<if isPregnancyEnding()>>
 	<<mine_pregnancy>>
+	<<exit>>
 <<elseif $stress gte $stressmax>>
 	<<mine_passout>>
+	<<exit>>
 <</if>>
 
 <<if $mine.tunnel.collapse lte 3>>
@@ -342,6 +356,10 @@ You're at the collapsed tunnel.
 	<span class="blue">There's still plenty of rock left.</span>
 <<else>>
 	<span class="blue">You can see more tunnel behind the rocks.</span>
+<</if>>
+
+<<if $arousal gte $arousalmax>>
+	<<mine_orgasm>>
 <</if>>
 
 <br><br>
@@ -387,8 +405,14 @@ You follow the tunnel and reach a pool of water. <span class="blue">A section of
 
 <<if isPregnancyEnding()>>
 	<<mine_pregnancy>>
+	<<exit>>
 <<elseif $stress gte $stressmax>>
 	<<mine_passout>>
+	<<exit>>
+<</if>>
+
+<<if $arousal gte $arousalmax>>
+	<<mine_orgasm>>
 <</if>>
 
 <br><br>

@@ -7281,6 +7281,16 @@ sugarcube-2:
     generatespider6:
       name: generatespider6
       tags: ["unused"]
+    generateStrangeCreature:
+      description: |-
+        Generates a Strange Creature
+
+        `<<generatetakevirginity slot>>`
+        - **slot**: `number` - slot to generate (1-6) (zero based)
+      parameters:
+        - 'number'
+      name:
+        generateStrangeCreature
     generateSweaterWearer:
       name: generateSweaterWearer
     generatetakevirginity:
@@ -11743,6 +11753,10 @@ sugarcube-2:
       description: |-
         Prints status text of mine shackles
       name: mine_shackle_text
+    mine_orgasm:
+      description: |-
+        Prints orgasm text for mines
+      name: mine_orgasm
     mirror:
       description: |-
         Prints wrapper for mirror options

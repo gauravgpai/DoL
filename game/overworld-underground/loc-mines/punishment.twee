@@ -321,7 +321,7 @@ You walk down the tunnel and emerge into a small cave, the only light emanates f
 :: Mine Punishment Creature Feature Wrong
 <<effects>>
 
-<<generateRole 0 "strange" "creature">><<person1>>
+<<generateStrangeCreature 1>><<person1>>
 You walk down the tunnel. <span class="red">You hear a growl in front of you.</span>
 <br><br>
 Before you can turn back, a shape rushes from the darkness.
