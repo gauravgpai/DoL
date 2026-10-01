@@ -205,14 +205,12 @@
 
 <<widget "babyRent">><<silently>>
 	<<set _skipReductions to _args[0]>>
-	<<set $_childrenRentCount to Object.values($children).reduce((prev, curr) => {
-		if(curr.location === "home") {
-			if(!(curr.localVariables.interactions >= 6)) {
-				if (!T.skipReductions) curr.localVariables.interactions = 0;
-				return prev + 1;
-			}
-			if (!T.skipReductions) curr.localVariables.interactions = 0;
+	<<set $_childrenRentCount to getChildrenAt("home").reduce((prev, curr) => {
+		if(!(curr.development.interactions >= 6)) {
+			if (!T.skipReductions) curr.development.interactions = 0;
+			return prev + 1;
 		}
+		if (!T.skipReductions) curr.development.interactions = 0;
 		return prev;
 	}, 0)>>
 	<<set $_milkRentReduction to Math.clamp(Math.floor($pregnancyStats.orphanageMilkBottles / 7), 0, Math.min(Math.floor($pregnancyStats.orphanageMilkBottles / 7), $_childrenRentCount))>>
@@ -390,16 +388,17 @@
 		prev.pushUnique(curr.mother + curr.birthId);
 		return prev;
 	}, [])>>
-	<<run Object.values($children).forEach(child => {
-		if(T.birthIds.includes(child.mother + child.birthId)){
-			if(child.mother === "pc"){
+	<<run getBornChildren().forEach(child => {
+		const carrier = getPregnancyOf(child).carrier;
+		if(T.birthIds.includes(carrier + child.pregnancyId)){
+			if(carrier === "pc"){
 				T.playerBornChildren.push(child.childId);
-				T.playerChildrenBirthLocations.pushUnique(child.birthLocation);
+				T.playerChildrenBirthLocations.pushUnique(child.development.birthLocation);
 			} else {
 				T.playerFatheredChildren.push(child.childId);
 			}
-			child.localVariables.interactionsTotal = 0;
-			child.localVariables.interactions = 7 - Math.clamp(V.renttime, 0, 7);
+			child.development.interactionsTotal = 0;
+			child.development.interactions = 7 - Math.clamp(V.renttime, 0, 7);
 		}
 	})>>
 	<<person1>>
@@ -428,8 +427,8 @@
 		<<for _key, _value range $babyIntros.Bailey.filter(child => child.mother !== "pc")>>
 			<!--
 			<<set _childIds to []>>
-			<<run Object.values($children).forEach(child => {
-				if(child.mother === T.value.mother && child.birthId === T.value.birthId){T.childIds.push(child.childId)}
+			<<run getBornChildren().forEach(child => {
+				if(getPregnancyOf(child).carrier === T.value.mother && child.pregnancyId === T.value.birthId){T.childIds.push(child.childId)}
 			})>> -->
 			<<switch _value.children>>
 				<<case 1>><<set _childrenText to "a brat">>
@@ -446,7 +445,7 @@
 					<<if C.npc.Alex.pregnancy.selfKnowledge or C.npc.Alex.pregnancy.pcKnowledge>>
 						"I got word that you knocked up some <<if C.npc.Alex.pronoun is "f">>bitch<<else>>slut<</if>> outside town. I paid <<nnpc_him "Alex">> a little visit and saw that that farm's no place for a brat. I did you the favour of bringing your spawn back here, where it belongs."
 					<<else>>
-						"I've paid a little visit to that farmer <<nnpc_gendery "Alex">> You should have done the same. Anyway, <<nnpc_he "Alex">> popped out <<print _childrenText>>, and I already know it's yours."
+						"I've paid a little visit to that farmer <<nnpc_gendery "Alex">>. You should have done the same. Anyway, <<nnpc_he "Alex">> popped out <<print _childrenText>>, and I already know it's yours."
 					<</if>>
 				<<else>>
 					"You're a careless little fuck, you know that? Making me drive all the way there again just because you don't know how to assume your own responsibilities, instead, making more and more," <<he>> says.
@@ -456,7 +455,7 @@
 			<<elseif $NPCNameList.includes(_value.mother)>>
 				"Someone named _value.mother dropped off <<print _childrenText>>, and a paternity test with your name on it to match."
 			<<else>>
-				"A _value.mother dropped off <<print _childrenText>>, and a paternity test with your name on it."
+				"A <<print _value.description or _value.mother>> dropped off <<print _childrenText>>, and a paternity test with your name on it."
 			<</if>>
 			<<set _continues to true>>
 		<</for>>
@@ -808,7 +807,9 @@ You trip a couple of times, prompting Bailey to drag you back to your feet and s
 		<<endevent>>
 		<<rentGwylanTrade>>
 	<<else>>
-		<<leash 21>>
+		<<if $worn.neck.name isnot "familiar collar" or $worn.neck.cursed isnot 1>>
+			<<leash 21>>
+		<</if>>
 		until you hear the sound of engines up ahead. The sound echoes, becoming closer, until you hear it all around you.
 		"Good stock," says an unfamiliar voice. "Would make a fine breeder."
 		<br>
@@ -1293,7 +1294,7 @@ You trip a couple of times, prompting Bailey to drag you back to your feet and s
 	<</if>>
 	<br><br>
 
-	You gently hold <<his>> hand, and <<if robinromance is 1>>give <<him>> a comforting kiss on the forehead.<<else>>wrap your other arm around <<his>> shoulder comfortingly.<</if>>
+	You gently hold <<his>> hand, and <<if $robinromance is 1>>give <<him>> a comforting kiss on the forehead.<<else>>wrap your other arm around <<his>> shoulder comfortingly.<</if>>
 	<<takeHandholdingVirginity "Robin">>
 	<br><br>
 

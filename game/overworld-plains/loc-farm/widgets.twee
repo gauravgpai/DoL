@@ -47,7 +47,7 @@
 
 <<widget "farm_work_time">>
 	<!-- Math.trunc means any time from 6:00 AM to 6:19 AM will be set to "1".
-		It seems this is coded so that farm work only officially begins when 1 <= _farm_work_time <= 45  -->
+		It seems this is coded so that farm work only officially begins when 1 <= _farm_work_time <= 45 -->
 	<<set _farm_work_time to Math.trunc(((Time.hour * 60) / 20) - 17)>>
 	<<if _farm_work_time gte 46 or _args[0] is "midnight">>
 		<<set _farm_work_time to 46>>
@@ -1120,6 +1120,7 @@
 				<<loadNPC 1 "alexs_parent1">>
 			<</if>>
 			Alex chats with you, and talks about <<person1>><<his>> family. "I've twelve siblings," <<he>> says at one point. <<person2>>"<<Mum>> doesn't know what to do with us all."<<person1>>
+			<<clearsinglenpc 1>>
 		<<case 2>>
 			Alex chats with you, and talks about the farm's pigs. "Hauling all their food over is rough," <<person1>><<he>> says at one point. "The truffles are worth it though."
 		<<case 3>>
@@ -1151,7 +1152,7 @@
 		<<person1>><<He>> looks at <<his>> watch, then reclines and pulls the brim of <<his>> hat over <<his>> face.
 		<br><br>
 
-		<<if playerIsPregnant() and playerAwareTheyArePregnant() and getPregnancyObject().potentialFathers.find(s => s.source === "Alex") and (C.npc.Alex.pregnancy.pcKnowledge isnot true or C.npc.Alex.pregnancy.test is true) and C.npc.Alex.pregnancy.ultraSound isnot "requested">>
+		<<if playerIsPregnant() and playerAwareTheyArePregnant() and getActivePregnancies("pc").some(p => couldBeDonor(p, "Alex")) and (C.npc.Alex.pregnancy.pcKnowledge isnot true or C.npc.Alex.pregnancy.test is true) and C.npc.Alex.pregnancy.ultraSound isnot "requested">>
 			<<pcPregnancyRevealToAlex>>
 
 		<<else>>
@@ -1167,7 +1168,7 @@
 		<<person1>><<He>> looks at <<his>> watch, and sighs. "I'd better get back to work," <<he>> says, rising to <<his>> feet. "Thanks for the company."
 		<br><br>
 
-		<<if playerIsPregnant() and playerAwareTheyArePregnant() and getPregnancyObject().potentialFathers.find(s => s.source === "Alex") and (C.npc.Alex.pregnancy.pcKnowledge isnot true or C.npc.Alex.pregnancy.test is true) and C.npc.Alex.pregnancy.ultraSound isnot "requested">>
+		<<if playerIsPregnant() and playerAwareTheyArePregnant() and getActivePregnancies("pc").some(p => couldBeDonor(p, "Alex")) and (C.npc.Alex.pregnancy.pcKnowledge isnot true or C.npc.Alex.pregnancy.test is true) and C.npc.Alex.pregnancy.ultraSound isnot "requested">>
 			<<pcPregnancyRevealToAlex>>
 
 		<<else>>
@@ -2451,7 +2452,7 @@
 
 <<widget "farm_cottage_tv_options">>
 
-	<<if C.npc.Alex.pregnancy.pcKnowledge is true and C.npc.Alex.pregnancy.ultraSoundPics is true and C.npc.Alex.pregnancy.sample isnot true and getPregnancyObject().potentialFathers.length is 1>>
+	<<if C.npc.Alex.pregnancy.pcKnowledge is true and C.npc.Alex.pregnancy.ultraSoundPics is true and C.npc.Alex.pregnancy.sample isnot true and getPlayerPregnancy()?.possibleDonors.length is 1>>
 		<<ind>><<link [[Show Alex your ultrasound pictures (0:05)|Farm PC Ultrasound Pics Show]]>><</link>>
 		<br><br>
 	<</if>>
@@ -2969,7 +2970,7 @@
 		<span class ="green">A nice place for your livings.</span>
 		<br>
 
-	<<elseif talkedAboutPregnancy("Alex","pc") or (talkedAboutPregnancy("pc","Alex") and getPregnancyObject().potentialFathers.length is 1 and getPregnancyObject().fetus[0].father is "Alex") or C.npc.Alex.pregnancy.knowledge is true>>
+	<<elseif talkedAboutPregnancy("Alex","pc") or (talkedAboutPregnancy("pc","Alex") and getActivePregnancies("pc").some(p => p.donor === "Alex" && p.possibleDonors.length === 1)) or C.npc.Alex.pregnancy.knowledge is true>>
 		Cottage:
 		<<link [[Nursery|Farm Upgrades Nursery]]>><</link>>
 		<br>
@@ -3078,7 +3079,7 @@
 			<<if $farm_stage gte 7>>
 				Alex stares at your belly in horror. "You're...you're pregnant?! You didn't tell me anything..."
 
-				<<if getPregnancyObject().potentialFathers.length gte 2>>
+				<<if getPlayerPregnancy()?.possibleDonors.length gte 2>>
 					<<He>> sounds disappointed.
 					<br><br>
 
@@ -3161,7 +3162,7 @@
 <</if>>
 	<<if talkedAboutPregnancy("pc","Alex")>>
 		<<if C.npc.Alex.pregnancy.pcKnowledge isnot true>>
-			<<if getPregnancyObject().fetus[0].father is "Alex" and getPregnancyObject().potentialFathers.length is 1>>
+			<<if getActivePregnancies("pc").some(p => p.donor === "Alex" && p.possibleDonors.length === 1)>>
 				<span class="blue">Maybe this is a good opportunity to tell Alex that <<he>> is the father.</span>
 				<br>
 
@@ -3244,7 +3245,7 @@
 		<</if>>
 
 	<<elseif playerIsPregnant() and playerAwareTheyArePregnant() and !talkedAboutPregnancy("pc","Alex")>>
-		<<if getPregnancyObject().fetus[0].father is "Alex" and getPregnancyObject().potentialFathers.length is 1>>
+		<<if getActivePregnancies("pc").some(p => p.donor === "Alex" && p.possibleDonors.length === 1)>>
 			<<if $genderknown.includes("Alex") and !$player.vaginaExist and !knowsAboutAnyPregnancy("pc","Alex")>>
 				<<if C.npc.Alex.pregnancy.ultraSound and C.npc.Alex.pregnancy.ultraSound.includes("collected")>>
 					<span class="blue">Maybe this is a good opportunity to talk to Alex about your pregnancy again.</span>
@@ -3310,7 +3311,7 @@
 
 <<widget "pcFarmBirth">>
 	<<npc "Alex">>
-	<<if $farm_stage gte 7 and getPregnancyObject().potentialFathers.length is 1 and getPregnancyObject().fetus[0].father is "Alex" and talkedAboutPregnancy("pc","Alex") and C.npc.Alex.pregnancy.pcKnowledge is true>>
+	<<if $farm_stage gte 7 and getActivePregnancies("pc").some(p => p.donor === "Alex" && p.possibleDonors.length === 1) and talkedAboutPregnancy("pc","Alex") and C.npc.Alex.pregnancy.pcKnowledge is true>>
 
 		You call for Alex. "I'm coming!" <<he>> shouts.
 		<br>

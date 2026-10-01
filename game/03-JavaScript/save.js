@@ -562,6 +562,24 @@ window.importSettings = function (data, type) {
 	}
 };
 
+/**
+ * Convert the retired binary dark skin percentage into skin tone scale settings.
+ *
+ * @param {number} darkChance the retired $settings.darkSkinChance, 0-100
+ * @returns {{skinToneMin: number, skinToneMode: number, skinToneMax: number}}
+ */
+function skinToneSettingsFromDarkChance(darkChance) {
+	const dark = Math.clamp(darkChance, 0, 100);
+	if (dark <= 0) return { skinToneMin: 0, skinToneMode: 0, skinToneMax: 0 };
+	if (dark >= 100) return { skinToneMin: 70, skinToneMode: 70, skinToneMax: 70 };
+	if (dark <= 51) {
+		const mode = dark <= 30 ? 100 - 900 / dark : 4900 / (100 - dark);
+		return { skinToneMin: 0, skinToneMode: Math.clamp(Math.round(mode), 0, 100), skinToneMax: 100 };
+	}
+	return { skinToneMin: Math.round((70 * (dark - 51)) / 49), skinToneMode: 100, skinToneMax: 100 };
+}
+window.skinToneSettingsFromDarkChance = skinToneSettingsFromDarkChance;
+
 function compatibilityConversion(rawData) {
 	let processed;
 
@@ -671,6 +689,42 @@ function compatibilityConversion(rawData) {
 		}
 		delete processed.general[legacyKey];
 	}
+
+	if (!processed.pregnancyChancePercent) {
+		const settings = processed.general.settings;
+		if (settings.basePlayerPregnancyChance !== undefined) {
+			settings.basePlayerPregnancyChance = legacyPregnancyChanceToPercent(settings.basePlayerPregnancyChance, 100);
+		}
+		if (settings.baseNpcPregnancyChance !== undefined) {
+			settings.baseNpcPregnancyChance = legacyPregnancyChanceToPercent(settings.baseNpcPregnancyChance, 20);
+		}
+	}
+
+	// A settings file exported before NNPC and generic pregnancy became separate toggles carries only
+	// the one flag. It governed both kinds of NPC, so both inherit it.
+	const incoming = processed.general.settings;
+	if (incoming.npcPregnancyEnabled !== undefined && incoming.nnpcPregnancyEnabled === undefined) {
+		incoming.nnpcPregnancyEnabled = incoming.npcPregnancyEnabled;
+	}
+
+	// A settings file exported before the skin tone scale carries the old dark skin percentage and
+	// "white"/"black" per-NPC values. Same conversion the save migration performs.
+	if (incoming.darkSkinChance !== undefined) {
+		const darkChance = Math.clamp(incoming.darkSkinChance, 0, 100);
+		const converted = skinToneSettingsFromDarkChance(darkChance);
+		incoming.skinToneMin ??= converted.skinToneMin;
+		incoming.skinToneMode ??= converted.skinToneMode;
+		incoming.skinToneMax ??= converted.skinToneMax;
+		delete incoming.darkSkinChance;
+	}
+	for (const npc of Object.values(processed.npc ?? {})) {
+		if (npc?.skincolour === "ghost") {
+			npc.skinType = "ghost";
+			delete npc.skincolour;
+		} else if (npc?.skincolour === "white") npc.skincolour = 0;
+		else if (npc?.skincolour === "black") npc.skincolour = 70;
+	}
+
 	return JSON.stringify(processed);
 }
 
@@ -745,6 +799,10 @@ function importSettingsData(data) {
 			overrides.general.penissizemin = overrides.general.penissizemax;
 			overrides.general.penissizemax = temp;
 		}
+		const skin = overrides.general.settings;
+		if (skin && skin.skinToneMin != null && skin.skinToneMode != null && skin.skinToneMax != null) {
+			[skin.skinToneMin, skin.skinToneMode, skin.skinToneMax] = [skin.skinToneMin, skin.skinToneMode, skin.skinToneMax].sort((a, b) => a - b);
+		}
 		for (let i = 0; i < listKey.length; i++) {
 			if (namedObjects.includes(listKey[i]) && overrides.general[listKey[i]] != null) {
 				const itemKey = Object.keys(listObject[listKey[i]]);
@@ -772,23 +830,17 @@ function importSettingsData(data) {
 		// eslint-disable-next-line no-var
 		for (let i = 0; i < V.NPCNameList.length; i++) {
 			if (overrides.npc[V.NPCNameList[i]] != null) {
+				const carriedGender = getActivePregnancies(V.NPCName[i].nam).length ? V.NPCName[i].gender : undefined;
 				// eslint-disable-next-line no-var
 				for (let j = 0; j < listKey.length; j++) {
 					// Overwrite to allow for "none" default value in the start passage to allow for rng to decide
-					if (
-						V.passage === "Start" &&
-						["pronoun", "gender", "skincolour"].includes(listKey[j]) &&
-						overrides.npc[V.NPCNameList[i]][listKey[j]] === "none"
-					) {
+					if (V.passage === "Start" && ["pronoun", "gender"].includes(listKey[j]) && overrides.npc[V.NPCNameList[i]][listKey[j]] === "none") {
 						V.NPCName[i][listKey[j]] = overrides.npc[V.NPCNameList[i]][listKey[j]];
 					} else if (validateValue(listObject[listKey[j]], overrides.npc[V.NPCNameList[i]][listKey[j]])) {
 						V.NPCName[i][listKey[j]] = overrides.npc[V.NPCNameList[i]][listKey[j]];
 					}
-					// Prevent the changing of gender with pregnant npc's
-					if (V.NPCName[i].pregnancy.type) {
-						V.NPCName[i].gender = "f";
-					}
 				}
+				if (carriedGender !== undefined) V.NPCName[i].gender = carriedGender;
 			}
 		}
 	}
@@ -808,11 +860,11 @@ function validateValue(configuration, value) {
 		valid = true;
 	}
 	if (keyArray.includes("min")) {
-		if (configuration.min <= value && configuration.max >= value) {
+		if (typeof value === "number" && configuration.min <= value && configuration.max >= value) {
 			valid = true;
 		}
 	}
-	if (keyArray.includes("decimals") && value != null) {
+	if (keyArray.includes("decimals") && typeof value === "number") {
 		// eslint-disable-next-line eqeqeq
 		if (value.toFixed(configuration.decimals) != value) {
 			valid = false;
@@ -892,7 +944,7 @@ function exportSettings(data, type) {
 		output.npc[V.NPCNameList[i]] = {};
 		for (let j = 0; j < listKey.length; j++) {
 			// Overwrite to allow for "none" default value in the start passage to allow for rng to decide
-			if (V.passage === "Start" && ["pronoun", "gender", "skincolour"].includes(listKey[j]) && V.NPCName[i][listKey[j]] === "none") {
+			if (V.passage === "Start" && ["pronoun", "gender"].includes(listKey[j]) && V.NPCName[i][listKey[j]] === "none") {
 				output.npc[V.NPCNameList[i]][listKey[j]] = V.NPCName[i][listKey[j]];
 			} else if (validateValue(listObject[listKey[j]], V.NPCName[i][listKey[j]])) {
 				output.npc[V.NPCNameList[i]][listKey[j]] = V.NPCName[i][listKey[j]];
@@ -904,6 +956,7 @@ function exportSettings(data, type) {
 		output.starting = settingsConvert(true, "starting", output.starting);
 	}
 	output.general = settingsConvert(true, "general", output.general);
+	output.pregnancyChancePercent = true;
 
 	// console.log(S);
 	const result = JSON.stringify(output);
@@ -1161,8 +1214,8 @@ function settingsObjects(type) {
 					penisModifier: { min: -8, max: 8, decimals: 0, displayName: "Average size of NPC penises:", randomize: "encounter" },
 					breastModifier: { min: -12, max: 12, decimals: 0, displayName: "Average size of women's breasts:", randomize: "encounter" },
 					rentCostModifier: { min: 0.1, max: 3, decimals: 1, displayName: "Bailey's rent:", randomize: "gameplay" },
-					baseNpcPregnancyChance: { min: 0, max: 16, decimals: 0, displayName: "Base NPC pregnancy chance:", randomize: "gameplay" },
-					basePlayerPregnancyChance: { min: 0, max: 96, decimals: 0, displayName: "Base player pregnancy chance:", randomize: "gameplay" },
+					baseNpcPregnancyChance: { min: 0, max: 100, decimals: 0, displayName: "Base NPC pregnancy chance:", randomize: "gameplay" },
+					basePlayerPregnancyChance: { min: 0, max: 100, decimals: 0, displayName: "Base player pregnancy chance:", randomize: "gameplay" },
 					beastMaleChanceSplit: { bool: true, displayName: "Beast attraction split by gender appearance:" },
 					beastMaleChanceMale: { min: 0, max: 100, decimals: 0, displayName: "Beasts who are attracted to men:", randomize: "encounter" },
 					beastMaleChanceFemale: { min: 0, max: 100, decimals: 0, displayName: "Beasts who are attracted to women:", randomize: "encounter" },
@@ -1216,13 +1269,18 @@ function settingsObjects(type) {
 					hypnosisEnabled: { bool: true, displayName: "Hypnosis:" },
 					npcVirginChanceAdult: { min: 0, max: 100, decimals: 0, displayName: "Likelihood of adults being virgins:", randomize: "encounter" },
 					npcVirginChanceStudent: { min: 0, max: 100, decimals: 0, displayName: "Likelihood of young adults being virgins:", randomize: "encounter" },
-					darkSkinChance: { min: 0, max: 100, decimals: 0, displayName: "Likelihood that NPCs have dark skin:", randomize: "encounter" },
+					skinToneMin: { min: 0, max: 100, decimals: 0, displayName: "Lightest NPC skin:", randomize: "encounter" },
+					skinToneMode: { min: 0, max: 100, decimals: 0, displayName: "Most common NPC skin:", randomize: "encounter" },
+					skinToneMax: { min: 0, max: 100, decimals: 0, displayName: "Darkest NPC skin:", randomize: "encounter" },
 					lurkersEnabled: { bool: true, displayName: "Lurkers:" },
 					fertilityCycleEnabled: { bool: true, displayName: "Menstrual cycle:" },
 					toyMultiplePenetrationEnabled: { bool: true, displayName: "Multiple penetration with sex toys:" },
 					multipleWardrobes: { strings: [false, "isolated"], displayName: "Multiple wardrobes:" }, //, "all"
 					maleChanceSplit: { bool: true, displayName: "NPC attraction split by gender appearance:" },
-					npcPregnancyEnabled: { bool: true, displayName: "NPC pregnancy:" },
+					npcPregnancyEnabled: { bool: true, displayName: "Generic NPC pregnancy:" },
+					nnpcPregnancyEnabled: { bool: true, displayName: "NNPC/LI pregnancy:" },
+					analPregnancy: { strings: [false, "exceptional", "always"], displayName: "PC anal pregnancy:" },
+					npcAnalPregnancyEnabled: { bool: true, displayName: "NPC anal pregnancy:" },
 					maleChanceMale: { min: 0, max: 100, decimals: 0, displayName: "NPCs who are attracted to men:", randomize: "encounter" },
 					maleChanceFemale: { min: 0, max: 100, decimals: 0, displayName: "NPCs who are attracted to women:", randomize: "encounter" },
 					nudeGenderPerception: {
@@ -1267,7 +1325,7 @@ function settingsObjects(type) {
 					playerPregnancyEggLayingEnabled: { bool: true, displayName: "Player egg laying:" },
 					playerPregnancyBeastEnabled: { bool: true, displayName: "Player pregnancy with beasts:" },
 					playerPregnancyHumanEnabled: { bool: true, displayName: "Player pregnancy with humans:" },
-					pregnancyType: { strings: ["realistic", "fetish", "silly"], displayName: "Pregnancy mode:" },
+					pregnancyType: { strings: ["realistic", "fetish"], displayName: "Pregnancy mode:" },
 					pubicHairEnabled: { bool: true, displayName: "Pubic hair:" },
 					ruinedOrgasmEnabled: { bool: true, displayName: "Ruined orgasms:" },
 					skillCheckStyle: { strings: ["percentage", "words", "skillname"], randomize: "gameplay", displayName: "Skill check display:" },
@@ -1452,11 +1510,8 @@ function settingsObjects(type) {
 			result = {
 				pronoun: { strings: ["m", "f"], displayName: "Pronoun: ", textMap: { none: "N/A", m: "Male", f: "Female" } },
 				gender: { strings: ["m", "f"], displayName: "Genitalia: ", textMap: { none: "N/A", m: "Penis", f: "Vagina" } },
-				skincolour: {
-					strings: ["white", "black", "ghost"],
-					displayName: "Skin colour: ",
-					textMap: { none: "N/A", white: "Pale", black: "Dark", ghost: "Ghostly Pale" },
-				},
+				skincolour: { min: 0, max: 100, decimals: 0, displayName: "Skin tone: " },
+				skinType: { strings: ["ghost"], displayName: "Skin type: ", textMap: { ghost: "Ghostly Pale" } },
 				penissize: { min: 0, max: 4, decimals: 0, displayName: "Penis size: ", textMap: { 0: "N/A", 1: "Tiny", 2: "Average", 3: "Thick", 4: "Huge" } },
 				breastsize: {
 					min: 0,

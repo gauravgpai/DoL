@@ -1,7 +1,7 @@
 :: Social [widget]
 
 <<widget "social">>
-	<div id="relation-display">
+	<div class="relation-display">
 		<<silently>>
 			<<script>>
 				if (V.wolfpackharmony) C.npc["Black Wolf"].harmony = V.wolfpackharmony;
@@ -97,18 +97,16 @@
 				/* this list is sorted */
 				T.importantNPCs = T.importantNpcOrder.map(name => V.NPCName[V.NPCNameList.indexOf(name)]);
 
-				/* this list is unsorted */
-				T.otherNPCs = V.NPCName.filter(npc => !T.importantNpcOrder.includes(npc.nam) && !T.specialNPCs.includes(npc.nam));
-
-				/* sorting takes the lower value and puts it first, so if a < b, a goes first. */
-				/* yes, this works on words, somehow. it's math shit, but it works. read a book if necessary. */
-				T.otherNPCs.sort((a,b) => a.nam - b.nam);
+				/* this list is unsorted, let's sort it */
+				T.otherNPCs = V.NPCName
+					.filter(npc => !T.importantNpcOrder.includes(npc.nam) && !T.specialNPCs.includes(npc.nam))
+					.sort((a,b) => a.nam.localeCompare(b.nam));
 			<</script>>
 		<</silently>>
 
 		<br>
 		<span class="gold">Primary Relationships</span>
-		<div id="npc-relations" class="relation-box-list">
+		<div class="npc-relations relation-box-list">
 			<<set _initNPC to 0>>
 			<<for _k = 0; _k lt _importantNPCs.length; _k++>>
 				<<relation-box _importantNPCs[_k] _npcConfig[_importantNPCs[_k].nam]>>
@@ -122,7 +120,7 @@
 
 		<br>
 		<span class="gold">People of Interest</span>
-		<div id="secondary-npcs" class="relation-box-list">
+		<div class="secondary-npcs relation-box-list">
 			<<set _initNPC to 0>>
 			<<for _k= 0; _k lt _otherNPCs.length; _k++>>
 				<<relation-box _otherNPCs[_k] _npcConfig[_otherNPCs[_k].nam]>>
@@ -141,7 +139,7 @@
 
 		<br>
 		<span class="gold">Reputation</span>
-		<div id="faction-reputations" class="relation-box-list">
+		<div class="faction-reputations relation-box-list">
 			<<silently>>
 				/* Police config */
 				<<set _policeCrimeConfig = { currentValue : crimeSumHistory(), preText: 'The police ', states : [
@@ -447,7 +445,7 @@
 
 			<br>
 			<span class="gold">Farm Status</span>
-			<div id="farm-status" class="relation-box-list">
+			<div class="farm-status relation-box-list">
 				<<relation-box-simple _farmHorseBoxConfig>>
 				<<relation-box-simple _farmPigBoxConfig>>
 				<<relation-box-simple _farmCattleBoxConfig>>
@@ -460,7 +458,7 @@
 
 		<br>
 		<span class="gold">Fame</span>
-		<div id="global-recognition" class="relation-box-list">
+		<div class="global-recognition relation-box-list">
 			<<silently>>
 				<<set _fameStates = [
 					{ requiredValue: 0,		color: 'green',		description: ' Unknown'},

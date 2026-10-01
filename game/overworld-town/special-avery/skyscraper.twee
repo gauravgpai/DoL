@@ -11,7 +11,10 @@ You approach Avery's skyscraper.
 <br><br>
 <<set $avery_tower.progress to Math.clamp($avery_tower.progress, 0, 100)>>
 <<if $avery_tower.progress gte 100>>
-	The building towers above you. It looks <span class="green">100%</span> done. The opening ceremony will be soon.
+	The building towers above you. It looks <span class="green">100%</span> done.
+	<<if $avery_tower.stage gte 2>>
+		The opening ceremony will be soon.
+	<</if>>
 <<elseif $avery_tower.progress gte 80>>
 	The building's skeleton appears finished, but the windowpanes and other details are missing. It looks <span class="teal"><<print $avery_tower.progress>>%</span> done.
 <<elseif $avery_tower.progress gte 60>>
@@ -2268,7 +2271,7 @@ Avery smiles. "As you wish."
 
 
 :: Skyscraper Foundation
-<<set $location to "avery_skyscraper">><<effects>>
+<<set $location to "avery_skyscraper">><<effects>><<seenPassage>>
 
 You follow Avery to the garage, and climb into the sports car beside <<him>>. <<He>> ignites the engine, and drives onto Danube boulevard.
 <br><br>
@@ -2765,7 +2768,7 @@ Avery smiles. "Fine by me. Come."
 <br>
 
 :: Skyscraper Structure
-<<set $location to "avery_skyscraper">><<effects>>
+<<set $location to "avery_skyscraper">><<effects>><<seenPassage>>
 
 The journey to Avery's skyscraper isn't long. You see the building looming above the others before you arrive.
 
@@ -3045,7 +3048,7 @@ You sink deep enough that your feet touch the ground. A moment later, a huge mas
 
 A pair of hands grasp your shoulders. A figure kicks against the water, and carries you to the surface.
 <br><br>
-<<if C.npc.Avery.love gte (C.npc.Whitney.love * 4)>>
+<<if C.npc.Avery.love gte (C.npc.Whitney.love * 3.4)>>
 	You blink away the salty water. Avery paddles next to you, watching the surface some distance away, where Whitney fell. <<person1>><<He>> waits a minute, keeping a firm grasp on your arm, then swims towards a nearby ladder.
 	<br><br>
 

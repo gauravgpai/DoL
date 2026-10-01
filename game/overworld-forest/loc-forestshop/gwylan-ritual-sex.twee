@@ -1090,7 +1090,7 @@ You flinch as an unseen hand cradles your cheek, pressing a thumb against your l
 <<if $transformationParts.traits.fangs isnot "disabled">>
 	<<set $sexRitual.arousal += 4>>
 	<<His>> thumb presses against one of your fangs. <<He>> delves further into your mouth, making you stick your tongue out. You can hear a small noise of admiration. <<arousal 500 "mouth">><<garousal>><<npcincr Gwylan lust 1>><<glust>>
-	<br>
+	<br><br>
 <<else>>
 	<<He>> drops <<his>> hand after a brief moment of inspection.
 <</if>>
@@ -1342,8 +1342,8 @@ Gwylan lights two incense burners, one on each side of the covered room. <<He>> 
 <</if>>
 
 Gwylan's pace is rapid, but practised.
-<<if playerIsPregnant() and (playerAwareTheyArePregnant() or getPregnancyObject().fetus[0].father is "Gwylan")>>
-	<<if getPregnancyObject().fetus[0].father is "Gwylan">>
+<<if playerIsPregnant() and (playerAwareTheyArePregnant() or getActivePregnancies("pc").some(p => p.donor === "Gwylan"))>>
+	<<if getActivePregnancies("pc").some(p => p.donor === "Gwylan")>>
 		<<He>> suddenly places the side of <<his>> head against your <<bellyDescription "pc">>, wrapping <<his>> arms around you. <<He>> holds you tightly, closing <<his>> eyes. You instinctively place your hands around <<his>> head, returning the embrace.
 		<<if playerAwareTheyArePregnant()>>
 			<<if !playerBellyVisible()>>

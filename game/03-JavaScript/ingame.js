@@ -41,7 +41,12 @@ function toggleAllHairTraitsFilter() {
 }
 window.toggleAllHairTraitsFilter = toggleAllHairTraitsFilter;
 
-// A wrapper for wikifyEval, only use for singular macro calls.
+/**
+ * A wrapper for wikifyEval, only use for singular macro calls.
+ *
+ * @param {string} widget Name of the widget.
+ * @param {...any} args Potential arguments for the widget.
+ */
 function wikifier(widget, ...args) {
 	if (widget == null) return document.createDocumentFragment();
 	return Wikifier.wikifyEval("<<" + widget + (args.length ? " " + args.join(" ") : "") + ">>");
@@ -410,7 +415,7 @@ function featsPointsMenuReset() {
 DefineMacroS("featsPointsMenuReset", featsPointsMenuReset);
 
 function startingPlayerImageReset() {
-	jQuery(document).on("change", "#settingsDiv .macro-radiobutton,#settingsDiv ,#settingsDiv .macro-checkbox", () => {
+	jQuery(document).on("change", "#settingsDiv", () => {
 		Wikifier.wikifyEval("<<startingPlayerImageUpdate>>");
 	});
 	return "";
@@ -911,6 +916,7 @@ window.DefaultActions = {
 };
 
 function selectWardrobe(targetLocation = V.wardrobe_location, type) {
+	if (!V.settings.multipleWardrobes) return V.wardrobe;
 	let wardrobe = V.wardrobes[targetLocation];
 	if (type !== "return" && wardrobe?.locationRequirement?.length && !wardrobe.locationRequirement.includes(V.location)) {
 		V.wardrobe_location = "wardrobe";
@@ -955,6 +961,41 @@ function getSetupClothing(slot, item) {
 	return setup.clothes[slot][clothesIndex(slot, item)];
 }
 window.getSetupClothing = getSetupClothing;
+
+/**
+ * Checks whether the player owns the named clothing item in any of their wardrobes.
+ *
+ * @param {string} itemName
+ * @returns {boolean}
+ */
+function wardrobeContainsItem(itemName) {
+	const wardrobes = [V.wardrobe, ...Object.values(V.wardrobes)];
+	for (const wardrobe of wardrobes) {
+		for (const s of Object.keys(wardrobe)) {
+			if (Array.isArray(wardrobe[s]) && wardrobe[s].some(item => item?.name === itemName)) return true;
+		}
+	}
+	return false;
+}
+window.wardrobeContainsItem = wardrobeContainsItem;
+
+/**
+ * Takes in the name of a clothing item, then returns everything needed to call <<generalSend "wardrobe">> to add that clothing item to your wardrobe.
+ *
+ * @param {string} name
+ * @returns {{slot: string, item: string, colour: string}}
+ */
+function generateClothingItem(name) {
+	for (const [slot, items] of Object.entries(setup.clothes)) {
+		const item = items.find(i => i.name === name);
+		if (item) {
+			const colour = item.colour_options.filter(c => c !== "custom").random() ?? "";
+			return { slot, item, colour };
+		}
+	}
+	throw new Error(`generateClothingItem: no clothing item found with name "${name}"`);
+}
+window.generateClothingItem = generateClothingItem;
 
 function clothesDataTrimmerLoop() {
 	if (!V.passage || V.passage === "Start") return;
@@ -1390,7 +1431,7 @@ function currentSkillValue(skill, disableModifiers = 0) {
 			if (V.earSlime.growth > 100 && !V.player.vaginaExist && V.earSlime.focus === "pregnancy") {
 				result = Math.floor(result * (1 + (V.earSlime.growth - 100) / 500));
 			}
-			if (playerHeatMinArousal() && canBeMPregnant()) {
+			if (playerHeatMinArousal() && playerCanCarryAnally()) {
 				result = Math.floor(result * (1 + Math.clamp(playerHeatMinArousal(), 0, 4000) / 20000));
 			}
 			break;
@@ -1453,7 +1494,7 @@ window.drunkSexStatModifier = drunkSexStatModifier;
  */
 function heatRutSexStatModifier(input) {
 	/**
-	 * While the PC's minimum arousal can technically go higher than 2500, a PC with only a penis has this arousal max out at 1500, and a PC with only a vagina has this arousal max out at 2500 (when risk = 0 and taking fertility pills). This also assumes the PC does not have ear slimes and mpreg is disabled.
+	 * While the PC's minimum arousal can technically go higher than 2500, a PC with only a penis has this arousal max out at 1500, and a PC with only a vagina has this arousal max out at 2500 (when risk = 0 and taking fertility pills). This also assumes the PC does not have ear slimes and anal pregnancy is disabled.
 	 *
 	 * To account for this, the PC's Sex Stat mods will have their boosts max out at 2,500 minimum arousal to make the effects more noticeable.
 	 *
@@ -1958,15 +1999,15 @@ DefineMacro("validateTransformations", validateTransformations);
 // prettier-ignore
 function getSexesFromRandomGroup() {
 	if (maleChance() <= 0) { /* Only females. */
-		if (V.settings.femaleNPCPenisChance <= 0) return SexTypes.ALL_FEMALES;		/* All females, no dickgirls. Always vaginal. */
-		if (V.settings.femaleNPCPenisChance >= 100) return SexTypes.ALL_DICKGIRLS;	/* All females, all dickgirls. Always penises. */
+		if (V.settings.femaleNPCPenisChance <= 0) return SexTypes.ALL_FEMALES;		/* All females, none with penises. Always vaginal. */
+		if (V.settings.femaleNPCPenisChance >= 100) return SexTypes.ALL_FEMALE_PENISES;	/* All females, all with penises. Always penises. */
 	}
 	if (maleChance() >= 100) { /* Only males. */
-		if (V.settings.maleNPCVaginaChance <= 0) return SexTypes.ALL_MALES;			/* All males, no cuntboys. Always males. */
-		if (V.settings.maleNPCVaginaChance >= 100) return SexTypes.ALL_CUNTBOYS;	/* All males, all cuntboys. Always vaginal. */
+		if (V.settings.maleNPCVaginaChance <= 0) return SexTypes.ALL_MALES;			/* All males, none with vaginas. Always males. */
+		if (V.settings.maleNPCVaginaChance >= 100) return SexTypes.ALL_MALE_VAGINAS;	/* All males, all with vaginas. Always vaginal. */
 	}
-	if (V.settings.maleNPCVaginaChance >= 100 && V.settings.femaleNPCPenisChance <= 0) return SexTypes.ALL_VAGINAS;	/* Both females and males, but all males are cuntboys, and there are no dickgirls. */
-	if (V.settings.femaleNPCPenisChance >= 100 && V.settings.maleNPCVaginaChance <= 0) return SexTypes.ALL_DICKS;	/* Both females and males, but all females are dickgirls, and there are no cuntboys. */
+	if (V.settings.maleNPCVaginaChance >= 100 && V.settings.femaleNPCPenisChance <= 0) return SexTypes.ALL_VAGINAS;	/* Both females and males, but all males have vaginas, and no females have penises. */
+	if (V.settings.femaleNPCPenisChance >= 100 && V.settings.maleNPCVaginaChance <= 0) return SexTypes.ALL_DICKS;	/* Both females and males, but all females have penises, and no males have vaginas. */
 	return SexTypes.BOTH;
 }
 window.getSexesFromRandomGroup = getSexesFromRandomGroup;
@@ -2406,7 +2447,7 @@ function dailyConvert() {
 window.dailyConvert = dailyConvert;
 
 function convertHairLengthToStage(hair, length) {
-	if (!hair || !length) throw new Error(`Hair AND Length must be provided to be converted: ${hair} / ${length}`);
+	if (!hair || length === undefined) throw new Error(`Hair AND Length must be provided to be converted: ${hair} / ${length}`);
 	if (hair === "fringe") {
 		if (length >= 900) return "feet";
 		else if (length >= 700) return "thighs";
@@ -2426,13 +2467,16 @@ function convertHairLengthToStage(hair, length) {
 window.convertHairLengthToStage = convertHairLengthToStage;
 
 function calchairlengthstage() {
-	const stages = ["short", "shoulder", "chest", "navel", "thighs", "feet"];
+	// commenting old stage check just in case i'm dumb
+	// const stages = ["short", "shoulder", "chest", "navel", "thighs", "feet"];
 
 	V.hairlength = Math.clamp(V.hairlength, 0, 1000);
-	V.hairlengthstage = stages[Math.trunc(V.hairlength / 200)];
+	// V.hairlengthstage = stages[Math.trunc(V.hairlength / 200)];
+	V.hairlengthstage = convertHairLengthToStage("sides", V.hairlength);
 
 	V.fringelength = Math.clamp(V.fringelength, 0, 1000);
-	V.fringelengthstage = stages[Math.trunc(V.fringelength / 200)];
+	// V.fringelengthstage = stages[Math.trunc(V.fringelength / 200)];
+	V.fringelengthstage = convertHairLengthToStage("fringe", V.fringelength);
 }
 window.calchairlengthstage = calchairlengthstage;
 DefineMacro("calchairlengthstage", calchairlengthstage);
@@ -2722,7 +2766,7 @@ window.orphanagePlotsWatered = orphanagePlotsWatered;
 // Apparently the sugarcube <<script>> parser don't parse the following correctly - so made it a function instead
 function tendingDay() {
 	Object.entries(V.plots).forEach(([location, plots]) => {
-		let irrigation = location === "farm" ? V.farm.irrigation || 0 : 0;
+		let irrigation = location === "farm" ? V.farm?.irrigation || 0 : 0;
 
 		plots.forEach(plot => {
 			// Growth check
@@ -2928,6 +2972,29 @@ function ingredientsNextAlternative(mainIngredient, recipe) {
 	V.foodstuff[mainIngredient].alternative = options[nextIndex];
 }
 window.ingredientsNextAlternative = ingredientsNextAlternative;
+
+/**
+ * Returns the key of a random recipe that contains the given ingredient.
+ *
+ * @param {string} ingredient
+ * @param {boolean} allowKnownRecipes true if you want this to return recipes that the player already knows
+ * @returns {string|undefined}
+ */
+function rollRecipeWithIngredient(ingredient, allowKnownRecipes) {
+	const matches = new Set();
+	for (const [key, data] of Object.entries(setup.foodstuff)) {
+		if (!data.recipe) continue;
+		if (!allowKnownRecipes && V.foodstuff[key]?.knows_recipe) continue;
+		if (data.recipe.ingredients.includes(ingredient)) {
+			matches.add(key);
+			continue;
+		}
+		const alts = [...Object.values(data.recipe.ingredient_alternatives?.normal ?? {}), ...Object.values(data.recipe.ingredient_alternatives?.lewd ?? {})];
+		if (alts.some(arr => arr.includes(ingredient))) matches.add(key);
+	}
+	return [...matches].random();
+}
+window.rollRecipeWithIngredient = rollRecipeWithIngredient;
 
 function kitchenFilter() {
 	T.recipeKeys = [];
@@ -3196,3 +3263,48 @@ function averageBunPrice(toSell = T.buns_sold) {
 	return totalRevenue / toSell;
 }
 window.averageBunPrice = averageBunPrice;
+
+/**
+ * The condom someone has on, and what shape it's in. "worn" is an intact one.
+ *
+ * @param {number|"player"} who an NPCList slot, or the player
+ * @returns {"none"|"worn"|"defective"|"sabotaged"}
+ */
+function condomState(who) {
+	const condom = who === "player" ? V.player.condom : V.NPCList[who]?.condom;
+	if (!condom || !condom.worn) return "none";
+	if (condom.state === "defective") return "defective";
+	if (condom.state === "sabotaged") return "sabotaged";
+	return "worn";
+}
+window.condomState = condomState;
+
+/**
+ * Whether someone has a condom on at all, whatever shape it's in.
+ *
+ * @param {number|"player"} who an NPCList slot, or the player
+ * @returns {boolean}
+ */
+function wearingCondom(who) {
+	return condomState(who) !== "none";
+}
+window.wearingCondom = wearingCondom;
+
+/**
+ * A skin tone for a newly generated NPC from 0 (lightest) to 100 (darkest).
+ * Tones cluster around the most common tone the player chose and never fall outside the
+ * lightest and darkest skin tones they chose.
+ *
+ * @returns {number} 0-100
+ */
+function randomSkinTone() {
+	const min = Math.clamp(V.settings.skinToneMin, 0, 100);
+	const max = Math.clamp(V.settings.skinToneMax, 0, 100);
+	if (max <= min) return min;
+	const mean = Math.clamp(V.settings.skinToneMode, min, max);
+	const roll = random(0, 10000) / 10000;
+	const peak = (mean - min) / (max - min);
+	const tone = roll < peak ? min + Math.sqrt(roll * (max - min) * (mean - min)) : max - Math.sqrt((1 - roll) * (max - min) * (max - mean));
+	return Math.round(Math.clamp(tone, min, max));
+}
+window.randomSkinTone = randomSkinTone;

@@ -926,17 +926,16 @@ setup.feats = {
 	},
 	"Hail Mary": {
 		title: "Hail Mary",
-		desc: "Gave birth as a virgin.",
+		desc: "Have a vaginal birth as a virgin.",
 		difficulty: 4,
 		series: "",
 		filter: ["All", "Pregnancy"],
 		hint: "Hint: Gained something but not at the cost of something else.",
 		pregnancyLockable: true,
-		pregnancySillyLockable: true,
 	},
 	"Bicycle Mother": {
 		title: "Bicycle Mother",
-		desc: "Gave birth without knowing who the father is.",
+		desc: "Gave birth without knowing who the donor is while having five or more possible suspects.",
 		difficulty: 2,
 		series: "",
 		filter: ["All", "Pregnancy"],
@@ -1162,6 +1161,30 @@ setup.feats = {
 		filter: ["All", "Discoveries-Town"],
 		hint: "Hint: Harvest all of nature's secrets.",
 		softLockable: true,
+	},
+	"Wet Rod": {
+		title: "Wet Rod",
+		desc: "Caught one of every fish.",
+		difficulty: 2,
+		series: "fishing",
+		filter: ["All", "Discoveries-Other"],
+		hint: "Hint: Complete your fishing records.",
+	},
+	"Master Baiter": {
+		title: "Master Baiter",
+		desc: "Caught the biggest size possible of each fish.",
+		difficulty: 3,
+		series: "fishing",
+		filter: ["All", "Discoveries-Other"],
+		hint: "Hint: Catch a giant specimen of every fish.",
+	},
+	"Nice Bass": {
+		title: "Nice Bass",
+		desc: "Caught a bass.",
+		difficulty: 1,
+		series: "fishing",
+		filter: ["All", "Discoveries-Other"],
+		hint: "Hint: Reel in a bass.",
 	},
 	"Pride of the Farm": {
 		title: "Pride of the Farm",
@@ -1872,6 +1895,42 @@ setup.feats = {
 		hint: "Hint: Work with Niki.",
 		softLockable: true,
 	},
+	"Record Keeper": {
+		title: "Record Keeper",
+		desc: "Organised the forbidden office in the asylum.",
+		difficulty: 1,
+		series: "",
+		filter: ["All", "Discoveries-Other"],
+		hint: "Hint: Practise housekeeping at the asylum.",
+		softLockable: true,
+	},
+	"Bramble Tamer": {
+		title: "Bramble Tamer",
+		desc: "Restored the secret garden at the asylum.",
+		difficulty: 1,
+		series: "",
+		filter: ["All", "Discoveries-Other"],
+		hint: "Hint: Practise tending at the asylum.",
+		softLockable: true,
+	},
+	"Eyes in the Night": {
+		title: "Eyes in the Night",
+		desc: "Released a creature in the asylum tunnels.",
+		difficulty: 1,
+		series: "",
+		filter: ["All", "Discoveries-Other"],
+		hint: "Hint: Practise swimming at the asylum.",
+		softLockable: true,
+	},
+	"Mirror Madness": {
+		title: "Mirror Madness",
+		desc: "Used the archaic mirror treatment.",
+		difficulty: 2,
+		series: "",
+		filter: ["All", "Discoveries-Other"],
+		hint: "Hint: Explore the forbidden section of the asylum.",
+		softLockable: true,
+	},
 	"Hear Me Roar": {
 		title: "Hear Me Roar",
 		desc: "Handed out even more flyers on the High Street.",
@@ -2174,8 +2233,7 @@ function earnFeat(featName) {
 	if (
 		V.feats.currentSave[featName] !== undefined ||
 		(V.feats.soft && setup.feats[featName].softLockable) ||
-		(V.feats.pregnancyLocked && setup.feats[featName].pregnancyLockable) ||
-		(V.feats.pregnancySillyLocked && setup.feats[featName].pregnancySillyLockable)
+		(V.feats.pregnancyLocked && setup.feats[featName].pregnancyLockable)
 	)
 		return;
 
@@ -2389,10 +2447,10 @@ function earnHourlyFeats() {
 	}
 
 	if (
-		Object.values(V.children).reduce((prev, curr) => {
-			if (curr.mother === "pc") prev.pushUnique(curr.type);
+		getBornChildren().reduce((prev, curr) => {
+			if (getPregnancyOf(curr).carrier === "pc") prev.pushUnique(curr.species);
 			return prev;
-		}, []).length >= Object.keys(pregnancyGenerator).filter(type => setup.pregnancy.typesEnabled.includes(type)).length
+		}, []).length >= new Set(setup.pregnancy.typesEnabled.map(childBaseSpecies)).size
 	) {
 		earnFeat("Diversity of Life");
 	}
@@ -2436,6 +2494,22 @@ function earnHourlyFeats() {
 
 	// Bugged in saves that used the "Show them the stolen card" link in many older versions
 	if (V.compound.discovered) earnFeat("Illicit Science");
+
+	const fishKeys = Object.keys(setup.fishing.lootTables.fish);
+	if (fishKeys.every(key => V.fishing.record[key]?.numCaught > 0)) {
+		earnFeat("Wet Rod");
+	}
+
+	if (
+		fishKeys.every(key => {
+			const fishConfig = setup.fishing.lootTables.fish[key];
+			const fishRecord = V.fishing.record[key];
+			if (!fishRecord) return false;
+			return fishRecord.largest >= fishConfig.maxSize;
+		})
+	) {
+		earnFeat("Master Baiter");
+	}
 
 	return fragment;
 }

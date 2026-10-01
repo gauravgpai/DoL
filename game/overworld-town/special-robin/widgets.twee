@@ -996,12 +996,6 @@
 	<</if>>
 	<<if C.npc.Robin.vagina isnot "none">>
 		<<NPCVirginityTakenByOther "Robin" "vaginal" "pillory">>
-		<<if false>>
-			/*
-				Included the expected check and widget call if it's decided that Robin can get pregnant this way
-				<<recordSperm `{target: "Robin", spermOwner: "pillory", spermType: "human", quantity: random(2,5)}`>>
-			*/
-		<</if>>
 	<</if>>
 <</widget>>
 
@@ -1032,17 +1026,17 @@
 
 <<widget "robinroom_link">>
 	<<if C.npc.Robin.init is 1>>
-		<<if Time.dayState isnot "night" and $exposed gte 1 and getRobinLocation() is "orphanage">>
-			<<if hasSexStat("exhibitionism", 5) and $exposed is 2>>
+		<<if Time.dayState isnot "night" and ($exposed gte 1 or $exposedRaw gte 1) and getRobinLocation() is "orphanage">>
+			<<if hasSexStat("exhibitionism", 5) and ($exposed is 2 or $exposedRaw is 2)>>
 				<<bedroomicon>><<link [[Robin's room (0:01)|Robin Room Naked]]>><<pass 1>><</link>><<exhibitionist5>>
 				<br>
 
-			<<elseif hasSexStat("exhibitionism", 4) and $exposed is 1>>
+			<<elseif hasSexStat("exhibitionism", 4) and ($exposed is 1 or $exposedRaw is 1)>>
 				<<bedroomicon>><<link [[Robin's room (0:01)|Robin Room Naked]]>><<pass 1>><</link>><<exhibitionist4>>
 				<br>
 			<</if>>
 
-		<<elseif $exposed lte 0>>
+		<<elseif $exposed lte 0 or $exposedRaw lte 0>>
 			<<bedroomicon>><<link [[Robin's room (0:01)|Robin's Room Entrance]]>><<pass 1>><</link>>
 			<br>
 
@@ -1179,4 +1173,11 @@ Robin turns to you as you reach the far side of the promenade.
 
 <<widget "robin_amusements_slots_stop">>
 	<<print $robin_amusements.slots.pluck()>>
+<</widget>>
+
+<<widget "robinMemoryHeal">>
+	<<if !$robinSeen.includes(_args[0])>>
+		<<run $robinSeen.pushUnique(_args[0])>>
+		<<npcincr Robin trauma -1>><<lrtrauma>>
+	<</if>>
 <</widget>>

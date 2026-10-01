@@ -70,6 +70,7 @@
 		showCombatTools: false,
 		pepperSprayDisplay: "sprays",
 		condomsDisplay: "standard",
+		fishingBaitSelection: "sidebar",
 		closeButtonMobile: _globalGeneralDefaults.closeButtonMobile or false,
 		zoom: 100,
 		numberify_enabled: _globalGeneralDefaults.numberify_enabled or 1,
@@ -112,18 +113,20 @@
 			"updateClothes": 85,
 			"specialClothes": 21,
 			"feats": 2,
-			"wardrobes": 18,
+			"wardrobes": 19,
 			"customColors": 4,
 			"uncomfortable": 2,
 			"chastity": 3,
 			"skinColor": 1,
-			"prenancyObjectRepair": 2,
+			"pregnancyObjectRepair": 2,
 			"museumAntiques": 20,
 			"npcClothes": 1,
 			"animations": 1,
-			"foodstuff": 5,
+			"foodstuff": 7,
 			"npcPregnancyGenderChange" : 1,
 			"penisFix" : 1,
+			"pregnancyRecords": 1,
+			"childEyeColour": 1,
 		}>>
 	<</if>>
 
@@ -250,9 +253,9 @@
 	<<set $settings.maleChanceSplit to false>>
 	<<set $settings.maleVictimChance to 50>>
 	<<set $homochance to 4>>
-	<<set $settings.beastMaleChance to 80>>
-	<<set $settings.beastMaleChanceMale to 80>>
-	<<set $settings.beastMaleChanceFemale to 80>>
+	<<set $settings.beastMaleChance to 50>>
+	<<set $settings.beastMaleChanceMale to 50>>
+	<<set $settings.beastMaleChanceFemale to 50>>
 	<<set $settings.beastMaleChanceSplit to false>>
 	<<set $settings.monsterHallucinationsOnly to true>>
 	<<set $settings.monsterChance to 50>>
@@ -315,11 +318,24 @@
 	<<set $eden_plot_intro to 1>>
 	<<set $wolf_plot_intro to 1>>
 	<<set $asylum_plot_intro to 1>>
-	<<set $plots to {}>>
+	<<set $plots to {
+		"garden": [],
+		"farm": [],
+		"wolf": [],
+		"eden": [],
+		"asylum": []
+	}>>
 	<<set $tendingvars to {}>>
 	<<set $settings.tendingYieldModifier to 5>>
 	<<set $plants_known to []>>
 	<<set $foodstuff to {}>>
+	<<set $fishing to {
+		locationsFound: [],
+		record: {},
+		autoRebait: false,
+		baitShopRequestsCompleted: 0,
+		waitsSinceLastCatch: 0,
+	}>>
 	<<set $stall_rejected to 0>>
 	<<set $produce_sold to 0>>
 	<<set $stat_shoot to 0>>
@@ -481,9 +497,9 @@
 
 	<<set $beastgenderoverride to 0>>
 
-	<<set $settings.femaleNPCPenisChance to 0>>
-	<<set $settings.maleNPCVaginaChance to 0>>
-	<<set $settings.straponChance to 0>>
+	<<set $settings.femaleNPCPenisChance to 5>>
+	<<set $settings.maleNPCVaginaChance to 5>>
+	<<set $settings.straponChance to 5>>
 	<<set $settings.breastModifier to 0>>
 	<<set $settings.penisModifier to 0>>
 
@@ -535,7 +551,6 @@
 	<<set $tummyejacstat to 0>>
 	<<set $neckejacstat to 0>>
 	<<set $ejacstat to 0>>
-	<<set $unsafeSexTimeStat to {}>>
 	<<set $hitstat to 0>>
 	<<set $attackstat to 0>>
 	<<set $prostitutionstat to 0>>
@@ -951,6 +966,9 @@
 	<<if $facevariant is undefined>>
 		<<set $facevariant to "default">>
 	<</if>>
+	<<if $defaultSidebarMouth is undefined>>
+		<<set $defaultSidebarMouth to "smile">>
+	<</if>>
 
 	<<if $makeup is undefined>>
 		<<set $makeup = {}>>
@@ -1051,4 +1069,8 @@
 	<<set $passageChangesCount to 0>>
 
 	<<set $timeMessages to []>>
+
+	<<set $travelSpeed to "normally">>
+
+	<<set $collapsedRelationBoxes to []>>
 <</widget>>

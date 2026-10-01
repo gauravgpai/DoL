@@ -210,19 +210,13 @@
 						<span class="purple">You're too tired to cook!</span>
 					<<elseif $_setupItem.recipe.ingredients.every(ingredient => $foodstuff[ingredientUsed(ingredient, $lastRecipeViewed)].amount gte 1 or _ingredientsSupplied?.includes(ingredientUsed(ingredient, $lastRecipeViewed)))>>
 						Make:
-						<<set _hours to Math.floor($_setupItem.recipe.cook_minutes / 60)>>
-						<<set _minutes to $_setupItem.recipe.cook_minutes % 60>>
-						<<set _timeString to " (" + (_hours lt 10 ? "0": "") +_hours+":"+(_minutes lt 10 ? "0": "")+_minutes+")">>
-						<<link [["1" + _timeString|$passage]]>><<make_recipe $lastRecipeViewed 1>><</link>>
+						<<link [["1 " + printTime($_setupItem.recipe.cook_minutes, true)|$passage]]>><<make_recipe $lastRecipeViewed 1>><</link>>
 						<<if $_setupItem.recipe.ingredients.every(ingredient => $foodstuff[ingredientUsed(ingredient, $lastRecipeViewed)].amount gte 3 or _ingredientsSupplied?.includes(ingredientUsed(ingredient, $lastRecipeViewed)))>>
-							<<set _hours to Math.floor(($_setupItem.recipe.cook_minutes * 3) / 60)>>
-							<<set _minutes to ($_setupItem.recipe.cook_minutes * 3) % 60>>
-							<<set _timeString to " (" + (_hours lt 10 ? "0": "") +_hours+":"+(_minutes lt 10 ? "0": "")+_minutes+")">>
+							<<set _wait to $_setupItem.recipe.cook_minutes*3>>
 
 							/* Prevent passing too much time */
 							<<set _futureTime to new DateTime(Time.date.timeStamp)>>
-							<<set _futureTime to _futureTime.addHours(_hours)>>
-							<<set _futureTime to _futureTime.addMinutes(_minutes)>>
+							<<set _futureTime to _futureTime.addMinutes(_wait)>>
 
 							/* Prevent using limited provided ingredients */
 							<<if $bus is "loft_kitchen" and $_setupItem.recipe.ingredients.filter(x => $loftIngredients?.[x] lt 3).length gte 1>>
@@ -230,7 +224,7 @@
 							<</if>>
 
 							<<if (!_hourRestriction or _futureTime.hour lt _hourRestriction or _futureTime.minute lte 15) and !_limitedIngredientRestriction>>
-								| <<link [["3" + _timeString|$passage]]>><<make_recipe $lastRecipeViewed 3>><</link>>
+								| <<link [["3 " + printTime(_wait, true)|$passage]]>><<make_recipe $lastRecipeViewed 3>><</link>>
 							<</if>>
 						<</if>>
 						<br>
@@ -793,7 +787,7 @@ Should probably be removed once said feature has been implemented
 			<<case "yorkshire_pudding">>
 				"This isn't the type of pudding you would have for dessert. If you're making this alongside roast beef, use the meat drippings for extra flavour."
 			<<case "valentines_chocolate">>
-				"These are chocolates shaped into little hearts, and given a fruity filling. They're known as valentines chocolates, and many people consider them special at the right time of year."
+				"These are chocolates shaped into little hearts, and given a fruity filling. They're known as Valentines chocolates, and many people consider them special at the right time of year."
 			<<default>>
 				"Let's get right into it."
 				<<if $debug is 1 or $options.debugdisable is "f">>

@@ -9,7 +9,6 @@
 	<<if C.npc["Ivory Wraith"].init isnot 1>>
 		<<set _strapIgnore to true>><<set _condomIgnore to true>>
 		<<generateNPC _w a n n 20>>
-		<<set $NPCList[_n].skincolour to "ghost">>
 		<<saveNPC _n "temp_wraith">>
 		<<clearsinglenpc _n>>
 		<<initnpc "Ivory Wraith">>
@@ -1215,13 +1214,12 @@
 			<<default>>
 		<</switch>>
 		<!-- Temporary until Wraith has its own bodyliquid -->
+		<!-- <<combatInseminate>> in the ejaculation widget already stored this load, don't roll it again here -->
 		<<for _nn to 0;_nn lt $enemynomax; _nn++>>
 			<<if $NPCList[_nn].penis is "vagina">>
 				<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "vagina" "semen">>
-				<<recordVaginalSperm "pc" $NPCList[_nn] `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
 			<<elseif $NPCList[_nn].penis is "anus">>
 				<<analejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "anus" "semen">>
-				<<recordAnusSperm "pc" $NPCList[_nn] `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
 			<</if>>
 		<</for>>
 		<<if $pain gte 100>>
@@ -1261,7 +1259,7 @@
 	Until it, too, grows cold. You feel as though some part of you was drained away.
 	<<takeKissVirginity "Ivory Wraith" "rape">>
 	<<arousal 2000 "mouth">><<gggarousal>>
-	<<trauma 30>><<gggtrauma>><<purity -50>><<lllpurity>><<physique_loss 16>><<llphysique>>
+	<<trauma 30>><<gggtrauma>><<purity -50>><<lllpurity>><<physique -16>><<llphysique>>
 	<<if $pain lt 100>>
 		<<pain -15>><<llpain>>
 	<</if>>
@@ -1269,7 +1267,7 @@
 		<br><br>
 		<<orgasm>>
 		Your climax is torturous and painful as you writhe against <<him>>. <<His>> assault only grows more intense. You feel weak.
-		<<trauma 30>><<gggtrauma>><<purity -25>><<llpurity>><<physique_loss 8>><<lphysique>><<awareness -20>><<lllawareness>><<gobsession>>
+		<<trauma 30>><<gggtrauma>><<purity -25>><<llpurity>><<physique -8>><<lphysique>><<awareness -20>><<lllawareness>><<gobsession>>
 		<<if $_wraithStress>>
 			<<set $stress to $stressmax>>
 		<</if>>
@@ -1294,7 +1292,7 @@
 						<span class="red">Dread lingers in the air.</span>
 					<</if>>
 				<<elseif $wraith.hunt>>
-					<<if $moonstate is "morning" and Time.hour gte 6>>
+					<<if $moonstate is "morning" and Time.hour gte 6 and Time.hour lte 20>>
 						<br><br>
 						With the rising of the sun, you feel a sense of relief. The dread passes. <span class="blue"><i>You're safe until the next blood moon.</i></span>
 						<<clearWraith>>
@@ -1453,7 +1451,7 @@
 				<<if ($location is "lake" or $location is "lake_ruin") and !$possessed>>
 					<<set $wraith.hunt += 1.5>>
 					<<set $foresthunt += 1.5>>
-					<<if $moonstate is "morning" and Time.hour gte 6>>
+					<<if $moonstate is "morning" and Time.hour gte 6 and Time.hour lte 20>>
 						With the rising of the sun, you feel a sense of relief. The dread passes. <span class="blue"><i>You're safe until the next blood moon.</i></span>
 						<<clearWraith>>
 						<br><br>

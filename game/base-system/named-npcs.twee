@@ -215,12 +215,8 @@ Zohar
 
 <<widget "initnpcskinsingle">>
 	<<set _i to _args[0]>>
-	<<if !$NPCName[_i].skincolour or $NPCName[_i].skincolour is "none" or _args[1] is "skincolour">>
-		<<if random(0, 99) lte $settings.darkSkinChance>>
-			<<set $NPCName[_i].skincolour to "black">>
-		<<else>>
-			<<set $NPCName[_i].skincolour to "white">>
-		<</if>>
+	<<if $NPCName[_i].skincolour is undefined or _args[1] is "skincolour">>
+		<<set $NPCName[_i].skincolour to randomSkinTone()>>
 	<</if>>
 <</widget>>
 
@@ -258,8 +254,10 @@ Zohar
 		<</if>>
 	<</if>>
 	<!-- Set Gender -->
-	<<if $NPCName[_i].pregnancy?.type>>
-		<<set $NPCName[_i].gender to "f">>
+	<<if getActivePregnancy($NPCName[_i].nam, "vagina")>>
+		<<if $NPCName[_i].gender isnot "h">>
+			<<set $NPCName[_i].gender to "f">>
+		<</if>>
 	<<elseif !$NPCName[_i].gender or $NPCName[_i].gender is "none" or _args[1] is "genders">>
 		<<if $NPCName[_i].pronoun is "m">>
 			<<if random(0, 99) gte $settings.maleNPCVaginaChance>>
@@ -414,12 +412,8 @@ Zohar
 		<<set $NPCName[_i].corruption to 0>>
 		<<set $NPCName[_i].chastity to {penis:"", vagina:"", anus:""}>>
 		<<set $NPCName[_i].name_known to 1>>
-		<<if !$NPCName[_i].skincolour>>
-			<<if random(1, 100) lte $settings.darkSkinChance>>
-				<<set $NPCName[_i].skincolour to "black">>
-			<<else>>
-				<<set $NPCName[_i].skincolour to "white">>
-			<</if>>
+		<<if $NPCName[_i].skincolour is undefined>>
+			<<set $NPCName[_i].skincolour to randomSkinTone()>>
 		<</if>>
 		<<generatePronouns $NPCName[_i]>>
 		<<initNNPCClothes _nam>>
@@ -471,6 +465,8 @@ Zohar
 			<<case Whitney>>
 				<<set C.npc.Whitney.dom to 10>>
 				<<set $whitneySeen to []>>
+				<<set V.whitney to {}>>
+				<<set V.whitney.daysSinceCapture to 0>>
 			<<case "Great Hawk">>
 				<<set C.npc["Great Hawk"].dom to 50>>
 			<<case Sydney>>
@@ -497,7 +493,7 @@ Zohar
 						<<set C.npc["Ivory Wraith"].lust -= 5>>
 					<</if>>
 				<</if>>
-				<<set C.npc["Ivory Wraith"].skincolour to "ghost">>
+				<<set C.npc["Ivory Wraith"].skinType to "ghost">>
 			<<case Remy>>
 				<<if $remySeen is undefined>>
 					<<set $remySeen to []>>
@@ -995,6 +991,7 @@ Zohar
 	<</if>>
 
 	<<set $NPCList[_npcno].skincolour to $NPCName[_i].skincolour>>
+	<<set $NPCList[_npcno].skinType to $NPCName[_i].skinType>>
 
 	<<set $NPCList[_npcno].insecurity to $NPCName[_i].insecurity>>
 	<<set $NPCList[_npcno].description to $NPCName[_i].title>>
@@ -1194,6 +1191,9 @@ Zohar
 	<<set $NPCList[_npcno].index to _npcno>>
 	<<run EventSystem.push($passage, _npcno, $timeStamp)>>
 	<<set $index to _npcno>>
+
+	<<unset _strapIgnore>>
+	<<unset _condomIgnore>>
 <</widget>>
 
 <<widget "npcrelationship">>
@@ -1281,8 +1281,8 @@ Zohar
 		<</if>>
 		<<set $NPCName[_i].rage += _val>>
 	<<case trauma>>
-		<<if _nam isnot "Robin">>
-			<<error { message: "<<npcincr>> attempted to modify trauma for someone other than Robin (" + _nam + ")" }>>
+		<<if !["Robin", "Whitney"].includes(_nam)>>
+			<<error { message: "<<npcincr>> attempted to modify trauma for someone other than Robin or Whitney (" + _nam + ")" }>>
 		<</if>>
 		<<if _nam is "Robin" and _val lt 0>>
 			<<set $NPCName[_i].trauma += Math.round(_val * ($robinTraumaMultiplier || 1))>>

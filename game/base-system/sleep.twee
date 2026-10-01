@@ -43,7 +43,7 @@
 			under_upper and under_lower and anything else listed here are exempt from disabling the bonus
 			Non-sleep clothing is defined as anything not tagged with "sleep" or "eerie"
 		 */
-		<<if !["under_upper", "under_lower", "genitals"].includes(_slot)>>
+		<<if !["under_upper", "under_lower", "genitals", "butt_plug"].includes(_slot)>>
 			<<if !["naked", "sleep", "eerie"].find((element) => $worn[_slot].type.includes(element))>>
 				<<set $_bonusFatigueLoss to 0>>
 				<<break>>
@@ -95,6 +95,11 @@
 					<<set $weekly.kylarCreep to 1>>
 					<<set _sleepinterrupt to 1>>
 					<<set _kylarWake to 2>>
+
+				<<elseif $kylarSeen.includes("locket") and $wardrobe.neck.some(item => item.name is "love locket") and Time.dayState is "night" and $kylarbed is undefined and $robinbed is undefined and !($christmas is 1 and Time.monthDay is 25) and $weekly.kylarLocketBreakIn isnot 1 and $rng gte 91 and C.npc.Kylar.state is "active">>
+					<<set $weekly.kylarLocketBreakIn to 1>>
+					<<set _sleepinterrupt to 1>>
+					<<set _kylarWake to 3>>
 
 				<<elseif (($robinromance is 1 and _robin.lust gte 20) or (_robin.trauma gte 50 and $rng gte 51)) and !$robinbed and $robinwakeday isnot 1 and $kylarbed isnot 1 and $robinmissing is 0 and $robin.timer.hurt is 0 /*and !$robin_kicked_out*/>>
 					<!-- Robin climbs into bed with you -->
@@ -182,7 +187,7 @@
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 
-				<<elseif (Object.values($children).find(child => child.mother === "Alex" && child.location === "alex_cottage") or Object.values($children).find(child => child.father === "Alex" && child.location === "alex_cottage")) and Time.dayState is "night" and !$weekly.alexNightTimeNursery and $rng gte 56>>
+				<<elseif (getChildrenAt("alex_cottage").find(child => getPregnancyOf(child).carrier === "Alex") or getChildrenAt("alex_cottage").find(child => getPregnancyOf(child).donor === "Alex")) and Time.dayState is "night" and !$weekly.alexNightTimeNursery and $rng gte 56>>
 					<<set _sleepinterrupt to 1>>
 					<<set $weekly.alexNightTimeNursery to 1>>
 					<<set _alexWakeNursery to 1>>
@@ -744,7 +749,7 @@
 	The voice from the left whispers in your ear. Its words overlap themselves, promising you many things at once. It claims it will bring you fulfilment by granting you
 	<<if _pregnancyEnabled>>
 		<span class="lewd">a womb filled with life<<if $settings.breastFeedingEnabled>> and breasts filled with milk<</if>></span>.
-		<<if !$player.vaginaExist and !(playerIsPregnant() and playerAwareTheyArePregnant()) and Object.values($children).find(child => child.mother === "pc")>>
+		<<if !$player.vaginaExist and !(playerIsPregnant() and playerAwareTheyArePregnant()) and getBornChildren().find(child => getPregnancyOf(child).carrier === "pc")>>
 			It also promises that the limits of your current body will not hold you back.
 		<</if>>
 	<<else>>
@@ -752,7 +757,7 @@
 	<</if>>
 	<br>
 	The first voice is interrupted by the one on your right, grabbing your attention. Your mind is assaulted with more promises. It tells you that it will help you fulfil yourself through
-	<<if $settings.npcPregnancyEnabled>>
+	<<if $settings.npcPregnancyEnabled or $settings.nnpcPregnancyEnabled>>
 		<span class="lewd">filling others with your seed</span>,
 	<<else>>
 		<span class="lewd">filling the holes of others</span>,

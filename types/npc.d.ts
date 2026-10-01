@@ -98,14 +98,15 @@ declare global {
 			men: string;
 		};
 
-		pregnancy: {};
+		pregnancy: Partial<NpcPregnancyCycle>;
 		pregnancyAvoidance: number;
 
 		adult: 0 | 1;
 		teen: 0 | 1;
 
 		insecurity: string;
-		skincolour: string;
+		skincolour?: number;
+		skinType?: "skin" | "ghost";
 		eyeColour: string;
 		hairColour: string;
 

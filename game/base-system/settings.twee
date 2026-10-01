@@ -24,7 +24,6 @@
 	<<set $background to "waif">>
 	<<set $startingseason to "autumn">>
 	<<set $gamemode to "normal">>
-	<<set $settings.darkSkinChance to 10>>
 	<<set $settings.swarmsEnabled to true>>
 	<<set $settings.spidersEnabled to true>>
 	<<set $settings.slugsEnabled to true>>
@@ -78,14 +77,18 @@
 	<<set $settings.schoolClothingCostModifier to 1>>
 	<<set $settings.lewdClothingCostModifier to 1>>
 	<<set $settings.furnitureCostModifier to 1>>
-	<<set $settings.basePlayerPregnancyChance to 80>>
+	<<set $settings.basePlayerPregnancyChance to 2>>
 	<<set $settings.baseNpcPregnancyChance to 8>>
 	<<set $settings.humanPregnancyMonths to 3>>
 	<<set $settings.wolfPregnancyWeeks to 4>>
+	<<set $settings.birdPregnancyWeeks to 3>>
 	<<set $settings.playerPregnancyHumanEnabled to true>>
 	<<set $settings.playerPregnancyBeastEnabled to true>>
 	<<set $settings.playerPregnancyEggLayingEnabled to true>>
 	<<set $settings.npcPregnancyEnabled to true>>
+	<<set $settings.nnpcPregnancyEnabled to true>>
+	<<set $settings.analPregnancy to false>>
+	<<set $settings.npcAnalPregnancyEnabled to false>>
 	<<set $settings.incompletePregnancyEnabled to false>>
 	<<set $settings.fertilityCycleEnabled to true>>
 	<<set $settings.pregnancyType to "realistic">>
@@ -98,6 +101,9 @@
 	<<set $settings.tendingYieldModifier to 5>>
 	<<set $notifyUpdate = true>>
 	<<set _tan to 0>>
+	<<set $settings.skinToneMin to 0>>
+	<<set $settings.skinToneMode to 50>>
+	<<set $settings.skinToneMax to 100>>
 
 	<<startingPlayerImageReset>>
 <</widget>>
@@ -269,7 +275,6 @@
 			<<displaySettings "gameSettings">>
 			/* Resets Quick edit temporary values, to make them reflect current settings as closely as they can */
 			<<unset _pregnancytype>>
-			<<unset _incompletePregnancyDisable>>
 		<</button>>
 	</div>
 	<div @class="_selectedSettings is 'gallery' ? 'gold buttonStartSelected' : 'buttonStart'" >
@@ -304,6 +309,7 @@
 	<div id="settingsExit">
 		<<settingsExit>>
 	</div>
+	<<run settingsDisableElement()>>
 <</widget>>
 
 <<widget "settingsExit">>
@@ -314,26 +320,19 @@
 			<<case "default">>
 				<div class="my-1"><span class="gold bold">Current Settings:</span> <i>Adjustable</i></div>
 				<<button "Start Game!">>
-					<<presets _kinkPreset "save">>
-					<<presets _namedNpcPreset "save">>
-					<<presets _monstersPreset "save">>
 					<<if _pregnancytype is "disabled">>
 						<<set $settings.playerPregnancyHumanEnabled to false>>
 						<<set $settings.playerPregnancyBeastEnabled to false>>
 						<<set $settings.playerPregnancyEggLayingEnabled to false>>
 						<<set $settings.npcPregnancyEnabled to false>>
+						<<set $settings.nnpcPregnancyEnabled to false>>
 					<<else>>
 						<<set $settings.pregnancyType to _pregnancytype or "realistic">>
 						<<set $settings.playerPregnancyHumanEnabled to true>>
-						<<set $settings.playerPregnancyBeastEnabled to true>>
-						<<set $settings.playerPregnancyEggLayingEnabled to true>>
 						<<set $settings.npcPregnancyEnabled to true>>
+						<<set $settings.nnpcPregnancyEnabled to true>>
 					<</if>>
-					<<if _incompletePregnancyDisable is false or (_incompletePregnancyDisable is true and !_foundPregnancy)>>
-						<<set $settings.incompletePregnancyEnabled to _incompletePregnancyDisable>>
-						<<npcPregnancyUpdater>>
-					<</if>>
-					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
+					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4))>>
 						<<settingsExitFunction>>
 					<<else>><!-- confirm cheats -->
 						<<replace #settingsExit>><<settingsExitConfirm>><</replace>>
@@ -342,7 +341,7 @@
 			<<case "custom">>
 				<div class="my-1"><span class="gold bold">Current Settings:</span> <i>Customisable</i></div>
 				<<button "Start Game!">>
-					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
+					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4))>>
 						<<settingsExitFunction>>
 					<<else>><!-- confirm cheats -->
 						<<replace #settingsExit>><<settingsExitConfirm>><</replace>>
@@ -353,7 +352,7 @@
 				<<button "Start Game!">>
 						/*Rerolls all settings*/
 					<<presets "randomize" "characterSettings" `randomizeSettings()`>>
-					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
+					<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4))>>
 						<<settingsExitFunction>>
 					<<else>><!-- confirm cheats -->
 						<<replace #startOptions>><<startOptions>><</replace>>
@@ -366,7 +365,7 @@
 		</div>
 	<<else>>
 		<<button "Save changes">>
-			<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4)) and ($feats.pregnancySillyLocked or $settings.pregnancyType isnot "silly")>>
+			<<if ($feats.locked or ($settings.cheatsEnabledToggle is false and $settings.rentCostModifier gte 1 and $settings.tendingYieldModifier lte 5)) and ($feats.soft or ($gamemode isnot "soft" and $settings.allureModifier gte 1)) and ($feats.pregnancyLocked or ($settings.humanPregnancyMonths gte 3 and $settings.wolfPregnancyWeeks gte 4))>>
 				<<settingsExitFunction>>
 			<<else>><!-- confirm cheats -->
 				<<replace #settingsExit>><<settingsExitConfirm>><</replace>>
@@ -387,7 +386,6 @@
 			<<if !$feats.soft and $settings.allureModifier lt 1>><li>Lowered allure: disables some feats.</li><</if>>
 			<<if !$feats.pregnancyLocked and $settings.humanPregnancyMonths lt 3>><li>Human pregnancy set to under 3 months: disables some pregnancy feats.</li><</if>>
 			<<if !$feats.pregnancyLocked and $settings.wolfPregnancyWeeks lt 4>><li>Wolf pregnancy set to under 4 weeks: disables some pregnancy feats.</li><</if>>
-			<<if !$feats.pregnancySillyLocked and $settings.pregnancyType is "silly">><li>Pregnancy mode set to "silly": disables some pregnancy feats.</li><</if>>
 		</ul>
 		Do you want to keep these changes?
 		<br>
@@ -410,9 +408,6 @@
 			<</if>>
 			<<if !$feats.pregnancyLocked and $settings.wolfPregnancyWeeks lt 4>>
 				<<set $settings.wolfPregnancyWeeks to 4>>
-			<</if>>
-			<<if !$feats.pregnancySillyLocked and $settings.pregnancyType is "silly">>
-				<<set $settings.pregnancyType to "realistic">>
 			<</if>>
 			<<displaySettings "startDescriptions">>
 			<<replace #settingsExit>><<settingsExit>><</replace>>
@@ -437,7 +432,6 @@
 			<<if !$feats.soft and $settings.allureModifier lt 1>><li>Lowered allure: disables some feats</li><</if>>
 			<<if !$feats.pregnancyLocked and $settings.humanPregnancyMonths lt 3>><li>Human pregnancy set to under 3 months: disables some pregnancy feats.</li><</if>>
 			<<if !$feats.pregnancyLocked and $settings.wolfPregnancyWeeks lt 4>><li>Wolf pregnancy set to under 4 weeks: disables some pregnancy feats.</li><</if>>
-			<<if !$feats.pregnancySillyLocked and $settings.pregnancyType is "silly">><li>Pregnancy mode set to "silly": disables some pregnancy feats.</li><</if>>
 		</ul>
 		Do you want to keep these changes?
 		<br>
@@ -460,9 +454,6 @@
 			<</if>>
 			<<if !$feats.pregnancyLocked and $settings.wolfPregnancyWeeks lt 4>>
 				<<set $settings.wolfPregnancyWeeks to 4>>
-			<</if>>
-			<<if !$feats.pregnancySillyLocked and $settings.pregnancyType is "silly">>
-				<<set $settings.pregnancyType to "realistic">>
 			<</if>>
 			<<if _settingsTab is 'tweak'>>
 				<<replace #gameModeQuick>><<gameMode>><</replace>>
@@ -518,19 +509,21 @@
 	<<if $settings.humanPregnancyMonths lt 3 or $settings.wolfPregnancyWeeks lt 4>>
 		<<set $feats.pregnancyLocked to true>>
 	<</if>>
-	<<if $settings.pregnancyType is "silly">>
-		<<set $feats.pregnancySillyLocked to true>>
-	<</if>>
 	<<updatehistorycontrols>>
-	<<presets _namedNpcPreset "save">>
 	<<initnpcgender>>
+	<<if _namedNpcFemaleGenitals and _namedNpcFemaleGenitals isnot "random">>
+		<<assignNPCGenitalsByPronounCore "f" _namedNpcFemaleGenitals true>>
+	<</if>>
+	<<if _namedNpcMaleGenitals and _namedNpcMaleGenitals isnot "random">>
+		<<assignNPCGenitalsByPronounCore "m" _namedNpcMaleGenitals true>>
+	<</if>>
 	<<updatePersistentNPCs>>
 	<<hirsuteHideCheck>>
 	<<generateTipsList>>
 	<<if $player.freckles is "random">>
 		<<set $player.freckles to (random(1, 5) is 1)>>
 	<</if>>
-	/* Updates the npc's in case $incompletePregnancyDisable has been changed by the player */
+	/* Reseeds named NPC cycle data in case the incomplete pregnancy content setting changed */
 	<<npcPregnancyUpdater>>
 
 	<!-- Init shop mannequin gender -->
@@ -623,27 +616,22 @@
 			</div>
 
 			<div class="settingsToggleItem">
-				<<set _foundPregnancy to !!Object.values($NPCName).find(npc => npc.pregnancy && npc.pregnancy.enabled && npc.pregnancy.type && !setup.pregnancy.canBePregnant.includes(npc.fullDescription))>>
-				<label>
+				<<set _foundPregnancy to !!Object.values($NPCName).find(npc => npc.pregnancy && npc.pregnancy.enabled && getActivePregnancies(npc.fullDescription).length && !setup.pregnancy.canBePregnant.includes(npc.fullDescription))>>
 					<span class="gold">Pregnancy Mode:</span>
 					<br>
 					<<if $passage is "Start">>
 						<label><<radiobutton "_pregnancytype" "realistic" `_pregnancytype ? "autocheck" : ($settings.pregnancyType is "realistic" ? "checked": "")`>> <mouse class="tooltip green">Realistic<span>Pregnancy will not happen immediately, and you won't know right away when it happens. You may need to use a pregnancy test, and the father may not be known to you initially. Cum on the outside of your vagina may get you pregnant as well, unless washed off within the next several hours.</span></mouse></label> |
 						<label><<radiobutton "_pregnancytype" "fetish" `_pregnancytype ? "autocheck" : ($settings.pregnancyType is "fetish" ? "checked": "")`>> <mouse class="tooltip pink">Fetishised<span>Pregnancy may happen as soon as semen gets inside you. You will know as soon as it happens, and will immediately know the father.</span></mouse></label> |
-						<label><<radiobutton "_pregnancytype" "silly" `_pregnancytype ? "autocheck" : ($settings.pregnancyType is "silly" ? "checked": "")`>> <mouse class="tooltip gold">Silly<span>Pregnancy may happen as soon as you hold hands or kiss, especially with those you love. <i class="red none">There may be story content related issues with this mode. Some feats will be disabled with this mode.</i></span></mouse></label> |
 						<label><<radiobutton "_pregnancytype" "disabled" autocheck>> <mouse class="tooltip red">Disabled<span>Pregnancy will be disabled.<<if $passage isnot "Start">>Will not prevent existing pregnancies or prevent the player from interacting with their children.<</if>></span></mouse></label>
 					<<else>>
 						<<pregnancyType>>
 					<</if>>
-				</label>
 				<br>
-				<label>
 					<<fertilityCycles>>
-				</label>
 				<br>
-				<label data-disabledif="T.foundPregnancy&&V.settings.incompletePregnancyEnabled===true">
+				<span data-target='["settingsincompletepregnancyenabled", "pregnancytype", "settingsnnpcpregnancyenabled", "settingsplayerpregnancyhumanenabled", "settingsplayerpregnancybeastenabled"]' data-disabledif="(T.foundPregnancy&&V.settings.incompletePregnancyEnabled===true)||T.pregnancytype==='disabled'||(!V.settings.nnpcPregnancyEnabled&&!V.settings.playerPregnancyHumanEnabled&&!V.settings.playerPregnancyBeastEnabled)">
 					<<incompletePregnancy>>
-				</label>
+				</span>
 			</div>
 
 			<<if _selectedStart isnot "custom">>
@@ -704,12 +692,31 @@
 				</div>
 
 				<div class="settingsToggleItem">
-					<span class="gold">Named NPC Genders:</span>
+					<span class="gold">Named NPC Genders:</span> <mouse class="tooltip linkBlue">(?)<span>Sets the gender and genitals for every Named NPC. <span class='gold inline-colour'>Random Genders</span> have a chance of generating women with penises and men with vaginas, this can be changed under Custom Settings. <span class='blue inline-colour'>All Male</span> are generated with penises. <span class='pink inline-colour'>All Female</span> are generated with vaginas.<br><br>The genitals options override these default settings. Individual Named NPC Genders/Genitals can also be customized before starting the game or mid-game under Named NPC Settings.</span></mouse>
 					<br>
 					<<if _namedNpcPreset is undefined>><<set _namedNpcPreset to "namedNpcDefaultGender">><</if>>
-					<label>All Male <<radiobutton "_namedNpcPreset" "namedNpcAllMaleGender" autocheck>></label> |
-					<label><<print $passage is "Start" ? "Random Genders" : "Current Genders">> <<radiobutton "_namedNpcPreset" "namedNpcDefaultGender" autocheck>></label> |
-					<label>All Female <<radiobutton "_namedNpcPreset" "namedNpcAllFemaleGender" autocheck>></label>
+					<label>All Male <<radiovar "_namedNpcPreset" "namedNpcAllMaleGender">><<namedNpcGenderApply "namedNpcAllMaleGender">><</radiovar>></label> |
+					<label><<print $passage is "Start" ? "Random Genders" : "Current Genders">> <<radiovar "_namedNpcPreset" "namedNpcDefaultGender">><<namedNpcGenderApply "namedNpcDefaultGender">><</radiovar>></label> |
+					<label>All Female <<radiovar "_namedNpcPreset" "namedNpcAllFemaleGender">><<namedNpcGenderApply "namedNpcAllFemaleGender">><</radiovar>></label>
+					<div id="namedNpcGenderConfirm"><<namedNpcGenderConfirm>></div>
+				</div>
+
+				<div class="settingsToggleItem">
+					<span class="gold">Female Named NPC Genitals:</span>
+					<br>
+					<<if _namedNpcFemaleGenitals is undefined>><<set _namedNpcFemaleGenitals to "random">><</if>>
+					<label>Random <<radiobutton "_namedNpcFemaleGenitals" "random" autocheck>></label> |
+					<label>Penis <<radiobutton "_namedNpcFemaleGenitals" "m" autocheck>></label> |
+					<label>Vagina <<radiobutton "_namedNpcFemaleGenitals" "f" autocheck>></label>
+				</div>
+
+				<div class="settingsToggleItem">
+					<span class="gold">Male Named NPC Genitals:</span>
+					<br>
+					<<if _namedNpcMaleGenitals is undefined>><<set _namedNpcMaleGenitals to "random">><</if>>
+					<label>Random <<radiobutton "_namedNpcMaleGenitals" "random" autocheck>></label> |
+					<label>Penis <<radiobutton "_namedNpcMaleGenitals" "m" autocheck>></label> |
+					<label>Vagina <<radiobutton "_namedNpcMaleGenitals" "f" autocheck>></label>
 				</div>
 
 				<div class="settingsToggleItem">
@@ -775,9 +782,9 @@
 						<<if _monstersPreset is undefined>><<set _monstersPreset to "monstersDefault">><</if>>
 						<span class="gold">Replace Beasts with Monster People:</span>
 						<br>
-						<label>All the time <<radiobutton "_monstersPreset" "monstersAll" autocheck>></label> |
-						<label>Only when hallucinating <<radiobutton "_monstersPreset" "monstersDefault" autocheck>></label> |
-						<label>Never <<radiobutton "_monstersPreset" "monstersNone" autocheck>></label>
+						<label>All the time <<radiovar "_monstersPreset" "monstersAll">><<presets _monstersPreset "save">><</radiovar>></label> |
+						<label>Only when hallucinating <<radiovar "_monstersPreset" "monstersDefault">><<presets _monstersPreset "save">><</radiovar>></label> |
+						<label>Never <<radiovar "_monstersPreset" "monstersNone">><<presets _monstersPreset "save">><</radiovar>></label>
 					<<else>>
 						<<monsterSettings>>
 					<</if>>
@@ -788,13 +795,13 @@
 						<br>
 						<<if _kinkPreset is undefined>><<set _kinkPreset to "kinkDefault">><</if>>
 						<label><mouse class="tooltip" style="border-bottom: 2px dotted var(--link)">Vanilla<span>All beast-related toggles are disabled, as well as plant people, tentacles, slimes, lactation, facesitting, double penetration, and hypnosis.</span></mouse>
-						<<radiobutton "_kinkPreset" "kinkVanilla" autocheck>></label> |
+						<<radiovar "_kinkPreset" "kinkVanilla">><<presets _kinkPreset "save">><</radiovar>></label> |
 						<label><mouse class="tooltip" style="border-bottom: 2px dotted var(--link)">Reasonably Debauched<span>Default settings. All kinks are enabled, except for watersports.</span></mouse>
-						<<radiobutton "_kinkPreset" "kinkDefault" autocheck>></label> |
+						<<radiovar "_kinkPreset" "kinkDefault">><<presets _kinkPreset "save">><</radiovar>></label> |
 						<label><mouse class="tooltip" style="border-bottom: 2px dotted var(--link)">No Beasts<span>All beast-related settings are disabled, including bestiality, swarms, vore, parasites, spiders, slugs, wasps, lurkers, bees, and horses.</span></mouse>
-						<<radiobutton "_kinkPreset" "kinkNoBeasts" autocheck>></label> |
+						<<radiovar "_kinkPreset" "kinkNoBeasts">><<presets _kinkPreset "save">><</radiovar>></label> |
 						<label><mouse class="tooltip" style="border-bottom: 2px dotted var(--link)">Anything Goes<span>All kinks are enabled, including watersports.</span></mouse>
-						<<radiobutton "_kinkPreset" "kinkEverything" autocheck>></label>
+						<<radiovar "_kinkPreset" "kinkEverything">><<presets _kinkPreset "save">><</radiovar>></label>
 					</div>
 					<div class="settingsToggleItem">
 						<i><<= _selectedStart is "custom" ? "To change" : "For more control over">> fetish and gameplay settings, visit the <span class="teal"><<= _selectedStart is "default" ? "Custom Start" : "Game Settings">></span> tab. Gameplay settings can still be changed after you start the game.</i>
@@ -1586,9 +1593,11 @@
 				</span>
 				<<numberslider "$settings.npcVirginChanceAdult" $settings.npcVirginChanceAdult 0 100 1>>
 			</div>
-			<div class="settingsToggleItemWide numberslider-inline">
-				<span class="gold">Likelihood of NPCs with Dark Skin:</span>
-				<<numberslider "$settings.darkSkinChance" $settings.darkSkinChance 0 100 1>>
+			<div class="settingsToggleItemWide">
+				<span class="gold">NPC Skin Tones:
+				<mouse class="tooltip linkBlue">(?)<span>Drag the handles to choose the lightest and darkest skin generated NPCs can have. Skin tones cluster around the most common tone. Randomly generated NNPC skin tones will fall within the boundaries. NNPCs can also have their skin tones manually set outside these values in their custom settings. Skin tone has no effect on gameplay. It only changes how NPCs look during sex/combat, and the skin tone their children inherit.</span></mouse>
+				</span>
+				<<skinToneRange>>
 			</div>
 		</div>
 	</div>
@@ -2044,62 +2053,117 @@
 <</widget>>
 
 <<widget "incompletePregnancy">>
-	<<checkbox "$settings.incompletePregnancyEnabled" false true autocheck>> Enable incomplete pregnancy content
+	<label><<checkbox "$settings.incompletePregnancyEnabled" false true autocheck>> Enable incomplete pregnancy content</label>
 	<<if _foundPregnancy>>
 		<mouse class="tooltip linkBlue">(!!!)<span>Cannot be disabled while a named NPC is pregnant.</span></mouse>
 	<<else>>
 		<mouse class="tooltip linkBlue">(?)<span>
-			<div>When enabled, the player will be able to impregnate and be impregnated by all fertile named NPCs. This includes NPCs that have no pregnancy interactions.</div>
+			<div>When enabled, the player will be able to impregnate and be impregnated by all fertile named NPCs. This includes NNPCs that have no pregnancy interactions. When disabled, NNPCs with incomplete content will have their pregnancy toggles grayed out in their settings.</div>
 			<div class="red">WARNING: This will lead to situations where the named NPC will not react to the player's pregnancy or their own pregnancy, and existing saves may end up skipping future content.</div>
 		</span></mouse>
 	<</if>>
 <</widget>>
 
 <<widget "fertilityCycles">>
-	<<checkbox "$settings.fertilityCycleEnabled" false true autocheck>> Enable fertility cycles
+	<label><<checkbox "$settings.fertilityCycleEnabled" false true autocheck>> Enable fertility cycles</label>
 	<mouse class="tooltip linkBlue">(?)<span>
 		<div>When enabled, the player's menstruation cycle will determine when they can get pregnant.</div>
-		<div>When disabled, each day's pregnancy chance will be randomised. In addition, sperm inside the player will not last as long when the pregnancy type is set to "realistic".</div>
+		<div>When disabled, fertility is always at its highest. Heat no longer applies. Rut and heat caused by fertillity boosters are unaffected.</div>
 	</span></mouse>
 <</widget>>
 
 <<widget "pregnancyType">>
 	<label><<radiobutton "$settings.pregnancyType" "realistic" autocheck>> <mouse class="tooltip green">Realistic<span>Pregnancy will not happen immediately, and you won't know right away when it happens. You may need to use a pregnancy test, and the father may not be known to you initially. Cum on the outside of your vagina may get you pregnant as well, unless washed off within the next several hours.</span></mouse></label> |
-	<label><<radiobutton "$settings.pregnancyType" "fetish" autocheck>> <mouse class="tooltip pink">Fetishised<span>Pregnancy may happen as soon as semen gets inside you. You will know as soon as it happens, and will immediately know the father.</span></mouse></label> |
-	<label><<radiobutton "$settings.pregnancyType" "silly" autocheck>> <mouse class="tooltip gold">Silly<span>Pregnancy may happen as soon as you hold hands or kiss, especially with those you love. <i class="red none">There may be story content related issues with this mode. Some feats will be disabled with this mode.</i></span></mouse></label>
+	<label><<radiobutton "$settings.pregnancyType" "fetish" autocheck>> <mouse class="tooltip pink">Fetishised<span>Pregnancy may happen as soon as semen gets inside you. You will know as soon as it happens, and will immediately know the father.</span></mouse></label>
 <</widget>>
 
 <<widget "pregnancySettings">>
 	<div class="solidBorderContainer settings-container">
 		<div class="settingsGrid">
+			<div class="settingsToggleItemWide">
+				<span class="red">Changing these toggles will not stop existing pregnancy or prevent the player from interacting with their children.</span>
+			</div>
 			<div class="settingsHeader">
 				Pregnancy Chances
 			</div>
-			<div class="settingsToggleItemWide">
-				<div class="numberslider-inline basePlayerPregnancyChance-container">
-					<span class="gold">Base Player Pregnancy Chance:</span>
-					<<numberslider "$settings.basePlayerPregnancyChance" $settings.basePlayerPregnancyChance 0 96 4>>
-					<div class="small-description">Chance of conceiving when inseminated at the right time. Some events may leave you with more than one helping of cum. Other effects may modify the base chance, to both increase and decrease the chance of pregnancy.</div>
-				</div>
+			<div class="settingsToggleItem numberslider-inline basePlayerPregnancyChance-container">
+				<span class="gold">Base Player Pregnancy Chance:</span>
+				<<numberslider "$settings.basePlayerPregnancyChance" $settings.basePlayerPregnancyChance 0 100 1>>
+				<div class="small-description">Chance of a load of cum impregnating you each day, at peak fertility. A load keeps its chance for as long as it lasts, so it rolls again each day. Some events may leave you with more than one helping of cum.<br>
+				In <span class="green">Realistic</span> mode, other effects can modify fertility, such as fertility cycles, increasing and decreasing the chance of pregnancy. On safe days, your chance might still be close to 0 even with this setting toggled up.<br>
+				In <span class="pink">Fetishised</span> mode, this is the chance of conception when a load of cum hits you. Pills and fertility cycle still apply, unless you turn it off.</div>
 			</div>
 			<<run $(() => { $('.basePlayerPregnancyChance-container input').on('input change', e => {
 				let valSpan = $(e.currentTarget).siblings().first();
 				let value = valSpan.text();
 
-				valSpan.text((i, value) => "1 in " + (100 - value));
+				valSpan.text((i, value) => value + "%");
 			}).trigger('change') })>>
 
-			<div class="settingsToggleItemWide numberslider-inline basenpcpregnancychance-container">
+			<div class="settingsToggleItem numberslider-inline basenpcpregnancychance-container">
 				<span class="gold">Base NPC Pregnancy Chance:</span>
-				<<numberslider "$settings.baseNpcPregnancyChance" $settings.baseNpcPregnancyChance 0 16 4>>
-				<div class="small-description">Chance of an NPC conceiving when inseminated at the right time.</div>
+				<<numberslider "$settings.baseNpcPregnancyChance" $settings.baseNpcPregnancyChance 0 100 1>>
+				<div class="small-description">Chance of an NPC conceiving when inseminated at peak fertility. <br>
+				Note: Some NNPCs might take birth control or fertility boosters, which will impact this chance.</div>
 			</div>
 			<<run $(() => { $('.basenpcpregnancychance-container input').on('input change', e => {
 				let valSpan = $(e.currentTarget).siblings().first();
 				let value = valSpan.text();
 
-				valSpan.text((i, value) => "1 in " + (20 - value));
+				valSpan.text((i, value) => value + "%");
 			}).trigger('change') })>>
+			<div class="settingsToggleItem">
+					Pregnancy type:
+					<<pregnancyType>>
+			</div>
+			<div class="settingsToggleItem">
+					<<fertilityCycles>>
+			</div>
+			<div class="settingsToggleItem">
+				<label>
+					<<checkbox "$settings.playerPregnancyHumanEnabled" false true autocheck>> Enable player human pregnancy
+				</label>
+			</div>
+			<div class="settingsToggleItem">
+				<label>
+					<<checkbox "$settings.playerPregnancyBeastEnabled" false true autocheck>> Enable player beast pregnancy
+				</label>
+			</div>
+			<div class="settingsToggleItem">
+				<label>
+					<<checkbox "$settings.npcPregnancyEnabled" false true autocheck>> Enable generic NPC pregnancy
+				</label>
+			</div>
+			<div class="settingsToggleItem">
+				<label>
+					<<checkbox "$settings.nnpcPregnancyEnabled" false true autocheck>> Enable NNPC/LI pregnancy
+				</label>
+			</div>
+			<div class="settingsToggleItem">
+				<span class="gold">Player anal pregnancy:</span> <mouse class="tooltip linkBlue">(?)<span>
+					<div>Disabled by default. When on, PC can carry and conceive babies anally. When off, PC cannot carry pregnancies anally. With Exceptional Circumstances toggled, PC can only acquire anal pregnancy through specific in-game methods.</div>
+					<div><div class="red">NOTE: This is a separate toggle from parasites, which can still impregnate you vaginally/anally unless you toggle it off.</div></div>
+				</span></mouse>
+				<br>
+				<label><<radiobutton "$settings.analPregnancy" "exceptional" autocheck>> Exceptional Circumstances</label> |
+				<label><<radiobutton "$settings.analPregnancy" "always" autocheck>> On</label> |
+				<label><<radiobutton "$settings.analPregnancy" false autocheck>> Off</label>
+			</div>
+			<div class="settingsToggleItem">
+				<span class="gold">NPC anal pregnancy:</span> <mouse class="tooltip linkBlue">(?)<span>
+					<div>Disabled by default. When on, NPCs can be impregnated anally and the world treats it like a normal pregnancy. When off, anal pregnancy is not possible. Anal pregnancy can also be toggled on/off per NNPC in their settings.</div>
+					<div><div class="red">NOTE: Pregnancy must also be toggled on for anal pregnancy to work. Incomplete pregnancy content might also need to be toggled on. NPCs with a vagina can also get anally pregnant unless you toggle it off in their settings.</div></div>
+				</span></mouse>
+				<br>
+				<label><<radiobutton "$settings.npcAnalPregnancyEnabled" true autocheck>> On</label> |
+				<label><<radiobutton "$settings.npcAnalPregnancyEnabled" false autocheck>> Off</label>
+			</div>
+			<<set _foundPregnancy to !!Object.values($NPCName).find(npc => npc.pregnancy && npc.pregnancy.enabled && getActivePregnancies(npc.fullDescription).length && !setup.pregnancy.canBePregnant.includes(npc.fullDescription))>>
+			<span data-target='["settingsincompletepregnancyenabled", "settingsnnpcpregnancyenabled", "settingsplayerpregnancyhumanenabled", "settingsplayerpregnancybeastenabled"]' data-disabledif="(T.foundPregnancy&&V.settings.incompletePregnancyEnabled===true)||(!V.settings.nnpcPregnancyEnabled&&!V.settings.playerPregnancyHumanEnabled&&!V.settings.playerPregnancyBeastEnabled)">
+				<div class="settingsToggleItem humanPregnancyMonths-container">
+						<<incompletePregnancy>>
+				</div>
+			</span>
 		</div>
 		<hr>
 		<div class="settingsGrid">
@@ -2137,9 +2201,6 @@
 				Pregnancy Toggles
 			</div>
 			<div class="settingsToggleItem">
-				<span class="red">Changing these toggles will not stop existing pregnancy or prevent the player from interacting with their children.</span>
-			</div>
-			<div class="settingsToggleItem">
 				Condoms
 				<<numberslider "$settings.condomLevel" $settings.condomLevel 0 3 1 {
 				value: v => {
@@ -2160,47 +2221,13 @@
 			</div>
 			<div class="settingsToggleItem">
 				<label>
-					<<checkbox "$settings.playerPregnancyHumanEnabled" false true autocheck>> Enable player human pregnancy
-				</label>
-			</div>
-			<div class="settingsToggleItem">
-				<label>
-					<<checkbox "$settings.playerPregnancyBeastEnabled" false true autocheck>> Enable player beast pregnancy
-				</label>
-			</div>
-			<div class="settingsToggleItem">
-				<label>
-					<<checkbox "$settings.npcPregnancyEnabled" false true autocheck>> Enable NPC pregnancy
-				</label>
-			</div>
-			<<set _foundPregnancy to !!Object.values($NPCName).find(npc => npc.pregnancy && npc.pregnancy.enabled && npc.pregnancy.type && !setup.pregnancy.canBePregnant.includes(npc.fullDescription))>>
-			<span data-target="settingsincompletepregnancyenabled" data-disabledif="T.foundPregnancy&&V.settings.incompletePregnancyEnabled===true">
-				<div class="settingsToggleItem humanPregnancyMonths-container">
-					<label>
-						<<incompletePregnancy>>
-					</label>
-				</div>
-			</span>
-			<div class="settingsToggleItem">
-				<label>
 					<<checkbox "$settings.parasitePregnancyEnabled" false true autocheck>> Enable parasitic pregnancy
-				</label>
-			</div>
-			<div class="settingsToggleItem">
-				<label>
-					<<fertilityCycles>>
 				</label>
 			</div>
 			<div class="settingsToggleItem">
 				<label>
 					<<checkbox "$settings.playerPregnancyEggLayingEnabled" false true autocheck>> Enable egg laying
 					<mouse class="tooltip linkBlue">(?)<span>Required for Hawk and Harpy pregnancy.</span></mouse>
-				</label>
-			</div>
-			<div class="settingsToggleItem">
-				<label>
-					Pregnancy type:
-					<<pregnancyType>>
 				</label>
 			</div>
 			<div class="settingsToggleItem">
@@ -2379,7 +2406,7 @@
 				<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
 			<</link>>
 			|
-			<<link "Skin colours">>
+			<<link "Skin tones">>
 				<<initnpcskin "skincolour">>
 				<<updatePersistentNPCs "skincolour">>
 				<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
@@ -2401,6 +2428,18 @@
 				Genitals:
 				<<link "Penis">><<assignAllNPCs "gender" "m">><</link>> | <<link "Vagina">><<assignAllNPCs "gender" "f">><</link>>
 				<br>
+				<span @class="$passage is 'Start' ? 'link-disabled' : ''">
+					Male NNPC genitals:
+					<<link "Penises">><<assignNPCGenitalsByPronoun "m" "m">><</link>> | <<link "Vaginas">><<assignNPCGenitalsByPronoun "m" "f">><</link>>
+					<br>
+					Female NNPC genitals:
+					<<link "Vaginas">><<assignNPCGenitalsByPronoun "f" "f">><</link>> | <<link "Penises">><<assignNPCGenitalsByPronoun "f" "m">><</link>>
+				</span>
+				<br>
+				<<if $passage is "Start">>
+					<span class="small-description">These can only be set after you start a game.</span>
+					<br>
+				<</if>>
 				Penis size:
 				<<set _penisNames to ["", "Tiny", "Average", "Thick", "Huge"]>> /* the empty first element is necessary because _j starts at 1 */
 				<<for _j to 1; _j lt _penisNames.length; _j++>>
@@ -2419,8 +2458,8 @@
 					<</capture>>
 				<</for>>
 				<br>
-				Skin colour:
-				<<link "Pale">><<assignAllNPCs "skincolour" "white">><</link>> | <<link "Dark">><<assignAllNPCs "skincolour" "black">><</link>>
+				Skin tone:
+				<<link "Lightest">><<assignAllNPCs "skincolour" 0>><</link>> | <<link "Medium">><<assignAllNPCs "skincolour" 50>><</link>> | <<link "Darkest">><<assignAllNPCs "skincolour" 100>><</link>>
 			<</foldout>>
 		</div>
 		<hr>
@@ -2454,7 +2493,7 @@
 			<</if>>
 		<</if>>
 
-		/* Updates the npc's in case $incompletePregnancyDisable has been changed by the player */
+		/* Reseeds named NPC cycle data in case the incomplete pregnancy content setting changed */
 		<<npcPregnancyUpdater>>
 		<div id="npcSettingsMenu">
 			<<npcSettingsMenu>>
@@ -2501,22 +2540,90 @@
 	<<set $_characteristic to _args[0]>>
 	<<set $_value to _args[1]>>
 	<<for $_i to 0; $_i lt $NPCName.length; $_i++>>
+		<<if $_characteristic is "gender" and getActivePregnancies($NPCName[$_i].nam).length>>
+			<<continue>>
+		<</if>>
 		<<set $NPCName[$_i][$_characteristic] to $_value>>
 		<<if $_characteristic is "breastsize">>
-			<<set $NPCName[$_i].breastdesc to $_i > 0 ? setup.breastsizes[$_value] + " breast" : "nipple">>
-			<<set $NPCName[$_i].breastsdesc to $_i > 0 ? setup.breastsizes[$_value] + " breasts" : "nipples">>
+			<<set $NPCName[$_i].breastdesc to $_value > 0 ? setup.breastsizes[$_value] + " breast" : "nipple">>
+			<<set $NPCName[$_i].breastsdesc to $_value > 0 ? setup.breastsizes[$_value] + " breasts" : "nipples">>
 		<</if>>
 	<</for>>
-	<<if $passage isnot "start" and $per_npc and Object.keys($per_npc).length gt 0>>
+	<<if $passage isnot "start" and $per_npc and Object.keys($per_npc).length gt 0 and ($_characteristic isnot "gender" or $_value isnot "h")>>
 		<<for $_i range Object.keys($per_npc)>>
 			<<set $per_npc[$_i][$_characteristic] to $_value>>
 			<<if $_characteristic is "breastsize">>
-				<<set $per_npc[$_i].breastdesc to $_i > 0 ? setup.breastsizes[$_value] + " breast" : "nipple">>
-				<<set $per_npc[$_i].breastsdesc to $_i > 0 ? setup.breastsizes[$_value] + " breasts" : "nipples">>
+				<<set $per_npc[$_i].breastdesc to $_value > 0 ? setup.breastsizes[$_value] + " breast" : "nipple">>
+				<<set $per_npc[$_i].breastsdesc to $_value > 0 ? setup.breastsizes[$_value] + " breasts" : "nipples">>
 			<</if>>
 		<</for>>
 	<</if>>
+	<<if $_characteristic is "gender" or $_characteristic is "pronoun">>
+		<<initnpcgender>>
+		<<updatePersistentNPCs>>
+	<</if>>
 	<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
+<</widget>>
+
+<<widget "namedNpcGenderApply">>
+	<<if $passage is "Start" or _args[0] is "namedNpcDefaultGender">>
+		<<unset _namedNpcPendingGender>>
+		<<presets _args[0] "save">>
+		<<initnpcgender>>
+		<<updatePersistentNPCs>>
+	<<else>>
+		<<set _namedNpcPendingGender to _args[0]>>
+	<</if>>
+	<<replace #namedNpcGenderConfirm>><<namedNpcGenderConfirm>><</replace>>
+<</widget>>
+
+<<widget "namedNpcGenderConfirm">>
+	<<if _namedNpcPendingGender>>
+		<br>
+		<span class="red">This will turn every Named NPC <<= _namedNpcPendingGender is "namedNpcAllMaleGender" ? "male and give them all penises" : "female and give them all vaginas">>. Individual choices will be lost.</span>
+		<br>
+		<<button "Yes">>
+			<<presets _namedNpcPendingGender "save">>
+			<<initnpcgender>>
+			<<updatePersistentNPCs>>
+			<<unset _namedNpcPendingGender>>
+			<<replace #namedNpcGenderConfirm>><</replace>>
+		<</button>>
+		<<button "No">>
+			<<unset _namedNpcPendingGender>>
+			<<set _namedNpcPreset to "namedNpcDefaultGender">>
+			<<displaySettings "quickStart">>
+		<</button>>
+	<</if>>
+<</widget>>
+
+<<widget "nnpcGenderSetByHand">>
+	<<set _nnpcGenderByHand to _nnpcGenderByHand ?? []>>
+	<<run _nnpcGenderByHand.includes(_args[0]) || _nnpcGenderByHand.push(_args[0])>>
+<</widget>>
+
+<<widget "assignNPCGenitalsByPronoun">>
+	<<assignNPCGenitalsByPronounCore _args[0] _args[1]>>
+	<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
+<</widget>>
+
+<<widget "assignNPCGenitalsByPronounCore">>
+	<<set $_pronounFilter to _args[0]>>
+	<<set $_value to _args[1]>>
+	<<for $_i to 0; $_i lt $NPCName.length; $_i++>>
+		<<if $NPCName[$_i].pronoun is $_pronounFilter and !getActivePregnancies($NPCName[$_i].nam).length and !(_args[2] and (_nnpcGenderByHand ?? []).includes($_i))>>
+			<<set $NPCName[$_i].gender to $_value>>
+		<</if>>
+	<</for>>
+	<<if $_value isnot "h" and $passage isnot "Start" and $per_npc and Object.keys($per_npc).length gt 0>>
+		<<for $_i range Object.keys($per_npc)>>
+			<<if $per_npc[$_i].pronoun is $_pronounFilter>>
+				<<set $per_npc[$_i].gender to $_value>>
+			<</if>>
+		<</for>>
+	<</if>>
+	<<initnpcgender>>
+	<<updatePersistentNPCs>>
 <</widget>>
 
 <<widget "exportsettings">>
@@ -2612,7 +2719,7 @@
 				<</link>>
 			</span>
 		</div>
-		<<if V.NPCName[T.npcId].pregnancy.type>>
+		<<if getActivePregnancies(V.NPCName[T.npcId].nam).length>>
 			<div class="settingsToggleItemWide">
 				This NPC is currently pregnant. You will not be able to change some settings for the duration of their pregnancy.
 			</div>
@@ -2628,10 +2735,10 @@
 		<div class="settingsToggleItem">
 			<span class="gold">Genitals:</span>
 			<br>
-			<span data-target="npcname-pregnancy" data-disabledif="V.NPCName[T.npcId].pregnancy.type">
-				<label><<radiobutton "$NPCName[_npcId].gender" "f" autocheck>> Vagina</label> |
-				<label><<radiobutton "$NPCName[_npcId].gender" "m" autocheck>> Penis</label>
-				<<if $debug is 1>>| <label><<radiobutton "$NPCName[_npcId].gender" "h" autocheck>> Both</label><</if>>
+			<span data-target="npcname-pregnancy" data-disabledif="getActivePregnancies(V.NPCName[T.npcId].nam).length">
+				<label><<radiovar "$NPCName[_npcId].gender" "f">><<nnpcGenderSetByHand _npcId>><</radiovar>> Vagina</label> |
+				<label><<radiovar "$NPCName[_npcId].gender" "m">><<nnpcGenderSetByHand _npcId>><</radiovar>> Penis</label>
+				<<if $debug is 1>>| <label><<radiovar "$NPCName[_npcId].gender" "h">><<nnpcGenderSetByHand _npcId>><</radiovar>> Both</label><</if>>
 			</span>
 		</div>
 		<div class="settingsToggleItem">
@@ -2646,16 +2753,6 @@
 			</span>
 		</div>
 		<div class="settingsToggleItem">
-			<span data-target="npcname-pregnancy" data-disabledif="setup.pregnancy.infertile.includes(V.NPCName[T.npcId].nam)||V.NPCName[T.npcId].pregnancy.enabled===undefined||V.NPCName[T.npcId].pregnancy.type||!setup.pregnancy.typesEnabled.includes(V.NPCName[T.npcId].type)">
-				<span class="gold">Enable Pregnancy for NPC:</span>
-				<mouse class="tooltip linkBlue">(?)<span>Requires 'NPC Pregnancy' toggle to be enabled. May also require the "incomplete pregnancy content" toggle to be enabled. Will not stop an existing pregnancy.</span></mouse>
-				<br>
-				<label><<radiobutton "$NPCName[_npcId].pregnancy.enabled" true autocheck>> True</label> |
-				<label><<radiobutton "$NPCName[_npcId].pregnancy.enabled" false autocheck>> False</label>
-			</span>
-		</div>
-
-		<div class="settingsToggleItem">
 		<span class="gold">Breast Size:</span>
 		<br>
 		<<numberslider "$NPCName[_npcId].breastsize" $NPCName[_npcId].breastsize 0 12 1 {
@@ -2668,29 +2765,44 @@
 			}
 		}>>
 		</div>
+		<div class="settingsToggleItem">
+			<span data-target="npcname-pregnancy" data-disabledif="!V.settings.nnpcPregnancyEnabled||setup.pregnancy.infertile.includes(V.NPCName[T.npcId].nam)||V.NPCName[T.npcId].pregnancy.enabled===undefined||getActivePregnancies(V.NPCName[T.npcId].nam).length||!setup.pregnancy.typesEnabled.includes(V.NPCName[T.npcId].type)">
+				<span class="gold">Enable Pregnancy for NPC:</span>
+				<mouse class="tooltip linkBlue">(?)<span>Requires the "NNPC/LI pregnancy" toggle to be enabled. May also require the "incomplete pregnancy content" toggle to be enabled. Disabling will not stop an existing pregnancy.</span></mouse>
+				<br>
+				<label><<radiobutton "$NPCName[_npcId].pregnancy.enabled" true autocheck>> True</label> |
+				<label><<radiobutton "$NPCName[_npcId].pregnancy.enabled" false autocheck>> False</label>
+			</span>
+		</div>
+		<div class="settingsToggleItem">
+			<span data-target="npcname-analpregnancy" data-disabledif="!V.settings.nnpcPregnancyEnabled||!V.settings.npcAnalPregnancyEnabled||setup.pregnancy.infertile.includes(V.NPCName[T.npcId].nam)||V.NPCName[T.npcId].pregnancy.enabled===undefined||getActivePregnancies(V.NPCName[T.npcId].nam).length||!setup.pregnancy.typesEnabled.includes(V.NPCName[T.npcId].type)">
+				<span class="gold">Enable Anal Pregnancy for NPC:</span>
+				<mouse class="tooltip linkBlue">(?)<span>"NNPC/LI pregnancy" and "NPC anal pregnancy" must be toggled on in the global game settings for this to work. May also require the "incomplete pregnancy content" toggle to be enabled. Pregnancy for this NPC must be toggled on, as well. NPCs with vaginas will be able to carry both vaginally and anally if this is toggled on for them.</span></mouse>
+				<br>
+				<label><<radiobutton "$NPCName[_npcId].pregnancy.analEnabled" true autocheck>> True</label> |
+				<label><<radiobutton "$NPCName[_npcId].pregnancy.analEnabled" false autocheck>> False</label>
+			</span>
+		</div>
+
 
 		<div class="settingsToggleItem">
-			<span class="gold">Skin Colour:</span>
+			<span class="gold">Skin Tone:</span>
 			<br>
 			<<if $NPCName[_npcId].nam is "Black Wolf">>/*disable skin colour toggle when player has BW set to 'always a beast'*/
 				<span data-target="blackwolfmonster" data-disabledif="V.blackwolfmonster===0">
-				<label><<radiobutton "$NPCName[_npcId].skincolour" "white" autocheck>> Pale</label> |
-				<label><<radiobutton "$NPCName[_npcId].skincolour" "black" autocheck>> Dark</label>
+				<<npcSkinTone>>
 				</span>
 			<<elseif $NPCName[_npcId].nam is "Great Hawk">>/*disable skin colour toggle when player has GH set to 'always a beast'*/
 				<span data-target="greathawkmonster" data-disabledif="V.greathawkmonster===0">
-				<label><<radiobutton "$NPCName[_npcId].skincolour" "white" autocheck>> Pale</label> |
-				<label><<radiobutton "$NPCName[_npcId].skincolour" "black" autocheck>> Dark</label>
+				<<npcSkinTone>>
 				</span>
 			<<elseif $NPCName[_npcId].nam is "Night Monster">>/*disable skin colour toggle when player has NM set to 'always a beast'*/
 				<span data-target="nightmonstermonster" data-disabledif="V.nightmonstermonster===0">
-				<label><<radiobutton "$NPCName[_npcId].skincolour" "white" autocheck>> Pale</label> |
-				<label><<radiobutton "$NPCName[_npcId].skincolour" "black" autocheck>> Dark</label>
+				<<npcSkinTone>>
 				</span>
 			<<else>>
-				<span data-target="npcname-npcidskincolour" data-disabledif="V.NPCName[T.npcId].skincolour==='ghost'">
-				<label><<radiobutton "$NPCName[_npcId].skincolour" "white" autocheck>> Pale</label> |
-				<label><<radiobutton "$NPCName[_npcId].skincolour" "black" autocheck>> Dark</label>
+				<span data-target="npcname-npcidskincolour" data-disabledif="V.NPCName[T.npcId].skinType==='ghost'">
+				<<npcSkinTone>>
 				</span>
 			<</if>>
 		</div>
@@ -2884,10 +2996,15 @@
 				}>>
 			</div>
 			<div class="settingsToggleItem">
-				<span class="gold">Skin Colour:</span>
+				<span class="gold">Skin Tone:</span>
 				<br>
-				<label><<radiobutton "$per_npc[_pNPCId].skincolour" "white" autocheck>> Pale</label> |
-				<label><<radiobutton "$per_npc[_pNPCId].skincolour" "black" autocheck>> Dark</label>
+				<<if $per_npc[_pNPCId].skincolour isnot undefined>>
+					<<numberslider "$per_npc[_pNPCId].skincolour" $per_npc[_pNPCId].skincolour 0 100 1 {
+						value: v => setup.colours.getSkinToneSwatch(v),
+					}>>
+				<<else>>
+					<span class="small-description">Randomised.</span>
+				<</if>>
 			</div>
 		<</if>>
 	</div>
@@ -2940,6 +3057,37 @@
 		<</link>>
 	</div>
 	<<run $(() => {wikifier("featsMerge")})>>
+<</widget>>
+
+<<widget "skinToneRange">>
+	<div class="skinToneRange" @style="'--skin-gradient: linear-gradient(to right, ' + setup.colours.skin_options.gyaru.gradient.join(', ') + ')'">
+		<<for _handle range [["min", "Min", "Lightest"], ["mean", "Mode", "Most common"], ["max", "Max", "Darkest"]]>>
+			<<set _tone to $settings["skinTone" + _handle[1]]>>
+			<input type="range" min="0" max="100" step="1" @data-skin="_handle[0]" @data-tip="_handle[2] + ' skin tone'" @value="_tone"
+				@style="'--skin-thumb: ' + setup.colours.getSkinRgb(setup.colours.skin_options.gyaru, _tone / 100)">
+		<</for>>
+		<span class="skinToneTip"></span>
+	</div>
+<</widget>>
+
+<<widget "npcSkinTone">>
+	<<if $NPCName[_npcId].skinType is "ghost">>
+		<span class="small-description">Ghostly pale.</span>
+	<<elseif $NPCName[_npcId].skincolour isnot undefined>>
+		<<numberslider "$NPCName[_npcId].skincolour" $NPCName[_npcId].skincolour 0 100 1 {
+			value: v => setup.colours.getSkinToneSwatch(v),
+		}>>
+		<<link "Randomise">>
+			<<initnpcskinsingle _npcId "skincolour">>
+			<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
+		<</link>>
+	<<else>>
+		<span class="small-description">Randomised when the game starts.</span>
+		<<link "Set tone">>
+			<<set $NPCName[_npcId].skincolour to Math.clamp($settings.skinToneMode, 0, 100)>>
+			<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
+		<</link>>
+	<</if>>
 <</widget>>
 
 :: Settings [exitCheckBypass]

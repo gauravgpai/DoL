@@ -353,6 +353,7 @@
 					<</if>>
 					<<if $enemytype is "beast">><<set $NPCList[$vaginatarget].stance to "top">><</if>>
 					<<set $NPCList[$vaginatarget].location.genitals to "genitals">>
+					<<namedNpcReaction $vaginatarget "initiative">>
 				<<else>>
 					<span class="blue">You try to straddle <<combatpersons>> $NPCList[$vaginatarget].penisdesc, but the phallus is already occupied.</span><<set $vaginaactiondefault to "vaginatopenis">>
 				<</if>>
@@ -379,6 +380,7 @@
 				<span class="lblue">You kiss <<combatpersons>> pussy with your own<<if $NPCList[$vaginatarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$vaginatarget].chastity.vagina<</if>>.</span>
 				<<if $enemytype is "beast">><<set $NPCList[$vaginatarget].stance to "top">><</if>>
 				<<set $NPCList[$vaginatarget].location.genitals to "genitals">>
+				<<namedNpcReaction $vaginatarget "initiative">>
 			<<else>>
 				<span class="blue">You try to move your <<pussy>> nearer <<combatpersons>>, but the entrance is already occupied.</span><<set $vaginaactiondefault to "vaginatovagina">>
 			<</if>>
