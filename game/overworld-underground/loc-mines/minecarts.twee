@@ -178,7 +178,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 
 A <<person1>><<person>> walks up to you. "Day's over," <<he>> says. <<He>> grabs you and disconnects you from the rail. <<He>> quickly pushes you into a group of slaves.
 <br><br>
-You walk with them back to the sleeping cave. When everyone is inside, the guard slams the gate shut.
+You walk with them until you reach a metal gate leading to a small cave. The group filters through the gate, and when everyone is inside, the guard slams the gate shut.
 <br><br>
 <<endevent>>
 <<link [[Next|Mine Night]]>><</link>>

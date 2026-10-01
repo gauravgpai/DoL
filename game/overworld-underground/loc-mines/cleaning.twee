@@ -43,7 +43,7 @@ You're in the guard's quarters. Guards sporadically enter and leave.
 
 A <<person1>><<person>> looks at <<his>> watch and walks up to you. "Day's over," <<he>> says. <<He>> grabs you and pulls you out of the cave and pushes you into a group of slaves.
 <br><br>
-You walk with them back to the sleeping cave. When everyone is inside, the guard slams the gate shut.
+You walk with them until you reach a metal gate leading to a small cave. The group filters through the gate, and when everyone is inside, the guard slams the gate shut.
 <br><br>
 <<endevent>>
 <<link [[Next|Mine Night]]>><</link>>
