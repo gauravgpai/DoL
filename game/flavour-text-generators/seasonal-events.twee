@@ -574,17 +574,7 @@
 					<</if>>
 				<<case "park">>
 					<<if Weather.bloodMoon and !Weather.isOvercast>>
-						<<addinlineevent "bloodmoonTouristPark" 15>>
-							<<if random(0,3) is 0>>
-								<<bloodmoonTourist1>>
-							<<elseif random(0,3) is 1>>
-								<<bloodmoonTourist2>>
-							<<elseif random(0,3) is 2>>
-								<<bloodmoonTourist3>>
-							<<else>>
-								<<bloodmoonTourist4>>
-							<</if>>
-						<</addinlineevent>>
+						<<bloodmoonTouristParkWidget>>
 					<</if>>
 					<<if Time.season is "autumn">>
 						<<addinlineevent "autumn_park_1">>
@@ -716,17 +706,7 @@
 					<</if>>
 				<<case "park">>
 					<<if Weather.bloodMoon and !Weather.isOvercast>>
-						<<addinlineevent "bloodmoonTouristPark" 15>>
-							<<if random(0,3) is 0>>
-								<<bloodmoonTourist1>>
-							<<elseif random(0,3) is 1>>
-								<<bloodmoonTourist2>>
-							<<elseif random(0,3) is 2>>
-								<<bloodmoonTourist3>>
-							<<else>>
-								<<bloodmoonTourist4>>
-							<</if>>
-						<</addinlineevent>>
+						<<bloodmoonTouristParkWidget>>
 					<</if>>
 					<<addinlineevent "summer_park_1">>
 						You notice several youths nearby tossing water balloons at one another. <<stress -3>><<lstress>>
@@ -850,17 +830,7 @@
 					<</if>>
 				<<case "park">>
 					<<if Weather.bloodMoon and !Weather.isOvercast>>
-						<<addinlineevent "bloodmoonTouristPark" 15>>
-							<<if random(0,3) is 0>>
-								<<bloodmoonTourist1>>
-							<<elseif random(0,3) is 1>>
-								<<bloodmoonTourist2>>
-							<<elseif random(0,3) is 2>>
-								<<bloodmoonTourist3>>
-							<<else>>
-								<<bloodmoonTourist4>>
-							<</if>>
-						<</addinlineevent>>
+						<<bloodmoonTouristParkWidget>>
 					<</if>>
 					<<addinlineevent "spring_park_1">>
 						You notice the flowers in the park have started to bloom once more. <<stress -3>><<lstress>>
@@ -923,4 +893,19 @@
 	<</switch>>
 	<<runeventpool>>
 	<br><br>
+<</widget>>
+
+
+<<widget "bloodmoonTouristParkWidget">>
+	<<addinlineevent "bloodmoonTouristPark" 15>>
+		<<if random(0,3) is 0>>
+			<<bloodmoonTourist1>>
+		<<elseif random(0,3) is 1>>
+			<<bloodmoonTourist2>>
+		<<elseif random(0,3) is 2>>
+			<<bloodmoonTourist3>>
+		<<else>>
+			<<bloodmoonTourist4>>
+		<</if>>
+	<</addinlineevent>>
 <</widget>>

@@ -2069,6 +2069,8 @@ sugarcube-2:
       name: bloodmoonTouristBeach
     bloodmoonTouristPark:
       name: bloodmoonTouristPark
+    bloodmoonTouristParkWidget:
+      name: bloodmoonTouristParkWidget
     blindfoldintro:
       name: blindfoldintro
     blindfoldremove:
