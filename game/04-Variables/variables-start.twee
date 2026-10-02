@@ -75,7 +75,7 @@
 		zoom: 100,
 		numberify_enabled: _globalGeneralDefaults.numberify_enabled or 1,
 		timestyle: _globalGeneralDefaults.timestyle or "military",
-		tipdisable: "f",
+		tipdisable: false,
 		passageCount: _globalGeneralDefaults.passageCount or "disabled",
 		playtime: _globalGeneralDefaults.playtime or false,
 		traitOverlayFormat: "table",
@@ -253,12 +253,33 @@
 	<<set $settings.maleChanceSplit to false>>
 	<<set $settings.maleVictimChance to 50>>
 	<<set $homochance to 4>>
-	<<set $settings.beastMaleChance to 80>>
-	<<set $settings.beastMaleChanceMale to 80>>
-	<<set $settings.beastMaleChanceFemale to 80>>
-	<<set $settings.beastMaleChanceSplit to false>>
-	<<set $settings.monsterHallucinationsOnly to true>>
-	<<set $settings.monsterChance to 50>>
+	<<set $settings.granularBeastControl to false>>
+	/* Not real settings, just the saved generic settings that the granular settings get set to when granular beast setting is turned off and you change the generic beast settings. So these aren't checked in game anywhere, only the granular beast settings are checked. */
+	<<set $genericBeastSettings to {
+		beastMaleChance: 80,
+		beastMaleChanceMale: 80,
+		beastMaleChanceFemale: 80,
+		beastMaleChanceSplit: false,
+		monsterHallucinationsOnly: true,
+		monsterChance: 50,
+		bestiality: "on",
+	}>>
+	<<set $settings.beastSettings to {
+		dog: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		cat: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		pig: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		wolf: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		dolphin: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		lizard: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		bear: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		boar: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		horse: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		fox: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		hawk: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		cow: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		spider: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		snake: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+	}>>
 	<<set $deviancy to 0>>
 	<<set $baileydefeated to 0>>
 	<<set $baileydefeatedlewd to 0>>
