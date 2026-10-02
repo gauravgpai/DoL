@@ -1173,7 +1173,7 @@ You approach Remy's steeds.
 	<<clearnpc>><<beastNEWinit 1 horse>>
 
 	<!-- Modified for Monster People -->
-	<<if random(1,2) is 1 and $awareness gte 200 and $daily.livestock.horses_satisfied lt 6 and beastSexAllowedForType("horse", $monster is 1)>>
+	<<if random(1,2) is 1 and $awareness gte 200 and $daily.livestock.horses_satisfied lt 6 and beastSexEnabledForType("horse", $monster is 1)>>
 		One <<beasttype>> in the back seems agitated. <<bHe>> stomps at the others, and is
 		<<if $monster is 1>>
 			being rude and demanding.
@@ -1350,7 +1350,7 @@ You approach Remy's steeds.
 		<</if>>
 	<<else>>
 		<!-- Modified for Monster People -->
-		<<if $daily.livestock.horses_satisfied lt 6 and beastSexAllowedForType("horse", $monster is 1)>>
+		<<if $daily.livestock.horses_satisfied lt 6 and beastSexEnabledForType("horse", $monster is 1)>>
 			One <<beasttype>> seems frustrated even as you brush <<bhim>>. <<bHe>> keeps stomping at you, and is
 			<<if $monster is 1>>
 				being rude and demanding.

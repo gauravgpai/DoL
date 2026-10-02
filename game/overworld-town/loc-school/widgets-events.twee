@@ -184,7 +184,7 @@
 	<<else>>
 
 		<<beastNEWinit 1 cat>>
-		<<if beastSexAllowedForType("cat", $monster is 1)>>
+		<<if beastSexEnabledForType("cat", $monster is 1)>>
 			The quiet is broken by a low growl behind you. A large <<beasttype>> pounces on you from the shadows, forcing you to your knees.
 			<br><br>
 			<<if $cat gte 6>>
@@ -677,7 +677,7 @@
 							"Maybe we could have a turn sometime?"
 						<</if>>
 					<<case "bestiality">>
-						<<if animalSexAllowedForType("dog")>>
+						<<if animalSexEnabledForType("dog")>>
 							<<if $cool gte 120>>
 								"I swear!" you overhear the <<person1>><<person>> saying. "I heard moans coming from the alley, then some dogs walked out from there!"<br>
 								"But you didn't look into the alley?"<br>
@@ -2307,7 +2307,7 @@
 			<<cleareventpool>>
 
 			<<addinlineevent "courtyard_dog_molest">>
-				<<if beastSexAllowedForType("dog", $monster is 1)>>
+				<<if beastSexEnabledForType("dog", $monster is 1)>>
 					You see a <<beasttype>> rummaging in litter behind the kitchen. <<bHis>> ears prick, <span class="red">and <<bhe>> bounds towards you</span>.
 					<br><br>
 

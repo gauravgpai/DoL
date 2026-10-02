@@ -371,7 +371,7 @@
 <</if>>
 <br><br>
 
-<<if beastSexAllowedForType("bear", $monster is 1)>>
+<<if beastSexEnabledForType("bear", $monster is 1)>>
 	<<getinicon>><<link [[Enter|Forest Bear Box Molestation]]>><<set $molestationstart to 1>><</link>>
 	<br>
 <<else>>

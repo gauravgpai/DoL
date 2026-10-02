@@ -478,7 +478,7 @@ You ask Gwylan about the mummy costume.
 	You tell Gwylan that it started appearing alongside the rest of the Halloween costumes. <<He>> nods, as if expecting that answer.
 <<else>>
 	<<set $daily.gwylan.traumaTalk to true>>
-	You tell Gwylan that it appeared in the shop some time after you were wrapped up in a cocoon in the catacombs<<if $settings.spidersEnabled and animalSexAllowedForType("spider")>>, and tell <<him>> about the gigantic spiders<</if>>.
+	You tell Gwylan that it appeared in the shop some time after you were wrapped up in a cocoon in the catacombs<<if $settings.spidersEnabled and animalSexEnabledForType("spider")>>, and tell <<him>> about the gigantic spiders<</if>>.
 	<br><br>
 
 	<<He>> nods along, and suddenly snaps <<his>> fingers. "Spider silk! That would make it look even better. Tough to cut if I can get it thick enough. Although, that would require me to harvest it myself, and last time I did that... so many eggs..." <<He>> shivers.

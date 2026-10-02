@@ -11,7 +11,7 @@
 			<br><br>
 			<<link [[Play (0:20)|Wolf Cave Play Fight]]>><<pass 20>><<stress -4>><</link>><<lstress>>
 			<br>
-			<<if hasSexStat("deviancy", 2) and beastSexAllowedForType("wolf", $monster is 1)>>
+			<<if hasSexStat("deviancy", 2) and beastSexEnabledForType("wolf", $monster is 1)>>
 				<<link [[Lewd play|Wolf Cave Lewd Play]]>><<set $sexstart to 1>><</link>><<deviant2>>
 				<br>
 			<</if>>
@@ -119,7 +119,7 @@
 				<br><br>
 				<<saveNPC 0 wolf_rank_1>>
 				<<saveNPC 1 wolf_rank_2>>
-				<<if beastSexAllowedForType("wolf", $monster is 1)>>
+				<<if beastSexEnabledForType("wolf", $monster is 1)>>
 					<<link [[Favour the low ranking <<beasttype 0>>|Wolf Cave Rank]]>><<set $phase to 0>><</link>><<deviant1>>
 					<br>
 					<<link [[Favour the high ranking <<beasttype 1>>|Wolf Cave Rank]]>><<set $phase to 1>><</link>><<deviant1>>

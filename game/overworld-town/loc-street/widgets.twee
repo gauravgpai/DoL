@@ -28,7 +28,7 @@
 			<</if>>
 		<</if>>
 		<br><br>
-		<<if beastSexAllowedForType("dog", $monster is 1)>>
+		<<if beastSexEnabledForType("dog", $monster is 1)>>
 			<<link [[Next|Street Stray Rape]]>><<set $molestationstart to 1>><</link>>
 			<br>
 		<<else>>
@@ -459,7 +459,7 @@
 		You hear a growl from a nearby alley and instinctively freeze in place. You regain control as a shaggy black <<beasttype>> emerges from the darkness, teeth bared.
 		<br><br>
 
-		<<if beastSexAllowedForType("dog", $monster is 1)>>
+		<<if beastSexEnabledForType("dog", $monster is 1)>>
 			<<link [[Run|StreetEx3]]>><<set $phase to 0>><</link>><<athleticsdifficulty 1 600>>
 			<br>
 
@@ -950,7 +950,7 @@
 <<widget "streetNightDogAttack">>
 
 	<<beastNEWinit 3 dog>>
-	<<if beastSexAllowedForType("dog", $monster is 1)>>
+	<<if beastSexEnabledForType("dog", $monster is 1)>>
 		Your journey is interrupted by a savage growl emerging from the darkness. You turn to avoid it, only to face a pair of glowing eyes. You're surrounded.
 		<br><br>
 		<<link [[Next|Street Dogs]]>><<set $molestationstart to 1>><</link>>
@@ -1922,7 +1922,7 @@
 	<<if Time.dayState is "night">>
 		<<rng>>
 		<<beastNEWinit 1 dog>>
-		<<if $rng gte 51 and beastSexAllowedForType("dog", $monster is 1)>>
+		<<if $rng gte 51 and beastSexEnabledForType("dog", $monster is 1)>>
 			<<generate2>><<generate3>><<person2>>A <<person>> and <<person3>><<person>> approach you.
 			<<if $worn.neck.name is "familiar collar" and $worn.neck.cursed is 1>>
 				The <<person>> holds a <<beasttype 0>> on a leash. "Perfect. We've been looking for a <<bitch>> like you for our pet here. You'll get on your knees if you know what's good for you," <<he>> says as the <<person2>><<person>> grabs your collar.

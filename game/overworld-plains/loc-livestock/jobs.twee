@@ -1,7 +1,7 @@
 :: Livestock Job
 <<effects>>
 
-<<if $rng gte 51 or !animalSexAllowedForType("pig")>>
+<<if $rng gte 51 or !animalSexEnabledForType("pig")>>
 	<<if !playerChastity("hidden")>>
 		<<set $genderknown.pushUnique("Harper")>>
 	<</if>>
@@ -1957,10 +1957,10 @@ You're led back to the barn. Remy pauses outside. <<He>> reaches into a basket n
 	<</addinlineevent>>
 
 	<<addinlineevent "tie_stall_punishment_rape_reward" 1000>>
-		<<if $rng gte 51 and (beastSexAllowedForType("horse") or beastSexAllowedForType("dog"))>>
-			<<set _beastType to beastSexAllowedForType("horse") ? "horse" : "dog">>
+		<<if $rng gte 51 and (beastSexEnabledForType("horse") or beastSexEnabledForType("dog"))>>
+			<<set _beastType to beastSexEnabledForType("horse") ? "horse" : "dog">>
 			<<beastNEWinit 1 _beastType>>
-			<<if beastSexAllowedForType(_beastType, $monster is 1)>>
+			<<if beastSexEnabledForType(_beastType, $monster is 1)>>
 				<<set _attacker to $NPCList[0].type>>
 			<<else>>
 				<<clearnpc>><<generate1>><<set _attacker to "farmhand">>
@@ -1988,7 +1988,7 @@ You're led back to the barn. Remy pauses outside. <<He>> reaches into a basket n
 		A <<beasttype>> comes to a stop in front of you. <<bHe>> looks up at you with large, curious eyes. <<bHe>> purrs deep in <<bhis>> chest as <<bhe>> rubs against you.
 		<br><br>
 		<<if $rng lte 15>>
-			<<if beastSexAllowedForType("cat", $monster is 1)>>
+			<<if beastSexEnabledForType("cat", $monster is 1)>>
 				There is a gleam in <<bhis>> eyes. <<bHe>> saunters around to your ass. You feel <<bhis>> hot breath on your <<genitals>>.
 				<br><br>
 				<<if $cat gte 6>>
@@ -2369,7 +2369,7 @@ You strain your ears to listen.
 <br><br>
 <<if $phase is 0>>
 	<<if $skulduggerysuccess>>
-		<<if $rng gte 51 or !animalSexAllowedForType("pig")>>
+		<<if $rng gte 51 or !animalSexEnabledForType("pig")>>
 			"This experiment is very sensitive," a voice says. <<if $harperSeen>>It's Harper<<else>>You don't recognise it<</if>>. "If I don't administer the serum within the right time frame, it could throw off the results."
 		<<else>>
 			"The equipment's expensive," a voice says. <<if $nikiSeen>>It's Niki<<else>>You don't recognise it<</if>>. "Renting it costs me a fortune."

@@ -475,7 +475,7 @@ You approach Remy's steeds.
 	<<clearnpc>><<beastNEWinit 1 horse>>
 
 	<!-- Modified for Monster People -->
-	<<if random(1,2) is 1 and $daily.livestock.horses_satisfied lt 6 and beastSexAllowedForType("horse", $monster is 1)>>
+	<<if random(1,2) is 1 and $daily.livestock.horses_satisfied lt 6 and beastSexEnabledForType("horse", $monster is 1)>>
 		You notice that one <<beasttype>> is standing apart from the rest. <<bHe>> paces back and forth. The <<livestock_cows>> hasten to get out of <<bhis>> way.
 		<<set _agitated to 1>>
 		<br><br>
@@ -643,7 +643,7 @@ You approach Remy's steeds.
 		<</if>>
 	<<else>>
 		<!-- Modified for Monster People -->
-		<<if random(1,2) is 1 and $daily.livestock.horses_satisfied lt 6 and beastSexAllowedForType("horse", $monster is 1)>>
+		<<if random(1,2) is 1 and $daily.livestock.horses_satisfied lt 6 and beastSexEnabledForType("horse", $monster is 1)>>
 			You notice that one <<beasttype>> is standing apart from the rest. <<bHe>> paces back and forth. The <<livestock_cows>> hasten to get out of <<bhis>> way.
 			<br><br>
 
@@ -1090,7 +1090,7 @@ You decide not to get too close. The <<livestock_horse>> is eventually led off b
 <<beastNEWinit 3 horse>>
 You approach the <<beastsplural>>. One spots the basket of apples in your hand and <<if $monster is 1>>whispers<<else>>whinnies<</if>> to the others. Some of them <<if $monster is 1>>lick their lips, almost in a trance<<else>>whine, likely hoping to convince you to share<</if>>.
 <br><br>
-<<if beastSexAllowedForType("horse", $monster is 1) and hasSexStat("deviancy", 5)>>
+<<if beastSexEnabledForType("horse", $monster is 1) and hasSexStat("deviancy", 5)>>
 	<span class="lewd">A lewd idea strikes you.</span> There's something else they could eat.
 	<br><br>
 	<<link [[Tease them|Livestock Barn Horse Apple Seduction Tease]]>><</link>><<deviant5>>

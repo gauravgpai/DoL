@@ -457,7 +457,7 @@ The <<pound_text>> are eager to feed, but you won't suffer the indignance. They 
 Sated, the more dominant <<pound_text>> laze around the yard, while others hunt for scraps.
 <br><br>
 <<beastNEWinit 1 dog>>
-<<if $rng gte 67 and beastSexAllowedForType("dog", $monster is 1)>>
+<<if $rng gte 67 and beastSexEnabledForType("dog", $monster is 1)>>
 	<<if numberOfEarSlime() and ($earSlime.growth gte 80 - ($earSlime.deviancy * 10))>>
 		A <<beasttype>> watches you from afar with lust in <<bhis>> eyes.
 		<span class="lewd">You feel the slime in your head command you to give yourself to <<bhim>>.</span> It promises rewards if you comply and threatens consequences if you do not.
@@ -870,7 +870,7 @@ The <<person>> whistles, and slaps your exposed <<bottom>>. "Come on," <<he>> sa
 <br><br>
 <<endcombat>>
 <<beastNEWinit 6 dog>>
-<<if beastSexAllowedForType("dog", $monster is 1)>>
+<<if beastSexEnabledForType("dog", $monster is 1)>>
 	You feel a nose prod you from behind.
 	<br><br>
 
@@ -1902,7 +1902,7 @@ The <<person1>><<person>> holds you still as the guests continue to talk about y
 <br>
 "Yup, <<pshes>> a healthy one."
 <br>
-<<if beastSexAllowedForType("dog") and $settings.pregnancySpeechEnabled>>
+<<if beastSexEnabledForType("dog") and $settings.pregnancySpeechEnabled>>
 	<<if $player.penisExist>>
 		"You should have <<phim>> sire some pups."
 	<<else>>
@@ -2122,7 +2122,7 @@ Gwylan giggles. "Oops."
 <br>
 <<link [[Make them run outside naked|Pound Abduction Gwylan Rescue 5]]>><<set $phase2 to 2>><</link>>
 <br>
-<<if beastSexAllowedForType("dog", monsterChanceForType("dog") gte 100 and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType("dog")))>>
+<<if beastSexEnabledForType("dog", monsterChanceForType("dog") gte 100 and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType("dog")))>>
 	<<link [[Leash them and open all the cages|Pound Abduction Gwylan Rescue 5]]>><<set $phase2 to 3>><</link>>
 	<br>
 <</if>>
@@ -2161,7 +2161,7 @@ Gwylan digs through a satchel on <<his>> side, and pulls out a folded oversized 
 <<He>> raises <<his>> hand, and your leash appears in it. "Let's go home, dear." The two of you walk down the corridor.
 <<if $phase2 is 1>>
 	Gwylan flicks open the lock on each cage as you pass.
-	Many of the <<pound_text>> follow you out, but some curiously sniff the half-unconscious staff members. <<if beastSexAllowedForType("dog", monsterChanceForType("dog") gte 100 and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType("dog")))>><span class="lewd">Some begin to mount them.</span><</if>>
+	Many of the <<pound_text>> follow you out, but some curiously sniff the half-unconscious staff members. <<if beastSexEnabledForType("dog", monsterChanceForType("dog") gte 100 and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType("dog")))>><span class="lewd">Some begin to mount them.</span><</if>>
 <<elseif $phase2 is 2>>
 	Gwylan flicks open the lock on each cage as you pass.
 	The <<pound_text>> follow you out, some running ahead to join the naked staff members in their streak across the town.

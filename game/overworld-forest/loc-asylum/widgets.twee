@@ -143,7 +143,7 @@
 			<<AsylumHypnosisCommon "Exhibitionism" $hypnosis_traits.cover>>
 		<</addinlineevent>>
 
-		<<if beastSexAllowedForType("dog")>>
+		<<if beastSexEnabledForType("dog")>>
 			<<addinlineevent "asylum_treatment_6" 1.5>>
 				<<AsylumHypnosisCommon "Dog" $hypnosis_traits.deviancy>>
 			<</addinlineevent>>

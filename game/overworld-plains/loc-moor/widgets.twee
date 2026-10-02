@@ -206,7 +206,7 @@
 			<br>
 			<<link [[Approach carefully and mount|Moor Horse]]>><<set $phase to 1>><</link>><<tendingdifficulty 1 1200>>
 			<br>
-			<<if hasSexStat("deviancy", 5) and beastSexAllowedForType("horse", $monster is 1)>>
+			<<if hasSexStat("deviancy", 5) and beastSexEnabledForType("horse", $monster is 1)>>
 				<<link [[Let <<bhim>> mount you|Moor Horse]]>><<set $phase to 2>><</link>><<deviant5>>
 				<br>
 			<</if>>
@@ -318,7 +318,7 @@
 			The hair stands on the back of your neck. You turn and face a pair of <<print either("hazel", "yellow", "green", "blue")>> eyes as a large <<beasttype>> sprints towards you.
 			<br><br>
 
-			<<if animalSexAllowedForType("cat")>>
+			<<if animalSexEnabledForType("cat")>>
 				<<link [[Next|Moor Cat]]>><<set $molestationstart to 1>><</link>>
 				<br>
 			<<else>>

@@ -1702,7 +1702,7 @@ You land near the dying plants. They look fragile. You'll have to choose which p
 		<<flight_hunt_return>>
 	<<else>>
 		A <<beasttype>> pounces!
-		<<if animalSexAllowedForType("fox")>>
+		<<if animalSexEnabledForType("fox")>>
 			<br><br>
 
 			<<link [[Next|Bird Hunt Underbrush Rape]]>><<set $molestationstart to 1>><</link>>
@@ -2895,7 +2895,7 @@ You fly lower to the ground and spend some time watching the <<beasttype>> from 
 				<<link [[Take the object|Bird Hunt Fox Take]]>><</link>>
 				<br>
 			<</if>>
-			<<if beastSexAllowedForType("fox", $monster is 1) and hasSexStat("deviancy", 3)>>
+			<<if beastSexEnabledForType("fox", $monster is 1) and hasSexStat("deviancy", 3)>>
 				<<link [[Push over|Bird Hunt Fox Sex]]>><<set $sexstart to 1>><</link>><<deviant3>>
 				<br>
 			<</if>>
@@ -2948,7 +2948,7 @@ You fly lower to the ground and spend some time watching the <<beasttype>> from 
 
 			<<flight_hunt_return>>
 		<<else>>
-			<<if animalSexAllowedForType("fox")>>
+			<<if animalSexEnabledForType("fox")>>
 				You don't have time to flee before <<bhe>> springs forward.
 				<br><br>
 
@@ -3020,7 +3020,7 @@ You hold out your hand, motioning for <<bhim>> to give you whatever <<bhes>> hid
 <<wearProp _loot>>
 <br><br>
 
-<<if beastSexAllowedForType("fox", $monster is 1) and hasSexStat("deviancy", 3)>>
+<<if beastSexEnabledForType("fox", $monster is 1) and hasSexStat("deviancy", 3)>>
 	<<link [[Reward|Bird Hunt Fox Sex]]>><<set $sexstart to 1>><</link>><<deviant3>>
 	<br>
 <</if>>

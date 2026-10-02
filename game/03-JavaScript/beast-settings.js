@@ -64,10 +64,10 @@ window.beastMaleChanceForType = beastMaleChanceForType;
  * @param {BeastSettingType} type
  * @returns {boolean}
  */
-function animalSexAllowedForType(type) {
+function animalSexEnabledForType(type) {
 	return beastSettingsFor(type).bestiality === "on";
 }
-window.animalSexAllowedForType = animalSexAllowedForType;
+window.animalSexEnabledForType = animalSexEnabledForType;
 
 /**
  * Whether bestiality is allowed with monster people of this type.
@@ -75,10 +75,10 @@ window.animalSexAllowedForType = animalSexAllowedForType;
  * @param {BeastSettingType} type
  * @returns {boolean}
  */
-function monsterSexAllowedForType(type) {
+function monsterSexEnabledForType(type) {
 	return beastSettingsFor(type).bestiality !== "off";
 }
-window.monsterSexAllowedForType = monsterSexAllowedForType;
+window.monsterSexEnabledForType = monsterSexEnabledForType;
 
 /**
  * Whether bestiality is allowed for with monsters or animals of this type, or if the creature has already been generated as a monster.
@@ -88,14 +88,14 @@ window.monsterSexAllowedForType = monsterSexAllowedForType;
  * @param {boolean} beastAlreadyGeneratedAsMonster Optional
  * @returns {boolean}
  */
-function beastSexAllowedForType(type, beastAlreadyGeneratedAsMonster) {
+function beastSexEnabledForType(type, beastAlreadyGeneratedAsMonster) {
 	if (beastAlreadyGeneratedAsMonster === undefined) {
-		return animalSexAllowedForType(type) || (monsterSexAllowedForType(type) && monsterCanAppearForType(type));
+		return animalSexEnabledForType(type) || (monsterSexEnabledForType(type) && monsterCanAppearForType(type));
 	} else {
-		return beastAlreadyGeneratedAsMonster ? monsterSexAllowedForType(type) : animalSexAllowedForType(type);
+		return beastAlreadyGeneratedAsMonster ? monsterSexEnabledForType(type) : animalSexEnabledForType(type);
 	}
 }
-window.beastSexAllowedForType = beastSexAllowedForType;
+window.beastSexEnabledForType = beastSexEnabledForType;
 
 /**
  * Whether bestiality content is allowed with real animals of at least one type.
@@ -103,7 +103,7 @@ window.beastSexAllowedForType = beastSexAllowedForType;
  * @returns {boolean}
  */
 function isBestialityOnForAnyCreature() {
-	return beastSettingTypes.some(animalSexAllowedForType);
+	return beastSettingTypes.some(animalSexEnabledForType);
 }
 window.isBestialityOnForAnyCreature = isBestialityOnForAnyCreature;
 

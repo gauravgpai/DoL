@@ -164,8 +164,8 @@
 
 		<!-- Animal TF tips -->
 		<<set setup.tips.animalTFs to [
-			"Ingesting wolf<<if !animalSexAllowedForType('wolf')>>person<</if>> or fox<<if !animalSexAllowedForType('fox')>>person<</if>> cum can have strange effects on the body.",
-			"Never try to out-scream a fox<<if !animalSexAllowedForType('fox')>>person<</if>>.",
+			"Ingesting wolf<<if !animalSexEnabledForType('wolf')>>person<</if>> or fox<<if !animalSexEnabledForType('fox')>>person<</if>> cum can have strange effects on the body.",
+			"Never try to out-scream a fox<<if !animalSexEnabledForType('fox')>>person<</if>>.",
 		]>>
 
 		<!-- Lactation tips -->

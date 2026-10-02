@@ -512,10 +512,10 @@
 				<br>
 			<</if>>
 		<<elseif hasSexStat("deviancy", 3) and $farm_work.horses_satisfied lt 6 and $farm_work.horses_out lt 2>>
-			<<if $farm_work.horse.monster and monsterSexAllowedForType("horse")>>
+			<<if $farm_work.horse.monster and monsterSexEnabledForType("horse")>>
 				The centaurs seem agitated. They need "special" attention.
 				<br>
-			<<elseif animalSexAllowedForType("horse")>>
+			<<elseif animalSexEnabledForType("horse")>>
 				The horses seem agitated. They need "special" attention.
 				<br>
 			<</if>>
@@ -666,10 +666,10 @@
 				<</if>>
 				<br>
 
-			<<elseif hasSexStat("deviancy", 3) and $farm_work.horses_satisfied lt 6 and $farm_work.horses_out lt 2 and beastSexAllowedForType("horse", $farm_work.horse.monster)>>
+			<<elseif hasSexStat("deviancy", 3) and $farm_work.horses_satisfied lt 6 and $farm_work.horses_out lt 2 and beastSexEnabledForType("horse", $farm_work.horse.monster)>>
 				<<if $farm_work.horse.monster is true>>
 					<<animalicon "horse">><<link [[Approach a centaur|Farm Horses Lewd]]>><</link>><<run _actions++>>
-				<<elseif animalSexAllowedForType("horse")>>
+				<<elseif animalSexEnabledForType("horse")>>
 					<<animalicon "horse">><<link [[Approach a horse|Farm Horses Lewd]]>><</link>><<run _actions++>>
 				<</if>>
 				<br>
@@ -955,7 +955,7 @@
 
 	<<if dangerEvent()>>
 	<!-- Modified for monster people -->
-		<<if beastSexAllowedForType("horse", $farm_work.horse.monster)>>
+		<<if beastSexEnabledForType("horse", $farm_work.horse.monster)>>
 			You finish up, and walk toward the gate while cleaning the brush of hair. You hear hooves approach behind you. The <<farm_text horse>> gives chase.
 			<br><br>
 
@@ -1041,7 +1041,7 @@
 		<</if>>
 		<<farmicon "bucket">><<link [["Milk by hand (0:" + String(_cattleMilkHand).padStart(2, '0') + ")"|Farm Cattle Milk Hand]]>><<farm_yield 1>><<set $cattle_milked += 1>><<set $farm_work.cattle_milked += 1>><<tending 1>><<farm_cattle 1>><<set $phase to _cattleMilkHand>><<pass _cattleMilkHand>><</link>><<deviant1>><<gfarm>><<gtending>><<grespect>>
 		<br>
-		<<if hasSexStat("deviancy", 4) and beastSexAllowedForType("cow", $monster is 1)>>
+		<<if hasSexStat("deviancy", 4) and beastSexEnabledForType("cow", $monster is 1)>>
 			<<brothelicon>><<link [[Milk with your mouth (0:03)|Farm Cattle Milk Mouth]]>><<set $cattle_milked += 1>><<set $farm_work.cattle_milked += 1>><<tending 1>><<farm_count 3>><</link>><<deviant4>><<gtending>>
 			<<if $NPCList[0].penis isnot "none" and $player.virginity.oral is true>>
 				<<oralvirginitywarning>>
@@ -2708,7 +2708,7 @@
 			<<destination_farm_ride>>
 		<</if>>
 	<<elseif $rng is 3>>
-		<<if $farm.beasts.horses lt -20 and beastSexAllowedForType("horse", $monster is 1)>>
+		<<if $farm.beasts.horses lt -20 and beastSexEnabledForType("horse", $monster is 1)>>
 			The <<beasttype>> jerks in another direction, and breaks into a sprint, running across an open field. <<bHe>> stops beside a haybale, and leans forward, dropping you from the saddle.
 			<br><br>
 			You land on the hay, but the <<beasttype>> forces you down with <<bhis>> weight before you can escape.
@@ -2722,7 +2722,7 @@
 
 			<<link [[Next|Farm Ride Rape]]>><<set $molestationstart to 1>><</link>>
 			<br>
-		<<elseif $farm.beasts.horses lt 0 and beastSexAllowedForType("horse", $monster is 1)>>
+		<<elseif $farm.beasts.horses lt 0 and beastSexEnabledForType("horse", $monster is 1)>>
 			The <<beasttype>> pulls to a stop, and refuses to take a step further.
 			<<if $monster is 1>>
 				"I'm frustrated," <<bhe>> says. "It's your job to fix it."
@@ -3523,7 +3523,7 @@
 	<<set _silent to _args[0] ? _args[0] : false>>
 	<<set _newlineCount to _args[1] ? _args[1] : 2>>
 
-	<<if not _silent and beastSexAllowedForType("pig", $farm_work.pig.monster)>>
+	<<if not _silent and beastSexEnabledForType("pig", $farm_work.pig.monster)>>
 		<<if _fullyNaked or $allure gte 6000 * $settings.allureModifier>>
 			<span class="red">The <<farm_text_many pig>> watch you with open desire.</span>
 		<<elseif $allure gte 4000 * $settings.allureModifier>>
