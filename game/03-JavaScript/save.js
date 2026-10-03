@@ -561,6 +561,24 @@ window.importSettings = function (data, type) {
 	}
 };
 
+/**
+ * Convert the retired binary dark skin percentage into skin tone scale settings.
+ *
+ * @param {number} darkChance the retired $settings.darkSkinChance, 0-100
+ * @returns {{skinToneMin: number, skinToneMode: number, skinToneMax: number}}
+ */
+function skinToneSettingsFromDarkChance(darkChance) {
+	const dark = Math.clamp(darkChance, 0, 100);
+	if (dark <= 0) return { skinToneMin: 0, skinToneMode: 0, skinToneMax: 0 };
+	if (dark >= 100) return { skinToneMin: 70, skinToneMode: 70, skinToneMax: 70 };
+	if (dark <= 51) {
+		const mode = dark <= 30 ? 100 - 900 / dark : 4900 / (100 - dark);
+		return { skinToneMin: 0, skinToneMode: Math.clamp(Math.round(mode), 0, 100), skinToneMax: 100 };
+	}
+	return { skinToneMin: Math.round((70 * (dark - 51)) / 49), skinToneMode: 100, skinToneMax: 100 };
+}
+window.skinToneSettingsFromDarkChance = skinToneSettingsFromDarkChance;
+
 function importSettingsData(data) {
 	const imported = JSON.parse(data);
 	delete V.importString;
@@ -623,6 +641,7 @@ function applyNpcSettings(npc) {
 		target.pronoun = incoming.pronoun ?? target.pronoun;
 		target.gender = incoming.gender ?? target.gender;
 		target.skincolour = incoming.skincolour ?? target.skincolour;
+		target.skinType = incoming.skinType ?? target.skinType;
 		target.penissize = incoming.penissize ?? target.penissize;
 		target.breastsize = incoming.breastsize ?? target.breastsize;
 
@@ -698,7 +717,9 @@ function applyGameplaySettings(settings) {
 	V.settings.hypnosisEnabled = settings.hypnosisEnabled ?? V.settings.hypnosisEnabled;
 	V.settings.npcVirginChanceAdult = settings.npcVirginChanceAdult ?? V.settings.npcVirginChanceAdult;
 	V.settings.npcVirginChanceStudent = settings.npcVirginChanceStudent ?? V.settings.npcVirginChanceStudent;
-	V.settings.darkSkinChance = settings.darkSkinChance ?? V.settings.darkSkinChance;
+	V.settings.skinToneMin = settings.skinToneMin ?? V.settings.skinToneMin;
+	V.settings.skinToneMode = settings.skinToneMode ?? V.settings.skinToneMode;
+	V.settings.skinToneMax = settings.skinToneMax ?? V.settings.skinToneMax;
 	V.settings.lurkersEnabled = settings.lurkersEnabled ?? V.settings.lurkersEnabled;
 	V.settings.fertilityCycleEnabled = settings.fertilityCycleEnabled ?? V.settings.fertilityCycleEnabled;
 	V.settings.toyMultiplePenetrationEnabled = settings.toyMultiplePenetrationEnabled ?? V.settings.toyMultiplePenetrationEnabled;
@@ -916,7 +937,9 @@ function settingsToExportObject() {
 				hypnosisEnabled: V.settings.hypnosisEnabled,
 				npcVirginChanceAdult: V.settings.npcVirginChanceAdult,
 				npcVirginChanceStudent: V.settings.npcVirginChanceStudent,
-				darkSkinChance: V.settings.darkSkinChance,
+				skinToneMin: V.settings.skinToneMin,
+				skinToneMode: V.settings.skinToneMode,
+				skinToneMax: V.settings.skinToneMax,
 				lurkersEnabled: V.settings.lurkersEnabled,
 				fertilityCycleEnabled: V.settings.fertilityCycleEnabled,
 				toyMultiplePenetrationEnabled: V.settings.toyMultiplePenetrationEnabled,
@@ -1067,6 +1090,7 @@ function settingsToExportObject() {
 			pronoun: V.NPCName[i].pronoun,
 			gender: V.NPCName[i].gender,
 			skincolour: V.NPCName[i].skincolour,
+			skinType: V.NPCName[i].skinType,
 			penissize: V.NPCName[i].penissize,
 			breastsize: V.NPCName[i].breastsize,
 		};
@@ -1259,8 +1283,12 @@ window.settingNameFromVarName = function (varName) {
 			return "Likelihood of adults being virgins";
 		case "npcVirginChanceStudent":
 			return "Likelihood of young adults being virgins";
-		case "darkSkinChance":
-			return "Likelihood that NPCs have dark skin";
+		case "skinToneMin":
+			return "Lightest NPC skin";
+		case "skinToneMode":
+			return "Most common NPC skin";
+		case "skinToneMax":
+			return "Darkest NPC skin";
 		case "lurkersEnabled":
 			return "Lurkers";
 		case "fertilityCycleEnabled":
@@ -1488,7 +1516,9 @@ window.settingNameFromVarName = function (varName) {
 		case "pronoun":
 			return "Pronoun";
 		case "skincolour":
-			return "Skin colour";
+			return "Skin tone";
+		case "skinType":
+			return "Skin type";
 		default:
 			return varName;
 	}
@@ -2316,18 +2346,18 @@ function settingValueNameFromValue(varName, value) {
 					return "Female";
 			}
 			break;
-		case "skincolour":
+		case "skinType":
 			switch (value) {
-				case "none":
-					return "N/A";
-				case "white":
-					return "Pale";
-				case "black":
-					return "Dark";
 				case "ghost":
 					return "Ghostly Pale";
 			}
 			break;
+		case "skincolour":
+			return setup.colours.getSkinToneLabel(value);
+		case "skinToneMin":
+		case "skinToneMode":
+		case "skinToneMax":
+			return `${value} (${setup.colours.getSkinToneLabel(value)})`;
 	}
 
 	switch (varName) {
@@ -2349,7 +2379,6 @@ function settingValueNameFromValue(varName, value) {
 		case "npcVirginChanceStudent":
 		case "npcVirginChanceAdult":
 		case "straponChance":
-		case "darkSkinChance":
 		case "monsterChance":
 		case "basePlayerPregnancyChance":
 		case "baseNpcPregnancyChance":
@@ -2470,7 +2499,10 @@ function randomiseEncounterSettings() {
 	V.settings.breastModifier = random(-12, 12);
 	V.settings.npcVirginChanceAdult = random(0, 100);
 	V.settings.npcVirginChanceStudent = random(0, 100);
-	V.settings.darkSkinChance = random(0, 100);
+	const skinTones = [random(0, 100), random(0, 100), random(0, 100)].sort((a, b) => a - b);
+	V.settings.skinToneMin = skinTones[0];
+	V.settings.skinToneMode = skinTones[1];
+	V.settings.skinToneMax = skinTones[2];
 	V.settings.maleChanceMale = random(0, 100);
 	V.settings.maleChanceFemale = random(0, 100);
 	V.settings.maleNPCVaginaChance = random(0, 100);

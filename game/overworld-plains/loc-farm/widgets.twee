@@ -47,7 +47,7 @@
 
 <<widget "farm_work_time">>
 	<!-- Math.trunc means any time from 6:00 AM to 6:19 AM will be set to "1".
-		It seems this is coded so that farm work only officially begins when 1 <= _farm_work_time <= 45  -->
+		It seems this is coded so that farm work only officially begins when 1 <= _farm_work_time <= 45 -->
 	<<set _farm_work_time to Math.trunc(((Time.hour * 60) / 20) - 17)>>
 	<<if _farm_work_time gte 46 or _args[0] is "midnight">>
 		<<set _farm_work_time to 46>>
@@ -1119,6 +1119,7 @@
 				<<loadNPC 1 "alexs_parent1">>
 			<</if>>
 			Alex chats with you, and talks about <<person1>><<his>> family. "I've twelve siblings," <<he>> says at one point. <<person2>>"<<Mum>> doesn't know what to do with us all."<<person1>>
+			<<clearsinglenpc 1>>
 		<<case 2>>
 			Alex chats with you, and talks about the farm's pigs. "Hauling all their food over is rough," <<person1>><<he>> says at one point. "The truffles are worth it though."
 		<<case 3>>

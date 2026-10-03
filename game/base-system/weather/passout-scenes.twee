@@ -1153,7 +1153,7 @@ You take a few small cubes into your mouth and let them sit on your tongue. It f
 <</if>>
 
 <br><br>
-<<link [[Next|Robin Lemonade Help End]]>><</link>>
+<<link [[Next|Passout Beach Heatstroke Lemonade End]]>><</link>>
 
 
 :: Passout Beach Heatstroke Lemonade End
@@ -1312,7 +1312,7 @@ You stay there for a while, listening as the <<person>> talks about <<his>> life
 
 The last thing you hear is a <<personssimple>> voice. "Wait, I know that face... people call <<phim>> `<<overworld_nickname>>`, right? We should get <<phim>> to a hospital." <<He>> scoops you up and places you in the backseat of a car. The car is warm, and you drift off.
 <br><br>
-<<link [[Wake up|Hospital Bed]]>><<set $passoutReason to "hypothermia">><</link>>
+<<link [[Wake up|Hospital Bed]]>><<set $passoutReason to "hypothermia">><<endevent>><</link>>
 
 :: Passout Beach Hypothermia Molest
 
@@ -1417,7 +1417,7 @@ You apologise, but your words come out slurred. <<He>> looks even more worried. 
 <<if _fullyNaked>>
 	"I don't know what you were thinking, running around naked like this..." <<He>> frowns as <<he>> wraps a towel around you. <<He>> grabs a few more to cover you with.
 	<br><br>
-
+	<<towelup>>
 	<<link [[Next|Passout Beach Hypothermia Robin End]]>><</link>>
 
 <<elseif $upperwetstage gte 3 or $lowerwetstage gte 3 or $underlowerwetstage gte 3 or $underupperwetstage gte 3>>

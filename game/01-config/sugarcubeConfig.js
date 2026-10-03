@@ -11,7 +11,7 @@ const StartConfig = {
 	debug: false,
 	enableImages: true,
 	enableLinkNumberify: true,
-	version: "0.5.12.9",
+	version: "0.5.12.13",
 	versionName: `"Abyssal" edition`,
 	sneaky: false,
 	socialMediaEnabled: true,
@@ -749,6 +749,21 @@ Config.navigation.override = function (dest) {
 				return "Farm Pigs Rape Extreme";
 			case "Farm Pig Rape Finish":
 				return "Farm Pigs Rape Extreme Finish";
+
+			case "Street Dog Growl":
+				V.phase = 0;
+				return "Street Dog TF React";
+			case "Street Dog Hiss":
+				V.phase = 1;
+				return "Street Dog TF React";
+			case "Street Dog Yipp":
+				V.phase = 2;
+				return "Street Dog TF React";
+			case "Street Dog Screech":
+				V.phase = 3;
+				return "Street Dog TF React";
+			case "Street Dog Growl 2":
+				return "Street Dog TF React Growl 2";
 
 			default:
 				return false;

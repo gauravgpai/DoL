@@ -256,29 +256,29 @@
 	<<set $settings.granularBeastControl to false>>
 	/* Not real settings, just the saved generic settings that the granular settings get set to when granular beast setting is turned off and you change the generic beast settings. So these aren't checked in game anywhere, only the granular beast settings are checked. */
 	<<set $genericBeastSettings to {
-		beastMaleChance: 80,
-		beastMaleChanceMale: 80,
-		beastMaleChanceFemale: 80,
+		beastMaleChance: 50,
+		beastMaleChanceMale: 50,
+		beastMaleChanceFemale: 50,
 		beastMaleChanceSplit: false,
 		monsterHallucinationsOnly: true,
 		monsterChance: 50,
 		bestiality: "on",
 	}>>
 	<<set $settings.beastSettings to {
-		dog: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		cat: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		pig: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		wolf: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		dolphin: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		lizard: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		bear: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		boar: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		horse: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		fox: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		hawk: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		cow: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		spider: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
-		snake: {monsterChance: 50, hallucinationsOnly: true, maleChance: 80, maleChanceMale: 80, maleChanceFemale: 80, maleChanceSplit: false, bestiality: "on"},
+		dog: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		cat: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		pig: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		wolf: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		dolphin: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		lizard: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		bear: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		boar: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		horse: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		fox: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		hawk: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		cow: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		spider: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
+		snake: {monsterChance: 50, hallucinationsOnly: true, maleChance: 50, maleChanceMale: 50, maleChanceFemale: 50, maleChanceSplit: false, bestiality: "on"},
 	}>>
 	<<set $deviancy to 0>>
 	<<set $baileydefeated to 0>>
@@ -339,7 +339,13 @@
 	<<set $eden_plot_intro to 1>>
 	<<set $wolf_plot_intro to 1>>
 	<<set $asylum_plot_intro to 1>>
-	<<set $plots to {}>>
+	<<set $plots to {
+		"garden": [],
+		"farm": [],
+		"wolf": [],
+		"eden": [],
+		"asylum": []
+	}>>
 	<<set $tendingvars to {}>>
 	<<set $settings.tendingYieldModifier to 5>>
 	<<set $plants_known to []>>
@@ -349,6 +355,7 @@
 		record: {},
 		autoRebait: false,
 		baitShopRequestsCompleted: 0,
+		waitsSinceLastCatch: 0,
 	}>>
 	<<set $stall_rejected to 0>>
 	<<set $produce_sold to 0>>
@@ -511,9 +518,9 @@
 
 	<<set $beastgenderoverride to 0>>
 
-	<<set $settings.femaleNPCPenisChance to 0>>
-	<<set $settings.maleNPCVaginaChance to 0>>
-	<<set $settings.straponChance to 0>>
+	<<set $settings.femaleNPCPenisChance to 5>>
+	<<set $settings.maleNPCVaginaChance to 5>>
+	<<set $settings.straponChance to 5>>
 	<<set $settings.breastModifier to 0>>
 	<<set $settings.penisModifier to 0>>
 
@@ -980,6 +987,9 @@
 	<<if $facevariant is undefined>>
 		<<set $facevariant to "default">>
 	<</if>>
+	<<if $defaultSidebarMouth is undefined>>
+		<<set $defaultSidebarMouth to "smile">>
+	<</if>>
 
 	<<if $makeup is undefined>>
 		<<set $makeup = {}>>
@@ -1080,4 +1090,8 @@
 	<<set $passageChangesCount to 0>>
 
 	<<set $timeMessages to []>>
+
+	<<set $travelSpeed to "normally">>
+
+	<<set $collapsedRelationBoxes to []>>
 <</widget>>

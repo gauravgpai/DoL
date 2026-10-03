@@ -4012,7 +4012,7 @@
 							<<case 3>> "Bet prey tastes nice."
 							<<case 4>> "Smell fertile."
 							<<case 5>> "Cold out. I keep you warm."
-							<<default>> "My mates for me only. Not for you. No taking."
+							<<default>> "My mate's for me only. Not for you. No taking."
 						<</switch>>
 					<<else>>
 						<<switch $npcspeechcycle>>
@@ -4106,7 +4106,7 @@
 							<<case 3>> "Bet prey tastes nice."
 							<<case 4>> "Smell fertile."
 							<<case 5>> "Cold out. I keep you warm."
-							<<default>> "My mates for me only. Not for you. No taking."
+							<<default>> "My mate's for me only. Not for you. No taking."
 						<</switch>>
 					<<else>>
 						<<switch $npcspeechcycle>>
