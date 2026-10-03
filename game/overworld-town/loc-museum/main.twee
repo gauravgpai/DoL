@@ -63,9 +63,9 @@
 	<<museumAntiqueStatus "antiquegolddagger" "talk">>
 	<<museumAntiqueStatus "antiquegoldamulet" "talk">>
 	<<museumAntiqueStatus "antiquegoldmask" "talk">>
+	<<museumAntiqueStatus "antiquelantern" "talk">>
 	<<museumAntiqueStatus "antiqueshovelhandle" "talk">>
 	<<museumAntiqueStatus "antiquerustypickaxe" "talk">>
-	<<museumAntiqueStatus "antiquelantern" "talk">>
 	<<museumAntiqueStatus "antiquepurplediamond" "talk">>
 <</widget>>
 

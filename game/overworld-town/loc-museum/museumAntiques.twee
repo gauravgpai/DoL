@@ -782,7 +782,11 @@ You look around the museum. The pedestals are grooved, as if awaiting specific o
 				"antiquehorn2": "notFound",
 				"antiquegolddagger": "notFound",
 				"antiquegoldamulet": "notFound",
-				"antiquegoldmask": "notFound"
+				"antiquegoldmask": "notFound",
+				"antiquelantern": "notFound",
+				"antiqueshovelhandle": "notFound",
+				"antiquerustypickaxe": "notFound",
+				"antiquepurplediamond": "notFound"
 			},
 			paintings:{
 				"paintingward": "notFound",

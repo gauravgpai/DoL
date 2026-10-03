@@ -138,7 +138,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 	<<print either(
 		"under a rock",
 		"in a pile of rotten wood",
-		"on the ground, you almost trip on it"
+		"on the ground, you almost tripped on it"
 	)>>.
 	<br><br>
 	<<ind>><<link [[Take it|Mine Antique]]>><</link>>
@@ -219,12 +219,14 @@ You pick up a pickaxe and try to break the object out of the rock wall.
 <<effects>>
 <<set $antiquemoney += 20>>
 <<set _antique to `antique${$phase}`>>
-<<museumAntiqueStatus _antique "talk">>
+<<museumAntiqueStatus _antique "found">>
 
 <<if $phase is "shovelhandle">>
 	<<set _antique to "shovel handle">>
 <<elseif $phase is "rustypickaxe">>
 	<<set _antique to "rusty pickaxe">>
+<<elseif $phase is "lantern">>
+	<<set _antique to "lantern">>
 <</if>>
 
 <<set _antique_prop to `antique ${_antique}`>>
