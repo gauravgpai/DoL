@@ -2,7 +2,7 @@
 
 const monsterPresets = {
 	monstersAll: { monsterChance: 100, hallucinationsOnly: false, namedMonsterChance: 100, namedHallucinationsOnly: false },
-	monstersDefault: { monsterChance: 20, hallucinationsOnly: true, namedMonsterChance: 0, namedHallucinationsOnly: true },
+	monstersDefault: { monsterChance: 50, hallucinationsOnly: true, namedMonsterChance: 50, namedHallucinationsOnly: true },
 	monstersNone: { monsterChance: 0, hallucinationsOnly: false, namedMonsterChance: 0, namedHallucinationsOnly: true },
 };
 

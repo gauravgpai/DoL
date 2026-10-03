@@ -1882,12 +1882,16 @@
 
 <<widget "namedBeastSettingRow">>
 	<<set _namedBeastKey to _args[0]>>
-	<div class="settingsToggleItemWide">
+	<div class="settingsToggleItem">
 		<div class="numberslider-inline">
 			<span class="gold">Monster person chance:</span>
 			<<numberslider `"$settings.namedBeasts." + _namedBeastKey + ".monsterChance"` $settings.namedBeasts[_namedBeastKey].monsterChance 0 100 1 {
 				onInputChange: v => {
-					$("#npcSkinTone").toggleClass("hidden", v === 0);
+					if (v === 0) {
+						$("#npcSkinToneSetting").addClass("hidden");
+					} else {
+						$("#npcSkinToneSetting").removeClass("hidden");
+					}
 				},
 				value: v => {
 					switch (v) {
@@ -2916,10 +2920,18 @@
 		</div>
 
 
+		<<if $NPCName[_npcId].nam is "Black Wolf">>
+			<<namedBeastSettingRow "blackwolf">>
+		<<elseif $NPCName[_npcId].nam is "Great Hawk">>
+			<<namedBeastSettingRow "greathawk">>
+		<<elseif $NPCName[_npcId].nam is "Night Monster">>
+			<<namedBeastSettingRow "nightmonster">>
+		<</if>>
+
 		<<set _skinToneHidden to ($NPCName[_npcId].nam is "Black Wolf" and $settings.namedBeasts.blackwolf.monsterChance is 0)
 			or ($NPCName[_npcId].nam is "Great Hawk" and $settings.namedBeasts.greathawk.monsterChance is 0)
 			or ($NPCName[_npcId].nam is "Night Monster" and $settings.namedBeasts.nightmonster.monsterChance is 0)>>
-		<div id="npcSkinTone" @class="'settingsToggleItem' + (_skinToneHidden ? ' hidden' : '')">
+		<div id="npcSkinToneSetting" @class="'settingsToggleItem' + (_skinToneHidden ? ' hidden' : '')">
 			<span class="gold">Skin Tone:</span>
 			<br>
 			<<if ["Black Wolf", "Great Hawk", "Night Monster"].includes($NPCName[_npcId].nam)>>
@@ -2930,14 +2942,6 @@
 				</span>
 			<</if>>
 		</div>
-
-		<<if $NPCName[_npcId].nam is "Black Wolf">>
-			<<namedBeastSettingRow "blackwolf">>
-		<<elseif $NPCName[_npcId].nam is "Great Hawk">>
-			<<namedBeastSettingRow "greathawk">>
-		<<elseif $NPCName[_npcId].nam is "Night Monster">>
-			<<namedBeastSettingRow "nightmonster">>
-		<</if>>
 	</div>
 	<div style="clear:both;"></div>
 
