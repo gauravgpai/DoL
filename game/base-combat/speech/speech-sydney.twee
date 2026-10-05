@@ -347,7 +347,7 @@
 			<</if>>
 		<</addSpeechLine>>
 	<</if>>
-	<<if !$sydneyUniqueComments.includes("withhold") and ($speechVaginaWithhold or $speechAnusWithhold or $speechPenisWithhold or $speechOtherAnusWithhold)>>
+	<<if !$sydneyUniqueComments.includes("withhold") and ($speechVaginaWithhold or $speechAnusWithhold or $speechNPCVaginaWithhold or $speechNPCAnusWithhold)>>
 		<<addSpeechLine "withhold">>
 			<<set $sydneyUniqueComments.pushUnique("withhold")>>
 			<<switch _sydneyStatus>>
@@ -360,7 +360,7 @@
 	<</if>>
 	<<switch _sydneyStatus>>
 		<<case "pure" "pureLust">>
-			<<if $speechPenisPenetrated>>
+			<<if $speechNPCVaginaPenetrated>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 					<<addSpeechLine "penetrated">>
 						<<He>> barely manages to speak. "If... if you... I'm going to..."
@@ -376,7 +376,7 @@
 				<</if>>
 			<</if>>
 		<<case "corrupt" "corruptLust">>
-			<<if $speechPenisPenetrated>>
+			<<if $speechNPCVaginaPenetrated>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 					<<if $rng gte 81 and $settings.pregnancySpeechEnabled>>
 						<<addSpeechLine "penetrated">>
@@ -398,7 +398,7 @@
 				<</if>>
 			<</if>>
 		<<default>>
-			<<if $speechPenisPenetrated>>
+			<<if $speechNPCVaginaPenetrated>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 					<<addSpeechLine "penetrated">>
 						<<He>> barely manages to speak. "I think I'm... getting close...!"
@@ -416,7 +416,7 @@
 	<</switch>>
 	<<switch _sydneyStatus>>
 		<<case "pure" "pureLust">>
-			<<if $speechOtherAnusPenetrated>>
+			<<if $speechNPCAnusPenetrated>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 					<<addSpeechLine "penetrated">>
 						<<He>> barely manages to speak. "If... if you... I'm going to..."
@@ -432,7 +432,7 @@
 				<</if>>
 			<</if>>
 		<<case "corrupt" "corruptLust">>
-			<<if $speechOtherAnusPenetrated>>
+			<<if $speechNPCAnusPenetrated>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 					<<addSpeechLine "penetrated">>
 						<<He>> moans. "Harder. Harder! I'm almost there!"
@@ -448,7 +448,7 @@
 				<</if>>
 			<</if>>
 		<<default>>
-			<<if $speechOtherAnusPenetrated>>
+			<<if $speechNPCAnusPenetrated>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 					<<addSpeechLine "penetrated">>
 						<<He>> barely manages to speak. "I think I'm... getting close...!"
@@ -635,19 +635,19 @@
 	<<switch _sydneyStatus>>
 		<<case "pure" "pureLust">>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> barely manages to speak. "Ah... something's coming..."
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "I'm starting to feel weird..."
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> giggles. "This tickles!"
 					<</addSpeechLine>>
@@ -655,19 +655,19 @@
 			<</if>>
 		<<case "corrupt" "corruptLust">>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> moans, grabbing the back of your head. "I'm almost there! Are you ready?"
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "Lick harder."
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "You look so cute down there."
 					<</addSpeechLine>>
@@ -675,19 +675,19 @@
 			<</if>>
 		<<default>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> barely manages to speak. "I think I'm... getting close...!"
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "You can breathe, right? I'm not hurting you?"
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "Your tongue is so warm."
 					<</addSpeechLine>>
@@ -761,19 +761,19 @@
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
 				<<if _sydneyVirgin>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+						<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> barely manages to speak. "D...don't... put it in..."
 							<</addSpeechLine>>
 						<</if>>
 					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+						<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> speaks. "J... just the tip, alright?"
 							<</addSpeechLine>>
 						<</if>>
 					<<else>>
-						<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+						<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> giggles nervously. "This is dangerous..."
 							<</addSpeechLine>>
@@ -781,19 +781,19 @@
 					<</if>>
 				<<else>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+						<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> speaks through gasps and moans. "J...just put it in already. I can't take it anymore!"
 							<</addSpeechLine>>
 						<</if>>
 					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+						<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> smiles at you with pleading eyes and spreads <<his>> legs further. "Wh... what are you waiting for...?"
 							<</addSpeechLine>>
 						<</if>>
 					<<else>>
-						<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+						<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> giggles. "G... go ahead. Just be gentle, please."
 							<</addSpeechLine>>
@@ -802,34 +802,34 @@
 				<</if>>
 			<<case "corrupt" "corruptLust">>
 				<<if _sydneyVirgin>>
-					<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+					<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 						<<addSpeechLine "imminent">>
 							<<He>> moans. "Do it. Deflower me. Make me yours!"
 						<</addSpeechLine>>
 					<</if>>
 				<<else>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+						<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> moans. "Stop teasing me!"
 							<</addSpeechLine>>
 						<</if>>
 					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
 						<<if $speechVaginaImminent is 1>>
-							<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+							<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 								<<addSpeechLine "imminent">>
 									<<He>> speaks. "I want to be inside you."
 								<</addSpeechLine>>
 							<</if>>
 						<<else>>
-							<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+							<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 								<<addSpeechLine "imminent">>
 									<<He>> speaks. "I want you inside me."
 								<</addSpeechLine>>
 							<</if>>
 						<</if>>
 					<<else>>
-						<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+						<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> speaks. "I want to put it in."
 							<</addSpeechLine>>
@@ -843,19 +843,19 @@
 			<<case "pure" "pureLust" "neutral" "neutralLust">>
 				<<if _sydney.virginity.anal is true>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+						<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> barely manages to speak. "I... think I'm ready..."
 							<</addSpeechLine>>
 						<</if>>
 					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+						<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> speaks. "Be gentle, please..."
 							<</addSpeechLine>>
 						<</if>>
 					<<else>>
-						<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+						<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> giggles nervously. "I've never even though about doing it this way..."
 							<</addSpeechLine>>
@@ -863,19 +863,19 @@
 					<</if>>
 				<<else>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-						<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+						<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> speaks through gasps and moans. "J...just put it in already. I can't take it anymore!"
 							<</addSpeechLine>>
 						<</if>>
 					<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-						<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+						<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> smiles at you with pleading eyes and spreads <<his>> legs further. "Wh... what are you waiting for...?"
 							<</addSpeechLine>>
 						<</if>>
 					<<else>>
-						<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+						<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 							<<addSpeechLine "imminent">>
 								<<He>> giggles. "At least it's still pure this way."
 							<</addSpeechLine>>
@@ -884,19 +884,19 @@
 				<</if>>
 			<<case "corrupt" "corruptLust">>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-					<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+					<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 						<<addSpeechLine "imminent">>
 							<<He>> moans. "Stop teasing me!"
 						<</addSpeechLine>>
 					<</if>>
 				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-					<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+					<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 						<<addSpeechLine "imminent">>
 							<<He>> speaks. "I want you inside me."
 						<</addSpeechLine>>
 					<</if>>
 				<<else>>
-					<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+					<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 						<<addSpeechLine "imminent">>
 							<<He>> speaks. "I want to put it in."
 						<</addSpeechLine>>

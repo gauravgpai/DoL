@@ -757,35 +757,35 @@
 
 :: Widgets End Speech [widget]
 <<widget "manend">>
-	<<unset $speechPenisPenetrated>>
+	<<unset $speechNPCVaginaPenetrated>>
 	<<unset $speechVaginaPenetrated>>
 	<<unset $speechAnusPenetrated>>
 	<<unset $speechMouthPenetrated>>
-	<<unset $speechOtherAnusPenetrated>>
+	<<unset $speechNPCAnusPenetrated>>
 	<<unset $speechVaginaImminent>>
-	<<unset $speechPenisImminent>>
+	<<unset $speechNPCVaginaImminent>>
 	<<unset $speechAnusImminent>>
 	<<unset $speechMouthImminent>>
-	<<unset $speechOtherAnusImminent>>
+	<<unset $speechNPCAnusImminent>>
 	<<unset $speechVaginaEntrance>>
 	<<unset $speechAnusEntrance>>
 	<<unset $speechMouthEntrance>>
-	<<unset $speechPenisEntrance>>
-	<<unset $speechOtherAnusEntrance>>
+	<<unset $speechNPCVaginaEntrance>>
+	<<unset $speechNPCAnusEntrance>>
 	<<unset $speechVaginaWithhold>>
 	<<unset $speechAnusWithhold>>
-	<<unset $speechPenisWithhold>>
-	<<unset $speechOtherAnusWithhold>>
+	<<unset $speechNPCVaginaWithhold>>
+	<<unset $speechNPCAnusWithhold>>
 	<<unset $speechVagina>>
 	<<unset $speechPenis>>
 	<<unset $speechAnus>>
-	<<unset $speechVaginaMouth>>
+	<<unset $speechMouthNPCVagina>>
 	<<unset $speechTrib>>
 	<<unset $speechPlayerBeaten>>
 	<<unset $speechPlayerHits>>
 	<<unset $speechTribEntrance>>
 	<<unset $speechFaceSit>>
-	<<unset $speechMouthOtherAnus>>
+	<<unset $speechMouthNPCAnus>>
 	<<unset $speechAnalLick>>
 	<<unset $speechAnalKiss>>
 
@@ -828,7 +828,8 @@
 	<<unset $speechVaginaFlaunt>>
 	<<unset $speechPenisBig>>
 	<<unset $speechPenisSmall>>
-	<<unset $speechPenisEscape>>
+	<<unset $speechNPCVaginaEscape>>
+	<<unset $speechNPCAnusEscape>>
 	<<unset $speechVaginaEscape>>
 	<<unset $speechAnusEscape>>
 	<<unset $speechSteal>>
@@ -944,12 +945,15 @@
 <<widget "manspeech">>
 	<<set _n to _args[0]>>
 	<<if $NPCList[_n].speechpenisescape is 1>>
-		<<set $speechPenisEscape to 1>>
+		<<set $speechNPCVaginaEscape to 1>>
 	<</if>>
 	<<if $NPCList[_n].speechvaginaescape is 1>>
 		<<set $speechVaginaEscape to 1>>
 	<</if>>
 	<<if $NPCList[_n].speechanusescape is 1>>
 		<<set $speechAnusEscape to 1>>
+	<</if>>
+	<<if $NPCList[_n].speechotheranusescape is 1>>
+		<<set $speechNPCAnusEscape to 1>>
 	<</if>>
 <</widget>>

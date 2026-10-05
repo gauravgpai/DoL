@@ -237,7 +237,7 @@
 				"You want <<nnpc_mummy "Avery">> to put you in your place? You could have just asked politely instead of forcing my hand."
 			<</if>>
 		<</addPairedSpeechLine>>
-	<<elseif isLoveInterest("Avery")>> 
+	<<elseif isLoveInterest("Avery")>>
 		<<if !$avery_mansion>>
 			<<addPairedSpeechLine "Avery" "moan">>
 				<<pcLine>>"Take me away from that place, take me with you."

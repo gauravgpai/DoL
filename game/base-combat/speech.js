@@ -4,7 +4,7 @@
  * What each speaker has said this combat lives in $speechSaidLines and is unset by <<endevent>>.
  */
 
-/* Speech catgories. Categories have different priorities and cooldowns (how many turns the speaker takes
+/* Speech categories. Categories have different priorities and cooldowns (how many turns the speaker takes
 before saying a line of that category again). Categories without a cooldown can be said every turn. */
 setup.speechCategories = {
 	/* A virginity being taken is always highest priority. */
@@ -13,7 +13,7 @@ setup.speechCategories = {
 	/* Herm/crossdressing reveals are usually one-time and spoken the turn after the PC's genitals are seen. */
 	reveal: { priority: 90 },
 
-	/* An NNPC's paired reply one of PC's unique lines. */
+	/* An NNPC's paired reply to one of the PC's unique lines. */
 	pairedReply: { priority: 85 },
 
 	/* Used by Robin for recalling memories during sex */
@@ -49,7 +49,7 @@ setup.speechCategories = {
 	struggle: { priority: 70 },
 	vaginaFlaunt: { priority: 70 },
 
-	/* A NNPC's follow up line to something they said earlier. */
+	/* An NNPC's follow up line to something they said earlier. */
 	followUp: { priority: 65 },
 
 	/* NNPC reacting to hitting or spanking the PC. */
@@ -245,14 +245,14 @@ Macro.add("addPairedSpeechLine", {
 
 /**
  * If a speaker can pass to mouth actions, rolls whether they will.
- Always when there's nothing to say. 40% chance when there's an idle comment.
+ * Always when there's nothing to say. 40% chance when only idle comments are left.
  *
- * @param {SpeechLine[]} sayableLines
+ * @param {SpeechLine[]} lines the lines the speaker would pick from
  * @returns {boolean}
  */
-function rollSpeechPass(sayableLines) {
-	if (sayableLines.length === 0) return true;
-	if (!sayableLines.every(line => line.category === "idle")) return false;
+function rollSpeechPass(lines) {
+	if (lines.length === 0) return true;
+	if (!lines.every(line => line.category === "idle")) return false;
 	$.wiki("<<rng>>");
 	return V.rng <= 40;
 }
@@ -267,20 +267,20 @@ Macro.add("speechSay", {
 		const canPass = getSpeechPool(speaker).canPass;
 		delete T.speechPool[speaker];
 		delete T.speechPoolSpeaker;
-		const passed = canPass && rollSpeechPass(sayableLines);
-		if (passed || sayableLines.length === 0) {
-			addSpeechHistoryEntry(speaker, { id: null, category: null });
-			if (passed) T.noNameComment = true;
-			return;
-		}
 		let lines = getUnsaidSpeechLines(speaker, sayableLines);
-		if (lines.length === 0) {
+		if (lines.length === 0 && sayableLines.length > 0) {
 			const lastSaidId = getSpeechHistory(speaker)
 				.filter(entry => entry.id !== null)
 				.at(-1).id;
 			clearSpeechHistory(speaker);
 			lines = sayableLines.filter(line => line.id !== lastSaidId);
 			if (lines.length === 0) lines = sayableLines;
+		}
+		const passed = canPass && rollSpeechPass(lines);
+		if (passed || lines.length === 0) {
+			addSpeechHistoryEntry(speaker, { id: null, category: null });
+			if (passed) T.noNameComment = true;
+			return;
 		}
 		const line = pickSpeechLine(lines);
 		addSpeechHistoryEntry(speaker, { id: line.id, category: line.category });

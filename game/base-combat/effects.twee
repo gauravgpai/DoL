@@ -6332,10 +6332,10 @@
 			<<set $penisaction to 0>><<set $penisactiondefault to "otheranusescape">><<actionsotheranusescape>><<brat 10 $penistarget>>
 			<<set $penisuse to "otheranus">><<set $penisstate to "otheranusentrance">>
 			<<if $NPCList[$penistarget].vagina is "otheranusimminent">>
-				<<set $NPCList[$penistarget].vagina to "otheranusentrance">><<print '<<set $speechOtherAnusEscape'+ ($penistarget + 1) +' to 1>>'>>
+				<<set $NPCList[$penistarget].vagina to "otheranusentrance">><<set $NPCList[$penistarget].speechotheranusescape to 1>>
 			<</if>>
 			<<if $NPCList[$penistarget].penis is "otheranusimminent">>
-				<<set $NPCList[$penistarget].penis to "otheranusentrance">><<print '<<set $speechOtherAnusEscape'+ ($penistarget + 1) +' to 1>>'>>
+				<<set $NPCList[$penistarget].penis to "otheranusentrance">><<set $NPCList[$penistarget].speechotheranusescape to 1>>
 			<</if>>
 		<</if>>
 

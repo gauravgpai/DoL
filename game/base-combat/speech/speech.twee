@@ -1523,8 +1523,8 @@
 			][random(0,2)]>>
 		<</if>>
 
-	<<elseif $speechPenisEscape is 1>>
-		<<set $speechPenisEscape to 0>>
+	<<elseif $speechNPCVaginaEscape is 1>>
+		<<set $speechNPCVaginaEscape to 0>>
 		<<He>> speaks.
 		<<if $enemyanger lte 20>>
 			<<print [
@@ -1546,8 +1546,8 @@
 			][random(0,2)]>>
 		<</if>>
 
-	<<elseif $speechOtherAnusEscape is 1>>
-		<<set $speechOtherAnusEscape to 0>>
+	<<elseif $speechNPCAnusEscape is 1>>
+		<<set $speechNPCAnusEscape to 0>>
 		<<He>> speaks.
 		<<if $enemyanger lte 20>>
 			<<print [
@@ -1592,7 +1592,7 @@
 			][random(0,2)]>>
 		<</if>>
 
-	<<elseif $speechPenisPenetrated is 1>>
+	<<elseif $speechNPCVaginaPenetrated is 1>>
 		<<if $dissociation lt 2>>
 			<<if $enemyanger lte 20>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -1655,7 +1655,7 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechOtherAnusPenetrated is 1>>
+	<<elseif $speechNPCAnusPenetrated is 1>>
 		<<if $dissociation lt 2>>
 			<<if playerHasStrapon()>>
 				<<if $enemyanger lte 20>>
@@ -2052,7 +2052,7 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechPenisImminent is 1>>
+	<<elseif $speechNPCVaginaImminent is 1>>
 		<<He>> speaks.
 		<<if playerHasStrapon()>>
 			<<if $enemyanger lte 60>>
@@ -2097,7 +2097,7 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechOtherAnusImminent is 1>>
+	<<elseif $speechNPCAnusImminent is 1>>
 		<<He>> speaks.
 		<<if playerHasStrapon()>>
 			<<if $enemyanger lte 60>>
@@ -2240,7 +2240,7 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechPenisEntrance is 1>>
+	<<elseif $speechNPCVaginaEntrance is 1>>
 		<<He>> speaks.
 		<<if playerHasStrapon()>>
 			<<if $enemyanger lte 20>>
@@ -2271,7 +2271,7 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechOtherAnusEntrance is 1>>
+	<<elseif $speechNPCAnusEntrance is 1>>
 		<<He>> speaks.
 		<<if $enemyanger lte 20>>
 			"Is my ass making you feel good?"
@@ -2301,7 +2301,7 @@
 			"Fuck, I can't hold back like this for long."
 		<</if>>
 
-	<<elseif $speechPenisWithhold is 1>>
+	<<elseif $speechNPCVaginaWithhold is 1>>
 		<<He>> speaks.
 		<<if $enemyanger lte 20>>
 			"I can't take this, I need you inside me!"
@@ -2311,7 +2311,7 @@
 			"Fuck, I can't hold back like this for long."
 		<</if>>
 
-	<<elseif $speechOtherAnusWithhold is 1>>
+	<<elseif $speechNPCAnusWithhold is 1>>
 		<<He>> speaks.
 		<<if $enemyanger lte 20>>
 			"I can't take this, I need you inside me!"
@@ -2376,7 +2376,7 @@
 			"You better start being good, I can be much rougher than this." <<He>> moves the $_toyOrFinger in your anus more violently to demonstrate the point.
 		<</if>>
 
-	<<elseif $speechVaginaMouth is 1>>
+	<<elseif $speechMouthNPCVagina is 1>>
 		<<if $enemyanger lte 20>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 				<<He>> is lost in the moment. "Ohh! Not long now!"
@@ -3387,7 +3387,7 @@
 			][random(0,2)]>>
 		<</if>>
 
-	<<elseif $speechMouthOtherAnus is 1>>
+	<<elseif $speechMouthNPCAnus is 1>>
 		<<if (($enemyanger / $enemyangermax) * 100) gte 10>>
 			<<print [
 				"<<He>> speaks. \"Kiss my ass!\"",
@@ -4912,7 +4912,7 @@
 	<<elseif random(1,3) is 3>>
 		<<basespeech "low">>
 	<<else>>
-		<<if $speechHeadSuckle is 1 or $speechMouthPenetrated is 1 or $speechVaginaMouth is 1 or $speechFaceSit is 1>>
+		<<if $speechHeadSuckle is 1 or $speechMouthPenetrated is 1 or $speechMouthNPCVagina is 1 or $speechFaceSit is 1>>
 			<<switch $npcspeechcycle>>
 				<<case 0>> <<He>> coos. "Isn't it the sweetest thing you've ever tasted?"
 				<<case 1>> <<He>> coos. "Drink up, it's good for you!"

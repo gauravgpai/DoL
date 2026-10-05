@@ -41,7 +41,7 @@
 		)>>
 	<<else>>
 		<<speechPool "Gwylan">>
-		<<if ($speechPenisPenetrated is 1 or $speechOtherAnusPenetrated or $speechTrib or (($speechVaginaPenetrated or $speechAnusPenetrated) and $position is "missionary")) and !$gwylanUniqueComments.includes("scratched")>>
+		<<if ($speechNPCVaginaPenetrated is 1 or $speechNPCAnusPenetrated or $speechTrib or (($speechVaginaPenetrated or $speechAnusPenetrated) and $position is "missionary")) and !$gwylanUniqueComments.includes("scratched")>>
 			<<addSpeechLine "penetrated">>
 				<<set $gwylanUniqueComments.pushUnique("scratched")>>
 				<<He>> speaks. "Don't be afraid to wrap your arms around me and scratch me up. I'm used to it."
@@ -367,7 +367,7 @@
 				<</if>>
 			<</addSpeechLine>>
 		<</if>>
-		<<if $speechPenisEscape>>
+		<<if $speechNPCVaginaEscape>>
 			<<addSpeechLine "escape">>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 					<<He>> huffs. "Put it back in."
@@ -464,10 +464,10 @@
 				<<He>> giggles. "Come on, grab my hips. Work for it."
 			<</addSpeechLine>>
 		<</if>>
-		<<if !$gwylanUniqueComments.includes("withhold") and ($speechVaginaWithhold or $speechAnusWithhold or $speechPenisWithhold or $speechOtherAnusWithhold)>>
+		<<if !$gwylanUniqueComments.includes("withhold") and ($speechVaginaWithhold or $speechAnusWithhold or $speechNPCVaginaWithhold or $speechNPCAnusWithhold)>>
 			<<addSpeechLine "withhold">>
 				<<set $gwylanUniqueComments.pushUnique("withhold")>>
-				<<if $angel gte 6 and ($speechVaginaWithhold is 1 or $speechPenisWithhold is 1)>>
+				<<if $angel gte 6 and ($speechVaginaWithhold is 1 or $speechNPCVaginaWithhold is 1)>>
 					<<if $transformationParts.angel.halo isnot "hidden">>
 						<<He>> smiles, and traces your halo with <<his>> finger. "I won't take this from you."
 					<<else>>
@@ -496,7 +496,7 @@
 				<<He>> giggles. "Are you warm in there? What's that? I can't hear you."
 			<</addSpeechLine>>
 		<</if>>
-		<<if $speechPenisPenetrated>>
+		<<if $speechNPCVaginaPenetrated>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				<<if _gwylanStatus.includes("wantsPregnancy") and $settings.pregnancySpeechEnabled and !npcIsPregnant("Gwylan")>>
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -565,7 +565,7 @@
 				<</addSpeechLine>>
 			<</if>>
 		<</if>>
-		<<if $speechOtherAnusPenetrated>>
+		<<if $speechNPCAnusPenetrated>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				<<addSpeechLine "penetrated">>
 					<<He>> puts a hand to <<his>> mouth and giggles. "You look like you're close. Come on, let it out."
@@ -678,27 +678,27 @@
 			<</if>>
 		<</if>>
 		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-			<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+			<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 				<<addSpeechLine "oral">>
 					<<He>> moans softly, placing both hands on your head. "G-<<pcpetname 'Gwylan' 'good'>>, keep going just like that."
 				<</addSpeechLine>>
 			<</if>>
 		<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
 			<<if $cat gte 6>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> giggles. "Try licking a different spot, your rough tongue is starting to hurt."
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> giggles. "You're good with that tongue."
 					<</addSpeechLine>>
 				<</if>>
 			<</if>>
 		<<else>>
-			<<if $speechVaginaMouth or $speechAnalLick or $speechAnalKiss or $speechMouthOtherAnus or $speechThroat or $speechFaceSit>>
+			<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
 				<<addSpeechLine "oral">>
 					<<He>> giggles. "Do you like licking me all over? Aren't I a tasty treat?"
 				<</addSpeechLine>>
@@ -725,13 +725,13 @@
 		<</if>>
 		<<if $speechVaginaImminent is 1 or $speechVaginaEntrance is 1>>
 			<<if $novaginal and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+				<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 					<<addSpeechLine "imminent">>
 						<<He>> pouts. "You're such a tease, not letting me put it in."
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+				<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 					<<addSpeechLine "imminent">>
 						<<He>> speaks. "Is this enough for you?"
 					<</addSpeechLine>>
@@ -739,13 +739,13 @@
 			<</if>>
 		<<else>>
 			<<if $nopenile and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+				<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 					<<addSpeechLine "imminent">>
 						<<He>> pouts. "You're such a tease, not wanting to fill me."
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechVaginaImminent or $speechPenisImminent or $speechVaginaEntrance or $speechPenisEntrance>>
+				<<if $speechVaginaImminent or $speechNPCVaginaImminent or $speechVaginaEntrance or $speechNPCVaginaEntrance>>
 					<<addSpeechLine "imminent">>
 						<<He>> speaks. "Waiting for an invitation, dear?"
 					<</addSpeechLine>>
@@ -753,13 +753,13 @@
 			<</if>>
 		<</if>>
 		<<if $nopenile and $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-			<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+			<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 				<<addSpeechLine "imminent">>
 					<<He>> pouts. "You're such a tease, not wanting to fill me."
 				<</addSpeechLine>>
 			<</if>>
 		<<else>>
-			<<if $speechOtherAnusImminent or $speechOtherAnusEntrance>>
+			<<if $speechNPCAnusImminent or $speechNPCAnusEntrance>>
 				<<addSpeechLine "imminent">>
 					<<He>> speaks. "Waiting for an invitation, dear?"
 				<</addSpeechLine>>

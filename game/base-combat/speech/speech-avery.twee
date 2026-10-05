@@ -66,7 +66,7 @@
 					<<if $consensual>>
 						<<= $averyragerevealed gte 1 ? `"Fuck...!" <<he>> hisses` : `<<He>> curses under <<his>> breath`>>, panting as <<he>> grows accustomed to the sensation. "I hadn't imagined it would feel so..."
 					<<else>>
-						"Fuck...!" <<He>> pants as <<he>> grows accustomed to the sensation. "<<= C.npc.Avery.rage gte 60 ? "Are you trying to make it hurt on purpose, you little <<= either("<<bitch>>","<<bastard>>","<<cunt>>")>>?" : "Slow down, you little brat,">>" <<he>> <<= either("hisses","growls")>>.
+						"Fuck...!" <<He>> pants as <<he>> grows accustomed to the sensation. "<<= C.npc.Avery.rage gte 60 ? `Are you trying to make it hurt on purpose, you little <<= either("<<bitch>>","<<bastard>>","<<cunt>>")>>?` : "Slow down, you little brat,">>" <<he>> <<= either("hisses","growls")>>.
 					<</if>>
 				<<else>>
 					<<if $player.penissize lte 3>> /* Tiny penis */
@@ -99,7 +99,7 @@
 		<</if>>
 		<<if $player.virginity.kiss is "Avery" and $speechKissVirgin>>
 			<<addSpeechLine "virginity">>
-				<<if $consensual>> 
+				<<if $consensual>>
 					<<if isLoveInterest("Avery")>>
 						"Your very first kiss..." <<he>> smiles. "Consider it a binding promise. I intend to keep you for a very long time."
 					<<else>>
@@ -208,7 +208,7 @@
 		<<if $speechExposeBreasts>>
 			<<addSpeechLine "expose">>
 				<<if $player.breastsize lte 0>>
-					"It's really quite cute how bare you are," <<he>> chuckles. "Do those tight little buds ache under my gaze, <<pcpetname "Avery">>?" 
+					"It's really quite cute how bare you are," <<he>> chuckles. "Do those tight little buds ache under my gaze, <<pcpetname "Avery">>?"
 				<<elseif $player.breastsize lte 1>>
 					"Look how firm they are," <<he>> coos. "You carry them so tensely. I'll have to knead that tension out of you."
 				<<elseif $player.breastsize lte 2>>
@@ -280,7 +280,7 @@
 								"Shut up!" <<he>> hisses. "Shut your fucking mouth, you little <<= either("<<bitch>>","<<bastard>>","whore","<<cunt>>")>>!"
 							<<else>>
 								"Shut up!" <<he>> barks. "No one can hear you, you little <<= either("<<bitch>>","<<bastard>>","whore","<<cunt>>")>>, so shut your fucking mouth!"
-							<</if>>	
+							<</if>>
 						<<elseif C.npc.Avery.rage gte 20>>
 							"Shut your mouth, <<girl>>," <<he>> <<if $rescue is 1>>hisses. "Keep acting out, and you'll regret it!"<<else>>snarls. "It's just you and me, so lie there and take it!"<</if>>
 						<<elseif $rescue is 1>>
@@ -294,7 +294,7 @@
 						<<else>>
 							"Words aren't always important." <<His>> smirk is sadistic. "So why don't you just lie back and let <<= $averyUniqueComments.includes("called_daddy") ? `<<nnpc_mummy "Avery">> have <<his>>` : `me have my`>> way with you, hm?"
 						<</if>>
-				<</switch>>	
+				<</switch>>
 			<</addSpeechLine>>
 		<</if>>
 		/* Same but lewder */
@@ -443,7 +443,7 @@
 					"You? Forgive me?" <<He>> barks a laugh. "If anyone needs forgiveness between us, it's you!"
 				<<else>>
 					"And what do you think you're forgiving me for?" <<He>> scoffs. "You're only getting what you earned yourself, you little <<bastard>>."
-				<</if>> 
+				<</if>>
 			<</addSpeechLine>>
 		<</if>>
 		/* PC apologising more than once */
@@ -609,7 +609,7 @@
 				<</if>>
 			<</addSpeechLine>>
 		<</if>>
-		<<if $speechVaginaEscape or $speechPenisEscape or $speechAnusEscape or $speechStripStruggle or $speechCoverPenis or $speechCoverVagina>>
+		<<if $speechVaginaEscape or $speechNPCVaginaEscape or $speechNPCAnusEscape or $speechAnusEscape or $speechStripStruggle or $speechCoverPenis or $speechCoverVagina>>
 			<<addSpeechLine "struggle">>
 				<<if $consensual>>
 					<<if $averyragerevealed is 1>>
@@ -643,7 +643,7 @@
 				<<speechLine>>
 					"Did you act out on purpose just to force my hand?" <<he>> accuses, eyes narrowing.
 				<<speechLine>>
-					<<He>> scoffs. "Is there truly no way to make you regret your actions?" 
+					<<He>> scoffs. "Is there truly no way to make you regret your actions?"
 				<<speechLine>>
 					"If pain turns you on, <<pcpetname "Avery">>, I am more than happy to give you a proper dose."
 				<<speechLine>>
@@ -857,7 +857,7 @@
 				<<if ($consensual or (!$consensual and $enemyanger lte 20)) and ($speechVagina or $speechPenis or $speechAnus)>>
 					<<addSpeechLine "fondle" 3>>
 						<<set $averySeen.pushUnique("virginKnown")>>
-						"Oh, could it be...?" <<His>> fingers <<if $speechPenis is 1>>rub the tip of your penis, playing with your foreskin and glans<<else>>poke about inside you, pressing against your hymen<</if>> and making you jolt. "Still a virgin, are you? 
+						"Oh, could it be...?" <<His>> fingers <<if $speechPenis is 1>>rub the tip of your penis, playing with your foreskin and glans<<else>>poke about inside you, pressing against your hymen<</if>> and making you jolt. "Still a virgin, are you?
 						<<if $fame.sex gte 400 or $fame.prostitution gte 400>>
 							Color me surprised, you little <<= $fame.sex gt $fame.prostitution ? "slut" : "whore">>.
 						<<elseif $fame.rape gte 400 or $fame.exhibitionism gte 400>>
@@ -953,7 +953,7 @@
 					<</if>>
 				<</addSpeechLine>>
 			<</if>>
-			
+
 		<<else>>
 			<<if $speechVagina or $speechPenis or $speechAnus>>
 				<<addSpeechLine "fondle">>
@@ -1146,7 +1146,7 @@
 				<</addSpeechLine>>
 			<</if>>
 		<</if>>
-	
+
 		/* PC is blushing */
 		<<if $arousal gte 4000 and ($speechHandjobPenis or $speechHandjobVagina)>>
 			<<addSpeechLine "touch">>
@@ -1178,7 +1178,7 @@
 		<<if $speechHeadNipple>>
 			<<addSpeechLine "chest">>
 				<<if C.npc.Avery.rage gte 60>>
-					"You can do better than this," 
+					"You can do better than this,"
 					<<if $consensual>>
 						<<he>> <<= either("mutters","says with a scoff","sneers")>>. "I didn't do all this just to <<= either("play with","fuck")>> a doll."
 					<<else>>
@@ -1216,7 +1216,7 @@
 				<<if $avery_mansion>>
 					<<avery_mansion_housework_total>>
 				<</if>>
-			
+
 				<<if C.npc.Avery.rage gte 60 or $enemyanger gt 100>>
 					"Suck on it. <<= either("You aren't so dense as to be incapable of <i>that</i> much","You can do <i>that</i> much, at least","It's the least you can do")>>," <<he>> says with a <<= either("derisive snort","derisive laugh","roll of the eyes","scoff")>>.
 				<<elseif C.npc.Avery.rage gte 20 or $enemyanger gt 20>>
@@ -1294,7 +1294,7 @@
 			<</addSpeechLine>>
 		<</if>>
 		<<if ($consensual and C.npc.Avery.rage gte 60) or (!$consensual and $enemyanger gt 100)>>
-			<<if $speechVaginaMouth or $speechFaceSit>>
+			<<if $speechMouthNPCVagina or $speechFaceSit>>
 				<<addSpeechLine "oral">>
 				<<speechLine>>
 					"If I have to force you to satisfy me, I promise it won't be pleasant<<if !$consensual and $enemyanger gt 100>> for you<</if>>."
@@ -1305,7 +1305,7 @@
 				<</addSpeechLine>>
 			<</if>>
 		<<elseif ($consensual and C.npc.Avery.rage gte 20) or (!$consensual and $enemyanger gt 20)>>
-			<<if $speechVaginaMouth or $speechFaceSit>>
+			<<if $speechMouthNPCVagina or $speechFaceSit>>
 				<<addSpeechLine "oral">>
 				<<speechLine>>
 					"You've been quite a headache today, <<pcpetname "Avery">>. <<if !$consensual and $enemyanger gt 20>>Stop resisting and <<else>>You had best <</if>>make this worth my while."
@@ -1316,7 +1316,7 @@
 				<</addSpeechLine>>
 			<</if>>
 		<<else>>
-			<<if $speechVaginaMouth or $speechFaceSit>>
+			<<if $speechMouthNPCVagina or $speechFaceSit>>
 				<<addSpeechLine "oral">>
 				<<speechLine>>
 					"You seem thirsty, <<pcpetname "Avery">>. Let<<if $consensual>>'s see if I can <<else>> me <</if>>quench that for you."
@@ -1439,7 +1439,7 @@
 				<</if>>
 			<</addSpeechLine>>
 		<</if>>
-		<<if $speechMouthOtherAnus>>
+		<<if $speechMouthNPCAnus>>
 			<<addSpeechLine "oral">>
 				<<if C.npc.Avery.rage gte 60>>
 					"The perfect position to remind you where you truly stand, <<girl>>."
@@ -1450,30 +1450,30 @@
 				<</if>>
 			<</addSpeechLine>>
 		<</if>>
-		<<set _playerPenetrates to $speechPenisPenetrated is 1 or $speechOtherAnusPenetrated is 1>> /* If player uses their penis */
+		<<set _playerPenetrates to $speechNPCVaginaPenetrated is 1 or $speechNPCAnusPenetrated is 1>> /* If player uses their penis */
 		<<set _orifice to $speechVaginaPenetrated is 1 ? "vagina" : $speechAnusPenetrated is 1 ? "anus" : "none">> /* If Avery is in your pussy or anus - none means PC is doing the penetration */
 		<<set _isCooperating to ["cooperate", "otheranuscooperate"].includes($penisaction) or $anusaction is "cooperate" or $vaginaaction is "cooperate">>
 
-		<<if $speechPenisPenetrated or $speechOtherAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
+		<<if $speechNPCVaginaPenetrated or $speechNPCAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
 			<<addSpeechLine "penetrated">>
 				<<= $averyragerevealed is 1 ? `"Fuck..." <<he>>` : "<<He>>">> moans. "You feel so good <<if _playerPenetrates>>inside<<else>>around<</if>> me, <<pcpetname "Avery">>."
 			<</addSpeechLine>>
 		<</if>>
 
 		<<if C.npc.Avery.rage gte 60>>
-			<<if $speechPenisPenetrated or $speechOtherAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
+			<<if $speechNPCVaginaPenetrated or $speechNPCAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
 				<<addSpeechLine "penetrated">>
 					"Your mouth might be useless, but your <<if _playerPenetrates>><<= either("cock","<<penisSimple>>")>><<else>><<if _orifice is "vagina">><<= either("pussy","cunt")>><<else>>ass<</if>><</if>> makes keeping you around worth it..."
 				<</addSpeechLine>>
 			<</if>>
 		<<elseif C.npc.Avery.rage gte 20 and _isCooperating>>
-			<<if $speechPenisPenetrated or $speechOtherAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
+			<<if $speechNPCVaginaPenetrated or $speechNPCAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
 				<<addSpeechLine "penetrated">>
 					"Oh, fuck..." <<he>> <<= either("moans","groans","gasps")>>. "Good <<girl>>, just like that."
 				<</addSpeechLine>>
 			<</if>>
 		<<elseif C.npc.Avery.rage lt 20 and _isCooperating>>
-			<<if $speechPenisPenetrated or $speechOtherAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
+			<<if $speechNPCVaginaPenetrated or $speechNPCAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
 				<<addSpeechLine "penetrated">>
 					"Yes..." <<he>> <<= either("moans","groans","gasps")>>. "Good <<girl>>, just like that."
 				<</addSpeechLine>>
@@ -1483,7 +1483,7 @@
 		/* Special cases where Avery is the penetrator */
 		<<if !_playerPenetrates>>
 			<<if C.npc.Avery.rage gte 60>>
-				<<if $speechPenisPenetrated or $speechOtherAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
+				<<if $speechNPCVaginaPenetrated or $speechNPCAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
 					<<addSpeechLine "penetrated">>
 					<<speechLine>>
 						<<He>> <<if $position is "doggy">>pulls your rear flush with brutal force<<else>>grinds down into you without an ounce of gentleness<</if>>. "You act like trash, so I'm going to use you like trash."
@@ -1495,13 +1495,13 @@
 						<<He>> sneers, <<if $position is "doggy">>digging <<his>> nails into your hips<<else>>pressing <<his>> weight down brutally<</if>>. "You're lucky this <<if $speechVaginaPenetrated is 1>><<= either("pussy","cunt","hole")>><<else>><<= either("ass","backdoor","hole")>><</if>> is tight enough to save you."
 					<</addSpeechLine>>
 				<</if>>
-				<<if $enemyanger lte 20 and ($speechPenisPenetrated or $speechOtherAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated)>>
+				<<if $enemyanger lte 20 and ($speechNPCVaginaPenetrated or $speechNPCAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated)>>
 					<<addSpeechLine "penetrated">>
 						<<He>> <<if $position is "doggy">>sneers, yanking your hips higher<<else>>presses <<his>> forehead to yours, smiling coldly<</if>>. "All that attitude, and you still let me use your body like a cheap fucktoy. Where is that stubborn pride now, <<pcpetname "Avery">>?"
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif C.npc.Avery.rage gte 20>>
-				<<if $speechPenisPenetrated or $speechOtherAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
+				<<if $speechNPCVaginaPenetrated or $speechNPCAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
 					<<addSpeechLine "penetrated">>
 					<<speechLine>>
 						<<if $position is "doggy">><<He>> groans, pulling your hips back roughly.<<else>><<His>> breath hitches, looking into your eyes.<</if>> "Keep gripping me like that. It almost makes me forget how infuriating you've been."
@@ -1516,7 +1516,7 @@
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechPenisPenetrated or $speechOtherAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
+				<<if $speechNPCVaginaPenetrated or $speechNPCAnusPenetrated or $speechVaginaPenetrated or $speechAnusPenetrated>>
 					<<addSpeechLine "penetrated">>
 					<<speechLine>>
 						<<He>> lets out a breathy chuckle, <<if $position is "doggy">>holding your hips tight against <<his>><<else>>gazing down into your eyes<</if>>. "I could stay buried inside you all day, <<pcpetname "Avery">>."
@@ -1556,7 +1556,7 @@
 				"Be a good <<girl>> and let me take care of you."
 			<</addSpeechLine>>
 		<</if>>
-		
+
 		<<if $speechVaginaImminent or $speechAnusImminent>>
 			<<addSpeechLine "imminent">>
 				<<if C.npc.Avery.rage gte 60>>
@@ -1578,17 +1578,17 @@
 				<</if>>
 			<</addSpeechLine>>
 		<</if>>
-		<<if $speechPenisImminent or $speechOtherAnusImminent>>
+		<<if $speechNPCVaginaImminent or $speechNPCAnusImminent>>
 			<<addSpeechLine "imminent">>
 				<<if C.npc.Avery.rage gte 20>>
 					"Stay still," <<he>> says, looking down at you. "You'll feel good, too, if you do as I say, <<pcpetname "Avery">>."
 				<<else>>
-					"I'll make you feel so good, <<pcpetname "Avery">>," <<he>> coos, rolling <<his>> <<if $speechPenisImminent is 1>><<pussy>><<else>>ass<</if>> against your tip. "Just stay still for me..."
+					"I'll make you feel so good, <<pcpetname "Avery">>," <<he>> coos, rolling <<his>> <<if $speechNPCVaginaImminent is 1>><<pussy>><<else>>ass<</if>> against your tip. "Just stay still for me..."
 				<</if>>
 			<</addSpeechLine>>
 		<</if>>
 
-		<<if $player.virginity.penile is true and ($speechPenisImminent or $speechOtherAnusImminent)>>
+		<<if $player.virginity.penile is true and ($speechNPCVaginaImminent or $speechNPCAnusImminent)>>
 			<<addSpeechLine "imminent">>
 				<<if $averyragerevealed is 1>>
 					<<He>> smirks. "I think it's time I finally took this untouched <<penis>> of yours..."
@@ -1653,12 +1653,12 @@
 		<</if>>
 	/* Avery is withholding from penetration */
 		<<set _aboutToPenetrate to $speechVaginaWithhold is 1 or $speechAnusWithhold is 1>>
-		<<set _peenVirgin to ($speechPenisWithhold is 1 or $speechOtherAnusWithhold is 1) and $player.virginity.penile is true>>
+		<<set _peenVirgin to ($speechNPCVaginaWithhold is 1 or $speechNPCAnusWithhold is 1) and $player.virginity.penile is true>>
 		<<set _vaginaVirgin to $speechVaginaWithhold is 1 and $player.virginity.vaginal is true>>
 		<<set _assVirgin to $speechAnusWithhold is 1 and $player.virginity.anal is true>>
 
 		/* Virginity talk */
-		<<if _peenVirgin and $averySeen.includes("virginKnown") and ($speechVaginaWithhold or $speechAnusWithhold or $speechPenisWithhold or $speechOtherAnusWithhold)>>
+		<<if _peenVirgin and $averySeen.includes("virginKnown") and ($speechVaginaWithhold or $speechAnusWithhold or $speechNPCVaginaWithhold or $speechNPCAnusWithhold)>>
 			<<addSpeechLine "withhold">>
 				<<if C.npc.Avery.rage gte 60>>
 					<<He>> growls as <<he>> does, obviously annoyed. "I'll hold off for now, but I will have it sooner or later, <<pcpetname "Avery">>." <<He>> smirks<<if C.npc.Avery.love lt 50>> cruelly<</if>>. "It may as well be now."
@@ -1670,7 +1670,7 @@
 			<</addSpeechLine>>
 		<</if>>
 
-		<<if _assVirgin and $averySeen.includes("virginKnown") and ($speechVaginaWithhold or $speechAnusWithhold or $speechPenisWithhold or $speechOtherAnusWithhold)>>
+		<<if _assVirgin and $averySeen.includes("virginKnown") and ($speechVaginaWithhold or $speechAnusWithhold or $speechNPCVaginaWithhold or $speechNPCAnusWithhold)>>
 			<<addSpeechLine "withhold">>
 				<<if C.npc.Avery.rage gte 60>>
 					"Scared it will hurt? Given how infuriating you've been, a little pain is precisely what you deserve. Consider yourself lucky I'm waiting until next time."
@@ -1682,7 +1682,7 @@
 			<</addSpeechLine>>
 		<</if>>
 
-		<<if _vaginaVirgin and $averySeen.includes("virginKnown") and ($speechVaginaWithhold or $speechAnusWithhold or $speechPenisWithhold or $speechOtherAnusWithhold)>>
+		<<if _vaginaVirgin and $averySeen.includes("virginKnown") and ($speechVaginaWithhold or $speechAnusWithhold or $speechNPCVaginaWithhold or $speechNPCAnusWithhold)>>
 			<<addSpeechLine "withhold">>
 				<<if $averyragerevealed is 1 and C.npc.Avery.rage gte 60>>
 					"Withhold all you like, <<pcpetname "Avery">>. Every second you make me wait only makes me want to ruin you even more."
@@ -1697,7 +1697,7 @@
 		<</if>>
 
 		/* Temple vow */
-		<<if $player.virginity.temple is true and $averySeen.includes("player_virgin") and ($speechVaginaWithhold or $speechAnusWithhold or $speechPenisWithhold or $speechOtherAnusWithhold)>>
+		<<if $player.virginity.temple is true and $averySeen.includes("player_virgin") and ($speechVaginaWithhold or $speechAnusWithhold or $speechNPCVaginaWithhold or $speechNPCAnusWithhold)>>
 			<<addSpeechLine "withhold">>
 				<<if $brokenVowCount?.Avery gt 1>>
 					/* Avery already broke the vow  */
@@ -1723,13 +1723,13 @@
 		<</if>>
 
 		/* High dom or high lust */
-		<<if $speechVaginaWithhold or $speechAnusWithhold or $speechPenisWithhold or $speechOtherAnusWithhold>>
+		<<if $speechVaginaWithhold or $speechAnusWithhold or $speechNPCVaginaWithhold or $speechNPCAnusWithhold>>
 			<<addSpeechLine "withhold">>
 				<<if C.npc.Avery.dom gte 75 or C.npc.Avery.lust gte 60>>
 					<<if C.npc.Avery.rage gte 20>>
-						<<He>> smiles seductively, rolling <<if _aboutToPenetrate>>the tip against you<<else>><<his>> <<= $speechPenisWithhold is 1 ? "folds" : "entrance">> against your tip<</if>>. "Why deny yourself, <<pcpetname "Avery">>? Be a good <<girl>> and push inside me. I'll take good care of you."
+						<<He>> smiles seductively, rolling <<if _aboutToPenetrate>>the tip against you<<else>><<his>> <<= $speechNPCVaginaWithhold is 1 ? "folds" : "entrance">> against your tip<</if>>. "Why deny yourself, <<pcpetname "Avery">>? Be a good <<girl>> and push inside me. I'll take good care of you."
 					<<else>>
-						<<He>> smirks, grinding <<if _aboutToPenetrate>>the tip<<else>><<his>> <<= $speechPenisWithhold is 1 ? "folds" : "entrance">> against your tip<</if>> with firm pressure. "I'm offering you a chance to make amends, <<pcpetname "Avery">>. Take me in and I'll fuck every bit of that attitude right out of you."
+						<<He>> smirks, grinding <<if _aboutToPenetrate>>the tip<<else>><<his>> <<= $speechNPCVaginaWithhold is 1 ? "folds" : "entrance">> against your tip<</if>> with firm pressure. "I'm offering you a chance to make amends, <<pcpetname "Avery">>. Take me in and I'll fuck every bit of that attitude right out of you."
 					<</if>>
 				<<elseif C.npc.Avery.rage gte 20>>
 					<<He>> huffs in annoyance. "Making me settle for scraps after the headache you gave me? You're a wicked little tease, <<pcpetname "Avery">>."
@@ -1740,27 +1740,27 @@
 		<</if>>
 
 		/* Generic cases */
-		<<set _averyAnalCurious to C.npc.Avery.virginity.anal and $speechOtherAnusWithhold is 1>>
+		<<set _averyAnalCurious to C.npc.Avery.virginity.anal and $speechNPCAnusWithhold is 1>>
 		<<set _withholdWeight to (_averyAnalCurious ? 3 : 1)>>
-		<<if $speechVaginaWithhold or $speechAnusWithhold or $speechPenisWithhold or $speechOtherAnusWithhold>>
+		<<if $speechVaginaWithhold or $speechAnusWithhold or $speechNPCVaginaWithhold or $speechNPCAnusWithhold>>
 			<<addSpeechLine "withhold" _withholdWeight>>
 				<<if _averyAnalCurious>>
 					<<He>> huffs as <<he>> does. "Not going to let me satisfy my curiosity? How cruel of you, <<pcpetname "Avery">>."
 				<<elseif C.npc.Avery.rage gte 60>>
 					<<if $speechVaginaWithhold is 1 or $speechAnusWithhold is 1>>
 						"You have a lot of nerve, <<girl>>," <<he>> grits out. "You're lucky I'm in a forgiving mood this time."
-					<<elseif $speechPenisWithhold is 1 or $speechOtherAnusWithhold is 1>>
+					<<elseif $speechNPCVaginaWithhold is 1 or $speechNPCAnusWithhold is 1>>
 						<<He>> growls as <<he>> does, obviously annoyed. "You little <<= either("bitch","shit","<<bastard>>","tramp","wretch")>>. You're lucky I'm the <<= either("patient","tolerant")>> sort."
 					<</if>>
 				<<elseif C.npc.Avery.rage gte 20>>
 					<<if $speechVaginaWithhold is 1 or $speechAnusWithhold is 1>>
 						"Fine." <<He>> <<= either("rolls <<his>> eyes","huffs","scoffs")>>. "Though I expect an apology if you change your mind."
-					<<elseif $speechPenisWithhold is 1 or $speechOtherAnusWithhold is 1>>
+					<<elseif $speechNPCVaginaWithhold is 1 or $speechNPCAnusWithhold is 1>>
 						<<He>> huffs as <<he>> does, obviously impatient. "You could be fucking me right now, and you aren't. <<if C.npc.Avery.love gte 60>>You can be cute when you act foolish<<else>>I know you're a little fool<</if>>, <<pcpetname "Avery">>, but really!"
 					<</if>>
 				<<elseif $speechVaginaWithhold is 1 or $speechAnusWithhold is 1>>
 					"Very well, if you insist." <<He>> sounds disappointed<<if $averyragerevealed gte 1>> and lets out a huff<</if>>. "Though you're missing out, you know."
-				<<elseif $speechPenisWithhold is 1 or $speechOtherAnusWithhold is 1>>
+				<<elseif $speechNPCVaginaWithhold is 1 or $speechNPCAnusWithhold is 1>>
 					<<He>> sighs as <<he>> does, obviously disappointed. "You're going to turn me down now?" <<He>> clicks <<his>> tongue.<<if $averyragerevealed gte 1>> "If you insist on being boring, so be it."<</if>>
 				<</if>>
 			<</addSpeechLine>>
@@ -1784,8 +1784,8 @@
 					"Don't hide your face now. If you had the audacity to disobey, you will look at me while I discipline you."
 				<<elseif !$consensual and C.npc.Avery.rage lt 60>>
 					"A bit late to feel bashful about your behaviour, isn't it? Move your hands and face what you've done."
-				<</if>>	
-			
+				<</if>>
+
 			<</addSpeechLine>>
 		<</if>>
 		<<set _playerMaxPain to $pain gte 100 and $willpowerpain is 0>>

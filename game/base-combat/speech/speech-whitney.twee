@@ -727,7 +727,7 @@
 			<</addSpeechLine>>
 		<</if>>
 	<</if>>
-	<<if $speechPenisEscape>>
+	<<if $speechNPCVaginaEscape or $speechNPCAnusEscape>>
 		<<addSpeechLine "escape">>
 		<<speechLine>>
 			"Where do you think you're going?" <<He>> sneers. "Get your cock back inside me, slut."
@@ -737,9 +737,17 @@
 			<<He>> sneers. "Fine. Don't say I never let you do what you want."
 		<<speechLine>>
 			<<He>> clicks <<his>> tongue. "Starting to get lonely here, slut."
-		<<speechLine>>
-			<<He>> laughs. "Oi! Don't leave me dry here."
 		<</addSpeechLine>>
+		<<if $speechNPCVaginaEscape>>
+			<<addSpeechLine "escape">>
+				<<He>> laughs. "Oi! Don't leave me dry here."
+			<</addSpeechLine>>
+		<</if>>
+		<<if $speechNPCAnusEscape>>
+			<<addSpeechLine "escape">>
+				<<He>> sneers. "You wanted my ass so bad, but look at you now."
+			<</addSpeechLine>>
+		<</if>>
 	<</if>>
 	<<if $speechAnusEscape>>
 		<<addSpeechLine "escape">>
@@ -1387,7 +1395,7 @@
 	<<if (C.npc.Whitney.love lte 10 or C.npc.Whitney.dom lte 10) and $speechHeadSuckle>>
 		<<addSpeechLine "chest">>
 		<<speechLine>>
-			"What, miss your <<mummy>> or something?" <<He>> laughs. "Oh, wait." 
+			"What, miss your <<mummy>> or something?" <<He>> laughs. "Oh, wait."
 		<<speechLine>>
 			<<He>> coos. "Aww, look at you! You're so sad."
 		<</addSpeechLine>>
@@ -1505,7 +1513,7 @@
 			"Fuck," <<he>> grunts. "How are you this good with your feet? Knew you got around, slut."
 		<</addSpeechLine>>
 	<</if>>
-	<<if $speechVaginaMouth>>
+	<<if $speechMouthNPCVagina>>
 		<<addSpeechLine "oral">>
 		<<speechLine>>
 			"Hurry up, slut. It won't lick itself."
@@ -1661,7 +1669,7 @@
 			<</addSpeechLine>>
 		<</if>>
 	<</if>>
-	<<if $speechMouthOtherAnus>>
+	<<if $speechMouthNPCAnus>>
 		<<addSpeechLine "oral">>
 			"Come on, slut. Give it a smooch."
 		<</addSpeechLine>>
@@ -1676,7 +1684,7 @@
 			<</addSpeechLine>>
 		<</if>>
 	<</if>>
-	<<if $speechPenisPenetrated>>
+	<<if $speechNPCVaginaPenetrated>>
 		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 			<<addSpeechLine "penetrated">>
 				<<He>> groans. "Fuck, that's the spot...!"
@@ -1693,7 +1701,7 @@
 			<</addSpeechLine>>
 		<</if>>
 	<</if>>
-	<<if $speechOtherAnusPenetrated>>
+	<<if $speechNPCAnusPenetrated>>
 		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 			<<addSpeechLine "penetrated">>
 				<<He>> groans. "Come on, don't fuck this up...!"
@@ -1792,7 +1800,7 @@
 			<</addSpeechLine>>
 		<</if>>
 	<</if>>
-	<<if (!playerHasStrapon() and ($player.penissize gte 5 or $player.penissize lte 2)) and $speechPenisImminent>>
+	<<if (!playerHasStrapon() and ($player.penissize gte 5 or $player.penissize lte 2)) and $speechNPCVaginaImminent>>
 		<<addSpeechLine "imminent">>
 			<<if $player.penissize gte 5>>
 				<<He>> takes a quick glance at your <<penis>>, and gives you a smug expression. "Go on."
@@ -1804,23 +1812,23 @@
 	<</if>>
 	<<if !playerHasStrapon() and ($player.penissize gte 5 or $player.penissize lte 2)>>
 		<<if $player.penissize gte 5>>
-			<<if $speechOtherAnusImminent>>
+			<<if $speechNPCAnusImminent>>
 				<<addSpeechLine "imminent">>
 					<<He>> takes a quick glance at your <<penis>>, and gives you a smug expression. "Go on."
 				<</addSpeechLine>>
 			<</if>>
-			<<if C.npc.Whitney.virginity.anal is true and $speechOtherAnusImminent>>
+			<<if C.npc.Whitney.virginity.anal is true and $speechNPCAnusImminent>>
 				<<addSpeechLine "imminent">>
 					"You better not tear something, or there'll be hell to pay."
 				<</addSpeechLine>>
 			<</if>>
 		<<else>>
-			<<if $speechOtherAnusImminent>>
+			<<if $speechNPCAnusImminent>>
 				<<addSpeechLine "imminent">>
 					<<set $whitneySeen.pushUnique("penisSmall")>><<He>> takes a quick glance at your <<penis>>, and grins. "Don't disappoint, slut."
 				<</addSpeechLine>>
 			<</if>>
-			<<if C.npc.Whitney.virginity.anal is true and $speechOtherAnusImminent>>
+			<<if C.npc.Whitney.virginity.anal is true and $speechNPCAnusImminent>>
 				<<addSpeechLine "imminent">>
 					<<He>> takes a quick glance at your <<penis>>, and snickers. "Hah! Shouldn't have to be too worried."
 				<</addSpeechLine>>
@@ -1924,7 +1932,7 @@
 			<</addSpeechLine>>
 		<</if>>
 	<</if>>
-	<<if $speechPenisEntrance>>
+	<<if $speechNPCVaginaEntrance>>
 		<<addSpeechLine "imminent">>
 		<<speechLine>>
 			"Time to have some fun!"
@@ -1968,12 +1976,12 @@
 		<</if>>
 	<</if>>
 	<<if C.npc.Whitney.lust gte 60>>
-		<<if $speechOtherAnusEntrance>>
+		<<if $speechNPCAnusEntrance>>
 			<<addSpeechLine "imminent">>
 				"You're doing things how I want, you hear?"
 			<</addSpeechLine>>
 		<</if>>
-		<<if $speechOtherAnusEntrance>>
+		<<if $speechNPCAnusEntrance>>
 			<<if C.npc.Whitney.virginity.anal is true>>
 				<<addSpeechLine "imminent">>
 					<<He>> pants. "Come on, slut. Just take it already."
@@ -1985,12 +1993,12 @@
 			<</if>>
 		<</if>>
 	<<elseif C.npc.Whitney.lust lte 30>>
-		<<if $speechOtherAnusEntrance>>
+		<<if $speechNPCAnusEntrance>>
 			<<addSpeechLine "imminent">>
 				"Fuck..."
 			<</addSpeechLine>>
 		<</if>>
-		<<if $speechOtherAnusEntrance>>
+		<<if $speechNPCAnusEntrance>>
 			<<if C.npc.Whitney.virginity.anal is true>>
 				<<addSpeechLine "imminent">>
 					<<He>> blushes. "You tear something, I'll break you in half."
@@ -2002,7 +2010,7 @@
 			<</if>>
 		<</if>>
 	<<else>>
-		<<if $speechOtherAnusEntrance>>
+		<<if $speechNPCAnusEntrance>>
 			<<addSpeechLine "imminent">>
 			<<speechLine>>
 				"Don't back out now."
@@ -2034,19 +2042,19 @@
 			<</addSpeechLine>>
 		<</if>>
 	<</if>>
-	<<if $speechPenisWithhold or $speechOtherAnusWithhold>>
+	<<if $speechNPCVaginaWithhold or $speechNPCAnusWithhold>>
 		<<addSpeechLine "withhold">>
 		<<speechLine>>
 			<<He>> grunts. "Enough of that."
 		<<speechLine>>
 			<<He>> hisses. "Give me a fucking break."
 		<</addSpeechLine>>
-		<<if $speechPenisWithhold>>
+		<<if $speechNPCVaginaWithhold>>
 			<<addSpeechLine "withhold">>
 				<<He>> laughs. "Bet you miss me already."
 			<</addSpeechLine>>
 		<</if>>
-		<<if $speechOtherAnusWithhold>>
+		<<if $speechNPCAnusWithhold>>
 			<<addSpeechLine "withhold">>
 				<<He>> laughs. "Fun's over, slut."
 			<</addSpeechLine>>
