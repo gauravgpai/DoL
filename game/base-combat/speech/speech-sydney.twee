@@ -697,19 +697,19 @@
 	<<switch _sydneyStatus>>
 		<<case "pure" "pureLust">>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechVaginaVagina or $speechTribEntrance>>
+				<<if $speechTrib or $speechTribEntrance>>
 					<<addSpeechLine "trib">>
 						<<He>> barely manages to speak. "If... if you... I'm going to..."
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<if $speechVaginaVagina or $speechTribEntrance>>
+				<<if $speechTrib or $speechTribEntrance>>
 					<<addSpeechLine "trib">>
 						<<He>> speaks. "This... still feels so wrong... but..."
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechVaginaVagina or $speechTribEntrance>>
+				<<if $speechTrib or $speechTribEntrance>>
 					<<addSpeechLine "trib">>
 						<<He>> speaks. "We're... really touching down there..."
 					<</addSpeechLine>>
@@ -717,19 +717,19 @@
 			<</if>>
 		<<case "corrupt" "corruptLust">>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechVaginaVagina or $speechTribEntrance>>
+				<<if $speechTrib or $speechTribEntrance>>
 					<<addSpeechLine "trib">>
 						<<He>> moans. "I'm almost there! Are you ready?"
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<if $speechVaginaVagina or $speechTribEntrance>>
+				<<if $speechTrib or $speechTribEntrance>>
 					<<addSpeechLine "trib">>
 						<<He>> speaks. "Are you sure this feels good for you?"
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechVaginaVagina or $speechTribEntrance>>
+				<<if $speechTrib or $speechTribEntrance>>
 					<<addSpeechLine "trib">>
 						<<He>> speaks. "I love being this close together."
 					<</addSpeechLine>>
@@ -737,19 +737,19 @@
 			<</if>>
 		<<default>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechVaginaVagina or $speechTribEntrance>>
+				<<if $speechTrib or $speechTribEntrance>>
 					<<addSpeechLine "trib">>
 						<<He>> barely manages to speak. "I think I'm... getting close...!"
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<if $speechVaginaVagina or $speechTribEntrance>>
+				<<if $speechTrib or $speechTribEntrance>>
 					<<addSpeechLine "trib">>
 						<<He>> speaks. "We're still pure, right? This doesn't count?"
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechVaginaVagina or $speechTribEntrance>>
+				<<if $speechTrib or $speechTribEntrance>>
 					<<addSpeechLine "trib">>
 						<<He>> speaks. "I'm getting used to this feeling."
 					<</addSpeechLine>>

@@ -556,7 +556,7 @@
 				<</if>>
 			<</if>>
 		<</if>>
-		<<if C.npc.Robin.dom gte 70 and $fame.sex gte 600 and $speechVaginaVagina>>
+		<<if C.npc.Robin.dom gte 70 and $fame.sex gte 600 and $speechTrib>>
 			<<addSpeechLine "trib">>
 				"So... where would you rank mine?" <<He>> smiles.
 			<</addSpeechLine>>

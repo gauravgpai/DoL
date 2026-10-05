@@ -4313,7 +4313,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 				pressing
 			<</if>>
 			<<his>> pussy against yours.</span>
-			<<set $vaginastate to "othervagina">><<set $NPCList[_n].vagina to "vagina">><<sex 20 "genital" _n>><<set $speechVaginaVagina to 1>>
+			<<set $vaginastate to "othervagina">><<set $NPCList[_n].vagina to "vagina">><<sex 20 "genital" _n>><<set $speechTrib to 1>>
 		<<elseif $NPCList[_n].vagina is "vagina">>
 			<<if $rng gte 1>>
 				<<if $enemyarousal gte $enemyarousalmax * 0.8>>
@@ -4333,7 +4333,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 				<<else>>
 					<<He>> kneads and kisses your <<pussy>> with <<his>> own.
 				<</if>>
-				<<sex 20 "genital" _n>><<set $speechVaginaVagina to 1>>
+				<<sex 20 "genital" _n>><<set $speechTrib to 1>>
 			<<else>>
 				<span class="lblue"><<He>> moves <<his>> pussy away from yours.</span>
 				<<set $vaginause to 0>><<set $NPCList[_n].vagina to 0>>

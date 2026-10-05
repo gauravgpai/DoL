@@ -252,6 +252,7 @@ declare module "twine-sugarcube" {
 		speechTempleVirgin?: number;
 		speechThigh?: number;
 		speechThroat?: number;
+		speechTrib?: number;
 		speechTribEntrance?: number;
 		speechVagina?: number;
 		speechVaginaEntrance?: number;
@@ -261,7 +262,6 @@ declare module "twine-sugarcube" {
 		speechVaginaImminent?: number;
 		speechVaginaMouth?: number;
 		speechVaginaPenetrated?: number;
-		speechVaginaVagina?: number;
 		speechVaginaVirgin?: number;
 		speechVaginaWithhold?: number;
 		whitneyUniqueComments?: string[];

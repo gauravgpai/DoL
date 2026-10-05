@@ -1329,20 +1329,20 @@
 		<</if>>
 		<<if _avery.lefthand is 0 or _avery.righthand is 0>>
 			/* Avery's hands aren't busy */
-			<<if $speechVaginaVagina or $speechFencing>>
+			<<if $speechTrib or $speechFencing>>
 				<<addSpeechLine "trib">>
 					<<His>> hands rest on your hips as <<he>> ruts against you.
 				<</addSpeechLine>>
 			<</if>>
 		<</if>>
 
-		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4 and ($speechVaginaVagina or $speechFencing)>>
+		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4 and ($speechTrib or $speechFencing)>>
 			<<addSpeechLine "trib" 2>>
 				<<His>> hips move more unevenly the closer <<he>> gets.
 			<</addSpeechLine>>
 		<</if>>
 
-		<<if (C.npc.Avery.rage lt 20 or $enemyanger lt 20) and ($speechVaginaVagina or $speechFencing)>>
+		<<if (C.npc.Avery.rage lt 20 or $enemyanger lt 20) and ($speechTrib or $speechFencing)>>
 			<<addSpeechLine "trib">>
 			<<speechLine>>
 				"Move your hips more to the—" <<He>> makes a soft sound of pleasure. "Yes," <<he>> <<= either("hisses","breathes")>>, "just like that."

@@ -2403,7 +2403,7 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechVaginaVagina is 1>>
+	<<elseif $speechTrib is 1>>
 		<<if $enemyanger lte 20>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 				<<He>> is lost in the moment. "Ohh! Not long now!"

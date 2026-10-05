@@ -41,7 +41,7 @@
 		)>>
 	<<else>>
 		<<speechPool "Gwylan">>
-		<<if ($speechPenisPenetrated is 1 or $speechOtherAnusPenetrated or $speechVaginaVagina or (($speechVaginaPenetrated or $speechAnusPenetrated) and $position is "missionary")) and !$gwylanUniqueComments.includes("scratched")>>
+		<<if ($speechPenisPenetrated is 1 or $speechOtherAnusPenetrated or $speechTrib or (($speechVaginaPenetrated or $speechAnusPenetrated) and $position is "missionary")) and !$gwylanUniqueComments.includes("scratched")>>
 			<<addSpeechLine "penetrated">>
 				<<set $gwylanUniqueComments.pushUnique("scratched")>>
 				<<He>> speaks. "Don't be afraid to wrap your arms around me and scratch me up. I'm used to it."
@@ -705,19 +705,19 @@
 			<</if>>
 		<</if>>
 		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-			<<if $speechVaginaVagina or $speechTribEntrance>>
+			<<if $speechTrib or $speechTribEntrance>>
 				<<addSpeechLine "trib">>
 					<<He>> pants. "Just... a little more rubbing."
 				<</addSpeechLine>>
 			<</if>>
 		<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-			<<if $speechVaginaVagina or $speechTribEntrance>>
+			<<if $speechTrib or $speechTribEntrance>>
 				<<addSpeechLine "trib">>
 					<<He>> pants. "It feels good, doesn't it?"
 				<</addSpeechLine>>
 			<</if>>
 		<<else>>
-			<<if $speechVaginaVagina or $speechTribEntrance>>
+			<<if $speechTrib or $speechTribEntrance>>
 				<<addSpeechLine "trib">>
 					<<He>> smiles. "This isn't always the most effective method of pleasuring, but I know how to make it work."
 				<</addSpeechLine>>
