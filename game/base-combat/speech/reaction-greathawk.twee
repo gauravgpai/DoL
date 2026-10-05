@@ -1,21 +1,21 @@
 :: Widgets reaction-GreatHawk [widget]
 
-/* PC lines (plead / demand / forgive / moan). */
+/* PC lines (plead / demand / moan). */
 
 <<widget "pc-line-greathawk-plead">>
-	<<addSpeechLine>>
+	<<addSpeechLine "plead">>
 		"Y-you're going to take care of me, right?"
 	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-greathawk-demand">>
-	<<addSpeechLine>>
+	<<addSpeechLine "demand">>
 		"Stop pecking me!"
 	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-greathawk-moan">>
-	<<addSpeechLine>>
+	<<addSpeechLine "moan">>
 		"You're not a terror. You're all I need."
 	<</addSpeechLine>>
 <</widget>>

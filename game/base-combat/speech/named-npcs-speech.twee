@@ -1,6 +1,6 @@
 :: Widgets Speech Named NPCs [widget]
 
-/* The NPC's speech lines for this turn. Sets _noNameComment when the NPC has no speech widget, so generic comments or mouth actions play instead.
+/* The NNPC's speech lines for this turn. Sets _noNameComment when the NNPC has no speech widget or passes, so generic comments or mouth actions play instead.
    <<namedNpcComments $NPCList[_n].fullDescription>> */
 <<widget "namedNpcComments">>
 	<<unset _noNameComment>>
@@ -25,7 +25,7 @@
 	<</if>>
 <</widget>>
 
-/* The NPC's reaction to something that just happened.
+/* The NNPC's reaction to something that just happened.
    <<namedNpcReaction _n "kissSkin" "thighs">> -> <<reaction-avery-kissSkin "thighs">>
    _args[0] is the $NPCList index
    _args[1] the event

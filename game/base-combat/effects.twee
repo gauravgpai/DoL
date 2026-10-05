@@ -3722,15 +3722,15 @@
 					<<set $enemyanger -= 50 * (1 + $englishtrait)>>
 				<<else>>
 					<<bHe>> ignores you.
-					<<set $speechApologiseAgain to 1>>
+					<<set $speechApologiseRejected to 1>>
 				<</if>>
 			<<else>>
 				<<if $robinmist>>
 					You shout. "I'm sorry I wasn't there for you!"
-					<<set $speechApologiseAgain to 1>>
+					<<set $speechApologiseRejected to 1>>
 				<<elseif $robinRentEvent is 1 and $combatPhase is "Robin">>
 					You tell <<him>> you're sorry for not paying <<him>>.
-					<<set $speechApologiseAgain to 1>>
+					<<set $speechApologiseRejected to 1>>
 				<<elseif $npc.includes("Ivory Wraith") and $wraithPrison and $wraithPrison.vision and !$wraithApologiseCooldown>>
 					<<if $wraith.state is "haunt">>
 						You tell <<him>> you're sorry for taking everything from <<him>>.
@@ -3743,7 +3743,7 @@
 						<<set $enemyanger -= 100 * (1 + $englishtrait)>>
 					<<else>>
 						<<He>> angrily claws at <<his>> neck.
-						<<set $speechApologiseAgain to 1>>
+						<<set $speechApologiseRejected to 1>>
 					<</if>>
 				<<else>>
 					You tell <<him>> you're sorry for being bad.
@@ -3777,7 +3777,7 @@
 						<<set $enemyanger -= 50 * (1 + $englishtrait)>>
 					<<else>>
 						<<He>> ignores you.
-						<<set $speechApologiseAgain to 1>>
+						<<set $speechApologiseRejected to 1>>
 					<</if>>
 				<</if>>
 			<</if>>

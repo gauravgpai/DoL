@@ -7640,4 +7640,7 @@
 	<<if $defaultSidebarMouth is undefined>>
 		<<set $defaultSidebarMouth to "smile">>
 	<</if>>
+
+	<!-- Renamed to $speechDisable -->
+	<<unset $speechdisable>>
 <</widget>>

@@ -1,21 +1,21 @@
 :: Widgets reaction-Alex [widget]
 
-/* PC lines (plead / demand / forgive / moan). */
+/* PC lines (plead / demand / moan). */
 
 <<widget "pc-line-alex-plead">>
-	<<addSpeechLine>>
+	<<addSpeechLine "plead">>
 		"Alex, control yourself!"
 	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-alex-demand">>
-	<<addSpeechLine>>
+	<<addSpeechLine "demand">>
 		"Alex, you idiot! Control yourself."
 	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-alex-moan">>
-	<<addSpeechLine>>
+	<<addSpeechLine "moan">>
 		"I couldn't ask for a better partner."
 	<</addSpeechLine>>
 <</widget>>

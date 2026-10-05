@@ -2457,7 +2457,7 @@
 			<</if>>
 		<</if>>
 
-	<<elseif $speechPenisPenis is 1>>
+	<<elseif $speechFencing is 1>>
 		<<if playerChastity("penis")>>
 			<<if $enemyanger lte 20>>
 				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
@@ -3290,7 +3290,7 @@
 			][random(0,2)]>>
 		<</if>>
 
-	<<elseif $speechApologiseAgain is 1>>
+	<<elseif $speechApologiseRejected is 1>>
 		<<He>> speaks.
 		<<if $enemyanger lte 20>>
 			<<print [

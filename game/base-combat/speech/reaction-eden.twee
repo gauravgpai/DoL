@@ -1,21 +1,21 @@
 :: Widgets reaction-Eden [widget]
 
-/* PC lines (plead / demand / forgive / moan). */
+/* PC lines (plead / demand / moan). */
 
 <<widget "pc-line-eden-plead">>
-	<<addSpeechLine>>
+	<<addSpeechLine "plead">>
 		"N...not so rough, Eden..."
 	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-eden-demand">>
-	<<addSpeechLine>>
+	<<addSpeechLine "demand">>
 		"I'm not your prey today, leave me alone."
 	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-eden-moan">>
-	<<addSpeechLine>>
+	<<addSpeechLine "moan">>
 		"I belong to you, and you alone."
 	<</addSpeechLine>>
 <</widget>>

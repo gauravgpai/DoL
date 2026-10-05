@@ -788,7 +788,7 @@
 			<<else>>
 				<<bHe>> kneads your <<penises>> together.
 			<</if>>
-			<<sex 20 "genitals">><<set $speechPenisPenis to 1>>
+			<<sex 20 "genitals">><<set $speechFencing to 1>>
 		<<else>>
 			<span class="lblue"><<bHe>> moves <<bhis>> penis away from yours.</span>
 			<<set $penisuse to 0>><<set $NPCList[_n].penis to 0>>

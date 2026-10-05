@@ -2,55 +2,55 @@
 <<widget "speech-leighton">>
 	<<set _npc_speech to true>>
 	<<speechPool "Leighton">>
-	<<if $player.virginity.anal is "Leighton">>
-		<<addEventSpeechLine "anusVirgin">>
+	<<if $player.virginity.anal is "Leighton" and $speechAnusVirgin>>
+		<<addSpeechLine "virginity">>
 			<<He>> smirks. "You'll need plenty of training."
-		<</addEventSpeechLine>>
+		<</addSpeechLine>>
 	<</if>>
-	<<if $player.virginity.oral is "Leighton">>
-		<<addEventSpeechLine "oralVirgin">>
+	<<if $player.virginity.oral is "Leighton" and $speechOralVirgin>>
+		<<addSpeechLine "virginity">>
 			<<He>> smirks. "You lack skill... For now."
-		<</addEventSpeechLine>>
+		<</addSpeechLine>>
 	<</if>>
-	<<if $player.virginity.kiss is "Leighton">>
-		<<addEventSpeechLine "kissVirgin">>
+	<<if $player.virginity.kiss is "Leighton" and $speechKissVirgin>>
+		<<addSpeechLine "virginity">>
 			<<He>> smirks. "Not terrible for a first time."
-		<</addEventSpeechLine>>
+		<</addSpeechLine>>
 	<</if>>
-	<<addEventSpeechLine "LINameDrop">>
-		<<set $speechLINameDrop to 0>>
-		<<switch _loveInterest>>
-			<<case "Robin">>
-				<<He>> smirks. "Another student? Perhaps I should invite <<nnpc_him "Robin">> to my office."
-			<<case "Kylar">>
-				<<He>> frowns. "Kylar? That explains a lot of things."
-			<<case "Whitney">>
-				<<He>> frowns. "You and that delinquent? I'm not surprised."
-			<<case "Sydney">>
-				<<if $sydneySeen.includes("spank")>>
-					<<He>> smirks. "Sydney? We could do <<nnpc_his "Sydney">> punishment in my office next time."
-				<<else>>
-					<<He>> smirks. "Sydney? I plan to have <<nnpc_him "Sydney">> in my office soon."
-				<</if>>
-			<<case "Black Wolf" "Great Hawk">>
-				<<He>> frowns. "An animal? This requires extra discipline."
-			<<default>>
-				<<He>> smirks. "I'm not familiar. This is a private matter, anyway."
-		<</switch>>
-	<</addEventSpeechLine>>
-	<<addEventSpeechLine "noticeSexToy">>
-		<<set $speechNoticeSexToy to 0>>
-		<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
-		<<He>> looks at your $_sexToy and smirks. "I can teach you a thing or two with that."
-	<</addEventSpeechLine>>
+	<<if $speechLINameDrop>>
+		<<addSpeechLine "namedrop">>
+			<<set $speechLINameDrop to 0>>
+			<<switch _loveInterest>>
+				<<case "Robin">>
+					<<He>> smirks. "Another student? Perhaps I should invite <<nnpc_him "Robin">> to my office."
+				<<case "Kylar">>
+					<<He>> frowns. "Kylar? That explains a lot of things."
+				<<case "Whitney">>
+					<<He>> frowns. "You and that delinquent? I'm not surprised."
+				<<case "Sydney">>
+					<<if $sydneySeen.includes("spank")>>
+						<<He>> smirks. "Sydney? We could do <<nnpc_his "Sydney">> punishment in my office next time."
+					<<else>>
+						<<He>> smirks. "Sydney? I plan to have <<nnpc_him "Sydney">> in my office soon."
+					<</if>>
+				<<case "Black Wolf" "Great Hawk">>
+					<<He>> frowns. "An animal? This requires extra discipline."
+				<<default>>
+					<<He>> smirks. "I'm not familiar. This is a private matter, anyway."
+			<</switch>>
+		<</addSpeechLine>>
+	<</if>>
+	<<if $speechNoticeSexToy>>
+		<<addSpeechLine "sexToy">>
+			<<set $speechNoticeSexToy to 0>>
+			<<set $_sexToy to ($rightarm is "heldSexToy" and $leftarm is "heldSexToy" ? "sex toys" : "sex toy")>>
+			<<He>> looks at your $_sexToy and smirks. "I can teach you a thing or two with that."
+		<</addSpeechLine>>
+	<</if>>
 	<<if ($speechPenisVirgin is 1 and $player.virginity.penile is "Leighton") or ($speechVaginaVirgin is 1 and $player.virginity.vaginal is "Leighton")>>
-		<<addEventSpeechLine "penisVirgin" "vaginaVirgin">>
+		<<addSpeechLine "virginity">>
 			<<He>> smirks. "Far from satisfactory. Come see me again for further improvement."
-		<</addEventSpeechLine>>
+		<</addSpeechLine>>
 	<</if>>
-	<<if hasSpeechLines()>>
-		<<speechSay>>
-	<<else>>
-		<<set _noNameComment to true>>
-	<</if>>
+	<<speechSay>>
 <</widget>>

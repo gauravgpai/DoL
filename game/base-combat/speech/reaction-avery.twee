@@ -53,20 +53,16 @@
 
 <<widget "reaction-avery-choke">>
 	<<if _daddy>>
-		<<speechPool "Avery">>
-		<<addSpeechLine 0.5>>
+		<<rng>>
+		<<if $rng lte 20>>
 			<<He>> <<laughs>>. "Let's see if you can still beg for <<nnpc_mummy "Avery">> with <<his>> hand around your throat."
-		<</addSpeechLine>>
-		<<addSpeechLine 2>>
-			<<if C.npc.Avery.rage gte 60>>
-				"I'll give you what you want," <<he>> murmurs darkly, "but not because you begged me to." <<His>> hand squeezes around your throat a little harder.
-			<<elseif C.npc.Avery.rage gte 20>>
-				"That's right, <<pcpetname "Avery">>." <<He>> <<laughs>> as <<his>> hand squeezes down a little harder. "Finally, you know how to speak to me."
-			<<else>>
-				"As you wish, <<pcpetname "Avery">>," <<he>> purrs. "Leave it to <<nnpc_mummy "Avery">>."
-			<</if>>
-		<</addSpeechLine>>
-		<<speechSay>>
+		<<elseif C.npc.Avery.rage gte 60>>
+			"I'll give you what you want," <<he>> murmurs darkly, "but not because you begged me to." <<His>> hand squeezes around your throat a little harder.
+		<<elseif C.npc.Avery.rage gte 20>>
+			"That's right, <<pcpetname "Avery">>." <<He>> <<laughs>> as <<his>> hand squeezes down a little harder. "Finally, you know how to speak to me."
+		<<else>>
+			"As you wish, <<pcpetname "Avery">>," <<he>> purrs. "Leave it to <<nnpc_mummy "Avery">>."
+		<</if>>
 	<</if>>
 <</widget>>
 
@@ -74,7 +70,7 @@
 
 <<widget "pc-line-avery-plead">>
 	<<if !$avery_mansion>>
-		<<addPairedSpeechLine "Avery">>
+		<<addPairedSpeechLine "Avery" "plead">>
 			<<pcLine>>"Was this all the date was for...?"
 		<<npcLine>>
 			<<if C.npc.Avery.rage gte 20 or $enemyanger gte 20>>
@@ -85,7 +81,7 @@
 		<</addPairedSpeechLine>>
 	<<else>>
 		<<if isAveryHuntingPlayer()>>
-			<<addPairedSpeechLine "Avery">>
+			<<addPairedSpeechLine "Avery" "plead">>
 				<<pcLine>>"I'm sorry! I didn't mean to!"
 			<<npcLine>>
 				<<if C.npc.Avery.rage gte 20 or $enemyanger gte 20>>
@@ -94,7 +90,7 @@
 					"Quiet now. Take your discipline like a good <<girl>>."
 				<</if>>
 			<</addPairedSpeechLine>>
-			<<addPairedSpeechLine "Avery">>
+			<<addPairedSpeechLine "Avery" "plead">>
 				<<pcLine>>"Please, I promise I'll do better! I promise...!"
 			<<npcLine>>
 				<<if C.npc.Avery.rage gte 20 or $enemyanger gte 20>>
@@ -104,7 +100,7 @@
 				<</if>>
 			<</addPairedSpeechLine>>
 		<<elseif $averyromance is 1>>
-			<<addPairedSpeechLine "Avery">>
+			<<addPairedSpeechLine "Avery" "plead">>
 				<<pcLine>>"I love you, Avery. Please don't do this to me!"
 			<<npcLine>>
 				<<if C.npc.Avery.rage gte 20 or $enemyanger gte 20>>
@@ -114,7 +110,7 @@
 				<</if>>
 			<</addPairedSpeechLine>>
 		<<else>>
-			<<addPairedSpeechLine "Avery">>
+			<<addPairedSpeechLine "Avery" "plead">>
 				<<pcLine>>"I'm sorry, Avery, please forgive me...!"
 			<<npcLine>>
 				<<if C.npc.Avery.rage gte 20 or $enemyanger gte 20>>
@@ -129,7 +125,7 @@
 
 <<widget "pc-line-avery-demand">>
 	<<if !$avery_mansion>>
-		<<addPairedSpeechLine "Avery">>
+		<<addPairedSpeechLine "Avery" "demand">>
 			<<pcLine>>"You don't pay me enough to treat me like this!"
 		<<npcLine>>
 			<<if C.npc.Avery.rage gte 20 or $enemyanger gt 20>>
@@ -140,13 +136,13 @@
 		<</addPairedSpeechLine>>
 	<<else>>
 		<<if isAveryHuntingPlayer()>>
-			<<addPairedSpeechLine "Avery">>
+			<<addPairedSpeechLine "Avery" "demand">>
 				<<pcLine>>"Get the hell away from me! You're taking this too far, Avery!"
 			<<npcLine>>
 				"It's never too far with you!" <<he>> <<= either("spits","hisses angrily","snarls")>>. "You never appreciate anything I do!<<if C.npc.Avery.rage gte 20 or $enemyanger gt 20>> Nothing's ever enough!<</if>>"
 			<</addPairedSpeechLine>>
 		<<elseif $averyromance is 1>>
-			<<addPairedSpeechLine "Avery">>
+			<<addPairedSpeechLine "Avery" "demand">>
 				<<pcLine>>"I told you I loved you, but I won't hesitate to leave if you don't stop this right now!"
 			<<npcLine>>
 				<<if C.npc.Avery.rage gte 20 or $enemyanger gt 20>>
@@ -156,7 +152,7 @@
 				<</if>>
 			<</addPairedSpeechLine>>
 		<<else>>
-			<<addPairedSpeechLine "Avery">>
+			<<addPairedSpeechLine "Avery" "demand">>
 				<<pcLine>>"Stop it, Avery! I'm<<if $averySeen.includes("walkParkSOYes") or $averyromance>> your <<girlfriend>>,<</if>> not your punching bag!"
 			<<npcLine>>
 				<<if C.npc.Avery.rage gte 20 or $enemyanger gt 20>>
@@ -171,11 +167,11 @@
 
 <<widget "pc-line-avery-forgive">>
 	<<if $avery_fate is undefined>>
-		<<addSpeechLine>>
+		<<addSpeechLine "forgive">>
 			"You're just angry," you say. "Everyone gets angry sometimes. I forgive you."
 		<</addSpeechLine>>
 	<<else>>
-		<<addSpeechLine>>
+		<<addSpeechLine "forgive">>
 			"Now I understand why you get so angry, Avery," you say. "And I forgive you."
 		<</addSpeechLine>>
 	<</if>>
@@ -184,7 +180,7 @@
 <<widget "pc-line-avery-moan">>
 	<<set _daddy to $submissive gte 1150 and random(1, 4) is 1>>
 	<<if $avery_fate is "ascended">>
-		<<addPairedSpeechLine "Avery">>
+		<<addPairedSpeechLine "Avery" "moan">>
 			<<pcLine>>"I'm all yours, Hound."
 		<<npcLine>>
 			<<if $consensual>>
@@ -204,7 +200,7 @@
 			<</if>>
 		<</addPairedSpeechLine>>
 	<<elseif $averyromance>>
-		<<addPairedSpeechLine "Avery">>
+		<<addPairedSpeechLine "Avery" "moan">>
 			<<pcLine>>"I love you, Avery."
 		<<npcLine>>
 			<<if C.npc.Avery.rage gte 60 >>
@@ -220,7 +216,7 @@
 			<</if>>
 		<</addPairedSpeechLine>>
 	<<elseif _daddy>>
-		<<addPairedSpeechLine "Avery">>
+		<<addPairedSpeechLine "Avery" "moan">>
 			<<pcLine>>"Put me in my place, <<nnpc_mummy "Avery">>."
 		<<npcLine>>
 			<<set $averyUniqueComments.pushUnique("called_daddy")>>
@@ -243,7 +239,7 @@
 		<</addPairedSpeechLine>>
 	<<elseif isLoveInterest("Avery")>> 
 		<<if !$avery_mansion>>
-			<<addPairedSpeechLine "Avery">>
+			<<addPairedSpeechLine "Avery" "moan">>
 				<<pcLine>>"Take me away from that place, take me with you."
 			<<npcLine>>
 				<<if C.npc.Avery.rage gte 60 >>
@@ -255,7 +251,7 @@
 				<</if>>
 			<</addPairedSpeechLine>>
 		<<else>>
-			<<addPairedSpeechLine "Avery">>
+			<<addPairedSpeechLine "Avery" "moan">>
 				<<pcLine>>"Let me show you how grateful I am, use me as much as you want."
 			<<npcLine>>
 				<<if C.npc.Avery.rage gte 60 >>
@@ -268,7 +264,7 @@
 			<</addPairedSpeechLine>>
 		<</if>>
 	<<else>>
-		<<addPairedSpeechLine "Avery">>
+		<<addPairedSpeechLine "Avery" "moan">>
 			<<pcLine>>"You're worth more than any payout."
 		<<npcLine>>
 			<<if C.npc.Avery.rage gte 60 >>

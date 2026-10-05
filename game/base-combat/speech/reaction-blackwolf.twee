@@ -1,26 +1,26 @@
 :: Widgets reaction-BlackWolf [widget]
 
-/* PC lines (plead / demand / forgive / moan). */
+/* PC lines (plead / demand / moan). */
 
 <<widget "pc-line-blackwolf-plead">>
-	<<addSpeechLine>>
+	<<addSpeechLine "plead">>
 		"Gently, please..."
 	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-blackwolf-demand">>
-	<<addSpeechLine>>
+	<<addSpeechLine "demand">>
 		"Down. DOWN!"
 	<</addSpeechLine>>
 <</widget>>
 
 <<widget "pc-line-blackwolf-moan">>
 	<<if $wolfpackleader is 1>>
-		<<addSpeechLine>>
+		<<addSpeechLine "moan">>
 			"Good <<nnpc_gendery "Black Wolf">>. Keep going."
 		<</addSpeechLine>>
 	<<else>>
-		<<addSpeechLine>>
+		<<addSpeechLine "moan">>
 			"<<print ($settings.pregnancySpeechEnabled ? "Breed" : "Fuck")>> me, alpha!"
 		<</addSpeechLine>>
 	<</if>>

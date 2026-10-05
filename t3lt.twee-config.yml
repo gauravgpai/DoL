@@ -573,18 +573,6 @@ sugarcube-2:
       name: addConsumableCosmetics
     addevent:
       name: addevent
-    addEventSpeechLine:
-      container: true
-      description: |-
-        Adds a line to the speech pool when a named event happened this turn. Event lines have different priorities assigned in `setup.speechPriority`. Use `<<speechLine>>` to add several lines for the same event/condition.
-
-        `<<addEventSpeechLine event... [weight]>>…<</addEventSpeechLine>>`
-        - **event**: `string` - the sex/combat event the line answers
-        - **weight** _optional_: `number` - weight, default 1
-      parameters:
-        - 'string |+ number'
-        - 'string &+ string |+ number'
-        - 'string &+ string &+ string |+ number'
     addfemininityfromfactor:
       name: addfemininityfromfactor
       tags: ["unused"]
@@ -613,22 +601,31 @@ sugarcube-2:
     addPairedSpeechLine:
       container: true
       description: |-
-        Adds a PC line to the speech pool, together with a named NPC's reply. That NPC's `<<sayPairedSpeechLine>>` says the paired reply.
+        Adds a PC line to the speech pool with a NNPC's reply. The NNPC's reply goes into their pool as a "pairedReply" line.
 
-        `<<addPairedSpeechLine npc>><<pcLine>>the PC's line<<npcLine>>the NPC's reply<</addPairedSpeechLine>>`
+        ```
+        <<addPairedSpeechLine "Whitney" "moan">>
+        	<<pcLine>>PC's line
+        <<npcLine>>
+        	Whitney's reply
+        <</addPairedSpeechLine>>
+        ```
+        `<<addPairedSpeechLine npc category>>`
         - **npc**: `string` - the NPC who replies
           - %namedNPCDesc%
+        - **category**: `string` - the PC action it belongs to ("moan", "plead", "demand", etc.) from `setup.speechCategories`
       parameters:
-        - '%namedNPC%'
+        - '%namedNPC% &+ string'
     addSpeechLine:
       container: true
       description: |-
-        Adds a line to the speech pool. Used `<<speechLine>>` to add several lines that share one condition.
+        Adds a line to the open speech pool. Use `<<speechLine>>` to add several lines that share one conditional.
 
-        `<<addSpeechLine [weight]>>…<</addSpeechLine>>`
+        `<<addSpeechLine category [weight]>>line<</addSpeechLine>>`
+        - **category**: `string` - sets the line's priority and cooldown, from `setup.speechCategories`
         - **weight** _optional_: `number` - weight, default 1
       parameters:
-        - '|+ number'
+        - 'string |+ number'
     addVaginalWetness:
       name: addVaginalWetness
     adjust_school_traits:
@@ -12005,7 +12002,7 @@ sugarcube-2:
       name: museumtalk
     namedNpcComments:
       description: |-
-        Plays the named NPC's speech lines for this turn. NPCs without a speech widget set `_noNameComment`, so generic comments or mouth actions play instead.
+        Plays the named NPC's speech lines for this turn. NPCs without a speech widget or that skip speaking this turn (passes) set `_noNameComment`, so generic comments or mouth actions play instead.
 
         `<<namedNpcComments npc>>`
         - **npc**: `string` - the NPC's `fullDescription`
@@ -15526,9 +15523,6 @@ sugarcube-2:
       name: say_brown_fox
     sayexhibproud:
       name: sayexhibproud
-    sayPairedSpeechLine:
-      description: |-
-        Says the NPC's paired reply to the PC moan/demand/etc. said this turn during sex/combat. Only works inside an `<<addEventSpeechLine "pairedReply">>` line.
     scarred_inmate:
       name: scarred_inmate
     sceneInseminate:
@@ -16667,25 +16661,23 @@ sugarcube-2:
       name: speech-zephyr
     speechLine:
       description: |-
-        Starts another line inside `<<addSpeechLine>>` or `<<addEventSpeechLine>>`, so one macro can add several lines. Anything written before the first `<<speechLine>>` goes at the start of every line.
+        Starts another line inside `<<addSpeechLine>>`.
     speechPool:
       description: |-
-        Starts a new speech pool for the speaker. Lines added after this go into it, until `<<speechSay>>` or `<<speechSayOrPass>>` says one of them.
+        Opens the speaker's speech pool for this turn. Lines are added to the open speech pool until `<<speechSay>>` says one of them.
 
-        `<<speechPool speaker>>`
+        `<<speechPool speaker ["neverPass"]>>`
         - **speaker**: `string` - whose lines the pool holds
           - `"pc"`: the player's lines
           - %namedNPCDesc%
+        - **"neverPass"** _optional_: stops the NNPC from being able to pass to a mouth action instead of speaking
       parameters:
-        - '%namedNPC%|"pc"'
+        - '%namedNPC%|"pc" |+ "neverPass"'
     speechSay:
       description: |-
-        Says one line from the speech pool, skipping lines the speaker has already said this combat. Prints nothing when the pool is empty.
-    speechSayOrPass:
-      description: |-
-        Says one line from the speech pool, or "passes" so a generic comment or a mouth action plays instead.
+        Says one line from the open speech pool, then closes the pool. Skips lines if its category is on cooldown and lines the speaker already said this combat. Once every line has been said, they all become available again, except the last one said.
 
-        `<<speechSayOrPass>>`
+        An NPC can pass to a mouth action instead of speaking. Always passes when they have nothing to say, or passes 40% of the time when only `"idle"` lines are in the pool.
     speechWraith:
       description: |-
         Prints up to two relevant wraith lines

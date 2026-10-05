@@ -4017,7 +4017,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 					<<his>> <<npcPenisSimple _n>> against your <<penis>>.
 				<</if>>
 			</span>
-			<<set $penisstate to "otherpenis">><<set $NPCList[_n].penis to "penis">><<sex 20 "genital" _n>><<set $speechPenisPenis to 1>>
+			<<set $penisstate to "otherpenis">><<set $NPCList[_n].penis to "penis">><<sex 20 "genital" _n>><<set $speechFencing to 1>>
 		<<elseif $NPCList[_n].penis is "penis">>
 			<<if $rng gte 1>>
 				<<if playerChastity("penis")>>
@@ -4056,7 +4056,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 				<<else>>
 					<<He>> kneads and caresses your <<penises>> together.
 				<</if>>
-				<<sex 20 "genital" _n>><<set $speechPenisPenis to 1>>
+				<<sex 20 "genital" _n>><<set $speechFencing to 1>>
 			<<else>>
 				<span class="lblue"><<He>> moves <<his>> <<npcPenisSimple _n>> away from yours.</span>
 				<<set $penisuse to 0>><<set $NPCList[_n].penis to 0>>

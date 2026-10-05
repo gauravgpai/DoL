@@ -702,7 +702,6 @@
 	<<unset $averyUniqueComments>>
 	<<unset $whitneyUniqueComments>>
 	<<unset $speechSaidLines>>
-	<<unset $speechCooldowns>>
 	<<unset $noBodyWriting>>
 	<<unset $noAdmire>>
 	<<unset $breakIgnore>>
@@ -791,7 +790,7 @@
 	<<unset $speechAnalKiss>>
 
 	<<unset $speechFencingEntrance>>
-	<<unset $speechPenisPenis>>
+	<<unset $speechFencing>>
 
 	<<unset $speechHeadBreasts>>
 	<<unset $speechHeadChest>>
@@ -875,7 +874,7 @@
 	<<unset $speechCoverFace>>
 	<<unset $speechCoverPenis>>
 	<<unset $speechCoverVagina>>
-	<<unset $speechApologiseAgain>>
+	<<unset $speechApologiseRejected>>
 	<<unset $speechApologiseUnforgiving>>
 	<<unset $speechForgive>>
 	<<unset $speechPepperSpray>>
