@@ -1384,7 +1384,7 @@
 	<</if>>
 
 	/* Ear Slime */
-	<<if  numberOfEarSlime()>>
+	<<if numberOfEarSlime()>>
 		<<addinlineevent 1>>
 			You try not to dwell on the influence your ear <<if numberOfEarSlime() gt 1>>slimes<<else>>slime<</if>> may be having over you.
 		<</addinlineevent>>
@@ -1698,7 +1698,7 @@
 	<</if>>
 
 	/* Kylar Bad End */
-	<<if $trauma gte ($traumamax / 5) * 3 and  $badEndStats.find(function (stat) { return stat.source is "Kylar Abduction"; }) and !isLoveInterest("Kylar")>>
+	<<if $trauma gte ($traumamax / 5) * 3 and $badEndStats.find(function (stat) { return stat.source is "Kylar Abduction"; }) and !isLoveInterest("Kylar")>>
 		<<set _fishingBadEndWeight to _fishingRecentBadEndSource is "Kylar Abduction" ? 2 : 0.5>>
 		<<addinlineevent _fishingBadEndWeight>>
 			You remember the walls of Kylar's manor closing in around you.<<trauma 1>><<gtrauma>>
@@ -1772,7 +1772,7 @@
 		<</if>>
 		<<if $gwylanTalked and $gwylanSeen>>
 			<<run statusCheck("Gwylan")>>
-			<<if _gwylanLovePercent gte 50 and _gwylanLovePercent lt 100>>
+			<<if _gwylanLovePercent gte 40 and _gwylanLovePercent lt 100>>
 				<<addinlineevent 1>>
 					Your thoughts turn to Gwylan. You spend some time thinking about what stories to tell <<nnpc_him "Gwylan">> next.
 				<</addinlineevent>>

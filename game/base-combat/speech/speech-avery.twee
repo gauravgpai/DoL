@@ -446,7 +446,7 @@
 				<</if>> 
 			<</addSpeechLine>>
 		<</if>>
-		/* PC apologizing more than once */
+		/* PC apologising more than once */
 		<<if $speechApologiseRejected>>
 			<<if $enemyanger lte 20>>
 				<<addSpeechLine "apologise">>
@@ -482,7 +482,7 @@
 			<</if>>
 		<</if>>
 		<<if $consensual>>
-			/* PC apologizing when Avery has the unforgiving trait  */
+			/* PC apologising when Avery has the unforgiving trait  */
 			<<if $speechApologiseUnforgiving>>
 				<<if $enemyanger lte 20 or C.npc.Avery.rage lt 20>>
 					<<addSpeechLine "apologise">>
@@ -806,7 +806,7 @@
 			<<if $speechChastity>>
 				<<addSpeechLine "chastity">>
 				<<speechLine>>
-					<<He>> frowns. "A <<printChastity>>? I didn't realize you were into this sort of tease."
+					<<He>> frowns. "A <<printChastity>>? I didn't realise you were into this sort of tease."
 				<<speechLine>>
 					<<He>> smirks. "Playing hard to get, are we? How adorable."
 				<<speechLine>>
@@ -1689,7 +1689,7 @@
 				<<elseif $averyragerevealed is 1 and C.npc.Avery.rage gte 20>>
 					<<He>> <<= either("smirks","sighs")>>. "Why cling to your virginity so stubbornly? You are going to lose it eventually, <<pcpetname "Avery">>... Why not give it to someone who can provide for you?"
 				<<elseif $averyragerevealed is 1>>
-					<<He>> smirks, <<his>> tip nudging against your entrance. "There's something almost adorable about how desperately you cling to your purity, my <<pcpetname "Avery" "my">>. All the more reason to savor corrupting it."
+					<<He>> smirks, <<his>> tip nudging against your entrance. "There's something almost adorable about how desperately you cling to your purity, my <<pcpetname "Avery" "my">>. All the more reason to savour corrupting it."
 				<<else>>
 					<<He>> smiles, <<his>> tip dragging deliberately against your folds. "There's something almost adorable about how dearly you cherish your purity, my <<pcpetname "Avery" "my">>. I suppose I can indulge your shyness, though you're only delaying the inevitable."
 				<</if>>
@@ -2174,7 +2174,7 @@
 			<<addSpeechLine "idle" 3>>
 				<<if $averySeen.includes("officeAssistant")>>
 					<<set $averyUniqueComments.pushUnique("clothes")>>
-					"You do realize what that would do to my schedule, don't you? Try wearing it before an important meeting and see where it gets you."
+					"You do realise what that would do to my schedule, don't you? Try wearing it before an important meeting and see where it gets you."
 				<<else>>
 					<<set $averyUniqueComments.pushUnique("clothes")>>
 					"You know, <<pcpetname "Avery">>, I think you'd look rather fetching behind my desk as my assistant in that. I may have to create a vacancy just for you."
