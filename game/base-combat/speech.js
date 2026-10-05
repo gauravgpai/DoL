@@ -144,14 +144,6 @@ function isSpeechCategoryCoolingDown(speaker, category) {
 }
 
 /**
- * @param {SpeechSpeaker} speaker
- * @returns {SpeechPool} the speaker's pool for this turn
- */
-function getSpeechPool(speaker) {
-	return T.speechPool[speaker];
-}
-
-/**
  * Creates the speaker's pool if it doesn't exist yet.
  *
  * @param {SpeechSpeaker} speaker
@@ -168,7 +160,7 @@ function getOrCreateSpeechPool(speaker) {
  * @returns {SpeechLine[]} the lines in the speaker's pool whose category is not on cooldown
  */
 function getSayableSpeechLines(speaker) {
-	return getSpeechPool(speaker).lines.filter(line => !isSpeechCategoryCoolingDown(speaker, line.category));
+	return T.speechPool[speaker].lines.filter(line => !isSpeechCategoryCoolingDown(speaker, line.category));
 }
 
 /** @returns {boolean} Whether the open pool has a line the speaker can say now. */
@@ -264,7 +256,7 @@ Macro.add("speechSay", {
 		const speaker = T.speechPoolSpeaker;
 		if (!speaker) return this.error("needs a <<speechPool>> first");
 		const sayableLines = getSayableSpeechLines(speaker);
-		const canPass = getSpeechPool(speaker).canPass;
+		const canPass = T.speechPool[speaker].canPass;
 		delete T.speechPool[speaker];
 		delete T.speechPoolSpeaker;
 		let lines = getUnsaidSpeechLines(speaker, sayableLines);
