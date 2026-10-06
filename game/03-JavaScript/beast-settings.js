@@ -121,7 +121,7 @@ window.isBestialityOnForAnyCreature = isBestialityOnForAnyCreature;
 /**
  * Whether a monster person of this type can appear right now. Decides appearance, not for use as a bestiality gate.
  *
- * TODO: Anywhere that this is used is ignoring the monster person chance slider, or treating it as a toggle rather than a slider. Though without storing the first result, fixing this "bug" could cause odd flickering of the creature type in passages. It is used to guard the same kind of content as `as monsterChanceForType(X) gte random(1, 100) and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType(X))`, but that code respects the slider.
+ * TODO: Anywhere that this is used is ignoring the monster person chance slider, or treating it as a toggle rather than a slider. Though without storing the first roll / perseverating the beast, fixing this "bug" could cause odd flickering of the creature type in passages. It is used to guard the same kind of content as `as monsterChanceForType(X) gte random(1, 100) and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType(X))`, but that code respects the slider.
  *
  * @param {BeastSettingType} type
  * @returns {boolean}
