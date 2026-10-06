@@ -1417,6 +1417,7 @@
 <<widget "beastGenders">>
 	<<set _beasts to $genericBeastSettings.monsterChance is 100 ? "monster people" : "beasts">>
 	<div class="numberslider-inline beastmalechance">
+		<span class="gold"><<= $genericBeastSettings.monsterChance is 100 ? "Monster People" : "Beast">> Genders:</span>
 		<<numberslider "$genericBeastSettings.beastMaleChance" $genericBeastSettings.beastMaleChance 0 100 1 {
 			onInputChange: v => {
 				setAllBeastsMaleChanceSplit(false);
@@ -1443,29 +1444,34 @@
 <</widget>>
 
 <<widget "monsterSettings">>
-	<div class="numberslider-inline">
-		<span class="gold">Monster People Chance:</span>
-		<<numberslider "$genericBeastSettings.monsterChance" $genericBeastSettings.monsterChance 0 100 1 {
-			onInputChange: v => {
-				setAllBeastsMonsterChance(v);
-			},
-			value: v => {
-				switch (v) {
-					case 0:
-						return `<span class="small-description">Beasts will <span class='gold inline-colour'>never</span> appear as monster people.</span>`;
-					case 50:
-						return `<span class="small-description"><span class='gold inline-colour'>Half</span> of all beasts will be replaced by monster people.</span>`;
-					case 100:
-						return `<span class="small-description">Beasts will <span class='gold inline-colour'>always</span> be monster people.</span>`;
-					default:
-						return `<span class="small-description"><span class='gold inline-colour'>${v}%</span> of beasts will be replaced by monster people.</span>`
-				}
-			},
-		}>>
+	<div class="beastSettingColumn">
+		<div class="numberslider-inline">
+			<span class="gold">Monster People Chance:</span>
+			<<numberslider "$genericBeastSettings.monsterChance" $genericBeastSettings.monsterChance 0 100 1 {
+				onInputChange: v => {
+					setAllBeastsMonsterChance(v);
+				},
+				value: v => {
+					switch (v) {
+						case 0:
+							return `<span class="small-description">Beasts will <span class='gold inline-colour'>never</span> appear as monster people.</span>`;
+						case 50:
+							return `<span class="small-description"><span class='gold inline-colour'>Half</span> of all beasts will be replaced by monster people.</span>`;
+						case 100:
+							return `<span class="small-description">Beasts will <span class='gold inline-colour'>always</span> be monster people.</span>`;
+						default:
+							return `<span class="small-description"><span class='gold inline-colour'>${v}%</span> of beasts will be replaced by monster people.</span>`
+					}
+				},
+			}>>
+		</div>
+		<label onchange="setAllBeastsMonsterHallucinationsOnly(V.genericBeastSettings.monsterHallucinationsOnly)">
+			<<checkbox "$genericBeastSettings.monsterHallucinationsOnly" false true autocheck>> Monster people can only appear during hallucinations
+		</label>
+		<label onchange="setAllBeastsVictimsAlwaysMonster(V.genericBeastSettings.victimsAlwaysMonster)">
+			<<checkbox "$genericBeastSettings.victimsAlwaysMonster" false true autocheck>> Beasts that are victims always appear as monster people
+		</label>
 	</div>
-	<label onchange="setAllBeastsMonsterHallucinationsOnly(V.genericBeastSettings.monsterHallucinationsOnly)">
-		<<checkbox "$genericBeastSettings.monsterHallucinationsOnly" false true autocheck>> Monster people can only appear during hallucinations
-	</label>
 <</widget>>
 
 <<widget "npcAttractionSettings">>
@@ -1480,19 +1486,20 @@
 <</widget>>
 
 <<widget "beastAttractionSettings">>
-	<div id="simpleBeastGenders" @class="(V.genericBeastSettings.beastMaleChanceSplit ? ' hidden' : '')">
-		<span class="gold"><<= $genericBeastSettings.monsterChance is 100 ? "Monster People" : "Beast">> Genders:</span>
-		<<beastGenders>>
-	</div>
-	<div id="splitBeastGenders" @class="(!V.genericBeastSettings.beastMaleChanceSplit ? ' hidden' : '')">
-		<<beastMaleChanceSplitControls>>
-	</div>
-	<span id="beastSplitByFull"><<beastSplitByFull>></span>
-	<div onchange="setAllBeastsBestialityMode(V.genericBeastSettings.bestiality)">
-		<span>Bestiality:</span>
-		<label><<radiobutton "$genericBeastSettings.bestiality" "on" autocheck>> Enabled</label> |
-		<label><<radiobutton "$genericBeastSettings.bestiality" "monsterOnly" autocheck>> Only as monster people</label> |
-		<label><<radiobutton "$genericBeastSettings.bestiality" "off" autocheck>> Disabled</label>
+	<div class="beastSettingColumn">
+		<div id="simpleBeastGenders" @class="(V.genericBeastSettings.beastMaleChanceSplit ? ' hidden' : '')">
+			<<beastGenders>>
+		</div>
+		<div id="splitBeastGenders" @class="(!V.genericBeastSettings.beastMaleChanceSplit ? ' hidden' : '')">
+			<<beastMaleChanceSplitControls>>
+		</div>
+		<span id="beastSplitByFull"><<beastSplitByFull>></span>
+		<div class="beastSettingBestiality" role="group" aria-label="Bestiality" onchange="setAllBeastsBestialityMode(V.genericBeastSettings.bestiality)">
+			<span>Bestiality:</span>
+			<label><<radiobutton "$genericBeastSettings.bestiality" "on" autocheck>> Enabled</label> |
+			<label><<radiobutton "$genericBeastSettings.bestiality" "monsterOnly" autocheck>> Only as monster people</label> |
+			<label><<radiobutton "$genericBeastSettings.bestiality" "off" autocheck>> Disabled</label>
+		</div>
 	</div>
 <</widget>>
 
@@ -1630,8 +1637,8 @@
 			<div class="settingsHeader">
 				Beast Preferences
 				<label class="settingsGranularToggle" onchange="wikifier('displaySubsection')">
-					<<checkbox "$settings.granularBeastControl" false true autocheck>> Granular Beast Control
-					<mouse class="tooltip linkBlue">(?)<span>Changing the generic beast settings will override all granular beast settings</span></mouse>
+					<<checkbox "$settings.granularBeastControl" false true autocheck>> Granular Beast Preferences
+					<mouse class="tooltip linkBlue">(?)<span>Changing a generic beast settings will override that setting for all granular beast settings, while leaving other granular settings untouched.</span></mouse>
 				</label>
 			</div>
 			<<if $settings.granularBeastControl>>
@@ -1847,33 +1854,38 @@
 	<div class="settingsToggleItemWide">
 		<div class="gold beastTypeSettingLabel"><<print _beastLabel>></div>
 		<div class="beastTypeSettingSplit">
-			<div class="beastTypeSettingHalf">
+			<div class="beastSettingColumn">
 				<<beastTypeGenders _beastType>>
-				<div class="beastTypeSettingBestiality" role="group" aria-label="Bestiality">
+				<div class="beastSettingBestiality" role="group" aria-label="Bestiality">
 					<span>Bestiality:</span>
 					<label><<radiobutton `"$settings.beastSettings." + _beastType + ".bestiality"` "on" autocheck>> Enabled</label> |
 					<label><<radiobutton `"$settings.beastSettings." + _beastType + ".bestiality"` "monsterOnly" autocheck>> Only as monster people</label> |
 					<label><<radiobutton `"$settings.beastSettings." + _beastType + ".bestiality"` "off" autocheck>> Disabled</label>
 				</div>
 			</div>
-			<div class="beastTypeSettingHalf">
+			<div class="beastSettingColumn">
 				<div class="numberslider-inline">
-					<span>Monster people chance</span>
+					<span>Monster people chance:</span>
 					<<numberslider `"$settings.beastSettings." + _beastType + ".monsterChance"` $settings.beastSettings[_beastType].monsterChance 0 100 1 {
 						value: v => {
 							switch (v) {
 								case 0:
-									return `<span class="small-description">This creature will <span class='gold inline-colour'>never</span> appear as a monster person.</span>`;
+									return `<span class="small-description">These creatures will <span class='gold inline-colour'>never</span> appear as monster people.</span>`;
+								case 50:
+									return `<span class="small-description"><span class='gold inline-colour'>Half</span> of these creatures will be replaced by monster people.</span>`;
 								case 100:
-									return `<span class="small-description">This creature will <span class='gold inline-colour'>always</span> appear as a monster person.</span>`;
+									return `<span class="small-description">These creatures will <span class='gold inline-colour'>always</span> be monster people.</span>`;
 								default:
-									return `<span class="small-description"><span class='gold inline-colour'>${v}%</span> chance this creature is replaced by a monster person.</span>`;
+									return `<span class="small-description"><span class='gold inline-colour'>${v}%</span> of these creatures will be replaced by monster people.</span>`;
 							}
 						},
 					}>>
 				</div>
 				<label>
-					<<checkbox `"$settings.beastSettings." + _beastType + ".hallucinationsOnly"` false true autocheck>> Monster people can only appear during hallucinations
+					<<checkbox `"$settings.beastSettings." + _beastType + ".hallucinationsOnly"` false true autocheck>> Monster people of this type can only appear during hallucinations
+				</label>
+				<label>
+					<<checkbox `"$settings.beastSettings." + _beastType + ".victimsAlwaysMonster"` false true autocheck>> Victims of this type always appear as monster people
 				</label>
 			</div>
 		</div>

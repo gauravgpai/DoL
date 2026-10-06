@@ -260,7 +260,7 @@
 					"'163'." Your voice is hollow.
 				<</if>>
 			<<case "pig">>
-				<<if monsterChanceForType("pig") gte 100 and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType("pig"))>>
+				<<if victimsAlwaysMonsterForType("pig") or (monsterChanceForType("pig") gte 100 and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType("pig")))>>
 					<<set _animals to "monsters">>
 				<<else>>
 					<<set _animals to "animals">>
@@ -534,7 +534,7 @@
 
 :: Underground Robin Stage Intro
 <<set $outside to 0>><<set $location to "underground">><<effects>>
-<<beastNEWinit 1 pig>>
+<<generateBeastVictim 1 pig>>
 You are led once more to the stage, where the crowd awaits. Robin is already on stage. <<covered>>
 
 <<if $rng gte 51 and beastSexEnabledForType("pig", $monster is 1)>>

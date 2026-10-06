@@ -1642,6 +1642,9 @@ sugarcube-2:
     beastNEWinit:
       description: |-
        Generates a new beast and sets $monster to 1 as appropriate. This widget must occur outside of checks for `<<if beastSexEnabledForType(type) or $monster is 1>>`.
+
+        `<<beastNEWinit count type gender genitals monster victim>>`
+        - **victim** _optional_: `boolean` - generates the beasts as victims. Use `<<generateBeastVictim>>` instead of passing this directly
     beastNNPCinit:
       name: beastNNPCinit
       tags: ["unused"]
@@ -1654,10 +1657,11 @@ sugarcube-2:
         Example:
         `<<beastNEWinit 1 fox>><<beastPARTNERinit 1 fox 0>>`
 
-        `<<beastPARTNERinit npcSlot type partnerSlot>>`
+        `<<beastPARTNERinit npcSlot type partnerSlot victim>>`
         - **npcSlot**: `number` - slot number of selected npc
         - **type**: `string` - type of partner to generate
         - **partnerSlot**: `number` - slot number for partner npc
+        - **victim** _optional_: `boolean` - generates the beast as a victim. Use `<<generateBeastPartnerVictim>>` instead of passing this directly
     beastSettings:
       name: beastSettings
     beastSimple:
@@ -6804,6 +6808,20 @@ sugarcube-2:
       tags: ["unused"]
     generateBEAST:
       name: generateBEAST
+    generateBeastPartnerVictim:
+      description: |-
+        Same as `<<beastPARTNERinit>>`, but generates the beast as a victim.
+
+        Example:
+        `<<beastNEWinit 1 fox>><<generateBeastPartnerVictim 1 fox 0>>`
+
+        `<<generateBeastPartnerVictim npcSlot type partnerSlot>>`
+        - **npcSlot**: `number` - slot number of selected npc
+        - **type**: `string` - type of partner to generate
+        - **partnerSlot**: `number` - slot number for partner npc
+    generateBeastVictim:
+      description: |-
+        Same as `<<beastNEWinit>>`, but generates the beasts as victims.
     generateboar1:
       name: generateboar1
       tags: ["unused"]

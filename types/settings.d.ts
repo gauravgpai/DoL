@@ -22,7 +22,7 @@ declare module "twine-sugarcube" {
 			analDoubleEnabled: true | false;
 			vaginalDoubleEnabled: true | false;
 			facesitEnabled: true | false;
-			granularBeastControl: true | false;
+			granularBeastPreferences: true | false;
 			pregnancySpeechEnabled: true | false;
 			footFetishEnabled: true | false;
 			forcedCrossdressingEnabled: true | false;
@@ -98,6 +98,7 @@ declare global {
 		maleChanceFemale: number;
 		maleChanceSplit: boolean;
 		bestiality: BeastSexMode;
+		victimsAlwaysMonster: boolean;
 	}
 
 	interface GenericBeastSettings {
@@ -108,6 +109,7 @@ declare global {
 		monsterHallucinationsOnly: boolean;
 		monsterChance: number;
 		bestiality: BeastSexMode;
+		victimsAlwaysMonster: boolean;
 	}
 
 	interface NamedBeastSettings {

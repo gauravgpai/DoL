@@ -7527,7 +7527,7 @@
 	<</if>>
 
 	<<if $settings.bestialityEnabled isnot undefined>>
-		<<set $settings.granularBeastControl to false>>
+		<<set $settings.granularBeastPreferences to false>>
 		<<run migrateNamedBeastSettings()>>
 		<<unset $blackwolfmonster>>
 		<<unset $nightmonstermonster>>
@@ -7557,10 +7557,15 @@
 	<<if $settings.horsesEnabled isnot undefined>>
 		<<if !$settings.horsesEnabled and $settings.beastSettings.horse.bestiality isnot "off">>
 			<<set $settings.beastSettings.horse.bestiality to "off">>
-			<<set $settings.granularBeastControl to true>>
+			<<set $settings.granularBeastPreferences to true>>
 		<</if>>
 		<<unset $settings.horsesEnabled>>
 	<</if>>
+
+	<<set $genericBeastSettings.victimsAlwaysMonster ??= false>>
+	<<for _beastType range beastSettingTypes>>
+		<<set $settings.beastSettings[_beastType].victimsAlwaysMonster ??= false>>
+	<</for>>
 
 	<<if $options.tipdisable is "f">>
 		<<set $options.tipdisable to false>>

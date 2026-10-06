@@ -54,7 +54,7 @@
 			<</if>>
 		<</if>>
 	<<else>>
-		<<beastNEWinit 1 pig>>
+		<<generateBeastVictim 1 pig>>
 	<</if>>
 
 	/* defaults to gangbang show if the player changed their beast settings, or has lost hallucinations since accepting the job */

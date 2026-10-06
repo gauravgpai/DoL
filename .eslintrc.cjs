@@ -233,6 +233,7 @@ module.exports = {
 		setAllBeastsMaleChanceSplit: "readonly",
 		setAllBeastsMonsterChance: "readonly",
 		setAllBeastsMonsterHallucinationsOnly: "readonly",
+		setAllBeastsVictimsAlwaysMonster: "readonly",
 		setKnowsAboutPregnancy: "readonly",
 		setLowerVisibility: "readonly",
 		shopClothCustomColorWheel: "readonly",

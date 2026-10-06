@@ -22,7 +22,7 @@ Your handler gives the leash a rough tug, and you're led inside.
 <<if $livestock.intro is undefined>>
 	<<livestock_init>>
 	<!-- Modified for Monster People -->
-	<<if monsterCanAppearForType("cow")>>
+	<<if victimsAlwaysMonsterForType("cow") or monsterCanAppearForType("cow")>>
 
 		Rows of caged cattle line the edge, eating cereal from troughs. It's only as you're pulled closer that you realise they aren't cows, but people with cow ears and tails. They eat from their troughs all the same, their feeding broken only by the occasional moo.
 
@@ -48,7 +48,7 @@ Your handler gives the leash a rough tug, and you're led inside.
 <<else>>
 	<<livestock_obey -10>>
 	<!-- Modified for Monster People -->
-	<<if monsterCanAppearForType("cow")>>
+	<<if victimsAlwaysMonsterForType("cow") or monsterCanAppearForType("cow")>>
 
 		Rows of caged cattle line the edge, eating cereal from troughs. It's only as you're pulled closer that you realise they aren't cows, but people with cow ears and tails. They eat from their troughs all the same, their feeding broken only by the occasional moo.
 		<br><br>
@@ -941,7 +941,7 @@ Other farmhands release the bindings around your face and neck as Remy grasps yo
 <<effects>>
 <<npc Remy>><<person1>>
 <!-- Modified for Monster People -->
-<<if monsterCanAppearForType("cow")>>
+<<if victimsAlwaysMonsterForType("cow") or monsterCanAppearForType("cow")>>
 	Remy leads you halfway down the bar, past dozens of "cows" in their stalls.
 <<else>>
 	Remy leads you halfway down the barn, past dozens of cows in their stalls.
@@ -1241,7 +1241,7 @@ The <<person2>><<person>> and <<person3>><<person>> untie your arms from the tab
 <<effects>>
 <<npc Remy>><<person1>>
 <!-- Modified for Monster People -->
-<<if monsterCanAppearForType("cow")>>
+<<if victimsAlwaysMonsterForType("cow") or monsterCanAppearForType("cow")>>
 	Remy leads you halfway down the bar, past dozens of "cows" in their stalls.
 <<else>>
 	Remy leads you halfway down the barn, past dozens of cows in their stalls.
@@ -1536,7 +1536,7 @@ Your handler gives your collar a rough tug, and you're led inside.
 <br><br>
 <<if $livestock.intro is undefined>>
 	<!-- Modified for Monster People -->
-	<<if monsterCanAppearForType("cow")>>
+	<<if victimsAlwaysMonsterForType("cow") or monsterCanAppearForType("cow")>>
 		Rows of caged cattle line the edge, eating cereal from troughs. It's only as you're pulled closer that you realise they aren't cows, but people with cow ears and tails. They eat from their troughs all the same, their feeding broken only by the occasional moo.
 	<<else>>
 		Rows of caged cows line each edge, eating cereal from troughs. Their feeding broken only by the occasional moo.
@@ -1553,7 +1553,7 @@ Your handler gives your collar a rough tug, and you're led inside.
 	<</if>>
 <<else>>
 	<!-- Modified for Monster People -->
-	<<if monsterCanAppearForType("cow")>>
+	<<if victimsAlwaysMonsterForType("cow") or monsterCanAppearForType("cow")>>
 		Rows of caged cattle line the edge, eating cereal from troughs. It's only as you're pulled closer that you realise they aren't cows, but people with cow ears and tails. They eat from their troughs all the same, their feeding broken only by the occasional moo.
 	<<else>>
 		Rows of caged cows line each edge.

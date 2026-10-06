@@ -157,14 +157,18 @@
 	gap: 0.25rem 1.5rem;
 }
 
-.beastTypeSettingHalf {
+.beastSettingColumn {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
 }
 
-.beastTypeSettingBestiality > span {
+.beastSettingBestiality > span {
 	display: block;
+}
+
+.beastSettingBestiality label {
+	white-space: nowrap;
 }
 
 .settingsToggleIndent {

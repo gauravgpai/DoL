@@ -620,6 +620,7 @@ function applyBeastSettings(settings) {
 		target.maleChanceFemale = incoming.maleChanceFemale ?? target.maleChanceFemale;
 		target.maleChanceSplit = incoming.maleChanceSplit ?? target.maleChanceSplit;
 		target.bestiality = incoming.bestiality ?? target.bestiality;
+		target.victimsAlwaysMonster = incoming.victimsAlwaysMonster ?? target.victimsAlwaysMonster;
 	});
 
 	namedBeasts.forEach(beast => {
@@ -1075,6 +1076,7 @@ function settingsToExportObject() {
 			maleChanceFemale: V.settings.beastSettings[type].maleChanceFemale,
 			maleChanceSplit: V.settings.beastSettings[type].maleChanceSplit,
 			bestiality: V.settings.beastSettings[type].bestiality,
+			victimsAlwaysMonster: V.settings.beastSettings[type].victimsAlwaysMonster,
 		};
 	});
 
@@ -1274,7 +1276,7 @@ window.settingNameFromVarName = function (varName) {
 		case "forcedCrossdressingEnabled":
 			return "Forced crossdressing";
 		case "granularBeastControl":
-			return "Granular beast control";
+			return "Granular beast preferences";
 		case "humanPregnancyMonths":
 			return "Human pregnancy length";
 		case "hypnosisEnabled":
@@ -1511,6 +1513,8 @@ window.settingNameFromVarName = function (varName) {
 			return "Monster person chance";
 		case "hallucinationsOnly":
 			return "Monster people only while hallucinating";
+		case "victimsAlwaysMonster":
+			return "Victims are always monster people";
 		case "bestiality":
 			return "Bestiality";
 		case "pronoun":
@@ -2516,11 +2520,13 @@ function randomiseEncounterSettings() {
 	V.genericBeastSettings.beastMaleChanceFemale = random(0, 100);
 	V.genericBeastSettings.monsterChance = random(0, 100);
 	V.genericBeastSettings.monsterHallucinationsOnly = either(true, false);
+	V.genericBeastSettings.victimsAlwaysMonster = either(true, false);
 	setAllBeastsMaleChance(V.genericBeastSettings.beastMaleChance);
 	setAllBeastsMaleChanceMale(V.genericBeastSettings.beastMaleChanceMale);
 	setAllBeastsMaleChanceFemale(V.genericBeastSettings.beastMaleChanceFemale);
 	setAllBeastsMonsterChance(V.genericBeastSettings.monsterChance);
 	setAllBeastsMonsterHallucinationsOnly(V.genericBeastSettings.monsterHallucinationsOnly);
+	setAllBeastsVictimsAlwaysMonster(V.genericBeastSettings.victimsAlwaysMonster);
 
 	namedBeasts.forEach(beast => {
 		V.settings.namedBeasts[beast].monsterChance = random(0, 100);

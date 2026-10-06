@@ -184,7 +184,7 @@
 		<br>
 	<<elseif $livestock.jobs.pig is 1>>
 		<<set $livestock.jobs.pig to 2>>
-		<<endevent>><<beastNEWinit 1 pig>>
+		<<endevent>><<generateBeastVictim 1 pig>>
 		Remy leads you down the small lane towards the barn. You arrive in front of it, but then are turned toward the second, smaller barn opposite.
 		<br><br>
 
@@ -203,7 +203,7 @@
 
 	<<elseif $livestock.jobs.pig is 2>>
 		<<set $livestock.jobs.pig to 1>>
-		<<endevent>><<beastNEWinit 3 pig>>
+		<<endevent>><<generateBeastVictim 3 pig>>
 		Remy leads you down the small lane towards the barn. You arrive in front of it, but then are turned toward the second, smaller barn opposite.
 		<br><br>
 
@@ -1238,7 +1238,7 @@ You feel the audience stares at your <<bottom>> as you're led outside. Some of t
 :: Livestock Job Niki
 <<effects>>
 <<endevent>>
-<<beastNEWinit 1 pig>>
+<<generateBeastVictim 1 pig>>
 The barn doors open, and a farmhand enters, holding a leash. The leash tightens. Whatever it's attached to refuses to enter.
 <br><br>
 With some tugging, and help from a couple of other farmhands, the beast is coerced into the building. It's a <<beasttype>>.
@@ -1886,7 +1886,7 @@ You're led back to the barn. Remy pauses outside. <<He>> reaches into a basket n
 	<</addinlineevent>>
 
 	<<addinlineevent "tie_stall_punishment_other_cow">>
-		<<beastNEWinit 1 cow>><<generate2>><<generate3>><<person1>>
+		<<generateBeastVictim 1 cow>><<generate2>><<generate3>><<person1>>
 		The doors to the barn open. You hear two voices arguing. As they get closer, you can see that two farmhands are herding a <<beasttype>> in between them. <<bHe>> digs <<bhis>> <<if $monster is 1>>heels<<else>>hooves<</if>> into the ground as the farmhands drag <<bhim>> to the stall next to you.
 		<br><br>
 		"Stupid <<beasttype>>," the <<person2>><<person>> says. <<He>> aims a kick at the <<person1>><<beasttype>>. "You brought this on yourself."
@@ -1918,7 +1918,7 @@ You're led back to the barn. Remy pauses outside. <<He>> reaches into a basket n
 	<</addinlineevent>>
 
 	<<addinlineevent "tie_stall_punishment_screech">>
-		<<beastNEWinit 1 cow>><<generate2>><<generate3>><<person1>>
+		<<generateBeastVictim 1 cow>><<generate2>><<generate3>><<person1>>
 		A loud screech rips through the air. <<if $syndromebird>>You recognise the call of your spouse.<<stress -6>><<lstress>><<else>>You feel the hairs on the back of your neck stand on end.<<stress 6>><<gstress>><</if>>
 		<br><br>
 		Shouts ring outside. You can hear footsteps pounding the cold ground. You strain your neck and manage to see a stampede of panicked animals and harried farmhands. One <<beasttype>> barrels over a <<person2>><<person>>. <<He>> staggers to <<his>> feet in a daze.
@@ -1959,7 +1959,7 @@ You're led back to the barn. Remy pauses outside. <<He>> reaches into a basket n
 	<<addinlineevent "tie_stall_punishment_rape_reward" 1000>>
 		<<if $rng gte 51 and (beastSexEnabledForType("horse") or beastSexEnabledForType("dog"))>>
 			<<set _beastType to beastSexEnabledForType("horse") ? "horse" : "dog">>
-			<<beastNEWinit 1 _beastType>>
+			<<generateBeastVictim 1 _beastType>>
 			<<if beastSexEnabledForType(_beastType, $monster is 1)>>
 				<<set _attacker to $NPCList[0].type>>
 			<<else>>

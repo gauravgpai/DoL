@@ -278,7 +278,7 @@ The crowd starts booing. A <<generate1>><<person1>><<person>> runs on stage. "Pl
 
 <<if $rng gte 51 and beastSexEnabledForType("pig", $monster is 1)>>
 	<<endevent>>
-	<<beastNEWinit 1 pig>>
+	<<generateBeastVictim 1 pig>>
 	"Instead of our scheduled show, we have a special treat for you." A metal shutter opens behind you, revealing a gigantic <<beasttype>>.
 	<br><br>
 
@@ -483,7 +483,7 @@ The crowd starts booing. A <<generate1>><<person1>><<person>> runs on stage. "Pl
 
 :: Underground Stage Intro
 <<set $outside to 0>><<set $location to "underground">><<effects>>
-<<beastNEWinit 1 pig>>
+<<generateBeastVictim 1 pig>>
 You are led once more to the stage, where the crowd awaits. <<covered>>
 
 <<if $rng gte 51 and beastSexEnabledForType("pig", $monster is 1)>>

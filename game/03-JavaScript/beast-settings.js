@@ -43,6 +43,17 @@ function monsterHallucinationsOnlyForType(type) {
 window.monsterHallucinationsOnlyForType = monsterHallucinationsOnlyForType;
 
 /**
+ * Whether victims of this type always generate as monster people.
+ *
+ * @param {BeastSettingType} type
+ * @returns {boolean}
+ */
+function victimsAlwaysMonsterForType(type) {
+	return beastSettingsFor(type).victimsAlwaysMonster;
+}
+window.victimsAlwaysMonsterForType = victimsAlwaysMonsterForType;
+
+/**
  * The chance that a beast of this type is male.
  *
  * @param {BeastSettingType} type
@@ -140,19 +151,17 @@ window.semenCountsAsHuman = semenCountsAsHuman;
 function resolveIfNamedBeastIsMonster(beast) {
 	if (V.settings.namedBeasts[beast].monsterChance === 0) return false;
 	if (V.settings.namedBeasts[beast].monsterChance === 100) return true;
-	const rollMonster = () =>
-		V.settings.namedBeasts[beast].monsterChance >= random(1, 100) && (V.hallucinations >= 1 || !V.settings.namedBeasts[beast].hallucinationsOnly);
-
+	const rollMonster = () => V.settings.namedBeasts[beast].monsterChance >= random(1, 100);
 	switch (beast) {
 		case "blackwolf":
 			V.daily.bwMonsterRoll ??= rollMonster();
-			return V.daily.bwMonsterRoll;
+			return V.daily.bwMonsterRoll && (V.hallucinations >= 1 || !V.settings.namedBeasts[beast].hallucinationsOnly);
 		case "greathawk":
 			V.daily.ghMonsterRoll ??= rollMonster();
-			return V.daily.ghMonsterRoll;
+			return V.daily.ghMonsterRoll && (V.hallucinations >= 1 || !V.settings.namedBeasts[beast].hallucinationsOnly);
 		case "nightmonster":
 			V.daily.nmMonsterRoll ??= rollMonster();
-			return V.daily.nmMonsterRoll;
+			return V.daily.nmMonsterRoll && (V.hallucinations >= 1 || !V.settings.namedBeasts[beast].hallucinationsOnly);
 		default:
 			throw new Error(`resolveIfNamedBeastIsMonster: unknown named beast "${beast}"`);
 	}
@@ -235,6 +244,7 @@ function migrateBeastSettings() {
 			maleChanceFemale: V.settings.beastMaleChanceFemale,
 			maleChanceSplit: V.settings.beastMaleChanceSplit,
 			bestiality,
+			victimsAlwaysMonster: false,
 		};
 	});
 	V.genericBeastSettings = {
@@ -245,6 +255,7 @@ function migrateBeastSettings() {
 		monsterHallucinationsOnly: V.settings.monsterHallucinationsOnly,
 		monsterChance: V.settings.monsterChance,
 		bestiality,
+		victimsAlwaysMonster: false,
 	};
 }
 window.migrateBeastSettings = migrateBeastSettings;

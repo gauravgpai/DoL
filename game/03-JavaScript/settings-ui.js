@@ -310,6 +310,13 @@ function setAllBeastsMonsterHallucinationsOnly(value) {
 }
 window.setAllBeastsMonsterHallucinationsOnly = setAllBeastsMonsterHallucinationsOnly;
 
+function setAllBeastsVictimsAlwaysMonster(value) {
+	beastSettingTypes.forEach(type => {
+		V.settings.beastSettings[type].victimsAlwaysMonster = value;
+	});
+}
+window.setAllBeastsVictimsAlwaysMonster = setAllBeastsVictimsAlwaysMonster;
+
 function setAllBeastsMaleChance(value) {
 	beastSettingTypes.forEach(type => {
 		V.settings.beastSettings[type].maleChance = value;

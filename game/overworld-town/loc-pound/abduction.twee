@@ -377,7 +377,7 @@ You join the scrap, shoving <<pound_text>> aside to get to the food.
 	<<link [[Next|Pound Food Event]]>><</link>>
 	<br>
 <<else>>
-	<<beastNEWinit 1 dog>>One <<beasttype>> takes offence, and nips at you as you try to eat.
+	<<generateBeastVictim 1 dog>>One <<beasttype>> takes offence, and nips at you as you try to eat.
 	<br><br>
 
 
@@ -456,7 +456,7 @@ The <<pound_text>> are eager to feed, but you won't suffer the indignance. They 
 
 Sated, the more dominant <<pound_text>> laze around the yard, while others hunt for scraps.
 <br><br>
-<<beastNEWinit 1 dog>>
+<<generateBeastVictim 1 dog>>
 <<if $rng gte 67 and beastSexEnabledForType("dog", $monster is 1)>>
 	<<if numberOfEarSlime() and ($earSlime.growth gte 80 - ($earSlime.deviancy * 10))>>
 		A <<beasttype>> watches you from afar with lust in <<bhis>> eyes.
@@ -869,7 +869,7 @@ The <<pound_text>> watch as you are strapped into a pillory.
 The <<person>> whistles, and slaps your exposed <<bottom>>. "Come on," <<he>> says. "Take your frustrations out on this disobedient <<bitch>>."
 <br><br>
 <<endcombat>>
-<<beastNEWinit 6 dog>>
+<<generateBeastVictim 6 dog>>
 <<if beastSexEnabledForType("dog", $monster is 1)>>
 	You feel a nose prod you from behind.
 	<br><br>
@@ -1453,7 +1453,7 @@ The <<person>> takes your leash and pulls you back inside, towards your cage. <<
 :: Pound Show Compete
 <<effects>>
 <<endevent>>
-<<beastNEWinit 4 dog>>
+<<generateBeastVictim 4 dog>>
 You crawl towards the obstacle course as fast as your posture will allow. The first up is the slalom. The <<pound_text>> weave between them without difficulty.
 <br><br>
 
@@ -2125,7 +2125,7 @@ Gwylan giggles. "Oops."
 <br>
 <<link [[Make them run outside naked|Pound Abduction Gwylan Rescue 5]]>><<set $phase2 to 2>><</link>>
 <br>
-<<if beastSexEnabledForType("dog", monsterChanceForType("dog") gte 100 and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType("dog")))>>
+<<if beastSexEnabledForType("dog", victimsAlwaysMonsterForType("dog") or (monsterChanceForType("dog") gte 100 and ($hallucinations gte 1 or !monsterHallucinationsOnlyForType("dog"))))>>
 	<<link [[Leash them and open all the cages|Pound Abduction Gwylan Rescue 5]]>><<set $phase2 to 3>><</link>>
 	<br>
 <</if>>

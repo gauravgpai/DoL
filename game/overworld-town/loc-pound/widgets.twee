@@ -8,7 +8,7 @@
 <</widget>>
 
 <<widget "pound_text">>
-	<<if (monsterChanceForType("dog") gte $rng and $hallucinations gte 1) or (monsterChanceForType("dog") gte $rng and !monsterHallucinationsOnlyForType("dog"))>>
+	<<if victimsAlwaysMonsterForType("dog") or (monsterChanceForType("dog") gte $rng and $hallucinations gte 1) or (monsterChanceForType("dog") gte $rng and !monsterHallucinationsOnlyForType("dog"))>>
 		<<if beastMaleChanceForType("dog") is 100>>
 			<<set _text_output to "dogboys">>
 		<<elseif beastMaleChanceForType("dog") is 0>>
