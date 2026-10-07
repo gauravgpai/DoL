@@ -189,13 +189,14 @@ function pickSpeechLine(lines) {
 	return rollWeightedRandomFromArray(lines.filter(line => setup.speechCategories[line.category].priority === highestPriority));
 }
 
-/* <<speechPool speaker ["neverPass"]>>: opens the speaker's pool for this turn. */
+/* <<speechPool speaker ["noMouthAction"]>>: opens the speaker's pool for this turn. */
 Macro.add("speechPool", {
 	handler() {
 		const [speaker, passOption] = this.args;
 		if (speaker !== "pc" && !setup.NPCNameList.includes(speaker)) return this.error(`needs "pc" or an NNPC's name, got "${speaker}"`);
-		if (passOption !== undefined && passOption !== "neverPass") return this.error(`the second argument can only be "neverPass", got "${passOption}"`);
-		getOrCreateSpeechPool(speaker).canPass = speaker !== "pc" && passOption !== "neverPass";
+		if (passOption !== undefined && passOption !== "noMouthAction")
+			return this.error(`the second argument can only be "noMouthAction", got "${passOption}"`);
+		getOrCreateSpeechPool(speaker).canPass = speaker !== "pc" && passOption !== "noMouthAction";
 		T.speechPoolSpeaker = speaker;
 	},
 });

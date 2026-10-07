@@ -8,7 +8,7 @@
 	<<if $encounterDialogue>>
 		<<switch $encounterDialogue>>
 			<<case "averyMansionChase">>
-				<<speechPool "Avery" "neverPass">>
+				<<speechPool "Avery" "noMouthAction">>
 				<<averyMansionChaseSpeech>>
 				<<speechSay>>
 			<<case "averyUndergroundBrothel">>
@@ -16,7 +16,7 @@
 			<<case "averyHotTubVoyeur">>
 				"Don't worry, <<pcpetname "Avery">>," <<he>> murmurs. "They won't be watching for long." There's a mischievous gleam in <<his>> eyes.
 			<<default>>
-				<<speechPool "Avery" "neverPass">>
+				<<speechPool "Avery" "noMouthAction">>
 				<<averyBaseSpeech>>
 				<<speechSay>>
 		<</switch>>

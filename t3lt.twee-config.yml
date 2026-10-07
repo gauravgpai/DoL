@@ -16728,13 +16728,13 @@ sugarcube-2:
       description: |-
         Opens the speaker's speech pool for this turn. Lines are added to the open speech pool until `<<speechSay>>` says one of them.
 
-        `<<speechPool speaker ["neverPass"]>>`
+        `<<speechPool speaker ["noMouthAction"]>>`
         - **speaker**: `string` - whose lines the pool holds
           - `"pc"`: the player's lines
           - %namedNPCDesc%
-        - **"neverPass"** _optional_: stops the NNPC from being able to pass to a mouth action instead of speaking
+        - **"noMouthAction"** _optional_: stops the NNPC from being able to pass to a mouth action instead of speaking
       parameters:
-        - '%namedNPC%|"pc" |+ "neverPass"'
+        - '%namedNPC%|"pc" |+ "noMouthAction"'
     speechSay:
       description: |-
         Says one line from the open speech pool, then closes the pool. Skips lines if its category is on cooldown and lines the speaker already said this combat. Once every line has been said, they all become available again, except the last one said.

@@ -2,7 +2,7 @@
 <<widget "speech-bailey">>
 	<<set _npc_speech to true>>
 	<<set $_stringsPre to ($enemyanger lte 60 ? "<<He>> snickers. ":"<<He>> snarls. ")>>
-	<<speechPool "Bailey" "neverPass">>
+	<<speechPool "Bailey" "noMouthAction">>
 	<<if ($speechPenisVirgin and $player.virginity.penile is "Bailey") or ($speechVaginaVirgin and $player.virginity.vaginal is "Bailey")>>
 		<<addSpeechLine "virginity">>
 			<<print $_stringsPre>>"Fuck. Your value just depreciated a little."

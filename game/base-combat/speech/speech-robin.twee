@@ -6,7 +6,7 @@
 		<<set $robinUniqueComments to []>>
 	<</if>>
 	<<if $robinmist>>
-		<<speechPool "Robin" "neverPass">>
+		<<speechPool "Robin" "noMouthAction">>
 		<<if $speechPlayerHits>>
 			<<addSpeechLine "playerHits">>
 			<<speechLine>>
@@ -48,7 +48,7 @@
 		<</addSpeechLine>>
 		<<speechSay>>
 	<<elseif $robinMetal>>
-		<<speechPool "Robin" "neverPass">>
+		<<speechPool "Robin" "noMouthAction">>
 		<<addSpeechLine "idle">>
 			<<print either(
 				`Robin can't maintain eye contact.`,
