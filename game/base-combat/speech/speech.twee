@@ -2586,7 +2586,7 @@
 			][random(0,2)]>>
 		<</if>>
 
-	<<elseif $speechThroat is 1>>
+	<<elseif $speechChoke is 1>>
 		<<He>> tightens <<his>> grip around your throat.
 		<<if $consensual and $enemyanger lt 100>>
 			<<print [

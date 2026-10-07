@@ -981,7 +981,7 @@
 				"Let's see what we have here..."
 			<</addSpeechLine>>
 		<</if>>
-		<<if $speechThroat>>
+		<<if $speechChoke>>
 			<<addSpeechLine "oral">>
 				<<if $choketrait gt 0>>
 					<<if $consensual>>

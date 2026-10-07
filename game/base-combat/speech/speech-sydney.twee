@@ -635,19 +635,19 @@
 	<<switch _sydneyStatus>>
 		<<case "pure" "pureLust">>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> barely manages to speak. "Ah... something's coming..."
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "I'm starting to feel weird..."
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> giggles. "This tickles!"
 					<</addSpeechLine>>
@@ -655,19 +655,19 @@
 			<</if>>
 		<<case "corrupt" "corruptLust">>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> moans, grabbing the back of your head. "I'm almost there! Are you ready?"
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "Lick harder."
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "You look so cute down there."
 					<</addSpeechLine>>
@@ -675,19 +675,19 @@
 			<</if>>
 		<<default>>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> barely manages to speak. "I think I'm... getting close...!"
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "You can breathe, right? I'm not hurting you?"
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> speaks. "Your tongue is so warm."
 					<</addSpeechLine>>

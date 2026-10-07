@@ -1071,7 +1071,7 @@
 			<</addSpeechLine>>
 		<</if>>
 	<</if>>
-	<<if $speechThroat>>
+	<<if $speechChoke>>
 		<<if $choketrait gte 1>>
 			<<addSpeechLine "oral">>
 			<<speechLine>>

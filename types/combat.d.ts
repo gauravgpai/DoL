@@ -156,6 +156,7 @@ declare module "twine-sugarcube" {
 		speechChastity?: number;
 		speechCheeks?: number;
 		speechChestRub?: number;
+		speechChoke?: number;
 		speechChokedAction?: "apologise" | "askChoke" | "askRough" | "demand" | "moan" | "mock" | "plead" | "scream";
 		speechChokedAlready?: number;
 		speechChokedMoan?: number;
@@ -252,7 +253,6 @@ declare module "twine-sugarcube" {
 		speechStruggle?: number;
 		speechTempleVirgin?: number;
 		speechThigh?: number;
-		speechThroat?: number;
 		speechTrib?: number;
 		speechTribEntrance?: number;
 		speechVagina?: number;

@@ -678,27 +678,27 @@
 			<</if>>
 		<</if>>
 		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-			<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+			<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 				<<addSpeechLine "oral">>
 					<<He>> moans softly, placing both hands on your head. "G-<<pcpetname 'Gwylan' 'good'>>, keep going just like that."
 				<</addSpeechLine>>
 			<</if>>
 		<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
 			<<if $cat gte 6>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> giggles. "Try licking a different spot, your rough tongue is starting to hurt."
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+				<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 					<<addSpeechLine "oral">>
 						<<He>> giggles. "You're good with that tongue."
 					<</addSpeechLine>>
 				<</if>>
 			<</if>>
 		<<else>>
-			<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechThroat or $speechFaceSit>>
+			<<if $speechMouthNPCVagina or $speechAnalLick or $speechAnalKiss or $speechMouthNPCAnus or $speechChoke or $speechFaceSit>>
 				<<addSpeechLine "oral">>
 					<<He>> giggles. "Do you like licking me all over? Aren't I a tasty treat?"
 				<</addSpeechLine>>
