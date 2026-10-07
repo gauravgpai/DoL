@@ -4955,7 +4955,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			Kylar opens your locket, and makes a noise of contempt at the sight of Robin.
 			<br><br>
 
-			"Of course I have to worry about you too," you then hear <<him>> grumble as <<he>> inspects your locket. "If only I could have lived with <<phim>>, too… "
+			"Of course I have to worry about you too," you then hear <<him>> grumble as <<he>> inspects your locket. "If only I could have lived with <<phim>>, too…"
 			<br><br>
 
 			You watch as <<he>> keeps the locket close, and pockets it soon after. <<npcincr Kylar rage 3>><<ggksuspicion>>
@@ -5076,7 +5076,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			Seemingly done, Kylar makes <<his>> way out.
 		<<case "Great Hawk">>
 			<<set $kylarLocket to "other">><<set $kylarSeen.pushUnique("locketStolen")>><<run $wardrobe.neck.delete(_locket)>>
-			Kylar opens your locket, and makes a noise of surprise at the sight of Great Hawk.
+			Kylar opens your locket, and makes a noise of surprise at the sight of the Great Hawk.
 			<br><br>
 
 			"W-what?" you then hear <<him>> stutter as <<he>> inspects your locket. "What is this?"
@@ -5125,7 +5125,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 				<br><br>
 
 				<<if _kylarStatus.includes("Rage")>>
-					"My head… did <<pshe>> rig this thing somehow? How? <i>How?"</i>
+					"My head… did <<pshe>> rig this thing somehow? How? <i>How?</i>"
 				<<else>>
 					"W-what? How…? I feel sick."
 				<</if>>

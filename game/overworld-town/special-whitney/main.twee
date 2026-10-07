@@ -6480,6 +6480,7 @@ You pass the cigarette back to Whitney. As if on autopilot, <<he>> immediately t
 	<<else>>
 		"Boo. You're no fun."
 	<</if>>
+	<br><br>
 	<<neckon>>
 	<<whitneyOptions>>
 <</if>>
