@@ -1475,7 +1475,7 @@
 			<<print setup.breastsizes[$player.breastsize]>>
 			<<if !_breastSensitivityDescribed or _args[0]>><<breastsensitivity>><</if>>
 			<<print " breasts">>\
-		<</if>>
+		<</if>>\
 	<<elseif $options.debugdisable is "f">>
 		<<print "ERROR - $$player.breastsize is not a number: $player.breastsize">>
 	<</if>>\
@@ -1522,15 +1522,15 @@
 <</silently>><<if !_mouthSensitivityDescribed>><<mouthsensitivity>><</if>><<print _text_output>><</widget>>
 
 
-<!-- Prints the current state of the player's under_upper clothing, assuping the over_upper clothing has been destroyed.
+<!-- Prints the current state of the player's under_upper clothing, assuming the over_upper clothing has been destroyed.
 	The corresponding lower check is called "undies" -->
-<<widget "undertop">><<silently>>
+<<widget "undertop">>
 	<<if $worn.under_upper.exposed lte 0>>
-		<<set _text_output to $worn.under_upper.name>>
+		$worn.under_upper.name\
 	<<else>>
-		<<breasts>>
+		<<breasts>>\
 	<</if>>
-<</silently>><<print _text_output>><</widget>>
+<</widget>>
 
 <<widget "underoutfit">><<silently>>
 	<<outfitChecks>>
@@ -2775,29 +2775,29 @@
 		<<ampm `_args[1] ? _args[1] : 21` 00>>"
 <</widget>>
 
-<<widget "exposedupper">><<silently>>
+<<widget "exposedupper">>
 	<<if $worn.over_upper.exposed is 0>>
-		<<set _text_output to $worn.over_upper.name>>
-	<<elseif $worn.upper.exposed is 0>>
-		<<set _text_output to $worn.upper.name>>
-	<<elseif $worn.under_upper.exposed is 0>>
-		<<set _text_output to $worn.under_upper.name>>
-	<<else>>
-		<<breasts>>
-	<</if>>
-<</silently>>_text_output<</widget>>
+		$worn.over_upper.name\
+	<<elseif $worn.upper.exposed is 0>>\
+		$worn.upper.name\
+	<<elseif $worn.under_upper.exposed is 0>>\
+		$worn.under_upper.name>>\
+	<<else>>\
+		<<breasts>>\
+	<</if>>\
+<</widget>>
 
-<<widget "exposedlower">><<silently>>
-	<<if $worn.over_lower.exposed is 0>>
-		<<set _text_output to $worn.over_lower.name>>
-	<<elseif $worn.lower.exposed is 0>>
-		<<set _text_output to $worn.lower.name>>
-	<<elseif $worn.under_lower.exposed is 0>>
-		<<set _text_output to $worn.under_lower.name>>
-	<<else>>
-		<<genitals>>
-	<</if>>
-<</silently>>_text_output<</widget>>
+<<widget "exposedlower">>\
+	<<if $worn.over_lower.exposed is 0>>\
+		$worn.over_lower.name\
+	<<elseif $worn.lower.exposed is 0>>\
+		$worn.lower.name\
+	<<elseif $worn.under_lower.exposed is 0>>\
+		$worn.under_lower.name\
+	<<else>>\
+		<<genitals>>\
+	<</if>>\
+<</widget>>
 
 <<widget "groin">><<silently>>
 	<<genitals>>
@@ -2834,20 +2834,20 @@
 
 	The corresponding upper check is called "undertop"
  -->
-<<widget "undies">><<silently>>
+<<widget "undies">>
 	<<outfitChecks>>
 	<<if !$worn.under_lower.type.includes("naked")>>
 		<<if _args[0] and _args[0] gte 1>>
-			<<set _text_output to $worn.under_lower.name_simple>>
-		<<else>>
-			<<set _text_output to $worn.under_lower.name>>
-		<</if>>
-	<<elseif !$worn.genitals.type.includes("naked")>>
-		<<set _text_output to $worn.genitals.name>>
-	<<else>>
-		<<genitals _args[0]>>
-	<</if>>
-<</silently>><<print _text_output>><</widget>>
+			$worn.under_lower.name_simple\
+		<<else>>\
+			$worn.under_lower.name\
+		<</if>>\
+	<<elseif !$worn.genitals.type.includes("naked")>>\
+		$worn.genitals.name\
+	<<else>>\
+		<<genitals _args[0]>>\
+	<</if>>\
+<</widget>>\
 
 <<widget "bottoms">><<silently>>
 	<<outfitChecks>>
