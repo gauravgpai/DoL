@@ -2488,11 +2488,13 @@
 		<<else>>
 			<<switch $npc[_n]>>
 				<<case "Avery">>
+					/* Disabled until the source of body fluids is tracked - Avery may be the one who came on the PC.
 					<<if C.npc.Avery.rage gte 20>>
 						<<He>> scowls. "Were you fucking someone behind my back?" <<he>> demands. <<garage>><<npcincr Avery rage 1>>
 					<<else>>
 						<<He>> frowns. "Were you going around behind my back, <<girl>>?" <<he>> demands. <<garage>><<npcincr Avery rage 1>>
 					<</if>>
+					*/
 			<</switch>>
 		<</if>>
 	<<elseif setup.bodyliquid.combined(_args[0]) gte 2>>
