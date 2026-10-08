@@ -473,6 +473,7 @@ You approach the center of the cave, wet sounds accompany you. As you get close,
 :: Mine Diamond Take
 <<effects>><<wearProp "antique purple diamond">><<earnFeat "Rock Bottom">>
 <<set $mine.tunnel.diamond to 1>><<museumAntiqueStatus "antiquepurplediamond" "found">>
+<<set $antiquemoney += 5000>>
 
 You reach out to touch the diamond, as your fingers meet the diamond...
 <<orgasm>>
