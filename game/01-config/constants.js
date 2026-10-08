@@ -39,29 +39,26 @@ const constants = {
 	stats: {
 		drunk: {
 			/**
-			 * How much allure the PC gains at the drunk effect limit. Can be amplified by other allure modifiers.
+			 * How much allure the PC gains at the drunk limit. Can be amplified by other allure modifiers.
 			 *
 			 * The drunk allure math is handled in the "calculateallure" function.
 			 */
 			// allureBonus: 500,
+
 			/**
-			 * The PC's required level of intoxication to achieve its maximum effects.
-			 *
-			 * Also determines the scaling of the drunk stat's descriptions and colours in the ""
-			 */
-			effectLimit: 500,
-			/**
-			 * How much fatigue the PC gains at the drunk effect limit. This is also applied while the PC is sleeping.
+			 * How much fatigue the PC gains at the drunk limit. This is also applied while the PC is sleeping.
 			 *
 			 * The hourly fatigue math is handled in the "minutePassed" function.
 			 */
 			// hourlyFatigue: 20,
+
 			/**
-			 * How much stress the PC gains at the drunk effect limit. This is also applied while the PC is sleeping.
+			 * How much stress the PC gains at the drunk limit. This is also applied while the PC is sleeping.
 			 *
 			 * The hourly stress math is handled in the "minutePassed" function.
 			 */
 			// hourlyStress: -120,
+
 			mod: {
 				/**
 				 * How much the player's sex stats will be increased, depending on their current sex stat and level of intoxication.
@@ -82,25 +79,21 @@ const constants = {
 					maxDrunk: 30,
 				},
 			},
+
 			/**
-			 * How much more pain the PC can tolerate at the drunk effect limit.
-			 *
-			 * The pain tolerance math is handled in the "pain" function.
-			 */
-			// painTolerance: 0.2,
-			/**
-			 * How much the PC's stats decrease at the drunk effect limit.
+			 * How much the PC's stats decrease at the drunk limit.
 			 *
 			 * Affected stats:
-			 *   Willpower, Skulduggery, Dancing, Swimming, Athletics, Tending, Housekeeping
-			 *   Seduction, Oral, Chest, Hands, Buttocks, Anal, Vaginal, Feet, Thighs
-			 *   English, History, Maths, Science
-			 *
-			 * The "Sprays", "Nets", "Batons", "Whips" should also be affected by drunk, but the "currentSkillValue" function doesn't currently handle them.
+			 * - Willpower
+			 * - Athletics, Dancing, Housekeeping, Skulduggery, Swimming, Tending
+			 * - Seduction, Oral, Chest, Hands, Buttocks, Anal, Vaginal, Feet, Thighs
+			 * - English, History, Maths, Science
+			 * - Sprays, Nets, Batons, Whips
 			 */
 			skillPenalty: 100,
+
 			/**
-			 * How much more stress the PC can tolerate at the drunk effect limit.
+			 * How much more stress the PC can tolerate at the drunk limit.
 			 *
 			 * The stress tolerance math is handled in the "stress" function.
 			 */

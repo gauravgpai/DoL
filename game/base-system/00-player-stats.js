@@ -3112,21 +3112,21 @@ const Norm = {
 	},
 
 	/**
-	 * `return Math.clamp(PC.drugged / V.druggedmax, 0, 1)`
+	 * `return Math.clamp(PC.drugged / V.druggedlimit, 0, 1)`
 	 *
 	 * @returns {number}
 	 */
 	drugged() {
-		return Math.clamp(PC.drugged / V.druggedmax, 0, 1);
+		return Math.clamp(PC.drugged / V.druggedlimit, 0, 1);
 	},
 
 	/**
-	 * `return Math.clamp(PC.drunk / V.drunkmax, 0, 1)`
+	 * `return Math.clamp(PC.drunk / V.drunklimit, 0, 1)`
 	 *
 	 * @returns {number}
 	 */
 	drunk() {
-		return Math.clamp(PC.drunk / V.drunkmax, 0, 1);
+		return Math.clamp(PC.drunk / V.drunklimit, 0, 1);
 	},
 
 	/**
@@ -3139,12 +3139,12 @@ const Norm = {
 	},
 
 	/**
-	 * `return Math.clamp(PC.hallucinogen / V.hallucinogenmax, 0, 1)`
+	 * `return Math.clamp(PC.hallucinogen / V.hallucinogenlimit, 0, 1)`
 	 *
 	 * @returns {number}
 	 */
 	hallucinogen() {
-		return Math.clamp(PC.hallucinogen / V.hallucinogenmax, 0, 1);
+		return Math.clamp(PC.hallucinogen / V.hallucinogenlimit, 0, 1);
 	},
 
 	/**

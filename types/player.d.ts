@@ -133,6 +133,11 @@ declare module "twine-sugarcube" {
 		// whipskill: number;
 		// pickaxeskill: number;
 
+		// Character State Limits
+		druggedlimit: number;
+		drunklimit: number;
+		hallucinogenlimit: number;
+
 		oxygen: number;
 		oxygenmax: number;
 

@@ -240,6 +240,19 @@
 	<<set $whipskillmax to 1000>>
 	<<set $pickaxeskillmax to 1000>>
 
+	<!--
+		PC Stat Limit Initializations.
+	
+		Determines how much of the stat is needed before its effect no longer increases.
+
+		Also determines the scaling of the stat's descriptions and colours in the "game\base-system\widgets.twee" file.
+	-->
+
+	<!-- Character State Limits -->
+	<<set $druggedlimit to 500>>
+	<<set $drunklimit to 500>>
+	<<set $hallucinogenlimit to 500>>
+
 	<<set $control to 1000>>
 
 	<<clothinginit>>

@@ -7772,5 +7772,12 @@
 	<<if $sprayskillmax is undefined>><<set $sprayskillmax to 1000>><</if>>
 	<<if $whipskillmax is undefined>><<set $whipskillmax to 1000>><</if>>
 	<<if $pickaxeskillmax is undefined>><<set $pickaxeskillmax to 1000>><</if>>
+	
+	<!-- PC Stat Limit Initializations. -->
+
+	<!-- Character State Limits -->
+	<<if $druggedlimit is undefined>><<set $druggedlimit to 500>><</if>>
+	<<if $drunklimit is undefined>><<set $drunklimit to 500>><</if>>
+	<<if $hallucinogenlimit is undefined>><<set $hallucinogenlimit to 500>><</if>>
 
 <</widget>>

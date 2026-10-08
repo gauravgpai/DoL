@@ -58,35 +58,35 @@ declare global {
 	const T: SugarCubeTemporaryVariables;
 	const C: {
 		crime: any;
+
 		npc: {
 			[key in NpcNames]: Npc;
 		};
+
 		tiredness: {
 			max: number;
 		};
 
 		stats: {
 			drunk: {
-				// allureBonus: number,
+				// allureBonus: number;
 
-				effectLimit: number;
+				// hourlyFatigue: number;
 
-				// hourlyFatigue: number,
+				// hourlyStress: number;
 
-				// hourlyStress: number,
+				// painTolerance: number;
 
-				mod: {
+				sexBoost: {
 					maxSex: {
 						minDrunk: number;
 						maxDrunk: number;
-					};
+					},
 					minSex: {
 						minDrunk: number;
 						maxDrunk: number;
-					};
-				};
-
-				// painTolerance: number,
+					},
+				},
 
 				skillPenalty: number;
 
