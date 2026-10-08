@@ -1073,7 +1073,7 @@
 	<</if>>
 	<<if $speechChoke>>
 		<<if $choketrait gte 1>>
-			<<addSpeechLine "oral">>
+			<<addSpeechLine "choke">>
 			<<speechLine>>
 				<<He>> pants. "That's right, bitch. Gag!"
 			<<speechLine>>
@@ -1082,16 +1082,16 @@
 				"Yeah? You like that, huh? You're such a needy little slut."
 			<</addSpeechLine>>
 			<<if C.npc.Whitney.dom lte 10>>
-				<<addSpeechLine "oral">>
+				<<addSpeechLine "choke">>
 					"Fuck, if only you were always this easy."
 				<</addSpeechLine>>
 			<<elseif C.npc.Whitney.dom gte 15>>
-				<<addSpeechLine "oral">>
+				<<addSpeechLine "choke">>
 					"You're so fucking easy, I love it!"
 				<</addSpeechLine>>
 			<</if>>
 		<<else>>
-			<<addSpeechLine "oral">>
+			<<addSpeechLine "choke">>
 			<<speechLine>>
 				"You better not pass out. I'm having too much fun."
 			<<speechLine>>
@@ -1100,11 +1100,11 @@
 				"Did you say something, bitch?"
 			<</addSpeechLine>>
 			<<if C.npc.Whitney.dom lte 10>>
-				<<addSpeechLine "oral">>
+				<<addSpeechLine "choke">>
 					"You're lucky I'm not doing something worse."
 				<</addSpeechLine>>
 			<<elseif C.npc.Whitney.dom gte 15>>
-				<<addSpeechLine "oral">>
+				<<addSpeechLine "choke">>
 					"Oh, slut. You know you can't do anything to me by now, right?!"
 				<</addSpeechLine>>
 			<</if>>
@@ -2174,9 +2174,101 @@
 			<</addSpeechLine>>
 		<</if>>
 	<</if>>
+	
+	/* Idle lines */
 	<<if $worn.neck.collared is 1 and C.npc.Whitney.dom gte 15>>
 		<<addSpeechLine "idle">>
 			<<His>> eyes glance down at your collar. "What a good <<girl>>," <<he>> grins. "Letting everyone know who you belong to?"
+		<</addSpeechLine>>
+	<</if>>
+	<<if $audiencepresent gte 1>>
+		<<addSpeechLine "idle">>
+		<<speechLine>>
+			<<He>> grins at the crowd. "Let's see what my slut's got for us today." The crowd chatters excitedly around you.
+		<<speechLine>>
+			<<He>> turns to the crowd. "Isn't <<pshe>> a riot?" The crowd jeers around you.
+		<</addSpeechLine>>
+		<<if C.npc.Whitney.dom gte 15>>
+			<<addSpeechLine "idle">>
+			<<speechLine>>
+				<<He>> grins at the crowd. "<<= either("Paws off","Keep your hands to yourselves")>>, perverts. My slut, my rules." The crowd boos playfully.
+			<<speechLine>>
+				<<He>> smirks at the crowd. "Someone get a picture. I want to remember this." Phones go up all around you.
+			<</addSpeechLine>>
+		<</if>>
+	<</if>>
+	<<if $arousal gte ($arousalmax / 5) * 4>>
+		<<addSpeechLine "idle">>
+			<<He>> snickers. "You're practically begging for it."
+		<</addSpeechLine>>
+	<</if>>
+	<<if $dissociation gte 1>>
+		<<addSpeechLine "idle">>
+			<<He>> frowns at your blank expression.
+		<<speechLine>>
+			"Don't just lie there like a fucking corpse."
+		<<speechLine>>
+			"Hello? Anyone home? Say something."
+		<</addSpeechLine>>
+	<</if>>
+	<<if $pain gte 100 and $willpowerpain is 0>>
+		<<addSpeechLine "idle">>
+		<<speechLine>>
+			<<He>> snarls. "Hurts, doesn't it?"
+		<<speechLine>>
+			<<He>> snickers. "What, too rough?"
+		<</addSpeechLine>>
+	<</if>>
+	<<if $enemyanger lte 20>>
+		<<if C.npc.Whitney.dom lte 10>>
+			<<addSpeechLine "idle">>
+				"Why can't you be this easy all the time, slut?"
+			<</addSpeechLine>>
+		<<elseif C.npc.Whitney.dom gte 15>>
+			<<addSpeechLine "idle">>
+				"See? Way easier when you just do what I tell you, slut."
+			<</addSpeechLine>>
+		<</if>>
+	<<elseif $enemyanger gt 100>>
+		<<if C.npc.Whitney.dom lte 10>>
+			<<addSpeechLine "idle">>
+				<<He>> spits. "What's your fucking problem?"
+			<</addSpeechLine>>
+		<<elseif C.npc.Whitney.dom gte 15>>
+			<<addSpeechLine "idle">>
+				<<He>> spits. "Why can't you just do as you're told, <<= $player.penisExist ? "cock" : "cunt">>-for-brains?"
+			<</addSpeechLine>>
+		<</if>>
+	<</if>>
+	<<if $location is "park" and $enemyanger gt 100>>
+		<<addSpeechLine "idle">>
+			<<He>> snarls. "Keep that up and I'll toss your ass into the fountain!"
+		<</addSpeechLine>>
+	<</if>>
+	<<set $_tf to checkTFparts()>>
+	<<if $cow gte 6 and ($_tf.cowHorns or $_tf.cowTail)>>
+		<<addSpeechLine "idle">>
+			"Come on, then. Moo for me!"
+		<</addSpeechLine>>
+	<</if>>
+	<<if $cat gte 6 and ($_tf.catEars or $_tf.catTail)>>
+		<<addSpeechLine "idle">>
+			"Come on, then. Purr for me!"
+		<</addSpeechLine>>
+	<</if>>
+	<<if $harpy gte 6 and ($_tf.birdWings or $_tf.birdTail or $_tf.birdPlumage)>>
+		<<addSpeechLine "idle">>
+			"Come on, then. Sing for me!"
+		<</addSpeechLine>>
+	<</if>>
+	<<if $wolfgirl gte 6 and ($_tf.wolfEars or $_tf.wolfTail)>>
+		<<addSpeechLine "idle">>
+			"Come on, then. Bark for me!"
+		<</addSpeechLine>>
+	<</if>>
+	<<if $fox gte 6 and ($_tf.foxEars or $_tf.foxTail)>>
+		<<addSpeechLine "idle">>
+			"Come on, then. Scream for me!"
 		<</addSpeechLine>>
 	<</if>>
 	<<speechSay>>

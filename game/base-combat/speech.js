@@ -47,14 +47,14 @@ setup.speechCategories = {
 	plead: { priority: 70 },
 	screamForHelp: { priority: 70 },
 	struggle: { priority: 70 },
-	vaginaFlaunt: { priority: 70 },
 
 	/* An NNPC's follow up line to something they said earlier. */
 	followUp: { priority: 65 },
 
-	/* NNPC reacting to hitting or spanking the PC. */
-	playerBeaten: { priority: 60 },
-	spank: { priority: 60 },
+	/* NNPC hurting the PC. */
+	choke: { priority: 60, cooldown: 3 },
+	playerBeaten: { priority: 60, cooldown: 3 },
+	spank: { priority: 60, cooldown: 3 },
 
 	/* Ongoing acts. These come up every turn, they have a 3 turn cooldown. */
 	arms: { priority: 10, cooldown: 3 },
@@ -71,6 +71,7 @@ setup.speechCategories = {
 	touch: { priority: 10, cooldown: 3 },
 	toy: { priority: 10, cooldown: 3 },
 	trib: { priority: 10, cooldown: 3 },
+	vaginaFlaunt: { priority: 10, cooldown: 3 },
 	withhold: { priority: 10, cooldown: 3 },
 
 	/* Idle comments */

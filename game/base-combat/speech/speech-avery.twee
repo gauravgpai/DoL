@@ -982,7 +982,7 @@
 			<</addSpeechLine>>
 		<</if>>
 		<<if $speechChoke>>
-			<<addSpeechLine "oral">>
+			<<addSpeechLine "choke">>
 				<<if $choketrait gt 0>>
 					<<if $consensual>>
 						<<if C.npc.Avery.rage gte 20>>
