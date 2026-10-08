@@ -252,32 +252,28 @@ function rollSpeechPass(lines) {
 }
 
 /* <<speechSay>>
-Says a line from the open pool, or passes and closes the pool. */
+Says a line from the open pool, or passes. */
 Macro.add("speechSay", {
 	handler() {
-		const speaker = T.speechPoolSpeaker;
-		if (!speaker) return this.error("needs a <<speechPool>> first");
-		const sayableLines = getSayableSpeechLines(speaker);
-		const canPass = T.speechPool[speaker].canPass;
-		delete T.speechPool[speaker];
-		delete T.speechPoolSpeaker;
-		let lines = getUnsaidSpeechLines(speaker, sayableLines);
+		if (!T.speechPoolSpeaker) return this.error("needs a <<speechPool>> first");
+		const sayableLines = getSayableSpeechLines(T.speechPoolSpeaker);
+		let lines = getUnsaidSpeechLines(T.speechPoolSpeaker, sayableLines);
 		if (lines.length === 0 && sayableLines.length > 0) {
-			const lastSaidId = getSpeechHistory(speaker)
+			const lastSaidId = getSpeechHistory(T.speechPoolSpeaker)
 				.filter(entry => entry.id !== null)
 				.at(-1).id;
-			clearSpeechHistory(speaker);
+			clearSpeechHistory(T.speechPoolSpeaker);
 			lines = sayableLines.filter(line => line.id !== lastSaidId);
 			if (lines.length === 0) lines = sayableLines;
 		}
-		const passed = canPass && rollSpeechPass(lines);
+		const passed = T.speechPool[T.speechPoolSpeaker].canPass && rollSpeechPass(lines);
 		if (passed || lines.length === 0) {
-			addSpeechHistoryEntry(speaker, { id: null, category: null });
+			addSpeechHistoryEntry(T.speechPoolSpeaker, { id: null, category: null });
 			if (passed) T.noNameComment = true;
 			return;
 		}
 		const line = pickSpeechLine(lines);
-		addSpeechHistoryEntry(speaker, { id: line.id, category: line.category });
+		addSpeechHistoryEntry(T.speechPoolSpeaker, { id: line.id, category: line.category });
 		if (line.reply) getOrCreateSpeechPool(line.reply.speaker).lines.push(createSpeechLine(line.reply.content, "pairedReply", 1));
 		$(this.output).wiki(line.content);
 	},

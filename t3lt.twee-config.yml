@@ -16737,7 +16737,7 @@ sugarcube-2:
         - '%namedNPC%|"pc" |+ "noMouthAction"'
     speechSay:
       description: |-
-        Says one line from the open speech pool, then closes the pool. Skips lines if its category is on cooldown and lines the speaker already said this combat. Once every line has been said, they all become available again, except the last one said.
+        Says one line from the open speech pool. Skips lines if its category is on cooldown and lines the speaker already said this combat. Once every line has been said, they all become available again, except the last one said.
 
         An NPC can pass to a mouth action instead of speaking. Always passes when they have nothing to say, or passes 40% of the time when only `"idle"` lines are in the pool.
     speechWraith:
