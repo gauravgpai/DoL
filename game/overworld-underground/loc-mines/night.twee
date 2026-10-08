@@ -8,13 +8,13 @@ You are in a small cave. The walls are bare. With all the other people in here, 
 <br><br>
 <<if $arousal gte $arousalmax>>
 	<<orgasm>>
-	You shake and moan. Some slaves looks at you, others are unfazed.
+	You shake and moan. Some slaves look at you, others are unfazed.
 	<br><br>
 <</if>>
 
 <<if isPregnancyEnding()>>
 	<<generate1>>
-	You clutch your stomach and go to your knees, a <<person1>><<person>> looks through the gate and notices you. <<He>> quickly opens the gate and rushes to your side. You slip out of consciousness as <<he>> lifts you.
+	You clutch your stomach and go to your knees. A <<person1>><<person>> looks through the gate and notices you. <<He>> quickly opens the gate and rushes to your side. You slip out of consciousness as <<he>> lifts you.
 	<br><br>
 	<<link [[Next|Mine Birth]]>><</link>>
 <<elseif $stress gte $stressmax>>
@@ -107,7 +107,7 @@ You walk up to the <<person1>><<person>>. "Ready to cash in your favor?" <<he>> 
 
 
 :: Mine Night Distraction Set
-<<effects>><<set $mine.distraction.night to $phase>><<unset $mine.favor.mining>>
+<<effects>><<set $mine.distraction.night to $phase>><<unset $mine.favor.night>>
 
 You tell <<him>> you want the distraction to happen <<mine_distract_time>>. <<He>> nods, "It'll happen sometime <<mine_distract_time>>. Good luck with whatever you've got planned."
 <br><br>
@@ -148,14 +148,14 @@ You attempt to talk with the other slaves, though most are unwilling.
 			<<saveNPC 0 "mine_night">>
 			You walk up to a <<person1>><<person>>, but before you can open your mouth to speak, <<he>> speaks first. "You look like someone who can handle <<print $player.gender_appearance is "m" ? "himself" : "herself">>," <<he>> says. "I need a favor, can you get it done?"
 			<br><br>
-			You open your mouth again, but <<he>> interrupts once more.. "Good. Of course, I'll owe you one afterwards."
+			You open your mouth again, but <<he>> interrupts once more. "Good. Of course, I'll owe you one afterwards."
 			<br><br>
 			<<mine_night_task>>
 			<br><br>
 			<<He>> walks away before you can get a word in.
 		<<else>>
 			<<loadNPC 0 "mine_night">>
-			The <<person1>><<person>> walks up to you. "Need another favor, huh?" <<he>> asks. "Good, cause so do I."
+			The <<person1>><<person>> walks up to you. "Need another favor, huh?" <<he>> asks. "Good, 'cause so do I."
 			<br><br>
 			<<mine_night_task>>
 			<br><br>
@@ -223,7 +223,7 @@ You attempt to talk with the other slaves, though most are unwilling.
 :: Mine Night Flirt
 <<effects>>
 
-You walk up and sit next to him. You wrap your arm around <<his>> waist and pull yourself into <<him>>. <<He>> looks at you, <<his>> face beet red. You whisper in <<his>> ear, "Don't be sad, I'll make everything ok."
+You walk up and sit next to <<him>>. You wrap your arm around <<his>> waist and pull yourself into <<him>>. <<He>> looks at you, <<his>> face beet red. You whisper in <<his>> ear, "Don't be sad, I'll make everything okay."
 <<promiscuity1>>
 <<He>> stammers, trying to say something, but the words don't come out. You separate yourself from <<him>>, satisfied that <<his>> focus has changed. <<mine_hope 2>><<gghope>>
 
@@ -258,7 +258,7 @@ You grab a boiler suit out of a bin in the corner and slip it on.
 :: Mine Rest
 <<effects>>
 
-You lie down on the hard rock, it's hard, but you close your eyes to sleep.
+You lie down on the rock. It's hard, but you need the rest. You close your eyes to sleep.
 <br><br>
 <<link [[Next|Mine Sleep]]>><</link>>
 

@@ -4,13 +4,13 @@
 	<<generate2>>
 	<<set $mine.birth to 1>>
 	<<saveNPC 1 "mine_doctor">><<person2>>
-	You regain consciousness with two voices filling the darkness. "I'm not a doctor. I've never done anything beyond helping small injuries and giving pain meds," a <<male>> voice says. "Don't care. You're the best we got," replies a <<person2>><<male>> voice.
+	You regain consciousness with two voices filling the darkness. "I'm not a doctor. I've never done anything beyond helping small injuries and giving pain meds," a <<male>> voice says. "Don't care. You're the best we got," replies a <<person1>><<male>> voice.
 <<else>>
-	<<loadNPC 1 "mine_doctor">><<person2>>
-	You regain consciousness with two voices filling the darkness. "Tend to your patient doctor", says a <<male>> voice. "I keep telling you, I'm not a doctor," a <<person1>><<male>> voice replies. You hear a scoff.
+	<<loadNPC 1 "mine_doctor">><<person1>>
+	You regain consciousness with two voices filling the darkness. "Tend to your patient, doctor", says a <<male>> voice. "I keep telling you, I'm not a doctor," a <<person2>><<male>> voice replies. You hear a scoff.
 <</if>>
 <br><br>
-You open your eyes to see two guards standing over you. The <<person1>><<person>> jabs a needle in your arm. "I need you to relax. It'll be over soon. Just drift away. When you awaken, everything will be fine," <<he>> says softly as your consciousness drifts away again.
+You open your eyes to see two guards standing over you. The <<person2>><<person>> jabs a needle in your arm. "I need you to relax. It'll be over soon. Just drift away. When you awaken, everything will be fine," <<he>> says softly as your consciousness drifts away again.
 
 <br><br>
 <<wash>><<undress "mine_birth">>

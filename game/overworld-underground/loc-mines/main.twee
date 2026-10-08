@@ -18,15 +18,15 @@ The stone walls of the tunnels are broken up by wooden supports. Three <<people>
 <<effects>>
 
 <<if $phase is 1>>
-	You pull against <<him>>, trying to break his grip on you. <<He>> sighs and pulls out a baton and bashes it against your head, sending you reeling backwards. <<pain 15>><<gggpain>>
+	You pull against <<him>>, trying to break <<his>> grip on you. <<He>> sighs and pulls out a baton and bashes it against your head, sending you reeling backwards. <<pain 15>><<gggpain>>
 	<br><br>
-	<<He>> pulls you through the gate as the other two guards laugh, you hear it slam and lock behind you.
+	<<He>> pulls you through the gate as the other two guards laugh. You hear it slam and lock behind you.
 <<else>>
 	You follow <<him>> through the gate, you hear it slam and lock behind you.
 <</if>>
 
 <br><br>
-"From now on you will be given a job every day," <<he>> says as he pulls you through the tunnels. "If you resist, you will be punished. You try to escape, you'll get punished. Trust me, you do not want to be punished."
+"From now on you will be given a job every day," <<he>> says as <<he>> pulls you through the tunnels. "If you resist, you will be punished. You try to escape, you'll get punished. Trust me, you do not want to be punished."
 
 <<if Time.hour lte 5 or Time.hour gte 21>>
 	<<He>> pulls you to another metal gate, the guard in front of it opens it up. The <<person>> pushes you through. The gate slams and locks behind you.
@@ -200,12 +200,12 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 
 You pick up a pickaxe and try to break the object out of the rock wall.
 <<if $pickaxeSuccess>>
+	<<mine_gem_collect $phase>><<prof pickaxe 1>>
 	<span class="green">You manage to break the <<=_gemSize>> out of the wall without damaging it.</span>
 	<br><br>
-	<<mine_gem_collect $phase>><<prof pickaxe 1>>
 <<else>>
-	You accidentally hit it, and <span class="red">it shatters into a bunch of small pieces that scatter all over the ground.</span>
 	<<prof pickaxe 2>>
+	You accidentally hit it, and <span class="red">it shatters into a bunch of small pieces that scatter all over the ground.</span>
 <</if>>
 <br><br>
 <<endevent>>
@@ -255,8 +255,7 @@ You take the _antique with you.
 	<<tentaclestart 6 12>>
 
 <</if>>
-<<water>>
-<<waterbr 1>>
+
 <<statetentacles>>
 
 <<effects>>
@@ -275,7 +274,7 @@ You take the _antique with you.
 :: Mine Tentacle Finish
 <<effects>>
 
-The tentacles retreat back into the darkness. <<tearful>> you run until you reach a more lit tunnel.
+The tentacles retreat back into the darkness. <<tearful>> you run until you reach a better-lit tunnel.
 
 <br><br>
 <<clotheson>>
@@ -365,7 +364,7 @@ You're at the collapsed tunnel.
 <</if>>
 
 <br><br>
-<<icon "rubble.png">><<link [[Clear the rocks (1:00)|Mine Clear]]>><<pass 30>><<tiredness 20>><</link>><<gggtiredness>>
+<<icon "rubble.png">><<link [[Clear the rocks (1:00)|Mine Clear]]>><<pass 60>><<tiredness 20>><</link>><<gggtiredness>>
 <br>
 <<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 
@@ -382,7 +381,7 @@ You work on clearing the rocks out of the tunnel. It's exhausting work, <span cl
 	<span class="red">An impassable wall of rock stands before you.</span>
 <<elseif $mine.tunnel.collapse lte 7>>
 	<span class="blue">There's still plenty of rock left.</span>
-<<elseif $mine.tunnel.collapse lte 9>>
+<<elseif $mine.tunnel.collapse lte 10>>
 	<span class="blue">You can see more tunnel behind the rocks.</span>
 <<else>>
 	<span class="green">There's a big enough gap to go through.</span>
@@ -390,7 +389,7 @@ You work on clearing the rocks out of the tunnel. It's exhausting work, <span cl
 
 <<if $mine.tunnel.collapse lte 10>>
 	<br><br>
-	<<link [[Clear the rocks (1:00)|Mine Clear]]>><<pass 30>><<tiredness 20>><</link>><<gggtiredness>>
+	<<link [[Clear the rocks (1:00)|Mine Clear]]>><<pass 60>><<tiredness 20>><</link>><<gggtiredness>>
 	<br>
 	<<icon "get-out.png">><<link [[Leave|Mine]]>><</link>>
 <<else>>
@@ -446,7 +445,7 @@ You take a deep breath before you dive below the surface. You swim down and foll
 :: Mine Swim Fail
 <<effects>>
 
-You awaken with a gasp, you cough up water onto the ground.
+You awaken with a gasp. You cough up water onto the ground.
 <br><br>
 You look around to see that you're back in the entrance of the mines.
 
@@ -462,19 +461,20 @@ As you walk down the dark tunnel, you notice a pile of torn clothing. The clothi
 <br><br>
 You squeeze through the small gap. You shudder involuntarily as you step on the soft ground. You look around and see that the cave is covered with a fleshy substance. <<stress 10>><<ggstress>>
 <br><br>
-You approach the center of the cave, Wet sounds accompany you. As you get close, you realize it's a <span class="lewd">purple diamond</span> sitting on a pedestal in the center of the cave. As you look at it more closely, you realize just how beautiful it is. You can't bear to look away.
+You approach the center of the cave, wet sounds accompany you. As you get close, you realize it's a <span class="lewd">purple diamond</span> sitting on a pedestal in the center of the cave. As you look at it more closely, you realize just how beautiful it is. You can't bear to look away.
 <br><br>
-<<link [[Take it|Mine Diamond Take]]>><</link>>
+<span class="wraith"><<link [[Take it|Mine Diamond Take]]>><</link>></span>
 <br>
-<<link [[Take it|Mine Diamond Take]]>><</link>>
+<span class="wraith"><<link [[Take it|Mine Diamond Take]]>><</link>></span>
 
 
 
 
 :: Mine Diamond Take
-<<effects>><<wearProp "antique purple diamond">><<earnFeat "Rock Bottom">><<set $mine.tunnel.diamond to 1>>
+<<effects>><<wearProp "antique purple diamond">><<earnFeat "Rock Bottom">>
+<<set $mine.tunnel.diamond to 1>><<museumAntiqueStatus "antiquepurplediamond" "found">>
 
-You reach out to touch the diamond, as your fingers meet the diamond. 
+You reach out to touch the diamond, as your fingers meet the diamond...
 <<orgasm>>
 As you recover from your spasms, you realise that touching it made you orgasm. You reach back through the crack and grab a scrap of clothing. You wrap the diamond in the clothing scrap and lift it off its pedestal.
 <br><br>
@@ -535,10 +535,10 @@ You end up in a small cave and drop to the ground, trying to cover yourself. The
 	<<ejaculation>>
 	The <<person>> growls and runs into the darkness.
 <<elseif $enemyhealth lte 0>>
-	You push the creature off of you and scramble to your feet, you hear it rush back into the darkness.
+	You push the creature off of you and scramble to your feet. You hear it rush back into the darkness.
 <</if>>
 <br><br>
-<<tearful>> you run until you reach a lit up tunnel.
+<<tearful>> you run until you reach a lit-up tunnel.
 <<clotheson>>
 <<endcombat>>
 <<icon "actions/explore.png">><<link [[Continue Exploring (0:30)|Mine Explore]]>><<pass 30>><</link>>

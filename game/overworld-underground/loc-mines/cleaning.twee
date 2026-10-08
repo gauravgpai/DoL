@@ -11,13 +11,13 @@ The <<person>> shoves a bundle of rags into your hands. "Clean this place up," <
 :: Mine Job Cleaning
 <<effects>>
 
-You're in the guard's quarters. Guards sporadically enter and leave.
+You're in the guards' quarters. Guards sporadically enter and leave.
 <<if $exposed gte 1>>
 	The guards openly stare at your <<lewdness>>.
 <</if>>
 <<if isPregnancyEnding()>>
 	<<generate1>>
-	You clutch your stomach and go to your knees, a <<person1>><<person>> notices you. <<He>> rushes to your side. You slip out of consciousness as <<he>> lifts you.
+	You clutch your stomach and go to your knees. A <<person1>><<person>> notices you. <<He>> rushes to your side. You slip out of consciousness as <<he>> lifts you.
 	<br><br>
 	<<link [[Next|Mine Birth]]>><</link>>
 <<elseif $stress gte $stressmax>>
@@ -56,7 +56,7 @@ You walk with them until you reach a metal gate leading to a small cave. The gro
 <<if $phase is 0>>
 	You focus on actually cleaning.
 	<<print either(
-		"You scrub off caked on dust.",
+		"You scrub off caked-on dust.",
 		"You get a faceful of dust as you wipe off a shelf. It gets in your mouth and eyes, causing you to cough violently. <<pain 10>><<ggpain>> ",
 		"You sweep up a broken bottle off the floor.",
 		"You sop up a puddle on the floor.",
@@ -74,7 +74,7 @@ You walk with them until you reach a metal gate leading to a small cave. The gro
 	<<generate1>><<person1>>
 	You notice a guard staring at you from the corner of the room. You pay <<him>> no mind as you continue.
 	<br><br>
-	<<He>> quickly stands up and walks over to a bunk. <<He>> pulls a box out from under it. "Hey you, come here," <<he>> yells while pointing at you. You reluctantly walk towards him as <<he>> opens up the box. <span class="blue">You notice a black bottle tucked into a pile of clothing.</span>
+	<<He>> quickly stands up and walks over to a bunk. <<He>> pulls a box out from under it. "Hey you, come here," <<he>> yells while pointing at you. You reluctantly walk towards <<him>> as <<he>> opens up the box. <span class="blue">You notice a black bottle tucked into a pile of clothing.</span>
 	<br><br>
 	<<He>> pulls out a sundress. "Put this on," <<he>> barks.
 	<br><br>
@@ -112,7 +112,7 @@ You walk with them until you reach a metal gate leading to a small cave. The gro
 
 <<addinlineevent "kiss">>
 	<<generate1>>
-	You notice a <<person1>><<person>> watching, <<his>> gaze focuses on your lips. You try to ignore <<him>> but he walks up to you and wraps <<his>> arm around your waist and tries to kiss you.
+	You notice a <<person1>><<person>> watching, <<his>> gaze focuses on your lips. You try to ignore <<him>> but <<he>> walks up to you and wraps <<his>> arm around your waist and tries to kiss you.
 	<br><br>
 	<<link [[Endure|Mine Job Cleaning Kiss]]>><<set $phase to 0>><<trauma 6>><<stress 6>><</link>><<kissvirginitywarning>><<gtrauma>><<gstress>>
 	<br>
@@ -145,7 +145,7 @@ You walk with them until you reach a metal gate leading to a small cave. The gro
 			<<set $mine.setup.map to 1>>
 			<span class="green">It's an old map of the tunnels!</span>
 		<<else>>
-			<span class="red">You can't get a better look while the guard is watching.</span><span class="blue">You could maybe have figured out what it is if you were better with history.</span>
+			<span class="red">You can't get a better look while the guard is watching.</span> <span class="blue">You could maybe have figured out what it is if you were better with history.</span>
 		<</if>>
 		<br><br>
 		<<link [[Next|Mine Job Cleaning]]>><<endevent>><</link>>
@@ -170,7 +170,7 @@ You walk with them until you reach a metal gate leading to a small cave. The gro
 	<<link [[Next|Mine Job Cleaning]]>><<endevent>><</link>>
 <</addinlineevent>>
 
-<<if $mine.favor.job is "firework" and $mine.favor.night isnot 1>>
+<<if $mine.favor.job.night is "firework" and $mine.favor.night isnot 1>>
 	<<addinlineevent "firework">>
 		<<generate1>>
 		A <<person1>><<person>> yells at you, "Fix this chair. It's all wobbly." You walk over and put a piece of wood underneath the short leg to balance it. <span class="blue">You could set off the fireworks now.</span>
@@ -288,7 +288,7 @@ You climb the table as instructed. You're surrounded by <<people>>. Their eyes s
 	<<clotheson>>
 	<<link [[Next|Mine Job Cleaning Escape]]>><</link>>
 <<elseif $enemyarousal gte $enemyarousalmax>>
-	"Hope you learned your lesson <<bitch>>," the <<person1>><<person>> says. The guards return to what they were doing.
+	"Hope you learned your lesson, <<bitch>>," the <<person1>><<person>> says. The guards return to what they were doing.
 	<br><br>
 	<<tearful>> you stand up and return to your work.
 	<br><br>
@@ -311,7 +311,7 @@ You bring it over to the <<person>> and set it down on the table. "Good <<girl>>
 <<if $settings.watersportsEnabled>>
 	or get pissed on." <<He>> cackles loudly. Nobody else joins in.
 <<else>>
-	<<he>> says.
+	" <<he>> says.
 <</if>>
 <br><br>
 
@@ -413,7 +413,7 @@ You bring it over to the <<person>> and set it down on the table. "Good <<girl>>
 	<br><br>
 	<<He>> soon releases you, and walks away as if nothing had happened.
 <<else>>
-	You push <<him>> away from you. "I know you want this you <<slut>>," <<he>> says while groping your <<bottom>>. <<He>> pushes you away from <<him>> and walks away as if nothing had happened.
+	You push <<him>> away from you. "I know you want this you, <<slut>>," <<he>> says while groping your <<bottom>>. <<He>> pushes you away from <<him>> and walks away as if nothing had happened.
 <</if>>
 <br><br>
 <<endevent>>
@@ -424,7 +424,7 @@ You bring it over to the <<person>> and set it down on the table. "Good <<girl>>
 :: Mine Job Cleaning Firework
 <<effects>>
 
-You light the fireworks and set it under the chair before walking off and covering your ears. You hear a series of muffled pops and the scrambling of feet behind you.
+You light the fireworks and set them under the chair before walking off and covering your ears. You hear a series of muffled pops and the scrambling of feet behind you.
 <br><br> 
 You look back to see the <<person>> on the ground in shock. <<He>> stands up and starts to accuse the others of setting them off. You go back to what you were doing with a satisfied smirk.
 <br><br>

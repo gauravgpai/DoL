@@ -7285,7 +7285,7 @@ sugarcube-2:
       description: |-
         Generates a Strange Creature
 
-        `<<generatetakevirginity slot>>`
+        `<<generateStrangeCreature slot>>`
         - **slot**: `number` - slot to generate (1-6) (zero based)
       parameters:
         - 'number'

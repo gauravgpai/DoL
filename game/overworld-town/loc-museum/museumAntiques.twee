@@ -659,25 +659,25 @@ You look around the museum. The pedestals are grooved, as if awaiting specific o
 				hint: `"For a shovel," Winter says while gesturing at an empty pedestal. "Used frequently in the old mines."`,
 				museum: "The shovel handle rests on a pedestal.",
 				name: "Shovel Handle",
-				journal: `"An old shovel. Probably in the old mines"`,
+				journal: `"An old shovel. Probably in the old mines."`,
 				icon: "antiques/antique-shovel-handle.png"
 			},
 			"antiquerustypickaxe":{
 				hint: `"For a pickaxe," Winter says while gesturing at an empty pedestal. "All of them are probably caked in rust from years of sitting in the old mines."`,
 				museum: "The rusty pickaxe rests on a pedestal.",
 				name: "Rusty Pickaxe",
-				journal: `"A pickaxe. Probably in the old mines"`,
+				journal: `"A pickaxe. Probably in the old mines."`,
 				icon: "antiques/antique-rusty-pickaxe.png"
 			},
 			"antiquelantern":{
 				hint: `"For a lantern," Winter says while gesturing at an empty pedestal. "Whole shipments of these were sent to the mines while it was active."`,
 				museum: "The lantern rests on a pedestal.",
 				name: "Lantern",
-				journal: `"An old lantern, Probably in the old mines."`,
+				journal: `"An old lantern. Probably in the old mines."`,
 				icon: "antiques/antique-lantern.png"
 			},
 			"antiquepurplediamond":{
-				hint: `"I heard legends of a valuable diamond," Winter says while gesturing at an empty pedestal. "They say that it was thrust into the earth to keep it away from human hands."`,
+				hint: `"I've heard legends of a valuable diamond," Winter says while gesturing at an empty pedestal. "They say that it was thrust into the earth to keep it away from human hands."`,
 				museum: "The purple diamond rests on a pedestal.",
 				name: "Purple Diamond",
 				journal: `"A diamond. Apparently deep in the earth."`,

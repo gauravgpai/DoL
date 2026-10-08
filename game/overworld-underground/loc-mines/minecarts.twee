@@ -17,7 +17,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 <</if>>
 <<if isPregnancyEnding()>>
 	<<generate1>>
-	You clutch your stomach and go to your knees, a <<person1>><<person>> notices you. <<He>> rushes to your side, removing your chains. You slip out of consciousness as <<he>> lifts you.
+	You clutch your stomach and go to your knees. A <<person1>><<person>> notices you. <<He>> rushes to your side, removing your chains. You slip out of consciousness as <<he>> lifts you.
 	<br><br>
 	<<link [[Next|Mine Birth]]>><</link>>
 <<elseif $stress gte $stressmax>>
@@ -38,7 +38,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 		<br>
 		<<link [[Ask for a distraction|Mine Job Minecarts Distraction]]>><</link>>
 	<</if>>
-	<<if $mine.favor.job is "note">>
+	<<if $mine.favor.job.night is "note">>
 		<br>
 		<<link [[Search for the person|Mine Job Minecarts Note]]>><</link>>
 	<</if>>
@@ -51,7 +51,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 <<if $phase is 0>>
 	You focus on actually doing the work.
 	<<print either(
-		"You try to move a cart, but it's really heavy. You manage to push it and dump it, but your muscles ache and your heart pumps wildly. <<tiredness 15>><<ggtrauma>><<pain 5>><<ggpain>>",
+		"You try to move a cart, but it's really heavy. You manage to push it and dump it, but your muscles ache and your heart pumps wildly. <<tiredness 15>><<ggtiredness>><<pain 5>><<ggpain>>",
 		"You grab a cart and push it. The wheel keeps getting stuck on the track.",
 		"While pushing a cart, you reach an incline. It takes more effort to get it up. <<tiredness 5>><<gtiredness>>",
 		"You find a cart that's mostly empty.",
@@ -109,7 +109,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 		<<generate1>><<generate2>>
 		You overhear two guards talking. You get closer. "Why are these still out here?!" a <<person1>><<person>> yells. "Well I–" a <<person2>><<person>> stammers.
 		<br><br>
-		"Nevermind, I don't care, just put them somewhere safe so the trash doesn't get their grubby mitts on them!" the <<person1>><<person>> yells. "I'll get some slaves to help–" the <<person2>><<person>> says quietly.
+		"Never mind, I don't care, just put them somewhere safe so the trash doesn't get their grubby mitts on them!" the <<person1>><<person>> yells. "I'll get some slaves to help–" the <<person2>><<person>> says quietly.
 		<br><br>
 		"No! You will do it!" the <<person1>><<person>> shouts. "But–" the <<person2>><<person>> stammers. "Just finish it you idiot!" the <<person1>><<person>> screams as <<he>> walks away.
 		<br><br>
@@ -139,7 +139,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 <</addinlineevent>>
 
 <<addinlineevent "bomb">>
-	As you're pushing a cart though a large cave, you hear a commotion and a guard racing away from one side of the cave to cover. You notice several red objects attached to the cave wall, <span class="red">they're bombs!</span> You dive behind the cart and brace yourself as a loud explosion blows out your eardrums. <<pain 10>><<ggpain>>
+	As you're pushing a cart through a large cave, you hear a commotion and a guard racing away from one side of the cave to cover. You notice several red objects attached to the cave wall, <span class="red">they're bombs!</span> You dive behind the cart and brace yourself as a loud explosion blows out your eardrums. <<pain 10>><<ggpain>>
 	<br><br>
 	Your ears ring while you find your bearings, your hand touches something hot. You look at it, 
 	<<if $science gte 100>>
@@ -158,7 +158,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 <</addinlineevent>>
 
 <<addinlineevent "control">>
-	You take a break from pushing a cart to wipe the sweat from your brow and catch your breath. You turn to resume your work only to see <span class="red">the cart going along the track on it's own!</span>
+	You take a break from pushing a cart to wipe the sweat from your brow and catch your breath. You turn to resume your work only to see <span class="red">the cart going along the track on its own!</span>
 	<br><br>
 	You start to chase after it, but it's moving pretty fast at this point. 
 	<br><br>
@@ -198,18 +198,18 @@ You make your way to the <<person1>><<person>>.
 <<else>>
 	"I want you to distract the guards," you say.
 <</if>>
-Fear washes over <<his>> face, <<he>> opens his mouth to speak but looks down at <<his>> legs.
+Fear washes over <<his>> face. <<He>> opens <<his>> mouth to speak but looks down at <<his>> legs.
 <br><br>
 "When do you want it done?" <<he>> reluctantly asks.
 <br><br>
-<<mine_distract_links "Mine Minecarts Distraction Set">>
+<<mine_distract_links "Mine Job Minecarts Distraction Set">>
 
 
 
 :: Mine Job Minecarts Distraction Set
-<<effects>><<set $mine.distraction.minecarts to $phase>><<unset $mine.favor.mining>>
+<<effects>><<set $mine.distraction.minecarts to $phase>><<unset $mine.favor.minecarts>>
 
-You tell <<him>> you want the distraction to happen <<mine_distract_time>>. <<He>> nods.
+You tell <<him>> you want the distraction to happen <<mine_distract_time>>.
 <br><br>
 <<He>> nods and returns to <<his>> work.
 <<clearNPC "mine_minecarts">>
@@ -224,7 +224,7 @@ You tell <<him>> you want the distraction to happen <<mine_distract_time>>. <<He
 
 You remove your clothes and toss them to <<him>>. <<He>> looks at you in shock, "Thank you," <<he>> says quietly as <<he>> puts the clothes on.
 <br><br>
-<<exhibitionism3>> You keep working, conscious of you <<lewdness>>.
+<<exhibitionism3>> You keep working, conscious of your <<lewdness>>.
 <br><br>
 <<endevent>>
 <<link [[Next|Mine Job Minecarts]]>><</link>>
@@ -378,7 +378,7 @@ You feign doing work as you look for the person. You spot a <<person2>><<person>
 :: Mine Job Minecarts Note Distract
 <<effects>>
 
-You walk up to the <<person1>><<person>> and whisper into his ear. "You look stressed. You should take a rest." The <<person>> looks at you. While <<he>>'s distracted, you slip the note to the <<person2>><<person>>. The <<person1>><<person>> shoves you off. "Get back to work," <<he>> yells.
+You walk up to the <<person1>><<person>> and whisper into <<his>> ear. "You look stressed. You should take a rest." The <<person>> looks at you. While <<he>>'s distracted, you slip the note to the <<person2>><<person>>. The <<person1>><<person>> shoves you off. "Get back to work," <<he>> yells.
 <<promiscuity1>>
 <<endevent>>
 <<link [[Next|Mine Job Minecarts]]>><</link>>

@@ -57,13 +57,13 @@
 		<<set _today to true>>
 	<</if>>
 
-	<<link [[<<print _today ? "Today" : "Tomorrow">>|Mine Night Distraction Set]]>><<set $phase to _today ? 0 : 1>><</link>>
+	<<link [[<<print _today ? "Today" : "Tomorrow">>|_args[0]]]>><<set $phase to _today ? 0 : 1>><</link>>
 	<br>
-	<<link [[<<print _today ? "Tomorrow" : "In Two Days">>|Mine Night Distraction Set]]>><<set $phase to _today ? 1 : 2>><</link>>
+	<<link [[<<print _today ? "Tomorrow" : "In Two Days">>|_args[0]]]>><<set $phase to _today ? 1 : 2>><</link>>
 	<br>
-	<<link [[<<print _today ? "In Two Days" : "In Three Days">>|Mine Night Distraction Set]]>><<set $phase to _today ? 2 : 3>><</link>>
+	<<link [[<<print _today ? "In Two Days" : "In Three Days">>|_args[0]]]>><<set $phase to _today ? 2 : 3>><</link>>
 	<br>
-	<<link [[<<print _today ? "In Three Days" : "In Four Days">>|Mine Night Distraction Set]]>><<set $phase to _today ? 3 : 4>><</link>>
+	<<link [[<<print _today ? "In Three Days" : "In Four Days">>|_args[0]]]>><<set $phase to _today ? 3 : 4>><</link>>
 <</widget>>
 
 <<widget "mine_distract_time">>
@@ -107,8 +107,8 @@
 			<<set $mine.favor.job.night to "firework">>
 			<<He>> hands you some fireworks. "I need you to set these fireworks off next to a guard. I wish I could see their face when it goes off. Don't ask where I got these."
 		<<default>>
-			"I need you to make a report in the bug reports channel in the Degrees of Lewdity discord server," <<he>> says. "Make sure to include a screenshot and a save file,""
-			<<he>> start to walk away before remembering something. "Just one more thing, make sure you're on the most recent version. Send James my regards."
+			"I need you to make a report in the bug reports channel in the Degrees of Lewdity discord server," <<he>> says. "Make sure to include a screenshot and a save file,"
+			<<he>> starts to walk away before remembering something. "Just one more thing, make sure you're on the most recent version. Send James my regards."
 	<</switch>>
 <</widget>>
 
@@ -156,7 +156,7 @@
 	You pick up a
 	<<mine_gem_check _args[0]>>
 	<<set _gemType to either("gem", "crystal")>>
-	<<set $mine.heldGem to _gemSize + _gemType>>
+	<<set $mine.heldGem to `${_gemSize} ${_gemType}`>>
 	$mine.heldGem. It might be worth something on the black market.
 	<<mine_gem_value>>
 	<<set $blackmoney += _gem_value>>

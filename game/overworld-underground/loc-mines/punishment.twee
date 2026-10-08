@@ -150,8 +150,6 @@ You recoil your arm and turn to look. You see several tentacles emerging from cr
 	<<tentaclestart 6 12>>
 
 <</if>>
-<<water>>
-<<waterbr 1>>
 <<statetentacles>>
 
 <<effects>>
@@ -193,8 +191,6 @@ You try to brush the spiders off your skin, but the largest ones remain on you.
 
 
 :: Mine Punishment Pit Spiders Swarm
-<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "danube">>
-
 <<if $molestationstart is 1>>
 	<<set $molestationstart to 0>>
 	<<molested>>
@@ -287,14 +283,18 @@ You walk down the tunnel and emerge into a small cave, the only light emanates f
 
 <<if _path_mod>>
 	<<set _possible_signs to ["left", "right", "center"].delete(_dir)>>
+	<<set _possible_signs.delete(_dir)>>
 <<else>>
-	<<set _possible_signs to [].push(_dir)>>
+	<<set _possible_signs to []>>
+	<<set _possible_signs.push(_dir)>>
 <</if>>
 
-<<if hasSharpSenses().includes("eyes") and random(1,2) is 1>>
+<<set _tf_check to hasSharpSenses()>>
+
+<<if _tf_check and _tf_check.includes("eyes") and random(1,2) is 1>>
 	You think you see movement in the <<= _possible_signs.pluck()>> tunnel.
 	<br><br>
-<<elseif hasSharpSenses().includes("ears") and random(1,2) is 1>>
+<<elseif _tf_check and _tf_check.includes("ears") and random(1,2) is 1>>
 	You think you hear movement in the <<= _possible_signs.pluck()>> tunnel.
 	<br><br>
 <</if>>
@@ -366,7 +366,7 @@ Before you can turn back, a shape rushes from the darkness.
 	<<ejaculation>>
 	The <<person>> growls and runs into the darkness.
 <<elseif $enemyhealth lte 0>>
-	You push the creature off of you and scramble to your feet, you hear it rush back into the darkness.
+	You push the creature off of you and scramble to your feet. You hear it rush back into the darkness.
 <</if>>
 <br><br>
 <<tearful>> you continue down the tunnel.

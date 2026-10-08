@@ -436,7 +436,8 @@
 			"Athletics": "athleticsSuccess",
 			"Tending": "tendingSuccess",
 			"Housekeeping": "housekeepingSuccess",
-			"English": "englishSuccess"
+			"English": "englishSuccess",
+			"Pickaxe": "pickaxeSuccess"
 		}>>
 		<<if _successVars[_args[1]] isnot undefined>>
 			<<set V[_successVars[_args[1]]] to (($_skill gte random(_skilldifficultymin, _skilldifficultymax)) ? 1 : 0)>>

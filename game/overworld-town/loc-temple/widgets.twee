@@ -238,7 +238,7 @@
 <<widget "eventstemple">>
 	<<cleareventpool>>
 
-	<<addinlineevent "devine_tf_event">>
+	<<addinlineevent "divine_tf_event">>
 		<<if $angel gte 6>>
 			<<if playerBellyVisible()>>
 				<<generate1>><<person1>>
@@ -331,7 +331,7 @@
 		<</if>>
 	<</addinlineevent>>
 		
-	<<addinlineevent "initates_stairs">>
+	<<addinlineevent "initiates_stairs">>
 		You see a group of initiates chatting beneath a flight of stairs.
 		<br><br>
 		<<if $temple_rank is undefined or $temple_rank is "prospective">>
@@ -348,7 +348,7 @@
 	<</addinlineevent>>
 		
 	<<if playerBellyVisible() and $settings.pregnancySpeechEnabled>>
-		<<addinlineevent "pregante">>
+		<<addinlineevent "pregnant">>
 			<<generatey1>><<generate2>>
 			You spot a <<person1>><<person>> taking glances at your belly. <<He>> turns to a <<person2>><<person>>, seemingly <<person1>><<his>> <<person2>><<father>>, and asks, "Is <<pshe>> pregnant?"
 			<br><br>
@@ -628,7 +628,7 @@
 				<br><br>
 				The <<person1>><<priest>> gives <<person2>><<him>> a dirty look.
 			<<else>>
-				"Have you noticed that the amount of initiates going missing around Barb Street?" the <<monk>> asks.
+				"Have you noticed that the amount of initiates going missing around Barb Street has gone up recently?" the <<monk>> asks.
 				<br>
 				"Aye, I'm planning on recommending that initiates steer clear of that area," the <<person1>><<priest>> answers.
 				<br>

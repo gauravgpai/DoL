@@ -30,7 +30,7 @@ You are in a small cave. Various tunnels branch off.
 
 <<if _start_turn and $mine.setup.lantern>>
 	<br><br>
-	You pull out the lantern, it's flame flickers
+	You pull out the lantern, its flame flickers
 	<<switch $mine.maze.lantern()>>
 		<<case "up">>
 			southwards
@@ -152,9 +152,9 @@ You are in a small cave. Various tunnels branch off.
 <</if>>
 <<He>> clamps shackles around your ankles. <<He>> chuckles and stands up, pulling you from the ground with <<him>> as <<he>> starts walking through the tunnels. 
 <br><br>
-You reach a more populated area as <<he>><<endcombat>><<generate1>> wordlessly passes you off a <<person1>><<person>>. <<He>> starts dragging you down a different tunnel.
+You reach a more populated area as <<he>><<endcombat>><<generate1>> wordlessly passes you off to a <<person1>><<person>>. <<He>> starts dragging you down a different tunnel.
 <br><br>
-<<link [[Next|Mine Punishment]]>><</link>>
+<<link [[Next|Mine Punishment]]>><<unset $mine.maze>><</link>>
 
 
 

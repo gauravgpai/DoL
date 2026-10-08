@@ -19,7 +19,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 <</if>>
 <<if isPregnancyEnding()>>
 	<<generate1>>
-	You clutch your stomach and go to your knees, a <<person1>><<person>> notices you. <<He>> rushes to your side, removing your chains. You slip out of consciousness as <<he>> lifts you.
+	You clutch your stomach and go to your knees. A <<person1>><<person>> notices you. <<He>> rushes to your side, removing your chains. You slip out of consciousness as <<he>> lifts you.
 	<br><br>
 	<<link [[Next|Mine Birth]]>><</link>>
 <<elseif $stress gte $stressmax>>
@@ -111,7 +111,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 
 <<addinlineevent "collapse" 0.5>>
 	<<generatey1>><<generate2>>
-	A nearby <<person1>><<person>> collapses onto the rock. A guard notices almost immediately and walks over. "This isn't break time. Get up," <<person2>><<he>> says as he kicks <<person1>><<him>>. <span class="red"><<He>> doesn't react.</span>
+	A nearby <<person1>><<person>> collapses onto the rock. A guard notices almost immediately and walks over. "This isn't break time. Get up," <<person2>><<he>> says as <<he>> kicks <<person1>><<him>>. <span class="red"><<He>> doesn't react.</span>
 	<br><br>
 	The guard shouts and two guards come, they unlock the <<person>>'s shackles and drag <<him>> away. <<stress 5>><<gstress>><<trauma 5>><<gtrauma>><<mine_hope -1>><<lhope>>
 	<br><br>
@@ -133,7 +133,7 @@ You're in a tunnel. The sounds of pickaxes hitting rocks surround you.
 
 <<addinlineevent "mouth">>
 	<<generate1>><<generatey2>>
-	"Spit that out!" a <<person1>><<person>> shouts. <<He>> rushes over to a <<person2>><<person>>, <<person1>><<he>> sticks his hand out. "Give it. Now." 
+	"Spit that out!" a <<person1>><<person>> shouts. <<He>> rushes over to a <<person2>><<person>>, <<person1>><<he>> sticks <<his>> hand out. "Give it. Now." 
 	<br><br>
 	The <<person2>><<person>>'s face is full of fear. The <<person1>><<person>> forces <<his>> hand into the <<person2>><<person>>'s mouth and digs around before pulling out a gem. <<person1>><<He>> slips it into <<his>> satchel before whipping out <<his>> baton and bashing the <<person2>><<person>> on the head with it.
 	<br><br>
@@ -178,13 +178,13 @@ You get closer to the <<person1>><<person>>.
 <<if $speech_attitude is "meek">>
 	"Can you distract the guards for me?" you ask.
 <<elseif $speech_attitude is "bratty">>
-	"I need you to distract the guards, you say."
+	"I need you to distract the guards,"" you say.
 <<else>>
 	"I want you to distract the guards," you say.
 <</if>>
 <<He>> looks around in worry. "When do you want it done?" <<he>> asks.
 <br><br>
-<<mine_distract_links "Mine Mining Distraction Set">>
+<<mine_distract_links "Mine Job Mining Distraction Set">>
 
 
 
@@ -246,7 +246,7 @@ The song continues until it reaches its end. "Get back to work!" the <<person>> 
 <<else>>
 	<<person1>>
 	<<if $speech_attitude is "meek">>
-		It was <<him>>," you say quietly.
+		"It was <<him>>," you say quietly.
 	<<elseif $speech_attitude is "bratty">>
 		"<<He>> stole your stupid gem," you state.
 	<<else>>
@@ -255,7 +255,7 @@ The song continues until it reaches its end. "Get back to work!" the <<person>> 
 	<<person2>>
 	The <<person>> pulls out <<his>> baton and bashes <<person1>><<person>> on the head with it.<<stress 10>><<trauma 10>><<ggstress>><<ggtrauma>>
 	<br><br>
-	<<He>> disconnects the <<person1>><<person>>'s shackles from the other slaves' and forcefully pulls <<him>> with <<person2>><<him>>.<<mine_hope -3>><<lllhope>>
+	<<person2>><<He>> disconnects the <<person1>><<person>>'s shackles from the other slaves' and forcefully pulls <<him>> with <<person2>><<him>>.<<mine_hope -3>><<lllhope>>
 	<br><br>
 	<<endevent>>
 	<<link [[Next|Mine Job Mining]]>><</link>>
@@ -266,7 +266,7 @@ The song continues until it reaches its end. "Get back to work!" the <<person>> 
 
 The <<person>> attaches your shackles to those of two other slaves and shoves a pickaxe into your arms.
 <br><br>
-"Remember, you're here to mine." <<he>> yells. "You don't want to get punished again."
+"Remember, you're here to mine," <<he>> yells. "You don't want to get punished again."
 <br><br>
 <<endevent>>
 <<link [[Next|Mine Job Mining]]>><</link>>
