@@ -1590,7 +1590,7 @@ You decide not to risk it and go back inside. Sam says <<he>> understands, but d
 
 <<elseif $alarm gte 1>>
 	<<run statusCheck("Gwylan")>>
-	<<if ["cafe", "walking_to_cafe"].includes(gwylanSchedule()) and _gwylanLovePercent gte 50 and $hallucinations gte 2>>
+	<<if ["cafe", "walking_to_cafe"].includes(gwylanSchedule()) and _gwylanLovePercent gte 40 and $hallucinations gte 2>>
 		<<set $daily.gwylan.cafeSkip to true>>
 		The door to the cafe's back entrance slowly creaks open. The pair freeze. No one comes out, but the hairs on the back of your neck stand on end.
 		"Go check it out," the <<person1>><<person>> says. <<He>> holds you still while the <<person2>><<person>> investigates.
@@ -2529,7 +2529,7 @@ Slowly, you part your knees a little. At first just enough to make <<him>> wonde
 and then as you lean down to help yourself to a particularly tasty looking piece of <<if $phase is "pancakes">>pancake<<else>>crepe<</if>> you part them completely,
 giving <<him>> a complete unobstructed view of your inner thighs and everything in between.
 The <<persons>> eyes visibly widen in shock as <<he>> stares at your bare <<genitals>>, unsure of how to react to your clearly deliberate act of exhibitionism.
-<<if isHermOrCrossdresser()>>
+<<if isHermOrCrossdresser() and $settings.nudeGenderPerception !== 0>>
 	From the look on <<his>> face it's clear <<he>> was not expecting you to
 	<<if $player.penisExist and $player.vaginaExist>>
 		have both a penis and pussy.

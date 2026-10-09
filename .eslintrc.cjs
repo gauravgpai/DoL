@@ -429,6 +429,7 @@ module.exports = {
 		isPossibleLoveInterestVirginity: "readonly",
 		wearingCondom: "readonly",
 		npcHasStrapon: "readonly",
+		rollWeightedRandomFromArray: "readonly",
 	},
 
 	ignorePatterns: [
@@ -517,6 +518,11 @@ module.exports = {
 					"ChildParent",
 					"DonorSpecies",
 					"ChildSpecies",
+					"SpeechLine",
+					"SpeechHistoryEntry",
+					"SpeechPool",
+					"SpeechSpeaker",
+					"SpeechReply",
 					"BeastSettingType",
 					"BeastTypeSettings",
 					"NamedBeastType",
