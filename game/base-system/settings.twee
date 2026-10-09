@@ -1044,7 +1044,7 @@
 				<label>Chest <<radiobutton "$hairlength" 400 autocheck>></label>
 			</div>
 			<div class="settingsToggleItem">
-				<span class="gold">Freckles:</span><br>
+				<span class="gold">Face Freckles:</span><br>
 				<label>Yes <<radiobutton "$player.skin.faceFreckles" true autocheck>></label> |
 				<label>No <<radiobutton "$player.skin.faceFreckles" false autocheck>></label> |
 				<label>Random <<radiobutton "$player.skin.faceFreckles" "random" autocheck>></label>

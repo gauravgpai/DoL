@@ -1255,7 +1255,7 @@ Renderer.CanvasModels.main = {
 		},
 		// Combination of freckles and blush
 		"freckles_blush": {
-			z: ZIndices.faceFreckles,
+			z: ZIndices.faceFrecklesBlushCombo,
 			filters: ["tan"],
 
 			srcfn(options) {
@@ -1267,7 +1267,7 @@ Renderer.CanvasModels.main = {
 		},
 		// Combination of freckles and blusher
 		"freckles_blusher": {
-			z: ZIndices.faceFreckles + 1,
+			z: ZIndices.faceFrecklesBlushCombo + 1,
 			filters: ["tan"],
 
 			srcfn(options) {
