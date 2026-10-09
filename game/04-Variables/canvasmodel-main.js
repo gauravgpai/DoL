@@ -1250,7 +1250,31 @@ Renderer.CanvasModels.main = {
 				return `img/face/${options.facestyle}/freckles.png`;
 			},
 			showfn(options) {
-				return options.show_face && !!options.freckles;
+				return options.show_face && !!options.freckles && options.blush <= 0 && !options.blusher_colour;
+			},
+		},
+		// Combination of freckles and blush
+		"freckles_blush": {
+			z: ZIndices.faceFreckles,
+			filters: ["tan"],
+
+			srcfn(options) {
+				return `img/face/${options.facestyle}/blush-freckles/freckles-blush-${options.blush}.png`;
+			},
+			showfn(options) {
+				return options.show_face && !!options.freckles && options.blush > 0;
+			},
+		},
+		// Combination of freckles and blusher
+		"freckles_blusher": {
+			z: ZIndices.faceFreckles + 1,
+			filters: ["tan"],
+
+			srcfn(options) {
+				return `img/face/${options.facestyle}/blush-freckles/freckles-blusher.png`;
+			},
+			showfn(options) {
+				return options.show_face && !!options.freckles && !!options.blusher_colour;
 			},
 		},
 		"ears": {
@@ -1387,10 +1411,10 @@ Renderer.CanvasModels.main = {
 			z: ZIndices.blush + 1,
 
 			srcfn(options) {
-				return `img/face/${options.facestyle}/blusher.png`;
+				return `img/face/${options.facestyle}/blush/blusher.png`;
 			},
 			showfn(options) {
-				return options.show_face && !!options.blusher_colour;
+				return options.show_face && !!options.blusher_colour && !options.freckles;
 			},
 		},
 		"brows": {
@@ -1436,12 +1460,13 @@ Renderer.CanvasModels.main = {
 		},
 		"blush": {
 			z: ZIndices.blush,
+			filters: ["tan"],
 
 			srcfn(options) {
-				return `img/face/${options.facestyle}/blush-${options.blush}.png`;
+				return `img/face/${options.facestyle}/blush/blush-${options.blush}.png`;
 			},
 			showfn(options) {
-				return options.show_face && options.blush > 0;
+				return options.show_face && options.blush > 0 && !options.freckles;
 			},
 		},
 		"tears": {
@@ -2119,7 +2144,7 @@ Renderer.CanvasModels.main = {
 				return between(options.belly, 1, 24) ? `img/body/freckles/pregnant-belly/${options.belly}-freckles.png` : "";
 			},
 			showfn(options) {
-				return options.bodyFreckles !== "none" && !options.mannequin && !!options.belly;
+				return options.bodyFreckles === "full" && !options.mannequin && !!options.belly;
 			},
 		},
 		"freckles_left_arm": {
