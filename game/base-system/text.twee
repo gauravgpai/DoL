@@ -1467,17 +1467,19 @@
 	<</if>>
 <</silently>>_text_output<</widget>>
 
-<<widget "breasts">><<silently>>
+<<widget "breasts">>
 	<<if Number.isInteger($player.breastsize)>>
 		<<if $player.breastsize lte 0>>
-			<<set _text_output to "nipples">>
+			<<print "nipples">>
 		<<else>>
-			<<set _text_output to setup.breastsizes[$player.breastsize] + " breasts">>
+			<<print setup.breastsizes[$player.breastsize]>>
+			<<if !_breastSensitivityDescribed or _args[0]>><<breastsensitivity>><</if>>
+			<<print " breasts">>\
 		<</if>>
 	<<elseif $options.debugdisable is "f">>
-		<<set _text_output to "ERROR - $$player.breastsize is not a number: $player.breastsize">>
-	<</if>>
-<</silently>><<if !_breastSensitivityDescribed or _args[0]>><<breastsensitivity>><</if>><<print _text_output>><</widget>>
+		<<print "ERROR - $$player.breastsize is not a number: $player.breastsize">>
+	<</if>>\
+<</widget>>
 
 <<widget "breastssimple">><<silently>>
 	<<if Number.isInteger($player.breastsize)>>
@@ -1835,7 +1837,7 @@
 		<<else>>
 			<<set _text_output to "the " + $description>>
 		<</if>>
-	<<elseif $NPCList[$index].name_known is 1>>
+	<<elseif $NPCList[$index].name_known is 1 and $NPCList[$index].name>>
 		<<set _text_output to $NPCList[$index].name>>
 	<<elseif $enemytype is "beast">>
 		<<set _text_output to "the " + $NPCList[$index].type>>
@@ -2229,7 +2231,7 @@
 	<<switch $player.sex>>
 	<<case "f">><<set _text_output to "girl">>
 	<<case "m">><<set _text_output to "boy">>
-	<<case "h">><<set _text_output to "hermaphrodite">>
+	<<case "h">><<set _text_output to "hermaphrodite">><<error { message: "pcSex got a bad case: scenes should have unique exceptions for case h!" } >>
 	<</switch>>
 <</silently>><<print _text_output>><</widget>>
 
@@ -5003,7 +5005,11 @@
 	<<else>>
 		<<set _na to 0>>
 	<</if>>
-	<<set _text_output to $NPCList[_na].type>>
+	<<if $NPCList[_na].name_known is 1 and $NPCList[_na].fullDescription is "Black Wolf">>
+		<<set _text_output to $NPCList[_na].fullDescription>>
+	<<else>>
+		<<set _text_output to $NPCList[_na].type>>
+	<</if>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "beasttypes">> <<beasttype>>'s<</widget>>

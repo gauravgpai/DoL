@@ -266,7 +266,7 @@ setup.debugMenu.eventList = {
 			widgets: [`<<set $settings.monsterChance to 0>>`, `<<set $settings.beastMaleChanceMale to 0>>`, `<<set $settings.beastMaleChanceFemale to 0>>`],
 		},
 		{
-			link: [`Make all beasts cuntboys`, stayOnPassageFn],
+			link: [`Make all beasts male with vaginas`, stayOnPassageFn],
 			widgets: [
 				`<<set $settings.beastMaleChanceMale to 100>>`,
 				`<<set $settings.beastMaleChanceFemale to 100>>`,
@@ -274,7 +274,7 @@ setup.debugMenu.eventList = {
 			],
 		},
 		{
-			link: [`Make all beasts dickgirls`, stayOnPassageFn],
+			link: [`Make all beasts female with penises`, stayOnPassageFn],
 			widgets: [
 				`<<set $settings.beastMaleChanceMale to 0>>`,
 				`<<set $settings.beastMaleChanceFemale to 0>>`,
@@ -303,6 +303,14 @@ setup.debugMenu.eventList = {
 		{
 			link: [`Winter`, stayOnPassageFn],
 			widgets: [`<<run Time.timeTravel(new DateTime(Time.year, 12))>>`],
+		},
+		{
+			link: [`Toggle Weather Band Bounds`, stayOnPassageFn],
+			widgets: [`<<set $debugWeatherBandBounds to !$debugWeatherBandBounds>>`],
+		},
+		{
+			link: [`Sky Testing`, `Sky Testing`],
+			widgets: [`<<if $passage isnot "Sky Testing">><<set $lastPassage to $passage>><<freezePlayerStats>><</if>>`],
 		},
 		{
 			text_only: `\n`,
@@ -494,10 +502,6 @@ setup.debugMenu.eventList = {
 		{
 			link: [`Disable Debug Lines`, stayOnPassageFn],
 			widgets: [`<<set $debugLines to false>>`],
-		},
-		{
-			link: [`Toggle Weather Band Bounds`, stayOnPassageFn],
-			widgets: [`<<set $debugWeatherBandBounds to !$debugWeatherBandBounds>>`],
 		},
 		{
 			text_only: `\n`,

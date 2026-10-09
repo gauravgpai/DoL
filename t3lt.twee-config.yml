@@ -594,10 +594,38 @@ sugarcube-2:
         - **name** _optional_: `string` - The name of the event. If not provided, defaults to "".
         - **weight** _optional_: `number` - The relative probability of the event. An event with weight 2 will occur twice as often as an event with weight 1. If not provided, defaults to 1.
       parameters:
-        - "|+ (number | (string |+ number))"
+        - "|+ (string|number) |+ number"
 
     addNNPCOutfit:
       name: addNNPCOutfit
+    addPairedSpeechLine:
+      container: true
+      description: |-
+        Adds a PC line to the speech pool with a NNPC's reply. The NNPC's reply goes into their pool as a "pairedReply" line.
+
+        ```
+        <<addPairedSpeechLine "Whitney" "moan">>
+        	<<pcLine>>PC's line
+        <<npcLine>>
+        	Whitney's reply
+        <</addPairedSpeechLine>>
+        ```
+        `<<addPairedSpeechLine npc category>>`
+        - **npc**: `string` - the NPC who replies
+          - %namedNPCDesc%
+        - **category**: `string` - the PC action it belongs to ("moan", "plead", "demand", etc.) from `setup.speechCategories`
+      parameters:
+        - '%namedNPC% &+ string'
+    addSpeechLine:
+      container: true
+      description: |-
+        Adds a line to the open speech pool. Use `<<speechLine>>` to add several lines that share one conditional.
+
+        `<<addSpeechLine category [weight]>>line<</addSpeechLine>>`
+        - **category**: `string` - sets the line's priority and cooldown, from `setup.speechCategories`
+        - **weight** _optional_: `number` - weight, default 1
+      parameters:
+        - 'string |+ number'
     addVaginalWetness:
       name: addVaginalWetness
     adjust_school_traits:
@@ -846,6 +874,30 @@ sugarcube-2:
       name: arcadeEndLink
     arcadehangoptions:
       name: arcadehangoptions
+    arcadePlayExposure:
+      name: arcadePlayExposure
+    arcadePlayFighting:
+      name: arcadePlayFighting
+    arcadePlayHighscore:
+      name: arcadePlayHighscore
+    arcadePlayHockey:
+      name: arcadePlayHockey
+    arcadePlayPlatformer:
+      name: arcadePlayPlatformer
+    arcadePlayPlug:
+      name: arcadePlayPlug
+    arcadePlayPlugDanger:
+      name: arcadePlayPlugDanger
+    arcadePlayPopular:
+      name: arcadePlayPopular
+    arcadePlayShooter:
+      name: arcadePlayShooter
+    arcadePlayShooterDanger:
+      name: arcadePlayShooterDanger
+    arcadePlayShmup:
+      name: arcadePlayShmup
+    arcadePlayShmupDanger:
+      name: arcadePlayShmupDanger
     arm_unbind:
       name: arm_unbind
     arousal:
@@ -907,6 +959,10 @@ sugarcube-2:
       name: assignCombatDefaults
     assignmenttip:
       name: assignmenttip
+    assignNPCGenitalsByPronoun:
+      name: assignNPCGenitalsByPronoun
+    assignNPCGenitalsByPronounCore:
+      name: assignNPCGenitalsByPronounCore
     asylumassessment:
       name: asylumassessment
     asylumBind:
@@ -1020,16 +1076,6 @@ sugarcube-2:
         - **stolen**: `string[]` - The stolen antiques that ended up in the player's possession
         - **noticed**: `string[]` - The stolen antiques that Avery noticed during the display room inspection. All antiques from `$avery_antiques.stolen` are transferred there.
         - **confront**: `string[]` - Unused attribute.
-    avery_cards_drink_text:
-      description: |-
-        Prints drink type of target NPC
-
-        `<<avery_cards_drink_text target>>`
-        - **target**: `string` - target npc to print drink of
-          - %cardsDesc%
-      parameters:
-        - "%cards%"
-      tags: ["text"]
     avery_cards_end:
       description: |-
         Clears NPCs and variables for Avery Cards event
@@ -1453,16 +1499,28 @@ sugarcube-2:
           - **notes** _optional_: `string` - additional text to include
       parameters:
         - '|+ string |+ ...(var|bareword|text)'
+    baileyConfiscationList:
+      name: baileyConfiscationList
+    baileyConfiscationListFull:
+      name: baileyConfiscationListFull
+    baileyConfiscationNotice:
+      name: baileyConfiscationNotice
+    baileyRentConfiscation:
+      name: baileyRentConfiscation
+    baileyRentReclaimOption:
+      name: baileyRentReclaimOption
     baitMobileDropdown:
-       name: baitMobileDropdown
+      name: baitMobileDropdown
     baitMobileSidebar:
-       name: baitMobileSidebar
+      name: baitMobileSidebar
     baitOverlay:
       name: baitOverlay
     baitShopFishBehaviorHelp:
       name: baitShopFishBehaviorHelp
     baitShopFishLocationHint:
       name: baitShopFishLocationHint
+    baitShopShop-main:
+      name: baitShopShop-main
     baitSidebar:
       name: baitSidebar
     balloonRobinAngryHelp:
@@ -1524,26 +1582,26 @@ sugarcube-2:
       name: beach_cave_init
     beach_cave_pursuit:
       name: beach_cave_pursuit
-    beachday1:
-      name: beachday1
-    beachday2:
-      name: beachday2
-    beachday3:
-      name: beachday3
-    beachday4:
-      name: beachday4
-    beachday5:
-      name: beachday5
-    beachday6:
-      name: beachday6
-    beachex1:
-      name: beachex1
-    beachex2:
-      name: beachex2
-    beachnight1:
-      name: beachnight1
-    beachnight2:
-      name: beachnight2
+    beachDayTackle:
+      name: beachDayTackle
+    beachDayDogTug:
+      name: beachDayDogTug
+    beachDayParent:
+      name: beachDayParent
+    beachDayWind:
+      name: beachDayWind
+    beachDayClassmates:
+      name: beachDayClassmates
+    beachDaySandPrank:
+      name: beachDaySandPrank
+    beachExposedNoticed:
+      name: beachExposedNoticed
+    beachExposedMolestation:
+      name: beachExposedMolestation
+    beachNightDog:
+      name: beachNightDog
+    beachNightAmbush:
+      name: beachNightAmbush
     beast:
       name: beast
     beast_claws_text:
@@ -2033,6 +2091,20 @@ sugarcube-2:
     bleedingWardStart:
       description: |-
         Freezes the story variables, then morphs the pc into an old seabird
+    bloodmoonTourist1:
+      name: bloodmoonTourist1
+    bloodmoonTourist2:
+      name: bloodmoonTourist2
+    bloodmoonTourist3:
+      name: bloodmoonTourist3
+    bloodmoonTourist4:
+      name: bloodmoonTourist4
+    bloodmoonTouristBeach:
+      name: bloodmoonTouristBeach
+    bloodmoonTouristPark:
+      name: bloodmoonTouristPark
+    bloodmoonTouristParkWidget:
+      name: bloodmoonTouristParkWidget
     blindfoldintro:
       name: blindfoldintro
     blindfoldremove:
@@ -2350,10 +2422,21 @@ sugarcube-2:
       tags: ["unused"]
     breastfed:
       description: |-
-        Feeds 1-5 milk to pc
+        Feeds the PC milk.
 
-        `<<breastfed override?>>`
-        - **override** _optional_: `number` - override amount to use instead of random amount
+        1 point of "change" = 1 mL of milk.
+
+        If "change" is empty, feed 10-50 mL of milk to the PC.
+        - The PC has a 30% chance of getting transformation points.
+        - If the PC has the "Milk Addict" / "Milk Enthusiast" trait, 3 mL of milk = 1 point of `$physique`.
+        - 30 mL of milk = -1 point of `$purity`.
+
+        1 mL of milk = -1 point of `$hunger`.
+
+        1 mL of milk = -1 point of `$thirst`.
+
+        `<<breastfed change?>>`
+        - **change** _optional_: `number` - The amount of milk (mL) the PC drinks, instead of a random amount. Must be non-negative.
       parameters:
         - '|+ number'
     breastfeed:
@@ -2425,6 +2508,22 @@ sugarcube-2:
       name: bruise
     busstationex1:
       name: busstationex1
+    busSitBreakdown:
+      name: busSitBreakdown
+    busSitCrowd:
+      name: busSitCrowd
+    busSitDelinquentAfternoon:
+      name: busSitDelinquentAfternoon
+    busSitDelinquentMorning:
+      name: busSitDelinquentMorning
+    busSitGrope:
+      name: busSitGrope
+    busSitPregnancy:
+      name: busSitPregnancy
+    busSitSafe:
+      name: busSitSafe
+    busSitWraith:
+      name: busSitWraith
     buswait:
       name: buswait
     buttplugon:
@@ -2794,7 +2893,7 @@ sugarcube-2:
         - **mode** _optional_: `string` - state to change the selected element to
           - `"On"` | `"Off"` | `"Disabled"`
       parameters:
-        - '|+ "On"|"Off"|"Disabled"'
+        - 'string |+ "On"|"Off"|"Disabled"'
       tags: ["temp"]
     changingRoomFeelings:
       name: changingRoomFeelings
@@ -2910,6 +3009,10 @@ sugarcube-2:
       description: |-
         Prints links corresponding to the game's face styles, allowing the player to change their `$player.facestyle`.
       tags: ["links"]
+    cheatsFog:
+      description: |-
+        Prints a number stepper that sets the current fog amount
+      tags: ["form"]
     cheatsHistoryNavigation:
       name: cheatsHistoryNavigation
     cheatsImpregOptions:
@@ -3093,8 +3196,8 @@ sugarcube-2:
       name: childhis
     childHis:
       name: childHis
-    childInteratedWith:
-      name: childInteratedWith
+    childInteractedWith:
+      name: childInteractedWith
     childname:
       name: childname
     childRename:
@@ -3807,12 +3910,12 @@ sugarcube-2:
       name: commercialdrainquick
     commercialeventend:
       name: commercialeventend
-    commercialex1:
-      name: commercialex1
-    commercialex2:
-      name: commercialex2
-    commercialex3:
-      name: commercialex3
+    commercialExposedCardboardBox:
+      name: commercialExposedCardboardBox
+    commercialExposedDoorCollision:
+      name: commercialExposedDoorCollision
+    commercialExposedMannequin:
+      name: commercialExposedMannequin
     commercialquick:
       name: commercialquick
     completeassignment:
@@ -4261,6 +4364,7 @@ sugarcube-2:
     destination5:
       name: destination5
     destinationBeach:
+      container: true
       name: destinationBeach
     destinationbondage:
       name: destinationbondage
@@ -4277,12 +4381,14 @@ sugarcube-2:
     destinationfarmroad:
       name: destinationfarmroad
     destinationForest:
+      container: true
       name: destinationForest
     destinationlake:
       name: destinationlake
     destinationlakeruin:
       name: destinationlakeruin
     destinationMoor:
+      container: true
       name: destinationMoor
     destinationpoolchangingroom:
       name: destinationpoolchangingroom
@@ -4547,7 +4653,7 @@ sugarcube-2:
         Dries given clothing slot
       name: dry_item
       parameters:
-        - "|+ slot (flatcase)|string"
+        - string
     dry_towel:
       name: dry_towel
     dungeonescape:
@@ -4967,6 +5073,8 @@ sugarcube-2:
       name: endmasturbation
     endnpc:
       name: endnpc
+      parameters:
+        - "|+ string"
     endNpcPregnancy:
       name: endNpcPregnancy
     endPlayerPregnancy:
@@ -6302,9 +6410,15 @@ sugarcube-2:
       name: forestShop-main
     forestShopLeave:
       name: forestShopLeave
+    forestShortcuts:
+      name: forestShortcuts
     forestspider:
       name: forestspider
       tags: ["unused"]
+    forestTravel:
+      name: forestTravel
+    forestTravelIcon:
+      name: forestTravelIcon
     formatList:
       name: formatList
       tags: ["unused"]
@@ -6381,6 +6495,10 @@ sugarcube-2:
       parameters:
         - '"decoration"|"windowsill"|"wallpaper"|"poster"'
       tags: ["unused", "text"]
+    gardenScent:
+      name: gardenScent
+    gardenStem:
+      name: gardenStem
     gacceptance:
       description: |-
         Prints `| + Acceptance`
@@ -9523,12 +9641,12 @@ sugarcube-2:
       name: industrialdrainquick
     industrialeventend:
       name: industrialeventend
-    industrialex1:
-      name: industrialex1
-    industrialex2:
-      name: industrialex2
-    industrialex3:
-      name: industrialex3
+    industrialExposedDeadEnd:
+      name: industrialExposedDeadEnd
+    industrialExposedPipeAttack:
+      name: industrialExposedPipeAttack
+    industrialExposedVanBarrel:
+      name: industrialExposedVanBarrel
     industrialexposed:
       name: industrialexposed
       tags: ["unused"]
@@ -9818,6 +9936,20 @@ sugarcube-2:
       tags: ["text"]
     kissWraith:
       name: kissWraith
+    kylarStreetAbduction:
+      name: kylarStreetAbduction
+    kylarWatchClothingTear:
+      name: kylarWatchClothingTear
+    kylarWatchDart:
+      name: kylarWatchDart
+    kylarWatchStalkMolestation:
+      name: kylarWatchStalkMolestation
+    kylarWatchStalkSex:
+      name: kylarWatchStalkSex
+    kylarWatchStaring:
+      name: kylarWatchStaring
+    kylarWatchWink:
+      name: kylarWatchWink
     kitchenDisplay:
       description: |-
         Prints display to make various types of learned recipes
@@ -11818,6 +11950,12 @@ sugarcube-2:
       name: moor_hunt
     moor_hunt_start:
       name: moor_hunt_start
+    moorShortcuts:
+      name: moorShortcuts
+    moorTravel:
+      name: moorTravel
+    moorTravelIcon:
+      name: moorTravelIcon
     morgancaught:
       name: morgancaught
     morganhunt:
@@ -11892,9 +12030,19 @@ sugarcube-2:
     museumtalk:
       name: museumtalk
     namedNpcComments:
-      name: namedNpcComments
+      description: |-
+        Plays the named NPC's speech lines for this turn. NPCs without a speech widget or that skip speaking this turn (passes) set `_noNameComment`, so generic comments or mouth actions play instead.
+
+        `<<namedNpcComments npc>>`
+        - **npc**: `string` - the NPC's `fullDescription`
+      parameters:
+        - string
     namedNpcEjaculation:
       name: namedNpcEjaculation
+    namedNpcGenderApply:
+      name: namedNpcGenderApply
+    namedNpcGenderConfirm:
+      name: namedNpcGenderConfirm
     namedNpcReaction:
       description: |-
         Resolves a named NPC's reaction to a combat action.
@@ -11911,11 +12059,9 @@ sugarcube-2:
           - `kissImminent`
           - `kissSkin`
           - `undress`
-        - **detail**: `string` - optional combat-state detail, e.g. which body part
+        - **detail** _optional_: `string` - the body part, for `kissSkin` and `fondle`
       parameters:
-        - number
-        - string
-        - string|null
+        - 'number &+ "choke"|"expose"|"fondle"|"initiative"|"kiss"|"kissDeep"|"kissImminent"|"kissSkin"|"undress" |+ string'
     namedNpcPregnancy:
       name: namedNpcPregnancy
     nDays:
@@ -11963,7 +12109,36 @@ sugarcube-2:
     neckwear:
       name: neckwear
     nectarfed:
+      description: |-
+        Feeds the PC's nectar.
+
+        1 point of "change" = 1 mL of nectar.
+
+        5 mL of nectar = 1 point of nectar addiction.
+
+        5 mL of nectar = 3 points of `$drunk`.
+
+        20 mL of nectar = -1 points of `$purity`.
+
+        1 mL of nectar = -5 points of `$hunger`.
+
+        1 mL of nectar = -5 points of `$thirst`.
+
+        1 mL of nectar = 1 point of `$drugged`.
+
+        1 mL of nectar = 1 point of `$arousal`.
+
+        If the PC has the "Dendrophile" / "Plantlover" trait:
+        - Large stress and pain reduction if the PC is going through withdrawals.
+        - Otherwise:
+          - 1 mL of nectar = -16 points of `$stress`.
+          - 1 mL of nectar = 1 point of `$physique`.
+
+        `<<nectarfed change>>`
+        - **change** _optional_: `number` - The amount of nectar (mL) the PC drinks. Must be non-negative.
       name: nectarfed
+      parameters:
+        - '|+ number'
     nervously:
       description: |-
         Prints adverb of pc's willingness to engage in exhibitionism
@@ -12042,6 +12217,8 @@ sugarcube-2:
       name: nippleFlavorText
     nipples:
       name: nipples
+    nnpcGenderSetByHand:
+      name: nnpcGenderSetByHand
     nnpc_brother:
       description: |-
         Prints `brother` or `sister` for named NPC
@@ -12586,6 +12763,9 @@ sugarcube-2:
       name: npcincr_avery
     npckiss:
       name: npckiss
+    npcLine:
+      description: |-
+        The named NPC's reply, inside `<<addPairedSpeechLine>>`.
     npcList:
       name: npcList
     npcNamed:
@@ -12650,11 +12830,12 @@ sugarcube-2:
         - **depth** _optional_: `"outside"|"imminent"|"deep"` - where it landed. Deep when not given, a spill rolls at its depth's low weight
         - **location** _optional_: `string` - where it happened. Left out reads the player's location, pass one when the scene runs off-screen
         - **donorFertility** _optional_: `number` - extra multiplier on the conception chance from the donor's side (e.g. the pc's low-semen or earSlime state)
+        - **slot** _optional_: `number`
 
         A normal creampie: `<<npcPregnancyRoll "Robin" "human" "pc" "human" "vagina">>`
         A spill that never went in: `<<npcPregnancyRoll "Robin" "human" "someone" "human" "vagina" "imminent">>`
       parameters:
-        - 'text &+ text &+ text &+ text &+ "vagina"|"anus" |+ "outside"|"imminent"|"deep" |+ text |+ number'
+        - 'text &+ text &+ text &+ text &+ "vagina"|"anus" |+ "outside"|"imminent"|"deep" |+ text |+ number |+ number'
     npcPregnancyUpdater:
       name: npcPregnancyUpdater
     npcrelationship:
@@ -12697,13 +12878,15 @@ sugarcube-2:
         - **statValue**: `string|number` - The value of the NPC's stat name to change
 
       parameters:
-        - 'bareword|var &+ love|dom|trust|lust|rage|state|init|trauma|purity|corruption &+ number|string'
+        - 'bareword|var &+ "love"|"dom"|"trust"|"lust"|"rage"|"state"|"init"|"trauma"|"purity"|"corruption" &+ number|string'
     npcSettings:
       name: npcSettings
     npcSettingsMenu:
       name: npcSettingsMenu
     NPCSettingsReset:
       name: NPCSettingsReset
+    npcSkinTone:
+      name: npcSkinTone
     npcspank:
       name: npcspank
     npcspankgag:
@@ -13053,6 +13236,24 @@ sugarcube-2:
       name: orphanageWard
     orphanageWardOptions:
       name: orphanageWardOptions
+    orphanHawkHe:
+      name: orphanHawkHe
+    orphanHawkhe:
+      name: orphanHawkhe
+    orphanHawkhers:
+      name: orphanHawkhers
+    orphanHawkhim:
+      name: orphanHawkhim
+    orphanHawkHis:
+      name: orphanHawkHis
+    orphanHawkhis:
+      name: orphanHawkhis
+    orphanHawkson:
+      name: orphanHawkson
+    orphanHawkType:
+      name: orphanHawkType
+    orphanHawktype:
+      name: orphanHawktype
     otherOutfitChecks:
       name: otherOutfitChecks
     othersFeelings:
@@ -13370,12 +13571,12 @@ sugarcube-2:
       name: park
     parkeventend:
       name: parkeventend
-    parkex1:
-      name: parkex1
-    parkex2:
-      name: parkex2
-    parkex3:
-      name: parkex3
+    parkExposedAmbush:
+      name: parkExposedAmbush
+    parkExposedBridge:
+      name: parkExposedBridge
+    parkExposedDog:
+      name: parkExposedDog
     parkexposed:
       name: parkexposed
       tags: ["unused"]
@@ -13525,8 +13726,6 @@ sugarcube-2:
     passoutshop:
       description: |-
         Passes out and prints links for players in the Shops
-      parameters:
-        - "pregLocation |+ Pregnancy Passout location"
       tags: ["links"]
     passoutstreet:
       description: |-
@@ -13570,6 +13769,78 @@ sugarcube-2:
         - "number |+ number"
     pbhairinit:
       name: pbhairinit
+    pc-line-alex-demand:
+      name: pc-line-alex-demand
+    pc-line-alex-moan:
+      name: pc-line-alex-moan
+    pc-line-alex-plead:
+      name: pc-line-alex-plead
+    pc-line-avery-demand:
+      name: pc-line-avery-demand
+    pc-line-avery-forgive:
+      name: pc-line-avery-forgive
+    pc-line-avery-moan:
+      name: pc-line-avery-moan
+    pc-line-avery-plead:
+      name: pc-line-avery-plead
+    pc-line-blackwolf-demand:
+      name: pc-line-blackwolf-demand
+    pc-line-blackwolf-moan:
+      name: pc-line-blackwolf-moan
+    pc-line-blackwolf-plead:
+      name: pc-line-blackwolf-plead
+    pc-line-eden-demand:
+      name: pc-line-eden-demand
+    pc-line-eden-moan:
+      name: pc-line-eden-moan
+    pc-line-eden-plead:
+      name: pc-line-eden-plead
+    pc-line-greathawk-demand:
+      name: pc-line-greathawk-demand
+    pc-line-greathawk-moan:
+      name: pc-line-greathawk-moan
+    pc-line-greathawk-plead:
+      name: pc-line-greathawk-plead
+    pc-line-gwylan-demand:
+      name: pc-line-gwylan-demand
+    pc-line-gwylan-moan:
+      name: pc-line-gwylan-moan
+    pc-line-gwylan-plead:
+      name: pc-line-gwylan-plead
+    pc-line-kylar-demand:
+      name: pc-line-kylar-demand
+    pc-line-kylar-moan:
+      name: pc-line-kylar-moan
+    pc-line-kylar-plead:
+      name: pc-line-kylar-plead
+    pc-line-robin-demand:
+      name: pc-line-robin-demand
+    pc-line-robin-moan:
+      name: pc-line-robin-moan
+    pc-line-robin-plead:
+      name: pc-line-robin-plead
+    pc-line-sydney-demand:
+      name: pc-line-sydney-demand
+    pc-line-sydney-moan:
+      name: pc-line-sydney-moan
+    pc-line-sydney-plead:
+      name: pc-line-sydney-plead
+    pc-line-whitney-demand:
+      name: pc-line-whitney-demand
+    pc-line-whitney-forgive:
+      name: pc-line-whitney-forgive
+    pc-line-whitney-moan:
+      name: pc-line-whitney-moan
+    pc-line-whitney-mock:
+      description: |-
+        Whitney's variants of the PC's mock line, added to the "pc" speech pool.
+
+        `<<pc-line-whitney-mock mockAction>>`
+        - **mockAction**: `string` - the insecurity the PC mocked, from `$mockaction`
+      parameters:
+        - '"penis"|"vagina"|"weak"|"looks"|"skill"|"ethics"'
+    pc-line-whitney-plead:
+      name: pc-line-whitney-plead
     pcFarmBirth:
       name: pcFarmBirth
     pcGender:
@@ -13583,6 +13854,9 @@ sugarcube-2:
       description: |-
         Prints "her", "his", or "their", based on the PC's chosen gender. ONLY to be used when the PC is referring to themself. NPCs should continue to refer to PC by `<<pher>>` if appropriate for the scene.
       tags: ["text"]
+    pcLine:
+      description: |-
+        The PC's line, inside `<<addPairedSpeechLine>>`.
     pcow:
       description: |-
         Prints "cow" or "bull", based on the PC's gender appearance.
@@ -13629,7 +13903,8 @@ sugarcube-2:
       name: pcPregnancyRevealToAlex
     pcSex:
       description: |-
-        Prints "girl", "boy", or "hermaphrodite", based on the PC's sex
+        Prints "girl", "boy", or "hermaphrodite", based on the PC's sex. 
+        Hermaphrodite should not be printed in scenes, and will cause an error by default.
 
         Most commonly used in conjunction with crossdressing.
       tags: ["text"]
@@ -13880,6 +14155,8 @@ sugarcube-2:
         Arguments
         - **value**: `number` - Number to raise/lower the attention level by.
       name: photo_attention
+    photo_end:
+      name: photo_end
     photo_evidence_upload:
       name: photo_evidence_upload
     photo_heat:
@@ -13956,9 +14233,28 @@ sugarcube-2:
     physicalAdjustmentsInit:
       name: physicalAdjustmentsInit
     physique:
+      description: |-
+        Changes the PC's physique, where `$physique` is a measure of the PC's strength.
+        - Goes from 0 to the PC's body size physique limit. These limits are:
+          - Large: 15,000
+          - Normal: 12,000
+          - Small: 9,000
+          - Tiny: 6,000
+
+        1 point of `change` = 10 points of `$physique` = 1 point of `$physiqueuse`.
+        - Increases by 20% when `$exposed >= 2`, or 10% when `$exposed === 1`.
+
+        Displays a message, depending on the type or combat state. No message is displayed when "change" is negative.
+
+        `<<physique change type?>>`
+        - **change**: `number` - +/- change to apply.
+        - **type** _optional_: `string` - What message should be displayed.
+          - `"noMessage"`: No message will be printed.
+          - `"invig"`: "It invigorates you."
+          - `"workout"`: "You get a good workout."
       name: physique
-    physique_loss:
-      name: physique_loss
+      parameters:
+        - 'number |+ "noMessage" | "invig" | "workout"'
     physiquedifficulty:
       name: physiquedifficulty
     pickupSexToy:
@@ -14325,6 +14621,8 @@ sugarcube-2:
       name: pregnancyGendersText
     pregnancyMorningAfterPill:
       name: pregnancyMorningAfterPill
+    pregnancyObjectRepair:
+      name: pregnancyObjectRepair
     pregnancyPassout:
       name: pregnancyPassout
     pregnancySettings:
@@ -14410,6 +14708,9 @@ sugarcube-2:
       name: printpreggy
     printShopColourOptions:
       name: printShopColourOptions
+    printTime:
+      description: |-
+        Formats and prints an amount of time given as an argument, either as numbers `(xx:yy)` or words `xx hours and yy minutes`
     printTipsList:
       name: printTipsList
     prison_attention:
@@ -14841,6 +15142,8 @@ sugarcube-2:
         Restores the "hidden" state of any transformations hidden by the 'revealTransformations' widget
     relation-box:
       name: relation-box
+    relation-box-collapsed:
+      name: relation-box-collapsed
     relation-box-simple:
       name: relation-box-simple
     relation-box-stat:
@@ -14996,12 +15299,12 @@ sugarcube-2:
       name: residentialdrainquick
     residentialeventend:
       name: residentialeventend
-    residentialex1:
-      name: residentialex1
-    residentialex2:
-      name: residentialex2
-    residentialex3:
-      name: residentialex3
+    residentialExposedDumpsterAmbush:
+      name: residentialExposedDumpsterAmbush
+    residentialExposedDumpsterDog:
+      name: residentialExposedDumpsterDog
+    residentialExposedFootball:
+      name: residentialExposedFootball
     residentialexposed:
       name: residentialexposed
       tags: ["unused"]
@@ -15166,7 +15469,7 @@ sugarcube-2:
         `<<robinMemoryHeal key>>`
         - **key**: `string` - `$robinSeen` key recording that this memory's -Trauma has been given
       parameters:
-        - "key|string"
+        - string
       name: robinMemoryHeal
     robinOpen:
       name: robinOpen
@@ -15379,8 +15682,8 @@ sugarcube-2:
       name: schoolShop-main
     schoolskill:
       name: schoolskill
-    schoolskillgeneral:
-      name: schoolskillgeneral
+    schoolSkillGeneral:
+      name: schoolSkillGeneral
     schoolspareclothes:
       name: schoolspareclothes
     schoolterm:
@@ -15534,6 +15837,8 @@ sugarcube-2:
       description: |-
         Prints colour-coded adjective of active seduction skill usage
       tags: ["unused", "text"]
+    seedsFeatUI:
+      name: seedsFeatUI
     seize_stolen_goods:
       description: |-
         Prints a scene where the player gets searched. Removes black market valuables and overdue/stolen books, although a high skulduggery skill may bypass this
@@ -16150,6 +16455,8 @@ sugarcube-2:
     skinColourVariableCombine:
       description: |-
         Combines `_skinTone` and `_skinShade` and applies that value to `$player.skin.color`.
+    skinToneRange:
+      name: skinToneRange
     skintonetext:
       description: |-
         Prints `X skin tone.`
@@ -16392,10 +16699,51 @@ sugarcube-2:
       name: specialClothesUpdate
     specialClothingFeatUI:
       name: specialClothingFeatUI
+    speech-alex:
+      name: speech-alex
+    speech-avery:
+      name: speech-avery
+    speech-bailey:
+      name: speech-bailey
+    speech-eden:
+      name: speech-eden
     speech-gwylan:
       name: speech-gwylan
+    speech-harper:
+      name: speech-harper
+    speech-kylar:
+      name: speech-kylar
+    speech-leighton:
+      name: speech-leighton
+    speech-morgan:
+      name: speech-morgan
+    speech-robin:
+      name: speech-robin
     speech-sydney:
       name: speech-sydney
+    speech-whitney:
+      name: speech-whitney
+    speech-zephyr:
+      name: speech-zephyr
+    speechLine:
+      description: |-
+        Starts another line inside `<<addSpeechLine>>`.
+    speechPool:
+      description: |-
+        Opens the speaker's speech pool for this turn. Lines are added to the open speech pool until `<<speechSay>>` says one of them.
+
+        `<<speechPool speaker ["noMouthAction"]>>`
+        - **speaker**: `string` - whose lines the pool holds
+          - `"pc"`: the player's lines
+          - %namedNPCDesc%
+        - **"noMouthAction"** _optional_: stops the NNPC from being able to pass to a mouth action instead of speaking
+      parameters:
+        - '%namedNPC%|"pc" |+ "noMouthAction"'
+    speechSay:
+      description: |-
+        Says one line from the open speech pool. Skips lines if its category is on cooldown and lines the speaker already said this combat. Once every line has been said, they all become available again, except the last one said.
+
+        An NPC can pass to a mouth action instead of speaking. Always passes when they have nothing to say, or passes 40% of the time when only `"idle"` lines are in the pool.
     speechWraith:
       description: |-
         Prints up to two relevant wraith lines
@@ -16806,20 +17154,20 @@ sugarcube-2:
       name: streetedenworried
     streeteffects:
       name: streeteffects
-    streetex1:
-      name: streetex1
-    streetex2:
-      name: streetex2
-    streetex3:
-      name: streetex3
-    streetex4:
-      name: streetex4
-    streetex5:
-      name: streetex5
-    streetexday1:
-      name: streetexday1
-    streetexday2:
-      name: streetexday2
+    streetExposedDayBusShelter:
+      name: streetExposedDayBusShelter
+    streetExposedDayCrowded:
+      name: streetExposedDayCrowded
+    streetExposedNightDog:
+      name: streetExposedNightDog
+    streetExposedNightFootsteps:
+      name: streetExposedNightFootsteps
+    streetExposedNightStairwell:
+      name: streetExposedNightStairwell
+    streetExposedNightTrip:
+      name: streetExposedNightTrip
+    streetExposedNightWitnessAssault:
+      name: streetExposedNightWitnessAssault
     streetexhibitionismfame:
       name: streetexhibitionismfame
     streetExhibitionismFameShamed:
@@ -17291,6 +17639,8 @@ sugarcube-2:
       tags: ["text"]
     tendingTillOptions:
       name: tendingTillOptions
+    tendingUnplantableSeeds:
+      name: tendingUnplantableSeeds
     tendingWaterAllDryBeds:
       name: tendingWaterAllDryBeds
     tendingWaterPlot:
@@ -17760,7 +18110,16 @@ sugarcube-2:
     traits:
       name: traits
     transform:
+      description: |-
+        Changes the PC's transformation progress.
+
+        `<<transform type change>>`
+        - **type**: `string` - The transformation that is being affected.
+          - `"wolf"` | `"cat"` | `"cow"` | `"bird"` | `"fox"` | `"angel"` | `"fallen"` | `"demon"`
+        - **change**: `number` - +/- change to apply.
       name: transform
+      parameters:
+        - '"wolf"|"cat"|"cow"|"bird"|"fox"|"angel"|"fallen"|"demon" &+ number'
     transformationAlteration:
       name: transformationAlteration
     transformationStateUpdate:
@@ -17808,6 +18167,10 @@ sugarcube-2:
 
         Called at the end of every "trauma" function call.
       name: traumaClamp
+    travelSpeedInfo:
+      name: travelSpeedInfo
+    travelSpeedOptions:
+      name: travelSpeedOptions
     troughicon:
       name: troughicon
     tryOnInit:
@@ -18161,9 +18524,9 @@ sugarcube-2:
       parameters:
         - '|+ "genders"|"breasts"|"penis"|"skincolour"'
       tags: ["refactor"]
-    updatePlants:
+    updateFoodstuff:
       description: |-
-        Verifies `V.plants` has a matching entry for every foodstuff object in `F`. Required after addition of cooking class, as tending objects are no longer optional.
+        Ensures `V.foodstuff` has a matching entry for every key in `setup.foodstuff`, initialising missing entries with `{"amount": 0}`. Also sorts `V.foodstuff` alphabetically by key.
     updatePlayerTraumaState:
       description: |-
         Updates pc's trauma-derived state based on current trauma, including sleep trouble, nightmares, anxiety, flashbacks, panic attacks, and dissociation
@@ -18603,16 +18966,16 @@ sugarcube-2:
       name: whitney_parent
     WhitneyChastityCheck:
       name: WhitneyChastityCheck
-    whitneyexit:
-      name: whitneyexit
+    whitneyExit:
+      name: whitneyExit
     whitneyFaceWritingInspection:
       name: whitneyFaceWritingInspection
     whitneyFinish:
       name: whitneyFinish
-    whitneyoptions:
-      name: whitneyoptions
-    whitneyoptionsleave:
-      name: whitneyoptionsleave
+    whitneyOptions:
+      name: whitneyOptions
+    whitneyOptionsLeave:
+      name: whitneyOptionsLeave
     WhitneyPantyCheck:
       name: WhitneyPantyCheck
     WhitneyParasite:

@@ -91,7 +91,7 @@
 		<h1 class="header gold bold">Time-Sensitive</h1>
 		<ul class="journal">
 			<<if $avery_mansion>>/* Is Avery paying for the PC? */
-				<<if $avery_mansion.rage.assess gte 9 or C.npc.Avery.state is "dismissed">>
+				<<if $avery_mansion.rage.assess gte 9 or C.npc.Avery.state is "dismissed" or $avery_mansion.days_absent gte 2>>
 					<<set _avery_pay to false>>
 				<<else>>
 					<<set _avery_pay to true>>
@@ -335,8 +335,22 @@
 						You've accepted a task from 'Mickey'.
 					<<elseif $pubfame.status is "done">>
 						You've completed the task 'Mickey' gave you.
+					<<elseif $pubfame.status is "hiding">> /* only happens when the elk compound interrogation is failed */
+						You've failed the task 'Mickey' gave you.
 					<</if>>
 				</li>
+			<</if>>
+
+			<<if $schoolfameblackmail isnot undefined and Time.schoolDay>>
+				<<set _blackmail_colour to $schoolfameconsensual is 1 ? "white" : $schoolfameblackmail gte 3 ? "red" : "pink">>
+				/*White for paid lewd photoshoots, red for when the school board event is possible, pink for unpaid lewd photoshoots */
+				<<if $schoolfameboard isnot 1 or $schoolfameconsensual is 1>>
+					<<if $schoolfameblackmail gt 0 and Time.hour lt 17>>
+						<li> Leighton expects to see you at <<nnpc_his "Leighton">> office <span @class=_blackmail_colour>today</span> between <<ampm 7 00>> and <<ampm 17 00>>. </li>
+					<<elseif $schoolfameblackmail is 0>>
+						<li> You've done the photoshoot at Leighton's office today. </li>
+					<</if>>
+				<</if>>
 			<</if>>
 		</ul>
 	<</if>>
@@ -1223,10 +1237,10 @@
 				</li>
 			<</if>>
 			<<if $antiquemoney gt 0>>
-				<li><<museumicon>><span class="green">£<<print $antiquemoney>></span> in antiques. You can sell them to the museum.</li>
+				<li><<museumicon>><span class="green">£<<print $antiquemoney.toLocaleString("en-GB")>></span> in antiques. You can sell them to the museum.</li>
 			<</if>>
 			<<if $blackmoney gt 0>>
-				<li><<highicon>><span class="green">£<<print $blackmoney>></span> in stolen goods. You can sell them to someone on the black market.</li>
+				<li><<highicon>><span class="green">£<<print $blackmoney.toLocaleString("en-GB")>></span> in stolen goods. You can sell them to someone on the black market.</li>
 			<</if>>
 			<<if $phials_held gt 0>>
 				<li><<icon "aphrodisiac.png">> <span class="green">$phials_held</span> <<pluralise $phials_held "phial">> of aphrodisiac. You can sell <<pluralise $phials_held "it">> on Elk Street.</li>
@@ -1284,7 +1298,7 @@
 	<</if>>
 
 
-	<<if Object.keys($plots).length gte 1>> /* display plot readiness */
+	<<if Object.values($plots).some(loc => loc.length)>> /* display plot readiness */
 		<hr>
 		<h1 class="header gold bold">Gardens</h1>
 		<<for $_plotToDisplay range ["garden", "farm", "wolf", "eden", "asylum"]>>

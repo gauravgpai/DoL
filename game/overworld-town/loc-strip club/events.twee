@@ -152,7 +152,11 @@ You place your palms on the counter behind you, and haul your <<bottom>> on top,
 	You part your knees, giving everyone a good look at your $worn.genitals.name.
 <<else>>
 	<<if $player.penisExist and $player.vaginaExist>>
-		You part your knees, giving everyone a good look at your <<penis>>. The <<person1>><<person>> gasps when you shift your cock out of the way, revealing the <<pussy>> beneath.
+		<<if $settings.nudeGenderPerception !== 0>>
+			You part your knees, giving everyone a good look at your <<penis>>. The <<person1>><<person>> gasps when you shift your cock out of the way, revealing the <<pussy>> beneath.
+		<<else>>
+			You part your knees, giving everyone a good look at your <<penis>> and <<pussy>>.
+		<</if>>
 	<<elseif $player.penisExist>>
 		You part your knees, giving everyone a good look at your <<penis>>.
 	<<else>>
@@ -275,7 +279,7 @@ You shake your head at security, leaving you at the mercy of the <<person2>><<pe
 		Beside you, the <<person3>><<person>> clenches <<his>> fists as <<he>> receives a similar treatment from the <<person1>><<person>>. At last, the <<person2>><<person>> shudders into orgasm, <span class="purple">covering your ass with gooey fluid.</span> The <<person1>><<person>> finishes soon after.
 		<<bodyliquid "bottom" "semen">><<ejacstat>>
 	<<else>>
-		Beside you, the <<person3>><<person>> shuts their eyes as the <<person2>><<person>> rides them, rubbing their pussy against the <<person3>><<persons>> <<if $NPCList[2].penis isnot "none">>$NPCList[2].penisdesc<<else>>pussy<</if>>. At last, the <<person2>><<person>> shudders into orgasm, <span class="purple">covering your ass with gooey fluid.</span> The <<person1>><<person>> finishes soon after.
+		Beside you, the <<person3>><<person>> shuts <<his>> eyes as the <<person2>><<person>> rides <<person3>><<him>>, rubbing <<person2>><<his>> pussy against the <<person3>><<persons>> <<if $NPCList[2].penis isnot "none">>$NPCList[2].penisdesc<<else>>pussy<</if>>. At last, the <<person2>><<person>> shudders into orgasm, <span class="purple">covering your ass with gooey fluid.</span> The <<person1>><<person>> finishes soon after.
 		<<bodyliquid "bottom" "semen">><<ejacstat>>
 	<</if>>
 <<else>>

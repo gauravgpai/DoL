@@ -110,7 +110,7 @@
 		<<set $position to "doggy">>
 		<<set $NPCList[0].stance to "top">>
 	<</if>>
-	<<set $speechdisable to 1>>
+	<<set $speechDisable to 1>>
 <</if>>
 
 <<effects>>
@@ -564,7 +564,7 @@ You remain still. The <<beasttype>> watches you a moment longer, then
 		<<set $NPCList[0].stance to "top">>
 	<</if>>
 	<<set $molestationstart to 0>>
-	<<set $speechdisable to 1>>
+	<<set $speechDisable to 1>>
 <</if>>
 
 <<effects>>
@@ -3010,7 +3010,7 @@ You sit by the rainwater pool.
 
 	<<wakingEffects $sleepHoursTotal>>
 	<<if ["dryheaving","nausea"].includes(_wakingEffect)>>
-		<br><br>
+		<br>
 		You slept soundly, but now feel a little rough.
 		<br><br>
 	<<elseif $nightmares gte 1 and $controlled is 0>>
@@ -3022,7 +3022,7 @@ You sit by the rainwater pool.
 			You sleep soundly.
 			<br><br>
 		<<else>>
-			<br><br>
+			<br>
 		<</if>>
 	<</if>>
 

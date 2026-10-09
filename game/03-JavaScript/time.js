@@ -1,4 +1,4 @@
-/* globals orphanagePlotsPlanted orphanagePlotsWatered */
+/* globals orphanagePlotsPlanted orphanagePlotsWatered waterPlotsIfRaining */
 /* Time namespace
 	Use Time prefix when accessing any getters or functions (e.g. Time.second, Time.schoolDay, or Time.getLastDayOfMonth(), etc.)
 	Getters: (Most of these are being used in one way or another)
@@ -788,6 +788,8 @@ function dayPassed() {
 	}
 	if (hasMansion) V.avery_mansion.study_unlocked = 0;
 
+	if (V.avery_helicopter?.timer > 0) V.avery_helicopter.timer--;
+
 	if (V.flashbacktown > 0) V.flashbacktown--;
 	if (V.flashbackhome > 0) V.flashbackhome--;
 	if (V.flashbackbeach > 0) V.flashbackbeach--;
@@ -1101,6 +1103,9 @@ function hourPassed(hours) {
 		if (!V.avery_mansion || ["fallen", "kicked"].includes(V.avery_fate)) {
 			V.hoursGoneFromHome++;
 		}
+
+		// When you view a plot while it is raining, it automatically becomes watered, so we don't need to check frequently if it's raining to water plots. Hourly is good enough.
+		waterPlotsIfRaining();
 
 		// Robin autowatering
 		// Include "bath" as a location since bathing is from 17:00-17:29
@@ -1429,7 +1434,7 @@ function dailyNPCEffects() {
 		V.averyBodyWritingSeen = false;
 		if (V.averydate && Time.weekDay === 1) {
 			V.averydate = 0;
-			if (V.averydateattended !== 1 && !V.avery_injury) V.averydatemissed = 1;
+			if (V.averydateattended !== 1 && !V.avery_injury && !V.avery_mansion.away_timer > 0) V.averydatemissed = 1;
 			V.averydateattended = 0;
 		}
 		delete V.averydatedone;
@@ -1474,7 +1479,13 @@ function dailyNPCEffects() {
 				}
 			}
 
-			if (V.avery_mansion.rage.dinner_done !== 1 && between(Time.weekDay, 3, 7) && !V.avery_injury && !inRentPausedBadEnd()) {
+			if (
+				V.avery_mansion.rage.dinner_done !== 1 &&
+				between(Time.weekDay, 3, 7) &&
+				!V.avery_injury &&
+				!inRentPausedBadEnd() &&
+				V.avery_mansion.rage.timer !== 30
+			) {
 				if (V.avery_valentines?.done && Time.monthDay === 15 && Time.monthName === "February") {
 					// do not spoil the valentines
 				} else {
@@ -1507,14 +1518,13 @@ function dailyNPCEffects() {
 				if (V.avery_mansion.injury_timer >= 1) {
 					V.avery_mansion.injury_timer--;
 				}
-				if (V.avery_mansion.injury_timer <= 0 && !["healing", "healed"].includes(V.avery_mansion.injury_stage)) {
+				if (V.avery_mansion.injury_timer <= 0) {
+					V.avery_mansion.injury_stage = "healed";
+				} else if (V.avery_mansion.injury_timer <= 15) {
 					V.avery_mansion.injury_stage = "healing";
-				} else if (V.avery_mansion.injury_timer <= 15 && !["cast", "cast_done", "healing", "healed"].includes(V.avery_mansion.injury_stage)) {
+				} else if (V.avery_mansion.injury_timer < 50) {
 					V.avery_mansion.injury_stage = "cast";
-				} else if (
-					V.avery_mansion.injury_timer <= 30 &&
-					!["sling", "sling_done", "cast", "cast_done", "healing", "healed"].includes(V.avery_mansion.injury_stage)
-				) {
+				} else {
 					V.avery_mansion.injury_stage = "sling";
 				}
 			}
@@ -1787,7 +1797,7 @@ function dailyPlayerEffects() {
 		V.vore_trait_message = 1;
 		V.voretrait = 1;
 	}
-	if (V.milk_drank_stat >= 1000 && V.milkdranktrait === 0) {
+	if (V.milk_drank_stat >= 10000 && V.milkdranktrait === 0) {
 		V.effectsmessage = 1;
 		V.milk_trait_message = 1;
 		V.milkdranktrait = 1;
@@ -2016,7 +2026,7 @@ function yearlyEventChecks() {
 		delete V.valentines_supermarket;
 	}
 
-	if (Time.monthName === "February" && Time.monthDay <= 14 && !V.avery_valentines && V.avery_mansion) {
+	if (Time.monthName === "February" && Time.monthDay <= 14 && !V.avery_valentines) {
 		V.avery_valentines = {};
 
 		V.avery_valentines.intro = false;
@@ -2479,6 +2489,11 @@ function passArousalWetness(passMinutes) {
 			V.pantiesSoaked = V.underlowerwet >= 100;
 		}
 	}
+
+	if (V.vaginaArousalWetness < 60 || V.underlowerwet < 100) {
+		V.pantiesSoaked = false;
+	}
+
 	if (V.earSlime.focus === "pregnancy" && V.earSlime.growth >= 75) {
 		// Prevent it from dropping below 30 or 60 when the ear slime has fully grown with a focus on pregnancy
 		V.vaginaArousalWetness = Math.clamp(V.vaginaArousalWetness, V.earSlime.growth >= 100 ? 60 : 30, 100);

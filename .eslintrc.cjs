@@ -336,6 +336,10 @@ module.exports = {
 		migrateChildrenToRecords: "readonly",
 		migrateChildFeatures: "readonly",
 		migrateInflightPregnanciesToRecords: "readonly",
+		parentSkinColour: "readonly",
+		// Skin Tone Functions
+		randomSkinTone: "readonly",
+		skinToneSettingsFromDarkChance: "readonly",
 		// DoL math functions
 		round: "readonly",
 		normalise: "readonly",
@@ -403,6 +407,7 @@ module.exports = {
 		isPossibleLoveInterestVirginity: "readonly",
 		wearingCondom: "readonly",
 		npcHasStrapon: "readonly",
+		rollWeightedRandomFromArray: "readonly",
 	},
 
 	ignorePatterns: [
@@ -491,6 +496,17 @@ module.exports = {
 					"ChildParent",
 					"DonorSpecies",
 					"ChildSpecies",
+					"SpeechLine",
+					"SpeechHistoryEntry",
+					"SpeechPool",
+					"SpeechSpeaker",
+					"SpeechReply",
+					"FishingLocationKey",
+					"FishingFishKey",
+					"FishingHookedFish",
+					"FishingCaughtClothing",
+					"FishingTrashConfig",
+					"FishingClothingConfig",
 				],
 			},
 		],

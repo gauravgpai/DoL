@@ -286,7 +286,7 @@ You hear the ancient mechanism creak and the door groans open. Beyond is a plint
 
 You grip the plinth, and pull your <<bottom>> against it. The instant you do, a red light blazes into life, illuminating the room. Previously unseen statues stare down at you from above.
 <br><br>
-<<if !(!$player.vaginaExist and playerIsPregnant())>>
+<<if !(!$player.vaginaExist and playerIsPregnant() and V.settings.analPregnancy != "always")>>
 	You jerk back, and convulse. The room shakes and trembles. A crack appears in the floor. It widens, letting in more of the red light.
 	<<if numberOfEarSlime(true) gte 2>>
 		You feel the slimes squirm from your ears. They vanish into the crevice.
@@ -1152,11 +1152,11 @@ The creature recoils from you and disappears into darkness. <<tearful>> you turn
 		<<if random(1,4) lte 3>>
 			You curl up and make yourself look as non-threatening as possible<<if $bodysize gt 2>> despite your large frame<<elseif $bodysize lt 2>>, shrinking even smaller than usual<</if>>.
 			<br><br>
-			Realizing you're no threat, <span class="pink">the pair of divers decides to take advantage of the situation.</span>
+			Realising you're no threat, <span class="pink">the pair of divers decides to take advantage of the situation.</span>
 			<br><br>
 			<<link [[Next|Lake Depths Divers Sex]]>><<set $molestationstart to 1>><</link>>
 		<<else>>
-			You try to apologize with hand signals, but the divers ignore you completely.
+			You try to apologise with hand signals, but the divers ignore you completely.
 			<br><br>
 			Two pairs of hands grab you firmly. They clearly intend to make you feel sorry for disturbing them, and your display of weakness <span class="red">Only made them angrier than before.</span>.
 			<br><br>
@@ -1197,7 +1197,7 @@ The creature recoils from you and disappears into darkness. <<tearful>> you turn
 	<<maninit>>
 	<<set $water to 1>>
 	<<set $noBodyWriting to 1>>
-	<<set $speechdisable to 1>>
+	<<set $speechDisable to 1>>
 	<<set $NPCList[0].mouth to "underwater">>
 	<<set $NPCList[1].mouth to "underwater">>
 	<<set $oxygen_last to $oxygen>>
@@ -1227,7 +1227,7 @@ The creature recoils from you and disappears into darkness. <<tearful>> you turn
 	<<set $water to 1>>
 	<<set $enemytrust += 40>>
 	<<set $noBodyWriting to 1>>
-	<<set $speechdisable to 1>>
+	<<set $speechDisable to 1>>
 	<<set $NPCList[0].mouth to "underwater">>
 	<<set $NPCList[1].mouth to "underwater">>
 	<<set $oxygen_last to $oxygen>>
