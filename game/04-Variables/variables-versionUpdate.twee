@@ -7647,4 +7647,8 @@
 		<<set $schoolrep.herm to 0>>
 		<<set $nudeGenderPerceptionBackComp to 1>>
 	<</if>>
+
+	<<if def $sciencechance>>
+		<<unset $sciencechance>>
+	<</if>>
 <</widget>>
