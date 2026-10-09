@@ -3162,7 +3162,7 @@
 			<<set $_result to " <small class='green characteristic-modifier'>(+"+$_modifier+"%)</small>">>
 		<<elseif $_modifier lt 0>>
 			<<set $_result to " <small class='red characteristic-modifier'>("+$_modifier+"%)</small>">>
-		<<elseif ["Promiscuity", "Exhibitionism", "Deviancy"].includes(_args[2]) and (Mods.drunkSexBoost(V[_args[2].toLowerCase()]) gte 1 or heatRutSexStatModifier(_args[2].toLowerCase()) gte 1)>>
+		<<elseif ["Promiscuity", "Exhibitionism", "Deviancy"].includes(_args[2]) and (Mods.drunkSexBoost(V[_args[2].toLowerCase()]) gte 1 or Mods.heatRutSexBoost(_args[2].toLowerCase()) gte 1)>>
 			<<set $_result to " <span class='" + getLargestSexStatModifierCssClasses(_args[2].toLowerCase()) + "'><small class='blue characteristic-modifier'>(???%)</small></span>">>
 		<</if>>
 	<</if>>

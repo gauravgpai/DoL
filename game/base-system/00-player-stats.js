@@ -238,20 +238,18 @@ const Mods = {
 	/**
 	 * Increase the PC's sex stat based on their heat / rut cycle and their minimum arousal.
 	 *
-	 * "deviancy" is affected at 100% strength.
-	 * "exhibitionism" is affected at 0% strength.
-	 * "promiscuity" is affected at 75% strength.
+	 * - "deviancy" is affected at 100% strength.
+	 * - "exhibitionism" is affected at 0% strength.
+	 * - "promiscuity" is affected at 75% strength.
 	 *
-	 * @param {string} statName Can be "deviancy", "exhibitionism", or "promiscuity".
+	 * @param {number} strength 1.0 = 100%.
 	 * @returns {number}
 	 */
-	heatRutSexBoost(statName) {
-		if (statName === "exhibitionism") {
-			return 0;
-		} else if (statName !== "deviancy" && statName !== "promiscuity") {
-			Errors.report(`[Mods.heatRutSexBoost]: input '${statName}' is invalid.`, {
+	heatRutSexBoost(strength) {
+		if (isNaN(strength)) {
+			Errors.report(`[Mods.heatRutSexBoost]: input '${strength}' is not a number.`, {
 				Stacktrace: Utils.GetStack(),
-				statName,
+				strength,
 			});
 			return 0;
 		}
@@ -271,11 +269,7 @@ const Mods = {
 		const heatRutSexBoostExponent = 0.6; // Lower to raise the final modifier at lower levels of minArousal.
 		const heatRutSexBoostModifier = (maxHeatRutSexBoostModifier / maxMinArousal ** heatRutSexBoostExponent) * minArousal ** heatRutSexBoostExponent;
 
-		if (statName === "promiscuity") {
-			return Math.floor(heatRutSexBoostModifier * 0.75);
-		} else {
-			return Math.floor(heatRutSexBoostModifier);
-		}
+		return Math.floor(strength * heatRutSexBoostModifier);
 	},
 
 	/**
