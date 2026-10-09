@@ -377,9 +377,29 @@
 				<<set _pigMaleChance to beastMaleChanceForType("pig")>>
 				<<set _dogMaleChance to beastMaleChanceForType("dog")>>
 				<<set _cowMaleChance to beastMaleChanceForType("cow")>>
-				<<set _pigPeople to _pigMaleChance is 100 ? "boys" : _pigMaleChance is 0 ? "girls" : "people">>
-				<<set _dogPeople to _dogMaleChance is 100 ? "boys" : _dogMaleChance is 0 ? "girls" : "people">>
-				<<set _cowpeople to _cowMaleChance is 100 ? "bullboys" : _cowMaleChance is 0 ? "cowgirls" : "cowgirls and bullboys">>
+				<<if _pigMaleChance is 100>>
+					<<set _pigPeople to "boys">>
+				<<elseif _pigMaleChance is 0>>
+					<<set _pigPeople to "girls">>
+				<<else>>
+					<<set _pigPeople to "people">>
+				<</if>>
+
+				<<if _dogMaleChance is 100>>
+					<<set _dogPeople to "boys">>
+				<<elseif _dogMaleChance is 0>>
+					<<set _dogPeople to "girls">>
+				<<else>>
+					<<set _dogPeople to "people">>
+				<</if>>
+
+				<<if _cowMaleChance is 100>>
+					<<set _cowpeople to "bullboys">>
+				<<elseif _cowMaleChance is 0>>
+					<<set _cowpeople to "cowgirls">>
+				<<else>>
+					<<set _cowpeople to "cowgirls and bullboys">>
+				<</if>>
 				<!-- These values apply if the current value is "Greater than or equal to" the specified value. So:
 					-30 to -21 	: Fucktoy
 					-20 to -6 	: Little respect
