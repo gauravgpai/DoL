@@ -5686,6 +5686,20 @@
 	<<print _text_output>>
 <</widget>>
 
+<<widget "farm_himself">>
+	<<set $_bgender to _args[1] ? _args[1] : $farm_work[_args[0]].gender>>
+	<<if $farm_work[_args[0]].monster>>
+		<<if $_bgender is "m">>
+			<<set _text_output to "himself">>
+		<<else>>
+			<<set _text_output to "herself">>
+		<</if>>
+	<<else>>
+		<<set _text_output to "itself">>
+	<</if>>
+	<<print _text_output>>
+<</widget>>
+
 <<widget "master">><<silently>>
 	<<set _text_output to ($pronoun is "m" ? "master" : "mistress")>>
 <</silently>>_text_output<</widget>>
