@@ -135,6 +135,34 @@ const Mods = {
 	},
 
 	/**
+	 * Increase the PC's sex stat based on its current value and their level of intoxication.
+	 *
+	 * @param {number} statValue
+	 * @returns {number}
+	 */
+	drunkSexBoost(statValue) {
+		if (isNaN(statValue)) {
+			Errors.report(`[Mods.drunkSexBoost]: statValue '${statValue}' is not a nnumber.`, {
+				Stacktrace: Utils.GetStack(),
+				statValue,
+			});
+			return 0;
+		}
+
+		if (PC.drunk <= 0) return 0;
+
+		const maxValue = 40; // The maximum value of the curve.
+		const valueAdjust = Math.clamp(maxValue - Math.floor(statValue / 4), 0, maxValue); // The curve is less effective with higher base stat.
+		const growthRate = 3; // How fast the curve grows as the drunk value increases.
+		const midpoint = 500; // Needs to be half of the max drunk value.
+		const shifter = 0.85; // Decreases this value to make lower drunk values give higher results and higher drunk values give lower results.
+		const drunkMod = (PC.drunk - midpoint) / 500; // Adjusts the drunk values to be scaled correctly with the equation and max stat value.
+		const denominator = 1 + shifter * Math.E ** (-1 * growthRate * drunkMod);
+
+		return Math.floor(valueAdjust / denominator);
+	},
+
+	/**
 	 * Increase the PC's analskill to 1.0-1.2x if they don't have a vagina and their Ear Slime has the "Pregnancy" focus. Scales based on Ear Slime Growth.
 	 *
 	 * @returns {number}
