@@ -342,7 +342,14 @@ function timeSensitive() {
 		finalText += soon.map(item => `<li> ${item}</li>`).join("");
 		finalText += `</ul>`;
 	}
-	for (const day in theWeekAhead) {
+
+	// We want to loop through the days of the week as presented in Time.daysOfWeek and a typical calendar.
+	// Start from the current day of the week, then finish the days we didn't reach yet
+	// ie, if it's Friday (fifth day, index 5), we want to start there, print Saturday at 6, then return to Sunday at 0 and the rest of the data, 1, 2, etc
+	const indexOfToday = Time.dayOfYear % 7;
+	for (let i = 0; i < Object.values(theWeekAhead).length; i++) {
+		const pointer = (i + indexOfToday) % Object.values(theWeekAhead).length;
+		const day = Time.daysOfWeek[pointer];
 		if (theWeekAhead[day].length) {
 			finalText += `<h1 class="header gold bold">${day}</h1>`;
 			finalText += `<ul class="journal">`;
