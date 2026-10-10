@@ -2,6 +2,13 @@ function timeSensitive() {
 	// LCD: may need "NOW" as a category, beyond days.
 	const theWeekAhead = {};
 	Time.daysOfWeek.forEach(day => (theWeekAhead[day] = []));
+	/**
+	 * Use this for days that are over a week away; ie, It's Friday but you've already seen Harper. So show him for NEXT Friday.
+	 *
+	 * @type {{}}
+	 */
+	const theSecondWeekAhead = {};
+	Time.daysOfWeek.forEach(day => (theSecondWeekAhead[day] = []));
 	const soon = [];
 
 	let averyPay;
@@ -96,31 +103,36 @@ function timeSensitive() {
 
 	if (V.harper_appointments.enabled || V.schoolPsych === 1) {
 		let harperApt = `You ${V.harper_appointments.enabled ? "have an" : "may get an"} appointment with Doctor Harper`;
+		let harpersWeek = theWeekAhead;
 
 		if (Time.weekDay === 6) {
 			if (V.daily.harperVisit === 1) {
 				harperApt += ` next <span class="gold">Friday</span>.`;
+				// Not today, a week from today:
+				harpersWeek = theSecondWeekAhead;
 			} else {
 				harperApt += ` <span class="pink">today</span>.`;
 			}
 		} else {
 			harperApt += ` on <span class="gold">Friday</span>.`;
 		}
-		theWeekAhead.Friday.push(harperApt);
+		harpersWeek.Friday.push(harperApt);
 	}
 
 	if (V.brothelshowdata.type !== "none" && V.brothelshowdata.intro) {
+		let brothelsWeek = theWeekAhead;
 		let show = `You're expected to perform a ${V.brothelshowdata.type} show at the brothel`;
 		if (Time.weekDay === 6) {
 			if (V.brothelshowdata.done) {
 				show += ` next <span class="gold">Friday</span>.`;
+				brothelsWeek = theSecondWeekAhead;
 			} else {
 				show += ` <span class="pink">today</span>.`;
 			}
 		} else {
 			show += ` on <span class="gold">Friday</span>.`;
 		}
-		theWeekAhead.Friday.push(show);
+		brothelsWeek.Friday.push(show);
 	}
 
 	if (V.brothel_escortjob !== undefined) {
@@ -130,6 +142,7 @@ function timeSensitive() {
 			V.brothel_escortjob.missed !== true
 		) {
 			const _date = new DateTime(V.brothel_escortjob.date);
+			let escortWeek = theWeekAhead;
 			let escort = `You have an escort job scheduled. You're expected to be in front of the brothel`;
 			if (Time.monthDay === _date.day) {
 				escort += ` <span class="pink">today</span>`;
@@ -137,11 +150,12 @@ function timeSensitive() {
 				escort += ` <span class="gold">tomorrow</span>`;
 			} else if (Time.date.dayDifference(_date) >= 7) {
 				escort += ` next <span class="gold">_date.weekDayName</span>`;
+				escortWeek = theSecondWeekAhead;
 			} else {
 				escort += ` on <span class="gold">_date.weekDayName</span>`;
 			}
 			escort += ` at <span class="gold">${ampm(_date.hour)}</span>.`;
-			soon.push(escort);
+			escortWeek.push(escort);
 		}
 	}
 
@@ -343,20 +357,29 @@ function timeSensitive() {
 		finalText += `</ul>`;
 	}
 
-	// We want to loop through the days of the week as presented in Time.daysOfWeek and a typical calendar.
-	// Start from the current day of the week, then finish the days we didn't reach yet
-	// ie, if it's Friday (fifth day, index 5), we want to start there, print Saturday at 6, then return to Sunday at 0 and the rest of the data, 1, 2, etc
-	const indexOfToday = Time.dayOfYear % 7;
-	for (let i = 0; i < Object.values(theWeekAhead).length; i++) {
-		const pointer = (i + indexOfToday) % Object.values(theWeekAhead).length;
-		const day = Time.daysOfWeek[pointer];
-		if (theWeekAhead[day].length) {
-			finalText += `<h1 class="header gold bold">${day}</h1>`;
-			finalText += `<ul class="journal">`;
-			finalText += theWeekAhead[day].map(item => `<li> ${item}</li>`).join("");
-			finalText += `</ul>`;
+	[theWeekAhead, theSecondWeekAhead].forEach(week => printAWeek(week));
+
+	return finalText;
+
+	/**
+	 * We want to loop through the days of the week as presented in Time.daysOfWeek and a typical calendar.
+	 * Start from the current day of the week, then finish the days we didn't reach yet
+	 * ie, if it's Friday (fifth day, index 5), we want to start there, print Saturday at 6, then return to Sunday at 0 and the rest of the data, 1, 2, etc
+	 *
+	 * @param {object} weekObj
+	 */
+	function printAWeek(weekObj) {
+		const indexOfToday = Time.dayOfYear % 7;
+		for (let i = 0; i < Object.values(weekObj).length; i++) {
+			const pointer = (i + indexOfToday) % Object.values(weekObj).length;
+			const day = Time.daysOfWeek[pointer];
+			if (weekObj[day].length) {
+				finalText += `<h1 class="header gold bold">${day}</h1>`;
+				finalText += `<ul class="journal">`;
+				finalText += weekObj[day].map(item => `<li> ${item}</li>`).join("");
+				finalText += `</ul>`;
+			}
 		}
 	}
-	return finalText;
 }
 window.timeSensitive = timeSensitive;
