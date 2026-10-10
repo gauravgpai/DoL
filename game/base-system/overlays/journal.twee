@@ -88,7 +88,6 @@
 
 	<<if $rentday isnot undefined || $rentmoney isnot undefined>>
 		<hr>
-		<h1 class="header gold bold">Time-Sensitive</h1>
 		<<print timeSensitive()>>
 	<</if>>
 

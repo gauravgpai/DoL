@@ -222,7 +222,7 @@ function timeSensitive() {
 		remyWeek.push(farm);
 	}
 
-	if (V.temple_rank === "initiate" || V.temple_rank === "monk" || V.temple_rank === "priest") {
+	if (["initiate", "monk", "priest"].some(title => title === V.temple_rank)) {
 		let temple = `You are ${V.temple_rank === "initiate" ? "an initiate at" : "a <<temple_title>> of"} the temple.`;
 		if (V.temple_chastity_timer <= 0) {
 			temple += ` <span class="pink">You have a chastity exam due.</span>`;
@@ -353,6 +353,7 @@ function timeSensitive() {
 
 	let finalText = ``;
 	if (soon.length) {
+		finalText += `<h1 class="header gold bold">Time-Sensitive</h1>`;
 		finalText += `<ul class="journal">`;
 		finalText += soon.map(item => `<li> ${item}</li>`).join("");
 		finalText += `</ul>`;
