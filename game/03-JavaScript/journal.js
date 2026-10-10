@@ -1,14 +1,17 @@
 function timeSensitive() {
-	// LCD: may need "NOW" as a category, beyond days.
-	const theWeekAhead = {};
-	Time.daysOfWeek.forEach(day => (theWeekAhead[day] = []));
 	/**
-	 * Use this for days that are over a week away; ie, It's Friday but you've already seen Harper. So show him for NEXT Friday.
 	 *
-	 * @type {{}}
+	 * @returns {{[p: Time.daysOfWeek[]]: any}}
 	 */
-	const theSecondWeekAhead = {};
-	Time.daysOfWeek.forEach(day => (theSecondWeekAhead[day] = []));
+	const makeWeek = () => Object.fromEntries(Time.daysOfWeek.map(key => [key, []]));
+
+	/**
+	 * Need to set up two weeks. Harper happens on a Friday, but it may not be THIS Friday.
+	 *
+	 * @type {{[p: Time.daysOfWeek[]]: any}[]}
+	 */
+	const weeks = [makeWeek(), makeWeek()];
+
 	const soon = [];
 
 	let averyPay;
@@ -29,7 +32,7 @@ function timeSensitive() {
 					`Bailey is looking for you and wants <<printmoney ${V.rentmoney}>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.`
 				);
 			} else {
-				theWeekAhead[Time.daysOfWeek[V.rentday - 1]].push(
+				weeks[0][Time.daysOfWeek[V.rentday - 1]].push(
 					`Bailey wants <<printmoney ${V.rentmoney}>> on <<rentday>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.`
 				);
 			}
@@ -44,7 +47,7 @@ function timeSensitive() {
 		const _discardDate = V.bailey_confiscation.day + 8 - Time.days;
 		const formatDate = date => getFormattedDate(new DateTime(Time.date).addDays(date), true);
 		const formatDayOfWeek = new DateTime(Time.date).addDays(_rentDueDate).weekDayName;
-		theWeekAhead[formatDayOfWeek].push(
+		weeks[0][formatDayOfWeek].push(
 			`Bailey confiscated your <<baileyConfiscationListFull>>. Pay your rent on <span class="gold"><<print ${formatDate(
 				_rentDueDate
 			)}>></span> or buy your stuff back before <span class="gold"><<print ${formatDate(_discardDate)}>></span>, or <<nnpc_he "Bailey">>'ll pawn it off.`
@@ -81,7 +84,7 @@ function timeSensitive() {
 	}
 
 	if (V.avery_mansion?.schedule !== "away" && V.averydate === 1 && Time.hour <= 21 && V.averydatedone !== 1) {
-		theWeekAhead.Saturday.push(
+		weeks[0].Saturday.push(
 			`You have a date scheduled with Avery <span class="pink"><<this_saturday>></span>. <<nnpc_He "Avery">>'ll wait for you ${
 				V.avery_mansion ? "in the garage" : "on Domus Street"
 			} between <span class="gold">${ampm(20)}</span> and <span class="gold">${ampm(21)}</span>.`
@@ -89,7 +92,7 @@ function timeSensitive() {
 	}
 
 	if (V.avery_valentines?.invite && !V.avery_valentines?.done && !V.avery_valentines?.missed_approach && !V.avery_valentines_missed) {
-		// todo tricky to fit this into theWeekAhead, particular day.
+		// todo tricky to fit this into weeks[0], particular day.
 		let valentines = `Avery has invited you on a date for <span class="pink">Valentine's Day, on ${getFormattedDate(
 			new DateTime(Time.year, 2, 14)
 		)}.</span>  <<nnpc_He "Avery">>'ll wait for you`;
@@ -103,13 +106,13 @@ function timeSensitive() {
 
 	if (V.harper_appointments.enabled || V.schoolPsych === 1) {
 		let harperApt = `You ${V.harper_appointments.enabled ? "have an" : "may get an"} appointment with Doctor Harper`;
-		let harpersWeek = theWeekAhead;
+		let harpersWeek = weeks[0];
 
 		if (Time.weekDay === 6) {
 			if (V.daily.harperVisit === 1) {
 				harperApt += ` next <span class="gold">Friday</span>.`;
 				// Not today, a week from today:
-				harpersWeek = theSecondWeekAhead;
+				harpersWeek = weeks[1];
 			} else {
 				harperApt += ` <span class="pink">today</span>.`;
 			}
@@ -120,12 +123,12 @@ function timeSensitive() {
 	}
 
 	if (V.brothelshowdata.type !== "none" && V.brothelshowdata.intro) {
-		let brothelsWeek = theWeekAhead;
+		let brothelsWeek = weeks[0];
 		let show = `You're expected to perform a ${V.brothelshowdata.type} show at the brothel`;
 		if (Time.weekDay === 6) {
 			if (V.brothelshowdata.done) {
 				show += ` next <span class="gold">Friday</span>.`;
-				brothelsWeek = theSecondWeekAhead;
+				brothelsWeek = weeks[1];
 			} else {
 				show += ` <span class="pink">today</span>.`;
 			}
@@ -142,7 +145,7 @@ function timeSensitive() {
 			V.brothel_escortjob.missed !== true
 		) {
 			const _date = new DateTime(V.brothel_escortjob.date);
-			let escortWeek = theWeekAhead;
+			let escortWeek = weeks[0];
 			let escort = `You have an escort job scheduled. You're expected to be in front of the brothel`;
 			if (Time.monthDay === _date.day) {
 				escort += ` <span class="pink">today</span>`;
@@ -150,7 +153,7 @@ function timeSensitive() {
 				escort += ` <span class="gold">tomorrow</span>`;
 			} else if (Time.date.dayDifference(_date) >= 7) {
 				escort += ` next <span class="gold">_date.weekDayName</span>`;
-				escortWeek = theSecondWeekAhead;
+				escortWeek = weeks[1];
 			} else {
 				escort += ` on <span class="gold">_date.weekDayName</span>`;
 			}
@@ -218,7 +221,7 @@ function timeSensitive() {
 			farm += ` <<nDays ${V.farm_attack_timer}>>.`;
 		}
 		farm += ` <<nnpc_He Remy>>'ll arrive between <span class="gold">${ampm(21)}</span> and <span class="gold">midnight</span>.`;
-		const remyWeek = V.farm_attack_timer < 7 ? theWeekAhead[Time.daysOfWeek[targetedDay]] : soon;
+		const remyWeek = V.farm_attack_timer < 7 ? weeks[0][Time.daysOfWeek[targetedDay]] : soon;
 		remyWeek.push(farm);
 	}
 
@@ -308,7 +311,7 @@ function timeSensitive() {
 		statusCheck("Gwylan");
 		if (V.gwylan.timer.ritual && Time.date.dayDifference(new DateTime(V.gwylan.timer.ritual)) > 0) {
 			const ritualDays = Time.date.dayDifference(new DateTime(V.gwylan.timer.ritual));
-			theWeekAhead[Time.daysOfWeek[(Time.dayOfYear + ritualDays) % 7]].push(
+			weeks[0][Time.daysOfWeek[(Time.dayOfYear + ritualDays) % 7]].push(
 				`${
 					isGwylanAbsent() ? "Nobody" : "Gwylan"
 				} will be ready for another ritual in <span class="gold"><<number ${ritualDays}>></span> <<pluralise ${ritualDays} "day">>.`
@@ -359,7 +362,7 @@ function timeSensitive() {
 		finalText += `</ul>`;
 	}
 
-	[theWeekAhead, theSecondWeekAhead].forEach(week => printAWeek(week));
+	[weeks[0], weeks[1]].forEach(week => printAWeek(week));
 
 	return finalText;
 
