@@ -231,7 +231,7 @@
 	You shout out to Doren for help, and try to explain that you're being harassed. The delinquents deny, "<<pShe>>'s lying!"
 	<br><br>
 
-	<<npc Doren>><<person1>>
+	<<person1>>
 	Doren puts <<his>> hands on <<his>> hips and gives them a level stare. "You're not gonna fool me that easily. Office, now."
 	<br><br>
 	With a scoff, the delinquents drop the act and head straight to Leighton's office.

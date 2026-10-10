@@ -2017,12 +2017,12 @@
 			<<link [[Next|English Lesson]]>><</link>>
 			<br>
 		<<else>>
-			<<generates2>><<generates3>>
+			<<npc Doren>><<generates2>><<generates3>>
 			Some delinquents take an interest in you, and sneak gropes and fondles while the teacher isn't looking.
 			<<gtrauma>><<gstress>><<trauma 2>><<stress 2>>
 			<br><br>
 
-				<<link [[Call for help|English Molest]]>><<set $phase to 3>><<status -5>><<npcincr Doren dom 1>><<clearnpc>><</link>><<lcool>><<gdom "Doren">>
+				<<link [[Call for help|English Molest]]>><<set $phase to 3>><<status -5>><<npcincr Doren dom 1>><</link>><<lcool>><<gdom "Doren">>
 				<br>
 				<<link [[Endure it|English Molest]]>><<set $phase to 1>><<stress 4>><<trauma 4>><</link>><<gstress>><<gtrauma>>
 				<br>
