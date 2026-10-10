@@ -153,11 +153,10 @@
 <</widget>>
 
 <<widget "mine_gem_collect">>
-	You pick up a
 	<<mine_gem_check _args[0]>>
 	<<set _gemType to either("gem", "crystal")>>
 	<<set $mine.heldGem to `${_gemSize} ${_gemType}`>>
-	$mine.heldGem. It might be worth something on the black market.
+	a $mine.heldGem. It might be worth something on the black market.
 	<<mine_gem_value>>
 	<<set $blackmoney += _gem_value>>
 <</widget>>
