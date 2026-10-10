@@ -218,7 +218,8 @@ function timeSensitive() {
 			farm += ` <<nDays ${V.farm_attack_timer}>>.`;
 		}
 		farm += ` <<nnpc_He Remy>>'ll arrive between <span class="gold">${ampm(21)}</span> and <span class="gold">midnight</span>.`;
-		theWeekAhead[Time.daysOfWeek[targetedDay]].push(farm);
+		const remyWeek = V.farm_attack_timer < 7 ? theWeekAhead[Time.daysOfWeek[targetedDay]] : soon;
+		remyWeek.push(farm);
 	}
 
 	if (V.temple_rank === "initiate" || V.temple_rank === "monk" || V.temple_rank === "priest") {
