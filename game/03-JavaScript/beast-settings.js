@@ -2,12 +2,6 @@
  * Animal means animals. Monster means monster people. Beast means either.
  */
 
-const beastSettingTypes = ["dog", "cat", "pig", "wolf", "dolphin", "lizard", "bear", "boar", "horse", "fox", "hawk", "cow", "spider", "snake"];
-window.beastSettingTypes = beastSettingTypes;
-
-const namedBeasts = ["blackwolf", "greathawk", "nightmonster"];
-window.namedBeasts = namedBeasts;
-
 /**
  * Returns the settings for a creature type.
  *
@@ -114,7 +108,7 @@ window.beastSexEnabledForType = beastSexEnabledForType;
  * @returns {boolean}
  */
 function isBestialityOnForAnyCreature() {
-	return beastSettingTypes.some(animalSexEnabledForType);
+	return C.beastSettingTypes.some(animalSexEnabledForType);
 }
 window.isBestialityOnForAnyCreature = isBestialityOnForAnyCreature;
 
@@ -235,7 +229,7 @@ window.migrateNamedBeastSettings = migrateNamedBeastSettings;
 function migrateBeastSettings() {
 	const bestiality = V.settings.bestialityEnabled ? "on" : V.settings.monsterChance > 0 ? "monsterOnly" : "off";
 	V.settings.beastSettings = {};
-	beastSettingTypes.forEach(beastType => {
+	C.beastSettingTypes.forEach(beastType => {
 		V.settings.beastSettings[beastType] = {
 			monsterChance: V.settings.monsterChance,
 			hallucinationsOnly: V.settings.monsterHallucinationsOnly,

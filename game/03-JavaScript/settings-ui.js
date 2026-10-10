@@ -1,4 +1,4 @@
-/* globals namedBeasts, beastSettingTypes, isBestialityOnForAnyCreature, getActivePregnancies */
+/* globals isBestialityOnForAnyCreature, getActivePregnancies */
 
 const monsterPresets = {
 	monstersAll: { monsterChance: 100, hallucinationsOnly: false, namedMonsterChance: 100, namedHallucinationsOnly: false },
@@ -18,7 +18,7 @@ function applyMonstersPreset(presetName) {
 	V.genericBeastSettings.monsterHallucinationsOnly = preset.hallucinationsOnly;
 	setAllBeastsMonsterChance(preset.monsterChance);
 	setAllBeastsMonsterHallucinationsOnly(preset.hallucinationsOnly);
-	namedBeasts.forEach(beast => {
+	C.namedBeasts.forEach(beast => {
 		V.settings.namedBeasts[beast].monsterChance = preset.namedMonsterChance;
 		V.settings.namedBeasts[beast].hallucinationsOnly = preset.namedHallucinationsOnly;
 	});
@@ -180,7 +180,7 @@ function applyKinkPreset(presetName) {
 	V.genericBeastSettings.bestiality = preset.bestiality;
 	setAllBeastsBestialityMode(preset.bestiality);
 	if (preset.namedBeastsAlwaysMonsters) {
-		namedBeasts.forEach(beast => {
+		C.namedBeasts.forEach(beast => {
 			V.settings.namedBeasts[beast].monsterChance = 100;
 			V.settings.namedBeasts[beast].hallucinationsOnly = false;
 		});
@@ -297,56 +297,56 @@ function settingsDisableElement() {
 window.settingsDisableElement = settingsDisableElement;
 
 function setAllBeastsMonsterChance(value) {
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		V.settings.beastSettings[type].monsterChance = value;
 	});
 }
 window.setAllBeastsMonsterChance = setAllBeastsMonsterChance;
 
 function setAllBeastsMonsterHallucinationsOnly(value) {
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		V.settings.beastSettings[type].hallucinationsOnly = value;
 	});
 }
 window.setAllBeastsMonsterHallucinationsOnly = setAllBeastsMonsterHallucinationsOnly;
 
 function setAllBeastsVictimsAlwaysMonster(value) {
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		V.settings.beastSettings[type].victimsAlwaysMonster = value;
 	});
 }
 window.setAllBeastsVictimsAlwaysMonster = setAllBeastsVictimsAlwaysMonster;
 
 function setAllBeastsMaleChance(value) {
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		V.settings.beastSettings[type].maleChance = value;
 	});
 }
 window.setAllBeastsMaleChance = setAllBeastsMaleChance;
 
 function setAllBeastsMaleChanceMale(value) {
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		V.settings.beastSettings[type].maleChanceMale = value;
 	});
 }
 window.setAllBeastsMaleChanceMale = setAllBeastsMaleChanceMale;
 
 function setAllBeastsMaleChanceFemale(value) {
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		V.settings.beastSettings[type].maleChanceFemale = value;
 	});
 }
 window.setAllBeastsMaleChanceFemale = setAllBeastsMaleChanceFemale;
 
 function setAllBeastsMaleChanceSplit(value) {
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		V.settings.beastSettings[type].maleChanceSplit = value;
 	});
 }
 window.setAllBeastsMaleChanceSplit = setAllBeastsMaleChanceSplit;
 
 function setAllBeastsBestialityMode(mode) {
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		V.settings.beastSettings[type].bestiality = mode;
 	});
 }

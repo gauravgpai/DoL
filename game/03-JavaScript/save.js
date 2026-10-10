@@ -1,5 +1,3 @@
-/* globals beastSettingTypes, namedBeasts */
-
 const DoLSave = ((Story, Save) => {
 	"use strict";
 
@@ -610,7 +608,7 @@ function applyGeneralSettings(general) {
 }
 
 function applyBeastSettings(settings) {
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		const incoming = settings.beastSettings[type];
 		const target = V.settings.beastSettings[type];
 		target.monsterChance = incoming.monsterChance ?? target.monsterChance;
@@ -623,7 +621,7 @@ function applyBeastSettings(settings) {
 		target.victimsAlwaysMonster = incoming.victimsAlwaysMonster ?? target.victimsAlwaysMonster;
 	});
 
-	namedBeasts.forEach(beast => {
+	C.namedBeasts.forEach(beast => {
 		const incoming = settings.namedBeasts[beast];
 		const target = V.settings.namedBeasts[beast];
 		target.monsterChance = incoming.monsterChance ?? target.monsterChance;
@@ -1067,7 +1065,7 @@ function settingsToExportObject() {
 		npc: {},
 	};
 
-	beastSettingTypes.forEach(type => {
+	C.beastSettingTypes.forEach(type => {
 		data.general.settings.beastSettings[type] = {
 			monsterChance: V.settings.beastSettings[type].monsterChance,
 			hallucinationsOnly: V.settings.beastSettings[type].hallucinationsOnly,
@@ -1080,7 +1078,7 @@ function settingsToExportObject() {
 		};
 	});
 
-	namedBeasts.forEach(beast => {
+	C.namedBeasts.forEach(beast => {
 		data.general.settings.namedBeasts[beast] = {
 			monsterChance: V.settings.namedBeasts[beast].monsterChance,
 			hallucinationsOnly: V.settings.namedBeasts[beast].hallucinationsOnly,
@@ -2528,7 +2526,7 @@ function randomiseEncounterSettings() {
 	setAllBeastsMonsterHallucinationsOnly(V.genericBeastSettings.monsterHallucinationsOnly);
 	setAllBeastsVictimsAlwaysMonster(V.genericBeastSettings.victimsAlwaysMonster);
 
-	namedBeasts.forEach(beast => {
+	C.namedBeasts.forEach(beast => {
 		V.settings.namedBeasts[beast].monsterChance = random(0, 100);
 		V.settings.namedBeasts[beast].hallucinationsOnly = either(true, false);
 	});
@@ -2580,7 +2578,7 @@ function randomiseSettings(category) {
 window.randomiseSettings = randomiseSettings;
 
 window.loadExternalExportFile = function () {
-	importScripts("DolSettingsExport.json")
+	importScripts("DolSettingsExport.js")
 		.then(function () {
 			const textArea = document.getElementById("settingsDataInput");
 			textArea.value = JSON.stringify(DolSettingsExport);

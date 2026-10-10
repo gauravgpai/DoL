@@ -2773,50 +2773,50 @@
 
 <<widget "exportsettings">>
 	<div class="solidBorderContainer settings-container">
-	<div class="settings-intro">
-	<span class="yellow">Will also import/export settings found in the "SAVE/OPTIONS" overlay.</span>
-	<br>
-	<span class="red">Settings exports made prior to version 5.13.0 are no longer supported.</span>
-	<hr>
-	<h4 class="gold">Settings File Import/Export</h4>
+		<div class="settings-intro">
+			<span class="yellow">Will also import/export settings found in the "SAVE/OPTIONS" overlay.</span>
+			<hr>
+			<h4 class="gold">Settings File Import/Export</h4>
 
-	<<if SugarCube.Browser.isMobile.any() is true>>
-		Note that saving and loading from file does not work on Android currently.
-	<<else>>
-		Load from file: <input id="saveImport" type="file" value="Load from file" onchange="importSettings(this.files, 'file')">
-		<br><br>
-		<<if $ironmanmode is true>>
-			<input type="button" value="Save to file" disabled>
-		<<else>>
-			<input type="button" value="Save to file" onclick="exportSettings('file')">
-		<</if>>
-	<</if>>
-	<hr>
-	<h4 class="gold">Settings Text Import/Export</h4>
+			<<if SugarCube.Browser.isMobile.any() is true>>
+				Note that saving and loading from file does not work on Android currently.
+			<<else>>
+				Load from file: <input id="saveImport" type="file" value="Load from file" onchange="importSettings(this.files, 'file')">
+				<br><br>
+				<<if $ironmanmode is true>>
+					<input type="button" value="Save to file" disabled>
+				<<else>>
+					<input type="button" value="Save to file" onclick="exportSettings('file')">
+				<</if>>
+			<</if>>
+			<hr>
+			<h4 class="gold">Settings Text Import/Export</h4>
 
-	<ul>
-	<li>To save your current settings, click on "Get Settings Data", then copy and paste the save data where required.</li>
-	<li>To load your current settings, paste in the settings data then click "Load Settings Data".</li>
-	<li>To transfer to and from Android, it is recommended to use email or a service such as pastebin. Please ensure that the start and the end of the save is exact to prevent issues.</li>
-	<li>Click on "Copy Text Area" to copy the current contents for you. The button name will change to "Copying Error" if your device or browser does not support it.</li>
-	</ul>
-	<textarea id="settingsDataInput" rows="4" cols="40" onClick="if(V.disableAutoSelect == false)this.select();" onfocus="V.tempDisable = true;" onblur="V.tempDisable = false;"></textarea>
-	<br>
-	<input type="button" value="Clear Text Box" onclick="clearTextBox('settingsDataInput')"/>
-	<input type="button" value="Top of Text Box" onclick="topTextArea('settingsDataInput')"/>
-	<input type="button" value="Bottom of Text Box" onclick="bottomTextArea('settingsDataInput')"/>
-	<input type="button" value="Get Settings Data" onclick="exportSettings('text')"/>
-	<input type="button" value="Load Settings Data" onclick="importSettings(null,'text')"/>
-	<input id="CopyTextArea" type="button" value="Copy Text Area" onclick="copySavedata('settingsDataInput')">
-	<input id="LoadExternalExportFile" type="button" value="Load External Export File" onclick="loadExternalExportFile()">
+			<ul>
+			<li>To save your current settings, click on "Get Settings Data", then copy and paste the save data where required.</li>
+			<li>To load your current settings, paste in the settings data then click "Load Settings Data".</li>
+			<li>To transfer to and from Android, it is recommended to use email or a service such as pastebin. Please ensure that the start and the end of the save is exact to prevent issues.</li>
+			<li>Click on "Copy Text Area" to copy the current contents for you. The button name will change to "Copying Error" if your device or browser does not support it.</li>
+			</ul>
+			<textarea id="settingsDataInput" rows="4" cols="40" onClick="if(V.disableAutoSelect == false)this.select();" onfocus="V.tempDisable = true;" onblur="V.tempDisable = false;"></textarea>
+			<br>
+			<input type="button" value="Clear Text Box" onclick="clearTextBox('settingsDataInput')"/>
+			<input type="button" value="Top of Text Box" onclick="topTextArea('settingsDataInput')"/>
+			<input type="button" value="Bottom of Text Box" onclick="bottomTextArea('settingsDataInput')"/>
+			<input type="button" value="Get Settings Data" onclick="exportSettings('text')"/>
+			<input type="button" value="Load Settings Data" onclick="importSettings(null,'text')"/>
+			<input id="CopyTextArea" type="button" value="Copy Text Area" onclick="copySavedata('settingsDataInput')">
+			<input id="LoadExternalExportFile" type="button" value="Load External Export File" onclick="loadExternalExportFile()">
 
-	<br><br>
+			<br><br>
 
-	<label>
-		<<checkbox "$disableAutoSelect" false true autocheck>>
-		Disables auto select.
-	</label>
-	</div>
+			<label>
+				<<checkbox "$disableAutoSelect" false true autocheck>>
+				Disables auto select.
+			</label>
+			<br>
+			<span style="font-size: 80%">Settings exports made prior to version 0.5.13 are no longer supported.</span>
+		</div>
 	</div>
 <</widget>>
 

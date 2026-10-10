@@ -7563,7 +7563,7 @@
 	<</if>>
 
 	<<set $genericBeastSettings.victimsAlwaysMonster ??= false>>
-	<<for _beastType range beastSettingTypes>>
+	<<for _beastType range C.beastSettingTypes>>
 		<<set $settings.beastSettings[_beastType].victimsAlwaysMonster ??= false>>
 	<</for>>
 

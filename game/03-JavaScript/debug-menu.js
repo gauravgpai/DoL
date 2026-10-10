@@ -261,7 +261,7 @@ setup.debugMenu.eventList = {
 			link: [`Make all beasts male`, stayOnPassageFn],
 			widgets: [
 				() => {
-					beastSettingTypes.forEach(type => {
+					C.beastSettingTypes.forEach(type => {
 						V.settings.beastSettings[type].maleChance = 100;
 						V.settings.beastSettings[type].maleChanceMale = 100;
 						V.settings.beastSettings[type].maleChanceFemale = 100;
@@ -273,7 +273,7 @@ setup.debugMenu.eventList = {
 			link: [`Make all beasts female`, stayOnPassageFn],
 			widgets: [
 				() => {
-					beastSettingTypes.forEach(type => {
+					C.beastSettingTypes.forEach(type => {
 						V.settings.beastSettings[type].maleChance = 0;
 						V.settings.beastSettings[type].maleChanceMale = 0;
 						V.settings.beastSettings[type].maleChanceFemale = 0;
@@ -285,7 +285,7 @@ setup.debugMenu.eventList = {
 			link: [`Make all beasts monster people`, stayOnPassageFn],
 			widgets: [
 				() => {
-					beastSettingTypes.forEach(type => {
+					C.beastSettingTypes.forEach(type => {
 						V.settings.beastSettings[type].monsterChance = 100;
 						V.settings.beastSettings[type].hallucinationsOnly = false;
 					});
