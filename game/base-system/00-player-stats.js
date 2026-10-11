@@ -2400,6 +2400,694 @@ const Cause = {
 
 		return weightedRandom(...modPool);
 	},
+
+	// Character State Stats
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.arousal(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	arousal(min, max, result) {
+		if (!validRange("Cause.arousal", min, max)) return {};
+
+		return this.getCause(Base.arousal, PC.appliedModifiers.arousal, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.control(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	control(min, max, result) {
+		if (!validRange("Cause.control", min, max)) return {};
+
+		return this.getCause(Base.control, PC.appliedModifiers.control, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.drugged(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	drugged(min, max, result) {
+		if (!validRange("Cause.drugged", min, max)) return {};
+
+		return this.getCause(Base.drugged, PC.appliedModifiers.drugged, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.drunk(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	drunk(min, max, result) {
+		if (!validRange("Cause.drunk", min, max)) return {};
+
+		return this.getCause(Base.drunk, PC.appliedModifiers.drunk, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.tiredness(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	tiredness(min, max, result) {
+		if (!validRange("Cause.tiredness", min, max)) return {};
+
+		return this.getCause(Base.tiredness, PC.appliedModifiers.tiredness, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.hallucinogen(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	hallucinogen(min, max, result) {
+		if (!validRange("Cause.hallucinogen", min, max)) return {};
+
+		return this.getCause(Base.hallucinogen, PC.appliedModifiers.hallucinogen, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.pain(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	pain(min, max, result) {
+		if (!validRange("Cause.pain", min, max)) return {};
+
+		return this.getCause(Base.pain, PC.appliedModifiers.pain, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.stress(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	stress(min, max, result) {
+		if (!validRange("Cause.stress", min, max)) return {};
+
+		return this.getCause(Base.stress, PC.appliedModifiers.stress, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.trauma(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	trauma(min, max, result) {
+		if (!validRange("Cause.trauma", min, max)) return {};
+
+		return this.getCause(Base.trauma, PC.appliedModifiers.trauma, min, max, result);
+	},
+
+	// Core Characteristic Stats
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.awareness(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	awareness(min, max, result) {
+		if (!validRange("Cause.awareness", min, max)) return {};
+
+		return this.getCause(Base.awareness, PC.appliedModifiers.awareness, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.beauty(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	beauty(min, max, result) {
+		if (!validRange("Cause.beauty", min, max)) return {};
+
+		return this.getCause(Base.beauty, PC.appliedModifiers.beauty, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.deviancy(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	deviancy(min, max, result) {
+		if (!validRange("Cause.deviancy", min, max)) return {};
+
+		return this.getCause(Base.deviancy, PC.appliedModifiers.deviancy, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.exhibitionism(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	exhibitionism(min, max, result) {
+		if (!validRange("Cause.exhibitionism", min, max)) return {};
+
+		return this.getCause(Base.exhibitionism, PC.appliedModifiers.exhibitionism, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.physique(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	physique(min, max, result) {
+		if (!validRange("Cause.physique", min, max)) return {};
+
+		return this.getCause(Base.physique, PC.appliedModifiers.physique, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.promiscuity(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	promiscuity(min, max, result) {
+		if (!validRange("Cause.promiscuity", min, max)) return {};
+
+		return this.getCause(Base.promiscuity, PC.appliedModifiers.promiscuity, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.purity(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	purity(min, max, result) {
+		if (!validRange("Cause.purity", min, max)) return {};
+
+		return this.getCause(Base.purity, PC.appliedModifiers.purity, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.willpower(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	willpower(min, max, result) {
+		if (!validRange("Cause.willpower", min, max)) return {};
+
+		return this.getCause(Base.willpower, PC.appliedModifiers.willpower, min, max, result);
+	},
+
+	// Core Skill Stats
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.athletics(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	athletics(min, max, result) {
+		if (!validRange("Cause.athletics", min, max)) return {};
+
+		return this.getCause(Base.athletics, PC.appliedModifiers.athletics, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.danceskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	danceskill(min, max, result) {
+		if (!validRange("Cause.danceskill", min, max)) return {};
+
+		return this.getCause(Base.danceskill, PC.appliedModifiers.danceskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.housekeeping(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	housekeeping(min, max, result) {
+		if (!validRange("Cause.housekeeping", min, max)) return {};
+
+		return this.getCause(Base.housekeeping, PC.appliedModifiers.housekeeping, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.skulduggery(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	skulduggery(min, max, result) {
+		if (!validRange("Cause.skulduggery", min, max)) return {};
+
+		return this.getCause(Base.skulduggery, PC.appliedModifiers.skulduggery, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.swimmingskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	swimmingskill(min, max, result) {
+		if (!validRange("Cause.swimmingskill", min, max)) return {};
+
+		return this.getCause(Base.swimmingskill, PC.appliedModifiers.swimmingskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.tending(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	tending(min, max, result) {
+		if (!validRange("Cause.tending", min, max)) return {};
+
+		return this.getCause(Base.tending, PC.appliedModifiers.tending, min, max, result);
+	},
+
+	// School Skill Stats
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.english(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	english(min, max, result) {
+		if (!validRange("Cause.english", min, max)) return {};
+
+		return this.getCause(Base.english, PC.appliedModifiers.english, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.history(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	history(min, max, result) {
+		if (!validRange("Cause.history", min, max)) return {};
+
+		return this.getCause(Base.history, PC.appliedModifiers.history, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.maths(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	maths(min, max, result) {
+		if (!validRange("Cause.maths", min, max)) return {};
+
+		return this.getCause(Base.maths, PC.appliedModifiers.maths, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.science(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	science(min, max, result) {
+		if (!validRange("Cause.science", min, max)) return {};
+
+		return this.getCause(Base.science, PC.appliedModifiers.science, min, max, result);
+	},
+
+	// Sex Skill Stats
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.analskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	analskill(min, max, result) {
+		if (!validRange("Cause.analskill", min, max)) return {};
+
+		return this.getCause(Base.analskill, PC.appliedModifiers.analskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.bottomskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	bottomskill(min, max, result) {
+		if (!validRange("Cause.bottomskill", min, max)) return {};
+
+		return this.getCause(Base.bottomskill, PC.appliedModifiers.bottomskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.chestskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	chestskill(min, max, result) {
+		if (!validRange("Cause.chestskill", min, max)) return {};
+
+		return this.getCause(Base.chestskill, PC.appliedModifiers.chestskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.feetskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	feetskill(min, max, result) {
+		if (!validRange("Cause.feetskill", min, max)) return {};
+
+		return this.getCause(Base.feetskill, PC.appliedModifiers.feetskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.handskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	handskill(min, max, result) {
+		if (!validRange("Cause.handskill", min, max)) return {};
+
+		return this.getCause(Base.handskill, PC.appliedModifiers.handskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.oralskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	oralskill(min, max, result) {
+		if (!validRange("Cause.oralskill", min, max)) return {};
+
+		return this.getCause(Base.oralskill, PC.appliedModifiers.oralskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.penileskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	penileskill(min, max, result) {
+		if (!validRange("Cause.penileskill", min, max)) return {};
+
+		return this.getCause(Base.penileskill, PC.appliedModifiers.penileskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.seductionskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	seductionskill(min, max, result) {
+		if (!validRange("Cause.seductionskill", min, max)) return {};
+
+		return this.getCause(Base.seductionskill, PC.appliedModifiers.seductionskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.thighskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	thighskill(min, max, result) {
+		if (!validRange("Cause.thighskill", min, max)) return {};
+
+		return this.getCause(Base.thighskill, PC.appliedModifiers.thighskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.vaginalskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	vaginalskill(min, max, result) {
+		if (!validRange("Cause.vaginalskill", min, max)) return {};
+
+		return this.getCause(Base.vaginalskill, PC.appliedModifiers.vaginalskill, min, max, result);
+	},
+
+	// Weapon Skill Stats
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.batonskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	batonskill(min, max, result) {
+		if (!validRange("Cause.batonskill", min, max)) return {};
+
+		if (Base.batonskill === undefined) return {};
+
+		return this.getCause(Base.batonskill, PC.appliedModifiers.batonskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.netskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	netskill(min, max, result) {
+		if (!validRange("Cause.netskill", min, max)) return {};
+
+		if (Base.netskill === undefined) return {};
+
+		return this.getCause(Base.netskill, PC.appliedModifiers.netskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.sprayskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	sprayskill(min, max, result) {
+		if (!validRange("Cause.sprayskill", min, max)) return {};
+
+		if (Base.sprayskill === undefined) return {};
+
+		return this.getCause(Base.sprayskill, PC.appliedModifiers.sprayskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.whipskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	whipskill(min, max, result) {
+		if (!validRange("Cause.whipskill", min, max)) return {};
+
+		if (Base.whipskill === undefined) return {};
+
+		return this.getCause(Base.whipskill, PC.appliedModifiers.whipskill, min, max, result);
+	},
+
+	/**
+	 * Returns the modifier that caused the result obtained from `Check.pickaxeskill(min, max)`, or an empty object if a modifier was not the cause.
+	 *
+	 * If min and max do not form a valid range, or the parameters form an impossible result, throws an error and returns an empty object.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier}
+	 */
+	pickaxeskill(min, max, result) {
+		if (!validRange("Cause.pickaxeskill", min, max)) return {};
+
+		if (Base.pickaxeskill === undefined) return {};
+
+		return this.getCause(Base.pickaxeskill, PC.appliedModifiers.pickaxeskill, min, max, result);
+	},
 };
 
 const Norm = {
