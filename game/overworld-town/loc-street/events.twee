@@ -858,9 +858,9 @@ You don't resist as the two approach you. The <<person1>><<beasttype>> is eagerl
 <br><br>
 "Too late to back out now," <<he>> says. "Should we have some fun with <<phim>> before turning <<phim>> in? I'm real pent up from having to search all day," the <<person3>><<person>> says.<<stress 6>><<gstress>>
 <br><br>
-The <<person2>><<person>> eyes you over.
-<<if $rng lte 30 or $rentThug.anger is 4 and $rng lte 60 or $rentThug.anger is 5>> 
-	"We're not supposed to spoil the goods ourselves," <<he>> says, a menacing grin starting to develop. <span class="red">"But nothing was said about our little mutt here,"</span> <<he>> says, petting the <<beasttype>>.
+The <<person2>><<person>> eyes you over.<<person1>>
+<<if ($rng lte 30 or $rentThug.anger is 4 and $rng lte 60 or $rentThug.anger is 5) and ($monster is 1 or $settings.bestialityEnabled)>> 
+	<<person2>>"We're not supposed to spoil the goods ourselves," <<he>> says, a menacing grin starting to develop. <span class="red">"But nothing was said about our little mutt here,"</span> <<he>> says, petting the <<beasttype>>.
 	"We can always just say that <<pshe>> tried running away and got caught by it. Even if we can't get in one the action ourselves, it'll still be fun to see this <<bitch>> get fucked."<<stress 14>><<ggstress>>
 	<br><br>
 	The <<person3>><<person>> eyes you lewdly. "Good call. I'm gonna record it too, I can't wait to see the faces <<pshe>> makes," <<he>> says.
@@ -880,7 +880,7 @@ The <<person2>><<person>> eyes you over.
 
 :: Thug Hound Run
 <<effects>>
-You turn around and run as fast as you can. "Oh no you don't! Get <<phim>> <<person1>><<if $pronoun is "f">>girl<<else>>boy<</if>>!" the <<person3>><<person>> says, letting go of the leash. The <<person1>><<beasttype>> rushes after you.
+You turn around and run as fast as you can. "Oh no you don't! Get <<phim>> <<person1>><<girl_npc>>!" the <<person3>><<person>> says, letting go of the leash. The <<person1>><<beasttype>> rushes after you.
 <br><br>
 <<bHes>> fast, leaving you no time to consider where you run. You're not going to be able to outrun it. After a short chase, you find yourself backed into a corner as you turn into an alley with a fence blocking the way forward.
 <br><br>
@@ -905,7 +905,7 @@ You rush to climb the fence, the <<beasttype>> right at your heels.
 	<br><br>
 	After a moment the <<person2>><<person>> and <<person3>><<person>> appear, having caught up to you now. "Good dog," the <<person>> says, petting <<person1>><<bhim>>.
 	<br><br>
-	<<if $rng lte 50 or $rentThug.anger is 4 and $rng lte 80 or $rentThug.anger is 5>>
+	<<if ($rng lte 50 or $rentThug.anger is 4 and $rng lte 80 or $rentThug.anger is 5) and ($monster is 1 or $settings.bestialityEnabled)>>
 		"Should we bring <<phim>> in now?" the <<person2>><<person>> asks. "Not just yet," the <<person3>><<person>> responds. "Since our little pup did such a good job, we should give it a reward," <<he>> says. "Oh yeah! Hang on, let me get this on film," the <<person2>><<person>> says, pulling out <<his>> phone. 
 		<br><br>
 		The <<person3>><<person>> grabs the <<person1>><<beasttype>> by the collar. "Go on, mount your new <<bitch>>," <<person3>><<he>> says, guiding the <<person1>><<beasttype>> to you. <<bHe>> it eagerly starts humping you.
@@ -946,7 +946,7 @@ Not seeing a way out, you decide to gamble on calming down the <<beasttype>> eno
 	<br><br>
 	After a moment the <<person2>><<person>> and <<person3>><<person>> appear, having caught up to you now. "Good dog," the <<person>> says, petting <<person1>><<bhim>>. 
 	<br><br>
-	<<if $rng lte 50 or $rentThug.anger is 4 and $rng lte 80 or $rentThug.anger is 5>>
+	<<if ($rng lte 50 or $rentThug.anger is 4 and $rng lte 80 or $rentThug.anger is 5) and ($monster is 1 or $settings.bestialityEnabled)>>
 		"Should we bring <<phim>> in now?" the <<person2>><<person>> asks. "Not just yet," the <<person3>><<person>> responds. "Since our little pup did such a good job, we should give it a reward," <<he>> says. "Oh yeah! Hang on, let me get this on film," the <<person2>><<person>> says, pulling out <<his>> phone. 
 		<br><br>
 		The <<person3>><<person>> grabs the <<person1>><<beasttype>> by the collar. "Go on, mount your new <<bitch>>," <<person3>><<he>> says, guiding the <<person1>><<beasttype>> to you. <<bHe>> it eagerly starts humping you.
@@ -1019,7 +1019,7 @@ The <<person3>><<person>> leans against a wall.
 <<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<beastejaculation>>
-	The <<person3>><<person>> pulls the <<person1>><<beasttype>> off of you. "Alright, that's enough playing, <<if $pronoun is "f">>girl<<else>>boy<</if>>."
+	The <<person3>><<person>> pulls the <<person1>><<beasttype>> off of you. "Alright, that's enough playing, <<girl_npc>>."
 	<br><br>
 	The <<person2>><<person>> hovers over you. "I hope you've learned your lesson," <<he>> says. "And if you haven't, we'll gladly do this again." 
 	<br><br>

@@ -1469,25 +1469,6 @@
 			/* NPC */
 			<<if $NPCList[0].fullDescription is "Ivory Wraith" and $stalk_assess>>
 				<<set $_stalker to "-wraith">>
-			/* <<elseif $NPCList[0].type isnot "human">>
-				<<if $NPCList[0].fullDescription is "Black Wolf" and $stalk_assess>>
-					<<set $_stalker to "-bwolf">>
-				<<elseif $NPCList[0].fullDescription is "Great Hawk" and $stalk_assess>>
-					<<set $_stalker to "-ghawk">>
-				<<elseif $NPCList[0].fullDescription is "Night Monster" and $stalk_assess>>
-					<<set $_stalker to "-night">>
-				<<else>>
-					<<switch $NPCList[0].type>>
-						<<case "wolf" "wolfboy" "wolfgirl">><<set $_stalker to "-wolf">>
-						<<case "hawk" "harpy">><<set $_stalker to "-hawk">>
-						<<default>><<set $_stalker to "-" + $NPCList[0].type>>
-					<</switch>>
-				<</if>>
-				<<if $NPCList[0].monster is 1>>
-					<<set $_stalker += "-monster">>
-				<<else>>
-					<<set $_stalker += "-beast">>
-				<</if>> */
 			<<elseif $NPCList[0].fullDescription is "Gwylan" and $stalk_assess>>
 				<<run statusCheck("Gwylan")>>
 				<<if _gwylanTF.known>>
@@ -1495,8 +1476,6 @@
 				<<else>>
 					<<set $_stalker to "-gwylan">>
 				<</if>>
-			/* <<elseif $NPCNameList.includes($NPCList[0].fullDescription) and $stalk_assess>>
-				<<set $_stalker to "-" + $NPCList[0].fullDescription.toLowerCase()>> */
 			<<elseif $consensual is 1 and $stalk_assess>>
 				<<set $_stalker to "-friendly">>
 			<<else>>

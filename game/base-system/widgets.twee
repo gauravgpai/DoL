@@ -2891,7 +2891,7 @@
 	<</if>>
 <</widget>>
 
-<<widget "rentDay">>
+<<widget "rentday">>
 	<<set $_text_output to ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][$rentDay-1]>>
 	<<print $_text_output>>
 <</widget>>

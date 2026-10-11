@@ -188,7 +188,7 @@
 	<br><br>
 	They quickly surround you. "We've finally got you cornered, brat!" the <<person1>><<person>> says. <span class="red">"You've made a real fool of us, I can't remember there being any other 'delivery' that's been harder to complete than you!"</span>
 	<br><br>
-	"Which is why we've had to resort to this. Don't try begging for mercy now, because there's nothing that could save you from the world of pain we are about to put you in!" the <<person2>><<person>> says.
+	"Which is why we've had to resort to this," the <<person2>><<person>> says. "Don't try begging for mercy now, because there's nothing that could save you from the world of pain we are about to put you in!"
 	<br><br>
 	<<link [[Protest|Thug Confrontation Fight]]>><<def 2>><<set $fightstart to 1>><</link>>
 	<br>
