@@ -1,0 +1,449 @@
+:: Widgets Effects Man Anus [widget]
+<<widget "effectsman-anus">>
+	/***
+	*      ███   ██   ██ ██   ██ ███████
+	*     ██ ██  ███  ██ ██   ██ ██
+	*    ██   ██ ██ █ ██ ██   ██ ███████
+	*    ███████ ██  ███ ██   ██      ██
+	*    ██   ██ ██   ██  █████  ███████
+	*
+	*/
+	<<if $newtarget isnot undefined>>
+		<<setnewtarget>>
+	<</if>>
+
+	<<rng>>
+
+	<<if $anusaction is "rest">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "rest">>
+	<</if>>
+
+	/*Stalked actions */
+	<<if !$stalk_end>>
+		<<if $anusaction is "wiggle">>
+			<<set $anusaction to 0>><<set $anusactiondefault to "wiggle">>
+			<<if currentSkillValue('seductionskill') gte random(1, 1000)>>
+				<<meek 2>>
+				<<if $rng gte 81>>
+					You wiggle your <<bottom>> in time with your steps,
+				<<elseif $rng gte 61>>
+					You sway your <<bottom>>,
+				<<elseif $rng gte 41>>
+					You shake your <<bottom>>,
+				<<elseif $rng gte 21>>
+					You add some bounce to your steps, lifting your <<bottom>> and
+				<<else>>
+					You emphasise your <<bottom>> with each step,
+				<</if>>
+				drawing attention to it.
+			<<else>>
+				<<meek 1>>
+				<<if $rng gte 81>>
+					You wiggle your <<bottom>>.
+				<<elseif $rng gte 61>>
+					You sway your <<bottom>>.
+				<<elseif $rng gte 41>>
+					You shake your <<bottom>>.
+				<<elseif $rng gte 21>>
+					You bounce your <<bottom>>.
+				<<else>>
+					You put emphasis on your <<bottom>>.
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+	/*End of stalked actions */
+
+	<!-- Anus penis actions -->
+
+	<!-- Clench penis in buttocks -->
+	<<if $anusaction is "penischeeks">>
+		<<set $anusaction to 0>><<meek 1 $anustarget>><<bottomskilluse>><<combatpromiscuity4>>
+		<<if $anusstate isnot "doubleentrance">>
+			<<if combatSkillCheck("bottom", $anustarget)>>
+				<<set $anusactiondefault to "rub">>
+				<<personselect $anustarget>><<bottomstat>><<submission 2>>
+				<span class="lblue">You <<bottomtext>> grab <<hisselect $anustarget>> $NPCList[$anustarget].penisdesc between your butt cheeks.</span>
+				<<set $NPCList[$anustarget].penis to "cheeks">><<set $anusstate to "cheeks">><<set $bottomuse to "penis">>
+			<<elseif $NPCList[$anustarget].penis is "anusentrance">>
+				<<set $anusactiondefault to "penischeeks">>
+				You try to grab <<hisselect $anustarget>> penis between your cheeks, but <<he>> isn't interested.
+			<</if>>
+		<<else>>
+			You try to grab <<hisselect $anustarget>> penis between your cheeks, but it's knocked free as another penis joins it.
+		<</if>>
+	<</if>>
+
+	<!-- Keep clenching a penis -->
+	<<if $anusaction is "otherAnusRub">>
+		<<set $anusaction to 0>><<bottomskilluse>><<set $anusactiondefault to "otherAnusRub">>
+		<<if $anusstate isnot "doubleentrance">>
+			<<if combatSkillCheck("bottom", $anustarget)>>
+				<<set $anusactiondefault to "otherAnusRub">><<submission 3>><<bottomstat>>
+				<<actionscheekrub $anustarget>>
+			<<else>>
+				<<set $anusactiondefault to "penischeeks">>
+				<span class="blue">You try to rub <<hisselect $anustarget>> penis between your cheeks, but <<he>> is not interested.</span>
+				<<set $NPCList[$anustarget].penis to "anusentrance">><<set $bottomuse to 0>><<set $anusstate to "entrance">>
+			<</if>>
+		<<else>>
+			You try to grab <<hisselect $anustarget>> penis between your cheeks, but it's knocked free as another penis joins it.
+		<</if>>
+	<</if>>
+
+	<!-- Stop clenching a penis -->
+	<<if $anusaction is "otherAnusStop" and $NPCList[$anustarget].penis is "cheeks">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "penischeeks">>
+		<span class="blue">You stop holding <<hisselect $anustarget>> penis between your cheeks. <<He>> angles <<his>> $NPCList[$anustarget].penisdesc toward your anus.</span>
+		<<set $NPCList[$anustarget].penis to "anusentrance">><<set $bottomuse to 0>>
+		<<if $anusstate isnot "doubleentrance">><<set $anusstate to "entrance">><</if>>
+	<</if>>
+
+	<<rng>>
+	<!-- offer vagina -->
+	<<if $anusaction is "penispussy">>
+		<<set $anusactiondefault to "penispussy">>
+		<!-- Check the player is not attempting to straddle and offer pussy at the same time. If so, switch to double or fail correctly -->
+		<<if $vaginastate isnot 0 and !$vaginastate.includes("double") and ($vaginastate is "entrance" or $vaginastate is "imminent" or $vaginastate is "penetrated")>>
+			<!-- Note that this action requires "penispussydouble" to come after "penispussy", else it will not work as expected -->
+			<<if random(0,2) isnot 0 and $settings.vaginalDoubleEnabled>>
+				<<set $anusaction to "penispussydouble">>
+			<<else>>
+				You spread your thighs, but fail to garner further interest.
+			<</if>>
+		<<elseif $vaginastate isnot 0 and $vaginastate.includes("double")>>
+		/* Is this possible? */
+			You spread your thighs, but just receive a slap. "Settle down, <<bitch>>."
+			<<violence 2>><<hitstat>><<bruise bottom>>
+		<<elseif $NPCList[$anustarget].penis is "anusentrance">>
+			<<set $anusaction to 0>><<meek 10>><<analskilluse>>
+			<<if combatSkillCheck("vaginal", $anustarget)>>
+				<<set $anusactiondefault to "penispussy">>
+				<<personselect $anustarget>><<submission 2>>
+				<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt.</span>
+				<<set $NPCList[$anustarget].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $vaginatarget to $anustarget>><<set $anususe to 0>><<set $anusstate to 0>><<set $anustarget to 0>>
+			<<else>>
+				You spread your thighs, but fail to garner interest.
+			<</if>>
+		<</if>>
+	<</if>>
+
+	<!-- Offer vagina while having two penis at your anus -->
+	<<if $anusaction is "penispussydap">>
+		<!-- Check the player is not attempting to straddle and offer pussy at the same time. If so, switch to double or fail correctly -->
+		<<if $vaginastate isnot 0 and !$vaginastate.includes("double") and $vaginastate is "entrance">>
+			<!-- Note that this action requires "penispussydouble" to come after "penispussydap", else it will not work as expected -->
+			<<if random(0,2) isnot 0 and $settings.vaginalDoubleEnabled and $awareness gte 300>>
+				<<set $anusaction to "penispussydouble">>
+			<<else>>
+				You spread your thighs, but fail to garner further interest.
+			<</if>>
+		<<elseif $vaginastate isnot 0 and $vaginastate.includes("double")>>
+			You spread your thighs, but just receive a slap. "Settle down, <<bitch>>."
+			<<violence 2>><<hitstat>><<bruise bottom>>
+		<<else>>
+			<<set $anusaction to 0>><<meek 10>><<analskilluse>><<set $anusactiondefault to "penispussy">>
+			<<set _npcA to ($NPCList[$anustarget].penis is "anusentrancedouble" ? $anustarget : $anusdoubletarget)>>
+			<<set _npcB to ($NPCList[$anustarget].penis is "anusentrancedouble" ? $anusdoubletarget : $anustarget)>>
+			<<if combatSkillCheck("vaginal", _npcA)>>
+				<<personselect _npcA>><<submission 2>>
+				<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt.</span>
+				<<set $NPCList[_npcA].penis to "vaginaentrance">><<set $NPCList[_npcB].penis to $NPCList[_npcB].penis.replace("double", "")>>
+				<<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $vaginatarget to _npcA>><<set $anususe to "penis">><<set $anusstate to $anusstate.replace("double", "")>>
+			<<else>>
+				You spread your thighs, but fail to garner interest.
+			<</if>>
+		<</if>>
+	<</if>>
+
+	<!-- Move the person at your anus to your vagina when someone is already there -->
+	<<rng>>
+	<<if $anusaction is "penispussydouble">>
+		<<set $anusaction to 0>><<meek 10>><<analskilluse>><<set $anusactiondefault to "penispussydouble">>
+		<<if combatSkillCheck("vaginal", $anustarget) and $vaginause isnot "doublepenis">>
+			<<if $anusstate is "doubleentrance">>
+				<<set $anususe to "penis">><<set $anusstate to "entrance">>
+				<<set _npcA to ($NPCList[$anustarget].penis is "anusentrancedouble" ? $anustarget : $anusdoubletarget)>>
+				<<set _npcB to ($NPCList[$anustarget].penis is "anusentrancedouble" ? $anusdoubletarget : $anustarget)>>
+				<<set $NPCList[_npcB].penis to "anusentrance">>
+			<<else>>
+				<<set $anususe to 0>><<set $anusstate to 0>>
+				<<set _npcA to $anustarget>>
+			<</if>>
+			<<personselect _npcA>>
+			<<if $vaginause is "penis">>
+				<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt to join the phallus in front of your pussy.</span>
+				<<set $NPCList[_npcA].penis to "vaginaentrancedouble">>
+				<<set _npc to $NPCList.findIndex(npc => npc.penis isnot 0 and npc.penis.includes("vagina") and !npc.penis.includes("double"))>>
+				<<set $NPCList[_npc].penis to $NPCList[_npc].penis + "double">>
+				<<set $vaginastate to "double" + $vaginastate>><<set $vaginause to "penisdouble">><<set $vaginadoubletarget to _npcA>>
+			<<else>>
+				<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt.</span>
+				<<set $NPCList[_npcA].penis to "vaginaentrance">>
+				<<set $vaginause to "penis">>
+				<<set $vaginastate to "entrance">>
+				<<set $vaginatarget to _npcA>>
+			<</if>>
+			<<submission 2>>
+			<<if $NPCList[_npcA].type is "plant" and $NPCList[_npcA].penissize gte 4 and canImpregnateParasite("vagina")>>
+				<span class="red">Something about it scares you.</span>
+			<</if>>
+		<<else>>
+			You spread your thighs, but fail to garner interest.
+		<</if>>
+	<</if>>
+
+	<!-- Straddle a penis -->
+	<<rng>>
+	<<effectsanustopenis>>
+
+	<!-- Envelop a penis -->
+	<<rng>>
+	<<effectsanuspenisfuck>>
+
+	<!-- Straddle a second penis -->
+	<<rng>>
+	<<effectsanustopenisdouble>>
+
+	<!-- Envelop two penises -->
+	<<rng>>
+	<<effectsanuspenisdoublefuck>>
+
+	<!-- Tease an external penis  -->
+	<<if $anusaction is "penistease">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "penistease">>
+		You <<analtext>> tease the tip of the penis with your <<bottom>>.
+		<<sex 3 "anus">><<analskilluse>>
+	<</if>>
+
+	<!-- Tease two extenal penises -->
+	<<if $anusaction is "penisdoubletease">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "penisdoubletease">>
+		You <<analtext>> tease their <<penises>> with your <<bottom>>.
+		<<sex 3 "anus">><<analskilluse>>
+	<</if>>
+
+	<!-- Rub one or two imminent penises -->
+	<<if $anusaction is "rub">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "rub">><<actionsanusrub $anustarget>><<sex 10 "anus">><<analskilluse>>
+	<</if>>
+
+	<!-- cooperate with one penetrating penis -->
+	<<if $anusaction is "cooperate">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "cooperate">><<actionsanusthrust $anustarget>><<submission 15>><<analskilluse>>
+	<</if>>
+
+	<!-- cooperate with two penetrating penises -->
+	<<if $anusaction is "doublecooperate">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "doublecooperate">><<actionsanusdoublethrust $anustarget $anusdoubletarget>><<submission 15>><<analskilluse>>
+	<</if>>
+
+	<!-- Edge one imminent or penetrating penis -->
+	<<if $anusaction is "penisEdging">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "penisEdging">><<actionsanusedging $anustarget>><<submission 5>><<sexControl 5 `currentSkillValue("analskill")` $anustarget>><<analskilluse>>
+	<</if>>
+
+	<!-- Edge two imminent or penetrating penises -->
+	<<if $anusaction is "penisDoubleEdging">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "penisDoubleEdging">><<actionsanusdoubleedging $anustarget $anusdoubletarget>><<submission 5>><<sexControl 5 `currentSkillValue("analskill")` $anustarget $anusdoubletarget>><<analskilluse>>
+	<</if>>
+
+	<!-- Take one penetrating penis -->
+	<<if $anusaction is "take">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "take">><<actionsanustake $anustarget>>
+	<</if>>
+
+	<!-- Take two penetrating penises -->
+	<<if $anusaction is "doubletake">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "doubletake">><<actionsanusdoubletake>>
+	<</if>>
+
+	<!-- Take two penetrating penises -->
+	<<if $anusaction is "doubletake">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "doubletake">><<actionsanusdoubletake $anustarget $anusdoubletarget>>
+	<</if>>
+
+	<!-- Pull away from an imminent penis -->
+	<<if $anusaction is "escape">><<set $anusaction to 0>><<set $anusactiondefault to "escape">><<actionsanusescape $anustarget>><<brat 10 $anustarget>><<set $anususe to "penis">><<set $anusstate to "entrance">>
+		<<if $NPCList[$anustarget].penis is "anusimminent">>
+			<<set $NPCList[$anustarget].penis to "anusentrance">><<set $NPCList[$anustarget].speechanusescape to 1>>
+		<</if>>
+	<</if>>
+
+	<!-- Pull away from two imminent penises -->
+	<<if $anusaction is "doubleescape">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "doubleescape">><<actionsanusdoubleescape $anustarget $anusdoubletarget>><<brat 10 $anustarget $anusdoubletarget>><<set $anususe to "penisdouble">><<set $anusstate to "doubleentrance">>
+		<<set $enemyanger += 5>>
+		<<set _otherNPCindex to "f">>
+		<<set _actiontext to "You escape ">>
+		<<set _npcA to $anustarget>>
+		<<set _npcB to $anusdoubletarget>>
+
+		<<if $NPCList[_npcA].penis is "anusimminentdouble">>
+			<<set $NPCList[$anustarget].penis to "anusentrancedouble">><<set $NPCList[$anustarget].speechanusescape to 1>>
+
+		<<elseif $NPCList[_npcA].penis is "anusentrancedouble" and random(0,3) is 0>> /* Chance to drop one of them and switch to regular anal */
+			<<set _otherNPCindex to _npcB>><<set $NPCList[_npcA].location.genitals to 0>><<set $NPCList[_npcA].speechanusescape to 1>><<set $enemyanger += 15>>
+			<<set $NPCList[_npcA].penis to 0>>
+			<span class="green"> <<print _actiontext + ($npc_named isnot 1 ? "the " : "") + $NPCList[_npcA].fullDescription + "'s " + $NPCList[_npcA].penisdesc + ".">></span>
+		<</if>>
+		<<if $NPCList[_npcB].penis is "anusimminentdouble">>
+			<<set $NPCList[_npcB].penis to "anusentrancedouble">><<set $NPCList[_npcB].speechanusescape to 1>>
+
+		<<elseif $NPCList[_npcB].penis is "anusentrancedouble" and random(0,3) is 0>> /* Chance to drop one of them and switch to regular anal */
+			<<set _otherNPCindex to _npcA>><<set $NPCList[_npcB].location.genitals to 0>><<set $NPCList[_npcB].speechanusescape to 1>><<set $enemyanger += 15>>
+			<<set $NPCList[_npcB].penis to 0>>
+			<span class="green"> <<print _actiontext + ($npc_named isnot 1 ? "the " : "") + $NPCList[_npcB].fullDescription + "'s " + $NPCList[_npcB].penisdesc + ".">></span>
+		<</if>>
+
+		<<if _otherNPCindex isnot "f" and $NPCList[_otherNPCindex].penis isnot 0 and $NPCList[_otherNPCindex].penis.includes("double")>>
+			<<set $anususe to "penis">>
+			<<switch $NPCList[_otherNPCindex].penis>>
+				<<case "anusdouble">>
+					<<set $NPCList[_otherNPCindex].penis to "anus">>
+					<<set $anusstate to "penetrated">>
+				<<case "anusentrancedouble">>
+					<<set $NPCList[_otherNPCindex].penis to "anusentrance">>
+					<<set $anusstate to "entrance">>
+				<<case "anusimminentdouble">>
+					<<set $NPCList[_otherNPCindex].penis to "anusimminent">>
+					<<set $anusstate to "imminent">>
+			<</switch>>
+		<</if>>
+	<</if>>
+
+	<!-- Anus mouth actions -->
+
+	<!-- Press butt against their mouth -->
+	<<if $anusaction is "bottombay">>
+		<<set $anusaction to 0>><<meek 1 $anustarget>><<bottomskilluse>><<combatpromiscuity1>>
+		<<if combatSkillCheck("bottom", $anustarget)>>
+			<<set $anusactiondefault to "otherMouthAnusRub">><<neutral 5 $anustarget>>
+			<span class="lblue">You <<bottomtext>> press your <<bottom>> against <<hisselect $anustarget>> mouth.</span>
+			<<set $NPCList[$anustarget].mouth to "bottom">><<bottomstat>><<set $bottomuse to "mouth">>
+		<<else>>
+			<<set $anusactiondefault to "bottombay">>
+			You try to keep the mouth menacing your anus at bay by pressing your <<bottom>> against it, but <<theowner>> has other ideas.
+		<</if>>
+	<</if>>
+
+	<!-- Keep rubbing butt against mouth -->
+	<<if $anusaction is "otherMouthAnusRub">>
+		<<set $anusaction to 0>><<bottomskilluse>>
+		<<if combatSkillCheck("bottom", $anustarget)>>
+			<<set $anusactiondefault to "otherMouthAnusRub">><<bottomstat>><<submission 5>>
+			<<actionsmouthbottomrub $anustarget>>
+		<<else>>
+			<<set $anusactiondefault to "bottombay">><<set $bottomuse to 0>>
+			<span class="blue">You press your <<bottom>> against <<hisselect $anustarget>> mouth, but instead <<he>> moves <<his>> head between your cheeks.</span>
+			<<set $NPCList[$anustarget].mouth to "anusentrance">>
+		<</if>>
+	<</if>>
+
+	<!-- Stop rubbing butt against mouth -->
+	<<if $anusaction is "otherMouthAnusStop">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "bottombay">><<set $bottomuse to 0>>
+		<span class="blue">You stop pressing your <<bottom>> against <<hisselect $anustarget>> mouth.</span>
+		<<set $NPCList[$anustarget].mouth to "anusentrance">>
+	<</if>>
+
+	<!-- Rub anus against face -->
+	<<if $anusaction is "othermouthtease">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "othermouthtease">><<sex 5 "anus">><<analskilluse>><<actionsothermouthanustease $anustarget>>
+	<</if>>
+
+	<!-- Rub anus against face when imminent -->
+	<<if $anusaction is "othermouthrub">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "othermouthrub">><<sex 10 "anus">><<analskilluse>><<actionsothermouthanusrub $anustarget>>
+	<</if>>
+
+	<!-- Pull away when imminent -->
+	<<if $anusaction is "othermouthescape">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "othermouthescape">><<brat 10 $anustarget>>
+		<<actionsothermouthanusescape $anustarget>>
+		<<if $NPCList[$anustarget].mouth is "anusimminent">>
+			<<set $NPCList[$anustarget].mouth to "anusentrance">>
+		<</if>>
+	<</if>>
+
+	<!-- Cooperate/Hump after penetration -->
+	<<if $anusaction is "othermouthcooperate">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "othermouthcooperate">><<submission 20>><<analskilluse>><<actionsothermouthanusthrust $anustarget>>
+	<</if>>
+
+	<!-- Anus hand actions -->
+
+	<!-- Clench hand between cheeks -->
+	<<if $anusaction is "bottomhandbay">>
+		<<set $anusaction to 0>>
+		<<if $NPCList[$anustarget].lefthand is "anusentrance" or $NPCList[$anustarget].righthand is "anusentrance">>
+			<<meek 1 $anustarget>><<bottomskilluse>><<combatpromiscuity1>>
+			<<if combatSkillCheck("bottom", $anustarget)>>
+				<<set $anusactiondefault to "handAnusRub">><<neutral 5 $anustarget>>
+				<span class="lblue">You <<bottomtext>> rub your clenched <<bottom>> cheeks against <<hisselect $anustarget>> hand.</span>
+				<<if $NPCList[$anustarget].lefthand is "anusentrance">>
+					<<set $NPCList[$anustarget].lefthand to "bottom">>
+				<<else>>
+					<<set $NPCList[$anustarget].righthand to "bottom">>
+				<</if>>
+				<<bottomstat>><<set $bottomuse to "hand">>
+			<<else>>
+				<<set $anusactiondefault to "bottomhandbay">>
+				You try to keep the finger menacing your anus at bay by clenching your <<bottom>> cheeks, but <<theowner>> has other ideas.
+			<</if>>
+		<<else>>
+			You try to clench your <<bottom>> cheeks around <<hisselect $anustarget>> hand, but it is already gone.
+		<</if>>
+	<</if>>
+
+	<!-- Keep hand between cheeks -->
+	<<if $anusaction is "handAnusRub">>
+		<<set $anusaction to 0>><<bottomskilluse>>
+		<<if combatSkillCheck("bottom", $anustarget)>>
+			<<set $anusactiondefault to "handAnusRub">><<submission 5>>
+			<span class="lblue">You <<bottomtext>> rub your clenched <<bottom>> cheeks against <<hisselect $anustarget>> hand.</span>
+		<<else>>
+			<<set $anusactiondefault to "bottomhandbay">><<set $bottomuse to 0>>
+			<span class="blue">You press your <<bottom>> against <<hisselect $anustarget>> hand, but instead <<he>> shoves <<his>> fingers between your cheeks.</span>
+			<<if $NPCList[$anustarget].lefthand is "bottom">>
+				<<set $NPCList[$anustarget].lefthand to "anusentrance">>
+			<<else>>
+				<<set $NPCList[$anustarget].righthand to "anusentrance">>
+			<</if>>
+		<</if>>
+	<</if>>
+
+	<!-- Let go of hand -->
+	<<if $anusaction is "handAnusStop">>
+		<<set $anusaction to 0>><<set $anusactiondefault to "bottomhandbay">><<set $bottomuse to 0>>
+		<span class="blue">You stop clenching your <<bottom>> cheeks, allowing <<hisselect $anustarget>> hand to reach your crack.</span>
+		<<if $NPCList[$anustarget].lefthand is "bottom">>
+			<<set $NPCList[$anustarget].lefthand to "anusentrance">>
+		<<else>>
+			<<set $NPCList[$anustarget].righthand to "anusentrance">>
+		<</if>>
+	<</if>>
+
+	<!-- Rub anus against hand and -->
+	<<if $anusaction is "handtease">>
+		<<if $NPCList[$anustarget].lefthand is "anusentrance" or $NPCList[$anustarget].righthand is "anusentrance">>
+			<<set $anusaction to 0>><<set $anusactiondefault to "handtease">><<sex 5 "anus">><<analskilluse>><<actionshandanustease $anustarget>>
+		<<else>>
+			You try to rub your <<bottom>> against <<hisselect $anustarget>> fingers, but <<his>> hand is already gone.
+		<</if>>
+	<</if>>
+
+	<!-- Cooperate/Hump after penetration -->
+	<<if $anusaction is "handcooperate" and ($NPCList[$anustarget].lefthand is "anus" or $NPCList[$anustarget].righthand is "anus")>>
+		<<if $NPCList[$anustarget].lefthand is "anusentrance" or $NPCList[$anustarget].righthand is "anusentrance">>
+			<<set $anusaction to 0>><<set $anusactiondefault to "handcooperate">><<submission 20>><<analskilluse>><<actionshandanusthrust $anustarget>>
+		<<else>>
+			You try to rub your <<bottom>> against <<hisselect $anustarget>> fingers, but <<his>> hand is already gone.
+		<</if>>
+	<</if>>
+
+	<!-- 'Take it' in consensual encounters -->
+	<<if $anusaction is "handtake" and ($NPCList[$anustarget].lefthand is "anus" or $NPCList[$anustarget].righthand is "anus")>>
+		<<set $anusaction to 0>><<set $anusactiondefault to "handtake">><<actionshandanustake $anustarget>>
+	<</if>>
+<</widget>>

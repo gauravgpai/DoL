@@ -1,0 +1,525 @@
+:: Widgets Combat Man Mouth [widget]
+<<widget "man-combat-mouth">>
+	<<if $NPCList[_n].fullDescription is "Gwylan" and (!$gwylanSeen.includes("partners"))>>
+		<<set $_preventKiss to true>>
+	<</if>>
+
+	<<rng>>
+	<<if $NPCList[_n].mouth is "thigh">>
+		<<He>> kisses and licks your thigh.
+		<<neutral 5 _n>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "bottom">>
+		<<He>> kisses and licks your <<bottom>>.
+		<<neutral 5 _n>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "anus">>
+		<<if $rng gte 101>>
+			<span class="purple"><<He>> retracts <<his>> tongue from your anus.</span>
+			<<sex 30 "anal" _n>><<set $NPCList[_n].mouth to "anusimminent">><<bruise anus>><<violence 1>><<set $anusstate to "othermouthimminent">>
+		<<elseif $rng gte 1>>
+			<<if $enemyarousal lt ($enemyarousalmax / 5)>>
+				<<He>> caresses your anus with <<his>> tongue.
+				<<sex 30 "anal" _n>><<bruise anus>><<violence 1>>
+			<<elseif $enemyarousal lt (($enemyarousalmax / 5) * 2)>>
+				<<His>> tongue probes inside your <<bottom>>.
+				<<sex 30 "anal" _n>><<bruise anus>><<violence 1>>
+			<<elseif $enemyarousal lt (($enemyarousalmax / 5) * 3)>>
+				<<He>> circles <<his>> tongue inside your <<bottom>>.
+				<<sex 30 "anal" _n>><<bruise anus>><<violence 1>>
+			<<elseif $enemyarousal lt (($enemyarousalmax / 5) * 4)>>
+				<<He>> presses <<his>> mouth firmly against your <<bottom>>, letting <<him>> push <<his>> tongue deeper into your anus.
+				<<sex 30 "anal" _n>><<bruise anus>><<violence 1>>
+			<<else>>
+				Repeatedly thrusting and retracting, <<he>> fucks your <<bottom>> with <<his>> tongue.
+				<<sex 30 "anal" _n>><<bruise anus>><<violence 1>>
+			<</if>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "anusimminent">>
+		<<if $rng gte 101>>
+			<span class="blue"><<He>> stops pressing <<his>> tongue against your anus.</span>
+			<<set $NPCList[_n].mouth to "anusentrance">><<set $anusstate to "othermouthentrance">>
+		<<elseif $rng gte 1>>
+			<<if $noanal is 0 and $worn.genitals.anus_exposed is 0>>
+				<<He>> uses <<his>> tongue to lick around your $worn.genitals.name attempting to get past it.
+				<<sex 25 "genital" _n>><<set $worn.genitals.integrity -= 10>>
+			<<elseif $noanal is 1 and $worn.genitals.anus_exposed is 0>>
+				<<He>> uses <<his>> tongue to lick around your $worn.genitals.name.
+				<<sex 30 "genital" _n>>
+			<<elseif $noanal is 0>>
+				<<if $player.virginity.anal isnot true or $virginitytest isnot 1>>
+					<span class="pink"><<He>> pushes <<his>> tongue into your anus.</span>
+					<<sex 30 "anal" _n>><<violence 1>>
+				<<elseif $player.virginity.anal is true>>
+					<span class="pink"><<He>> pushes <<his>> tongue into your virgin anus,</span><span class="red"> violating you in a way you hadn't conceived of.</span>
+					<<sex 100 "anal" _n>><<takeVirginity $NPCList[_n].fullDescription "anal">><<violence 100>>
+				<</if>>
+				<<analstat>><<set $NPCList[_n].mouth to "anus">><<bruise anus>><<set $anusstate to "othermouthpenetrated">>
+				<<if $virginitytest is 1>><<raped>><<anusraped>><</if>>
+			<<else>>
+				Respecting your wishes, <<he>> does not penetrate your <<bottom>> with <<his>> tongue, instead licking your anus.
+				<<sex 15 "anal" _n>>
+			<</if>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "anusentrance">>
+		<<if $rng gte 101>>
+			<span class="lblue"><<He>> moves <<his>> head away from your <<bottom>>.</span>
+			<<set $NPCList[_n].mouth to 0>><<set $anususe to 0>><<set $anusstate to 0>>
+			<<if $NPCList[_n].vagina is "othermouth">>
+				<<set $NPCList[_n].vagina to 0>>
+			<</if>>
+			<<if $NPCList[_n].penis is "othermouth">>
+				<<set $NPCList[_n].penis to 0>>
+			<</if>>
+		<<elseif $rng gte 1>>
+			<<if $worn.over_lower.anus_exposed is 0>>
+				<<He>> circles <<his>> tongue around your anus through your $worn.over_lower.name.
+				<<sex 5 "anal" _n>><<set $worn.over_lower.integrity -= 10>>
+			<<elseif $worn.lower.anus_exposed is 0>>
+				<<He>> circles <<his>> tongue around your anus through your $worn.lower.name.
+				<<sex 5 "anal" _n>><<set $worn.lower.integrity -= 10>>
+			<<elseif $worn.lower.anus_exposed is 1 and $worn.over_lower.anus_exposed is 1>>
+				<<rng>>
+				<<if $worn.under_lower.anus_exposed is 0>>
+					<<He>> circles <<his>> tongue around your anus through your $worn.under_lower.name.
+					<<sex 5 "anal" _n>><<set $worn.under_lower.integrity -= 10>>
+				<<elseif $worn.genitals.anus_exposed is 0>>
+					<<He>> prods your $worn.genitals.name with <<his>> tongue.
+					<<sex 5 "anal" _n>><<set $worn.genitals.integrity -= 10>>
+				<<elseif $worn.under_lower.anus_exposed is 1 and $worn.genitals.anus_exposed is 1>>
+					<<if $rng gte 71>>
+						<<if $noanal is 0 and playerChastity("anus")>>
+							<span class="purple"><<He>> presses <<his>> tongue against your $worn.genitals.name near your anus.</span>
+							<<sex 20 "anal" _n>><<set $NPCList[_n].mouth to "anusimminent">><<set $anusstate to "othermouthimminent">>
+						<<elseif $noanal is 1>>
+							<span class="purple"><<He>> presses <<his>> tongue against your anus.</span>
+							<<sex 20 "anal" _n>><<set $NPCList[_n].mouth to "anusimminent">><<set $anusstate to "othermouthimminent">>
+						<<else>>
+							<span class="purple"><<He>> presses <<his>> tongue against your anus, preparing to penetrate you.</span>
+							<<sex 20 "anal" _n>><<set $NPCList[_n].mouth to "anusimminent">><<set $anusstate to "othermouthimminent">>
+						<</if>>
+					<<elseif $rng gte 1>>
+						<<He>> kisses and licks your <<bottom>>.
+						<<sex 10 "anal" _n>>
+					<</if>>
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "vagina">>
+		<<if $rng gte 101>>
+			<span class="purple"><<He>> retracts <<his>> tongue from your <<pussy>>.</span>
+			<<sex 30 "genital" _n>><<set $NPCList[_n].mouth to "vaginaimminent">><<bruise vagina>><<violence 1>><<set $vaginastate to "othermouthimminent">>
+		<<elseif $rng gte 1>>
+			<<if $enemyarousal lt ($enemyarousalmax / 5)>>
+				<<He>> caresses your vagina with <<his>> tongue.
+				<<sex 30 "genital" _n>><<bruise vagina>><<violence 1>>
+			<<elseif $enemyarousal lt (($enemyarousalmax / 5) * 2)>>
+				<<He>> presses down on your <<clit>> with <<his>> teeth while exploring your vagina with <<his>> tongue.
+				<<sex 30 "genital" _n>><<bruise vagina>><<violence 1>>
+			<<elseif $enemyarousal lt (($enemyarousalmax / 5) * 3)>>
+				<<He>> circles <<his>> tongue around your vagina.
+				<<sex 30 "genital" _n>><<bruise vagina>><<violence 1>>
+			<<elseif $enemyarousal lt (($enemyarousalmax / 5) * 4)>>
+				<<He>> presses <<his>> mouth firmly against your <<pussy>>, then pushes <<his>> tongue deeper into your vagina. <<He>> slowly pulls out again, then takes a deep breath.
+				<<sex 30 "genital" _n>><<bruise vagina>><<violence 1>>
+			<<else>>
+				Repeatedly thrusting and retracting, <<he>> fucks your <<pussy>> with <<his>> tongue.
+				<<sex 30 "genital" _n>><<bruise vagina>><<violence 1>>
+			<</if>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "vaginaimminent">>
+		<<if $rng gte 101>>
+			<span class="blue"><<He>> stops pressing <<his>> tongue against your <<pussy>>.</span>
+			<<set $NPCList[_n].mouth to "vaginaentrance">><<set $vaginastate to "othermouthentrance">>
+		<<elseif $rng gte 1>>
+			<<if $novaginal is 0 and playerChastity("vagina")>>
+				<<He>> licks around your $worn.genitals.name, attempting to get past it.
+				<<sex 25 "genital" _n>><<set $worn.genitals.integrity -= 10>>
+			<<elseif $novaginal is 1 and playerChastity("vagina")>>
+				<<He>> licks around your $worn.genitals.name.
+				<<sex 30 "genital" _n>>
+			<<elseif $novaginal is 0>>
+				<<if $player.virginity.vaginal isnot true or $virginitytest isnot 1>>
+					<span class="pink"><<He>> pushes <<his>> tongue between your <<pussy>> lips.</span>
+					<<sex 30 "genital" _n>>
+				<<elseif $player.virginity.vaginal is true>>
+					<span class="pink"><<He>> pushes <<his>> tongue into your virgin pussy,</span><span class="red"> breaking your hymen and <<virginitylosttext $NPCList[_n].fullDescription>></span>
+					<<sex 100 "genital" _n>><<takeVirginity $NPCList[_n].fullDescription "vaginal">><<violence 100>>
+				<</if>>
+				<<vaginalstat>><<set $NPCList[_n].mouth to "vagina">><<bruise vagina>><<violence 1>><<set $vaginastate to "othermouth">>
+				<<if $virginitytest is 1>><<raped>><<vaginaraped>><</if>>
+			<<else>>
+				Respecting your wishes, <<he>> does not penetrate your <<pussy>> with <<his>> tongue, instead running <<his>> tongue up and down your labia.
+				<<sex 15 "genital" _n>>
+			<</if>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "vaginaentrance">>
+		<<if $rng gte 101>>
+			<span class="lblue"><<He>> moves <<his>> head away from your <<pussy>>.</span>
+			<<set $NPCList[_n].mouth to 0>><<set $vaginause to 0>><<set $vaginastate to 0>>
+			<<if $NPCList[_n].vagina is "othermouth">>
+				<<set $NPCList[_n].vagina to 0>>
+			<</if>>
+			<<if $NPCList[_n].penis is "othermouth">>
+				<<set $NPCList[_n].penis to 0>>
+			<</if>>
+		<<elseif $rng gte 1>>
+			<<if $worn.over_lower.vagina_exposed is 0>>
+				<<He>> traces the outline of your <<pussy>> with <<his>> tongue through your $worn.over_lower.name.
+				<<sex 5 "genital" _n>><<set $worn.over_lower.integrity -= 10>>
+			<<elseif $worn.lower.vagina_exposed is 0>>
+				<<He>> traces the outline of your <<pussy>> with <<his>> tongue through your $worn.lower.name.
+				<<sex 5 "genital" _n>><<set $worn.lower.integrity -= 10>>
+			<<elseif $worn.lower.vagina_exposed is 1 and $worn.over_lower.vagina_exposed is 1>>
+				<<rng>>
+				<<if $worn.under_lower.vagina_exposed is 0>>
+					<<He>> traces the outline of your <<pussy>> with <<his>> tongue through your $worn.under_lower.name.
+					<<sex 5 "genital" _n>><<set $worn.under_lower.integrity -= 10>>
+				<<elseif $worn.under_lower.vagina_exposed is 1>>
+					<<if $rng gte 71>>
+						<<if $novaginal is 0 and playerChastity("vagina")>>
+							<span class="purple"><<He>> presses <<his>> lips against your $worn.genitals.name, near your <<pussy>>.</span>
+							<<sex 20 "genital" _n>><<set $NPCList[_n].mouth to "vaginaimminent">><<set $vaginastate to "othermouthimminent">>
+						<<elseif $novaginal is 1>>
+							<span class="purple"><<He>> presses <<his>> lips against your <<pussy>>.</span>
+							<<sex 20 "genital" _n>><<set $NPCList[_n].mouth to "vaginaimminent">><<set $vaginastate to "othermouthimminent">>
+						<<else>>
+							<span class="purple"><<He>> presses <<his>> lips against your <<pussy>>, preparing to fuck you with <<his>> tongue.</span>
+							<<sex 20 "genital" _n>><<set $NPCList[_n].mouth to "vaginaimminent">><<set $vaginastate to "othermouthimminent">>
+						<</if>>
+					<<elseif $rng gte 1>>
+						<<if !playerChastity("vagina")>>
+							<<He>> blows on your <<clit>> and runs <<his>> tongue around your labia.
+							<<sex 10 "genital" _n>>
+						<<else>>
+							<<He>> stares at your $worn.genitals.name.
+							<<sex 5 "genital" _n>>
+						<</if>>
+					<</if>>
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "penis">>
+		<<if $rng gte 101>>
+			<span class="purple"><<He>> moves <<his>> head back, releasing your <<penis>> from <<his>> mouth.</span>
+			<<sex 30 "genital" _n>><<set $NPCList[_n].mouth to "penisimminent">><<set $penisstate to "othermouthimminent">>
+			<<if playerHasStrapon()>><<violence 1 1 1 0>>
+			<<else>><<bruise penis>><<violence 1>><</if>>
+		<<elseif $rng gte 1>>
+			<<if $enemyarousal lt ($enemyarousalmax / 5)>>
+				<<He>> slowly caresses your shaft with <<his>> tongue.
+				<<sex 30 "genital" _n>>
+			<<elseif $enemyarousal lt (($enemyarousalmax / 5) * 2)>>
+				Eyes fixed on your face, <<he>> wraps <<his>> tongue around your <<penis>> and sucks.
+				<<sex 30 "genital" _n>>
+			<<elseif $enemyarousal lt (($enemyarousalmax / 5) * 3)>>
+				<<He>> squeezes <<his>> lips around your <<penis>> and circles <<his>> tongue around your <<glans>>.
+				<<sex 30 "genital" _n>>
+			<<elseif $enemyarousal lt (($enemyarousalmax / 5) * 4)>>
+				<<He>> takes you deeper into <<his>> mouth, until your <<penis>> disappears inside <<him>> completely. <<He>> slowly pushes you out again, then takes a deep breath.
+				<<sex 30 "genital" _n>>
+			<<else>>
+				<<He>> repeatedly swallows and expels your <<penis>>, fucking you with <<his>> mouth.
+				<<sex 30 "genital" _n>>
+			<</if>>
+			<<if playerHasStrapon()>><<violence 1 1 1 0>>
+			<<else>><<bruise penis>><<violence 1>><</if>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "penisimminent">>
+		<<if $rng gte 101>>
+			<span class="blue"><<He>> stops pressing <<his>> lips against your <<penis>>.</span>
+			<<set $NPCList[_n].mouth to "penisentrance">><<set $penisstate to "othermouthentrance">>
+		<<elseif $rng gte 1>>
+			<<if $worn.genitals.name is "chastity parasite">>
+				<<He>> licks your $worn.genitals.name, <span class="lewd">the parasite sending a wave of pleasure through your <<penis>>.</span> Your reaction causes <<him>> to continue.
+				<<arousal 400 "genitals">><<if !$earSlime.defyCooldown and $earSlime.vibration lt 120>><<set $earSlime.vibration += 10>><</if>>
+				<<sex 30 "genital" _n>><<set $worn.genitals.integrity -= 5>>
+			<<elseif $nopenile is 0 and playerChastity("penis")>>
+				<<He>> licks around your $worn.genitals.name, near your <<penis>>, attempting to get past it.
+				<<sex 25 "genital" _n>><<set $worn.genitals.integrity -= 10>>
+			<<elseif $nopenile is 1 and playerChastity("penis")>>
+				<<He>> licks around your $worn.genitals.name, near your <<penis>>.
+				<<sex 30 "genital" _n>>
+			<<elseif $nopenile is 0>>
+				<<if playerHasStrapon() or $player.virginity.penile isnot true or $virginitytest isnot 1>>
+					<span class="pink"><<He>> pushes <<his>> lips against your <<penis>>, taking you into <<his>> mouth.</span>
+					<<sex 30 "genital" _n>>
+					<<violence 1 1 1 `+playerHasStrapon()`>>
+				<<elseif $player.virginity.penile is true>>
+					<span class="pink"><<He>> pushes <<his>> lips against your virgin penis, taking you into <<his>> mouth,</span><span class="red"> separating your foreskin from your glans and <<virginitylosttext $NPCList[_n].fullDescription>></span>
+					<<sex 100 "genital" _n>><<takeVirginity $NPCList[_n].fullDescription "penile">><<violence 100>>
+				<</if>>
+				<<penilestat>><<takeNPCVirginity _n "oral">><<set $NPCList[_n].mouth to "penis">><<set $penisstate to "othermouth">>
+				<<if $virginitytest is 1 and !playerHasStrapon()>><<bruise penis>><<raped>><<penisraped>><</if>>
+			<<else>>
+				Respecting your wishes, <<he>> does not envelop your <<penis>> with <<his>> mouth, instead kissing the tip of your <<glans>>.
+				<<sex 15 "genital" _n>>
+			<</if>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "penisentrance">>
+		<<if $rng gte 101>>
+			<span class="lblue"><<He>> moves <<his>> head away from your <<penis>>.</span>
+			<<set $NPCList[_n].mouth to 0>><<set $penisuse to 0>><<set $penisstate to 0>>
+			<<if $NPCList[_n].vagina is "othermouth">>
+				<<set $NPCList[_n].vagina to 0>>
+			<</if>>
+			<<if $NPCList[_n].penis is "othermouth">>
+				<<set $NPCList[_n].penis to 0>>
+			<</if>>
+		<<elseif $rng gte 1>>
+			<<if $worn.over_lower.vagina_exposed is 0>>
+				<<He>> traces the outline of your <<penis>> with <<his>> tongue through your $worn.over_lower.name.
+				<<sex 5 "genital" _n>><<set $worn.over_lower.integrity -= 10>>
+			<<elseif $worn.lower.vagina_exposed is 0>>
+				<<He>> traces the outline of your <<penis>> with <<his>> tongue through your $worn.lower.name.
+				<<sex 5 "genital" _n>><<set $worn.lower.integrity -= 10>>
+			<<elseif $worn.lower.vagina_exposed is 1 and $worn.over_lower.vagina_exposed is 1>>
+				<<rng>>
+				<<if $worn.under_lower.vagina_exposed is 0>>
+					<<He>> traces the outline of your <<penis>> with <<his>> tongue through your $worn.under_lower.name.
+					<<sex 5 "genital" _n>><<set $worn.under_lower.integrity -= 10>>
+				<<elseif $worn.under_lower.vagina_exposed is 1>>
+					<<if $rng gte 71>>
+						<<if playerChastity("penis")>>
+							<span class="purple"><<He>> tries to wriggle <<his>> tongue into your $worn.genitals.name, eager to taste your <<penis>>.</span>
+							<<sex 20 "genital" _n>>
+						<<elseif $nopenile is 1>>
+							<span class="purple"><<He>> presses <<his>> lips against your <<penis>>.</span>
+							<<sex 20 "genital" _n>><<set $NPCList[_n].mouth to "penisimminent">><<set $penisstate to "othermouthimminent">>
+						<<else>>
+							<span class="purple"><<He>> presses <<his>> lips against your <<penis>>, preparing to take you in <<his>> mouth proper.</span>
+							<<sex 20 "genital" _n>><<set $NPCList[_n].mouth to "penisimminent">><<set $penisstate to "othermouthimminent">>
+						<</if>>
+					<<elseif $rng gte 1>>
+						<<if !playerChastity("penis")>>
+							<<He>> blows on and licks the tip of your <<penis>>.
+							<<sex 10 "genital" _n>>
+						<<else>>
+							<<He>> stares at your $worn.genitals.name.
+							<<sex 5 "genital" _n>>
+						<</if>>
+					<</if>>
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "kiss">>
+		<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1>>
+			<<if $_preventKiss>>
+				<span class="red"><<He>> pulls <<his>> mouth away from yours and looks angry.</span>
+				<<set $enemytrust -= 200>><<set $enemyanger += 200>><<set $mouthuse to 0>><<set $NPCList[_n].mouth to 0>><<set $mouthstate to 0>>
+				<<set $NPCList[_n].location.head to 0>>
+			<<elseif $rng gte 101>>
+				<span class="lblue"><<He>> pulls <<his>> mouth away from yours.</span>
+				<<set $NPCList[_n].mouth to 0>><<set $mouthuse to 0>><<set $mouthstate to 0>>
+				<<set $NPCList[_n].location.head to 0>>
+			<<else>>
+				<<if $robinDungeonKiss>>
+					<<undergroundRobinKiss $mouthactiondefault>>
+				<<elseif $npcSub>>
+					<<He>> nervously follows your lead, allowing you to explore <<his>> mouth with your tongue.
+				<<elseif $enemyanger lte 20>>
+					<<He>> explores your mouth with <<his>> tongue.
+					<<sex 2 "mouth" _n>>
+				<<else>>
+					<<He>> thrusts <<his>> tongue deep into your mouth.
+					<<violence 1>>
+				<</if>>
+				<<if $NPCList[_n].type is "plant" and $mouthactiondefault isnot "kissback">>
+					<span class="pink">Sweet nectar drips from <<his>> tongue and fills your mouth.</span>
+					<<nectarfed 20>>
+				<<else>>
+					<<namedNpcReaction _n "kissDeep">>
+				<</if>>
+			<</if>>
+		<<else>>
+			<span class="lblue"><<He>> pulls <<his>> mouth away from yours.</span>
+			<<set $mouthuse to 0>><<set $NPCList[_n].mouth to 0>><<set $mouthstate to 0>>
+			<<set $NPCList[_n].location.head to 0>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "kissimminent">>
+		<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1 and !$_preventKiss>>
+			<<if $rng gte 101>>
+				<span class="lblue"><<He>> pulls <<his>> mouth away from yours.</span>
+				<<set $NPCList[_n].mouth to 0>><<set $mouthuse to 0>><<set $mouthstate to 0>>
+				<<set $NPCList[_n].location.head to 0>>
+			<<elseif $worn.face.type.includes("face_covering") or $worn.face.type.includes("gag")>>
+				<<switch random(0,2)>>
+					<<case 0 1>>
+						<<He>> pushes <<his>> lips against your $worn.face.name. <<He>> seems disappointed.
+						<<damageFaceCover 2>>
+						<<if $consensual isnot 1>>
+							<<brat 2>>
+						<</if>>
+					<<case 2>>
+						<span class="lblue"><<He>> moves <<his>> <<= npcHasStrapon(_n) ? "strap-on" : "penis">> away from your mouth.</span>
+						<<set $NPCList[_n].penis to 0>><<set $mouthuse to 0>><<set $mouthstate to 0>>
+						<<if $consensual isnot 1>>
+							<<brat 2>>
+						<</if>>
+				<</switch>>
+			<<elseif $rng lte 100>>
+				<<He>> pushes <<his>> tongue between your lips.
+				<<set $NPCList[_n].mouth to "kiss">><<set $mouthstate to "kiss">><<sex 2 "mouth" _n>>
+				<<if $NPCList[_n].type is "plant" and $mouthactiondefault isnot "kissback">>
+					<span class="pink">Sweet nectar fills your mouth.</span>
+					<<nectarfed 20>>
+				<<else>>
+					<<namedNpcReaction _n "kissDeep">>
+				<</if>>
+			<<else>>
+				<<if $enemyanger lte 20>>
+					<<He>> gently probes your lips with <<his>> tongue.
+					<<sex 2 "mouth" _n>>
+				<<else>>
+					<<He>> bites and toys with your lips.
+					<<violence 1>>
+				<</if>>
+			<</if>>
+		<<else>>
+			<span class="lblue"> <<He>> pulls <<his>> mouth away from yours.</span>
+			<<set $mouthuse to 0>><<set $NPCList[_n].mouth to 0>><<set $mouthstate to 0>>
+			<<set $NPCList[_n].location.head to 0>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "kissentrance">>
+		<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1 and !$_preventKiss>>
+			<<if $rng gte 101>>
+				<span class="lblue"><<He>> pulls <<his>> mouth away from yours.</span>
+				<<set $NPCList[_n].mouth to 0>><<set $mouthuse to 0>><<set $mouthstate to 0>>
+				<<set $NPCList[_n].location.head to 0>>
+			<<elseif $rng lte 100>>
+				<<He>> pulls you closer and presses your lips together in a kiss.
+				<<if $NPCList[_n].type is "plant" and !$player.virginity.kiss>>
+					<span class="pink">Sweet nectar drips from <<his>> tongue and fills your mouth.</span>
+					<<nectarfed 50>>
+				<<else>>
+					<<namedNpcReaction _n "kiss">>
+				<</if>>
+				<<if $player.virginity.kiss is true>>
+					<<set $speechKissVirgin to 1>>
+				<</if>>
+				<<if $npcrow.includes(_n)>>
+					<<takeKissVirginityNamed `$npc[$npcrow.indexOf(_n)]`>>
+				<<else>>
+					<<takeKissVirginity $NPCList[_n] `($consensual is 1?"":"rape")`>>
+				<</if>>
+				<<set $NPCList[_n].mouth to "kissimminent">><<set $mouthstate to "kissimminent">><<sex 2 "mouth" _n>>
+			<<else>>
+				<<if $enemyanger lte 20>>
+					<<He>> gently brushes <<his>> lips against yours.
+					<<sex 1 "mouth" _n>>
+				<<else>>
+					<<He>> bites your lower lip.
+					<<violence 1>>
+				<</if>>
+			<</if>>
+		<<else>>
+			<span class="lblue"><<He>> pulls <<his>> mouth away from yours.</span>
+			<<set $mouthuse to 0>><<set $NPCList[_n].mouth to 0>><<set $mouthstate to 0>>
+			<<set $NPCList[_n].location.head to 0>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "chest">>
+		<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1>>
+			<<if $enemyanger gte 100>>
+				<<if $milk_amount gte 1>>
+					<<He>> sucks your <<nipple>>. <<Hes>> rough, biting and squeezing. Milk leaks from the tip.
+					<<breastfeed>>
+					<<violence 5>>
+				<<else>>
+					<<He>> sucks your <<nipple>>. <<Hes>> rough, biting and squeezing. Despite <<his>> efforts, no milk comes out. You've been sucked dry.
+					<<milkvolume 1>>
+					<<set $cheststate to "chestimminent">><<set $NPCList[_n].mouth to "chestimminent">>
+					<<violence 3>>
+				<</if>>
+			<<else>>
+				<<if $milk_amount gte 1>>
+					<<He>> continues to suck your <<nipple>>. Milk leaks from the tip.
+					<<breastfeed>>
+					<<sex 5 "breast" _n>>
+				<<else>>
+					<<He>> continues to suck your <<nipple>>, but no milk comes out. You've been sucked dry.
+					<<milkvolume 1>>
+					<<set $cheststate to "chestimminent">><<set $NPCList[_n].mouth to "chestimminent">>
+					<<sex 3 "breast" _n>>
+				<</if>>
+			<</if>>
+		<<else>>
+			<span class="lblue"><<He>> pulls <<his>> mouth away from your chest.</span>
+			<<set $chestuse to 0>><<set $cheststate to 0>><<set $NPCList[_n].mouth to 0>>
+			<<set $NPCList[_n].location.head to 0>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "chestimminent">>
+		<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1>>
+			<<if $lactating is 1 and $settings.breastFeedingEnabled and $milk_amount gte 1>>
+				<span class="pink"><<He>> takes your <<nipple>> into <<his>> mouth. You feel milk leak from your tip.</span>
+				<<breastfeed>>
+				<<set $cheststate to "chest">><<set $NPCList[_n].mouth to "chest">><<sex 5 "breast" _n>>
+				<<milkvolume 1>><<set $enemyanger -= 10>>
+			<<else>>
+				<<if random(1, 100) gte 81>>
+					<<He>> pulls <<his>> head away from your chest.
+					<<set $chestuse to 0>><<set $cheststate to 0>><<set $NPCList[_n].mouth to 0>>
+				<<else>>
+					<<if $enemyanger gte 100>>
+						<<He>> kneads your <<nipple>> between <<his>> teeth.
+						<<violence 3>>
+					<<else>>
+						<<He>> sucks your <<nipple>> while <<his>> tongue works the tip.
+						<<sex 3 "breast" _n>>
+					<</if>>
+					<<milkvolume 1>>
+				<</if>>
+			<</if>>
+		<<else>>
+			<span class="lblue"><<He>> pulls <<his>> mouth away from your chest.</span>
+			<<set $chestuse to 0>><<set $cheststate to 0>><<set $NPCList[_n].mouth to 0>>
+			<<set $NPCList[_n].location.head to 0>>
+		<</if>>
+	<</if>>
+	<<rng>>
+	<<if $NPCList[_n].mouth is "chestentrance">>
+		<<if $speechVaginaVirgin isnot 1 and $speechPenisVirgin isnot 1 and $speechAnusVirgin isnot 1 and $speechOralVirgin isnot 1>>
+			<<if $enemyanger gte 100>>
+				<<He>> bites your <<nipple>>, hard enough to hurt.
+				<<set $NPCList[_n].mouth to "chestimminent">><<set $cheststate to "chestimminent">>
+				<<violence 3>>
+			<<else>>
+				<<He>> presses the tip of <<his>> tongue against your <<nipple>>, licking and teasing.
+				<<set $NPCList[_n].mouth to "chestimminent">><<set $cheststate to "chestimminent">>
+				<<sex 3 "breast" _n>>
+			<</if>>
+			<<milkvolume 1>>
+		<<else>>
+			<span class="lblue"><<He>> pulls <<his>> mouth away from your chest.</span>
+			<<set $chestuse to 0>><<set $cheststate to 0>><<set $NPCList[_n].mouth to 0>>
+			<<set $NPCList[_n].location.head to 0>>
+		<</if>>
+	<</if>>
+<</widget>>
