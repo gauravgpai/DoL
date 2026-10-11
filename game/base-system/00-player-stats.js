@@ -738,8 +738,92 @@ const Check = {
 
 };
 
+/**
+ * Since the "primary contributor" to the PC passing or failing a stat check is ambiguous when multiple sources of buffs / debuffs are stacked on top of each other, our only concern is returning the causes at a rate that is roughly proportional to their influence on the PC's final result. The actual value of the `random(min, max)` call in `Check.stat(min, max)` is irrelevant.
+ */
 const Cause = {
+	/**
+	 * Returns the modifier that caused the PC to pass / fail `Check.stat(min, max)`, or an empty object if a modifier was not the cause. The rate that each modifier is chosen is weighted according to its numerical effect on the PC's stats.
+	 *
+	 * If result === true, only positive modifiers will be returned.
+	 *
+	 * If result === false, only negative modifiers will be returned.
+	 *
+	 * If min and max do not form a valid range, throws an error and returns an empty object.
+	 *
+	 * @param {number} baseStat The stat's base value, with no modifiers applied.
+	 * @param {Array<Modifier>} modifiers An array of the stat's relevant modifiers.
+	 * @param {number} min The minimum value required to pass the stat check.
+	 * @param {number} max The maximum value required to pass the stat check.
+	 * @param {boolean} result Passed: true, Failed: false
+	 * @returns {Modifier} The modifier that caused the stat check to pass or fail.
+	 */
+	getCause(baseStat, modifiers, min, max, result) {
+		if (!validRange("Cause.getCause", min, max)) return false;
 
+		if (isNaN(baseStat)) {
+			Errors.report(`[Cause.getCause]: baseStat '${baseStat}' is not a number.`, {
+				Stacktrace: Utils.GetStack(),
+				baseStat,
+			});
+			return {};
+		}
+
+		const finalStat = PC.applyModifiers(baseStat, modifiers);
+
+		if ((result && finalStat < min) || (!result && finalStat >= max)) {
+			Errors.report(`[Cause.getCause]: A final stat of '${finalStat}' was calculated, which leads to an impossible result.`, {
+				Stacktrace: Utils.GetStack(),
+				finalStat,
+				baseStat,
+				modifiers,
+				min,
+				max,
+				result,
+			});
+			return {};
+		}
+
+		let startValue;
+		let baseWeight;
+		let relevantMods;
+		if (result) {
+			// If the PC passed the skill check, find our base odds of passing with all negative modifiers applied.
+			startValue = PC.applyModifiers(baseStat, PC.activeModifiers(modifiers, "negative"));
+			baseWeight = Math.max(0, startValue - min + 1);
+
+			// And only return modifiers with positive effects.
+			relevantMods = PC.activeModifiers(modifiers, "positive");
+		} else {
+			// If the PC passed the skill check, find our base odds of failing with all positive modifiers applied.
+			startValue = PC.applyModifiers(baseStat, PC.activeModifiers(modifiers, "positive"));
+			baseWeight = Math.max(0, max - startValue);
+
+			// And only return modifiers with negative effects.
+			relevantMods = PC.activeModifiers(modifiers, "negative");
+		}
+
+		// Add the base odds to the pool of potential modifiers to return.
+		const modPool = [[{}, baseWeight]];
+
+		for (let i = 0; i < relevantMods.length; i++) {
+			const modInfo = relevantMods[i];
+			const modValue = PC.applyModifiers(startValue, [modInfo]);
+
+			let modWeight;
+			if (result) {
+				// Weigh the modified value based on how much it increased the PC's chances of success.
+				modWeight = Math.max(0, modValue - startValue);
+			} else {
+				// Weigh the modified value based on how much it increased the PC's chances of failure.
+				modWeight = Math.max(0, startValue - modValue);
+			}
+
+			modPool.push([modInfo, modWeight]);
+		}
+
+		return weightedRandom(...modPool);
+	},
 };
 
 const Norm = {
