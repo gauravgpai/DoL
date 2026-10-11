@@ -175,7 +175,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 	<</addinlineevent>>
 <</if>>
 
-<<if $settings.bestialityEnabled and $settings.lurkersEnabled>>
+<<if $settings.lurkersEnabled>>
 	<<addinlineevent "lurkers">>
 		As you're exploring, you see movement in the corner of your eye. You turn to look, but it's gone. As you're about to continue on, camouflaged creatures fly at you from the wall.
 		<br><br>
