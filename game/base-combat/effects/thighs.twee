@@ -1,0 +1,96 @@
+:: Widgets Effects Man Thighs [widget]
+<<widget "effectsman-thighs">>
+	/***
+	*    ███████ ██   ██ ███████  █████  ██   ██
+	*      ███   ██   ██   ███   ██      ██   ██
+	*      ███   ███████   ███   ██ ████ ███████
+	*      ███   ██   ██   ███   ██   ██ ██   ██
+	*      ███   ██   ██ ███████  █████  ██   ██
+	*
+	*/
+	<<if $newtarget isnot undefined>>
+		<<setnewtarget>>
+	<</if>>
+
+	<<if $thighaction is "rub">>
+		<<set $thighaction to 0>><<thighskilluse>><<set $thighactiondefault to "rub">>
+		<<if combatSkillCheck("thigh", $thightarget)>>
+			<<set $thighactiondefault to "rub">><<actionsthighrub $thightarget>><<thighstat>><<sex 5 "genital" $thightarget>>
+		<<elseif $NPCList[$thightarget].penis is "thighs">>
+			<<set $thighactiondefault to "thighs">><<set $thighuse to 0>>
+			<<if $vaginause is 0>><<set $vaginause to "penis">>
+				<<personselect $thightarget>>
+				<<set $NPCList[$thightarget].penis to "vaginaentrance">><<set $vaginastate to "entrance">>
+				<span class="blue">You try to hold <<hisselect $thightarget>> penis between your thighs, but <<he>> instead angles it towards your <<genitals>>.</span>
+			<<else>>
+				<<personselect $thightarget>>
+				<<set $NPCList[$thightarget].penis to 0>><<set $NPCList[$thightarget].location.genitals to 0>>
+				<span class="blue">You try to hold <<hisselect $thightarget>> penis between your thighs, but <<he>> moves it away.</span>
+			<</if>>
+		<</if>>
+	<</if>>
+
+	<<if $thighaction is "stop" and $NPCList[$thightarget].penis is "thighs">>
+		<<set $thighaction to 0>><<set $thighactiondefault to "stop">>
+		You stop holding <<hisselect $thightarget>> penis between your thighs.
+		<<set $thighuse to 0>>
+		<<if $vaginause is 0>>
+			<<personselect $thightarget>>
+			<<set $NPCList[$thightarget].penis to "vaginaentrance">><<set $vaginastate to "entrance">><<set $vaginause to "penis">>
+			<span class="blue"><<He>> angles towards your <<genitals>>.</span>
+		<<else>>
+			<<set $NPCList[$thightarget].penis to 0>><<set $NPCList[$thightarget].location.genitals to 0>>
+		<</if>>
+	<</if>>
+
+	<<if $thighaction is "othermouthrub">>
+		<<set $thighaction to 0>><<set $thighactiondefault to "othermouthrub">><<thighskilluse>>
+		<<if combatSkillCheck("thigh", $thightarget)>>
+			<<set $thighactiondefault to "othermouthrub">><<thighstat>><<sex 5 "genital" $thightarget>>
+			<<actionsmouththighrub $thightarget>>
+		<<elseif $NPCList[$thightarget].mouth is "thigh">>
+			<<if $penisuse is 0 and (!$player.vaginaExist or $vaginause isnot 0 or random(0,100) gte 50)>>
+				<<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penisactiondefault to "thighbay">><<set $thighuse to 0>>
+				<<personselect $thightarget>>
+				<<set $NPCList[$thightarget].mouth to "penisentrance">>
+				<span class="blue">You press your thigh against <<hisselect $thightarget>> mouth, but <<he>> would prefer the main course and moves <<his>> head closer to your <<penis>>.</span>
+			<<elseif $vaginause is 0>>
+				<<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">><<set $vaginaactiondefault to "thighbay">><<set $thighuse to 0>>
+				<<personselect $thightarget>>
+				<<set $NPCList[$thightarget].mouth to "vaginaentrance">>
+				<span class="blue">You press your thigh against <<hisselect $thightarget>> mouth, but <<he>> would prefer the main course and moves <<his>> head closer to your <<pussy>>.</span>
+			<<else>>
+				<<personselect $thightarget>>
+				<<if $NPCList[$thightarget].penis is "othermouth">>
+					<<set $NPCList[$thightarget].penis to 0>>
+				<</if>>
+				<<if $NPCList[$thightarget].vagina is "othermouth">>
+					<<set $NPCList[$thightarget].vagina to 0>>
+				<</if>>
+				<span class="lblue">You press your thigh against <<hisselect $thightarget>> mouth, but <<he>> moves <<his>> head away from you.</span>
+				<<set $NPCList[$thightarget].mouth to 0>><<set $thighuse to 0>><<set $NPCList[$thightarget].location.head to 0>>
+			<</if>>
+		<</if>>
+	<</if>>
+
+	<<if $thighaction is "othermouthstop" and $NPCList[$thightarget].mouth is "thigh">>
+		<<set $thighaction to 0>><<set $thighactiondefault to "stop">><<set $thighuse to 0>>
+		<<if $penisuse is 0 and (!$player.vaginaExist or $vaginause isnot 0 or random(0,100) gte 50)>>
+			<<personselect $thightarget>><<set $NPCList[$thightarget].mouth to "penisentrance">><<set $penisstate to "othermouthentrance">><<set $penisuse to "othermouth">>
+			<span class="blue">You stop pressing your thigh against <<hisselect $thightarget>> mouth.</span>
+		<<elseif $vaginause is 0>>
+			<<personselect $thightarget>><<set $NPCList[$thightarget].mouth to "vaginaentrance">><<set $vaginastate to "othermouthentrance">><<set $vaginause to "othermouth">>
+			<span class="blue">You stop pressing your thigh against <<hisselect $thightarget>> mouth.</span>
+		<<else>>
+			<<personselect $thightarget>>
+			<<if $NPCList[$thightarget].penis is "othermouth">>
+				<<set $NPCList[$thightarget].penis to 0>>
+			<</if>>
+			<<if $NPCList[$thightarget].vagina is "othermouth">>
+				<<set $NPCList[$thightarget].vagina to 0>>
+			<</if>>
+			<<set $NPCList[$thightarget].mouth to 0>><<set $NPCList[$thightarget].location.head to 0>>
+			<span class="blue">You stop pressing your thigh against <<hisselect $thightarget>> mouth.</span>
+		<</if>>
+	<</if>>
+<</widget>>
