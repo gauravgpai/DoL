@@ -401,7 +401,7 @@
 			{ type: "sex", name: "slut" },
 			{ type: "prostitution", name: "whore" },
 			{ type: "rape", name: "fucktoy" },
-			{ type: "bestiality", name: $settings.bestialityEnabled ? "bitch" : "monster fucker" },
+			{ type: "bestiality", name: isBestialityOnForAnyCreature() ? "bitch" : "monster fucker" },
 			{ type: "exhibitionism", name: "flaunter" },
 			{ type: "pregnancy", name: $fame.pregnancy gte 1000 ? "broodmother" : ($fame.pregnancy gte 400 ? "breeder" : "mother") },
 			{ type: "impreg", name: $fame.impreg gte 1000 ? "allfather" : ($fame.impreg gte 400 ? "sire" : "inseminator") },
@@ -760,12 +760,27 @@
 			</div>
 		<</if>>
 
-		<div id="visualsFaceVariants" @class="setup.faceStyleOptions.length gt 1 ? 'settingsToggleItem' : 'settingsToggleItemWide'">
+		<div id="visualsFaceVariants" class="settingsToggleItem">
 			<span class="gold bold">Demeanour:</span>
 			<br>
 			<div id="visualsFaceVariantRadios">
 				<<faceVariantOptions>>
 			</div>
+		</div>
+
+		<div class="settingsToggleItem">
+			<span class="gold bold">Default expression:</span>
+			<br>
+			Your default facial expression is:
+			<<listbox "$defaultMouth" autoselect>>
+				<<option "Smile" "smile">>
+				<<option "Neutral" "neutral">>
+			<</listbox>>
+			<<run $(() => {
+				$("#listbox-defaultMouth").on("change", () => {
+					Wikifier.wikifyEval('<<updatesidebarimg true>>');
+				});
+			})>>
 		</div>
 	</div>
 <</widget>>

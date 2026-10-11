@@ -603,7 +603,7 @@ The midwife places a mask over your face. You feel your consciousness fade. Seve
 			<<birthDissociationVision>>
 		<</if>>
 
-		<<link [[Next (<<print getTimeString(_timeCalc)>>)| Pregnancy Birth Hospital 3]]>><<endevent>><<run beginPlayerBirth()>><<pass _timeCalc>><</link>>
+		<<link [[Next (<<print getTimeString(_timeCalc)>>)| Pregnancy Birth Hospital 3]]>><<endevent>><<run setPlayerLitterBorn()>><<pass _timeCalc>><</link>>
 	<<case "wolf">>
 		Harper's voice floats through the fog. "Not human. This will be an abnormal delivery. Follow my instructions to the letter..."
 		<br><br>
@@ -682,7 +682,7 @@ The midwife places a mask over your face. You feel your consciousness fade. Seve
 	<br><br>
 <</if>>
 
-<<link [[Next|Pregnancy Birth Hospital 5]]>><<storeon "hospital_birth">><<pass 24 hour>><<stress -40>><</link>>
+<<link [[Next|Pregnancy Birth Hospital 5]]>><<storeon "hospital_birth">><<pass 24 hour>><<stress -40>><<set $tiredness to 0>><</link>>
 <br><br>
 
 
@@ -1073,9 +1073,9 @@ You hear a deep breath. You think it's yours. "Good. Breathe." Gwylan's voice is
 
 <<switch playerNormalPregnancyType()>>
 	<<case "human">>
-		<<link [[Next (<<print getTimeString(_timeCalc)>>)|Pregnancy Birth Forest Shop 4]]>><<endevent>><<run beginPlayerBirth()>><<pass _timeCalc>><</link>>
+		<<link [[Next (<<print getTimeString(_timeCalc)>>)|Pregnancy Birth Forest Shop 4]]>><<endevent>><<run setPlayerLitterBorn()>><<pass _timeCalc>><</link>>
 	<<case "wolf">>
-		<<link [[Next (<<print getTimeString(_timeCalc)>>)|Pregnancy Birth Forest Shop Wolf]]>><<endevent>><<run beginPlayerBirth()>><<pass _timeCalc>><</link>>
+		<<link [[Next (<<print getTimeString(_timeCalc)>>)|Pregnancy Birth Forest Shop Wolf]]>><<endevent>><<run setPlayerLitterBorn()>><<pass _timeCalc>><</link>>
 <</switch>>
 
 :: Pregnancy Birth Forest Shop 4
@@ -1390,7 +1390,7 @@ Player re-equips clothes.
 <<clotheson>>
 <br><br>
 <<if $syndromewolves isnot 1>>
-	<<if $settings.bestialityEnabled>>
+	<<if animalSexEnabledForType("wolf")>>
 		<span class="red"><i>After giving birth to pups of your own, you see they're just cute animals.</i> You've gained the "Stockholm Syndrome: Wolves" trait.</span>
 		<br><br>
 	<<else>>
@@ -1568,7 +1568,7 @@ You strip and lie down.
 				<<set _His to "Her">>
 				<<set _him to "her">>
 				<<set _gender to "female">>
-			<<case "h">>
+			<<case "h">> <!-- TODO: why do we do this??? the scene should really be rewritten to not use gendered pronouns for this case -->
 				<<set _he to "she">>
 				<<set _He to "She">>
 				<<set _his to "her">>

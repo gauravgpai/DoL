@@ -32,7 +32,7 @@
 				cow
 			<</if>>
 		<<elseif $harpy gte 6>>
-			<<if $hallucinations gte 2 or !$settings.bestialityEnabled>>
+			<<if resolveIfNamedBeastIsMonster("greathawk")>>
 				harpy
 			<<else>>
 				bird
@@ -332,7 +332,7 @@
 
 	<br><br>
 	<<bodywriting>>
-	<div id="characteristics-display">
+	<div class="characteristics-display">
 
 		<br>
 		<span class="gold">Core Characteristics</span>

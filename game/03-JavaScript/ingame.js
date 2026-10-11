@@ -2587,15 +2587,6 @@ function attractedToBothChance(gender, rng) {
 }
 window.attractedToBothChance = attractedToBothChance;
 
-function beastMaleChance(override) {
-	if (V.settings.beastMaleChanceSplit === false) return V.settings.beastMaleChance;
-	const appearance = override || V.player.gender_appearance;
-	if (appearance === "m") return V.settings.beastMaleChanceMale;
-	if (appearance === "f") return V.settings.beastMaleChanceFemale;
-	return 50;
-}
-window.beastMaleChance = beastMaleChance;
-
 function penisNames(override) {
 	const names = ["penis"];
 
@@ -2720,18 +2711,14 @@ function fixIntegrityUpdater() {
 }
 window.fixIntegrityUpdater = fixIntegrityUpdater;
 
-// Set plots to watered if it rains
-// Temporary solution until a rework
-$(document).on(":onWeatherChange", () => {
-	if (!V.daily || V.daily?.plotsRain || Weather.precipitation !== "rain") return;
+function waterPlotsIfRaining() {
+	if (V.daily.plotsRain || Weather.precipitation !== "rain") return;
 	V.daily.plotsRain = true;
-	Object.entries(V.plots).forEach(([location, plots]) => {
-		// Don't water greenhouse plants from rain - disabled for now
-		// Alternate text about a rainwater harvester was added, so this may not be needed
-		// if (location === "garden" && V.alex_greenhouse === 3) return;
+	Object.entries(V.plots).forEach(([_location, plots]) => {
 		plots.forEach(plot => (plot.water = 1));
 	});
-});
+}
+window.waterPlotsIfRaining = waterPlotsIfRaining;
 
 // Returns true if one or more orphanage plots have been planted
 // Used to determine whether Robin should automatically water them
@@ -2748,7 +2735,7 @@ function orphanagePlotsPlanted() {
 window.orphanagePlotsPlanted = orphanagePlotsPlanted;
 
 // Returns true if all orphanage plots have been watered
-// Used to determine whether Robin sshould automatically water them
+// Used to determine whether Robin should automatically water them
 function orphanagePlotsWatered() {
 	if (V.plots?.garden) {
 		for (let i = 0; i < V.plots.garden.length; i++) {
@@ -2766,7 +2753,7 @@ window.orphanagePlotsWatered = orphanagePlotsWatered;
 // Apparently the sugarcube <<script>> parser don't parse the following correctly - so made it a function instead
 function tendingDay() {
 	Object.entries(V.plots).forEach(([location, plots]) => {
-		let irrigation = location === "farm" ? V.farm.irrigation || 0 : 0;
+		let irrigation = location === "farm" ? V.farm?.irrigation || 0 : 0;
 
 		plots.forEach(plot => {
 			// Growth check
@@ -2777,7 +2764,6 @@ function tendingDay() {
 				}
 			}
 
-			// Rain check moved to event in ingame.js
 			plot.water = irrigation >= 1 ? (irrigation--, 1) : 0;
 		});
 	});
@@ -3129,11 +3115,6 @@ function insecurityExists(type) {
 }
 window.insecurityExists = insecurityExists;
 
-function isBeastSceneAllowed() {
-	return V.settings.bestialityEnabled || ((!V.settings.monsterHallucinationsOnly || V.hallucinations > 0) && V.settings.monsterChance >= random(1, 100));
-}
-window.isBeastSceneAllowed = isBeastSceneAllowed;
-
 /**
  * Check if an event is going to be dangerous based on rng and the player's Allure. Another target's Allure can
  * be substitued as needed.
@@ -3308,3 +3289,13 @@ function randomSkinTone() {
 	return Math.round(Math.clamp(tone, min, max));
 }
 window.randomSkinTone = randomSkinTone;
+
+/**
+ * Whether Whitney's friends are hanging out at Whitney's flat.
+ *
+ * @returns {boolean}
+ */
+function whitneyHasFriendsOver() {
+	return Time.dayState === "day" && Weather.precipitation === "none" && !Time.schoolDay && [3, 6, 7].includes(Time.weekDay);
+}
+window.whitneyHasFriendsOver = whitneyHasFriendsOver;

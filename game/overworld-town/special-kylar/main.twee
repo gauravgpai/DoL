@@ -1463,7 +1463,7 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 			<<gksuspicion>><<npcincr Kylar rage 1>>
 			<br>
 		<<elseif _kinkType is 5 and $bestialitytrait gte 1>>
-			You whisper to Kylar that you find <<if $settings.bestialityEnabled>>beasts<<else>>monsters<</if>> almost as good as people, sometimes better. Their instinct-driven, animalistic mating makes you shiver. Kylar doesn't seem to know what to say.
+			You whisper to Kylar that you find <<if isBestialityOnForAnyCreature()>>beasts<<else>>monsters<</if>> almost as good as people, sometimes better. Their instinct-driven, animalistic mating makes you shiver. Kylar doesn't seem to know what to say.
 			<<gksuspicion>><<npcincr Kylar rage 1>>
 			<br>
 		<<elseif _kinkType is 4 and $tentacletrait gte 1>>
@@ -1545,7 +1545,7 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 			You whisper to Kylar that even though you hate all the rapists in town, part of you is still excited by them. Somehow, the feeling of being taken against your will isn't as scary as it used to be. <<He>> looks away, frowning.
 			<br><br>
 		<<elseif _kinkType is 5 and $bestialitytrait gte 1>>
-			You whisper to Kylar that you find <<print ($settings.bestialityEnabled ? "beasts" : "monsters")>> almost as good as people, sometimes better. Their instinct-driven, animalistic mating makes you shiver. <<He>> looks away, wide-eyed.
+			You whisper to Kylar that you find <<print (isBestialityOnForAnyCreature() ? "beasts" : "monsters")>> almost as good as people, sometimes better. Their instinct-driven, animalistic mating makes you shiver. <<He>> looks away, wide-eyed.
 			<br><br>
 		<<elseif _kinkType is 4 and $tentacletrait gte 1>>
 			You whisper to Kylar that you've fantasised about being accosted by a hoard of tentacles to have their way with you. Writhing, thrusting, wrapping around you and using your every hole to obey their primal urges. <<He>> looks away, blushing.
@@ -2276,7 +2276,7 @@ You lean close, and whisper your invite into Kylar's ear. <<He>> shivers.
 <<promiscuity2>>
 
 Kylar hugs your arm on the walk over, as if afraid you'll run. The halls are empty, and you reach the bathrooms without anyone noticing you.
-<<if ($player.penisExist and $player.vaginaExist) or ($backgroundTraits.includes("crossdresser") and isCrossdressing()) or $player.gender is "n">>
+<<if ($backgroundTraits.includes("crossdresser") and isCrossdressing()) or $player.gender is "n">>
 	<<set $kylarBathroomGender to $player.gender_appearance>>
 <<else>>
 	<<set $kylarBathroomGender to $player.gender>>
@@ -5553,7 +5553,7 @@ You turn away from <<him>>. "O-oh. I guess this just... isn't a good time for yo
 	<<ejaculation>>
 	Kylar holds you in <<his>> arms. "Ah... Thank you, my love..." Kylar mutters dreamily. "You're so beautiful..." <<stress -3>><<lstress>><<trauma -3>><<ltrauma>><<npcincr Kylar lust -3>><<llust>>
 	<br><br>
-	<<He>> holds you for a moment, until <<his>> afterglow fades away. "I n-need to go now. Thank you, my love." <<he>> says before turning to leave, <<his>> face still flushed.
+	<<He>> holds you for a moment, until <<his>> afterglow fades away. "I n-need to go now. Thank you, my love," <<he>> says before turning to leave, <<his>> face still flushed.
 <<elseif $finish is 1 or $alarm is 1>>
 	"D-did I do something wrong, love?" Kylar says, pulling away from you. "W-well, we can continue later, I guess..." <<he>> mumbles. <<He>> leaves you alone in the alleyway.<<npcincr Kylar love -1>><<llove>><<npcincr Kylar rage 1>><<gksuspicion>>
 <</if>>

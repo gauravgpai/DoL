@@ -594,10 +594,38 @@ sugarcube-2:
         - **name** _optional_: `string` - The name of the event. If not provided, defaults to "".
         - **weight** _optional_: `number` - The relative probability of the event. An event with weight 2 will occur twice as often as an event with weight 1. If not provided, defaults to 1.
       parameters:
-        - "|+ (number | (string |+ number))"
+        - "|+ (string|number) |+ number"
 
     addNNPCOutfit:
       name: addNNPCOutfit
+    addPairedSpeechLine:
+      container: true
+      description: |-
+        Adds a PC line to the speech pool with a NNPC's reply. The NNPC's reply goes into their pool as a "pairedReply" line.
+
+        ```
+        <<addPairedSpeechLine "Whitney" "moan">>
+        	<<pcLine>>PC's line
+        <<npcLine>>
+        	Whitney's reply
+        <</addPairedSpeechLine>>
+        ```
+        `<<addPairedSpeechLine npc category>>`
+        - **npc**: `string` - the NPC who replies
+          - %namedNPCDesc%
+        - **category**: `string` - the PC action it belongs to ("moan", "plead", "demand", etc.) from `setup.speechCategories`
+      parameters:
+        - '%namedNPC% &+ string'
+    addSpeechLine:
+      container: true
+      description: |-
+        Adds a line to the open speech pool. Use `<<speechLine>>` to add several lines that share one conditional.
+
+        `<<addSpeechLine category [weight]>>line<</addSpeechLine>>`
+        - **category**: `string` - sets the line's priority and cooldown, from `setup.speechCategories`
+        - **weight** _optional_: `number` - weight, default 1
+      parameters:
+        - 'string |+ number'
     addVaginalWetness:
       name: addVaginalWetness
     adjust_school_traits:
@@ -931,6 +959,10 @@ sugarcube-2:
       name: assignCombatDefaults
     assignmenttip:
       name: assignmenttip
+    assignNPCGenitalsByPronoun:
+      name: assignNPCGenitalsByPronoun
+    assignNPCGenitalsByPronounCore:
+      name: assignNPCGenitalsByPronounCore
     asylumassessment:
       name: asylumassessment
     asylumBind:
@@ -1044,16 +1076,6 @@ sugarcube-2:
         - **stolen**: `string[]` - The stolen antiques that ended up in the player's possession
         - **noticed**: `string[]` - The stolen antiques that Avery noticed during the display room inspection. All antiques from `$avery_antiques.stolen` are transferred there.
         - **confront**: `string[]` - Unused attribute.
-    avery_cards_drink_text:
-      description: |-
-        Prints drink type of target NPC
-
-        `<<avery_cards_drink_text target>>`
-        - **target**: `string` - target npc to print drink of
-          - %cardsDesc%
-      parameters:
-        - "%cards%"
-      tags: ["text"]
     avery_cards_end:
       description: |-
         Clears NPCs and variables for Avery Cards event
@@ -1488,15 +1510,17 @@ sugarcube-2:
     baileyRentReclaimOption:
       name: baileyRentReclaimOption
     baitMobileDropdown:
-       name: baitMobileDropdown
+      name: baitMobileDropdown
     baitMobileSidebar:
-       name: baitMobileSidebar
+      name: baitMobileSidebar
     baitOverlay:
       name: baitOverlay
     baitShopFishBehaviorHelp:
       name: baitShopFishBehaviorHelp
     baitShopFishLocationHint:
       name: baitShopFishLocationHint
+    baitShopShop-main:
+      name: baitShopShop-main
     baitSidebar:
       name: baitSidebar
     balloonRobinAngryHelp:
@@ -1645,7 +1669,10 @@ sugarcube-2:
       name: beastMaleChanceSplitControls
     beastNEWinit:
       description: |-
-       Generates a new beast and sets $monster to 1 as appropriate. This widget must occur outside of checks for `<<if $settings.bestialityEnabled or $monster is 1>>`.
+       Generates a new beast and sets $monster to 1 as appropriate. This widget must occur outside of checks for `<<if beastSexEnabledForType(type) or $monster is 1>>`.
+
+        `<<beastNEWinit count type gender genitals monster victim>>`
+        - **victim** _optional_: `boolean` - generates the beasts as victims. Use `<<generateBeastVictim>>` instead of passing this directly
     beastNNPCinit:
       name: beastNNPCinit
       tags: ["unused"]
@@ -1658,10 +1685,11 @@ sugarcube-2:
         Example:
         `<<beastNEWinit 1 fox>><<beastPARTNERinit 1 fox 0>>`
 
-        `<<beastPARTNERinit npcSlot type partnerSlot>>`
+        `<<beastPARTNERinit npcSlot type partnerSlot victim>>`
         - **npcSlot**: `number` - slot number of selected npc
         - **type**: `string` - type of partner to generate
         - **partnerSlot**: `number` - slot number for partner npc
+        - **victim** _optional_: `boolean` - generates the beast as a victim. Use `<<generateBeastPartnerVictim>>` instead of passing this directly
     beastSettings:
       name: beastSettings
     beastSimple:
@@ -1693,6 +1721,10 @@ sugarcube-2:
       tags: ["text"]
     beastTrainGenerate:
       name: beastTrainGenerate
+    beastTypeGenders:
+      name: beastTypeGenders
+    beastTypeSettingRow:
+      name: beastTypeSettingRow
     beasttype:
       description: |-
         Prints beast type of NPC
@@ -2067,6 +2099,20 @@ sugarcube-2:
     bleedingWardStart:
       description: |-
         Freezes the story variables, then morphs the pc into an old seabird
+    bloodmoonTourist1:
+      name: bloodmoonTourist1
+    bloodmoonTourist2:
+      name: bloodmoonTourist2
+    bloodmoonTourist3:
+      name: bloodmoonTourist3
+    bloodmoonTourist4:
+      name: bloodmoonTourist4
+    bloodmoonTouristBeach:
+      name: bloodmoonTouristBeach
+    bloodmoonTouristPark:
+      name: bloodmoonTouristPark
+    bloodmoonTouristParkWidget:
+      name: bloodmoonTouristParkWidget
     blindfoldintro:
       name: blindfoldintro
     blindfoldremove:
@@ -2855,7 +2901,7 @@ sugarcube-2:
         - **mode** _optional_: `string` - state to change the selected element to
           - `"On"` | `"Off"` | `"Disabled"`
       parameters:
-        - '|+ "On"|"Off"|"Disabled"'
+        - 'string |+ "On"|"Off"|"Disabled"'
       tags: ["temp"]
     changingRoomFeelings:
       name: changingRoomFeelings
@@ -2971,6 +3017,10 @@ sugarcube-2:
       description: |-
         Prints links corresponding to the game's face styles, allowing the player to change their `$player.facestyle`.
       tags: ["links"]
+    cheatsFog:
+      description: |-
+        Prints a number stepper that sets the current fog amount
+      tags: ["form"]
     cheatsHistoryNavigation:
       name: cheatsHistoryNavigation
     cheatsImpregOptions:
@@ -3154,8 +3204,8 @@ sugarcube-2:
       name: childhis
     childHis:
       name: childHis
-    childInteratedWith:
-      name: childInteratedWith
+    childInteractedWith:
+      name: childInteractedWith
     childname:
       name: childname
     childRename:
@@ -4330,6 +4380,7 @@ sugarcube-2:
     destination5:
       name: destination5
     destinationBeach:
+      container: true
       name: destinationBeach
     destinationbondage:
       name: destinationbondage
@@ -4346,12 +4397,14 @@ sugarcube-2:
     destinationfarmroad:
       name: destinationfarmroad
     destinationForest:
+      container: true
       name: destinationForest
     destinationlake:
       name: destinationlake
     destinationlakeruin:
       name: destinationlakeruin
     destinationMoor:
+      container: true
       name: destinationMoor
     destinationpoolchangingroom:
       name: destinationpoolchangingroom
@@ -4616,7 +4669,7 @@ sugarcube-2:
         Dries given clothing slot
       name: dry_item
       parameters:
-        - "|+ slot (flatcase)|string"
+        - string
     dry_towel:
       name: dry_towel
     dungeonescape:
@@ -5036,6 +5089,8 @@ sugarcube-2:
       name: endmasturbation
     endnpc:
       name: endnpc
+      parameters:
+        - "|+ string"
     endNpcPregnancy:
       name: endNpcPregnancy
     endPlayerPregnancy:
@@ -6793,6 +6848,20 @@ sugarcube-2:
       tags: ["unused"]
     generateBEAST:
       name: generateBEAST
+    generateBeastPartnerVictim:
+      description: |-
+        Same as `<<beastPARTNERinit>>`, but generates the beast as a victim.
+
+        Example:
+        `<<beastNEWinit 1 fox>><<generateBeastPartnerVictim 1 fox 0>>`
+
+        `<<generateBeastPartnerVictim npcSlot type partnerSlot>>`
+        - **npcSlot**: `number` - slot number of selected npc
+        - **type**: `string` - type of partner to generate
+        - **partnerSlot**: `number` - slot number for partner npc
+    generateBeastVictim:
+      description: |-
+        Same as `<<beastNEWinit>>`, but generates the beasts as victims.
     generateboar1:
       name: generateboar1
       tags: ["unused"]
@@ -9553,10 +9622,10 @@ sugarcube-2:
       name: importConfirmDetails
     importDetailsDisplay:
       description: |-
-        Validate and imports preset object into state
+        Shows the values for the imported settings
 
         `<<importDetailsDisplay presetObject>>`
-        - **presetObject**: `object` - object to be imported
+        - **presetObject**: `object` - parsed settings object to show
       parameters:
         - bareword|var
     impregnateParasite:
@@ -11905,12 +11974,6 @@ sugarcube-2:
 
         See `<<monks_and_nuns>>` and `<<brothers_and_sisters>>`
       tags: ["text"]
-    monster_passage:
-      description: |-
-        Sets `_monster_passage` to random gender chance
-
-        Doesn't do anything. Consider refactoring
-      tags: ["unused", "temp", "refactor"]
     monsterSettings:
       name: monsterSettings
     monstrance_accost:
@@ -12006,10 +12069,22 @@ sugarcube-2:
       name: museumPaintingText
     museumtalk:
       name: museumtalk
+    namedBeastSettingRow:
+      name: namedBeastSettingRow
     namedNpcComments:
-      name: namedNpcComments
+      description: |-
+        Plays the named NPC's speech lines for this turn. NPCs without a speech widget or that skip speaking this turn (passes) set `_noNameComment`, so generic comments or mouth actions play instead.
+
+        `<<namedNpcComments npc>>`
+        - **npc**: `string` - the NPC's `fullDescription`
+      parameters:
+        - string
     namedNpcEjaculation:
       name: namedNpcEjaculation
+    namedNpcGenderApply:
+      name: namedNpcGenderApply
+    namedNpcGenderConfirm:
+      name: namedNpcGenderConfirm
     namedNpcReaction:
       description: |-
         Resolves a named NPC's reaction to a combat action.
@@ -12026,11 +12101,9 @@ sugarcube-2:
           - `kissImminent`
           - `kissSkin`
           - `undress`
-        - **detail**: `string` - optional combat-state detail, e.g. which body part
+        - **detail** _optional_: `string` - the body part, for `kissSkin` and `fondle`
       parameters:
-        - number
-        - string
-        - string|null
+        - 'number &+ "choke"|"expose"|"fondle"|"initiative"|"kiss"|"kissDeep"|"kissImminent"|"kissSkin"|"undress" |+ string'
     namedNpcPregnancy:
       name: namedNpcPregnancy
     nDays:
@@ -12186,6 +12259,8 @@ sugarcube-2:
       name: nippleFlavorText
     nipples:
       name: nipples
+    nnpcGenderSetByHand:
+      name: nnpcGenderSetByHand
     nnpc_brother:
       description: |-
         Prints `brother` or `sister` for named NPC
@@ -12730,6 +12805,9 @@ sugarcube-2:
       name: npcincr_avery
     npckiss:
       name: npckiss
+    npcLine:
+      description: |-
+        The named NPC's reply, inside `<<addPairedSpeechLine>>`.
     npcList:
       name: npcList
     npcNamed:
@@ -12794,11 +12872,12 @@ sugarcube-2:
         - **depth** _optional_: `"outside"|"imminent"|"deep"` - where it landed. Deep when not given, a spill rolls at its depth's low weight
         - **location** _optional_: `string` - where it happened. Left out reads the player's location, pass one when the scene runs off-screen
         - **donorFertility** _optional_: `number` - extra multiplier on the conception chance from the donor's side (e.g. the pc's low-semen or earSlime state)
+        - **slot** _optional_: `number`
 
         A normal creampie: `<<npcPregnancyRoll "Robin" "human" "pc" "human" "vagina">>`
         A spill that never went in: `<<npcPregnancyRoll "Robin" "human" "someone" "human" "vagina" "imminent">>`
       parameters:
-        - 'text &+ text &+ text &+ text &+ "vagina"|"anus" |+ "outside"|"imminent"|"deep" |+ text |+ number'
+        - 'text &+ text &+ text &+ text &+ "vagina"|"anus" |+ "outside"|"imminent"|"deep" |+ text |+ number |+ number'
     npcPregnancyUpdater:
       name: npcPregnancyUpdater
     npcrelationship:
@@ -12841,13 +12920,15 @@ sugarcube-2:
         - **statValue**: `string|number` - The value of the NPC's stat name to change
 
       parameters:
-        - 'bareword|var &+ love|dom|trust|lust|rage|state|init|trauma|purity|corruption &+ number|string'
+        - 'bareword|var &+ "love"|"dom"|"trust"|"lust"|"rage"|"state"|"init"|"trauma"|"purity"|"corruption" &+ number|string'
     npcSettings:
       name: npcSettings
     npcSettingsMenu:
       name: npcSettingsMenu
     NPCSettingsReset:
       name: NPCSettingsReset
+    npcSkinTone:
+      name: npcSkinTone
     npcspank:
       name: npcspank
     npcspankgag:
@@ -13197,6 +13278,24 @@ sugarcube-2:
       name: orphanageWard
     orphanageWardOptions:
       name: orphanageWardOptions
+    orphanHawkHe:
+      name: orphanHawkHe
+    orphanHawkhe:
+      name: orphanHawkhe
+    orphanHawkhers:
+      name: orphanHawkhers
+    orphanHawkhim:
+      name: orphanHawkhim
+    orphanHawkHis:
+      name: orphanHawkHis
+    orphanHawkhis:
+      name: orphanHawkhis
+    orphanHawkson:
+      name: orphanHawkson
+    orphanHawkType:
+      name: orphanHawkType
+    orphanHawktype:
+      name: orphanHawktype
     otherOutfitChecks:
       name: otherOutfitChecks
     othersFeelings:
@@ -13669,8 +13768,6 @@ sugarcube-2:
     passoutshop:
       description: |-
         Passes out and prints links for players in the Shops
-      parameters:
-        - "pregLocation |+ Pregnancy Passout location"
       tags: ["links"]
     passoutstreet:
       description: |-
@@ -13714,6 +13811,78 @@ sugarcube-2:
         - "number |+ number"
     pbhairinit:
       name: pbhairinit
+    pc-line-alex-demand:
+      name: pc-line-alex-demand
+    pc-line-alex-moan:
+      name: pc-line-alex-moan
+    pc-line-alex-plead:
+      name: pc-line-alex-plead
+    pc-line-avery-demand:
+      name: pc-line-avery-demand
+    pc-line-avery-forgive:
+      name: pc-line-avery-forgive
+    pc-line-avery-moan:
+      name: pc-line-avery-moan
+    pc-line-avery-plead:
+      name: pc-line-avery-plead
+    pc-line-blackwolf-demand:
+      name: pc-line-blackwolf-demand
+    pc-line-blackwolf-moan:
+      name: pc-line-blackwolf-moan
+    pc-line-blackwolf-plead:
+      name: pc-line-blackwolf-plead
+    pc-line-eden-demand:
+      name: pc-line-eden-demand
+    pc-line-eden-moan:
+      name: pc-line-eden-moan
+    pc-line-eden-plead:
+      name: pc-line-eden-plead
+    pc-line-greathawk-demand:
+      name: pc-line-greathawk-demand
+    pc-line-greathawk-moan:
+      name: pc-line-greathawk-moan
+    pc-line-greathawk-plead:
+      name: pc-line-greathawk-plead
+    pc-line-gwylan-demand:
+      name: pc-line-gwylan-demand
+    pc-line-gwylan-moan:
+      name: pc-line-gwylan-moan
+    pc-line-gwylan-plead:
+      name: pc-line-gwylan-plead
+    pc-line-kylar-demand:
+      name: pc-line-kylar-demand
+    pc-line-kylar-moan:
+      name: pc-line-kylar-moan
+    pc-line-kylar-plead:
+      name: pc-line-kylar-plead
+    pc-line-robin-demand:
+      name: pc-line-robin-demand
+    pc-line-robin-moan:
+      name: pc-line-robin-moan
+    pc-line-robin-plead:
+      name: pc-line-robin-plead
+    pc-line-sydney-demand:
+      name: pc-line-sydney-demand
+    pc-line-sydney-moan:
+      name: pc-line-sydney-moan
+    pc-line-sydney-plead:
+      name: pc-line-sydney-plead
+    pc-line-whitney-demand:
+      name: pc-line-whitney-demand
+    pc-line-whitney-forgive:
+      name: pc-line-whitney-forgive
+    pc-line-whitney-moan:
+      name: pc-line-whitney-moan
+    pc-line-whitney-mock:
+      description: |-
+        Whitney's variants of the PC's mock line, added to the "pc" speech pool.
+
+        `<<pc-line-whitney-mock mockAction>>`
+        - **mockAction**: `string` - the insecurity the PC mocked, from `$mockaction`
+      parameters:
+        - '"penis"|"vagina"|"weak"|"looks"|"skill"|"ethics"'
+    pc-line-whitney-plead:
+      name: pc-line-whitney-plead
     pcFarmBirth:
       name: pcFarmBirth
     pcGender:
@@ -13727,6 +13896,9 @@ sugarcube-2:
       description: |-
         Prints "her", "his", or "their", based on the PC's chosen gender. ONLY to be used when the PC is referring to themself. NPCs should continue to refer to PC by `<<pher>>` if appropriate for the scene.
       tags: ["text"]
+    pcLine:
+      description: |-
+        The PC's line, inside `<<addPairedSpeechLine>>`.
     pcow:
       description: |-
         Prints "cow" or "bull", based on the PC's gender appearance.
@@ -13773,7 +13945,8 @@ sugarcube-2:
       name: pcPregnancyRevealToAlex
     pcSex:
       description: |-
-        Prints "girl", "boy", or "hermaphrodite", based on the PC's sex
+        Prints "girl", "boy", or "hermaphrodite", based on the PC's sex. 
+        Hermaphrodite should not be printed in scenes, and will cause an error by default.
 
         Most commonly used in conjunction with crossdressing.
       tags: ["text"]
@@ -14024,6 +14197,8 @@ sugarcube-2:
         Arguments
         - **value**: `number` - Number to raise/lower the attention level by.
       name: photo_attention
+    photo_end:
+      name: photo_end
     photo_evidence_upload:
       name: photo_evidence_upload
     photo_heat:
@@ -14488,6 +14663,8 @@ sugarcube-2:
       name: pregnancyGendersText
     pregnancyMorningAfterPill:
       name: pregnancyMorningAfterPill
+    pregnancyObjectRepair:
+      name: pregnancyObjectRepair
     pregnancyPassout:
       name: pregnancyPassout
     pregnancySettings:
@@ -14504,33 +14681,6 @@ sugarcube-2:
       name: preMirror
     prenancyObjectRepair:
       name: prenancyObjectRepair
-    presetConfirm:
-      description: |-
-        Validates and applies Preset object into state variables
-
-        Relies on `_validatorObject` already being set
-
-        `<<presetConfirm presetObject useAltLabel?>>`
-        - **presetObject**: `object` - object to be imported
-        - **useAltLabel** _optional_: `boolean` - use sub-labels (truthy)
-      parameters:
-        - var|bareword
-        - '"pronoun"|"gender"|"penissize"|"breastsize"|"bottomsize"|"gender_body"|"ballsExist"|"freckles" |+ bool|text|string|number'
-      tags: ["temp"]
-    presetConfirmDetails:
-      name: presetConfirmDetails
-    presets:
-      description: |-
-        Applies a preset to game and refreshes settings display to provided page
-
-        `<<presets presetName page? randomizeResult?>>`
-        - **presetName**: `string` - name of preset to apply
-        - **page** _optional_: `string` - page to display after preset is applied
-          - Defaults to "characterSettings". See <<displaySettings>> for additional values
-        - **randomizeResult** _optional_: `string` - JSON object containing preset results. Generally the return of randomizeSettings()
-      parameters:
-        - string |+ string
-        - '"randomize" &+ text|string &+ bareword|var'
     priceSettings:
       name: priceSettings
     priest:
@@ -14573,6 +14723,9 @@ sugarcube-2:
       name: printpreggy
     printShopColourOptions:
       name: printShopColourOptions
+    printTime:
+      description: |-
+        Formats and prints an amount of time given as an argument, either as numbers `(xx:yy)` or words `xx hours and yy minutes`
     printTipsList:
       name: printTipsList
     prison_attention:
@@ -14857,8 +15010,6 @@ sugarcube-2:
       name: quicksand_pull
     quickStart:
       name: quickStart
-    quickStartOptions:
-      name: quickStartOptions
     radio_addnews:
       name: radio_addnews
       tags: ["unused"]
@@ -14900,6 +15051,8 @@ sugarcube-2:
       name: random_semen
     random_semen_head:
       name: random_semen_head
+    randomiseSettings:
+      name: randomiseSettings
     randomPlay:
       name: randomPlay
     randomWear:
@@ -15004,6 +15157,8 @@ sugarcube-2:
         Restores the "hidden" state of any transformations hidden by the 'revealTransformations' widget
     relation-box:
       name: relation-box
+    relation-box-collapsed:
+      name: relation-box-collapsed
     relation-box-simple:
       name: relation-box-simple
     relation-box-stat:
@@ -15329,7 +15484,7 @@ sugarcube-2:
         `<<robinMemoryHeal key>>`
         - **key**: `string` - `$robinSeen` key recording that this memory's -Trauma has been given
       parameters:
-        - "key|string"
+        - string
       name: robinMemoryHeal
     robinOpen:
       name: robinOpen
@@ -15542,8 +15697,8 @@ sugarcube-2:
       name: schoolShop-main
     schoolskill:
       name: schoolskill
-    schoolskillgeneral:
-      name: schoolskillgeneral
+    schoolSkillGeneral:
+      name: schoolSkillGeneral
     schoolspareclothes:
       name: schoolspareclothes
     schoolterm:
@@ -15697,6 +15852,8 @@ sugarcube-2:
       description: |-
         Prints colour-coded adjective of active seduction skill usage
       tags: ["unused", "text"]
+    seedsFeatUI:
+      name: seedsFeatUI
     seize_stolen_goods:
       description: |-
         Prints a scene where the player gets searched. Removes black market valuables and overdue/stolen books, although a high skulduggery skill may bypass this
@@ -15807,6 +15964,10 @@ sugarcube-2:
       name: settingsExitFunction
     settingsOptions:
       name: settingsOptions
+    settingsPreviewGroup:
+      name: settingsPreviewGroup
+    beastSettingsPreview:
+      name: beastSettingsPreview
     settingsStart:
       name: settingsStart
     settingsTabButton:
@@ -16313,6 +16474,8 @@ sugarcube-2:
     skinColourVariableCombine:
       description: |-
         Combines `_skinTone` and `_skinShade` and applies that value to `$player.skin.color`.
+    skinToneRange:
+      name: skinToneRange
     skintonetext:
       description: |-
         Prints `X skin tone.`
@@ -16555,10 +16718,51 @@ sugarcube-2:
       name: specialClothesUpdate
     specialClothingFeatUI:
       name: specialClothingFeatUI
+    speech-alex:
+      name: speech-alex
+    speech-avery:
+      name: speech-avery
+    speech-bailey:
+      name: speech-bailey
+    speech-eden:
+      name: speech-eden
     speech-gwylan:
       name: speech-gwylan
+    speech-harper:
+      name: speech-harper
+    speech-kylar:
+      name: speech-kylar
+    speech-leighton:
+      name: speech-leighton
+    speech-morgan:
+      name: speech-morgan
+    speech-robin:
+      name: speech-robin
     speech-sydney:
       name: speech-sydney
+    speech-whitney:
+      name: speech-whitney
+    speech-zephyr:
+      name: speech-zephyr
+    speechLine:
+      description: |-
+        Starts another line inside `<<addSpeechLine>>`.
+    speechPool:
+      description: |-
+        Opens the speaker's speech pool for this turn. Lines are added to the open speech pool until `<<speechSay>>` says one of them.
+
+        `<<speechPool speaker ["noMouthAction"]>>`
+        - **speaker**: `string` - whose lines the pool holds
+          - `"pc"`: the player's lines
+          - %namedNPCDesc%
+        - **"noMouthAction"** _optional_: stops the NNPC from being able to pass to a mouth action instead of speaking
+      parameters:
+        - '%namedNPC%|"pc" |+ "noMouthAction"'
+    speechSay:
+      description: |-
+        Says one line from the open speech pool. Skips lines if its category is on cooldown and lines the speaker already said this combat. Once every line has been said, they all become available again, except the last one said.
+
+        An NPC can pass to a mouth action instead of speaking. Always passes when they have nothing to say, or passes 40% of the time when only `"idle"` lines are in the pool.
     speechWraith:
       description: |-
         Prints up to two relevant wraith lines
@@ -17965,7 +18169,16 @@ sugarcube-2:
     traits:
       name: traits
     transform:
+      description: |-
+        Changes the PC's transformation progress.
+
+        `<<transform type change>>`
+        - **type**: `string` - The transformation that is being affected.
+          - `"wolf"` | `"cat"` | `"cow"` | `"bird"` | `"fox"` | `"angel"` | `"fallen"` | `"demon"`
+        - **change**: `number` - +/- change to apply.
       name: transform
+      parameters:
+        - '"wolf"|"cat"|"cow"|"bird"|"fox"|"angel"|"fallen"|"demon" &+ number'
     transformationAlteration:
       name: transformationAlteration
     transformationStateUpdate:
@@ -18812,16 +19025,16 @@ sugarcube-2:
       name: whitney_parent
     WhitneyChastityCheck:
       name: WhitneyChastityCheck
-    whitneyexit:
-      name: whitneyexit
+    whitneyExit:
+      name: whitneyExit
     whitneyFaceWritingInspection:
       name: whitneyFaceWritingInspection
     whitneyFinish:
       name: whitneyFinish
-    whitneyoptions:
-      name: whitneyoptions
-    whitneyoptionsleave:
-      name: whitneyoptionsleave
+    whitneyOptions:
+      name: whitneyOptions
+    whitneyOptionsLeave:
+      name: whitneyOptionsLeave
     WhitneyPantyCheck:
       name: WhitneyPantyCheck
     WhitneyParasite:

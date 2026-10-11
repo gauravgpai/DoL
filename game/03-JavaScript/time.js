@@ -1,4 +1,4 @@
-/* globals orphanagePlotsPlanted orphanagePlotsWatered */
+/* globals orphanagePlotsPlanted orphanagePlotsWatered waterPlotsIfRaining */
 /* Time namespace
 	Use Time prefix when accessing any getters or functions (e.g. Time.second, Time.schoolDay, or Time.getLastDayOfMonth(), etc.)
 	Getters: (Most of these are being used in one way or another)
@@ -788,7 +788,7 @@ function dayPassed() {
 	}
 	if (hasMansion) V.avery_mansion.study_unlocked = 0;
 
-	if (V.avery_helicopter.timer > 0) V.avery_helicopter.timer--;
+	if (V.avery_helicopter?.timer > 0) V.avery_helicopter.timer--;
 
 	if (V.flashbacktown > 0) V.flashbacktown--;
 	if (V.flashbackhome > 0) V.flashbackhome--;
@@ -1103,6 +1103,9 @@ function hourPassed(hours) {
 		if (!V.avery_mansion || ["fallen", "kicked"].includes(V.avery_fate)) {
 			V.hoursGoneFromHome++;
 		}
+
+		// When you view a plot while it is raining, it automatically becomes watered, so we don't need to check frequently if it's raining to water plots. Hourly is good enough.
+		waterPlotsIfRaining();
 
 		// Robin autowatering
 		// Include "bath" as a location since bathing is from 17:00-17:29
@@ -1436,7 +1439,7 @@ function dailyNPCEffects() {
 		V.averyBodyWritingSeen = false;
 		if (V.averydate && Time.weekDay === 1) {
 			V.averydate = 0;
-			if (V.averydateattended !== 1 && !V.avery_injury) V.averydatemissed = 1;
+			if (V.averydateattended !== 1 && !V.avery_injury && !V.avery_mansion.away_timer > 0) V.averydatemissed = 1;
 			V.averydateattended = 0;
 		}
 		delete V.averydatedone;
@@ -2028,7 +2031,7 @@ function yearlyEventChecks() {
 		delete V.valentines_supermarket;
 	}
 
-	if (Time.monthName === "February" && Time.monthDay <= 14 && !V.avery_valentines && V.avery_mansion) {
+	if (Time.monthName === "February" && Time.monthDay <= 14 && !V.avery_valentines) {
 		V.avery_valentines = {};
 
 		V.avery_valentines.intro = false;
