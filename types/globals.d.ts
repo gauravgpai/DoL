@@ -500,6 +500,7 @@ declare global {
 	let throwError: Function;
 
 	let DefineMacro: Function;
+	let DefineMacroS: Function;
 
 	interface ObjectConstructor {
 		hasOwn(object: any, property: any): boolean;

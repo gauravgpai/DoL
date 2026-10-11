@@ -139,9 +139,11 @@ function clearSpeechHistory(speaker) {
 function isSpeechCategoryCoolingDown(speaker, category) {
 	const { cooldown = 0 } = setup.speechCategories[category];
 	if (cooldown === 0) return false;
-	return getSpeechHistory(speaker)
-		.slice(-cooldown)
-		.some(entry => entry.category === category);
+	const history = getSpeechHistory(speaker);
+	for (let i = history.length - 1; i >= Math.max(0, history.length - cooldown); i--) {
+		if (history[i].category === category) return true;
+	}
+	return false;
 }
 
 /**
@@ -161,7 +163,11 @@ function getOrCreateSpeechPool(speaker) {
  * @returns {SpeechLine[]} the lines in the speaker's pool whose category is not on cooldown
  */
 function getSayableSpeechLines(speaker) {
-	return T.speechPool[speaker].lines.filter(line => !isSpeechCategoryCoolingDown(speaker, line.category));
+	const cooldowns = new Map();
+	return T.speechPool[speaker].lines.filter(line => {
+		if (!cooldowns.has(line.category)) cooldowns.set(line.category, isSpeechCategoryCoolingDown(speaker, line.category));
+		return !cooldowns.get(line.category);
+	});
 }
 
 /** @returns {boolean} Whether the open pool has a line the speaker can say now. */
@@ -175,8 +181,8 @@ function hasSpeechLines() {
  * @returns {SpeechLine[]} the lines the speaker has not said this combat
  */
 function getUnsaidSpeechLines(speaker, lines) {
-	const history = getSpeechHistory(speaker);
-	return lines.filter(line => !history.some(entry => entry.id === line.id));
+	const saidIds = new Set(getSpeechHistory(speaker).map(entry => entry.id));
+	return lines.filter(line => !saidIds.has(line.id));
 }
 
 /**
@@ -259,9 +265,15 @@ Macro.add("speechSay", {
 		const sayableLines = getSayableSpeechLines(T.speechPoolSpeaker);
 		let lines = getUnsaidSpeechLines(T.speechPoolSpeaker, sayableLines);
 		if (lines.length === 0 && sayableLines.length > 0) {
-			const lastSaidId = getSpeechHistory(T.speechPoolSpeaker)
-				.filter(entry => entry.id !== null)
-				.at(-1).id;
+			const history = getSpeechHistory(T.speechPoolSpeaker);
+			/** @type {string | null} */
+			let lastSaidId = null;
+			for (let i = history.length - 1; i >= 0; i--) {
+				if (history[i].id !== null) {
+					lastSaidId = history[i].id;
+					break;
+				}
+			}
 			clearSpeechHistory(T.speechPoolSpeaker);
 			lines = sayableLines.filter(line => line.id !== lastSaidId);
 			if (lines.length === 0) lines = sayableLines;

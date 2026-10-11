@@ -91,7 +91,7 @@ function rangeIterate(range, handler) {
 window.rangeIterate = rangeIterate;
 
 /**
- * Define macro, passing arguments to function and store them in $args, preserving & restoring previous $args.
+ * Define macro, passing arguments to function and store them in _args, preserving & restoring previous _args.
  *
  * @param {string} macroName
  * @param {Function} macroFunction
@@ -104,24 +104,25 @@ function DefineMacro(macroName, macroFunction, tags, skipArgs) {
 		tags,
 		skipArgs,
 		handler() {
+			const oldArgs = State.temporary.args;
 			try {
-				const oldArgs = State.temporary.args;
 				State.temporary.args = this.args.slice();
 				macroFunction.apply(this, this.args);
+			} catch (e) {
+				console.warn("Something went wrong", e);
+			} finally {
 				if (typeof oldArgs === "undefined") {
 					delete State.temporary.args;
 				} else {
 					State.temporary.args = oldArgs;
 				}
-			} catch (e) {
-				console.warn("Something went wrong", e);
 			}
 		},
 	});
 }
 
 /**
- * Define macro, passing arguments to function and store them in $args, preserving & restoring previous $args.
+ * Define macro, passing arguments to function and store them in _args, preserving & restoring previous _args.
  *
  * Expectation: macroFunction returns text to wikify & print.
  *

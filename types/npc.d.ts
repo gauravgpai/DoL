@@ -1,6 +1,8 @@
 declare module "twine-sugarcube" {
 	export interface SugarCubeStoryVariables {
 		NPCList: [Npc, Npc, Npc, Npc, Npc, Npc];
+		npc: string[];
+		npcrow: number[];
 
 		enemytype: string;
 
@@ -10,6 +12,9 @@ declare module "twine-sugarcube" {
 			riddle: number;
 			fountain: 0 | 1;
 		};
+	}
+	export interface SugarCubeSetupObject {
+		NPCNameList: string[];
 	}
 }
 

@@ -1,0 +1,151 @@
+:: Widgets Ejaculation-WHITNEY [widget]
+
+<<widget "ejaculation-whitney">>
+	<<ejaculation-named-common>>
+	<<if $speechDisable isnot 1>>
+		<<if $consensual is 1 and $enemyanger lte 0 and $whitneyromance is 1>>
+			<<switch random(1, 3)>>
+				<<case 3>>
+					<<if ["mouth"].includes($NPCList[_nn].penis)>>
+						<<print either(
+							`<<He>> runs a hand through your hair.`,
+							`<<He>> rubs <<his>> <<print $NPCList[_nn].penisdesc>> against your cheek.`
+						)>>
+					<<elseif ["mouth"].includes($NPCList[_nn].vagina)>>
+						<<print either(
+							`<<He>> runs a hand through your hair.`,
+							`<<He>> gently squeezes your face between <<his>> thighs.`,
+							`<<He>> brushes your cheek with <<his>> thigh.`
+						)>>
+					<<elseif ["facesit"].includes($NPCList[_nn].vagina)>>
+						<<print either(
+							`<<He>> runs a hand through your hair.`,
+							`<<He>> lifts off your face slightly and smiles down at you.`
+						)>>
+					<<else>>
+						<<print either(
+							`<<He>> runs a hand through your hair.`,
+							`<<He>> bites your ear and whispers.`
+						)>>
+					<</if>>
+					<<if (["mouth","facesit"].includes($NPCList[_nn].vagina) or ["mouth"].includes($NPCList[_nn].penis)) and random(1)>>
+						<<if C.npc.Whitney.dom gte 10>>
+							<<print either(
+								`"That's it. Just how I like it."`,
+								`"Hope you liked your treat, slut."`
+							)>>
+						<<else>>
+							<<print either(
+								`"You sure know how to work that mouth."`,
+								`"Damn, you feel great down there."`
+							)>>
+						<</if>>
+					<<else>>
+						<<if C.npc.Whitney.dom gte 10>>
+							<<print either(
+								`"Knew I picked the right <<bitch>>."`,
+								`"That's a good slut."`,
+								`"Good <<girl>>."`
+							)>>
+						<<else>>
+							<<print either(
+								`"Fuck, you're good."`,
+								`"You're a nice lay, slut."`
+							)>>
+						<</if>>
+					<</if>>
+					<span class="green">You blush.</span>
+					<<lstress>><<ltrauma>><<lpain>><<violence -3>>
+				<<case 2>>
+					<<if ["facesit"].includes($NPCList[_nn].vagina)>>
+						<<He>> lifts up just enough to leave your face unobscured and holds <<his>> phone overhead.
+					<<elseif ["mouth"].includes($NPCList[_nn].vagina) or ["mouth"].includes($NPCList[_nn].penis)>>
+						<<He>> yanks your hair back, forcing your gaze upwards. <<He>> holds <<his>> phone overhead.
+					<<else>>
+						<<if $worn.neck.collared is 1 and $worn.neck.type.includes("leash")>>
+							<<He>> grabs your leash and forces you upright, bringing your face to <<hers>>.
+						<<else>>
+							<<He>> slings an arm around your shoulders, pressing your cheek to <<hers>>.
+						<</if>>
+						<<He>> raises <<his>> phone.
+					<</if>>
+					<<if $pain gte 60>>
+						<<print either(
+							`"Don't move, I want everyone to see those tears."`,
+							`"Cry for the camera, <<bitch>>."`
+						)>>
+					<<else>>
+						<<print either(
+							`"Now everyone will know you're my property."`,
+							`"Just showing everyone who owns you."`,
+							`"Smile, slut."`
+						)>>
+					<</if>>
+					<<if C.npc.Whitney.love gte 25>>
+						<span class="green"><<He>> <<if ["othervagina","penis","facesit"].includes($mouthuse)>>pets you<<else>>kisses your cheek<</if>> as the camera flashes.</span>
+						<<stress 4>><<arousal 200>><<status 5>><<gstress>><<garousal>><<gcool>>
+					<<else>>
+						<<He>> <<print either("raises <<his>> middle finger","makes a peace sign","sticks <<his>> tongue out")>> as the camera flashes.
+						<<stress 6>><<status 1>><<gstress>><<gcool>>
+					<</if>>
+					<<famesex 1 "pic">>
+				<<default>>
+					<<He>> runs <<his>> hand down your back and caresses your <<bottom>>. <span class="lewd">You shiver from the sensation.</span>
+					<<lstress>><<ltrauma>><<lpain>><<garousal>><<violence -3>><<arousal 500 "bottom">>
+			<</switch>>
+			<br><br>
+		<<elseif $consensual is 0 and $enemyhealth lte ($enemyhealthmax / 10) * 9>>
+			<<switch random(1, 3)>>
+				<<case 3>>
+					<<He>> smirks, <<if $whitneyromance is 1>>kisses <<his>> knuckles, <</if>>then <span class="red">swings <<his>> fist into the side of your face.</span>
+					<<print either(
+						`"Keep struggling. It cracks me up."`,
+						`"That's for being a <<bitch>>."`
+					)>>
+					<<gtrauma>><<gstress>><<gpain>><<violence 6>>
+				<<case 2>>
+					<<if ["facesit"].includes($NPCList[_nn].vagina)>>
+						<<He>> lifts up just enough to leave your face unobscured. <<He>> holds <<his>> phone overhead.
+					<<elseif ["mouth"].includes($NPCList[_nn].vagina) or ["mouth"].includes($NPCList[_nn].penis)>>
+						<<He>> yanks your hair back, forcing your gaze upwards. <<He>> holds <<his>> phone overhead.
+					<<else>>
+						<<if $worn.neck.collared is 1 and $worn.neck.type.includes("leash")>>
+							<<He>> grabs your leash and forces you upright, bringing your face to <<hers>>.
+						<<else>>
+							<<He>> slings an arm around your shoulders, pressing your cheek to <<hers>>.
+						<</if>>
+						<<He>> raises <<his>> phone.
+					<</if>>
+					<<if $pain gte 60>>
+						<<print either(
+							`"Don't move, I want everyone to see those tears."`,
+							`"Cry for the camera, <<bitch>>."`
+						)>>
+					<<else>>
+						<<print either(
+							`"Now everyone will know you're my property."`,
+							`"Just showing everyone who owns you."`,
+							`"Smile, slut."`
+						)>>
+					<</if>>
+					<<He>> <<print either("raises <<his>> middle finger","makes a peace sign","sticks <<his>> tongue out")>> as the camera flashes.
+					<<trauma 6>><<stress 6>><<gtrauma>><<gstress>>
+					<<famerape 1 "pic">>
+				<<default>>
+					Whitney sneers.
+					<<print either(
+						`"You like being used?"`,
+						`"Having fun?"`
+					)>>
+					Before you can answer, <span class="red"><<he>> stomps <<his>> foot on your throat.</span> You cough violently.
+					<<if $audiencepresent gte 1 and random(1)>>
+						<<He>> smirks over <<his>> shoulder. "Sounds like a yes to me." <<His>> friends laugh.
+					<<else>>
+						<<He>> smirks and presses down harder. "What's that?" <<He>> cups a hand to <<his>> ear. "Can't hear you."
+					<</if>>
+					<<gtrauma>><<gstress>><<gpain>><<violence 6>>
+			<</switch>>
+			<br><br>
+		<</if>>
+	<</if>>
+<</widget>>
