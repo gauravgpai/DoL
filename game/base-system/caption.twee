@@ -535,7 +535,7 @@
 			_modeloptions.right_eye = $eyeselect;
 			_modeloptions.mouth = "smile";
 			_modeloptions.freckles = $player.skin.faceFreckles is true;
-			_modeloptions.bodyFreckles = $player.skin.bodyFreckles;
+			_modeloptions.bodyFreckles = $player.skin.bodyFreckles is "random" ? "none" : $player.skin.bodyFreckles;
 			_modeloptions.toast = _toast is true;
 
 			_modeloptions.demon_wings_type = $transformationParts.demon.wings;
