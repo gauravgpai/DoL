@@ -258,7 +258,7 @@
 			<<personselect $anustarget>>
 			<<set $anusaction to 0>><<submission 10>><<analskilluse>><<combatpromiscuity5>>
 			<<if $anususe is 0 or $anusstate is "entrance">>
-				<<if combatSkillCheck("anal", $anustarget)>>
+				<<if combatSkillCheck("analskill", $anustarget)>>
 					<<if $NPCList[$anustarget].penis is 0>>
 						<<submission 2>><<set $anususe to "penis">><<set $NPCList[$anustarget].penis to "anusentrance">><<set $anusstate to "entrance">><<set $anusactiondefault to "penistease">>
 						<<if $leftarm is "anus">>
@@ -341,7 +341,7 @@
 	<<if $anusaction is "anustopenisdouble">>
 		<<if !$anusstate.includes("double")>>
 			<<set $anusaction to 0>><<submission 10>><<analskilluse>><<combatpromiscuity5>>
-			<<if combatSkillCheck("anal", $anusdoubletarget)>>
+			<<if combatSkillCheck("analskill", $anusdoubletarget)>>
 				<<submission 2>><<set $anususe to "penisdouble">><<set $anusstate to "doubleentrance">>
 				<<set $NPCList[$anustarget].penis to $NPCList[$anustarget].penis + "double">>
 				<<set $NPCList[$anusdoubletarget].penis to "anusentrancedouble">>

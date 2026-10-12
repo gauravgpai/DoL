@@ -334,7 +334,7 @@ DefineMacroS("combatDefaults", combatDefaults);
  * @returns {boolean}
  */
 function combatSkillCheck(skillname, targetid = 0, npc = "", basedifficulty = 1000, multiplier = 100) {
-	const skill = currentSkillValue(skillname + "skill");
+	const skill = PC[skillname];
 	const rng = V.rng * 10;
 	const arousalfactor = V.enemyarousalmax / (V.enemyarousal + 1);
 	const trust = V.enemytrust * 10;
