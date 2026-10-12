@@ -3811,7 +3811,7 @@
 
 		<<if $mouthaction is "oraledge">>
 			<<personselect $mouthtarget>><<actionsoraledge $mouthtarget>><<set $mouthaction to 0>><<set $mouthactiondefault to "oraledge">><<set $mouthsubmit to 1>>
-			<<submission 5>><<sexControl 5 `currentSkillValue("oralskill")` $mouthtarget>><<oralskilluse>><<combatpromiscuity4>>
+			<<submission 5>><<sexControl 5 `PC.oralskill` $mouthtarget>><<oralskilluse>><<combatpromiscuity4>>
 		<</if>>
 
 		<<if $mouthaction is "pullaway">>

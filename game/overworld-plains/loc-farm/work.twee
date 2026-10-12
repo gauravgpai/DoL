@@ -1969,7 +1969,7 @@ You drop to your knees beside the <<farm_text horse>>, and observe <<farm_his ho
 
 <br><br>
 
-<<if currentSkillValue("oralskill") gte random(1, 1000)>>
+<<if PC.oralskill gte random(1, 1000)>>
 	<<farm_He horse>> starts bucking against your face. You grasp <<farm_his horse>> hind legs, <span class="green">and manage to remain steady.</span> <<farm_He horse>> moves faster, until <<farm_his horse>> whole body shudders in orgasm.
 
 

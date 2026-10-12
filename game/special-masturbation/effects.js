@@ -2156,7 +2156,7 @@ function masturbationEffectsArms(
 				wikifier("arousal", 100, "masturbationMouth");
 				altText.selectedToy = selectedToy(arm);
 				altText.toys = `You bring your ${toyDisplay(altText.selectedToy)} up to your mouth,`;
-				if (currentSkillValue("oralskill") < 100) {
+				if (PC.oralskill < 100) {
 					fragment.append(span(`${altText.toys} eager for some practice.`));
 				} else {
 					fragment.append(span(`${altText.toys} enjoying the sensation of it against your lips.`));
@@ -2170,12 +2170,12 @@ function masturbationEffectsArms(
 			wikifier("arousal", 100, "masturbationOral");
 			altText.selectedToy = selectedToy(arm);
 			altText.toyDisplay = toyDisplay(altText.selectedToy);
-			if (currentSkillValue("oralskill") < 100) {
+			if (PC.oralskill < 100) {
 				altText.beginner = altText.selectedToy.name.includes("small")
 					? "its modest size perfect for a beginner like you."
 					: "careful not to push it in too deep.";
 				fragment.append(span(`You carefully move the ${altText.toyDisplay} back and forth in your mouth, ${altText.beginner}`));
-			} else if (currentSkillValue("oralskill") < 200) {
+			} else if (PC.oralskill < 200) {
 				wikifier("arousal", 100, "masturbationOral");
 				fragment.append(
 					span(`You bob your head back and forth on the ${altText.toyDisplay}, enjoying the sensation of it rubbing against your lips and tongue.`)
@@ -3465,9 +3465,9 @@ function masturbationEffectsMouth({
 			altText.toyDisplay = toyDisplay(altText.selectedToy);
 
 			if (V.mouth === "mdildomouthentrance") {
-				if (currentSkillValue("oralskill") < 100) {
+				if (PC.oralskill < 100) {
 					fragment.append(span(`You gingerly lick the ${altText.toyDisplay}'s tip, trying your best to tease it with your tongue.`));
-				} else if (currentSkillValue("oralskill") < 200) {
+				} else if (PC.oralskill < 200) {
 					wikifier("arousal", 100, "masturbationOral");
 					fragment.append(span(`You eagerly lick the ${altText.toyDisplay}'s tip, doing your best to tease it with your tongue.`));
 				} else {
@@ -3477,7 +3477,7 @@ function masturbationEffectsMouth({
 					);
 				}
 			} else {
-				if (currentSkillValue("oralskill") < 100) {
+				if (PC.oralskill < 100) {
 					if (altText.selectedToy.name.includes("small")) {
 						fragment.append(span(`You awkwardly wiggle your tongue along the bottom of the ${altText.toyDisplay} in your mouth.`));
 					} else {
@@ -3485,7 +3485,7 @@ function masturbationEffectsMouth({
 							span(`You struggle to lick along the ${altText.toyDisplay}, its girth pinning your tongue to the bottom of your mouth.`)
 						);
 					}
-				} else if (currentSkillValue("oralskill") < 200) {
+				} else if (PC.oralskill < 200) {
 					wikifier("arousal", 100, "masturbationOral");
 					fragment.append(
 						span(`You wriggle your tongue along the ${altText.toyDisplay} in your mouth, trying your best to reach as much of the toy as you can.`)
@@ -3509,9 +3509,9 @@ function masturbationEffectsMouth({
 				altText.selectedToy = selectedToy("right");
 			}
 			altText.toyDisplay = toyDisplay(altText.selectedToy);
-			if (currentSkillValue("oralskill") < 100) {
+			if (PC.oralskill < 100) {
 				fragment.append(span(`You clumsily kiss along the ${altText.toyDisplay}'s length.`));
-			} else if (currentSkillValue("oralskill") < 200) {
+			} else if (PC.oralskill < 200) {
 				wikifier("arousal", 100, "masturbationMouth");
 				fragment.append(span(`You kiss along the ${altText.toyDisplay}'s length, a lewd warmth growing within you.`));
 			} else {
@@ -3532,9 +3532,9 @@ function masturbationEffectsMouth({
 				altText.selectedToy = selectedToy("right");
 			}
 			altText.toyDisplay = toyDisplay(altText.selectedToy);
-			if (currentSkillValue("oralskill") < 100) {
+			if (PC.oralskill < 100) {
 				fragment.append(span(`You try your best to suck on the ${altText.toyDisplay}.`));
-			} else if (currentSkillValue("oralskill") < 200) {
+			} else if (PC.oralskill < 200) {
 				wikifier("arousal", 100, "masturbationOral");
 				fragment.append(span(`You eagerly suck on the ${altText.toyDisplay}.`));
 			} else {

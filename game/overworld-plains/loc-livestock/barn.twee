@@ -889,7 +889,7 @@ You motion for the <<beasttype>> to follow you. <<bHe>> does, hooves clopping on
 		You try to lick <<bhis>> pussy, despite the violent thrusting.
 	<</if>>
 
-	<<if currentSkillValue("oralskill") gte 400>>
+	<<if PC.oralskill gte 400>>
 		<<set $livestock.horse.reputation to 2>><<set $daily.livestock.horses_satisfied += 1>>
 		<<ejacstat>><<faceejacstat>>
 		<<if $NPCList[0].penis isnot "none">>

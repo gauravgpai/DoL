@@ -1756,7 +1756,7 @@ You approach Remy's steeds.
 <</if>>
 <<deviancy4>>
 
-<<if currentSkillValue("oralskill") gte 400>>
+<<if PC.oralskill gte 400>>
 	<<set $livestock.horse.reputation to 2>>
 	<<ejacstat>><<faceejacstat>>
 	<<if $NPCList[0].penis isnot "none">>

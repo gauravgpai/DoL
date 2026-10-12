@@ -1253,7 +1253,7 @@ Whitney looks thoughtful for a moment, then <<he>> grabs a bottle of shampoo, an
 <</if>>
 <br><br>
 
-<<link [[Make <<him>> cum|Whitney Home Dawn Shower Lick Cum]]>><</link>><<skill_difficulty `currentSkillValue("oralskill")` "Mouth Skill" 1 600>>
+<<link [[Make <<him>> cum|Whitney Home Dawn Shower Lick Cum]]>><</link>><<skill_difficulty `PC.oralskill` "Mouth Skill" 1 600>>
 <br>
 <<link [[Go easy|Whitney Home Dawn Shower Lick Easy]]>><</link>>
 <br>
@@ -1262,7 +1262,7 @@ Whitney looks thoughtful for a moment, then <<he>> grabs a bottle of shampoo, an
 <<effects>>
 
 
-<<if currentSkillValue('oralskill') gte random(1, 600)>>
+<<if PC.oralskill gte random(1, 600)>>
 	<<He>> shifts away a bit, playfully, as if trying to see how far you'll go. You won't let your prey escape, manage to corner <<him>>, and unleash a barrage of kisses and licks that <span class="green">soon has <<him>> squirming</span>, <span class= "lewd"><<if $NPCList[0].penis isnot "none">>semen erupts from <<his>> <<print $NPCList[0].penisdesc>>,<<else>><<his>> juices<</if>> mixing with the soapy water.</span><<glove>><<npcincr Whitney love 1>>
 	<br><br>
 

@@ -858,7 +858,7 @@ You brace for the impact as the fruit comes flying towards you.
 	<<case 2>>
 		You enthusiastically comply and <<oraltext>> lick <<his>> asshole, giving it a few wet kisses as well.
 		<br>
-		<<if currentSkillValue("oralskill") gte 400>>
+		<<if PC.oralskill gte 400>>
 			Your tongue soon sends <<him>> over the edge, and <<he>>
 			<<if $NPCList[0].penis isnot "none">>
 				ejaculates onto the ground.

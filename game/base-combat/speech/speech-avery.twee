@@ -1214,7 +1214,7 @@
 					<<else>>
 						"Finally you're using that mouth of yours for something productive," <<he>> <<= either("drawls","says","remarks")>>.
 					<</if>>
-				<<elseif currentSkillValue("oralskill") gte 400>>
+				<<elseif PC.oralskill gte 400>>
 					"Very good." <<He>> smiles. "You know how to use that<<if C.npc.Avery.love gte 30 or C.npc.Avery.lust gte 20>> <<= either("sweet","pretty","precious")>> little<</if>> mouth of yours well..."
 				<<else>>
 					"Haven't done this much before, have you?" <<He>> <<= either("smiles","<<laughs>>")>>. "How <<= either("cute","adorable")>>. We'll have to keep practicing."

@@ -1916,7 +1916,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 			<<link [[Flaunt your chest|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $chestskill * 50>><</link>><<promiscuous3>><<skill_difficulty `PC.chestskill` "Chest Skill" 1 800>>
 			<<if !$worn.face.type.includes("gag")>>
 				<br>
-				<<link [[Show off your tongue|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $oralskill * 50>><</link>><<promiscuous3>><<skill_difficulty `currentSkillValue("oralskill")` "Oral Skill" 1 800>>
+				<<link [[Show off your tongue|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $oralskill * 50>><</link>><<promiscuous3>><<skill_difficulty `PC.oralskill` "Oral Skill" 1 800>>
 			<</if>>
 		<<else>>
 			<<insufficientStat "promiscuity" "to flaunt your body parts at them">>
@@ -1937,7 +1937,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				You try to puff out your chest, but it just looks awkward.<<chestskill 5>><<gchestskill>>
 			<</if>>
 		<<else>> /* Show off your tongue */
-			<<if currentSkillValue("oralskill") gte random(1, 800)>>
+			<<if PC.oralskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You flick your tongue suggestively before licking your lips.<<oralskill 5>><<goralskill>>
 				<br><br>
