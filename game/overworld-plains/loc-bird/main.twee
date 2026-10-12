@@ -728,7 +728,7 @@ Moments later, you've arrived. The <<beasttype>> swoops through a broken wall, a
 :: Bird Rescue No Syndrome Tower Hug
 <<effects>>
 
-<<if $phase is 0>>Despite the pain you feel, you<<elseif $phase is 1>>Shakily, you<<else>>You<</if>> take a step towards the <<beasttype>> and wrap your arms around <<bhis>> <<if $monster is 1>>body<<elseif currentSkillValue('tending') gte 400>>mantle<<else>>shoulder area<</if>>, holding <<bhim>> tight.
+<<if $phase is 0>>Despite the pain you feel, you<<elseif $phase is 1>>Shakily, you<<else>>You<</if>> take a step towards the <<beasttype>> and wrap your arms around <<bhis>> <<if $monster is 1>>body<<elseif PC.tending gte 400>>mantle<<else>>shoulder area<</if>>, holding <<bhim>> tight.
 <<bHe>> seems <<if $phase isnot 2 or $birdescaped gte 1>>hesitant with this arrangement, but<<else>>happy with this arrangement and<</if>> <<if $monster is 1>>returns the embrace<<else>>nuzzles into you<</if>><<if $phase isnot 2 or $birdescaped gte 1>> after a moment<</if>>.
 <br><br>
 

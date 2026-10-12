@@ -3218,7 +3218,7 @@
 <</widget>>
 
 <<widget "tendingtext">>
-	<<set $_tendingText to currentSkillValue('tending')>>
+	<<set $_tendingText to PC.tending>>
 	<<if $_tendingText lt 200>><span class="pink">awkwardly</span>
 	<<elseif $_tendingText lt 400>><span class="purple">cautiously</span>
 	<<elseif $_tendingText lt 600>><span class="blue">rhythmically</span>
@@ -5113,7 +5113,7 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "tending_text">>
-	<<set $_tendingText to currentSkillValue('tending')>>
+	<<set $_tendingText to PC.tending>>
 	<<if $_tendingText gte 1200>>
 		<span class="gold">You're incredible at this.</span>
 	<<elseif $_tendingText gte 800>>

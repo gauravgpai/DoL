@@ -2877,7 +2877,7 @@ You start to climb the tree towards the nest. You make it up halfway, before nea
 	<br><br>
 
 	You continue the climb up to the nest, balancing yourself on the large branch it sits on.
-	<<if currentSkillValue('tending') gte 150>>
+	<<if PC.tending gte 150>>
 		By your quick count, you see <span class="blue"><<number $forest_nest.eggs>></span> viable bird <<pluralise $forest_nest.eggs "egg">>, but you'd need to count them individually to be sure.
 		<br><br>
 
@@ -2917,7 +2917,7 @@ You start to climb the tree towards the nest. You make it up halfway, before nea
 				<<link [[Wait for a fox|Forest Nest Hide]]>><<set $phase to 1>><</link>>
 				<br>
 			<</if>>
-		<<elseif currentSkillValue('tending') gte 150>>
+		<<elseif PC.tending gte 150>>
 			By your quick count, you see <span class="blue"><<number $forest_nest.eggs>></span> viable bird <<pluralise $forest_nest.eggs "egg">>, but you'd need to count them individually to be sure.
 			<br><br>
 
@@ -3027,7 +3027,7 @@ You approach the nest and look inside.
 		<<link [[Wait for a fox|Forest Nest Hide]]>><<set $phase to 1>><</link>>
 		<br>
 	<</if>>
-<<elseif currentSkillValue('tending') gte 150>>
+<<elseif PC.tending gte 150>>
 	By your quick count, you see <span class="blue"><<number $forest_nest.eggs>></span> viable bird <<pluralise $forest_nest.eggs "egg">>, but you'd need to count them individually to be sure.
 	<br><br>
 
@@ -3319,7 +3319,7 @@ You hide and wait, watching the nest intently.
 	<<bHe>> hesitantly takes a step forward, looking around. <<bHe>> then darts forward and starts to dig through it.
 	<br><br>
 
-	You hear a slither and a hiss. <<bHe>> hears it too. <<if currentSkillValue('tending') lt 800>><span class="red">This isn't a bird's nest.</span><</if>>
+	You hear a slither and a hiss. <<bHe>> hears it too. <<if PC.tending lt 800>><span class="red">This isn't a bird's nest.</span><</if>>
 	<br><br>
 
 	A massive snake slithers out from the underbrush, staring directly at the <<beasttype>>.

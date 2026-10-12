@@ -54,7 +54,7 @@ DefineMacroS("skipToOrgasm", skipToOrgasm);
 
 function masturbationStallInterrupt() {
 	if (
-		V.attractiveness / 6 + (V.fame.business * 2) / 6 + (currentSkillValue("tending") * 4) / 6 + V.masturbationorgasm * V.daily.stall_lewdity * 4000 >=
+		V.attractiveness / 6 + (V.fame.business * 2) / 6 + (PC.tending * 4) / 6 + V.masturbationorgasm * V.daily.stall_lewdity * 4000 >=
 		random(1, 300000)
 	) {
 		V.phase += 2;

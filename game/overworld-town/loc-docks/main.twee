@@ -1168,7 +1168,7 @@ You keep an eye out for anything valuable. There's a lot, but you need something
 	<<if !_dock_location>>
 		<<skul_dock_contents electronics>>
 	<</if>>
-	<<if !_dock_location and currentSkillValue('tending') gte 400>>
+	<<if !_dock_location and PC.tending gte 400>>
 		<<skul_dock_contents fertiliser>>
 	<</if>>
 

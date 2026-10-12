@@ -941,7 +941,7 @@
 
 <<widget "farm_brush">>
 	<<wearProp "brush">>
-	<<if currentSkillValue('tending') gte 600>>
+	<<if PC.tending gte 600>>
 		You brush <<farm_his horse>> fur. There's a lot to cover, <span class="green">but you can tell where the <<farm_text horse>> really needs it</span>. <<farm_He horse>> enjoys the attention.
 		<br><br>
 
@@ -1032,12 +1032,12 @@
 
 		A <<beasttype>> gives you a strained moo.
 		<br>
-		<<if currentSkillValue('tending') gte 1500>>
+		<<if PC.tending gte 1500>>
 			<<set _cattleMilkHand to 3>>
-		<<elseif currentSkillValue('tending') gte 1200>>
+		<<elseif PC.tending gte 1200>>
 			<<set _cattleMilkHand to 4>>
 		<<else>>
-			<<set _cattleMilkHand to 5 * (6 - Math.ceil(Math.clamp(currentSkillValue('tending'), 0, 1000) / 200))>>
+			<<set _cattleMilkHand to 5 * (6 - Math.ceil(Math.clamp(PC.tending, 0, 1000) / 200))>>
 		<</if>>
 		<<farmicon "bucket">><<link [["Milk by hand (0:" + String(_cattleMilkHand).padStart(2, '0') + ")"|Farm Cattle Milk Hand]]>><<farm_yield 1>><<set $cattle_milked += 1>><<set $farm_work.cattle_milked += 1>><<tending 1>><<farm_cattle 1>><<set $phase to _cattleMilkHand>><<pass _cattleMilkHand>><</link>><<deviant1>><<gfarm>><<gtending>><<grespect>>
 		<br>

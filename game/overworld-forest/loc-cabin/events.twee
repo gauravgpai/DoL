@@ -3434,7 +3434,7 @@ Eden seems amused by your stubbornness, letting out a breathy chuckle.
 :: Eden Wounds Finish
 <<effects>>
 
-<<if currentSkillValue('tending') gte 150>>
+<<if PC.tending gte 150>>
 	You skilfully wrap up <<his>> wounds. Eden looks impressed by your handiwork.
 <<else>>
 	You carefully wrap up <<his>> wounds, but the bandages end up loose in some places and too tight in others. Eden seems to appreciate your efforts regardless.

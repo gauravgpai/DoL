@@ -2637,7 +2637,7 @@ You climb from the pool, and dry yourself using the towels stacks just inside th
 				<br><br>
 			<<else>>
 				You note that <<he>> is very meticulous in <<his>> work.
-				<<if currentSkillValue('tending') lt 600>>
+				<<if PC.tending lt 600>>
 					<br><br>
 					<span class="gold">You learn a thing or two about tending gardens.</span> <<gtending>><<tending 6>>
 				<</if>>

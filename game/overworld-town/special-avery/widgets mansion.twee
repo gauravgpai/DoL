@@ -4340,7 +4340,7 @@
 		Avery potters in the garden, taking <<his>> time pruning individual leaves while you do the grunt work. "This one's exquisite," <<he>> says, gesturing at a holly bush.
 		<br><br>
 		Avery makes delicate adjustments with <<his>> shears, stepping back to admire <<his>> handiwork often.
-		<<if currentSkillValue('tending') gte 600>>
+		<<if PC.tending gte 600>>
 			<span class="green">You think you could do a better job.</span> It might be wise to keep it to yourself, however.
 			<br><br>
 			<<link [[Teach Avery|Mansion Housework Garden Teach]]>><</link>>

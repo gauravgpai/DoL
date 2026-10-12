@@ -75,7 +75,7 @@ You hand Gwylan the wolfshrooms.
 /* Above is in case the player became proficient enough in tending to pick wolfshrooms without the tutorial exception half way through */
 
 <<He>> turns them over in <<his>> hands.
-<<if currentSkillValue('tending') lt 300>>
+<<if PC.tending lt 300>>
 	"Not the finest quality. Small, and this one's almost inert. You broke a few bits off when pulling them up, and the caps are warped too. Not bad, though. I'm sure you'll learn how to find better specimens in due time."
 <<else>>
 	"Very nice. You've got a good eye. These will work well."

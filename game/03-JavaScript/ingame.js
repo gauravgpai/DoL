@@ -3003,7 +3003,7 @@ function hasSharpSenses(sense = "any") {
 		if (V.wolfgirl >= 6) return "wolf instincts";
 		if (V.cat >= 6) return "cat instincts";
 		if (V.fox >= 6) return "fox instincts";
-		if (V.dryad >= 6 || currentSkillValue("tending") >= 900) return "nature-trained instincts";
+		if (V.dryad >= 6 || PC.tending >= 900) return "nature-trained instincts";
 	}
 	return false;
 }

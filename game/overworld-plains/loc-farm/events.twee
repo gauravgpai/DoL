@@ -844,7 +844,7 @@ You're sure it'll be fine. You shut and lock the door.
 :: Farm Pigs Alex Scold
 <<effects>>
 
-<<if currentSkillValue('tending') gte (1, 600)>>
+<<if PC.tending gte (1, 600)>>
 
 	"Down!" you repeat. <span class="green">The <<farm_text pig>> listens this time,
 	</span> dropping Alex's <<if $pronoun is "f">>skirt<<else>>shorts<</if>> and trotting back to the others.

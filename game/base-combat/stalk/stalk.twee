@@ -540,7 +540,7 @@
 			<<if $dryad gte 6>>
 				The thorns and vines <span class="green">move aside for you</span>. You end up making it through faster than your quarry did, and gain some distance.
 				<<set $NPCList[0].distance -= 1>>
-			<<elseif currentSkillValue("tending") gte random(1, 800)>>
+			<<elseif PC.tending gte random(1, 800)>>
 				You brace yourself, and take your time navigating the thick foliage. <span class="green">You know where to step, and when to take it as slow as possible to avoid being ensnared.</span>
 			<<else>>
 				You try to push through as fast as possible, <span class="red">and end up getting momentarily ensnared in some vines</span>. You escape, but your quarry has pulled ahead.

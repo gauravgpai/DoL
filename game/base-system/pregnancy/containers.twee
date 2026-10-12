@@ -95,7 +95,7 @@
 		<<set $_creature[_i] to {tiredness: 0, purity: 0, hallucinogen: 0, tenticles: 0}>>
 		<<set _creatureTip[_i] to []>>
 		<!-- Higher tending increases stress and fatigue losses -->
-		<<set _tendingMulti to 1 + (currentSkillValue('tending') / 1000)>>
+		<<set _tendingMulti to 1 + (PC.tending / 1000)>>
 		<<set _pregValue = Math.floor(5000 / _container.creatures[_i].stats.speed)>>
 		<<if _container.upgrades.luxury gt 0>>
 			<!-- Decorations/barn quality increase value -->

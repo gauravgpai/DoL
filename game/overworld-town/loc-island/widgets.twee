@@ -537,7 +537,7 @@ You find a clearing full of elegant plumerias, their spiral petals swaying in th
 		<br>
 	<</if>>
 <</if>>
-<<if currentSkillValue('tending') gte 300>>
+<<if PC.tending gte 300>>
 	<<foodstufficon "plumeria">> <<link [[Pick plumerias (0:20)|Island Plumeria Pick]]>><<island_pass 20>><</link>><<tendingdifficulty 300 600>>
 	<br>
 <<else>>

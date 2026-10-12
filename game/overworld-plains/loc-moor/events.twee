@@ -5194,7 +5194,7 @@ After a while, the <<beasttype>> backs off and <<if $monster is 1>>looks<<else>>
 
 :: Bird Rescue Syndrome Comfort
 <<effects>>
-"I'm <<if $speech_attitude is "meek">>alright<<else>>not hurt<</if>>," you say, before wrapping your arms around the <<beasttype>><<if $monster isnot 1>>'s <<if currentSkillValue('tending') gte 400>>mantle<<else>>shoulder area<</if>><</if>>.
+"I'm <<if $speech_attitude is "meek">>alright<<else>>not hurt<</if>>," you say, before wrapping your arms around the <<beasttype>><<if $monster isnot 1>>'s <<if PC.tending gte 400>>mantle<<else>>shoulder area<</if>><</if>>.
 <<if $monster is 1>>
 	<<bHe>> returns the hug<<if C.npc["Great Hawk"].dom gte 20>>, squeezing you tight<</if>>.
 <<else>>

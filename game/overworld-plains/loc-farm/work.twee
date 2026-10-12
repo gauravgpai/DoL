@@ -1342,8 +1342,8 @@ You help Alex carry feed across the yard, spilling it over the fence and into th
 			$hairlength gte random(300, 500),
 			not _topless,
 			not _bottomless,
-			currentSkillValue("tending") gte random(0, 500),
-			currentSkillValue("tending") gte random(0, 1000),
+			PC.tending gte random(0, 500),
+			PC.tending gte random(0, 1000),
 			PC.skulduggery gte random(100, 300)
 		]>>
 		<<set _attemptOne to random(0, 2)>>
@@ -2582,7 +2582,7 @@ You sneak up to the shed, and push the door open.
 		You water the crops.
 	<</if>>
 <</if>>
-<<if currentSkillValue('tending') gte 200>>
+<<if PC.tending gte 200>>
 	You also examine them for pests and signs of disease.
 <<else>>
 	You also examine the crops for pests.
@@ -2638,7 +2638,7 @@ You sneak up to the shed, and push the door open.
 		You help Alex water the crops.
 	<</if>>
 <</if>>
-<<if currentSkillValue('tending') gte 200>>
+<<if PC.tending gte 200>>
 	You also examine them for pests and signs of disease.
 <<else>>
 	You also examine them for pests.

@@ -530,17 +530,17 @@
 		<span class="pink">little,</span>
 	<</if>>
 	and your tending skill is contributing
-	<<if currentSkillValue('tending') gte 1200>>
+	<<if PC.tending gte 1200>>
 		<span class="gold">immensely.</span>
-	<<elseif currentSkillValue('tending') gte 1000>>
+	<<elseif PC.tending gte 1000>>
 		<span class="green">a great deal.</span>
-	<<elseif currentSkillValue('tending') gte 800>>
+	<<elseif PC.tending gte 800>>
 		<span class="teal">a lot.</span>
-	<<elseif currentSkillValue('tending') gte 600>>
+	<<elseif PC.tending gte 600>>
 		<span class="lblue">a decent amount.</span>
-	<<elseif currentSkillValue('tending') gte 400>>
+	<<elseif PC.tending gte 400>>
 		<span class="blue">somewhat.</span>
-	<<elseif currentSkillValue('tending') gte 200>>
+	<<elseif PC.tending gte 200>>
 		<span class="purple">a bit.</span>
 	<<else>>
 		<span class="pink">little.</span>
@@ -844,7 +844,7 @@
 	<<silently>><<stall_inventory>><</silently>>
 	<<stall_init>>
 
-	<<if Math.min(10000,3000 + $attractiveness/2 + $fame.business + (currentSkillValue('tending') * 2) + (Math.min($foodstuff_inventory.length,10) * 500)) gte random(1, 15000)>>
+	<<if Math.min(10000,3000 + $attractiveness/2 + $fame.business + (PC.tending * 2) + (Math.min($foodstuff_inventory.length,10) * 500)) gte random(1, 15000)>>
 	    /* No sale in 1/3 of the cases. */
 		<<set _stall_attention to 2>>
 		<<set $stall_foodstuff to $foodstuff_inventory.random()>>

@@ -13,7 +13,7 @@
 			Tufts of small yellow flowers grow among the heather.
 			<br><br>
 
-			<<if currentSkillValue('tending') gte 400>>
+			<<if PC.tending gte 400>>
 				Broccoli. They're fully grown, and inedible. Their gentle sway puts you at ease.<<lstress>><<stress -6>>
 				<br><br>
 				<<if !$plants_known.includes("broccoli")>>
@@ -29,7 +29,7 @@
 		<<else>>
 			Tufts of small white flowers grow among the heather.
 
-			<<if currentSkillValue('tending') gte 300>>
+			<<if PC.tending gte 300>>
 				Wild carrots.
 				<br><br>
 
@@ -295,7 +295,7 @@
 			Green shoots erupt from the earth in clusters.
 			<br><br>
 
-			<<if currentSkillValue('tending') gte 400>>
+			<<if PC.tending gte 400>>
 				<<if pcAreArmsBound("both")>>
 					<span class="red">Both of your arms are bound</span>, so you are unable to pick onions.
 				<<else>>
@@ -573,7 +573,7 @@
 			Green shoots sprout from a bank.
 			<br><br>
 
-			<<if currentSkillValue('tending') gte 500>>
+			<<if PC.tending gte 500>>
 				<<if pcAreArmsBound("both")>>
 					<span class="red">Both of your arms are bound</span>, so you are unable to pick garlic.
 				<<else>>

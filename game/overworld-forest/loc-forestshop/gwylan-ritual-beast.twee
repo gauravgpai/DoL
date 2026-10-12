@@ -2767,7 +2767,7 @@ The rest of the time passes in silence, but you don't have to wait long.
 	"Who... who sings the wildsong? Who beckons?" <<he>> mutters. <<His>> eyes are vacant, staring at nothing.
 	<br><br>
 
-	<<if $beastRitual.tainted and (currentSkillValue('tending') gte 800 or $backgroundTraits.includes("plantlover"))>>
+	<<if $beastRitual.tainted and (PC.tending gte 800 or $backgroundTraits.includes("plantlover"))>>
 		<<if $backgroundTraits.includes("plantlover")>>
 			Thanks to your lewd love of plants,
 		<<else>>

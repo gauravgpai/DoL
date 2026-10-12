@@ -536,7 +536,7 @@
 				You hear a gentle buzz up ahead. A large beehive hangs from a tree. Workers fly in and out in a quest for pollen. The honey would be valuable.
 				<br><br>
 
-				<<if currentSkillValue('tending') gte 800>>
+				<<if PC.tending gte 800>>
 					<<if pcAreArmsBound("both")>>
 						<span class="red">Both of your arms are bound</span>, so you are unable to harvest honeycomb.
 					<<else>>
@@ -1430,11 +1430,11 @@
 				<<foodstufficon "wolfshroom">><<link [[Take for science project (0:02)|Forest Science Shroom]]>><<pass 2>><<set $phase to 1>><</link>>
 				<br>
 			<</if>>
-			<<if currentSkillValue('tending') lt 300 and $gwylan?.request.special is "tutorial" and $gwylanTutorialShrooms lt 3>>
+			<<if PC.tending lt 300 and $gwylan?.request.special is "tutorial" and $gwylanTutorialShrooms lt 3>>
 				<<foodstufficon "wolfshroom">><<link [[Pick for Gwylan (0:20)|Forest Mushrooms Gwylan Pick]]>><<pass 20>><</link>>
 				<br>
 			<</if>>
-			<<if currentSkillValue('tending') gte 300>>
+			<<if PC.tending gte 300>>
 				<<foodstufficon "wolfshroom">><<link [[Search for saleable specimens (0:20)|Forest Mushrooms2 Pick]]>><<pass 20>><</link>><<tendingdifficulty 300 600>>
 				<br>
 			<<else>>
@@ -1518,7 +1518,7 @@
 			<<case 4>>
 				<<set $forest_nest.eggs to 0>>
 				You spot a large cluster of <<if $forest gt 50>>mud<<else>>twigs<</if>> and foliage on the ground. It looks like a <span class="teal">fallen bird's nest</span>.
-				<<if currentSkillValue('tending') gte 800>>
+				<<if PC.tending gte 800>>
 					<<set _snakeKnown to true>>
 					However, thanks to your tending skill, you spot nearby tracks and holes in the ground. You realise <span class="red">it's a snake's nest</span>.
 				<</if>>
@@ -1563,7 +1563,7 @@
 			<br>
 		<</if>>
 		<<if $forest_nest.fox is 3>>
-			<<link [[Hide and wait (0:05)|Forest Nest Hide]]>><<unset $athleticsSuccess>><<set $forest_nest.eggs -= 2>><<pass 5>><</link>><<if currentSkillValue('tending') lt 800>><<note "Fewer eggs" "red">><</if>>
+			<<link [[Hide and wait (0:05)|Forest Nest Hide]]>><<unset $athleticsSuccess>><<set $forest_nest.eggs -= 2>><<pass 5>><</link>><<if PC.tending lt 800>><<note "Fewer eggs" "red">><</if>>
 			<br>
 		<</if>>
 	<</if>>
@@ -1710,7 +1710,7 @@
 					<br>
 				<</if>>
 			<</if>>
-			<<if currentSkillValue('tending') gte 100>>
+			<<if PC.tending gte 100>>
 				<<if pcAreArmsBound("both")>>
 					<span class="red">Both of your arms are bound</span>, so you are unable to pick lilies.
 				<<else>>
@@ -1740,7 +1740,7 @@
 					<br>
 				<</if>>
 			<</if>>
-			<<if currentSkillValue('tending') gte 200>>
+			<<if PC.tending gte 200>>
 				<<if pcAreArmsBound("both")>>
 					<span class="red">Both of your arms are bound</span>, so you are unable to pick roses.
 				<<else>>
@@ -1753,7 +1753,7 @@
 			<</if>>
 			<br>
 		<<else>>
-			<<if currentSkillValue('tending') gte 100>>
+			<<if PC.tending gte 100>>
 				<<if pcAreArmsBound("both")>>
 					<span class="red">Both of your arms are bound</span>, so you are unable to pick pears.
 				<<else>>
@@ -1776,7 +1776,7 @@
 					<br>
 				<</if>>
 			<</if>>
-			<<if currentSkillValue('tending') gte 300>>
+			<<if PC.tending gte 300>>
 				<<if pcAreArmsBound("both")>>
 					<span class="red">Both of your arms are bound</span>, so you are unable to pick orchids.
 				<<else>>
@@ -1788,7 +1788,7 @@
 				<br>
 			<</if>>
 		<<else>>
-			<<if currentSkillValue('tending') gte 200>>
+			<<if PC.tending gte 200>>
 				<<if pcAreArmsBound("both")>>
 					<span class="red">Both of your arms are bound</span>, so you are unable to pick lemons.
 				<<else>>
