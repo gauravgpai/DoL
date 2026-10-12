@@ -1643,7 +1643,7 @@ The pair share a grin. "We'll be happy to oblige," <<he>> says, stepping closer.
 	<<endevent>>
 	<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 	<br>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("promiscuity", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>
@@ -1799,7 +1799,7 @@ A <<beasttype>> steps out from the forest, sniffs you, then mounts.
 	<<endevent>>
 	<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 	<br>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("deviancy", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>
@@ -2058,7 +2058,7 @@ Eventually you come across a large plant, taller and thicker than you. It's surr
 
 	<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 	<br>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 11)>><<set $earSlime.defyCooldown += 4>>
+<<elseif $earSlime.corruption gte (PC.willpower / 11)>><<set $earSlime.defyCooldown += 4>>
 	You try to walk against the slime's instruction, <span class = "red">but it overpowers your will</span> and the dizziness does not subside. You're nagged by the fear that you're going the wrong way. It's hard to tell with the sky obscured by the canopy. The dizziness becomes more intense, and you find it harder to think.<<willpower 3>><<gwillpower>>
 	<br><br>
 
@@ -6583,7 +6583,7 @@ You cautiously release <<him>> and help <<him>> stand. <<He>> fixes <<his>> clot
 		<<set $gwylan.lureWill++>>
 		<span class="teal">You dig your heels in, and try to resist following the song.</span> <<if $gwylan.lureWill lt 4>>Your legs still carry you forward, but you're gaining control.<</if>>
 	<<else>>
-		<span class="red">You can't resist the beautiful song.</span> <<if currentSkillValue('willpower') lte 500>><<willpower 1>><<gwillpower>><</if>>
+		<span class="red">You can't resist the beautiful song.</span> <<if PC.willpower lte 500>><<willpower 1>><<gwillpower>><</if>>
 	<</if>>
 <</if>>
 <br><br>

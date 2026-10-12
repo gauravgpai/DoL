@@ -2156,7 +2156,7 @@ You are in the open temple grounds.
 	<</switch>>
 	<br><br>
 
-	<<if (currentSkillValue('willpower') / 10) gte ((100 - Math.floor($purity / 10)) + random(1, 100))>>
+	<<if (PC.willpower / 10) gte ((100 - Math.floor($purity / 10)) + random(1, 100))>>
 		<span class="green">You press on.</span><<gwillpower>><<willpower 1>><<hcSuspicion -1>><<hopelessCycleSus -1>>
 		<<set _success to true>>
 	<<else>>

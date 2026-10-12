@@ -370,7 +370,7 @@ You follow the slime's urging and go down onto all fours. You crawl on your hand
 
 :: Livestock Slime Field Grass Defy
 <<effects>>
-<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10) and !$earSlime.defyCooldown>>
+<<if $earSlime.corruption gte (PC.willpower / 10) and !$earSlime.defyCooldown>>
 	<<set $earSlime.defyCooldown += 4>>
 	You try to ignore the slime but feel a jolt of pain as it punishes you for your defiance. However, <span class="red">you fail</span> to resist its influence.<<ggwillpower>><<willpower 3>>
 	<br><br>
@@ -425,7 +425,7 @@ You follow the slime's urging and go down on all fours. As you pull up your firs
 :: Livestock Slime Field Grass Extreme Defy
 <<effects>>
 
-<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<if $earSlime.corruption gte (PC.willpower / 10)>>
 	<<set $earSlime.defyCooldown += 8>>
 	You try to ignore the slime but feel a jolt of pain as it punishes you for your defiance. However, <span class="red">you fail</span> to resist its influence.<<ggwillpower>><<willpower 3>>
 	<br><br>

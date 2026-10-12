@@ -543,7 +543,7 @@ You cry out as pain erupts in your back. Avery lashes you again. And again. <<He
 <<masopain 20>>
 <br><br>
 
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	After the initial shock, <span class="green">you find that you're able to bear it.</span> For now.
 	<br><br>
 
@@ -582,7 +582,7 @@ You cry out as pain erupts in your back. Avery lashes you again. And again. <<He
 <</if>>
 <<masopain 20>>
 <br><br>
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	Avery doesn't slow. A continuous wave of pain washes over your back, <span class="green">but you endure.</span>
 	<br><br>
 
@@ -639,7 +639,7 @@ Avery's assault stops. The room is silent, aside from <<his>> rapid breathing. <
 <br><br>
 "That'll be all," <<he>> says, walking into view. <<He>> grasps your chin, and tilts your face towards <<his>> gaze. "I deserve a rest, then I'll come collect you. Don't go anywhere." <<He>> lets your head fall, and walks away.
 <br><br>
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	You listen to <<his>> footsteps disappear, then try to wriggle free of your bonds. The pain in your back burns with a new intensity as you move, <span class="green">but it's unable to stop you.</span> Given a little time, you're able to pull one wrist free. You untie the other ropes.
 	<br><br>
 
@@ -663,7 +663,7 @@ You wait for the pain to subside, then try to move again.
 	<br><br>
 	<<link [[Next|Mansion Dungeon Whip Return]]>><<endevent>><</link>>
 	<br>
-<<elseif (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<elseif (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	The pain flares across you back, <span class="green">but it's less intense than before.</span> You manage to work one of your wrists free, and untie the others.
 	<br><br>
 

@@ -767,7 +767,7 @@ The <<person>> gawks, as if not believing <<his>> eyes. <<He>> glances around, t
 	<<endevent>>
 	<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
 	<br>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("exhibitionism", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>
@@ -829,7 +829,7 @@ The <<person>> becomes more forceful.
 	<<endevent>>
 	<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
 	<br>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("exhibitionism", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>

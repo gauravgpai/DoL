@@ -208,7 +208,7 @@
 		You take a deep breath, and try not to let the pressure get to you.
 	<<case 2 3 5>>
 		<<if $phase is 5>>
-			<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+			<<if $earSlime.corruption gte (PC.willpower / 10)>>
 				<<skulduggerycheck>><<set _cheating to true>>
 				The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to look for ways to cheat in the exam.
 			<<else>>
@@ -285,7 +285,7 @@ You join the throng of students in the hallway.
 		<</if>>
 	<<case 2 6 8>>
 		<<if $phase is 8>>
-			<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+			<<if $earSlime.corruption gte (PC.willpower / 10)>>
 				<<skulduggerycheck>><<set _cheating to true>>
 				The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to look for ways to cheat in the exam.
 			<<else>>
@@ -412,7 +412,7 @@ The bell rings. You shuffle with the other students into the throng of the hallw
 		You take a deep breath, and try not to let the pressure get to you.
 	<<case 2 4 6>>
 		<<if $phase is 6>>
-			<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+			<<if $earSlime.corruption gte (PC.willpower / 10)>>
 				<<skulduggerycheck>><<set _cheating to true>>
 				The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to look for ways to cheat in the exam.
 			<<else>>
@@ -495,7 +495,7 @@ The bell rings. You shuffle with the other students into the throng of the hallw
 		You take a deep breath, and try not to let the pressure get to you.
 	<<case 2 3 5>>
 		<<if $phase is 5>>
-			<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+			<<if $earSlime.corruption gte (PC.willpower / 10)>>
 				<<skulduggerycheck>><<set _cheating to true>>
 				The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to look for ways to cheat in the exam.
 			<<else>>

@@ -819,7 +819,7 @@ Following the slime's command, you find a spot where you think your clothes will
 
 :: Farm Slime Strip Defy
 <<effects>>
-<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10) and !$earSlime.defyCooldown>>
+<<if $earSlime.corruption gte (PC.willpower / 10) and !$earSlime.defyCooldown>>
 	<<if hasSexStat("exhibitionism", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>

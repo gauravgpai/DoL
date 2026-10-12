@@ -158,7 +158,7 @@
 			<<if $earSlime.startedThreats>>
 				<<link [[Defy|Street Footbridge Defy]]>>
 					<<set $phase to 1>><<corruption -1>><<pain 8>><<stress 6>><<trauma 6>><<def 1>>
-					<<if $earSlime.defyCooldown or $earSlime.corruption lt (currentSkillValue('willpower') / 10)>><<pass 10>><</if>>
+					<<if $earSlime.defyCooldown or $earSlime.corruption lt (PC.willpower / 10)>><<pass 10>><</if>>
 				<</link>><<lcorruption>><<ggpain>><<ggtrauma>><<ggstress>>
 			<<else>>
 				<<link [[Ignore and find another way around (0:10)|Street Footbridge Detour]]>><<pass 10>><</link>><<gtrauma>><<gstress>>

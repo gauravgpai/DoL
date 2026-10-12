@@ -588,7 +588,7 @@ A <<person>> takes your leash and leans in. "They used to respect you," <<he>> s
 		<br><br>
 		<<stray_happiness_text>>
 	<<elseif $slimePoundDefy>>
-		<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+		<<if $earSlime.corruption gte (PC.willpower / 10)>>
 			<<set $earSlime.defyCooldown += 2>>
 			The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to do what it wants.
 			<<ggwillpower>><<willpower 1>>

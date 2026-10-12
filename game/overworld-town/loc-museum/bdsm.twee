@@ -692,7 +692,7 @@ The audience is enraptured by the spectacle. You feel their eyes on your barely-
 :: Museum Horse Extreme 2
 <<set $outside to 0>><<set $location to "museum">><<effects>>
 
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100)) and $phase isnot 1>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100)) and $phase isnot 1>>
 	<span class="green">You grit your teeth and bear it.</span> "I didn't do anything wrong!" you shout through tears. "The lord is a tyrant!"
 	<<gwillpower>><<willpower 3>>
 	<br><br>
@@ -734,7 +734,7 @@ The audience is enraptured by the spectacle. You feel their eyes on your barely-
 :: Museum Horse Extreme 3
 <<set $outside to 0>><<set $location to "museum">><<effects>>
 
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100)) and $phase isnot 1>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100)) and $phase isnot 1>>
 	<span class="green">You grit your teeth and bear it.</span> "It hurts!" you shout through tears. "It hurts so much!"
 	<<gwillpower>><<willpower 3>>
 	<br><br>
@@ -953,7 +953,7 @@ The audience is enraptured by the spectacle. You feel their eyes on your barely-
 :: Museum Famous Horse 4
 <<set $outside to 0>><<set $location to "museum">><<effects>>
 
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	<span class="green">You grit your teeth and bear it.</span> "I didn't do anything wrong!" you shout through tears. "The lord is a tyrant!"
 	<<gwillpower>><<willpower 3>>
 	<br><br>
@@ -1036,7 +1036,7 @@ Retrieving the flog, <<he>> moves behind you, ready to strike. The audience wait
 		<span class="red">Winter cannot hear you over the sound of the crowd.</span>
 	<</if>>
 <<elseif $phase is 1>>
-	<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+	<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	You grit your teeth and brace yourself for the flog, trying not to give the audience any satisfaction.
 	<<lpain>><<pain -5>><<gwillpower>><<willpower 3>>
 	<<else>>
@@ -1081,7 +1081,7 @@ Retrieving the flog, <<he>> moves behind you, ready to strike. The audience wait
 		<span class="red">Winter cannot hear you over the sound of the crowd.</span>
 	<</if>>
 <<elseif $phase is 1>>
-	<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+	<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 		You try not to let the pain and humiliation show as your ass is flogged mercilessly.
 		<<lpain>><<pain -5>><<gwillpower>><<willpower 3>>
 	<<else>>
@@ -1131,7 +1131,7 @@ Retrieving the flog, <<he>> moves behind you, ready to strike. The audience wait
 <<else>>
 
 	<<if $phase is 1>>
-		<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+		<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 			All of your sensitive areas burn and sting, but you remain resolute.
 			<<lpain>><<pain -5>><<gwillpower>><<willpower 3>>
 		<<else>>
@@ -1179,7 +1179,7 @@ Retrieving the flog, <<he>> moves behind you, ready to strike. The audience wait
 
 <<else>>
 	<<if $phase is 1>>
-		<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+		<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 			Everything hurts, and the humiliation is crushing, but you keep a straight face despite it all.
 			<<lpain>><<pain -5>><<gwillpower>><<willpower 3>>
 		<<else>>
@@ -1232,7 +1232,7 @@ Retrieving the flog, <<he>> moves behind you, ready to strike. The audience wait
 :: Museum Famous Horse 10
 <<set $outside to 0>><<set $location to "museum">><<effects>>
 
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100)) and $phase isnot 1>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100)) and $phase isnot 1>>
 	You scream as the flog lashes against your skin. Again and again. The audience gapes at the spectacle.
 	<br><br>
 
@@ -1271,7 +1271,7 @@ Retrieving the flog, <<he>> moves behind you, ready to strike. The audience wait
 :: Museum Famous Horse 11
 <<set $outside to 0>><<set $location to "museum">><<effects>>
 
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100)) and $phase isnot 1>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100)) and $phase isnot 1>>
 	<span class="green">You grit your teeth and bear it.</span> "It hurts!" you shout through tears. "It hurts so much!"
 	<<gwillpower>><<willpower 3>>
 	<br><br>

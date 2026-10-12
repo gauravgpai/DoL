@@ -5224,7 +5224,7 @@ Avery stomps into the room.
 <</if>>
 <br><br>
 
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	After the initial shock, <span class="green">you find that you're able to bear it.</span> For now.
 	<br><br>
 
@@ -5263,7 +5263,7 @@ Avery stomps into the room.
 <</if>>
 <<masopain 20>>
 <br><br>
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	Avery doesn't slow. A continuous wave of pain washes over your back, <span class="green">but you endure.</span>
 <<else>>
 	<span class="red">The pain overwhelms you.</span> You scream for Avery to stop, and strain at the ropes binding your limbs. All to no avail. Avery gives no sign of even hearing you.<<gdom>><<npcincr Avery dom 1>>

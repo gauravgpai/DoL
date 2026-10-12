@@ -289,7 +289,7 @@ function masturbationEffects() {
 
 	if (
 		random(0, 100) >= Math.clamp(135 - V.earSlime.corruption / 2, 80, 98) &&
-		V.earSlime.corruption > currentSkillValue("willpower") / 10 &&
+		V.earSlime.corruption > PC.willpower / 10 &&
 		V.corruptionMasturbation === undefined &&
 		!V.hypnosis_traits.silence
 	) {
@@ -341,7 +341,7 @@ function masturbationEffectsArms(
 	if (V[armAction] === "mrest") {
 		if (
 			random(0, 100) >= 91 &&
-			V.earSlime.corruption > currentSkillValue("willpower") / 10 &&
+			V.earSlime.corruption > PC.willpower / 10 &&
 			V.corruptionMasturbation === undefined &&
 			!V.hypnosis_traits.silence
 		) {
@@ -2923,8 +2923,8 @@ function possessedMasturbation(span, br) {
 			wikifier("stress", resist);
 			wikifier("trauma", resist);
 			wikifier("def", 2);
-			wikifier("control", (Math.floor(currentSkillValue("willpower") / 24) * resist) / 10);
-			V.wraith.will -= Math.floor(currentSkillValue("willpower") / 24) * resist;
+			wikifier("control", (Math.floor(PC.willpower / 24) * resist) / 10);
+			V.wraith.will -= Math.floor(PC.willpower / 24) * resist;
 			sWikifier(`<<gpain>><<gtrauma>><<gstress>><<${resist === 4 ? "gg" : "g"}control>>`);
 		} else {
 			fragment.append(span("Your body does not obey.", "red"));
@@ -2947,7 +2947,7 @@ function possessedMasturbation(span, br) {
 				wikifier("trauma", 6);
 				wikifier("willpower", 1);
 				wikifier("def", 1);
-				V.wraith.will -= Math.floor(currentSkillValue("willpower") / 40) * resist;
+				V.wraith.will -= Math.floor(PC.willpower / 40) * resist;
 				sWikifier("<<gtrauma>><<gstress>><<gwillpower>>");
 			});
 		}

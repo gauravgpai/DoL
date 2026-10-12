@@ -628,7 +628,7 @@ You're forced to crawl to the <<beasttype>>, then drop to a submissive position.
 	<br><br>
 	<<link [[Next|Pound Food End]]>><<endevent>><</link>>
 	<br>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("deviancy", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>

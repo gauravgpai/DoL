@@ -658,7 +658,7 @@ The <<person>> glances around, a small smile on <<his>> face. "I do tend to have
 
 		<<link [[Next|Trash]]>><<set $eventskip to 1>><</link>>
 		<br>
-	<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+	<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 		<<if hasSexStat("promiscuity", 4) and $earSlime.growth lt 100>>
 			<<set $earSlime.defyCooldown += 4>>
 		<<else>>

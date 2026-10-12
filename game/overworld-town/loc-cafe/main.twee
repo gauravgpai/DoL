@@ -1987,7 +1987,7 @@ You do your best to ignore <<him>>. Sam hears the yelling from across the cafe, 
 
 :: Ocean Breeze Slime Defy
 <<effects>><<run statusCheck("Gwylan")>>
-<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<if $earSlime.corruption gte (PC.willpower / 10)>>
 	<<set $earSlime.defyCooldown += 2>>
 	The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to buy the $daily.earSlimeOceanBreezeCafeEat.
 	<<ggwillpower>><<willpower 1>>

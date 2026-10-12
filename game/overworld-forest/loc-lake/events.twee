@@ -11,7 +11,7 @@
 	<br><br>
 	<<link [[Next|Lake Shore]]>><<endevent>><</link>>
 	<br>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("deviancy", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>

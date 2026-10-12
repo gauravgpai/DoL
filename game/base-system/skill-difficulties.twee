@@ -334,7 +334,7 @@
 <</widget>>
 
 <<widget "willpowerdifficulty">>
-	<<skill_difficulty currentSkillValue('willpower') "Willpower" `(_args[0] ?? 1)` `(_args[1] ?? $willpowermax)` _args[2]>>
+	<<skill_difficulty PC.willpower "Willpower" `(_args[0] ?? 1)` `(_args[1] ?? $willpowermax)` _args[2]>>
 <</widget>>
 
 <<widget "tendingdifficulty">>

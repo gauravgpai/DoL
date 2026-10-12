@@ -3778,7 +3778,7 @@
 
 <<widget "willpowerpain">>
 	<<if $pain gte 100 and $willpowerpain is undefined and _willpowerpainchecked isnot true>>
-		<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+		<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 			<span class="green">The pain threatens to overwhelm, but you endure it.</span>
 			<<gwillpower>><<willpower 1>>
 			<br>
@@ -3796,7 +3796,7 @@
 
 <<widget "willpowerorgasm">>
 	<<if $orgasmdown gte 1 and _willpowerorgasmchecked isnot true>>
-		<<if (currentSkillValue('willpower') / 10) gte (($orgasmdown * 30) + random(1, 80))>>
+		<<if (PC.willpower / 10) gte (($orgasmdown * 30) + random(1, 80))>>
 			<span class="green">You endure the orgasmic shivers running through you.</span>
 			<<gwillpower>><<willpower 1>><<set $orgasmdown to 0>>
 			<br>

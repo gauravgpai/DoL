@@ -1099,7 +1099,7 @@ Following the slime's instructions, you walk to the pod<<if !$earSlime.pod>> whi
 :: Tentacle Plains Ear Slime Defy
 <<effects>>
 
-<<if $earSlime.corruption + $earSlime.growth gte (currentSkillValue('willpower') / 5)>>
+<<if $earSlime.corruption + $earSlime.growth gte (PC.willpower / 5)>>
 	<<if $earSlime.growth gte 100>>
 		<<set $earSlime.defyCooldown += 12>>
 	<</if>>

@@ -1479,7 +1479,7 @@ You reach across the desk and grab <<his>> coat with both hands. "You're wrong,"
 :: Asylum Mundane Slime Defy
 <<asylumeffects>><<effects>>
 
-<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<if $earSlime.corruption gte (PC.willpower / 10)>>
 	<<set $earSlime.defyCooldown += 2>>
 	The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to <<print $asylumEarSlimeEvent[0]>> as you are.
 	<<ggwillpower>><<willpower 1>>
@@ -1589,7 +1589,7 @@ The <<person>> is taken aback, but recovers quickly. <<He>> glances around, then
 	<<endevent>>
 
 	<<link [[Next|Asylum]]>><</link>>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("promiscuity", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>

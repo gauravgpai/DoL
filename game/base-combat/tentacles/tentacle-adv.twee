@@ -655,7 +655,7 @@
 				<<set $hypnosis_traits.deviancy += 1>>
 			<</if>>
 			<<willpower 1>><<gwillpower>>
-		<<elseif currentSkillValue('willpower') gte random(1, 1000)>>
+		<<elseif PC.willpower gte random(1, 1000)>>
 			<span class="green">but you will them away.</span>
 		<<else>>
 			<span class="red">devouring all contrary thoughts.</span>
@@ -710,7 +710,7 @@
 			<</if>>
 		<<elseif $uncomfortable.hypnosis is false>>
 			nurtured by a lewd part of you. <span class="lewd">Your mind immediately accepts it.</span> You long for the suffering of others. <<sadism 10>>
-		<<elseif currentSkillValue('willpower') gte random(1, 1000)>>
+		<<elseif PC.willpower gte random(1, 1000)>>
 			nurtured by a traitorous part of you. <span class="lblue">You will it away.</span>
 		<<else>>
 			unbeckoned. <span class="pink">You can't resist it.</span> You long for the suffering of others. <<sadism 10>><<willpower 1>><<gwillpower>>
@@ -758,7 +758,7 @@
 			<</if>>
 		<<elseif $uncomfortable.hypnosis is false>>
 			nurtured by a lewd part of you. <span class="lewd">Your mind immediately accepts it.</span> Feelings of arousal overwhelm you. <<arousal 10000>>
-		<<elseif currentSkillValue('willpower') gte random(1, 1000)>>
+		<<elseif PC.willpower gte random(1, 1000)>>
 			nurtured by a traitorous part of you. <span class="lblue">You will it away.</span>
 		<<else>>
 			unbeckoned. <span class="pink">You can't resist it.</span> Feelings of arousal overwhelm you. <<arousal 10000>><<willpower 1>><<gwillpower>>
@@ -2103,7 +2103,7 @@
 		<<brat 1>>
 		You hum a soothing lullaby at _the _tentacle.fullDesc, sapping its strength. <span class="green">It recoils.</span>
 		<<tentacleadvdisable _tentacle>><<set _tentacle.tentaclehealth -= 1>><<tentacle_record "soothe" 1>>
-		<<if $rng lte (currentSkillValue('willpower') / 10)>>
+		<<if $rng lte (PC.willpower / 10)>>
 			<span class="green">It trembles before your will.</span>
 			<<set _tentacle.tentaclehealth -= 1>><<tentacle_record "soothe" 1>>
 		<</if>>

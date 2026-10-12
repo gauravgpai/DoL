@@ -2,7 +2,7 @@
 <<effects>>
 
 <<if $phase is 2>>
-	<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+	<<if $earSlime.corruption gte (PC.willpower / 10)>>
 		<<set $earSlime.defyCooldown += 2>>
 		The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to turn around and leave the <<if $daily.earSlimeSkipLesson is "swimming">>pool<<else>>classroom<</if>>.
 		<<ggwillpower>><<willpower 1>>
@@ -47,7 +47,7 @@
 		<br><br>
 		<<link [[Next|$lessonPassage]]>><<unset $lessonPassage>><<endevent>><</link>>
 		<<set $daily.earSlimeSkipLesson to "failed">>
-	<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+	<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 		<<set $earSlime.defyCooldown += 4>>
 		The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to turn around. You leave the <<if $daily.earSlimeSkipLesson is "swimming">>pool<<else>>classroom<</if>> and start masturbating.
 		<<ggwillpower>><<willpower 1>>

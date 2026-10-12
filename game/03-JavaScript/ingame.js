@@ -2507,7 +2507,7 @@ function earSlimeCorruptionClothes() {
 	if (!V.daily.corruptionSlimeClothes) {
 		const baseCorruption = V.earSlime.corruption + V.earSlime.growth;
 		// Reduced from the original equivalent of *2.5 and *12.5, still want it to have SOME effect, but this should hopefully soften it enough
-		V.daily.corruptionSlimeClothes = Math.clamp(random(baseCorruption, baseCorruption * 5) - currentSkillValue("willpower"), 0, 1000);
+		V.daily.corruptionSlimeClothes = Math.clamp(random(baseCorruption, baseCorruption * 5) - PC.willpower, 0, 1000);
 	}
 	const cap = ["prison", "asylum"].includes(V.location) ? 1000 : 500;
 

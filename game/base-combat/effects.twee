@@ -499,11 +499,11 @@
 		<<if $leftaction is "lefthit">>
 			<<set $leftaction to 0>><<set $leftactiondefault to "lefthit">>
 			<<if numberOfEarSlime() and (($parasite.left_ear.name is "slime" and random(1, 3) is 3) or ($parasite.right_ear.name is "slime" and random(1, 3) is 3) or ($earSlime.growth gte 50 and random(1, 3) is 3))>>
-				<<if $earSlime.growth gte (currentSkillValue('willpower') / 10) and random(0,100) gte $earSlime.growth / 3>>
+				<<if $earSlime.growth gte (PC.willpower / 10) and random(0,100) gte $earSlime.growth / 3>>
 					You try to hit the <<if $enemytype is "beast">><<beasttype>><<else>><<personselect $lefttarget>><<person>><</if>>
 					with your left hand, <span class="red">but the slime immobilises your limb.</span>
 					<<if $earSlime.growth gt 50>><<set $earSlime.defyCooldown++>><</if>>
-				<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10) and random(0,100) gte 50>>
+				<<elseif $earSlime.corruption gte (PC.willpower / 10) and random(0,100) gte 50>>
 					You try to hit the <<if $enemytype is "beast">><<beasttype>><<else>><<personselect $lefttarget>><<person>><</if>>
 					with your left hand, <span class="red">but the slime distracts you, so you miss.</span>
 					<<gwillpower>><<willpower 1>>
@@ -519,11 +519,11 @@
 		<<if $rightaction is "righthit">>
 			<<set $rightaction to 0>><<set $rightactiondefault to "righthit">><<personselect $righttarget>>
 			<<if numberOfEarSlime() and (($parasite.left_ear.name is "slime" and random(1, 3) is 3) or ($parasite.right_ear.name is "slime" and random(1, 3) is 3) or ($earSlime.growth gte 50 and random(1, 3) is 3))>>
-				<<if $earSlime.growth gte (currentSkillValue('willpower') / 10) and random(0,100) gte $earSlime.growth / 3>>
+				<<if $earSlime.growth gte (PC.willpower / 10) and random(0,100) gte $earSlime.growth / 3>>
 					You try to hit the <<if $enemytype is "beast">><<beasttype>><<else>><<person>><</if>>
 					with your right hand, <span class="red">but the slime immobilises your limb.</span>
 					<<if $earSlime.growth gt 50>><<set $earSlime.defyCooldown++>><</if>>
-				<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10) and random(0,100) gte 50>>
+				<<elseif $earSlime.corruption gte (PC.willpower / 10) and random(0,100) gte 50>>
 					You try to hit the <<if $enemytype is "beast">><<beasttype>><<else>><<person>><</if>>
 					with your right hand, <span class="red">but the slime distracts you, so you miss.</span>
 					<<gwillpower>><<willpower 1>>
@@ -559,7 +559,7 @@
 			<<if $uncomfortable.hypnosis is false and $hypnosis_traits.cover gte random(1,5)>>
 				<<hypnosisText 'You intend to cover your face, but a lewd thought intrudes <span class="lewd">and your mind immediately accepts it.</span> You stroke your face with your hands, winking and teasing around your lips.'>>
 				<<submission 1>><<set $speechCameraPose to 1>><<hypnotised 1>>
-			<<elseif $hypnosis_traits.cover gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.cover))>>
+			<<elseif $hypnosis_traits.cover gte 1 and PC.willpower lt random(1, (200 * $hypnosis_traits.cover))>>
 				<<hypnosisText 'You intend to cover your face, <span class="pink">but the thought is snatched from your mind and replaced with another.</span> You stroke your face with your hands, winking and teasing around your lips.'>>
 				<<submission 1>><<set $speechCameraPose to 1>><<hypnotised 1>><<willpower 1>>
 			<<else>>
@@ -575,7 +575,7 @@
 			<<if $uncomfortable.hypnosis is false and $hypnosis_traits.cover gte random(1,5)>>
 				<<hypnosisText 'You intend to cover your face, but a lewd thought intrudes <span class="lewd">and your mind immediately accepts it.</span> You stroke your face with your left hand, winking and teasing around your lips.'>>
 				<<submission 1>><<set $speechCameraPose to 1>><<hypnotised 1>>
-			<<elseif $hypnosis_traits.cover gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.cover))>>
+			<<elseif $hypnosis_traits.cover gte 1 and PC.willpower lt random(1, (200 * $hypnosis_traits.cover))>>
 				<<hypnosisText 'You intend to cover your face, <span class="pink">but the thought is snatched from your mind and replaced with another.</span> You stroke your face with your left hand, winking and teasing around your lips.'>>
 				<<submission 1>><<set $speechCameraPose to 1>><<hypnotised 1>><<willpower 1>>
 			<<else>>
@@ -591,7 +591,7 @@
 			<<if $uncomfortable.hypnosis is false and $hypnosis_traits.cover gte random(1,5)>>
 				<<hypnosisText 'You intend to cover your face, but a lewd thought intrudes <span class="lewd">and your mind immediately accepts it.</span> You stroke your face with your right hand, winking and teasing around your lips.'>>
 				<<submission 1>><<set $speechCameraPose to 1>><<hypnotised 1>>
-			<<elseif $hypnosis_traits.cover gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.cover))>>
+			<<elseif $hypnosis_traits.cover gte 1 and PC.willpower lt random(1, (200 * $hypnosis_traits.cover))>>
 				<<hypnosisText 'You intend to cover your face, <span class="pink">but the thought is snatched from your mind and replaced with another.</span> You stroke your face with your right hand, winking and teasing around your lips.'>>
 				<<submission 1>><<set $speechCameraPose to 1>><<hypnotised 1>><<willpower 1>>
 			<<else>>
@@ -2328,7 +2328,7 @@
 		/*Stalked actions */
 		<<if !$stalk_end>>
 			<<if $leftaction is "clench" and $rightaction is "clench">>
-				<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(300 - ($earSlime.defyCooldown * 20), 0, 300)) gte (currentSkillValue('willpower')/ 10) and hasSexStat("exhibitionism", 2)>>
+				<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(300 - ($earSlime.defyCooldown * 20), 0, 300)) gte (PC.willpower/ 10) and hasSexStat("exhibitionism", 2)>>
 					<<if ($player.penisExist or playerHasStrapon()) and (!$player.vaginaExist or $worn.genitals.name is "chastity parasite" or random(0,100) gte 50)>>
 						<<set _slimeTarget to playerHasStrapon() ? "strap-on" : (playerChastity("penis") ? $worn.genitals.name : "penis")>>
 						<<set _slimeWidget to "penis">>
@@ -2350,7 +2350,7 @@
 					You clench your fists.
 				<</if>>
 			<<elseif $leftaction is "clench">>
-				<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(300 - ($earSlime.defyCooldown * 20), 0, 300)) gte (currentSkillValue('willpower')/ 10) and hasSexStat("exhibitionism", 2)>>
+				<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(300 - ($earSlime.defyCooldown * 20), 0, 300)) gte (PC.willpower/ 10) and hasSexStat("exhibitionism", 2)>>
 					<<if ($player.penisExist or playerHasStrapon()) and (!$player.vaginaExist or $worn.genitals.name is "chastity parasite" or random(0,100) gte 50)>>
 						<<set _slimeTarget to playerHasStrapon() ? "strap-on" : (playerChastity("penis") ? $worn.genitals.name : "penis")>>
 						<<set _slimeWidget to "penis">>
@@ -2372,7 +2372,7 @@
 					You clench your left fist.
 				<</if>>
 			<<elseif $rightaction is "clench">>
-				<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(300 - ($earSlime.defyCooldown * 20), 0, 300)) gte (currentSkillValue('willpower')/ 10) and hasSexStat("exhibitionism", 2)>>
+				<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(300 - ($earSlime.defyCooldown * 20), 0, 300)) gte (PC.willpower/ 10) and hasSexStat("exhibitionism", 2)>>
 					<<if ($player.penisExist or playerHasStrapon()) and (!$player.vaginaExist or $worn.genitals.name is "chastity parasite" or random(0,100) gte 50)>>
 						<<set _slimeTarget to playerHasStrapon() ? "strap-on" : (playerChastity("penis") ? $worn.genitals.name : "penis")>>
 						<<set _slimeWidget to "penis">>
@@ -2529,11 +2529,11 @@
 		<<if $feetaction is "kick">>
 			<<set $feetaction to 0>><<set $feetactiondefault to "kick">>
 			<<if numberOfEarSlime() and (($parasite.left_ear.name is "slime" and random(1, 3) is 3) or ($parasite.right_ear.name is "slime" and random(1, 3) is 3) or ($earSlime.growth gte 50 and random(1, 3) is 3))>>
-				<<if $earSlime.growth gte (currentSkillValue('willpower') / 10) and random(0,100) gte $earSlime.growth / 3>>
+				<<if $earSlime.growth gte (PC.willpower / 10) and random(0,100) gte $earSlime.growth / 3>>
 					You try to kick the <<if $enemytype is "beast">><<beasttype>>,<<else>><<personselect $feettarget>><<person>>,<</if>>
 					<span class="red">but the slime immobilises your legs.</span>
 					<<if $earSlime.growth gt 50>><<set $earSlime.defyCooldown++>><</if>>
-				<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10) and random(0,100) gte 50>>
+				<<elseif $earSlime.corruption gte (PC.willpower / 10) and random(0,100) gte 50>>
 					You try to kick the <<if $enemytype is "beast">><<beasttype>>,<<else>><<personselect $feettarget>><<person>>,<</if>>
 					<span class="red">but the slime distracts you, so you miss.</span>
 					<<gwillpower>><<willpower 1>>
@@ -2666,7 +2666,7 @@
 		/*Stalked actions */
 		<<if !$stalk_end>>
 			<<if $feetaction is "walk">>
-				<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(75 - ($earSlime.defyCooldown * 5), 0, 75)) gte (currentSkillValue('willpower')/ 10) and hasSexStat("exhibitionism", 2)>>
+				<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(75 - ($earSlime.defyCooldown * 5), 0, 75)) gte (PC.willpower/ 10) and hasSexStat("exhibitionism", 2)>>
 					You're walking, <span class="red">but you suddenly find yourself moving differently.</span> You feel the slime steal your control away.
 					<<set $feetaction to "strut">>
 				<<else>>
@@ -2716,7 +2716,7 @@
 					<<if $earSlime.growth gte 150>><<set $earSlime.defyCooldown++>><</if>>
 					You attempt to run, <span class="lewd">but you find the pleasure you're feeling is too much to run.</span>
 					<<stalk_walk_events>>
-				<<elseif $earSlime.growth - random(0, Math.clamp(110 - ($earSlime.defyCooldown * 10), 0, 110)) gte (currentSkillValue('willpower')/ 10)>>
+				<<elseif $earSlime.growth - random(0, Math.clamp(110 - ($earSlime.defyCooldown * 10), 0, 110)) gte (PC.willpower/ 10)>>
 					<<if $earSlime.growth gt 50 and hasSexStat("exhibitionism", 2)>>
 						<<set $feetactiondefault to "strut">><<set $feetuse to "strut">>
 						You attempt to run, <span class="red">but you suddenly find yourself strutting.</span> You feel the slime steal your control away.
@@ -2899,7 +2899,7 @@
 				<<if currentSkillValue('skulduggery') gte random(1, _difficulty)>>
 					<<set _hide_success to true>>
 				<</if>>
-				<<if $earSlime.growth - random(0, Math.clamp(75 - ($earSlime.defyCooldown * 5), 0, 75)) gte (currentSkillValue('willpower')/ 10)>>
+				<<if $earSlime.growth - random(0, Math.clamp(75 - ($earSlime.defyCooldown * 5), 0, 75)) gte (PC.willpower/ 10)>>
 					<<if $earSlime.growth gte 150>><<set $earSlime.defyCooldown++>><</if>>
 					<<if $earSlime.growth gt 50 and hasSexStat("exhibitionism", 2)>>
 						<<set $feetactiondefault to "strut">><<set $feetuse to "strut">>
@@ -3125,7 +3125,7 @@
 				<<if currentSkillValue('skulduggery') gte random(1, _difficulty)>>
 					<<set _ambush_success to true>>
 				<</if>>
-				<<if $earSlime.growth - random(0, Math.clamp(75 - ($earSlime.defyCooldown * 5), 0, 75)) gte (currentSkillValue('willpower')/ 10)>>
+				<<if $earSlime.growth - random(0, Math.clamp(75 - ($earSlime.defyCooldown * 5), 0, 75)) gte (PC.willpower/ 10)>>
 					<<if $earSlime.growth gte 150>><<set $earSlime.defyCooldown++>><</if>>
 					<<if $earSlime.growth gt 50 and hasSexStat("exhibitionism", 2)>>
 						<<set $feetactiondefault to "strut">><<set $feetuse to "strut">>
@@ -3555,7 +3555,7 @@
 		<</if>>
 
 		<<if $mouthaction is "breastbite" and $NPCList[$mouthtarget].chest is "mouth">>
-			<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(50 - ($earSlime.defyCooldown * 5), 0, 50)) gte (currentSkillValue('willpower')/ 10)>>
+			<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(50 - ($earSlime.defyCooldown * 5), 0, 50)) gte (PC.willpower/ 10)>>
 				You try to bite down on the nipple, <span class="red">but find you're unable to.</span> You feel the slime steal your control away.
 				<<set $mouthaction to "breastsuck">>
 				<<if $earSlime.growth gte 100>><<set $earSlime.defyCooldown++>><</if>>
@@ -3626,15 +3626,15 @@
 				<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 				<<hypnosisText 'You intend to scream for help, but a lewd thought intrudes <span class="lewd">and your mind immediately accepts it.</span> <<askrough>>'>>
 				<<hypnotised 1>><<submission 1>><<set $enemyanger += (10 * $englishtrait)>>
-			<<elseif $hypnosis_traits.scream gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.scream))>>
+			<<elseif $hypnosis_traits.scream gte 1 and PC.willpower lt random(1, (200 * $hypnosis_traits.scream))>>
 				<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 				<<hypnosisText 'You intend to scream for help, <span class="pink">but the thought is snatched from your mind and replaced with another.</span> <<askrough>>'>>
 				<<hypnotised 1>><<willpower 1>><<submission 1>><<set $enemyanger += (10 * $englishtrait)>>
-			<<elseif numberOfEarSlime() and $earSlime.growth gte (currentSkillValue('willpower')/ 10)>>
+			<<elseif numberOfEarSlime() and $earSlime.growth gte (PC.willpower/ 10)>>
 				You open your mouth to scream for help, <span class="lewd">but sudden arousal makes it sound like a lewd moan.</span> You feel the slime rapidly drug you.
 				<<if $earSlime.growth gt 50>><<set $earSlime.defyCooldown++>><</if>>
 				<<submission 1>><<set $speechMoan to 1>><<drugs 10>><<arousal 1000>>
-			<<elseif numberOfEarSlime() and $earSlime.corruption gte (currentSkillValue('willpower')/ 10) and random(0,100) gte 50>>
+			<<elseif numberOfEarSlime() and $earSlime.corruption gte (PC.willpower/ 10) and random(0,100) gte 50>>
 				You open your mouth to scream for help, <span class="red">but your voice catches in your throat.</span> You feel the slime steal your focus away.
 				<<gwillpower>><<willpower 1>>
 			<<elseif $NPCList[0].fullDescription is "Gwylan">>
@@ -3882,7 +3882,7 @@
 		<</if>>
 
 		<<if $mouthaction is "bite" and $NPCList[$mouthtarget].penis is "mouth">>
-			<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(50 - ($earSlime.defyCooldown * 5), 0, 50)) gte (currentSkillValue('willpower')/ 10)>>
+			<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(50 - ($earSlime.defyCooldown * 5), 0, 50)) gte (PC.willpower/ 10)>>
 				You try to bite down on the <<npcPenisSimple $mouthtarget>>, <span class="red">but find you're unable to.</span> You feel the slime steal your control away.
 				<<set $mouthaction to 0>><<set $mouthactiondefault to "suck">><<actionspenissuck $mouthtarget>><<submission 10>><<oralskilluse>>
 				<<if $earSlime.growth gte 100>><<set $earSlime.defyCooldown++>><</if>>
@@ -3904,7 +3904,7 @@
 		<</if>>
 
 		<<if $mouthaction is "bitepussy" and ($NPCList[$mouthtarget].vagina is "mouth" or $NPCList[$mouthtarget].vagina is "facesit")>>
-			<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(50 - ($earSlime.defyCooldown * 5), 0, 50)) gte (currentSkillValue('willpower')/ 10)>>
+			<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(50 - ($earSlime.defyCooldown * 5), 0, 50)) gte (PC.willpower/ 10)>>
 				You try to bite down on <<hisselect $mouthtarget>> labia, <span class="red">but find you're unable to.</span> You feel the slime steal your control away.
 				<<set $mouthaction to "vaginalick">>
 				<<if $earSlime.growth gte 100>><<set $earSlime.defyCooldown++>><</if>>
@@ -3991,7 +3991,7 @@
 		<<rng>>
 
 		<<if $mouthaction is "handbite">>
-			<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(50 - ($earSlime.defyCooldown * 5), 0, 50)) gte (currentSkillValue('willpower')/ 10)>>
+			<<if $earSlime.growth gt 50 and $earSlime.growth - random(0, Math.clamp(50 - ($earSlime.defyCooldown * 5), 0, 50)) gte (PC.willpower/ 10)>>
 				You try to bite down on <<hisselect $mouthtarget>> hand, <span class="red">but find you're unable to.</span> You feel the slime steal your control away.
 				<<set $mouthactiondefault to "rest">>
 				<<if $earSlime.growth gte 100>><<set $earSlime.defyCooldown++>><</if>>
