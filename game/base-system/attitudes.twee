@@ -712,7 +712,7 @@
 	/*After anuspenisfuck*/
 	<<set _anus["Take it"] to "take">>
 	<<set _anus["Cooperate"] to "cooperate">>
-	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and currentSkillValue("analskill") gte 800>>
+	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and PC.analskill gte 800>>
 		<<set _anus["Edge their penis with your ass"] to "penisEdging">>
 	<</if>>
 	<<set _anus["Press your butt against their mouth"] to "bottombay">>

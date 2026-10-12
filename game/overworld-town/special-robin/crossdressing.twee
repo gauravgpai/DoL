@@ -2060,7 +2060,7 @@ Robin grunts, slowly pushing <<his>> <<npcPenis 0>> further.
 		Robin smiles at you. "You did great!"
 	<<case 3>>
 		Robin makes slow pumps in and out, going slightly deeper each time. You feel more full with every thrust.
-		<<if (_hole is "vagina" ? currentSkillValue("vaginalskill") : currentSkillValue("analskill")) gte 400>>
+		<<if (_hole is "vagina" ? currentSkillValue("vaginalskill") : PC.analskill) gte 400>>
 			Eventually <<he>> fits in <<his>> entire length inside you. You hum and grind against <<him>> slightly, causing <<him>> to moan.
 			"You're really good at this!" Robin praises you.
 		<<else>>
@@ -2069,7 +2069,7 @@ Robin grunts, slowly pushing <<his>> <<npcPenis 0>> further.
 		<</if>>
 	<<case 4>>
 		Robin doesn't try to go all the way in, instead going only as far as <<he>> thinks you're comfortable with.
-		<<if (_hole is "vagina" ? currentSkillValue("vaginalskill") : currentSkillValue("analskill")) gte 800>>
+		<<if (_hole is "vagina" ? currentSkillValue("vaginalskill") : PC.analskill) gte 800>>
 			Knowing your limits, you plunge down onto <<his>> <<npcPenis 0>>, taking the whole thing to the base.
 			Robin lets out a long moan as you catch <<him>> off guard. "Woah, a-are you sure?" <<he>> asks with wide eyes.
 		<<else>>

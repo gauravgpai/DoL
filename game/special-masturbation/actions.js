@@ -638,7 +638,7 @@ function masturbationActionsHands(arm, { playerToys, selectedToy, toyDisplay, ge
 							colour: "sub",
 						});
 					}
-					if (genitalsExposed() && V.awareness >= 300 && currentSkillValue("analskill") >= 300 && !selectedToy(arm).name.includes("small")) {
+					if (genitalsExposed() && V.awareness >= 300 && PC.analskill >= 300 && !selectedToy(arm).name.includes("small")) {
 						result.options.push({
 							action: "manusentrancedildofloor",
 							text: "Place on the floor by your anus",

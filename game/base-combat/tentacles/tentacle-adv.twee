@@ -2269,7 +2269,7 @@
 		<<set $anusaction to 0>><<set $anusactiondefault to "anusrub"+_tentacle.id>>
 		<<submission 2>><<analskilluse>>
 		You <<analtext>> rub the tip of _the _tentacle.fullDesc with your <<bottom>>.
-		<<if currentSkillValue("analskill") gte (800 - ($rng * 10))>>
+		<<if PC.analskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip, covering your <<bottom>>.</span>
 			<<bodyliquid "bottom" _fluid>><<set _tentacle.tentaclehealth -= 3>><<tentacle_record "fluid" 3>><<bottomejacstat>><<ejacstat>>
 			<<if $abomination is 1>>
@@ -2287,7 +2287,7 @@
 		<<set $anusaction to 0>><<set $anusactiondefault to "anuscooperate"+_tentacle.id>>
 		<<sex 5 "anus">><<analskilluse>>
 		You <<analtext>> push back against the _tentacle.fullDesc invading your <<bottom>>.
-		<<if currentSkillValue("analskill") gte (800 - ($rng * 10))>>
+		<<if PC.analskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip, flooding your bowels with its warmth</span>.
 			<<set _tentacle.tentaclehealth -= 3>><<tentacle_record "fluid" 3>><<drugs 3>><<bodyliquid "anus" _fluid>><<analejacstat>><<ejacstat>>
 			<<if _tentacle.desc.includes("pale")>>

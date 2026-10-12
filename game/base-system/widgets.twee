@@ -740,7 +740,7 @@
 <</widget>>
 
 <<widget "analskilluse">>
-	<<set $enemyarousal += (currentSkillValue("analskill") / 100)>><<analskill 5>><<set $analskillup to 1>>
+	<<set $enemyarousal += (PC.analskill / 100)>><<analskill 5>><<set $analskillup to 1>>
 <</widget>>
 
 <<widget "handskilluse">>

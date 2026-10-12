@@ -5749,12 +5749,12 @@
 
 		<!-- Edge one imminent or penetrating penis -->
 		<<if $anusaction is "penisEdging">>
-			<<set $anusaction to 0>><<set $anusactiondefault to "penisEdging">><<actionsanusedging $anustarget>><<submission 5>><<sexControl 5 `currentSkillValue("analskill")` $anustarget>><<analskilluse>>
+			<<set $anusaction to 0>><<set $anusactiondefault to "penisEdging">><<actionsanusedging $anustarget>><<submission 5>><<sexControl 5 `PC.analskill` $anustarget>><<analskilluse>>
 		<</if>>
 
 		<!-- Edge two imminent or penetrating penises -->
 		<<if $anusaction is "penisDoubleEdging">>
-			<<set $anusaction to 0>><<set $anusactiondefault to "penisDoubleEdging">><<actionsanusdoubleedging $anustarget $anusdoubletarget>><<submission 5>><<sexControl 5 `currentSkillValue("analskill")` $anustarget $anusdoubletarget>><<analskilluse>>
+			<<set $anusaction to 0>><<set $anusactiondefault to "penisDoubleEdging">><<actionsanusdoubleedging $anustarget $anusdoubletarget>><<submission 5>><<sexControl 5 `PC.analskill` $anustarget $anusdoubletarget>><<analskilluse>>
 		<</if>>
 
 		<!-- Take one penetrating penis -->
