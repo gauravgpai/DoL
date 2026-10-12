@@ -3427,7 +3427,7 @@ Whitney watches you. <<He>> looks amused. Then <<he>> lunges for the sweets. You
 :: Whitney Home Gang Game Best
 <<effects>>
 
-<<if currentSkillValue("handskill") gte random(400, 800)>>
+<<if PC.handskill gte random(400, 800)>>
 	You play to the best of your ability, dodging the enemies' attacks, and successfully landing your own. <span class="green">You blaze past Whitney's record, and manage to down a boss.</span> Some of Whitney's friends cheer.<<lstress>><<stress -6>>
 	<br><br>
 
@@ -4113,11 +4113,11 @@ You take turns throwing balls at the <<person>>. Whitney throws them with consid
 	"Alright," Whitney says at once, placing it on <<his>> head. "You lot stand in the kitchen, and take turns throwing the balls through the hoop. Whoever gets the most in wins."
 	<br><br>
 
-	<<link [[Try to win|Whitney Home Gang Hat Win]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 500>>
+	<<link [[Try to win|Whitney Home Gang Hat Win]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 1 500>>
 	<br>
 	<<link [[Make a token effort|Whitney Home Gang Hat Token]]>><</link>>
 	<br>
-	<<link [[Try to hit Whitney's face instead|Whitney Home Gang Hat Whitney]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 200 800>>
+	<<link [[Try to hit Whitney's face instead|Whitney Home Gang Hat Whitney]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 200 800>>
 	<br>
 <<else>>
 	<span class="red">"Nice try, slut,"</span> Whitney says. "Now put on the hat."
@@ -4133,7 +4133,7 @@ You take turns throwing balls at the <<person>>. Whitney throws them with consid
 <<effects>>
 
 Whitney moves around the other side of the room, making the net hard to hit.
-<<if currentSkillValue("handskill") gte random(1, 500)>>
+<<if PC.handskill gte random(1, 500)>>
 	<span class="green">You catch Whitney out by aiming at the wall behind <<him>>.</span> The balls bounce of the hard surface, each landing in the net despite Whitney's antics.
 	<br><br>
 
@@ -4169,7 +4169,7 @@ Whitney moves around the other side of the room, making the net hard to hit. Whe
 <<effects>>
 
 Whitney moves around the other side of the room, making the net hard to hit.
-<<if currentSkillValue("handskill") gte random(200, 800)>>
+<<if PC.handskill gte random(200, 800)>>
 	Good thing you're not aiming for the net. You hurl the ball at <<his>> face. <span class="green">It hits its mark, bouncing off Whitney's nose.</span><<ldom>><<npcincr Whitney dom -1>>
 	<br><br>
 

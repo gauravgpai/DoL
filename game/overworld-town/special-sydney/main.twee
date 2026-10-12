@@ -893,9 +893,9 @@ You shake your head, and Sydney nods in understanding. "Right. I wouldn't want s
 <br><br>
 Sydney tilts <<his>> head back for you to use the drops. You gently still <<his>> head, pull down <<his>> lower eyelid with your finger, and squeeze the bottle.
 
-<<if currentSkillValue("handskill") gte 800>>
+<<if PC.handskill gte 800>>
 	The drops land directly on the eye without issue. It's done even before Sydney gets nervous.
-<<elseif currentSkillValue("handskill") gte 400>>
+<<elseif PC.handskill gte 400>>
 	Despite feeling a bit nervous, you manage to put the drops into <<his>> eye. You get it done as <<his>> cheeks tremble slightly.
 <<else>>
 	You try to put the drops into <<his>> eye, but most end up on <<his>> face. You apologise as some liquid gets into <<his>> nose, yet Sydney doesn't seem to mind.
@@ -1163,9 +1163,9 @@ You push Sydney away from you.
 			<</if>>
 			you say.
 			<br><br>
-			<<if currentSkillValue("handskill") gte 800>>
+			<<if PC.handskill gte 800>>
 				<<He>> melts in your grasp. <<He>> doesn't even say anything, and just lies back in <<his>> chair. <<He>> makes a tiny squeak of pleasure. <<npcincr Sydney lust 1>><<glust>>
-			<<elseif currentSkillValue("handskill") gte 400>>
+			<<elseif PC.handskill gte 400>>
 				You feel <<him>> loosen up. "You're pretty good at this." <<He>> leans back in <<his>> chair, enjoying your touch.
 			<<else>>
 				<<He>> tenses up for a moment, then folds. "This feels a little weird, but I think I like it." <<He>> tries to continue working as you massage <<him>>.

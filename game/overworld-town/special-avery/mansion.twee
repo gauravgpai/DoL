@@ -176,7 +176,7 @@ You walk up the hill towards Avery's mansion. The gates rattle open as you appro
 <<set $location to "avery_mansion">><<set $bus to "avery_lounge">><<set $avery_passage to $passage>><<set $outside to 0>><<effects>><<avery_mansion>>
 <<set $daily.pianoPlayed ||= 0>>
 <<wearProp "piano">>
-<<if currentSkillValue("handskill") gte 1000>>
+<<if PC.handskill gte 1000>>
 	<<set _pianoSkill to 5>>
 	<<if random(1, 5) is 5 and $seabird_lullaby>>
 		On a whim, you play
@@ -195,16 +195,16 @@ You walk up the hill towards Avery's mansion. The gates rattle open as you appro
 	<<else>>
 		<span class="green">You play the piano with masterful grace.</span>
 	<</if>>
-<<elseif currentSkillValue("handskill") gte 800>>
+<<elseif PC.handskill gte 800>>
 	<<set _pianoSkill to 4>>
 	<span class="teal">You play some songs on the piano, expertly performing some more advanced compositions.</span>
-<<elseif currentSkillValue("handskill") gte 600>>
+<<elseif PC.handskill gte 600>>
 	<<set _pianoSkill to 3>>
 	<span class="blue">You play the piano with competence, managing a few full songs without error.</span>
-<<elseif currentSkillValue("handskill") gte 400>>
+<<elseif PC.handskill gte 400>>
 	<<set _pianoSkill to 2>>
 	<span class="purple">You play some simple songs, only hitting awkward notes occasionally.</span>
-<<elseif currentSkillValue("handskill") gte 200>>
+<<elseif PC.handskill gte 200>>
 	<<set _pianoSkill to 1>>
 	<span class="pink">You don't really know what you're doing, and send shrill notes throughout the mansion.</span>
 <<else>>
@@ -2098,7 +2098,7 @@ You climb from the pool, and dry yourself using the towels stacks just inside th
 			"It is a nice place," <<he>> says. "Not far." <<He>> peers at you, and adds, "You might
 			<<if $beauty gte ($beautymax / 7) * 6>>
 				try your hand at working there, <<pcpetname "Avery">>. You've got the face<<if $speech_attitude is "meek" or $speech_attitude_avery>> and demeanour<</if>> for it."
-			<<elseif currentSkillValue("handskill") gte 400>>
+			<<elseif PC.handskill gte 400>>
 				try your hand at working there, <<pcpetname "Avery">>. You're quite skilled with your hands, after all."
 			<<else>>
 				visit yourself sometime. You could use it," <<he>> adds with a <<= $averyragerevealed is 1 and C.npc.Avery.rage gte 20 ? `snort` : `smile`>>.

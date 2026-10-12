@@ -1907,7 +1907,7 @@ You drop to your knees beside the <<farm_text horse>>, and observe <<farm_his ho
 <</if>>
 
 <br><br>
-<<if currentSkillValue("handskill") gte random(1, 1000)>>
+<<if PC.handskill gte random(1, 1000)>>
 	<<farm_He horse>> starts bucking against your hands, <span class="green">but you manage to keep up.</span> <<farm_He horse>> moves faster, until <<farm_his horse>> whole body shudders in orgasm.
 
 

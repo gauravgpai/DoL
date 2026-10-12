@@ -2540,7 +2540,7 @@ You approach the shooting gallery. Robin takes one of the guns, eager, and pushe
 Robin pushes a coin into the ring toss machine, and a number of rings roll to <<his>> knee. The lights change, an array of thick wooden pins emerge from the depths, music blares, Robin concentrates. <<He>> tosses the first ring.
 <br><br>
 
-<<if currentSkillValue("handskill") gte 600>>
+<<if PC.handskill gte 600>>
 	You do likewise. Each of your rings lands atop the far pin, giving you the highest score, until it's full. You're forced to make easier shots. Robin has more mixed results. The pins on <<his>> side each have one or two rings at their base.
 	<br><br>
 

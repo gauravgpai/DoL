@@ -1624,7 +1624,7 @@
 		<<handskilluse>><<submission 1>>
 		You <<handtext>> squeeze _the _tentacle.fullDesc in your _hand hand and rub up and down its length.
 
-		<<if currentSkillValue("handskill") gte (800 - ($rng * 10))>>
+		<<if PC.handskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip</span>.
 			<<set _tentacle.tentaclehealth -= 3>><<tentacle_record "fluid" 3>>
 			<<if $abomination is 1>>

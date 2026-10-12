@@ -3032,9 +3032,9 @@ You sit beside Alex, and make yourself comfy.
 		You thank <<him>>. <span class="green">It felt satisfying.</span> "Don't mention it." <<He>> smiles. "You looked tense."<<stress -12>><<llstress>>
 	<<else>>
 		Alex looks strained and fatigued. In hopes to soothe <<him>>, you start to <<handtext>> knead <<his>> shoulders and back muscles.
-			<<if currentSkillValue("handskill") gte 800>>
+			<<if PC.handskill gte 800>>
 				"I-I'll call you back," <<he>> says, hanging up the phone. <<He>> slumps against you, and breathes heavily, as if in a trance.
-			<<elseif currentSkillValue("handskill") gte 400>>
+			<<elseif PC.handskill gte 400>>
 				"One sec," <<he>> says, putting the phone down. <<He>> leans back, and puts <<his>> feet on the desk as <<he>> relaxes to your touch.
 			<<else>>
 				<<His>> expression doesn't change much as <<he>> continues to talk on the phone, but <<he>> seems appreciative for your effort.

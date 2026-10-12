@@ -335,12 +335,12 @@
 
 		<<if $leftaction is "handedge">>
 			<<personselect $lefttarget>><<actionshandedge $lefttarget $leftarm>><<set $leftaction to 0>><<set $leftactiondefault to "handedge">>
-			<<submission 5>><<sexControl 5 `currentSkillValue("handskill")` $lefttarget>><<handskilluse>><<combatpromiscuity4>>
+			<<submission 5>><<sexControl 5 `PC.handskill` $lefttarget>><<handskilluse>><<combatpromiscuity4>>
 		<</if>>
 
 		<<if $rightaction is "handedge">>
 			<<personselect $righttarget>><<actionshandedge $righttarget $rightarm>><<set $rightaction to 0>><<set $rightactiondefault to "handedge">>
-			<<submission 5>><<sexControl 5 `currentSkillValue("handskill")` $righttarget>><<handskilluse>><<combatpromiscuity4>>
+			<<submission 5>><<sexControl 5 `PC.handskill` $righttarget>><<handskilluse>><<combatpromiscuity4>>
 		<</if>>
 
 		<<if $leftaction is "leftstoppenis" and $NPCList[$lefttarget].penis is "leftarm">>
@@ -1301,7 +1301,7 @@
 					<<namedNpcReaction $righttarget "undress">>
 				<<else>>
 					You try to <<npcUndressText $_npc $_clothesTarget>>, but <<he>> holds on to <<his>> clothes.
-					<<set $_npc.clothes[$_clothesTarget].integrity -= Math.floor((currentSkillValue("handskill") / 100) * 1.5)>>
+					<<set $_npc.clothes[$_clothesTarget].integrity -= Math.floor((PC.handskill / 100) * 1.5)>>
 				<</if>>
 			<</if>>
 			<<unset $undressLeftTarget>><<unset $undressRightTarget>>
@@ -1338,7 +1338,7 @@
 					<<namedNpcReaction $righttarget "undress">>
 				<<else>>
 					You try to <<npcUndressText $_npc $_clothesTarget>>, but <<he>> holds on to <<his>> clothes.
-					<<set $_npc.clothes[$_clothesTarget].integrity -= Math.floor(currentSkillValue("handskill") / 100)>>
+					<<set $_npc.clothes[$_clothesTarget].integrity -= Math.floor(PC.handskill / 100)>>
 				<</if>>
 			<</if>>
 			<<unset $undressRightTarget>>
@@ -1375,7 +1375,7 @@
 					<<namedNpcReaction $lefttarget "undress">>
 				<<else>>
 					You try to <<npcUndressText $_npc $_clothesTarget>>, but <<he>> holds on to <<his>> clothes.
-					<<set $_npc.clothes[$_clothesTarget].integrity -= Math.floor(currentSkillValue("handskill") / 100)>>
+					<<set $_npc.clothes[$_clothesTarget].integrity -= Math.floor(PC.handskill / 100)>>
 				<</if>>
 			<</if>>
 			<<unset $undressLeftTarget>>

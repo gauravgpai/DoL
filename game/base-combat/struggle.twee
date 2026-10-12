@@ -1120,7 +1120,7 @@
 	<</if>>
 
 	<!-- FEET -->
-	<<set _grip_strength to PC.physique / 20 + currentSkillValue("handskill")>>
+	<<set _grip_strength to PC.physique / 20 + PC.handskill>>
 	<<if $feetaction is "rest">>
 		<<unset $dodging>>
 		You rest your legs.
@@ -1819,11 +1819,11 @@
 				<<feetskilluse>>
 			<</if>>
 			<<if $left_guard is 1>>
-				<<set _left_guard_chance to (currentSkillValue("handskill") / 3)>>
+				<<set _left_guard_chance to (PC.handskill / 3)>>
 				<<handskilluse>>
 			<</if>>
 			<<if $right_guard is 1>>
-				<<set _right_guard_chance to (currentSkillValue("handskill") / 3)>>
+				<<set _right_guard_chance to (PC.handskill / 3)>>
 				<<handskilluse>>
 			<</if>>
 			<<set _hit_chance to random(1, 1000)>>
@@ -1872,9 +1872,9 @@
 				<<else>>
 					leaps towards you,
 				<</if>>
-				<<if currentSkillValue("handskill") gte 800>>
+				<<if PC.handskill gte 800>>
 					but you redirect its momentum with a well-timed blow,
-				<<elseif currentSkillValue("handskill") gte 200>>
+				<<elseif PC.handskill gte 200>>
 					but you bat it aside,
 				<<else>>
 					but your flailing knocks it aside,

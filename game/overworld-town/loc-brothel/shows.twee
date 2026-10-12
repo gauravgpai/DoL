@@ -1873,7 +1873,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 
 		<<if hasSexStat("promiscuity", 2)>>
 			<<if !pcAreArmsBound("any")>>
-				<<link [[Show off your hands|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $handskill * 50>><</link>><<promiscuous2>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 800>>
+				<<link [[Show off your hands|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $handskill * 50>><</link>><<promiscuous2>><<skill_difficulty `PC.handskill` "Hand Skill" 1 800>>
 				<br>
 			<</if>>
 			<<if $settings.footFetishEnabled>>
@@ -1890,7 +1890,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<<if $phase is 0>> /* Do nothing */
 			You look around the audience with a faint smile as they continue to bid.
 		<<elseif $phase is 1>> /* Show off your hands */
-			<<if currentSkillValue("handskill") gte random(1, 800)>>
+			<<if PC.handskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You smoothly run your hands down your body, showing off your curves. You make a heart with your fingers.<<handskill 5>><<ghandskill>>
 				<br><br>

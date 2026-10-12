@@ -3146,7 +3146,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "handtext">><<silently>>
-	<<set $_skillText to currentSkillValue("handskill")>>
+	<<set $_skillText to PC.handskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>

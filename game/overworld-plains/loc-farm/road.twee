@@ -1610,7 +1610,7 @@ You dismount the <<beasttype>>, and kneel beneath <<bhim>>.
 		"D-don't stop," the <<beasttype>> says. "I'm almost there."
 		<br><br>
 	<</if>>
-	<<link [[Keep going|Farm Ride Hand 2]]>><<farm_horses 1>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 1000>><<grespect>>
+	<<link [[Keep going|Farm Ride Hand 2]]>><<farm_horses 1>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 1 1000>><<grespect>>
 	<br>
 	<<link [[Stop|Farm Ride Hand Stop]]>><<farm_horses -3>><</link>><<llrespect>>
 	<br>
@@ -1633,7 +1633,7 @@ You dismount the <<beasttype>>, and kneel beneath <<bhim>>.
 <<effects>>
 
 Your fingers work as fast as they can,
-<<if currentSkillValue("handskill") gte random(1, 1000)>>
+<<if PC.handskill gte random(1, 1000)>>
 	<<if $NPCList[0].penis isnot "none">>
 		<span class="green">and you manage to milk the <<print $NPCList[0].penisdesc>> of its cum</span> before the car arrives.
 	<<else>>
@@ -1916,7 +1916,7 @@ You spur your <<beasttype>> to a gallop. Hooves thunder behind as Remy's goons t
 
 	<<link [[Punch the closest rider|Farm Ride Punch]]>><</link>><<physiquedifficulty 1 15000>>
 	<br>
-	<<link [[Grab the lasso|Farm Ride Grab]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 1000>>
+	<<link [[Grab the lasso|Farm Ride Grab]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 1 1000>>
 	<br>
 	<<link [[Reassure your steed|Farm Ride Reassure]]>><</link>><<tendingdifficulty 1 1000>>
 	<br>
@@ -1936,7 +1936,7 @@ You rein in the <<beasttype>>, and turn to face the approaching riders. They don
 
 <<link [[Punch the closest rider|Farm Ride Punch]]>><</link>><<physiquedifficulty 1 15000>>
 <br>
-<<link [[Grab the lasso|Farm Ride Grab]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 1000>>
+<<link [[Grab the lasso|Farm Ride Grab]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 1 1000>>
 <br>
 <<link [[Reassure your steed|Farm Ride Reassure]]>><</link>><<tendingdifficulty 1 1000>>
 <br>
@@ -1948,7 +1948,7 @@ You rein in the <<beasttype>>, and turn to face the approaching riders. They don
 	You fist connects with the <<person3>><<persons>> face, <span class="green">knocking <<him>> from the saddle.</span> <<His>> colleague laughs, and readies the lasso for another attempt.
 	<br><br>
 
-	<<link [[Grab the lasso|Farm Ride Grab 2]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 1000>>
+	<<link [[Grab the lasso|Farm Ride Grab 2]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 1 1000>>
 	<br>
 	<<link [[Reassure your steed|Farm Ride Reassure 2]]>><</link>><<tendingdifficulty 1 1000>>
 	<br>
@@ -1975,7 +1975,7 @@ You rein in the <<beasttype>>, and turn to face the approaching riders. They don
 :: Farm Ride Grab
 <<effects>>
 
-<<if currentSkillValue("handskill") gte random(1, 1000)>>
+<<if PC.handskill gte random(1, 1000)>>
 	The <<person2>><<person>> hurls the lasso at your <<beasttype>> once more, <span class="green">but you catch it,</span> and pull the <<person2>><<person>> from <<his>> seat. <<He>> tumbles to the dirt.
 	<br><br>
 
@@ -2017,7 +2017,7 @@ You rein in the <<beasttype>>, and turn to face the approaching riders. They don
 
 	<<link [[Punch the closest rider|Farm Ride Punch 2]]>><</link>><<physiquedifficulty 1 15000>>
 	<br>
-	<<link [[Grab the lasso|Farm Ride Grab 2]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 1000>>
+	<<link [[Grab the lasso|Farm Ride Grab 2]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 1 1000>>
 	<br>
 <<else>>
 	<<person1>>
@@ -2071,7 +2071,7 @@ You rein in the <<beasttype>>, and turn to face the approaching riders. They don
 :: Farm Ride Grab 2
 <<effects>>
 
-<<if currentSkillValue("handskill") gte random(1, 1000)>>
+<<if PC.handskill gte random(1, 1000)>>
 	<<earnFeat "Into the Sunset">>
 	The <<person2>><<person>> hurls the lasso at your <<beasttype>> once more, <span class="green">but you catch it,</span> and pull the <<person2>><<person>> from <<his>> seat. <<He>> tumbles to the dirt.
 	<br><br>

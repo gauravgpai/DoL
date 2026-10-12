@@ -626,7 +626,7 @@ How should you proceed?
 
 <<link [[Play it safe|Mansion Return Massage Cute Safe]]>><</link>>
 <br>
-<<link [[Do it properly|Mansion Return Massage Cute Proper]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 600>>
+<<link [[Do it properly|Mansion Return Massage Cute Proper]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 1 600>>
 <br>
 <<link [[Cause as much pain as you can get away with|Mansion Return Massage Cute Pain]]>><<npcincr Avery rage 1>><<npcincr Avery dom -1>><</link>><<garage>><<ldom>>
 <br>
@@ -881,7 +881,7 @@ You open your mouth to refuse, but Avery anticipates your words. <<He>> shoves y
 
 You focus on unknotting the muscles in Avery's back, your hands firm and sure.
 <br><br>
-<<if currentSkillValue("handskill") gte random(1, 600)>>
+<<if PC.handskill gte random(1, 600)>>
 	"I hope you like it," you say. <span class="green">Avery responds with a gentle moan.</span><<glove>><<ldom>><<larage>><<npcincr Avery love 1>><<npcincr Avery dom -1>><<npcincr Avery rage -1>>
 	<br><br>
 	<<link [[Next|Mansion Return Massage Cute 2]]>><</link>>
@@ -934,7 +934,7 @@ How should you proceed?
 
 <<link [[Play it safe|Mansion Return Massage Sophisticated Safe]]>><</link>>
 <br>
-<<link [[Do it properly|Mansion Return Massage Sophisticated Proper]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 600>>
+<<link [[Do it properly|Mansion Return Massage Sophisticated Proper]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 1 600>>
 <br>
 <<link [[Cause as much pain as you can get away with|Mansion Return Massage Sophisticated Pain]]>><<npcincr Avery rage 1>><<npcincr Avery dom -1>><</link>><<garage>><<ldom>>
 <br>
@@ -958,7 +958,7 @@ You massage Avery's back, focusing on knots without pushing too hard.
 You begin with Avery's legs, and work your way up, focusing on <<his>> knotted muscles. They require a bit of force.
 <br><br>
 
-<<if currentSkillValue("handskill") gte random(1, 600)>>
+<<if PC.handskill gte random(1, 600)>>
 	If Avery's pleasured moans are anything to go by, <span class="green">you're doing a good job.</span><<glove>><<ldom>><<larage>><<npcincr Avery love 1>><<npcincr Avery dom -1>><<npcincr Avery rage -1>>
 	<br><br><<link [[Next|Mansion Return Massage Sophisticated 2]]>><</link>>
 	<br>
@@ -1169,7 +1169,7 @@ How should you proceed?
 
 <<link [[Play it safe|Mansion Return Massage Alluring Safe]]>><</link>>
 <br>
-<<link [[Do it properly|Mansion Return Massage Alluring Proper]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 600>>
+<<link [[Do it properly|Mansion Return Massage Alluring Proper]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 1 600>>
 <br>
 <<link [[Cause as much pain as you can get away with|Mansion Return Massage Alluring Pain]]>><<npcincr Avery rage 1>><<npcincr Avery dom -1>><</link>><<garage>><<ldom>>
 <br>
@@ -1190,7 +1190,7 @@ You whisper to Avery while you work, asking <<him>> if everything is to <<his>> 
 
 You rub the oil into Avery's skin, and focus on <<his>> knotted muscles.
 <br><br>
-<<if currentSkillValue("handskill") gte random(1, 600)>>
+<<if PC.handskill gte random(1, 600)>>
 	You feel them loosen. If Avery's pleasured moans are anything to go by, <span class="green">you're doing a good job.</span><<glove>><<ldom>><<larage>><<npcincr Avery love 1>><<npcincr Avery dom -1>><<npcincr Avery rage -1>>
 	<br><br>
 	<<link [[Next|Mansion Return Massage Alluring 2]]>><</link>>

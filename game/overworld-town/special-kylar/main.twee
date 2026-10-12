@@ -5387,9 +5387,9 @@ Kylar gestures at <<his>> sketchbook, showing you a clear page. "I can show you 
 <</if>>
 <br><br>
 You keep drawing, and you start to recognise a character from an anime you've heard of before. After some time, you finish your drawing.
-<<if currentSkillValue("handskill") gte 800>> /* A and S */
+<<if PC.handskill gte 800>> /* A and S */
 	It's really good, in your opinion. Kylar seems very proud of you.
-<<elseif currentSkillValue("handskill") gte 400>> /* C and B */
+<<elseif PC.handskill gte 400>> /* C and B */
 	It's adequate, neither brilliant nor terrible. Kylar seems proud of you.
 <<else>> /* F and D */
 	It's quite poor, but you don't let that bother you. Kylar seems proud of you, regardless.

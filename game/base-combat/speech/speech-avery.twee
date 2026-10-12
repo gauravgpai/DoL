@@ -1129,7 +1129,7 @@
 		<</if>>
 
 		/* Hand skill is C or higher */
-		<<if currentSkillValue("handskill") gte 400>>
+		<<if PC.handskill gte 400>>
 			<<if $enemyanger lte 20>>
 				<<if $speechHandjobPenis or $speechHandjobVagina>>
 					<<addSpeechLine "touch">>

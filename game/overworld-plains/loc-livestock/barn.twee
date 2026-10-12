@@ -811,7 +811,7 @@ You motion for the <<beasttype>> to follow you. <<bHe>> does, hooves clopping on
 	despite the violent thrusting.
 	<br><br>
 
-	<<if currentSkillValue("handskill") gte 400>>
+	<<if PC.handskill gte 400>>
 		<<set $livestock.horse.reputation to 2>><<set $daily.livestock.horses_satisfied += 1>>
 		<span class="green">You manage it.</span>
 		<<ejacstat>><<handejacstat>>
