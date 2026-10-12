@@ -8572,7 +8572,7 @@ You approach the delinquents. They're noisier up close. Whitney leers at you,
 
 			<<if hasSexStat("promiscuity", 4)>>
 				<<if $phase is "penis">>
-					<<link [[Rub back|Whitney Pub Rub]]>><<set $phase2 to "bottom">><</link>><<skill_difficulty `currentSkillValue("bottomskill")` "Bottom Skill" 1 $drunk>><<note "Failure will increase arousal" "purple">>
+					<<link [[Rub back|Whitney Pub Rub]]>><<set $phase2 to "bottom">><</link>><<skill_difficulty `PC.bottomskill` "Bottom Skill" 1 $drunk>><<note "Failure will increase arousal" "purple">>
 					<br>
 				<<elseif $player.penisExist>>
 					<<link [[Rub back|Whitney Pub Rub]]>><<set $phase2 to "penile">><</link>><<skill_difficulty `currentSkillValue("penileskill")` "Penile Skill" 1 $drunk>><<note "Failure will increase arousal" "purple">>
@@ -9008,7 +9008,7 @@ Shock flashes in <<his>> eyes, but it quickly turns to lust. <<He>> smiles, mout
 	<<promiscuity4>>
 
 	You're not sure <<he>> can even feel it through <<his>> <<npcClothesText $NPCList[0] "lower">>.
-	<<if currentSkillValue("bottomskill") gte random(1, $drunk)>>
+	<<if PC.bottomskill gte random(1, $drunk)>>
 		<span class="green">Until a moan slips out.</span> <<He>> hides it in <<his>> beer, but <<he>> still catches looks.
 		<br><br>
 

@@ -3170,7 +3170,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "bottomtext">><<silently>>
-	<<set $_skillText to currentSkillValue("bottomskill")>>
+	<<set $_skillText to PC.bottomskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>

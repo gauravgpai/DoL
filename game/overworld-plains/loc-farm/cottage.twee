@@ -1084,9 +1084,9 @@ You whack Alex's hand, and struggle from the bed. "Suit yourself," <<he>> says. 
 <<set _alex to C.npc.Alex>>
 
 You gyrate your hips, <<bottomtext>> rubbing your <<bottom>> against Alex's <<print (_alex.penis isnot "none" ? "shaft" : "pussy")>> through the fabric, making it
-<<if currentSkillValue("bottomskill") lt 400>>
+<<if PC.bottomskill lt 400>>
 	slowly moisten.
-<<elseif currentSkillValue("bottomskill") lt 800>>
+<<elseif PC.bottomskill lt 800>>
 	quickly moisten.
 <<else>>
 	soaked in an instant.

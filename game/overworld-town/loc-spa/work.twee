@@ -1247,7 +1247,7 @@ Your hands are occupied. You need to use something else.
 
 <<link [[Use your thighs|Spa Lewd Thigh]]>><<thighskill 5>><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 1200>><<gthighskill>>
 <br>
-<<link [[Use your ass|Spa Lewd Bottom]]>><<bottomskill 5>><</link>><<skill_difficulty `currentSkillValue("bottomskill")` "Ass Skill" 1 1200>><<gbottomskill>>
+<<link [[Use your ass|Spa Lewd Bottom]]>><<bottomskill 5>><</link>><<skill_difficulty `PC.bottomskill` "Ass Skill" 1 1200>><<gbottomskill>>
 <br>
 /* 5/6 of success */
 
@@ -1421,7 +1421,7 @@ Your hands are occupied. You need to use something else.
 :: Spa Lewd Bottom
 <<effects>>
 
-<<if currentSkillValue("bottomskill") gte random(1, 400)>>
+<<if PC.bottomskill gte random(1, 400)>>
 	You shunt yourself down <<his>> body,
 	<<if $NPCList[0].penis isnot "none">>
 		until you feel <<his>> <<print $NPCList[0].penisdesc>> against your <<bottom>>. You begin <<bottomtext>> bobbing up and down against <<his>> length, <span class="green">careful not to finish <<him>> too soon.</span>
@@ -1445,7 +1445,7 @@ Your hands are occupied. You need to use something else.
 
 	<<link [[Finish|Spa Lewd Bottom Finish]]>><</link>>
 	<br>
-	<<link [[Demand more money|Spa Lewd Bottom 2]]>><</link>><<skill_difficulty `currentSkillValue("bottomskill")` "Bottom Skill" 300 1175>>
+	<<link [[Demand more money|Spa Lewd Bottom 2]]>><</link>><<skill_difficulty `PC.bottomskill` "Bottom Skill" 300 1175>>
 	<br>
 	/* 4/5 of success */
 
@@ -1490,7 +1490,7 @@ Your hands are occupied. You need to use something else.
 <<effects>>
 
 
-<<if currentSkillValue("bottomskill") gte random(300, 1175)>>
+<<if PC.bottomskill gte random(300, 1175)>>
 /* 4/5 of success */
 
 	<<if $spa.behaviour is "cute">>

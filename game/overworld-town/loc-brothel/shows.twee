@@ -1951,7 +1951,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<br><br>
 
 		<<if hasSexStat("promiscuity", 4)>>
-			<<link [[Offer your ass|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $bottomskill * 50>><</link>><<promiscuous4>><<skill_difficulty `currentSkillValue("bottomskill")` "Bottom Skill" 1 800>>
+			<<link [[Offer your ass|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $bottomskill * 50>><</link>><<promiscuous4>><<skill_difficulty `PC.bottomskill` "Bottom Skill" 1 800>>
 			<br>
 			<<link [[Pat your thighs|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $thighskill * 50>><</link>><<promiscuous4>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 800>>
 		<<else>>
@@ -1964,7 +1964,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<<if $phase is 0>> /* Do nothing */
 			Unsure of what to do, you spin around for the audience.
 		<<elseif $phase is 1>> /* Offer your ass */
-			<<if currentSkillValue("bottomskill") gte random(1, 800)>>
+			<<if PC.bottomskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You turn around, stick out your <<bottom>>, and give it a slap.<<bottomskill 5>><<gbottomskill>>
 				<br><br>
