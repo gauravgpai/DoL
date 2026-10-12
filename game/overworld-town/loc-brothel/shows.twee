@@ -1913,7 +1913,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<br><br>
 
 		<<if hasSexStat("promiscuity", 3)>>
-			<<link [[Flaunt your chest|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $chestskill * 50>><</link>><<promiscuous3>><<skill_difficulty `currentSkillValue("chestskill")` "Chest Skill" 1 800>>
+			<<link [[Flaunt your chest|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $chestskill * 50>><</link>><<promiscuous3>><<skill_difficulty `PC.chestskill` "Chest Skill" 1 800>>
 			<<if !$worn.face.type.includes("gag")>>
 				<br>
 				<<link [[Show off your tongue|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $oralskill * 50>><</link>><<promiscuous3>><<skill_difficulty `currentSkillValue("oralskill")` "Oral Skill" 1 800>>
@@ -1928,7 +1928,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<<if $phase is 0>> /* Do nothing */
 			You shift your weight from side to side as you wait for the auction to continue.
 		<<elseif $phase is 1>> /* Flaunt your chest */
-			<<if currentSkillValue("chestskill") gte random(1, 800)>>
+			<<if PC.chestskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You puff out your chest and <<if $player.breastsize gte 3>>shake<<else>>squeeze<</if>> your <<breasts>>.<<chestskill 5>><<gchestskill>>
 				<br><br>

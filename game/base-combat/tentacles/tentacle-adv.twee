@@ -2347,7 +2347,7 @@
 		<<set $chestaction to 0>><<set $chestactiondefault to "chestrub"+_tentacle.id>>
 		<<submission 3>><<chestskilluse>>
 		You <<chesttext>> rub _the _tentacle.fullDesc between your <<breasts>>.
-		<<if currentSkillValue("chestskill") gte (800 - ($rng * 10))>>
+		<<if PC.chestskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip, covering your chest</span>.
 			<<set _tentacle.tentaclehealth -= 3>><<tentacle_record "fluid" 3>><<bodyliquid "chest" _fluid>><<chestejacstat>><<ejacstat>>
 			<<if $abomination is 1>>
