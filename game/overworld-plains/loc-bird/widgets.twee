@@ -2665,7 +2665,7 @@
 			<<exit>>
 		<</if>>
 
-		<<if currentSkillValue('housekeeping') lt $_upgrade.housekeeping>>
+		<<if PC.housekeeping lt $_upgrade.housekeeping>>
 			<br>
 			<span class="black">
 				<<skilllettergrade $_upgrade.housekeeping>> Housekeeping skill required.

@@ -3240,7 +3240,7 @@
 <</widget>>
 
 <<widget "housekeepingtext">>
-	<<set $_housekeepingText to currentSkillValue('housekeeping')>>
+	<<set $_housekeepingText to PC.housekeeping>>
 	<<if $_housekeepingText lt 200>><span class="pink">awkwardly</span>
 	<<elseif $_housekeepingText lt 400>><span class="purple">cautiously</span>
 	<<elseif $_housekeepingText lt 600>><span class="blue">rhythmically</span>
@@ -5130,7 +5130,7 @@
 <</widget>>
 
 <<widget "housekeeping_text">>
-<<set $_housekeepingText to currentSkillValue('housekeeping')>>
+<<set $_housekeepingText to PC.housekeeping>>
 <<if $_housekeepingText gte 1200>>
 	<span class="gold">You're incredible at this.</span>
 <<elseif $_housekeepingText gte 800>>

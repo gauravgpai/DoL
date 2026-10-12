@@ -342,7 +342,7 @@
 <</widget>>
 
 <<widget "housekeepingdifficulty">>
-	<<skill_difficulty currentSkillValue('housekeeping') "Housekeeping" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.housekeeping "Housekeeping" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <<widget "difficulty">>

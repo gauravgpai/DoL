@@ -273,9 +273,9 @@ The <<person2>><<person>> proves nimble as <<he>> climbs the mast beside you, ta
 
 They stand with their backs to the mast as you wrap the rope around their waists.
 
-<<if currentSkillValue('housekeeping') gte 500>>
+<<if PC.housekeeping gte 500>>
 	You're good at this. The rope ties them firm.<<ggrespect>><<pirate_status 3>>
-<<elseif currentSkillValue('housekeeping') gte 200>>
+<<elseif PC.housekeeping gte 200>>
 	You tie a reasonably tight knot.<<grespect>><<pirate_status 1>>
 <<else>>
 	It's not the best knotted rope, but it'll do.

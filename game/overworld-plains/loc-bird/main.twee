@@ -5979,17 +5979,17 @@ Whose feathers will you use?
 <<else>>
 	The tower is caked in dust, and small mounds of dirt are piled up in corners. You do your best to make the place look more presentable.
 <</if>>
-<<if currentSkillValue('housekeeping') gte 1500>>
+<<if PC.housekeeping gte 1500>>
 	<<set _cleanIncrease += 7>>
-<<elseif currentSkillValue('housekeeping') gte 1200>>
+<<elseif PC.housekeeping gte 1200>>
 	<<set _cleanIncrease += 6>>
-<<elseif currentSkillValue('housekeeping') gte 800>>
+<<elseif PC.housekeeping gte 800>>
 	<<set _cleanIncrease += 5>>
-<<elseif currentSkillValue('housekeeping') gte 600>>
+<<elseif PC.housekeeping gte 600>>
 	<<set _cleanIncrease += 4>>
-<<elseif currentSkillValue('housekeeping') gte 400>>
+<<elseif PC.housekeeping gte 400>>
 	<<set _cleanIncrease += 3>>
-<<elseif currentSkillValue('housekeeping') gte 200>>
+<<elseif PC.housekeeping gte 200>>
 	<<set _cleanIncrease += 2>>
 <<else>>
 	<<set _cleanIncrease += 1>>

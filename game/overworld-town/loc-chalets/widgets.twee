@@ -209,7 +209,7 @@
 <<if Weather.precipitation isnot "none">>
 	The inclement weather makes it worse, turning the sand into a boggy mush liable to swallow a foot whole.
 	<br><br>
-	<<if currentSkillValue('housekeeping') gte 300>>
+	<<if PC.housekeeping gte 300>>
 		It's a question of balance, and one you can answer. <span class="green">You cross the sand on light and nimble feet.</span>
 		<br><br>
 		<<chalets_end_link>>
@@ -222,7 +222,7 @@
 		<br>
 	<</if>>
 <<else>>
-	<<if currentSkillValue('housekeeping') gte 200>>
+	<<if PC.housekeeping gte 200>>
 		It's a question of balance, and one you can answer. <span class="green">You cross the sand on light and nimble feet.</span>
 		<br><br>
 		<<chalets_end_link>>
@@ -267,11 +267,11 @@
 	<<default>>
 		You have no bags of rubbish.
 <</switch>>
-<<if currentSkillValue('housekeeping') gte 300>>
+<<if PC.housekeeping gte 300>>
 	Your housekeeping skill lets you carry a total of 5.
-<<elseif currentSkillValue('housekeeping') gte 200>>
+<<elseif PC.housekeeping gte 200>>
 	Your housekeeping skill lets you carry a total of 4.
-<<elseif currentSkillValue('housekeeping') gte 100>>
+<<elseif PC.housekeeping gte 100>>
 	Your housekeeping skill lets you carry a total of 3.
 <<else>>
 	Your housekeeping skill lets you carry a total of 2.
@@ -279,7 +279,7 @@
 <</widget>>
 
 <<widget "chalets_links">>
-<<if currentSkillValue('housekeeping') gte 300>>
+<<if PC.housekeeping gte 300>>
 	<<if $chalets_bags lt 5>>
 		<<link [[Clean a chalet (1:00)|Chalets Knock]]>><</link>>
 		<br>
@@ -287,7 +287,7 @@
 		<span class="blue">You can't carry any more bags.</span>
 		<br>
 	<</if>>
-<<elseif currentSkillValue('housekeeping') gte 200>>
+<<elseif PC.housekeeping gte 200>>
 	<<if $chalets_bags lt 4>>
 		<<link [[Clean a chalet (1:00)|Chalets Knock]]>><</link>>
 		<br>
@@ -295,7 +295,7 @@
 		<span class="blue">You can't carry any more bags.</span>
 		<br>
 	<</if>>
-<<elseif currentSkillValue('housekeeping') gte 100>>
+<<elseif PC.housekeeping gte 100>>
 	<<if $chalets_bags lt 3>>
 		<<link [[Clean a chalet (1:00)|Chalets Knock]]>><</link>>
 		<br>

@@ -779,15 +779,15 @@ The <<person1>><<person>> and <<person2>><<person>> don't need to be told twice.
 :: Pirate Swab
 <<effects>><<wearProp "mop">>
 
-<<if currentSkillValue('housekeeping') gte 1000>>
+<<if PC.housekeeping gte 1000>>
 	<<generateRole 0 0 "pirate">><<person1>>
 	You take a mop, and get to work swabbing the deck, keeping it dry. You're so efficient that you dry the whole thing single-handedly, and have time to chat with a <<person>>.
 	<br><br>
 	"No one's gonna be slipping with the deck like that," <<he>> comments. "A shame." <<lstress>><<stress -12>>
-<<elseif currentSkillValue('housekeeping') gte 600>>
+<<elseif PC.housekeeping gte 600>>
 	<<generateRole 0 0 "pirate">><<person1>>
 	You take a mop, and swab the deck in a battle against the sea. It's a futile struggle, but you keep the main walkways dry. A <<person>> even thanks you.
-<<elseif currentSkillValue('housekeeping') gte 200>>
+<<elseif PC.housekeeping gte 200>>
 	You lift a mop, and swab the deck in an attempt to keep it dry. Spray from the sea undoes your work, but you're fast enough to keep the main walkways dry. Mostly.
 <<else>>
 	You find a mop, and swab the deck in an attempt to keep it dry. Spray from the sea splashes over it, undoing your work almost as soon as you finish it.
@@ -856,13 +856,13 @@ You are in the cabin aboard the pirate ship.
 :: Pirate Cabin Clean
 <<effects>>
 
-<<if currentSkillValue('housekeeping') gte 1000>>
+<<if PC.housekeeping gte 1000>>
 	The pirates make way for you as you clean the cabin. Beds are turned, clothes are patched and knitted back together, and all the dust and litter is hunted down.
 	<br><br>
 	You leave it spotless in your wake.<<lstress>><<stress -6>>
-<<elseif currentSkillValue('housekeeping') gte 600>>
+<<elseif PC.housekeeping gte 600>>
 	You clean the cabin, leaving everything neat and tidy in your wake. Some of the pirates look like they want to mess with you, but others warn them away, not wanting to interfere in a good thing.
-<<elseif currentSkillValue('housekeeping') gte 200>>
+<<elseif PC.housekeeping gte 200>>
 	You clean up after the pirates, picking up rubbish and changing the bedding on their bunks.
 	<br><br>
 	<<endevent>>
@@ -930,11 +930,11 @@ You are in the bilge, deep within the pirate ship. The walls creak and groan.
 :: Pirate Bilge Plug
 <<effects>>
 
-<<if currentSkillValue('housekeeping') gte 1000>>
+<<if PC.housekeeping gte 1000>>
 	You find a hole in the side of the ship. You patch it up, good as new. Sensing that something is wrong, you discover three more leaks hidden behind crates and barrels. You repair these as well. No wonder the bilge is always so wet.<<lstress>><<stress -6>>
-<<elseif currentSkillValue('housekeeping') gte 600>>
+<<elseif PC.housekeeping gte 600>>
 	You find a hole in the side of the ship, and patch it up before the leak does much damage.
-<<elseif currentSkillValue('housekeeping') gte 200>>
+<<elseif PC.housekeeping gte 200>>
 	You find a small hole in the side of the hull, letting water invade the ship. You manage to seal it with a plank of wood, but it takes some doing. By the time you succeed, there's half a foot of water around your ankles.
 	<br><br>
 	You travel up and down the ship with a bucket, emptying it of water.

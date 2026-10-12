@@ -3676,7 +3676,7 @@ You climb into the hot tub together. If anyone's watching, they get a good view.
 <<effects>>
 <<silently>><<water>><</silently>>
 Avery presses a button, and the bubbles intensify. <<He>> presses another, and a compartment opens to <<his>> side. A crisp vapour emerges, revealing a bottle of wine, and two glasses.
-<<if currentSkillValue('housekeeping') gte 800>>
+<<if PC.housekeeping gte 800>>
 	That's a very expensive vintage.
 <</if>>
 <br><br>
