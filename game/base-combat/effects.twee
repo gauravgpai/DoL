@@ -6137,7 +6137,7 @@
 		<</if>>
 
 		<<if $penisaction is "vaginaEdging">>
-			<<set $penisaction to 0>><<set $penisactiondefault to "vaginaEdging">><<actionspussyedging $penistarget>><<submission 5>><<sexControl 5 `currentSkillValue("penileskill")` $penistarget>><<penileskilluse>>
+			<<set $penisaction to 0>><<set $penisactiondefault to "vaginaEdging">><<actionspussyedging $penistarget>><<submission 5>><<sexControl 5 `PC.penileskill` $penistarget>><<penileskilluse>>
 		<</if>>
 
 		<<if $penisaction is "take">>
@@ -6321,7 +6321,7 @@
 		<</if>>
 
 		<<if $penisaction is "otheranusEdging">>
-			<<set $penisaction to 0>><<set $penisactiondefault to "otheranusEdging">><<actionsotheranusedging $penistarget>><<submission 5>><<sexControl 5 `currentSkillValue("penileskill")` $penistarget>><<penileskilluse>>
+			<<set $penisaction to 0>><<set $penisactiondefault to "otheranusEdging">><<actionsotheranusedging $penistarget>><<submission 5>><<sexControl 5 `PC.penileskill` $penistarget>><<penileskilluse>>
 		<</if>>
 
 		<<if $penisaction is "otheranustake">>

@@ -2232,7 +2232,7 @@
 		<<set $penisaction to 0>><<set $penisactiondefault to "penisrub"+_tentacle.id>>
 		<<submission 2>><<penileskilluse>>
 		You <<peniletext>> rub the tip of the _tentacle.fullDesc with your <<penis>>.
-		<<if currentSkillValue("penileskill") gte (800 - ($rng * 10))>>
+		<<if PC.penileskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip</span>.
 			<<bodyliquid "penis" _fluid>><<set _tentacle.tentaclehealth -= 3>><<tentacle_record "fluid" 3>>
 			<<if $abomination is 1>>
@@ -2250,7 +2250,7 @@
 		<<set $penisaction to 0>><<set $penisactiondefault to "peniscooperate"+_tentacle.id>>
 		<<sex 5 "genitals">><<penileskilluse>>
 		You <<peniletext>> push back against the _tentacle.fullDesc engulfing your <<penis>>.
-		<<if currentSkillValue("penileskill") gte (800 - ($rng * 10))>>
+		<<if PC.penileskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip, covering your groin</span>.
 			<<set _tentacle.tentaclehealth -= 3>><<tentacle_record "fluid" 3>><<bodyliquid "penis" _fluid>>
 			<<if $abomination is 1>>
