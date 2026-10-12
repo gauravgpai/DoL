@@ -898,7 +898,7 @@
 		<br>
 	<</if>>
 	<<if $beastRitual.lewdOption and $beastRitual.distance gte 2 and !$beastRitual.ambush>>
-		<<link [[Wait and ambush Gwylan|Gwylan Forest Run Ambush]]>><<def 1>><<transform fox 1>><<set $phase to "ambush">><</link>><<skill_difficulty `currentSkillValue("skulduggery")` "Skulduggery" 400 1000>>
+		<<link [[Wait and ambush Gwylan|Gwylan Forest Run Ambush]]>><<def 1>><<transform fox 1>><<set $phase to "ambush">><</link>><<skill_difficulty `PC.skulduggery` "Skulduggery" 400 1000>>
 		<br>
 	<</if>>
 	<<if $beastRitual.stalked is "wolf" and ($wolfgirl gte 6 or $wolfpackleader gte 1)>>
@@ -1645,7 +1645,7 @@
 	/* Adversary actions */
 	<<if !$huntGame.playerTracked and ($huntGame.hunter is "other" or $huntGame.distance gte 3)>>
 		<<set $huntGame.otherAction to "track">>
-		<<set $_otherTrackingDiff to currentSkillValue("skulduggery")>>
+		<<set $_otherTrackingDiff to PC.skulduggery>>
 		<<if ["stealth", "hide"].includes($huntGame.playerAction) and $_actionPassed>>
 			/* Failed to track */
 		<<elseif $NPCList[0].skills.security gte random(1, $_otherTrackingDiff)>>

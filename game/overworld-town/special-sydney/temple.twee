@@ -921,7 +921,7 @@ You soon lose track of where you're going, but Sydney knows the way. The halls a
 The two of you reach a locked door. "I think this is the one." Sydney peers through the keyhole. "No good, no lights inside. We need to figure out how to get in." The door is old and in poor shape. The lock is more sturdy than the door itself.
 <br><br>
 <<set $lock to 600>>
-	<<if currentSkillValue('skulduggery') gte $lock>>
+	<<if PC.skulduggery gte $lock>>
 		<<if pcAreArmsBound("both")>>
 			You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 			<br>

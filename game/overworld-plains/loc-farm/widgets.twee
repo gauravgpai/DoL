@@ -1898,7 +1898,7 @@
 				"Hey <<girl>>," says a voice. You look up, and see a <<person>> leering at you across the fence. "What's a cute<<if playerBellyVisible() and $settings.pregnancySpeechEnabled>> pregnant<</if>> <<girl>> like you doing working the fields?"
 				<br><br>
 
-				<<if currentSkillValue('skulduggery') gte random(500, 700)>>
+				<<if PC.skulduggery gte random(500, 700)>>
 					<span class="blue">You shiver.</span> Something's wrong. This isn't your usual pervert. You glance around, and spot them. A <<person2>><<person>> and <<person3>><<person>> creep through the crops, trying to sneak up on you.
 					<br><br>
 					<<if Time.betweenHours(5, 20)>>

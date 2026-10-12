@@ -1344,7 +1344,7 @@ You help Alex carry feed across the yard, spilling it over the fence and into th
 			not _bottomless,
 			currentSkillValue("tending") gte random(0, 500),
 			currentSkillValue("tending") gte random(0, 1000),
-			currentSkillValue("skulduggery") gte random(100, 300)
+			PC.skulduggery gte random(100, 300)
 		]>>
 		<<set _attemptOne to random(0, 2)>>
 		<<if beastSexEnabledForType("pig", $farm_work.pig.monster) and _checkResults[_attemptOne]>>
@@ -1526,7 +1526,7 @@ You empty the buckets in the troughs.
 		$hairlength gte random(300, 500),
 		not _topless,
 		not _bottomless,
-		currentSkillValue("skulduggery") gte random(100, 300)
+		PC.skulduggery gte random(100, 300)
 	]>>
 
 	<<set _attemptOne to random(0, 2)>>

@@ -268,7 +268,7 @@ You are imprisoned in the pound on Starfish Street. <<pound_text cap>> fill the 
 
 The metal cage is locked tight. It uses an electronic lock more advanced than those on the other cages.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<span class="green">You think you could manipulate it.</span>
 	<br><br>
 	<<link [[Open it (0:05)|Pound Door Sneak]]>><<pass 5>><</link>>

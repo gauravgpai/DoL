@@ -1543,7 +1543,7 @@ You approach the large door. It's locked.
 	The door is locked tight.
 	<br><br>
 
-	<<if currentSkillValue('skulduggery') gte $lock>>
+	<<if PC.skulduggery gte $lock>>
 		<<if pcAreArmsBound("both")>>
 			You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 			<br><br>

@@ -979,7 +979,7 @@ After a few minutes,
 		It's locked. You can almost hear Sydney jump on the other side. "Occupied!"
 		<br><br>
 		<<set $lock to 400>>
-		<<if currentSkillValue('skulduggery') gte $lock>>
+		<<if PC.skulduggery gte $lock>>
 			<<if pcAreArmsBound("both")>>
 				You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 				<br>

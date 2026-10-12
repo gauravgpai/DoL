@@ -137,7 +137,7 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 			Someone stops <<nnpc_him "Wren">>. <span class="red">It's the <<= $per_npc.wren_heist_fighting.fullDescription>>, and <<if _special_pronoun is "m">>he<<else>>she<</if>> doesn't look happy.</span> Neither does Wren, who says something to the <<if _special_pronoun is "m">>man<<else>>woman<</if>>. The two of them leave the room. <<stress 6>><<gstress>>
 		<<else>>
 			<<set $wrenHeistDance.blackMoney += 500>>
-			<<if currentSkillValue('skulduggery') gte 800 or $transformationParts.traits.sharpEyes isnot "disabled">>
+			<<if PC.skulduggery gte 800 or $transformationParts.traits.sharpEyes isnot "disabled">>
 				While <<person1>><<he>> is distracted, Wren reaches
 				<<if $wrenHeistDance.phase is 1>>
 					into <<his>> <<= $pronoun is "m" ? "pocket and takes <<his>> wallet." : "purse and takes <<his>> clutch.">>
@@ -195,7 +195,7 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 		<<link [[Next|Wren Heist Break Wine Cellar]]>><</link>>
 		<br>
 	<<case 2>> /* kitchen */
-		You follow Wren into the kitchen. <<He>> is rooting through a cutlery drawer. <<if currentSkillValue('skulduggery') gte 600 or $transformationParts.traits.sharpEyes isnot "disabled">>You notice <<him>> slipping some into <<his>> pockets.<</if>> <<He>> waves you over.
+		You follow Wren into the kitchen. <<He>> is rooting through a cutlery drawer. <<if PC.skulduggery gte 600 or $transformationParts.traits.sharpEyes isnot "disabled">>You notice <<him>> slipping some into <<his>> pockets.<</if>> <<He>> waves you over.
 		<br><br>
 		"Having fun yet?" <<he>> asks.
 		<br><br>
@@ -386,7 +386,7 @@ You rush into the main room just as the lights dim. The spotlight finds you amid
 <</if>>
 You go upstairs. The sounds of the party are muffled beneath your feet. You search through the rooms with Wren.
 <br><br>
-<<He>> pulls you into a dimly-lit room. There is a safe with a complicated-looking lock. You <<= currentSkillValue('skulduggery') gte 800 ? "think you can break into it with some effort" : "know there's no way you can break into it">>.
+<<He>> pulls you into a dimly-lit room. There is a safe with a complicated-looking lock. You <<= PC.skulduggery gte 800 ? "think you can break into it with some effort" : "know there's no way you can break into it">>.
 <<He>> crouches before the safe and fiddles with the keypad. It pops open, and <<he>> gives a self-satisfied hum. "A good thief never reveals <<his>> tricks, in case you're wondering," <<he>> says.
 <br><br>
 You help <<him>> search through the safe's contents. Most of it seems to be legal papers. You try to read some of them, but your eyes glaze over after the first few lines. Wren reaches into the safe one last time. <<His>> eyes widen.

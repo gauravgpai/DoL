@@ -3078,7 +3078,7 @@
 
 		Rather than placing your book on your desk, <<he>> drops it on the floor beside you. "Oops, how clumsy of me. You'd better pick it up before the teacher gets back." The rest of the class turns to watch.
 		<br><br>
-		<<if currentSkillValue('skulduggery') gte 100>><<set $skulduggerydifficulty to 400>>
+		<<if PC.skulduggery gte 100>><<set $skulduggerydifficulty to 400>>
 			<<link [[Trick <<him>>|History Events Trick]]>><</link>><<skulduggerydifficulty>>
 			<br>
 		<</if>>

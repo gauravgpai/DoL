@@ -366,7 +366,7 @@
 	<<set _leftHand["Pose for camera"] to "leftcamerapose">>
 	<<set _leftHand["Whack the writing tool away"] to "penwhack">>
 	<<set _leftHand["Whack the hypnotic instrument away"] to "hypnosiswhack">>
-	<<if currentSkillValue('skulduggery') gte 200>>
+	<<if PC.skulduggery gte 200>>
 		<<set _leftHand["Steal"] to "steal">>
 	<</if>>
 	<<set _leftHand["Struggle"] to "leftstruggle">>
@@ -415,7 +415,7 @@
 	<<set _rightHand["Pose for camera"] to "rightcamerapose">>
 	<<set _rightHand["Whack the writing tool away"] to "penwhack">>
 	<<set _rightHand["Whack the hypnotic instrument away"] to "hypnosiswhack">>
-	<<if currentSkillValue('skulduggery') gte 200>>
+	<<if PC.skulduggery gte 200>>
 		<<set _rightHand["Steal"] to "steal">>
 	<</if>>
 	<<set _rightHand["Struggle"] to "rightstruggle">>

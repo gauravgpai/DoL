@@ -210,7 +210,7 @@ Surrounded by a blue glow, you feel your heart pump as the warmth seeps into you
 The spa is closed. <<openinghours>>
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

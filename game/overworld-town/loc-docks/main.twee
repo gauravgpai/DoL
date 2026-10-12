@@ -1225,13 +1225,13 @@ It's the last crate they load into the cargo container. The <<person1>><<person>
 
 <<if _dock_location is "SW">>
 	The container looks like it's going to remain in the unloading area overnight.
-	<<if currentSkillValue('skulduggery') gte 400>>
+	<<if PC.skulduggery gte 400>>
 		<span class="teal">The contents must be valuable.</span> You make a mental note of its location.
 	<</if>>
 	<br><br>
 <<elseif _dock_location>>
 	A crane lifts the container, and carries it towards the <<skul_dock_location _dock_location>>. It will remain there overnight.
-	<<if currentSkillValue('skulduggery') gte 400>>
+	<<if PC.skulduggery gte 400>>
 		<span class="teal">The contents must be valuable.</span> You make a mental note of its location.
 	<</if>>
 	<br><br>

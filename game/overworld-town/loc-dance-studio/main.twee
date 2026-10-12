@@ -126,7 +126,7 @@ Your heart beats faster as you walk away from the dance studio, and away from re
 The dance studio is closed. <<openinghours>>
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

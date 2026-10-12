@@ -1655,7 +1655,7 @@ You feel a breeze erupt from the gaps around a door. It sits at the top of a sta
 
 You climb the creaky stairs. The door at the top is criss-crossed with padlocks.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<span class="green">Quantity over quality. You'll make short work of them.</span>
 	<br><br>
 	<<dooricon "locked">><<link [[Open it (0:05)|Kylar Abduction Free Sneak]]>><<pass 5>><</link>>

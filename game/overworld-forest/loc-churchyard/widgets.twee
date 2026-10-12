@@ -452,7 +452,7 @@
 <<widget "catacombs_plunder">>
 	<<if !pcAreArmsBound("any")>>
 		<<set $lock to _args[1] ? _args[1] : 500>>
-		<<if currentSkillValue('skulduggery') gte $lock>>
+		<<if PC.skulduggery gte $lock>>
 			<span class="green">There are riches entombed here.</span>
 			<br>
 			<<crimeicon "plunder">>

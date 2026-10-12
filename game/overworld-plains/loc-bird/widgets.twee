@@ -1538,7 +1538,7 @@
 		valuables: random(0, 2),
 		other: 1
 	}>>
-	<<set _flight_hunt_chance[$_goal] += ($bird.hunts.goal is "hawk" ? 3 : 1 + Math.floor(currentSkillValue("skulduggery") / 500))>>
+	<<set _flight_hunt_chance[$_goal] += ($bird.hunts.goal is "hawk" ? 3 : 1 + Math.floor(PC.skulduggery / 500))>>
 	<<if Weather.precipitation isnot "none">>
 		<<set _flight_hunt_chance.nothing += 2>>
 	<</if>>

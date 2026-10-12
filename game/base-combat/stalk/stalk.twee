@@ -832,9 +832,9 @@
 		<<set _difficulty to $NPCList[0].skills.security>>
 		<<set _difficulty += $liquidcount * 20>>
 		<<if $liquidcount gte 1>>
-			<<skill_difficulty `currentSkillValue("skulduggery")` "Skulduggery (Slimy)" 0 _difficulty>>
+			<<skill_difficulty `PC.skulduggery` "Skulduggery (Slimy)" 0 _difficulty>>
 		<<else>>
-			<<skill_difficulty `currentSkillValue("skulduggery")` "Skulduggery" 0 _difficulty>>
+			<<skill_difficulty `PC.skulduggery` "Skulduggery" 0 _difficulty>>
 		<</if>>
 	<</if>>
 <</widget>>
@@ -1427,7 +1427,7 @@
 		<<if hasSexStat("promiscuity", 4)>>
 			<<set $_ambushTextPool.pushUnique("You crash down on top of the <<person>>, purposefully planting your <<bottom>> against <<his>> face. You playfully wiggle against <<his>> mouth and nose, hearing <<him>> struggle to breathe. After a few moments of this, you're satisfied and leap off <<him>> to flee the scene. <<arousal 1000>><<ggarousal>><br>")>>
 		<</if>>
-		<<if currentSkillValue('skulduggery') gte 600>>
+		<<if PC.skulduggery gte 600>>
 			<<set $_ambushTextPool.pushUnique("You manage to knock the <<person>> to the ground. Taking advantage, you tie <<his>> shoelaces together with incredible deftness. <<He>> curses as you triumphantly make your escape.")>>
 		<</if>>
 	<</if>>

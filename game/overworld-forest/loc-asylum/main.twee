@@ -2556,7 +2556,7 @@ The <<person2>><<person>>
 	<br><br>
 	"Uhm... okay," the <<person>> says loudly. "Get these patients out."
 	<br>
-	The door opens and <<if currentSkillValue('science') gte 600 or currentSkillValue('skulduggery') gte 600>>closes suspiciously quickly.<<else>>closes.<</if>>
+	The door opens and <<if currentSkillValue('science') gte 600 or PC.skulduggery gte 600>>closes suspiciously quickly.<<else>>closes.<</if>>
 	<br><br>
 	The hood lifts off your head and the straightjacket is closed to cover your <<breasts>>.
 	As the <<person2>><<person>> releases you from the wall, the <<person1>><<person>> talks to you.

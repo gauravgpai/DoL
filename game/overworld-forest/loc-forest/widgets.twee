@@ -821,7 +821,7 @@
 
 <<widget "forestplant_snare">>
 	<<generatePlant1>><<person1>>
-	<<if currentSkillValue('skulduggery') gte random(200,700)>>
+	<<if PC.skulduggery gte random(200,700)>>
 		You <span class="green">notice something out of the corner of your eye</span>, and look down. A snare trap made of vines is hidden in the ground. A vine leads across the ground into a nearby bush.
 		<br><br>
 
@@ -1536,7 +1536,7 @@
 				<<elseif $NPCList[0].traits.includes("clumsy")>><span class="blue">clumsy</span>.
 				<</if>>
 				<br><br>
-			<<elseif currentSkillValue('skulduggery') gte $NPCList[0].skills.security>>
+			<<elseif PC.skulduggery gte $NPCList[0].skills.security>>
 				<<set $forest_nest.fox to 3>>
 				<span class="blue">You hear a rustle nearby.</span> Something else is eyeing up the nest, too.
 				<br><br>

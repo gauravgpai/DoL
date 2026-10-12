@@ -4550,7 +4550,7 @@ Sydney looks momentarily startled, then smiles. <<He>> brings the cup to <<his>>
 <<else>>
 	<<switch $daily.sydneyBookStudent>>
 		<<case "Whitney">>
-			You tell Sydney it's a maths textbook rented by Whitney, and <<nnpc_he "Whitney">> left a £20<<if currentSkillValue('skulduggery') gte 200 and random(1, 100) is 1>> counterfeit<</if>> note. Sydney sighs. <<nnpc_He "Sydney">> writes it down and thanks you for your help.
+			You tell Sydney it's a maths textbook rented by Whitney, and <<nnpc_he "Whitney">> left a £20<<if PC.skulduggery gte 200 and random(1, 100) is 1>> counterfeit<</if>> note. Sydney sighs. <<nnpc_He "Sydney">> writes it down and thanks you for your help.
 			<br><br>
 			<<sydneyOptions>>
 		<<case "Kylar">>

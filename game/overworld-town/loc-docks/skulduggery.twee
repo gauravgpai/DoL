@@ -5,7 +5,7 @@
 You see a security guard at the gate, resting <<his>> feet on <<his>> desk and playing with <<his>> phone.
 <br><br>
 Despite <<his>> distraction, <<he>> would spot you if you approached. There's a smaller gate to the side, but it's padlocked shut.
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

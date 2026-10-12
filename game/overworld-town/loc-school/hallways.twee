@@ -2339,7 +2339,7 @@ The <<person1>><<person>> looks at you with concern, <<his>> anger begins to tur
 			<</addinlineevent>>
 		<</if>>
 
-		<<if currentSkillValue('skulduggery') gte random(400,700)>>
+		<<if PC.skulduggery gte random(400,700)>>
 			<<addinlineevent "meek_theft">>
 				<<set _mine to either("phone","book","tablet")>>
 				<<set _oops to either(500,500,500,500,1000,1000,1000,2000,2000)>>
@@ -2371,7 +2371,7 @@ The <<person1>><<person>> looks at you with concern, <<his>> anger begins to tur
 			<</addinlineevent>>
 		<</if>>
 
-		<<if currentSkillValue('skulduggery') gte random(100,300)>>
+		<<if PC.skulduggery gte random(100,300)>>
 			<<addinlineevent "meek_trip">>
 				As <<he>> passes you, you stealthily trip <<him>> and yank open <<his>> bag's zipper in one motion, causing <<him>> fall flailing to the floor and scattering <<his>> belongings everywhere. A student nearby laughs.
 				<br><br>

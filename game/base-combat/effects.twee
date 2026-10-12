@@ -2896,7 +2896,7 @@
 				<<set $feetaction to 0>><<set $feetactiondefault to "hide">>
 				<<set _difficulty to $NPCList[0].skills.security>>
 				<<set _difficulty += $liquidcount * 20>>
-				<<if currentSkillValue('skulduggery') gte random(1, _difficulty)>>
+				<<if PC.skulduggery gte random(1, _difficulty)>>
 					<<set _hide_success to true>>
 				<</if>>
 				<<if $earSlime.growth - random(0, Math.clamp(75 - ($earSlime.defyCooldown * 5), 0, 75)) gte (PC.willpower/ 10)>>
@@ -3122,7 +3122,7 @@
 			<<if $feetaction is "ambush" and !$stalk_end>>
 				<<set $feetaction to 0>><<set $feetactiondefault to "run">>
 				<<set _difficulty to $NPCList[0].skills.athletics>>
-				<<if currentSkillValue('skulduggery') gte random(1, _difficulty)>>
+				<<if PC.skulduggery gte random(1, _difficulty)>>
 					<<set _ambush_success to true>>
 				<</if>>
 				<<if $earSlime.growth - random(0, Math.clamp(75 - ($earSlime.defyCooldown * 5), 0, 75)) gte (PC.willpower/ 10)>>

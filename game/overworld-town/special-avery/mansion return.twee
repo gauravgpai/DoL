@@ -3701,7 +3701,7 @@ Avery pours a glass for you, and one for <<himself>>. "Cheers." You clink your g
 
 You look out over the town,
 
-<<if currentSkillValue('skulduggery') gte 800>>
+<<if PC.skulduggery gte 800>>
 	<span class="pink">and notice light reflect off a camera.</span> There's plenty of light emerging from distant windows, concealed by trees and bushes, but this is different. Someone is sitting in the branches, watching you and Avery.
 	<br><br>
 
@@ -3725,7 +3725,7 @@ You shake your head. Avery pours one for <<himself>>, and reclines in relaxation
 
 You look out over the town,
 
-<<if currentSkillValue('skulduggery') gte 800>>
+<<if PC.skulduggery gte 800>>
 	<span class="pink">and notice light reflect off a camera.</span> There's plenty of light emerging from distant windows, concealed by trees and bushes, but this is different. Someone is sitting in the branches, watching you and Avery.
 	<br><br>
 

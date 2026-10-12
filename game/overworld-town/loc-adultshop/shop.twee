@@ -186,13 +186,13 @@
 <<effects>>
 <<ShowUnderEquip "over">>
 <<ShowUnderEquip "normal">>
-<<if currentSkillValue('skulduggery') lt 90>>
+<<if PC.skulduggery lt 90>>
 	Sirris watches the entrance out of the corner of <<nnpc_his "Sirris">> eye. There's no other way out, so you put everything back before leaving.
 	<<clothingReset>>
 <<else>>
 	<<rng>>
-	<<if crimeSumCurrent("thievery","petty") gte 50000 or (crimeSumCurrent("thievery","petty") gte 40000 and $rng * 20 gte currentSkillValue('skulduggery')) or (crimeSumCurrent("thievery","petty") gte 25000 and $rng * 10 gte currentSkillValue('skulduggery'))
-	or (crimeSumCurrent("thievery","petty") gte 10000 and $rng * 5 gte currentSkillValue('skulduggery'))>>
+	<<if crimeSumCurrent("thievery","petty") gte 50000 or (crimeSumCurrent("thievery","petty") gte 40000 and $rng * 20 gte PC.skulduggery) or (crimeSumCurrent("thievery","petty") gte 25000 and $rng * 10 gte PC.skulduggery)
+	or (crimeSumCurrent("thievery","petty") gte 10000 and $rng * 5 gte PC.skulduggery)>>
 		<<generate1>><<person1>>
 		Sirris watches the entrance out of the corner of <<nnpc_his "Sirris">> eye, and as you try to stroll past, <<he>> stops you.
 		<br><br>
@@ -356,7 +356,7 @@ You decide to run and hide.
 <<set $outside to 0>><<effects>><<set $lock to 250>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

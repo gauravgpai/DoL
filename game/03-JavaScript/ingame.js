@@ -2991,13 +2991,13 @@ window.dangerEvent = dangerEvent;
 function hasSharpSenses(sense = "any") {
 	if (["any", "sight"].includes(sense)) {
 		if (V.transformationParts.traits.sharpEyes !== "disabled") return "sharp eyes";
-		if (currentSkillValue("skulduggery") >= 600) return "experienced eyes";
+		if (PC.skulduggery >= 600) return "experienced eyes";
 	}
 	if (["any", "hearing"].includes(sense)) {
 		if (V.transformationParts.wolf.ears !== "disabled" && V.transformationParts.wolf.ears !== "hidden") return "wolf ears";
 		if (V.transformationParts.cat.ears !== "disabled" && V.transformationParts.cat.ears !== "hidden") return "cat ears";
 		if (V.transformationParts.fox.ears !== "disabled" && V.transformationParts.fox.ears !== "hidden") return "fox ears";
-		if (currentSkillValue("skulduggery") >= 600) return "experienced ears";
+		if (PC.skulduggery >= 600) return "experienced ears";
 	}
 	if (["instincts"].includes(sense)) {
 		if (V.wolfgirl >= 6) return "wolf instincts";

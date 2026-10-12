@@ -3071,14 +3071,14 @@ You shake your head.
 :: Moor Plant Money
 <<effects>>
 <<if $phase is 0>>
-	<<if currentSkillValue('skulduggery') gte 700>>Not wanting to risk it, you<<else>>You<</if>> leave the money and walk away.
+	<<if PC.skulduggery gte 700>>Not wanting to risk it, you<<else>>You<</if>> leave the money and walk away.
 	<br><br>
 
 	<<link [[Next|Moor]]>><<endevent>><<unset $plantMoney>><<set $eventskip to 1>><</link>>
 <<else>>
 	<<generatePlant1>><<person1>>
 	You reach for the <<printmoney $plantMoney>>. As you do,
-	<<if currentSkillValue('skulduggery') gte 700>>
+	<<if PC.skulduggery gte 700>>
 		the hand grabs yours.
 		<<takeHandholdingVirginity $NPCList[0] "rape">>
 		<br><br>
@@ -4693,7 +4693,7 @@ You slowly hold out your hands toward the <<beasttype>>, doing your best to appe
 <<if !$wrenSeen.includes("moorhigh")>>
 	"Wren," you say, before <<he>> has a chance to leave. "What were you doing in the moor?"
 	<br><br>
-	<<if C.npc.Wren.love gte 50 or currentSkillValue('skulduggery') gte 800>>
+	<<if C.npc.Wren.love gte 50 or PC.skulduggery gte 800>>
 		You can tell you've caught <<him>> off-guard.
 	<</if>>
 	<<He>> puts a finger to <<his>> lips. "That's my secret."

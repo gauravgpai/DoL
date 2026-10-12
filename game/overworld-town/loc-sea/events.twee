@@ -1055,7 +1055,7 @@ You climb down, and investigate. It's a chest. You peel back loose seaweed, reve
 <br><br>
 
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	It's locked, <span class="green">but you think you could open it.</span>
 	<br><br>
 	<<link [[Open|Sea Chest Open]]>><</link>>

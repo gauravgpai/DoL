@@ -402,7 +402,7 @@
 			You enter the keycode, but it doesn't unlock. "Not that one," another docker says. <<He>> points at the initials printed on the door. "We don't inspect these." If <<he>> hears the crying, <<he>> ignores it.
 			<br><br>
 			<<set $lock to 400>>
-			<<if currentSkillValue('skulduggery') gte $lock>>
+			<<if PC.skulduggery gte $lock>>
 				<<if pcAreArmsBound("both")>>
 					You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 					<br><br>
@@ -505,7 +505,7 @@
 		<br><br>
 		<<link [[Examine the inconsistency|Docks Examine]]>><<set $phase to 0>><<stress 6>><</link>><<skill_difficulty `currentSkillValue("maths")` "Maths" 1 1000>><<gstress>>
 		<br>
-		<<if currentSkillValue('skulduggery') gte 400>>
+		<<if PC.skulduggery gte 400>>
 			<<set $skulduggerydifficulty to 500>>
 			<<link [[Note the location of valuable goods|Docks Examine Valuables]]>><<set $phase to 2>><</link>><<skulduggerydifficulty>>
 			<br>
@@ -1651,7 +1651,7 @@
 			<<link [[Next|Docks Sneak]]>><<set $eventskip to 1>><</link>>
 			<br>
 		<<elseif $rng is 5>>
-			<<if currentSkillValue('skulduggery') gte random(1, 1000)>>
+			<<if PC.skulduggery gte random(1, 1000)>>
 				There's a security camera up ahead. You avoid it. <span class="green">You're glad you spotted it in time.</span>
 				<br><br>
 

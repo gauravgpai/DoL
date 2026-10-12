@@ -1597,7 +1597,7 @@ Avery squeezes your <<bottom>>. Hard. "Careful <<girl>>," <<he>> says. "You're r
 You approach the thick, silvery metal door of the vault. Beside it is a keypad. You tap numbers into it at random. After four, a dull beep sounds from an attached speaker. Wrong number.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte 600>>
+<<if PC.skulduggery gte 600>>
 	You peer at the keypad, and examine the individual keys. However, none appear more worn than any others. There's no indication at all that some keys have seen more use than others. It looks too new.
 	<br><br>
 <</if>>

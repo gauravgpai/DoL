@@ -5205,7 +5205,7 @@
 		<<set _variation to 0>>
 	<</if>>
 	<<if _args[2]>>
-		<<set _skulduggeryMulti to (1 + (currentSkillValue('skulduggery') / 2000))>>
+		<<set _skulduggeryMulti to (1 + (PC.skulduggery / 2000))>>
 	<<else>>
 		<<set _skulduggeryMulti to 1>>
 	<</if>>
@@ -5232,7 +5232,7 @@
 		<<set _variation to 0>>
 	<</if>>
 	<<if _args[2]>>
-		<<set _skulduggeryMulti to (1 + (currentSkillValue('skulduggery') / 2000))>>
+		<<set _skulduggeryMulti to (1 + (PC.skulduggery / 2000))>>
 	<<else>>
 		<<set _skulduggeryMulti to 1>>
 	<</if>>

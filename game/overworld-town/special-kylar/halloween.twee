@@ -955,7 +955,7 @@ You and Kylar leave the cellar.
 
 <<set $lock to 1000>>
 You peer into the lock.
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	It's like nothing you've seen before, <span class="green">and you relish the challenge.</span> You place your ear against the door while you poke around, trying to fathom its inner workings.
 	<br><br>
 
@@ -1056,7 +1056,7 @@ You peer up the staircase, into the gloom above. Kylar points <<his>> light up, 
 
 You follow <<him>> up the creaky staircase, and into the closest room. Several tall pieces of furniture line the walls. A large, four-poster bed stands near the window. Unlike the other furniture, it's not covered in a grey sheet, though one lies on the floor beside it.
 <br><br>
-<<if currentSkillValue('skulduggery') gte 400>>
+<<if PC.skulduggery gte 400>>
 	<span class="blue">You feel your hair stand on end.</span> There's no dust on the bed. The sheet was moved recently. The thought has barely entered your mind when you hear movement. You manage to jump aside just as a hand lunges from beneath one of the sheets, accompanied by a terrible screech.
 	<br><br>
 

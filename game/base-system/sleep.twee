@@ -483,7 +483,7 @@
 	<</if>>
 	<<if ["home", "temple"].includes($location) and Time.dayState is "night" and between(Time.hour, 20, 24)>>
 		<<run _eventsList.push("go running or swimming for an hour")>>
-		<<if currentSkillValue("skulduggery") gt 200>>
+		<<if PC.skulduggery gt 200>>
 			<<set _eventsList.push("steal something")>>
 		<</if>>
 		<<if $earSlime.exhibitionism gte 3 and hasSexStat("exhibitionism", 3)>>

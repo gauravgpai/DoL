@@ -137,7 +137,7 @@
 	note: the ternary coerces the outcome to 1 or 0, because many checks check if it's exactly 1 (rather than just truthy)
 	-->
 
-	<<set $skulduggerysuccess to (random(101, 1100) >= 200 * Math.floor(($skulduggerydifficulty - currentSkillValue('skulduggery')) / 100)) ? 1 : 0>>
+	<<set $skulduggerysuccess to (random(101, 1100) >= 200 * Math.floor(($skulduggerydifficulty - PC.skulduggery) / 100)) ? 1 : 0>>
 
 	<<if $temple_burden gte random(1, 100)>>
 		<<set $skulduggerysuccess to 0>>
@@ -156,7 +156,7 @@
 	<<if !$settings.blindStatsEnabled>>
 		| <span class="orange">Skulduggery</span><<if $settings.skillCheckStyle isnot "skillname">>:
 			 <!-- only display colon if it's followed by the difficulty level -->
-			<<set _skulduggery to currentSkillValue('skulduggery')>>
+			<<set _skulduggery to PC.skulduggery>>
 			<<if _skulduggery gte $skulduggerydifficulty>>
 				<span class="green">Very Easy</span>
 			<<elseif (_skulduggery + 100) gte $skulduggerydifficulty>>

@@ -871,7 +871,7 @@ You buy the kimono. You think Robin will like it. <<if $christmas_wrap is undefi
 :: Shopping Centre Entrance Sneak
 <<set $outside to 0>><<effects>><<set $lock to 100>>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -907,7 +907,7 @@ You find some towels. They make a poor substitute for actual clothing, but they'
 The shopping centre is closed. <<openinghours 6 21>>
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

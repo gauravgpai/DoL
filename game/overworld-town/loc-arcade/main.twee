@@ -2,7 +2,7 @@
 <<set $outside to 1>><<set $location to "arcade">><<effects>><<set $lock to 300>>
 The arcade is closed. A glowing sign beside the door reads: "Opening hours: <<ampm 9 00>> - <<ampm 21 00>>"
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

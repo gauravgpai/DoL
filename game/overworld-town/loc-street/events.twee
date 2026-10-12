@@ -3043,7 +3043,7 @@ Industrial
 			<br>
 			"What do I owe you for such amazing sex? Just name your price."
 			<br><br>
-			<<if currentSkillValue('skulduggery') gte 700 and random(1,2) is 1>>
+			<<if PC.skulduggery gte 700 and random(1,2) is 1>>
 				<span class="gold">Thanks to your knowledge of trickery and deceit, you smell a rat. The car. The person. Everything feels wrong. This feels like a setup.</span>
 				<br><br>
 				<<set $street_car_police to true>>
@@ -3072,7 +3072,7 @@ Industrial
 		<<else>>
 			"There's no cost involved, right? That'd be prostitution. A <<girl>> like you isn't a whore? I'd have to take you in for that, I'm a police officer."
 		<br><br>
-		<<if currentSkillValue('skulduggery') gte 700 and random(1,2) is 1>>
+		<<if PC.skulduggery gte 700 and random(1,2) is 1>>
 			<span class="gold">Your eyes, used to deception, detect no lie. The car. The person. Everything makes sense. This is a genuine police officer.</span>
 			<br><br>
 			<<set $street_car_police to true>>
@@ -3191,8 +3191,8 @@ Industrial
 		<br>
 		"What do I owe you for such amazing sex? Just name your price."
 		<br><br>
-		<<if (currentSkillValue('skulduggery') gte 700 and (random(1,2) is 1)) or crimeSumCurrent() lt 1000 or ($enemyanger lte 0 and crimeSumCurrent() lt 5000)>>
-			<span class="gold">Your eyes<<if currentSkillValue('skulduggery') gte 700>>, used to deception,<</if>> detect no lie. <<if crimeSumCurrent() lt 1000>>The police has no reason to target you with a sting operation. <<else>>The person seems completely genuine. Nothing more than a satisfied customer.<</if>></span>
+		<<if (PC.skulduggery gte 700 and (random(1,2) is 1)) or crimeSumCurrent() lt 1000 or ($enemyanger lte 0 and crimeSumCurrent() lt 5000)>>
+			<span class="gold">Your eyes<<if PC.skulduggery gte 700>>, used to deception,<</if>> detect no lie. <<if crimeSumCurrent() lt 1000>>The police has no reason to target you with a sting operation. <<else>>The person seems completely genuine. Nothing more than a satisfied customer.<</if>></span>
 			<br><br>
 			<<set $street_car_police to false>>
 		<</if>>
@@ -3248,7 +3248,7 @@ Industrial
 		<br>
 		"There's no cost involved, right? That'd be prostitution. A <<girl>> like you isn't a whore? I'd have to take you in for that, I'm a police officer."
 		<br><br>
-		<<if currentSkillValue('skulduggery') gte 700 and random(1,2) is 1>>
+		<<if PC.skulduggery gte 700 and random(1,2) is 1>>
 			<span class="gold">Thanks to your knowledge of trickery and deceit, you smell that something is off. The way they behave, the whole vibe feels wrong. This person is definitely not police.</span>
 			<br><br>
 			<<set $street_car_police to false>>
@@ -3356,7 +3356,7 @@ Industrial
 <<set _ring to $phase is 1000>>
 <<clotheson>>
 <<endcombat>>
-<<if _ring and currentSkillValue('skulduggery') gte 700>>
+<<if _ring and PC.skulduggery gte 700>>
 	<<set $pronoun to $npcpronountemp>>
 	Your eyes catch a glint on the floor. It's a gold ring set with an emerald, that <<he>> must have dropped while laughing. It's probably <span class="gold">worth more than £1000</span>.
 	<<unset $npcpronountemp>>

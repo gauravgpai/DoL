@@ -465,7 +465,7 @@ You haul yourself atop it, and shimmy along until another is within reach. Stude
 <<set $outside to 1>><<effects>><<set $lock to 200>>
 The school gate is shut and sealed by a sturdy padlock.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -1327,7 +1327,7 @@ You <<nervously>> poke your head outside. There's no one around. You leave the r
 The school gate is shut and sealed by a sturdy padlock.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

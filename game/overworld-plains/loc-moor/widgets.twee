@@ -700,7 +700,7 @@
 			<br><br>
 
 			<<if $settings.plantsEnabled and $settings.tentaclesEnabled and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
-				<<if currentSkillValue('skulduggery') gte 700>>
+				<<if PC.skulduggery gte 700>>
 					You look closer at the coins. They're lying in dirt, but you can barely make out a hand buried under the dirt, loosely holding the money. There are vines and <<plant_details>> poking out of the dirt further away.
 					<br><br>
 				<</if>>

@@ -1599,7 +1599,7 @@ You hear footsteps from the back of the shop. Sydney drops the dildo back in the
 <<set $outside to 1>><<effects>><<set $lock to 200>>
 You pass by an adult shop. It's currently closed.
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br>

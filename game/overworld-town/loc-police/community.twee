@@ -121,7 +121,7 @@ Removing the paint with just water and a coarse brush is difficult. The <<person
 	<<generate2>><<person2>>
 	A <<person>> enters the alley, and chats with the police officer. They both stare at you.
 	<br><br>
-	<<if currentSkillValue('skulduggery') gte 400>>
+	<<if PC.skulduggery gte 400>>
 		<span class="green">You notice the <<person2>><<person>> pass the officer some cash,</span> and they both walk over.
 	<<else>>
 		They both walk over.
@@ -133,7 +133,7 @@ Removing the paint with just water and a coarse brush is difficult. The <<person
 	<br>
 	<<link [[Refuse|Police Community Graffiti Hold Refuse]]>><<def 1>><</link>>
 	<br>
-	<<if currentSkillValue('skulduggery') gte 400 and $awareness gte 200>>
+	<<if PC.skulduggery gte 400 and $awareness gte 200>>
 		<<link [[Accuse|Police Community Graffiti Accuse]]>><<def 1>><</link>>
 		<br>
 	<</if>>
@@ -144,7 +144,7 @@ Removing the paint with just water and a coarse brush is difficult. The <<person
 	<<generate2>><<generatev3>><<person2>>
 	A <<person>> enters the alley, and chats with the police officer. They both stare at the <<person3>><<person>> working beside you. <<He>> throws furtive glances their way.
 	<br><br>
-	<<if currentSkillValue('skulduggery') gte 400>>
+	<<if PC.skulduggery gte 400>>
 		<span class="green">You notice the <<person2>><<person>> pass the officer some cash,</span> and they both walk over. They stop beside the <<person3>><<person>>. The officer holds a pair of cuffs.
 	<<else>>
 		They both walk over, and stop beside the <<person>>. The officer holds a pair of cuffs.
@@ -153,7 +153,7 @@ Removing the paint with just water and a coarse brush is difficult. The <<person
 	"Hands out," <<he>> demands. The <<person3>><<person>> stares at <<his>> feet as the officer cuffs <<him>>. "Don't look so glum. You're just gonna be... helping this fine citizen in their establishment. The cuffs are just a precaution."
 	<br><br>
 
-	<<if currentSkillValue('skulduggery') gte 400 and $awareness gte 200>>
+	<<if PC.skulduggery gte 400 and $awareness gte 200>>
 		<<link [[Intervene|Police Community Graffiti Intervene]]>><<famegood 10>><</link>>
 		<br>
 		<<link [[Keep working|Police Community Graffiti Intervene Work]]>><</link>>

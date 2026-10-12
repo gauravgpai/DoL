@@ -406,7 +406,7 @@ You're marched across the moor, enduring the ogling stares of your captors.
 
 		<<link [[Drink|Moor Abduction Drink]]>><</link>>
 		<br>
-		<<if currentSkillValue('skulduggery') gte 100>>
+		<<if PC.skulduggery gte 100>>
 			<<link [[Sniff it first|Moor Abduction Sniff]]>><</link>>
 			<br>
 		<</if>>
@@ -1039,7 +1039,7 @@ You tear free of the rope, and rise to your feet. Most of the thugs must be asle
 You turn back to the tarpaulin, and peek beneath. Stacks of cages, most shut and locked. There's movement within.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<span class="green">The locks look easy to pick.</span>
 	<br><br>
 	<<link [[Open the cages (0:20)|Moor Abduction Lock]]>><<pass 20>><<stress 6>><</link>><<gstress>>

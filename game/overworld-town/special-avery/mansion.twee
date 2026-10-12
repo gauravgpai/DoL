@@ -1104,7 +1104,7 @@ You scour Avery's library for recipe books. It takes a while, but you're able to
 The door is locked tight.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if $leftarm is "bound" and $rightarm is "bound">>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 	<<else>>
@@ -4745,7 +4745,7 @@ Let's get moving, before Avery gets wise."
 You sneak up towards Avery's study. <<say_brown_fox "cap">> whispers to you. "It feels much different in here without guests around. Larger." <<He>> frowns. "No one person needs all of this."
 <br><br>
 
-<<if currentSkillValue("skulduggery") gte 600>>
+<<if PC.skulduggery gte 600>>
 	<span class="green">You keep up with <<his>> stealthy stride.</span>
 <<else>>
 	<<set $avery_mansion.heist_suspicion++>>
@@ -4898,7 +4898,7 @@ You reach the third floor.
 	The door to the study is locked tight.
 	<br><br>
 
-	<<if currentSkillValue('skulduggery') gte $lock>>
+	<<if PC.skulduggery gte $lock>>
 		<<if $leftarm is "bound" and $rightarm is "bound">>
 			You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<<else>>

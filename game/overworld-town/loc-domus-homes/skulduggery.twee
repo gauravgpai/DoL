@@ -3,7 +3,7 @@
 <<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "domus">><<set $lock to 100>>
 The door is locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -91,7 +91,7 @@ You sneak around the house and look for anything of value.
 <<elseif $rng gte 51>>
 	While searching a room for valuables you find a drawer containing a number of phones. Most are used but all are fairly new.
 	<<wearProp "mobile phone">>
-	<<if currentSkillValue('skulduggery') gte 500>>
+	<<if PC.skulduggery gte 500>>
 		Your knowledge of the skulduggerous lets you quickly determine that these are stolen phones.
 		Stealing them again should not be a crime. It's not like they can report someone stealing their stolen goods.
 		<br><br>
@@ -113,7 +113,7 @@ You sneak around the house and look for anything of value.
 	<br>
 <<elseif $rng gte 31>>
 	You're searching the lounge for valuables when you notice that one step sounds hollow.
-	<<if currentSkillValue('skulduggery') gte 500>>Suspecting a hidden stash,<<else>>Confused,<</if>> you look under the rug and find a trapdoor.
+	<<if PC.skulduggery gte 500>>Suspecting a hidden stash,<<else>>Confused,<</if>> you look under the rug and find a trapdoor.
 	Lifting it up and peering down, it seems there is a set of steps leading down to an underground room.
 	<br>
 	You cannot make out anything in the darkness.
@@ -456,7 +456,7 @@ The <<beasttypes>> ears twitch, but other than that <<bhe>> makes no move as you
 <<set $outside to 0>><<set $location to "town">><<effects>><<set $bus to "domus">><<set $lock to 400>>
 The safe doesn't look too fancy.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
