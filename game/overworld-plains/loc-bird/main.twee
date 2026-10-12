@@ -776,7 +776,7 @@ You've gained the Stockholm Syndrome: Great Hawk trait.</span>
 After a minute or two passes, you pull back from the hug. You look at the <<beasttype>> and <<bhe>> <<if $monster is 1>>smiles<<else>>trills<</if>> at you.
 <br><br>
 
-You smile <<if $monster is 1>>back<<else>>at <<bhim>><</if>>, and gently pat <<bhis>> head. <<if $phase is 4 and currentSkillValue('awareness') gte 300>> You don't miss the way <<bhe>> stiffens slightly as you move your hand. After a couple of pats, <<bhis>><<else>><<bHis>><</if>> eyes close and <<bhe>> <<if $monster is 1>>relaxes<<else>>settles<</if>> as you pat <<bhis>> head.
+You smile <<if $monster is 1>>back<<else>>at <<bhim>><</if>>, and gently pat <<bhis>> head. <<if $phase is 4 and PC.awareness gte 300>> You don't miss the way <<bhe>> stiffens slightly as you move your hand. After a couple of pats, <<bhis>><<else>><<bHis>><</if>> eyes close and <<bhe>> <<if $monster is 1>>relaxes<<else>>settles<</if>> as you pat <<bhis>> head.
 Once you're done, <<bhe>> fluffs <<bhis>> feathers and stands up.
 <br><br>
 
