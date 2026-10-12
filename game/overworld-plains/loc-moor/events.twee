@@ -1878,7 +1878,7 @@ A heat travels down your spine, resting in your loins. You're filled with a desp
 	<</if>>
 	<<if ($anususe is "mpenisflowerpenetrate" or $vaginause is "mpenisflowerpenetrate" or $mouth is "mpenisflowersuck")>>
 		<div class="red">You can't stop.</div>
-	<<elseif $corruptionMasturbation isnot true and random(0,3) gt $orgasmcurrent and $earSlime.corruption gt (currentSkillValue('willpower') / 10) and !$hypnosis_traits.silence>>
+	<<elseif $corruptionMasturbation isnot true and random(0,3) gt $orgasmcurrent and $earSlime.corruption gt (PC.willpower / 10) and !$hypnosis_traits.silence>>
 		<div id="stop"><<link [[Stop|$passage]]>><<set $corruptionMasturbation to true>><</link>></div>
 	<<elseif $corruptionMasturbation isnot true>>
 		<div id="stop"><<link [[Stop|$passage + " Finish"]]>><<set $finish to 1>><</link>></div>
@@ -3071,14 +3071,14 @@ You shake your head.
 :: Moor Plant Money
 <<effects>>
 <<if $phase is 0>>
-	<<if currentSkillValue('skulduggery') gte 700>>Not wanting to risk it, you<<else>>You<</if>> leave the money and walk away.
+	<<if PC.skulduggery gte 700>>Not wanting to risk it, you<<else>>You<</if>> leave the money and walk away.
 	<br><br>
 
 	<<link [[Next|Moor]]>><<endevent>><<unset $plantMoney>><<set $eventskip to 1>><</link>>
 <<else>>
 	<<generatePlant1>><<person1>>
 	You reach for the <<printmoney $plantMoney>>. As you do,
-	<<if currentSkillValue('skulduggery') gte 700>>
+	<<if PC.skulduggery gte 700>>
 		the hand grabs yours.
 		<<takeHandholdingVirginity $NPCList[0] "rape">>
 		<br><br>
@@ -4693,7 +4693,7 @@ You slowly hold out your hands toward the <<beasttype>>, doing your best to appe
 <<if !$wrenSeen.includes("moorhigh")>>
 	"Wren," you say, before <<he>> has a chance to leave. "What were you doing in the moor?"
 	<br><br>
-	<<if C.npc.Wren.love gte 50 or currentSkillValue('skulduggery') gte 800>>
+	<<if C.npc.Wren.love gte 50 or PC.skulduggery gte 800>>
 		You can tell you've caught <<him>> off-guard.
 	<</if>>
 	<<He>> puts a finger to <<his>> lips. "That's my secret."
@@ -4717,7 +4717,7 @@ You slowly hold out your hands toward the <<beasttype>>, doing your best to appe
 
 <<if $phase is 0>> /* Attempt to mount */
 	You run up behind the <<beasttype>> and jump onto <<bhis>> back. <<bHe>> starts thrashing around, trying to throw you off.
-	<<if currentSkillValue("thighskill") gte random(1, 1200)>>
+	<<if PC.thighskill gte random(1, 1200)>>
 		Despite <<bhis>> best attempt to get rid of you, <span class="green">you manage to stay on <<bhis>> back</span> until <<bhe>> calms down.
 		<br><br>
 
@@ -4992,7 +4992,7 @@ With some care, you manage to hold on and balance on <<bhis>> back.
 <<elseif $phase is 1>> /* Get a better grip with your thighs */
 	<<set _difficultyMax to $horseDifficulty*2>>
 	You squeeze your legs against the sides of the <<beasttypes>> body,
-	<<if currentSkillValue("thighskill") gte random($horseDifficulty, _difficultyMax)>>
+	<<if PC.thighskill gte random($horseDifficulty, _difficultyMax)>>
 		<span class="green">managing to stay on.</span>
 	<<else>>
 		<<set _failure to true>>
@@ -5194,7 +5194,7 @@ After a while, the <<beasttype>> backs off and <<if $monster is 1>>looks<<else>>
 
 :: Bird Rescue Syndrome Comfort
 <<effects>>
-"I'm <<if $speech_attitude is "meek">>alright<<else>>not hurt<</if>>," you say, before wrapping your arms around the <<beasttype>><<if $monster isnot 1>>'s <<if currentSkillValue('tending') gte 400>>mantle<<else>>shoulder area<</if>><</if>>.
+"I'm <<if $speech_attitude is "meek">>alright<<else>>not hurt<</if>>," you say, before wrapping your arms around the <<beasttype>><<if $monster isnot 1>>'s <<if PC.tending gte 400>>mantle<<else>>shoulder area<</if>><</if>>.
 <<if $monster is 1>>
 	<<bHe>> returns the hug<<if C.npc["Great Hawk"].dom gte 20>>, squeezing you tight<</if>>.
 <<else>>

@@ -486,7 +486,7 @@ Text detailing your seduction attempt.
 The door is locked tight.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -732,7 +732,7 @@ You successfully pick the lock and enter the building.
 C.npc.Robin.love
 <<npcincr Robin love 1>>
 
-currentSkillValue('tending')
+PC.tending
 
 <<for _i to 0; _i lt $NPCName.length; _i++>>
 <</for>>

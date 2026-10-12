@@ -36,7 +36,7 @@ Imposing security. Less impressive is the lock on a gate, hidden behind a screen
 <br><br>
 
 <<set $lock to 600>>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("any")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br>

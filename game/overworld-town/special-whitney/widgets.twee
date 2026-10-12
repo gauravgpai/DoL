@@ -955,7 +955,7 @@
 			Whitney passes it to you.
 			<br><br>
 
-			<<link [[Do your best|Whitney Home Gang Game Best]]>><</link>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 400 800>>
+			<<link [[Do your best|Whitney Home Gang Game Best]]>><</link>><<skill_difficulty `PC.handskill` "Hand Skill" 400 800>>
 			<br>
 			<<link [[Lose on purpose|Whitney Home Gang Game Lose]]>><</link>>
 			<br>

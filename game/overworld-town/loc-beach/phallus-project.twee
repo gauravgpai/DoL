@@ -858,7 +858,7 @@ You offer to help <<him>> with <<his>> research
 <<he>> says with a smile as <<he>> hands you <<his>> notebook and pencil.
 <br><br>
 You spend the next half hour writing down what the researcher tells you to as <<he>> uses <<his>> binoculars to observe a flock of seagulls several bluffs over.
-<<if currentSkillValue('science') gte 400>>
+<<if PC.science gte 400>>
 	The notes seem to be mostly focusing on the beak shapes of the birds.
 <</if>>
 <<if $phase is 1>>
@@ -866,7 +866,7 @@ You spend the next half hour writing down what the researcher tells you to as <<
 <</if>>
 <br><br>
 You do your best with the notes,
-<<if currentSkillValue('english') gte 200>>
+<<if PC.english gte 200>>
 	and by the end, <span class="green">you're confident that they'll be helpful</span> to the <<person>> in <<his>> research. <<He>> gives you an approving nod as you hand the notebook and pencil back.
 	<br><br>
 <<else>>
@@ -875,7 +875,7 @@ You do your best with the notes,
 <</if>>
 <<if $phase is 1>>
 	"Thanks for the help," <<he>> says, looking at <<his>> watch.
-	<<if currentSkillValue('english') gte 200>>
+	<<if PC.english gte 200>>
 		"Oh, it looks like we made good time! I should be able to help you with your project too, if you'd like," <<he>> offers, and you nod.
 		<br><br>
 	<<else>>

@@ -1072,7 +1072,7 @@ Sam doesn't say anything else as you walk back to the bridge.
 	You go to feed the ducks with Sam, and you decide to hand-feed them this time.
 	<br><br>
 
-	<<if currentSkillValue("tending") gte random (1, 200)>>
+	<<if PC.tending gte random (1, 200)>>
 		A <<print _duck.pluck()>> eat up all the corn in your hand, you feel their little bills brush up against your hands a few times. It's pleasant.<<stress -10>><<tending 2>><<llstress>><<gtending>>
 	<<else>>
 		A <<print _duck.pluck()>> simply look at you and

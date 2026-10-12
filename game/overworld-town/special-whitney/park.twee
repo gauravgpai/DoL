@@ -446,7 +446,7 @@
 	<br><br>
 
 	<<if hasSexStat("promiscuity", 2)>>
-		<<link [[Convince <<him>>|Whitney Milkshake Cherry 2]]>><<set $phase to 0>><</link>><<skill_difficulty `currentSkillValue("oralskill")` "Oral Skill" 400 1200>><<promiscuous2>>
+		<<link [[Convince <<him>>|Whitney Milkshake Cherry 2]]>><<set $phase to 0>><</link>><<skill_difficulty `PC.oralskill` "Oral Skill" 400 1200>><<promiscuous2>>
 		<br>
 	<</if>>
 	<<link [[Offer a kiss|Whitney Milkshake Cherry 2]]>><<set $phase to 1>><</link>><<promiscuous1>><<kissvirginitywarning>>
@@ -499,7 +499,7 @@
 	<br><br>
 	You eat the cherry with a pleased hum, then pop the stem into your mouth.
 
-	<<if currentSkillValue("oralskill") gte random(400, 1200)>>
+	<<if PC.oralskill gte random(400, 1200)>>
 		You manoeuvre it with your tongue. Whitney watches your lips with rapt attention. It's not long before you pluck it out of your mouth, <span class="green">twisted into a loose knot.</span>
 		<br><br>
 		"Ta-da!" You beam proudly.
@@ -690,7 +690,7 @@
 		<<person1>>
 	<</if>>
 	<br><br>
-	<<if currentSkillValue('skulduggery') gte 500>>
+	<<if PC.skulduggery gte 500>>
 		Whitney's eyes widen. <<He>> twists around to look where you're pointing, and you snatch the milkshake out of <<his>> hand while <<hes>> distracted.
 		<br><br>
 		<<He>> turns back just in time to watch you eat the cherry. <<He>> looks pissed when <<he>> realises that <<hes>> been duped. <<if $speech_attitude is "bratty">>Feeling cocky, you wink at <<him>> and take a sip of the shake.<</if>>

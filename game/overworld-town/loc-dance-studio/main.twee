@@ -126,7 +126,7 @@ Your heart beats faster as you walk away from the dance studio, and away from re
 The dance studio is closed. <<openinghours>>
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -198,9 +198,9 @@ The dance studio is closed. <<openinghours>>
 	<<if $rng lte 20>>
 		<<set $danceStudio.lesson to "barre">>
 		You stretch and work your muscles using a barre.
-		<<if currentSkillValue('danceskill') lte 200>>
+		<<if PC.danceskill lte 200>>
 			It's hard work to stay balanced. You can see in the mirror that you look a bit silly, especially compared to the more experienced students.
-		<<elseif currentSkillValue('danceskill') lte 800>>
+		<<elseif PC.danceskill lte 800>>
 			You're pretty good at staying balanced. You are able to practise more advanced techniques.
 		<<else>>
 			You are able to use it as a surrogate partner, supporting your weight as you practise airborne techniques. Some of the other students look on with envy.
@@ -209,22 +209,22 @@ The dance studio is closed. <<openinghours>>
 	<<elseif $rng lte 40>>
 		<<set $danceStudio.lesson to "duo">><<generate2>><<person2>>
 		You partner up with a <<person>>.
-		<<if currentSkillValue('danceskill') lte 200>>
+		<<if PC.danceskill lte 200>>
 			<<He>> has more experience than you, so you let <<him>> take the lead.
-		<<elseif currentSkillValue('danceskill') lte 800>>
+		<<elseif PC.danceskill lte 800>>
 			You practise techniques requiring a partner, taking turns supporting one another.
-		<<elseif currentSkillValue('danceskill') lte 1000>>
+		<<elseif PC.danceskill lte 1000>>
 			Being so experienced, you take the lead, careful not to push <<him>> too hard.
 		<</if>>
 		<br><br>
 	<<elseif $rng lte 60>>
 		<<set $danceStudio.lesson to "airbarre">>
 		You stretch and work your muscles using an aerial hammock.
-		<<if currentSkillValue('danceskill') lte 200>>
+		<<if PC.danceskill lte 200>>
 			More experienced students use it to develop strength and poise. You just have fun swinging around.
-		<<elseif currentSkillValue('danceskill') lte 800>>
+		<<elseif PC.danceskill lte 800>>
 			You work on developing your poise.
-		<<elseif currentSkillValue('danceskill') lte 1000>>
+		<<elseif PC.danceskill lte 1000>>
 			Held aloft, you are able to fully demonstrate your grace and skill.
 		<</if>>
 		<br><br>
@@ -243,11 +243,11 @@ The dance studio is closed. <<openinghours>>
 	<<elseif $rng lte 80 and !$daily.danceStudioHandVirginPrompt>>
 		<<set $danceStudio.lesson to "instructor">>
 		Charlie gives you some personal attention.
-		<<if currentSkillValue('danceskill') lte 200>>
+		<<if PC.danceskill lte 200>>
 			<<He>> helps you with the basics.
-		<<elseif currentSkillValue('danceskill') lte 800>>
+		<<elseif PC.danceskill lte 800>>
 			<<He>> demonstrates some new steps for you to try.
-		<<elseif currentSkillValue('danceskill') lte 1000>>
+		<<elseif PC.danceskill lte 1000>>
 			<<He>> helps you iron out some flaws in your posture.
 		<</if>>
 		<br><br>
@@ -303,7 +303,7 @@ The dance studio is closed. <<openinghours>>
 					<<gtrauma>><<gstress>><<garousal>>
 				<</if>>
 			<</if>>
-		<<elseif currentSkillValue('danceskill') gte 600>>
+		<<elseif PC.danceskill gte 600>>
 			You skilfully shift your weight and ride the momentum back into an upright position. That was close!
 		<<else>>
 			<<if $uncomfortable.underwear is false>>
@@ -353,7 +353,7 @@ The dance studio is closed. <<openinghours>>
 			<br>
 			<<link [[Help other students|Dancing Lesson No Instructor]]>><<set $phase to 1>><</link>>
 			<br>
-			<<if $trauma gte 1 and currentSkillValue('danceskill') gte 200>>
+			<<if $trauma gte 1 and PC.danceskill gte 200>>
 				<<link [[Showboat your skills in front of less experienced students|Dancing Lesson No Instructor]]>><<set $phase to 2>><</link>><<lstress>>
 				<br>
 			<</if>>

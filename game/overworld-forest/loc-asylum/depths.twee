@@ -939,31 +939,31 @@ You carry the large mirror to the side of the room, and place it facing you. The
 
 	<br><br>
 
-	<<if currentSkillValue("danceskill") gte 1000>>
+	<<if PC.danceskill gte 1000>>
 		<<if _asylum_mirror_count gte 4>>
 			<span class="green">Your performance is spectacular,</span> and your audience know it. They stand, drowning out the music with thunderous applause, and shouts of "encore!".
 		<<else>>
 			<span class="green">Your performance is spectacular,</span> and the <<person1>><<person>> knows it. <<He>> stands, applauds, and shouts "encore!".
 		<</if>>
-	<<elseif currentSkillValue("danceskill") gte 800>>
+	<<elseif PC.danceskill gte 800>>
 		<<if _asylum_mirror_count gte 4>>
 			<span class="teal">Your performance is excellent,</span> and your audience responds with a thunderous standing ovation.
 		<<else>>
 			<span class="teal">Your performance is excellent,</span> and the <<person1>><<person>> responds with an enthusiastic standing ovation.
 		<</if>>
-	<<elseif currentSkillValue("danceskill") gte 600>>
+	<<elseif PC.danceskill gte 600>>
 		<<if _asylum_mirror_count gte 4>>
 			<span class="lblue">Your performance is good,</span> and your audience knows it. They give you a standing ovation.
 		<<else>>
 			<span class="lblue">Your performance is good,</span> and the <<person1>><<person>> knows it. <<He>> gives you a standing ovation.
 		<</if>>
-	<<elseif currentSkillValue("danceskill") gte 400>>
+	<<elseif PC.danceskill gte 400>>
 		<<if _asylum_mirror_count gte 4>>
 			<span class="blue">Your performance is competent,</span> and your audience show their appreciation with eager applause.
 		<<else>>
 			<span class="blue">Your performance is competent,</span> and the <<person1>><<person>> shows <<his>> appreciation with eager applause.
 		<</if>>
-	<<elseif currentSkillValue("danceskill") gte 200>>
+	<<elseif PC.danceskill gte 200>>
 		<<if _asylum_mirror_count gte 4>>
 			<span class="purple">You feel like only a passable dancer,</span> but the audience applaud with enthusiasm.
 		<<else>>

@@ -202,7 +202,7 @@
 <<widget "combatPenisImminent">>
 	<<if !$worn.face.type.includesAny("face_covering", "gag")>>
 		<<set _mouthaction["Lick"] to "lick">>
-		<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55 or $promiscuityIgnore) and currentSkillValue("oralskill") gte 800>>
+		<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55 or $promiscuityIgnore) and PC.oralskill gte 800>>
 			<<set _mouthaction["Edge"] to "oraledge">>
 		<</if>>
 	<</if>>
@@ -217,7 +217,7 @@
 	<<else>>
 		<<set _mouthaction["Suck"] to "suck">>
 	<</if>>
-	<<if ($consensual is 0 or (($enemytype is "man" ? $promiscuity : $deviancy) gte 55 or $promiscuityIgnore ) and $enemyarousal lt $enemyarousalmax) and currentSkillValue("oralskill") gte 800>>
+	<<if ($consensual is 0 or (($enemytype is "man" ? $promiscuity : $deviancy) gte 55 or $promiscuityIgnore ) and $enemyarousal lt $enemyarousalmax) and PC.oralskill gte 800>>
 		<<set _mouthaction["Edge"] to "oraledge">>
 	<</if>>
 	<<if $consensual isnot 1 and ($fightTargets is undefined or $fightTargets.includes($mouthtarget))>>
@@ -235,7 +235,7 @@
 <<widget "combatOthervagina">>
 	<<if !$worn.face.type.includesAny("face_covering", "gag")>>
 		<<set _mouthaction["Lick"] to "vaginalick">>
-		<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55 or $promiscuityIgnore) and currentSkillValue("oralskill") gte 800>>
+		<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55 or $promiscuityIgnore) and PC.oralskill gte 800>>
 			<<set _mouthaction["Edge"] to "oraledge">>
 		<</if>>
 		<<if $consensual isnot 1 and ($fightTargets is undefined or $fightTargets.includes($mouthtarget))>>

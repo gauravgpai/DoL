@@ -3480,7 +3480,7 @@ You reach out and pet the <<beasttype>>. <<bHe>> stretches into your hand and ya
 <<else>>
 	<<set $daily.kylar.sleepRape to true>>
 	Kylar's eyes snap open the moment you cry out. <<nnpc_He "Kylar">> lunges out of the bed, tackling the <<person>> to the floor. <<nnpc_He "Kylar">> pulls out a knife from
-	<<if currentSkillValue('skulduggery') gte 200>>
+	<<if PC.skulduggery gte 200>>
 		a hidden pocket on the inside of <<nnpc_his "Kylar">> <<if C.npc.Kylar.pronoun is "m">>pant leg<<else>>skirt<</if>>
 	<<else>>
 		out of nowhere

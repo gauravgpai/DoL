@@ -941,7 +941,7 @@
 
 <<widget "farm_brush">>
 	<<wearProp "brush">>
-	<<if currentSkillValue('tending') gte 600>>
+	<<if PC.tending gte 600>>
 		You brush <<farm_his horse>> fur. There's a lot to cover, <span class="green">but you can tell where the <<farm_text horse>> really needs it</span>. <<farm_He horse>> enjoys the attention.
 		<br><br>
 
@@ -1032,12 +1032,12 @@
 
 		A <<beasttype>> gives you a strained moo.
 		<br>
-		<<if currentSkillValue('tending') gte 1500>>
+		<<if PC.tending gte 1500>>
 			<<set _cattleMilkHand to 3>>
-		<<elseif currentSkillValue('tending') gte 1200>>
+		<<elseif PC.tending gte 1200>>
 			<<set _cattleMilkHand to 4>>
 		<<else>>
-			<<set _cattleMilkHand to 5 * (6 - Math.ceil(Math.clamp(currentSkillValue('tending'), 0, 1000) / 200))>>
+			<<set _cattleMilkHand to 5 * (6 - Math.ceil(Math.clamp(PC.tending, 0, 1000) / 200))>>
 		<</if>>
 		<<farmicon "bucket">><<link [["Milk by hand (0:" + String(_cattleMilkHand).padStart(2, '0') + ")"|Farm Cattle Milk Hand]]>><<farm_yield 1>><<set $cattle_milked += 1>><<set $farm_work.cattle_milked += 1>><<tending 1>><<farm_cattle 1>><<set $phase to _cattleMilkHand>><<pass _cattleMilkHand>><</link>><<deviant1>><<gfarm>><<gtending>><<grespect>>
 		<br>
@@ -1633,7 +1633,7 @@
 					"Watch out!" says Alex from above. You look up, just in time to see a hay bale bearing down on you.
 					<br><br>
 
-					<<if currentSkillValue('physique') gte 12000>>
+					<<if PC.physique gte 12000>>
 						You raise your arms to catch it, <span class="green">and ease it to the ground.</span>
 						<br><br>
 						"Nice catch," Alex says, dropping to the earth beside you. <<He>> hefts the bale onto <<his>> shoulder. "Gotta get them in storage to keep the weather off." <<He>> walks away.
@@ -1641,7 +1641,7 @@
 
 						<<link [[Next|Farm Work]]>><<endevent>><</link>>
 						<br>
-					<<elseif currentSkillValue('danceskill') gte 800>>
+					<<elseif PC.danceskill gte 800>>
 						You step aside, <span class="green">and the bale lands beside you.</span>
 						<br><br>
 						"Nice dodge," Alex says, dropping to the earth. <<He>> hefts the bale onto <<his>> shoulder. "Gotta get them in storage to keep the weather off." <<He>> walks away.
@@ -1898,7 +1898,7 @@
 				"Hey <<girl>>," says a voice. You look up, and see a <<person>> leering at you across the fence. "What's a cute<<if playerBellyVisible() and $settings.pregnancySpeechEnabled>> pregnant<</if>> <<girl>> like you doing working the fields?"
 				<br><br>
 
-				<<if currentSkillValue('skulduggery') gte random(500, 700)>>
+				<<if PC.skulduggery gte random(500, 700)>>
 					<span class="blue">You shiver.</span> Something's wrong. This isn't your usual pervert. You glance around, and spot them. A <<person2>><<person>> and <<person3>><<person>> creep through the crops, trying to sneak up on you.
 					<br><br>
 					<<if Time.betweenHours(5, 20)>>
@@ -2275,7 +2275,7 @@
 				<br>
 			<</if>>
 		<<elseif $farm_fight.chainsaw is undefined>>
-			<<link [[Work out how to switch the chainsaw on|Farm Fight]]>><<set $farm_fight.action to "science">><</link>><<skill_difficulty `currentSkillValue("science")` "Science" 1 700>>
+			<<link [[Work out how to switch the chainsaw on|Farm Fight]]>><<set $farm_fight.action to "science">><</link>><<skill_difficulty `PC.science` "Science" 1 700>>
 			<br>
 		<</if>>
 	<</if>>
@@ -2690,7 +2690,7 @@
 			<br><br>
 
 			<<generate2>><<generate3>>
-			<<link [[Ride faster|Farm Ride Aggro Faster]]>><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 400 1400>>
+			<<link [[Ride faster|Farm Ride Aggro Faster]]>><</link>><<skill_difficulty `PC.thighskill` "Thigh Skill" 400 1400>>
 			<br>
 			<<link [[Confront|Farm Ride Aggro Confront]]>><</link>>
 			<br>
@@ -2698,7 +2698,7 @@
 			You hear hooves approach from behind. Two of Remy's goons ride after you. They're catching up.
 			<br><br>
 			<<generate2>><<generate3>>
-			<<link [[Ride faster|Farm Ride Faster]]>><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 1000>>
+			<<link [[Ride faster|Farm Ride Faster]]>><</link>><<skill_difficulty `PC.thighskill` "Thigh Skill" 1 1000>>
 			<br>
 			<<link [[Confront|Farm Ride Confront]]>><</link>>
 			<br>
@@ -2737,7 +2737,7 @@
 				<<link [[Handjob|Farm Ride Hand]]>><</link>><<deviant3>>
 				<br>
 			<</if>>
-			<<link [[Force <<bhim>> to continue|Farm Ride Force]]>><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 1400>>
+			<<link [[Force <<bhim>> to continue|Farm Ride Force]]>><</link>><<skill_difficulty `PC.thighskill` "Thigh Skill" 1 1400>>
 			<br>
 			<<link [[Continue on foot|Farm Ride Foot]]>><</link>>
 			<br>
@@ -2764,7 +2764,7 @@
 
 		<<link [[Give <<bhim>> a break (0:10)|Farm Ride Break]]>><<pass 10>><</link>>
 		<br>
-		<<link [[Push <<bhim>>|Farm Ride Push]]>><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 1000>>
+		<<link [[Push <<bhim>>|Farm Ride Push]]>><</link>><<skill_difficulty `PC.thighskill` "Thigh Skill" 1 1000>>
 		<br>
 	<<else>>
 		A car honks as it drives by, agitating your <<beasttype>>. <<bHe>> veers away from the road, almost falling into a ditch.
@@ -2772,7 +2772,7 @@
 
 		<<link [[Soothe|Farm Ride Soothe]]>><</link>><<tendingdifficulty 1 1200>>
 		<br>
-		<<link [[Take charge|Farm Ride Charge]]>><<def 1>><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 1200>>
+		<<link [[Take charge|Farm Ride Charge]]>><<def 1>><</link>><<skill_difficulty `PC.thighskill` "Thigh Skill" 1 1200>>
 		<br>
 		<<link [[Ignore|Farm Ride Ignore]]>><<farm_horses -1>><</link>><<lrespect>>
 		<br>

@@ -341,11 +341,11 @@
 <<widget "tendingTillOptions">>
 	<<set _plantbed to _args[0]>>
 
-	<<if currentSkillValue('tending') gte 1500>>
+	<<if PC.tending gte 1500>>
 		<<set _baseTime to 5>>
 		<<set _baseTiredness to 1>>
 	<<else>>
-		<<set $_ti to Math.clamp(Math.floor(currentSkillValue('tending') / 200), 0, 6)>>
+		<<set $_ti to Math.clamp(Math.floor(PC.tending / 200), 0, 6)>>
 		<<set _baseTime to [40,30,25,20,15,10,7][$_ti]>>
 		<<set _baseTiredness to [6,5,4,3,2,1,1][$_ti]>>
 	<</if>>
@@ -384,7 +384,7 @@
 			<</capture>>
 		<</if>>
 		<br>
-		<<if $fertiliser.current gte 1 and _plantbed.quality lt 4 and currentSkillValue('tending') gte 400>>
+		<<if $fertiliser.current gte 1 and _plantbed.quality lt 4 and PC.tending gte 400>>
 			<<set _baseTimeFert to Math.floor(_baseTime * 1.5)>>
 			<<set _timeString to getTimeString(_baseTimeFert)>>
 			<<set _fertTiredness to Math.floor(_baseTiredness * 1.5)>>
@@ -505,15 +505,15 @@
 		A fully optimized field with 5x multiplier yields 500 crops on average. -->
 		<<case "small">>
 			<<set _tending_amount to
-				random(Math.floor(6 + (Math.floor(currentSkillValue('tending')/100) * 0.6)), Math.floor(12 + (Math.floor(currentSkillValue('tending')/100) * 1.2)))
+				random(Math.floor(6 + (Math.floor(PC.tending/100) * 0.6)), Math.floor(12 + (Math.floor(PC.tending/100) * 1.2)))
 				>>
 		<<case "medium">>
 			<<set _tending_amount to
-				random(Math.floor(6 + (Math.floor(currentSkillValue('tending')/100) * 1.2)), Math.floor(18 + (Math.floor(currentSkillValue('tending')/100) * 1.8)))
+				random(Math.floor(6 + (Math.floor(PC.tending/100) * 1.2)), Math.floor(18 + (Math.floor(PC.tending/100) * 1.8)))
 				>>
 		<<default>>
 			<<set _tending_amount to
-				random(Math.floor(12 + (Math.floor(currentSkillValue('tending')/100) * 2.4)), Math.floor(24 + (Math.floor(currentSkillValue('tending')/100) * 4.8)))
+				random(Math.floor(12 + (Math.floor(PC.tending/100) * 2.4)), Math.floor(24 + (Math.floor(PC.tending/100) * 4.8)))
 				>>
 	<</switch>>
 	<<set _tending_amount *= setup.foodstuff[$_type].tending.yield_multiplier>>
@@ -563,7 +563,7 @@
 		The multiplier is only applied if the item's "affected_by_tending_skill" variable in "game\04-Variables\foodstuff.js" is set to true.
 	-->
 	<<if setup.foodstuff[$_type].tending?.affected_by_tending_skill>>
-		<<set _tending_amount *= (1 + (currentSkillValue('tending') / 1000))>>
+		<<set _tending_amount *= (1 + (PC.tending / 1000))>>
 	<</if>>
 	<<if $backgroundTraits.includes("greenthumb")>>
 		<<set _tending_amount *= 1.2>>
@@ -680,9 +680,9 @@
 <</widget>>
 
 <<widget "harvestText">>
-	<<if currentSkillValue('tending') gte 100>>
+	<<if PC.tending gte 100>>
 		Your tending skill improves the yield
-		<<switch Math.floor(currentSkillValue('tending') / 100)>>
+		<<switch Math.floor(PC.tending / 100)>>
 			<<case 10>><span class = "green">tremendously</span>.
 			<<case 9>><span class = "teal">hugely</span>.
 			<<case 8>><span class = "teal">greatly</span>.

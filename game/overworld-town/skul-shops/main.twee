@@ -3,7 +3,7 @@
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -45,7 +45,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -87,7 +87,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -131,7 +131,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -173,7 +173,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -215,7 +215,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -258,7 +258,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -300,7 +300,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -343,7 +343,7 @@ There's <<printmoney $tip>>.
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -390,7 +390,7 @@ There's <<printmoney $tip>>.
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -434,7 +434,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -622,7 +622,7 @@ want to see you around this place <<if Time.dayState is "night">>at night<</if>>
 There's a small office building beside the stables. The door is locked. Must be where the money is kept.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -662,7 +662,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -704,7 +704,7 @@ There's <<printmoney $tip>>.
 A standard cash register sits there. It's locked tight.
 <br><br>
 <<if Time.schoolDay and $schoolstate isnot "early" and $schoolstate isnot "late">>
-	<<if currentSkillValue('skulduggery') gte $lock>>
+	<<if PC.skulduggery gte $lock>>
 		<span class="green">The lock looks easy to pick,</span> but the library is too busy to risk it.
 	<<else>>
 		<span class="red">The lock looks beyond your ability to pick.</span>
@@ -714,7 +714,7 @@ A standard cash register sits there. It's locked tight.
 	<</if>>
 <br><br>
 <<else>>
-	<<if currentSkillValue('skulduggery') gte $lock>>
+	<<if PC.skulduggery gte $lock>>
 		<<if pcAreArmsBound("both")>>
 			You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 			<br><br>
@@ -756,7 +756,7 @@ There's <<printmoney $tip>>.
 <<set $outside to 0>><<effects>><<set $lock to 200>>
 A standard cash register sits on a counter. It's locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<wearProp "lockpick">>
 	<span class="green">The lock looks easy to pick.</span>
 	<br><br>

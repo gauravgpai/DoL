@@ -401,7 +401,7 @@ You kiss <<him>>, making good use of your tongue. <<His>> eyes widen at first, b
 	You nod and return your hands to <<his>> body.
 	<<promiscuity2>>
 
-	<<if currentSkillValue("handskill") gte 400>>
+	<<if PC.handskill gte 400>>
 		This isn't your first time using your hands in such a way. You get to work at stroking <<his>> stomach first, then slowly moving up toward <<his>> chest. <<His>> breath catches in <<his>> throat as you <<if $NPCList[0].breastsize gt 1>>caress <<his>> $NPCList[0].breastdesc<<else>>circle <<his>> nipples<</if>>.
 	<<else>>
 		Though you aren't experienced, you try your best to satisfy <<him>>. You brush your hands along <<his>> sides and stomach with nervous, delicate touches. It seems to have an effect on <<him>>. Your touch leaves <<him>> shuddering ever so slightly.
@@ -1060,7 +1060,7 @@ This continues for a few minutes. Puffs of pink mist continue to emerge, along w
 <<set $outside to 0>><<set $location to "asylum">><<asylumeffects>><<effects>>
 
 Harper looks above your shoulder, and nods.
-<<if currentSkillValue('athletics') gte random(1, 1000)>>
+<<if PC.athletics gte random(1, 1000)>>
 	<span class="green">You succeed in dodging</span> the orderlies who try to grab you from behind. Harper shakes <<his>> head. "We can't help if you won't let us," <<he>> says. "You can go."
 	<br><br>
 	<<endevent>>
@@ -1479,7 +1479,7 @@ You reach across the desk and grab <<his>> coat with both hands. "You're wrong,"
 :: Asylum Mundane Slime Defy
 <<asylumeffects>><<effects>>
 
-<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<if $earSlime.corruption gte (PC.willpower / 10)>>
 	<<set $earSlime.defyCooldown += 2>>
 	The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to <<print $asylumEarSlimeEvent[0]>> as you are.
 	<<ggwillpower>><<willpower 1>>
@@ -1589,7 +1589,7 @@ The <<person>> is taken aback, but recovers quickly. <<He>> glances around, then
 	<<endevent>>
 
 	<<link [[Next|Asylum]]>><</link>>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("promiscuity", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>

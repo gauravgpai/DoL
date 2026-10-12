@@ -4226,7 +4226,7 @@ You land away from the campsite, and give <<bhim>> the signal. <<bHe>> lets out 
 <<else>>
 	<<set _looted to either("watch", "ring", "necklace", "bracelet")>>
 	<<set _loot to _looted>>
-	<<if currentSkillValue("skulduggery") gte random(200,1000)>>
+	<<if PC.skulduggery gte random(200,1000)>>
 		You manage to find two _looted<<if _looted is "watch">>es<<else>>s<</if>>. You grab them. <<flight_hunt_get "valuables" 2 _looted>>
 	<<else>>
 		You only find a _looted. You grab it. <<flight_hunt_get "valuables" 1 _looted>>
@@ -4268,7 +4268,7 @@ Regrouping with the Great Hawk in the sky, you show <<bhim>> what you found.
 <<effects>>
 <<set _looted to either("watch", "ring", "necklace", "bracelet")>>
 <<set _loot to _looted>>
-<<if currentSkillValue("skulduggery") gte random(200,1000)>>
+<<if PC.skulduggery gte random(200,1000)>>
 	You manage to find two _looted<<if _looted is "watch">>es<<else>>s<</if>>. You grab them and begin to leave. <<flight_hunt_get "valuables" 2 _looted>>
 <<else>>
 	You only find a _looted. You grab it and begin to leave. <<flight_hunt_get "valuables" 1 _looted>>
@@ -4832,7 +4832,7 @@ Deciding you've found enough, you get ready to leave.
 <<effects>>
 <<if $bird.hunts.goal is "hawk">>
 	You fly after your <<if $monster is 1>><<nnpc_wife "Great Hawk">><<else>>partner<</if>>. <<bHes>> chasing after the plane as fast as <<bhe>> can.
-	<<if currentSkillValue('athletics') gte 600>> You're able to keep up with <<bhim>>. <<else>> You struggle to keep up with <<bhim>>. <</if>>
+	<<if PC.athletics gte 600>> You're able to keep up with <<bhim>>. <<else>> You struggle to keep up with <<bhim>>. <</if>>
 	You keep chasing the plane with your <<if $monster is 1>><<nnpc_wife "Great Hawk">><<else>>partner<</if>> for many minutes, until it eventually flies out of sight.
 	<br><br>
 
@@ -5653,7 +5653,7 @@ You sit atop the pillar, waiting for a potential victim<<if $bird.hunts.duo is t
 
 			<<link [[Next|Bird Hunt Ambush End]]>><<endevent>><</link>>
 			<br>
-		<<elseif currentSkillValue('physique') gte random (4000, 15000)>>
+		<<elseif PC.physique gte random (4000, 15000)>>
 			After a long silence, the <<person1>><<person>> speaks. "Alright, <span class="teal">we're willing to give you something small</span>. But that's all you'll get." The <<person2>><<person>> looks displeased, but <<he>> doesn't object. You order them to throw you one of their backpacks, with the promise you won't take much. The <<person1>><<person>> throws you <<his>> bag. You begin rummaging through it.
 			<br><br>
 
@@ -5894,7 +5894,7 @@ Like a predator, you begin slowly circling them. When you notice a good opportun
 <<else>>
 	<<if $bird.hunts.duo is true>>
 		You and <<your_bird_text>> peer over the stone, observing their movement. You wait until the lurkers are directly below you. You both step near the edge of the stone and screech. It's amplified by the echo, making the lurkers freeze in panic. The Great Hawk grabs one easily. You swoop down and grab another, making the last one flee.
-		<<if currentSkillValue("danceskill") gte random(1,1000)>>
+		<<if PC.danceskill gte random(1,1000)>>
 			<span class="green">You recover well from your swoop</span>, easily gaining altitude with the lurker in hand. You look to your spouse and smile, each of you having caught one. <<flight_hunt_get "lurkers" 2>>
 		<<else>>
 			You try to regain altitude, but you're off balance. You fumble the recovery, and have to let go of the lurker to avoid crashing face-first into a rock With free hands, you manage to avoid the collision, but the lurker is gone.
@@ -5910,7 +5910,7 @@ Like a predator, you begin slowly circling them. When you notice a good opportun
 		<</if>>
 	<<else>>
 		You wait until the lurkers are directly below you. You step near the edge of the stone and screech. It's amplified by the echo, making the lurkers freeze in panic. You swoop down and grab one, making the others scatter.
-		<<if currentSkillValue("danceskill") gte random(1,1000)>>
+		<<if PC.danceskill gte random(1,1000)>>
 			<span class="green">You recover well from your swoop</span>, easily gaining altitude with the lurker in hand. <<flight_hunt_get "lurkers" 1>>
 		<<else>>
 			You try to regain altitude, but you're off balance. You fumble the recovery, and have to let go of the lurker to avoid crashing face-first into a rock With free hands, you manage to avoid the collision, but the lurker is gone.

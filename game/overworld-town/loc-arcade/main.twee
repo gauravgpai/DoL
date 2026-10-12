@@ -2,7 +2,7 @@
 <<set $outside to 1>><<set $location to "arcade">><<effects>><<set $lock to 300>>
 The arcade is closed. A glowing sign beside the door reads: "Opening hours: <<ampm 9 00>> - <<ampm 21 00>>"
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -1098,7 +1098,7 @@ The fight goes back and forth, and finally both your health bars are under ten p
 :: Arcade Exposure Keep 3
 <<effects>>
 
-<<if currentSkillValue("handskill") gte 400>>
+<<if PC.handskill gte 400>>
 
 	It's so close: one more hit from either one of you, and the battle is over.
 	<br><br>
@@ -1377,7 +1377,7 @@ The two of you have already attracted a small audience. They murmur excitedly as
 
 You agree to bet your <<print $worn[$arcadeHockey.player_bet].name>>.
 <br><br>
-<<if ($difficulty - currentSkillValue("handskill")) gte 800>>
+<<if ($difficulty - PC.handskill) gte 800>>
 	<<set $arcadeHockey.player_count_lost += 1>><<set $arcadeHockey.player_lost to true>>
 
 	<span class="red">The game is over almost before it starts.</span> You are slow and clumsy on the table, failing to score a single point before <<he>> slides the puck one last time into the slot.<<gstress>><<stress 6>>
@@ -1388,7 +1388,7 @@ You agree to bet your <<print $worn[$arcadeHockey.player_bet].name>>.
 	<<else>>
 		"Too easy. You wanted to lose, didn't you?" <<he>> asks with a grin. "I don't mind, you know."
 	<</if>>
-<<elseif ($difficulty - currentSkillValue("handskill")) gte 400>>
+<<elseif ($difficulty - PC.handskill) gte 400>>
 	<<set $arcadeHockey.player_count_lost += 1>><<set $arcadeHockey.player_lost to true>>
 
 	It's quickly clear that you're not gonna make it. You're working hard while <<hes>> taking it easy. You're able to score two points, <span class="red">but <<he>> beats you without a problem.</span><<gstress>><<stress 6>>
@@ -1396,7 +1396,7 @@ You agree to bet your <<print $worn[$arcadeHockey.player_bet].name>>.
 
 	"You're gonna need some more practice before you can beat me," <<he>> says.
 
-<<elseif ($difficulty - currentSkillValue("handskill")) gte 100>>
+<<elseif ($difficulty - PC.handskill) gte 100>>
 	<<set $arcadeHockey.player_count_lost += 1>><<set $arcadeHockey.player_lost to true>>
 
 	You're evenly matched. The game goes back and forth for a while. Neither of you are saying a word, both keeping focus entirely on the game. You score a point, <<he>> scores a point, back and forth.
@@ -1407,7 +1407,7 @@ You agree to bet your <<print $worn[$arcadeHockey.player_bet].name>>.
 
 	"Good game," <<he>> says, "but there could only be one winner."
 
-<<elseif ($difficulty - currentSkillValue("handskill")) gte -100>>
+<<elseif ($difficulty - PC.handskill) gte -100>>
 	<<set $arcadeHockey.player_count_win += 1>>
 
 	It's neck and neck. Both of you hit the puck back and forth across the table at breakneck speed. The game goes on and on without either of you getting a vast lead. When you score one <<he>> scores the next one.
@@ -1418,7 +1418,7 @@ You agree to bet your <<print $worn[$arcadeHockey.player_bet].name>>.
 
 	"Shit!" <<he>> exclaims. "I almost had that!"
 
-<<elseif ($difficulty - currentSkillValue("handskill")) gte -400>>
+<<elseif ($difficulty - PC.handskill) gte -400>>
 	<<set $arcadeHockey.player_count_win += 1>>
 
 	You don't have to put in much effort to win. You keep a level head and stay calm while <<hes>> clearly struggling to keep up. <<He>> manages to score two points, <span class="green">but you sink the fifth point without a care.</span><<lstress>><<stress -6>>
@@ -1434,7 +1434,7 @@ You agree to bet your <<print $worn[$arcadeHockey.player_bet].name>>.
 
 	<<if $arcadeHockey.player_count_win + $arcadeHockey.player_count_lost is 1>>
 		<<He>> sighs in frustration. "I guess you don't have anything to worry about."
-	<<elseif ($difficulty - currentSkillValue("handskill")) lte -800 or random(0,1)>> <!-- NPC won't act like they threw the round if you beat them THAT badly -->
+	<<elseif ($difficulty - PC.handskill) lte -800 or random(0,1)>> <!-- NPC won't act like they threw the round if you beat them THAT badly -->
 		<<He>> groans. "Damn! I never had a shot!"
 	<<else>>
 		<<He>> smiles unexpectedly. "Whoops, I guess I lost!"
@@ -1516,7 +1516,7 @@ You agree to bet your <<print $worn[$arcadeHockey.player_bet].name>>.
 		<<else>>
 			<<link [[Agree|Arcade Hockey Play]]>><<set $phase to 1>><<exhibitionismN _lvl>><</link>><<exhibitionist _lvl>>
 		<</if>>
-		<<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" -450 1100>>
+		<<skill_difficulty `PC.handskill` "Hand Skill" -450 1100>>
 		<br>
 
 		<<link [[Decline|Arcade Hockey Decline 2]]>><<set $phase to 0>><</link>>

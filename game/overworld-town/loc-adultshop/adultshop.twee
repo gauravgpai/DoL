@@ -3,7 +3,7 @@
 The adult shop is closed. A sign reads: "Opening hours: <<ampm 16 00>> - <<ampm 21 00>> on weekdays. <<ampm 9 00>> - <<ampm 21 00>> on Saturdays."
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

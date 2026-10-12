@@ -52,17 +52,17 @@ The garden looks <span class="red">wild,</span> barely a garden at all. The hedg
 		<<else>>
 			<<templeicon "garden">>
 			<<link [[Work in the garden (1:00)|Temple Garden Work]]>>
-			<<if currentSkillValue('tending') gte 1500>>
+			<<if PC.tending gte 1500>>
 				<<set $temple_garden += 9>>
-			<<elseif currentSkillValue('tending') gte 1200>>
+			<<elseif PC.tending gte 1200>>
 				<<set $temple_garden += 8>>
-			<<elseif currentSkillValue('tending') gte 800>>
+			<<elseif PC.tending gte 800>>
 				<<set $temple_garden += 7>>
-			<<elseif currentSkillValue('tending') gte 600>>
+			<<elseif PC.tending gte 600>>
 				<<set $temple_garden += 6>>
-			<<elseif currentSkillValue('tending') gte 400>>
+			<<elseif PC.tending gte 400>>
 				<<set $temple_garden += 5>>
-			<<elseif currentSkillValue('tending') gte 200>>
+			<<elseif PC.tending gte 200>>
 				<<set $temple_garden += 4>>
 			<<else>>
 				<<set $temple_garden += 3>>

@@ -681,7 +681,7 @@ Once through, the tentacles give up the pursuit.
 			<br>
 			<</if>>
 			<<if hasSexStat("promiscuity", 4)>>
-				<<link [[Seduce|Lake Depths Divers]]>><<set $phase to 4>><</link>><<promiscuous4>><<difficulty `Math.round(($attractiveness + (currentSkillValue("seductionskill") * 10))/300)`>>
+				<<link [[Seduce|Lake Depths Divers]]>><<set $phase to 4>><</link>><<promiscuous4>><<difficulty `Math.round(($attractiveness + (PC.seductionskill * 10))/300)`>>
 			<br>
 			<</if>>
 			<<link [[Wait|Lake Depths Divers]]>><<set $phase to 5>><</link>>
@@ -1163,7 +1163,7 @@ The creature recoils from you and disappears into darkness. <<tearful>> you turn
 			<<link [[Next|Lake Depths Divers Sex]]>><<set $phase to 2>><<set $molestationstart to 1>><</link>>
 		<</if>>
 	<<case 4>>
-		<<if random(1,100) lte Math.round(($attractiveness + (currentSkillValue("seductionskill") * 5))*2/300)>>
+		<<if random(1,100) lte Math.round(($attractiveness + (PC.seductionskill * 5))*2/300)>>
 			<<promiscuity4>>
 			You strike poses that you try to make reminiscent of a seductive <<if $player.gender is "f">>mermaid<<elseif $player.gender is "m">>merman<<else>>merfolk<</if>>. The pair of divers continues swimming towards you, soon closing the gap.
 			<br><br>

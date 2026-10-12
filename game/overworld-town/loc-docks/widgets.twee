@@ -402,7 +402,7 @@
 			You enter the keycode, but it doesn't unlock. "Not that one," another docker says. <<He>> points at the initials printed on the door. "We don't inspect these." If <<he>> hears the crying, <<he>> ignores it.
 			<br><br>
 			<<set $lock to 400>>
-			<<if currentSkillValue('skulduggery') gte $lock>>
+			<<if PC.skulduggery gte $lock>>
 				<<if pcAreArmsBound("both")>>
 					You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 					<br><br>
@@ -503,9 +503,9 @@
 	<<addinlineevent "docks_work_data_inconsistency">>
 		You're tasked with recording cargo information onto a computer. While working through the notes you notice an inconsistency.
 		<br><br>
-		<<link [[Examine the inconsistency|Docks Examine]]>><<set $phase to 0>><<stress 6>><</link>><<skill_difficulty `currentSkillValue("maths")` "Maths" 1 1000>><<gstress>>
+		<<link [[Examine the inconsistency|Docks Examine]]>><<set $phase to 0>><<stress 6>><</link>><<skill_difficulty `PC.maths` "Maths" 1 1000>><<gstress>>
 		<br>
-		<<if currentSkillValue('skulduggery') gte 400>>
+		<<if PC.skulduggery gte 400>>
 			<<set $skulduggerydifficulty to 500>>
 			<<link [[Note the location of valuable goods|Docks Examine Valuables]]>><<set $phase to 2>><</link>><<skulduggerydifficulty>>
 			<br>
@@ -535,7 +535,7 @@
 	<<addinlineevent "docks_work_moving_crates">>
 		You're tasked with moving some crates so they can be loaded onto vehicles. <<generate1>><<person1>>"You'll need a forklift," the supervisor says. "Let me find the keys."
 		<br><br>
-		<<if currentSkillValue('physique') gte 14000>>
+		<<if PC.physique gte 14000>>
 			The crates don't look too heavy. By the time <<he>> returns you've already finished. "You're stronger than you look," <<he>> chuckles.
 			<<gcool>><<dockstatus 1>>
 			<br><br>
@@ -550,7 +550,7 @@
 	<<addinlineevent "docks_work_untying_ship">>
 		You're tasked with untying a moored ship from the pier. The ropes are thick and heavy, and you don't have long before another ship needs the space.
 		<br><br>
-		<<if currentSkillValue('physique') gte 5000 and $feetuse isnot "bound">>
+		<<if PC.physique gte 5000 and $feetuse isnot "bound">>
 			You make it in time.
 			<br><br>
 		<<else>>
@@ -631,11 +631,11 @@
 
 	<<addinlineevent "docks_work_lifting_crates">>
 		You lift crates from a moored ship and drop them off on the dock. They're small compared to the rest of the cargo, but heavy.
-		<<if currentSkillValue('physique') gte 15000 and !pcAreArmsBound("any")>>
+		<<if PC.physique gte 15000 and !pcAreArmsBound("any")>>
 			You have no trouble. You keep going while the other dockers stop to rest.
 			<<gcool>><<dockstatus 1>>
 			<br><br>
-		<<elseif currentSkillValue('physique') gte 5000 and !pcAreArmsBound("any")>>
+		<<elseif PC.physique gte 5000 and !pcAreArmsBound("any")>>
 			You manage to keep up with the other dockers.
 			<br><br>
 		<<else>>
@@ -1285,7 +1285,7 @@
 
 		<<link [[Let your colleagues answer|Docks Pub Crawl Science]]>><<set $phase2 to 0>><</link>>
 		<br>
-		<<link [[Answer yourself|Docks Pub Crawl Science]]>><<set $phase2 to 1>><</link>><<skill_difficulty `currentSkillValue("science")` "Science" 1 1000>>
+		<<link [[Answer yourself|Docks Pub Crawl Science]]>><<set $phase2 to 1>><</link>><<skill_difficulty `PC.science` "Science" 1 1000>>
 		<br>
 		<<link [[Give the wrong answers|Docks Pub Crawl Science]]>><<set $phase2 to 2>><</link>>
 		<br>
@@ -1297,7 +1297,7 @@
 
 		<<link [[Let your colleagues answer|Docks Pub Crawl Maths]]>><<set $phase2 to 0>><</link>>
 		<br>
-		<<link [[Answer yourself|Docks Pub Crawl Maths]]>><<set $phase2 to 1>><</link>><<skill_difficulty `currentSkillValue("maths")` "Maths" 1 1000>>
+		<<link [[Answer yourself|Docks Pub Crawl Maths]]>><<set $phase2 to 1>><</link>><<skill_difficulty `PC.maths` "Maths" 1 1000>>
 		<br>
 		<<link [[Give the wrong answers|Docks Pub Crawl Maths]]>><<set $phase2 to 2>><</link>>
 		<br>
@@ -1321,7 +1321,7 @@
 
 		<<link [[Let your colleagues answer|Docks Pub Crawl History]]>><<set $phase2 to 0>><</link>>
 		<br>
-		<<link [[Answer yourself|Docks Pub Crawl History]]>><<set $phase2 to 1>><</link>><<skill_difficulty `currentSkillValue("history")` "History" 1 1000>>
+		<<link [[Answer yourself|Docks Pub Crawl History]]>><<set $phase2 to 1>><</link>><<skill_difficulty `PC.history` "History" 1 1000>>
 		<br>
 		<<link [[Give the wrong answers|Docks Pub Crawl History]]>><<set $phase2 to 2>><</link>>
 		<br>
@@ -1651,7 +1651,7 @@
 			<<link [[Next|Docks Sneak]]>><<set $eventskip to 1>><</link>>
 			<br>
 		<<elseif $rng is 5>>
-			<<if currentSkillValue('skulduggery') gte random(1, 1000)>>
+			<<if PC.skulduggery gte random(1, 1000)>>
 				There's a security camera up ahead. You avoid it. <span class="green">You're glad you spotted it in time.</span>
 				<br><br>
 

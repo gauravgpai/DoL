@@ -4183,9 +4183,9 @@ You dive in after the <<person5>><<person>>.
 
 <<water>><<waterbr 2>><<effects>>
 
-<<if currentSkillValue('swimmingskill') gte 600>>
+<<if PC.swimmingskill gte 600>>
 	With your skills, it's little trouble to drag <<him>> to the edge of the pool.
-<<elseif currentSkillValue('swimmingskill') gte 200>>
+<<elseif PC.swimmingskill gte 200>>
 	You manage to drag <<him>> to the edge of the pool.
 <<else>>
 	You're not the best swimmer, but you're better than <<him>>, and you're able to pull <<him>> to the edge of the pool.

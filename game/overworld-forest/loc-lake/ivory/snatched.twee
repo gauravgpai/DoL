@@ -1641,7 +1641,7 @@ Your head hurts. <<awareness -20>><<llawareness>>
 				<<set $willpowerSuccess to 0>>
 				<<willpowerdifficulty 1 _wraithWill true>>
 				<<if $willpowerSuccess>>
-					<<control `Math.floor(currentSkillValue('willpower') / 40)`>>
+					<<control `Math.floor(PC.willpower / 40)`>>
 					<<controlcaption>>
 					<br>
 					<<if _notMoving>>
@@ -1650,13 +1650,13 @@ Your head hurts. <<awareness -20>><<llawareness>>
 						<span class="green">You fight for control. It becomes slower.</span>
 						<<pass 4>>
 					<</if>>
-					<<pain 4>><<stress 12>><<trauma 12>><<def 2>><<gpain>><<ggtrauma>><<ggstress>><<gcontrol>><<set $wraith.will -= Math.floor(currentSkillValue('willpower') / 8)>>
+					<<pain 4>><<stress 12>><<trauma 12>><<def 2>><<gpain>><<ggtrauma>><<ggstress>><<gcontrol>><<set $wraith.will -= Math.floor(PC.willpower / 8)>>
 					<br><br>
 				<<else>>
 					<<controlcaption>>
 					<br>
 					<span class="red">Your body does not obey.</span>
-					<<stress 6>><<trauma 6>><<willpower 1>><<def 1>><<gtrauma>><<gstress>><<gwillpower>><<set $wraith.will -= Math.floor(currentSkillValue('willpower') / 10)>>
+					<<stress 6>><<trauma 6>><<willpower 1>><<def 1>><<gtrauma>><<gstress>><<gwillpower>><<set $wraith.will -= Math.floor(PC.willpower / 10)>>
 					<br><br>
 				<</if>>
 			<</if>>

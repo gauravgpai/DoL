@@ -1009,7 +1009,7 @@ You're sorting through the last of the paper, when you find another interesting 
 		"Apply the ointment—oh." <<methodical_guard 0 cap>> notices your bound arms, <span class="red">and frowns. "Forget I said anything."</span><<prison_rep methodical -1>><<lperlove "methodical_guard">><<prison_guards -1>><<gsuspicion>>
 		<br><br>
 	<<else>>
-		<<if currentSkillValue('tending') gte random(1, 1000)>>
+		<<if PC.tending gte random(1, 1000)>>
 			"Apply the ointment to the rash. You already have? Then help me with—Oh. That's done as well." <span class="green"><<methodical_guard 0 cap>> is impressed by your ability.</span><<gperlove "methodical_guard">><<lsuspicion>><<prison_rep methodical 1>><<prison_guards 1>>
 			<br><br>
 		<<else>>

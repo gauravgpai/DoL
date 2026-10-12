@@ -1959,7 +1959,7 @@ Eden casts a dark look at Robin. <<person2>><<He>> tightens <<his>> grip. "Forge
 	Eden glares at you. "We're going home," <<he>> snarls. "I'll drag you there by your hair if I have to."
 	<br><br>
 	You glare back and pull. After a bit of back and forth,
-	<<if currentSkillValue('physique') gte random(4000,14000)>>
+	<<if PC.physique gte random(4000,14000)>>
 		<span class="green">you manage to pull away.</span>
 		<br><br>
 		<<link [[Next|Robin Forest Crash Escape]]>><</link>>
@@ -2540,7 +2540,7 @@ You approach the shooting gallery. Robin takes one of the guns, eager, and pushe
 Robin pushes a coin into the ring toss machine, and a number of rings roll to <<his>> knee. The lights change, an array of thick wooden pins emerge from the depths, music blares, Robin concentrates. <<He>> tosses the first ring.
 <br><br>
 
-<<if currentSkillValue("handskill") gte 600>>
+<<if PC.handskill gte 600>>
 	You do likewise. Each of your rings lands atop the far pin, giving you the highest score, until it's full. You're forced to make easier shots. Robin has more mixed results. The pins on <<his>> side each have one or two rings at their base.
 	<br><br>
 
@@ -2652,7 +2652,7 @@ You approach the dance machine with Robin. There are two platforms beside one an
 
 Music begins, and the figures on the screen tap their feet. Arrows scroll down the screen. You ready yourself.
 <br><br>
-<<if currentSkillValue('danceskill') gte 600>>
+<<if PC.danceskill gte 600>>
 	The steps are easy, at first. You and Robin clear two whole songs without trouble. The third quickens the pace, and complexity. You're able to keep up just fine, but Robin struggles. Together you succeed, but the fourth song is harder still.
 	<br><br>
 	You hear Robin pant beside you. You know <<hes>> determined not to let you down. <<He>> tries until <<his>> legs give way. <<He>> grasps your arm as <<he>> falls, and together you tumble to the ground.

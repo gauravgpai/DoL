@@ -356,18 +356,18 @@ You tell Doren about the loft at the orphanage.
 <<effects>><<set $location to "park">><<set $outside to 0>>
 
 You arrive at the woodshop in the community garden. Doren <<if C.npc.Doren.dom gte 10>>helps you put on protective gear, then puts on <<his>> own<<else>>dons protective gear, then helps you with yours<</if>>. <<He>> explains the construction plan.
-<<if currentSkillValue('maths') gte 700>>You're able to follow.
-<<elseif currentSkillValue('maths') gte 500>>It seems simple enough.
-<<elseif currentSkillValue('maths') gte 300>>You think you get the hang of it somewhat.
+<<if PC.maths gte 700>>You're able to follow.
+<<elseif PC.maths gte 500>>It seems simple enough.
+<<elseif PC.maths gte 300>>You think you get the hang of it somewhat.
 <<else>>You have a hard time keeping up.
 <</if>>
 <br><br>
 
 <<if $schooltrait is 4>>
 	Doren looks impressed. "As expected from you, <<lassie>>. All my colleagues say you do well in their classes. Good job!"
-<<elseif currentSkillValue('maths') gte 700>>
+<<elseif PC.maths gte 700>>
 	Doren looks impressed. "As expected from you, <<lassie>><<if $mathsprojectwon is 1>> the Maths Competition Winner.<</if>> River told me you're good at maths.<<if C.npc.River.love gte 40>> <<nnpc_Hes "River">> quite fond of you.<</if>>"
-<<elseif currentSkillValue('maths') gte 500>>
+<<elseif PC.maths gte 500>>
 	Doren smiles. "Seems like you got the hang of it."
 <<else>>
 	Doren notices you're struggling and explains things in a way you understand. "It's okay not to get things the first try. What matters is you keep on trying."
@@ -375,7 +375,7 @@ You arrive at the woodshop in the community garden. Doren <<if C.npc.Doren.dom g
 <<gmaths>><<mathsskill>>
 <br><br>
 
-"My <<grandpa>> taught me how to do woodwork. <<if currentSkillValue('maths') lt 500>>Like you, <</if>>I struggled at first, but <<he>> was very patient and explained things thoroughly, helping me every step of the way." Doren smiles as <<he>> reminisces.
+"My <<grandpa>> taught me how to do woodwork. <<if PC.maths lt 500>>Like you, <</if>>I struggled at first, but <<he>> was very patient and explained things thoroughly, helping me every step of the way." Doren smiles as <<he>> reminisces.
 <br><br>
 
 <<link [[Next|Doren Loft 4]]>><<pass 20>><</link>>

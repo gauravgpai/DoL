@@ -434,7 +434,7 @@ You manage to push the <<person1>><<person>> off of you and gather up your cloth
 			<<link [[Ignore|Office Executive Work Finish]]>><</link>>
 		<<else>>
 			It looks like a spreadsheet of expenditures.
-			<<if currentSkillValue('maths') gte random(100, 1000)>>
+			<<if PC.maths gte random(100, 1000)>>
 				The numbers don't quite match up. Someone in the black market might be interested in this.<br><br>
 				<<set $skulduggerydifficulty to 500>>
 				<<link [[Steal|Office Executive Work Steal]]>><</link>><<skulduggerydifficulty>><br>

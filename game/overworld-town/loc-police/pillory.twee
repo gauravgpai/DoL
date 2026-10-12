@@ -276,7 +276,7 @@ You should be released any moment from now.
 				<<He>> takes off <<his>> hat and lays it in front of the onlookers, before unfurling a whip and striding behind you. Everyone watches for a moment in fascination.
 				<br><br>
 
-				<<link [[Dodge|Pillory Whip Master]]>><<set $phase to 1>><</link>><<skill_difficulty `currentSkillValue("danceskill")` "Dance" 1 1000>>
+				<<link [[Dodge|Pillory Whip Master]]>><<set $phase to 1>><</link>><<skill_difficulty `PC.danceskill` "Dance" 1 1000>>
 				<br>
 				<<link [[Brace|Pillory Whip Master]]>><<stress 6>><<trauma 6>><</link>><<gstress>><<gtrauma>>
 				<br>
@@ -558,7 +558,7 @@ You should be released any moment from now.
 <<He>> cracks the whip a couple of times on the pavement before lashing out at you.
 <br><br>
 <<if $phase is 1>>
-	<<if currentSkillValue('danceskill') gte random(1, 1000)>>
+	<<if PC.danceskill gte random(1, 1000)>>
 		A couple of blows land on your <<bottom>> with a sharp sting, <span class="green">but you're able to avoid most of them.</span>
 		A few of the audience members murmur to one another. It's clear you're ruining the <<personssimple>> act.
 		Eventually <<he>> gives up, takes <<his>> hat, and storms off. The crowd boos, and a couple of delinquents throw fruit at <<him>>.
@@ -858,7 +858,7 @@ You brace for the impact as the fruit comes flying towards you.
 	<<case 2>>
 		You enthusiastically comply and <<oraltext>> lick <<his>> asshole, giving it a few wet kisses as well.
 		<br>
-		<<if currentSkillValue("oralskill") gte 400>>
+		<<if PC.oralskill gte 400>>
 			Your tongue soon sends <<him>> over the edge, and <<he>>
 			<<if $NPCList[0].penis isnot "none">>
 				ejaculates onto the ground.

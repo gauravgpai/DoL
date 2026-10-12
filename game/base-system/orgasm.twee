@@ -574,7 +574,7 @@
 		<<set $audiencemod += 5>>
 	<<else>>
 		You feel an orgasm build within, interrupting your dance. <<orgasm>>
-		<<if currentSkillValue('danceskill') lte 500>>
+		<<if PC.danceskill lte 500>>
 			It breaks your focus. You try to regain balance, but your knees give in and you fall to your knees.
 			The gathered crowd taunts you and mocks your dance skills.
 			<br><br>
@@ -594,7 +594,7 @@
 				<<gtrauma>><<gstress>><<trauma 10>><<stress 10>>
 				<<set $danceevent to "finish">>
 			<</if>>
-		<<elseif currentSkillValue('danceskill') gte 500 and hasSexStat("exhibitionism", 4) and hasSexStat("promiscuity", 4)>>
+		<<elseif PC.danceskill gte 500 and hasSexStat("exhibitionism", 4) and hasSexStat("promiscuity", 4)>>
 			You drop to your knees before you collapse outright. Your <<body_size_text>> is wracked by violent spasms. The crowd cheers you on.
 			<br><br>
 			You climb to your feet and continue dancing, as the crowd jeer.

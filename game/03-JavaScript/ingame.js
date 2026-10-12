@@ -334,7 +334,7 @@ DefineMacroS("combatDefaults", combatDefaults);
  * @returns {boolean}
  */
 function combatSkillCheck(skillname, targetid = 0, npc = "", basedifficulty = 1000, multiplier = 100) {
-	const skill = currentSkillValue(skillname + "skill");
+	const skill = PC[skillname];
 	const rng = V.rng * 10;
 	const arousalfactor = V.enemyarousalmax / (V.enemyarousal + 1);
 	const trust = V.enemytrust * 10;
@@ -1260,8 +1260,14 @@ function clothesIndex(slot, itemToIndex) {
 }
 window.clothesIndex = clothesIndex;
 
+/**
+ * @param {string} skill
+ * @param {number} disableModifiers
+ * @returns {number}
+ * @deprecated Replace `currentSkillValue("skill")` with `PC.skill`.
+ */
 function currentSkillValue(skill, disableModifiers = 0) {
-	let result = V[skill];
+	const result = PC[skill];
 	if (!result && result !== 0) {
 		/* console.log(`currentSkillValue - skill '${skill}' unknown`); */
 		Errors.report(`[currentSkillValue]: skill '${skill}' unknown.`, {
@@ -1269,177 +1275,6 @@ function currentSkillValue(skill, disableModifiers = 0) {
 			skill,
 		});
 		return 0;
-	}
-	// Prevents infinite loops, any call to `currentSkillValue` in this function should be written like 'currentSkillValue("skillName", disableModifiers + 1)'
-	if (disableModifiers >= 2) return result;
-	if (
-		// prettier-ignore
-		[
-			"skulduggery", "physique", "danceskill", "swimmingskill", "athletics", "willpower", "tending", "science", "maths", "english", "history", "housekeeping"
-		].includes(skill) &&
-		V.moorLuck > 0
-	) {
-		result = Math.floor(result * (1 + V.moorLuck / 100));
-	}
-	if (["physique", "danceskill", "swimmingskill", "athletics"].includes(skill) && playerBellySize() >= 10 && playerNormalPregnancyTotal() < 20) {
-		switch (playerNormalPregnancyTotal()) {
-			case 0:
-				T.pregnancyModifier = 36;
-				break;
-			case 1:
-				T.pregnancyModifier = 48;
-				break;
-			case 2:
-				T.pregnancyModifier = 60;
-				break;
-			case 3:
-			case 4:
-			case 5:
-			case 6:
-			case 7:
-				T.pregnancyModifier = 96;
-				break;
-			default:
-				T.pregnancyModifier = 120;
-				break;
-		}
-		result = Math.floor(result * (1 - playerBellySize() / T.pregnancyModifier));
-	}
-	switch (skill) {
-		case "skulduggery":
-			if (V.worn.hands.type.includes("sticky_fingers")) result = Math.floor(result * 1.05);
-			if (V.transformationParts.traits.sharpEyes !== "disabled") result = Math.floor(result * 1.05);
-			break;
-		case "physique":
-			if (["forest", "moor", "farm", "alex_farm"].includes(V.location)) {
-				if (V.worn.feet.type.includes("heels")) {
-					result = Math.floor(result * (1 - V.worn.feet.reveal / 5000));
-				}
-				if (V.worn.feet.type.includes("rugged")) {
-					result = Math.floor(result * (1 + currentSkillValue("feetskill", disableModifiers + 1) / 10000));
-				}
-			}
-			if (V.auriga_artefact === "pc") {
-				result = Math.floor(result * 1.1);
-			}
-			break;
-		case "danceskill":
-			if (
-				V.worn.under_upper.type.includesAny("dance", "naked") &&
-				V.worn.under_lower.type.includesAny("dance", "naked") &&
-				V.worn.upper.type.includesAny("dance", "naked") &&
-				V.worn.lower.type.includesAny("dance", "naked")
-			) {
-				result = Math.floor(result * 1.05);
-			}
-			if (V.worn.feet.type.includes("shackle")) {
-				result = Math.floor(result * 0.5);
-			}
-			if (V.worn.upper.type.includes("heavy") || V.worn.lower.type.includes("heavy")) {
-				result *= V.physique / V.physiquesize / 3;
-			}
-			break;
-		case "swimmingskill":
-			if (
-				V.worn.under_upper.type.includesAny("swim", "naked") &&
-				V.worn.under_lower.type.includesAny("swim", "naked") &&
-				V.worn.upper.type.includesAny("swim", "naked") &&
-				V.worn.lower.type.includesAny("swim", "naked")
-			) {
-				result = Math.floor(result * 1.05);
-			}
-			if (V.worn.feet.type.includes("swim")) {
-				result = Math.floor(result * (1 + currentSkillValue("feetskill", disableModifiers + 1) / 10000));
-			} else if (V.worn.feet.type.includes("heels")) {
-				result = Math.floor(result * (0.8 + currentSkillValue("feetskill", disableModifiers + 1) / 10000));
-			} else if (!V.worn.feet.type.includes("naked")) {
-				result = Math.floor(result * (0.9 + currentSkillValue("feetskill", disableModifiers + 1) / 10000));
-			}
-			if (V.worn.feet.type.includes("shackle")) {
-				result = Math.floor(result * 0.5);
-			}
-			if (V.worn.upper.type.includes("heavy") || V.worn.lower.type.includes("heavy")) {
-				result *= V.physique / V.physiquesize / 3;
-			}
-			break;
-		case "athletics":
-			if (["forest", "moor", "farm", "alex_farm"].includes(V.location)) {
-				if (V.worn.feet.type.includes("heels")) {
-					result = Math.floor(result * (1 - V.worn.feet.reveal / 5000));
-				}
-				if (V.worn.feet.type.includes("rugged")) {
-					result = Math.floor(result * (1 + currentSkillValue("feetskill", disableModifiers + 1) / 10000));
-				}
-			}
-			if (V.transformationParts.traits.chase !== "disabled") result = Math.floor(result * 1.1);
-			if (V.worn.feet.type.includes("shackle")) result /= 10;
-			if (V.worn.upper.type.includes("heavy") || V.worn.lower.type.includes("heavy")) {
-				result *= V.physique / V.physiquesize / 1.5;
-			}
-			break;
-		case "willpower":
-			if (numberOfEarSlime() >= 2 && V.earSlime.growth > 50) {
-				result = Math.floor(result * (0.9 - Math.clamp((V.earSlime.growth - 50) / 1000, 0, 0.1)));
-			} else if (numberOfEarSlime() >= 2) {
-				result = Math.floor(result * 0.9);
-			}
-			break;
-		case "tending":
-			if (V.backgroundTraits.includes("plantlover")) {
-				result = Math.floor(result * (1 + V.trauma / (V.traumamax * 2)));
-			}
-			break;
-		case "housekeeping":
-			if (V.worn.upper.type.includes("maid")) {
-				result = Math.floor(result * 1.05);
-			}
-			if (V.worn.lower.type.includes("maid")) {
-				result = Math.floor(result * 1.05);
-			}
-			if (V.worn.head.type.includes("maid")) {
-				result = Math.floor(result * 1.05);
-			}
-			if (V.worn.handheld.type.includes("maid")) {
-				result = Math.floor(result * 1.05);
-			}
-			break;
-		case "vaginalskill":
-			if (V.earSlime.growth > 100) {
-				if (V.earSlime.focus === "pregnancy") {
-					result = Math.floor(result * (1 + (V.earSlime.growth - 100) / 500));
-				} else if (V.earSlime.focus === "impregnation") {
-					result = Math.floor(result * (1 - (V.earSlime.growth - 100) / 400));
-				}
-			}
-			if (playerHeatMinArousal()) {
-				result = Math.floor(result * (1 + Math.clamp(playerHeatMinArousal(), 0, 4000) / 20000));
-			}
-			break;
-		case "penileskill":
-			if (V.earSlime.growth > 100) {
-				if (V.earSlime.focus === "impregnation") {
-					result = Math.floor(result * (1 + (V.earSlime.growth - 100) / 500));
-				} else if (V.earSlime.focus === "pregnancy") {
-					result = Math.floor(result * (1 - (V.earSlime.growth - 100) / 400));
-				}
-			}
-			if (playerRutMinArousal()) {
-				result = Math.floor(result * (1 + Math.clamp(playerRutMinArousal(), 0, 4000) / 20000));
-			}
-			break;
-		case "analskill":
-			if (V.earSlime.growth > 100 && !V.player.vaginaExist && V.earSlime.focus === "pregnancy") {
-				result = Math.floor(result * (1 + (V.earSlime.growth - 100) / 500));
-			}
-			if (playerHeatMinArousal() && playerCanCarryAnally()) {
-				result = Math.floor(result * (1 + Math.clamp(playerHeatMinArousal(), 0, 4000) / 20000));
-			}
-			break;
-		case "seductionskill":
-			if (V.earSlime.growth > 50 && !V.earSlime.defyCooldown) {
-				result = Math.floor(result * (1 + (V.earSlime.growth - 50) / 600));
-			}
-			break;
 	}
 	return result;
 }
@@ -2672,7 +2507,7 @@ function earSlimeCorruptionClothes() {
 	if (!V.daily.corruptionSlimeClothes) {
 		const baseCorruption = V.earSlime.corruption + V.earSlime.growth;
 		// Reduced from the original equivalent of *2.5 and *12.5, still want it to have SOME effect, but this should hopefully soften it enough
-		V.daily.corruptionSlimeClothes = Math.clamp(random(baseCorruption, baseCorruption * 5) - currentSkillValue("willpower"), 0, 1000);
+		V.daily.corruptionSlimeClothes = Math.clamp(random(baseCorruption, baseCorruption * 5) - PC.willpower, 0, 1000);
 	}
 	const cap = ["prison", "asylum"].includes(V.location) ? 1000 : 500;
 
@@ -3156,19 +2991,19 @@ window.dangerEvent = dangerEvent;
 function hasSharpSenses(sense = "any") {
 	if (["any", "sight"].includes(sense)) {
 		if (V.transformationParts.traits.sharpEyes !== "disabled") return "sharp eyes";
-		if (currentSkillValue("skulduggery") >= 600) return "experienced eyes";
+		if (PC.skulduggery >= 600) return "experienced eyes";
 	}
 	if (["any", "hearing"].includes(sense)) {
 		if (V.transformationParts.wolf.ears !== "disabled" && V.transformationParts.wolf.ears !== "hidden") return "wolf ears";
 		if (V.transformationParts.cat.ears !== "disabled" && V.transformationParts.cat.ears !== "hidden") return "cat ears";
 		if (V.transformationParts.fox.ears !== "disabled" && V.transformationParts.fox.ears !== "hidden") return "fox ears";
-		if (currentSkillValue("skulduggery") >= 600) return "experienced ears";
+		if (PC.skulduggery >= 600) return "experienced ears";
 	}
 	if (["instincts"].includes(sense)) {
 		if (V.wolfgirl >= 6) return "wolf instincts";
 		if (V.cat >= 6) return "cat instincts";
 		if (V.fox >= 6) return "fox instincts";
-		if (V.dryad >= 6 || currentSkillValue("tending") >= 900) return "nature-trained instincts";
+		if (V.dryad >= 6 || PC.tending >= 900) return "nature-trained instincts";
 	}
 	return false;
 }

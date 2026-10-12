@@ -1151,7 +1151,7 @@
 				<<link [[Deny|Maths Whitney Grope Deny]]>><<stress 6>><<npcincr Whitney love -1>><</link>><<gstress>><<llove>>
 				<br>
 				<<if $speech_attitude is "bratty">>
-					<<link [[Retaliate|Maths Whitney Grope Retaliate]]>><<npcincr Whitney dom -1>><</link>><<ldom>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 600>>
+					<<link [[Retaliate|Maths Whitney Grope Retaliate]]>><<npcincr Whitney dom -1>><</link>><<ldom>><<skill_difficulty `PC.handskill` "Hand Skill" 1 600>>
 					<br>
 				<</if>>
 			<</addinlineevent>>
@@ -1265,7 +1265,7 @@
 
 	<<addinlineevent "mathsPartnerStudy">>
 		<<rng>>
-		<<if currentSkillValue('maths') lte 499>>
+		<<if PC.maths lte 499>>
 			<<generates1>><<person1>>
 			River has a studious <<person>> help you with the material.
 			<<if $cool gte (($coolmax / 5) * 2)>>
@@ -1422,7 +1422,7 @@
 		River demonstrates equations on a whiteboard and occasionally asks questions, picking on students <<he>> thinks aren't paying attention. This time, <<he>> picks you.
 		<br><br>
 
-		<<if currentSkillValue('maths') gte 500>>
+		<<if PC.maths gte 500>>
 			You know the answer, but answering such a tough question correctly will make the other students think you're strange.
 			<br><br>
 
@@ -1891,7 +1891,7 @@
 	<</if>>
 
 	<<addinlineevent "englishNote" 1>>
-		<<if currentSkillValue('english') gte 500>>
+		<<if PC.english gte 500>>
 			<<npc Doren>><<person1>>Doren approaches your desk. "I think you've sussed this material, so while the rest of the class works, I've got a message I need delivered to the caretaker's outbuilding." <<He>> hands you a note containing a list of theatre props. "Just slip it beneath the door."
 			<br><br>
 			<<endevent>>
@@ -2121,15 +2121,15 @@
 			"We're almost done with this <<print either("topic","text","book","play")>> now," <<he>> says. "Time to finish it off. It will be on the exam."
 			<br><br>
 			The class break into small groups to review the topic, while Doren moves between the groups asking and answering questions.
-			<<if currentSkillValue('english') lte 300>><br><br>Your group is struggling, so Doren spends extra time with you.<<genglish>><<englishskill>><br><br>
-			<<elseif currentSkillValue('english') gte 700>>Doren listens to your group for a little while, nods and smiles.<br><br>"Excellent work! Carry on." <<lstress>><<stress -6>>
+			<<if PC.english lte 300>><br><br>Your group is struggling, so Doren spends extra time with you.<<genglish>><<englishskill>><br><br>
+			<<elseif PC.english gte 700>>Doren listens to your group for a little while, nods and smiles.<br><br>"Excellent work! Carry on." <<lstress>><<stress -6>>
 			<</if>>
 		<<elseif Time.days % 42 lte 2>> /* every 6 weeks: day 1-2, 42-44, ... */
 			"Listen up," <<he>> says. "We're starting a new topic. <<print either("This one's fun. I think you're going to like it.","This module is one of my favourites. I really hope you like it too.","This one is tough - I'm not gonna lie - but it's worth the work. You can learn so much from it.")>>"
 			<br><br>
 			Doren outlines the upcoming content.
-			<<if currentSkillValue('english') lte 200>><<print either("It looks tough.","You barely understand a word.","You try to listen, but nothing goes in.")>><<gstress>><<stress 6>>
-			<<elseif currentSkillValue('english') gte 600>>It looks <<print either("interesting.","fun.","different, but in a good way.")>><<lstress>><<stress -6>>
+			<<if PC.english lte 200>><<print either("It looks tough.","You barely understand a word.","You try to listen, but nothing goes in.")>><<gstress>><<stress 6>>
+			<<elseif PC.english gte 600>>It looks <<print either("interesting.","fun.","different, but in a good way.")>><<lstress>><<stress -6>>
 			<<else>>It looks okay.
 			<</if>>
 		<<else>>
@@ -2305,7 +2305,7 @@
 			They mostly clown around, playing for laughs and making the characters sound funny. Doren rolls <<his>> eyes, but laughs along. It's pretty funny. <<lstress>>
 		<<elseif $rng gte 33>>
 			They act it out excellently, really bringing the scene to life.
-			<<if currentSkillValue('english') lt 700>>
+			<<if PC.english lt 700>>
 				You actually learn something from it.<<genglish>><<englishskill>>
 			<<else>>
 				You enjoyed it a lot.
@@ -2347,7 +2347,7 @@
 			Doren gives everyone 10 minutes to write a limerick.
 
 			<<set _lines = [{text: "", lewdness: -1}]>>
-			<<if currentSkillValue('english') gte 400>>
+			<<if PC.english gte 400>>
 				<<set _lines.push({text: `passable limerick.`, lewdness: 0})>>
 
 				<<if $skulduggery gte 500>>
@@ -2400,7 +2400,7 @@
 				<br>
 				<<switch _picked.lewdness>>
 					<<case 0>>
-						<<if currentSkillValue('english') gte 600>>
+						<<if PC.english gte 600>>
 							Doren <<print either("smiles","nods")>> approvingly and moves along to the next student.
 						<<else>>
 							Doren nods and moves along to the next student.
@@ -2748,7 +2748,7 @@
 	<<addinlineevent "historyCritique">>
 		<<npc Winter>><<person1>>
 		You sense Winter reading over your shoulder.
-		<<if currentSkillValue("history") gte 600>>
+		<<if PC.history gte 600>>
 			"Good," <<he>> says with a nod. "Good work."<<stress -2>><<lstress>>
 			<br><br>
 
@@ -3034,9 +3034,9 @@
 			<br>
 		<<else>>
 			Behind the screen you find
-			<<if currentSkillValue('history') gte 500>>
+			<<if PC.history gte 500>>
 				<<print either("a 19th century American merchant's outfit","a 17th century Caribbean privateer outfit","some late Victorian merchant's garb","a replica WWI officer's uniform")>>.
-			<<elseif currentSkillValue('history') gte 300>>
+			<<elseif PC.history gte 300>>
 				<<print either("a bright, old-fashioned outfit","a pirate costume","clothes like people wear in old photos","a soldier costume")>>.
 			<<else>>
 				some <<print either("old outfit","traditional outfit","old-style clothes")>>.
@@ -3078,7 +3078,7 @@
 
 		Rather than placing your book on your desk, <<he>> drops it on the floor beside you. "Oops, how clumsy of me. You'd better pick it up before the teacher gets back." The rest of the class turns to watch.
 		<br><br>
-		<<if currentSkillValue('skulduggery') gte 100>><<set $skulduggerydifficulty to 400>>
+		<<if PC.skulduggery gte 100>><<set $skulduggerydifficulty to 400>>
 			<<link [[Trick <<him>>|History Events Trick]]>><</link>><<skulduggerydifficulty>>
 			<br>
 		<</if>>
@@ -3091,7 +3091,7 @@
 	<<addinlineevent "historyPillory" 1>>
 		<<npc Winter>><<person1>>Winter gives the class a thin smile as <<he>> unveils the pillory in the corner of the room. "We're fortunate to have such a rare antique! I'll need somebody to help me demonstrate its use." <<He>> looks around the room. "Any volunteers?"
 		<br><br>
-		<<if currentSkillValue('history') gte 800>>
+		<<if PC.history gte 800>>
 			No one volunteers, of course. Winter looks at you. "To the front of the class, please."
 			<br><br>
 			<<link [[Refuse|History Lesson]]>><<detention 1>><<endevent>><</link>><<gdelinquency>>
@@ -3099,7 +3099,7 @@
 			<<link [[Go to the front of the class|History Lesson Pillory]]>><<historyskill>><<stress 2>><</link>><<ghistory>><<gstress>>
 			<br>
 
-		<<elseif currentSkillValue('history') gte 600>>
+		<<elseif PC.history gte 600>>
 			No one volunteers, of course. Winter looks at you. "To the front of the class, please."
 			<br><br>
 			<<link [[Refuse|History Lesson]]>><<endevent>><<detention 1>><</link>><<gdelinquency>>
@@ -3155,10 +3155,10 @@
 	<<addinlineevent "historyClothes" 1>>
 		<<generates1>><<person1>><<set _coinflip to random(0,1)>>
 		Winter calls a <<person>> to the front of the class and asks <<him>> to model some historical clothes.
-		<<if currentSkillValue('history') gte 700>>
+		<<if PC.history gte 700>>
 			The clothes look like <<print either("early-medieval servant's garb,", "Tudor-era court clothes for a noble family, possibly the St. Clairs,", "those worn by a medieval 'runner', or courier,", "a pre-industrial Naval uniform,", "stable-boy garb,")>> unless you are mistaken.
 			<<if $rng % 2>>However, judging by the <<print either("stitching,","colouring","hems","cut","'Made in Indonesia' label")>> these are only replicas.<<else>>As far as you can tell, these are genuine historical garments.<</if>>
-		<<elseif currentSkillValue('history') gte 300>>
+		<<elseif PC.history gte 300>>
 			They look like the stuff from <<print either("those plays you do in English where people say 'Hark!'","that TV show about posh old people in a huge house.","that TV show with all the beards and axes.","those old War photos.","those Roman things where everyone wears sheets.")>>
 			Winter gets unusually excited discussing the context of the clothes.
 		<<else>>
@@ -3193,7 +3193,7 @@
 
 	<<addinlineevent "historyAnswer" 1>>
 		Winter asks the class a question.
-		<<if currentSkillValue('history') gte 400>>
+		<<if PC.history gte 400>>
 			<<set $_linkSkip to true>>
 			You think you know the answer.
 			<br><br>
@@ -3636,13 +3636,13 @@
 		<br><br>
 	<</if>>
 
-	<<if currentSkillValue('swimmingskill') lte 100>>
+	<<if PC.swimmingskill lte 100>>
 		You're not very good at swimming, and struggle to even stay above the surface of the water.
-	<<elseif currentSkillValue('swimmingskill') lte 300>>
+	<<elseif PC.swimmingskill lte 300>>
 		You're not a very fast swimmer, and need to take frequent breaks due to the strain on your muscles.
-	<<elseif currentSkillValue('swimmingskill') lte 500>>
+	<<elseif PC.swimmingskill lte 500>>
 		You're not a bad swimmer, but you've a long way to go.
-	<<elseif currentSkillValue('swimmingskill') lte 900>>
+	<<elseif PC.swimmingskill lte 900>>
 		You're a pretty good swimmer, among the best in the class.
 	<<else>>
 		You're a very good swimmer, easily the best in the class.
@@ -3846,7 +3846,7 @@
 				<<historyicon>><<link [[Rent a history textbook (£20)|Book Rental]]>><<money -2000 "libraryBooks">><<set $phase2 to "rent">><<set $phase to 4>><</link>><<note "+ Passive History" "green">>
 				<br>
 			<</if>>
-			<<if currentSkillValue('english') gte 300 and $studyBooks.stolen isnot "Raul and Janet">>
+			<<if PC.english gte 300 and $studyBooks.stolen isnot "Raul and Janet">>
 				<<scarleticon>><<link [[Rent "Raul and Janet" (£20)|Book Rental]]>><<money -2000 "libraryBooks">><<set $phase2 to "rent">><<set $phase to 5>><</link>>
 				<br>
 			<</if>>
@@ -3885,7 +3885,7 @@
 					<<historyicon>><<link [[Steal a history textbook|Book Rental]]>><<set $phase2 to "steal">><<set $phase to 4>><</link>><<crime "thievery">><<note "+ Passive History" "green">>
 					<br>
 				<</if>>
-				<<if currentSkillValue('english') gte 300 and $studyBooks.rented isnot "Raul and Janet">>
+				<<if PC.english gte 300 and $studyBooks.rented isnot "Raul and Janet">>
 					<<scarleticon>><<link [[Steal "Raul and Janet"|Book Rental]]>><<set $phase to 5>><<set $phase2 to "steal">><</link>><<crime "thievery">>
 					<br>
 				<</if>>

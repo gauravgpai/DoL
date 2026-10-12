@@ -11,7 +11,7 @@
 	<br><br>
 	<<link [[Next|Lake Shore]]>><<endevent>><</link>>
 	<br>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("deviancy", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>
@@ -822,10 +822,10 @@ You join the others in sprinting the rest of the way to the lake. You don't know
 
 <<addinlineevent "lake_hang_5">>
 	An impromptu game of tag starts.
-	<<if currentSkillValue('athletics') gte 800>>
+	<<if PC.athletics gte 800>>
 		No one can catch you.
 		<<gcool>><<status 1>><<gathletics>><<athletics 3>><<physique 1>>
-	<<elseif currentSkillValue('athletics') gte 400>>
+	<<elseif PC.athletics gte 400>>
 		You give as good as you get.
 		<<gathletics>><<athletics 3>><<physique 1>>
 	<<else>>

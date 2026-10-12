@@ -1,7 +1,7 @@
 :: Wren Heist Intro
 <<effects>>
 
-<<He>> pulls a crumpled up piece of paper from <<his>> pocket. You lean over to look at it. <<= currentSkillValue("history") gte 600 ? "You recognise it as blueprints to a house" : "It looks like a mess of lines and numbers">>.
+<<He>> pulls a crumpled up piece of paper from <<his>> pocket. You lean over to look at it. <<= PC.history gte 600 ? "You recognise it as blueprints to a house" : "It looks like a mess of lines and numbers">>.
 <br><br>
 "There's a party tonight," Wren says. <<He>> taps the centre of the paper. "The person throwing it is rich and doesn't care who knows it. All of the fancy jewellery and valuables are right in plain sight. We're going to go and take whatever we can carry." <<He>> smiles at you. "<<if $prison?.wren_names is 2>>A jailbird like you is no stranger to stealing<<elseif crimeSumCurrent() gte 5000>>You've been making waves in the underworld<<elseif $fame.social gte 600>>I've heard you like to schmooze with the upper class<</if>>. You're perfect for this job. It'll be easy, just in-and-out."
 <br><br>
@@ -137,7 +137,7 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 			Someone stops <<nnpc_him "Wren">>. <span class="red">It's the <<= $per_npc.wren_heist_fighting.fullDescription>>, and <<if _special_pronoun is "m">>he<<else>>she<</if>> doesn't look happy.</span> Neither does Wren, who says something to the <<if _special_pronoun is "m">>man<<else>>woman<</if>>. The two of them leave the room. <<stress 6>><<gstress>>
 		<<else>>
 			<<set $wrenHeistDance.blackMoney += 500>>
-			<<if currentSkillValue('skulduggery') gte 800 or $transformationParts.traits.sharpEyes isnot "disabled">>
+			<<if PC.skulduggery gte 800 or $transformationParts.traits.sharpEyes isnot "disabled">>
 				While <<person1>><<he>> is distracted, Wren reaches
 				<<if $wrenHeistDance.phase is 1>>
 					into <<his>> <<= $pronoun is "m" ? "pocket and takes <<his>> wallet." : "purse and takes <<his>> clutch.">>
@@ -187,7 +187,7 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 
 <<switch $wrenHeistDance.phase>>
 	<<case 1>> /* wine cellar */
-		The lights dim. You make your way off the stage to <<= currentSkillValue("danceskill") gte 600 ? "enthusiastic" : "tepid">> applause. As the rest of the party-goers start to chat, you sneak away to the wine cellar.
+		The lights dim. You make your way off the stage to <<= PC.danceskill gte 600 ? "enthusiastic" : "tepid">> applause. As the rest of the party-goers start to chat, you sneak away to the wine cellar.
 		<br><br>
 		Wren is there, waiting. <<He>> smiles when <<he>> sees you. "Nice work out there," <<he>> says. "Sorry, I didn't warn you in advance, but you did fine. That little distraction should keep them talking for a bit. Now, help me load up a few of these bottles."
 		<br><br>
@@ -195,7 +195,7 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 		<<link [[Next|Wren Heist Break Wine Cellar]]>><</link>>
 		<br>
 	<<case 2>> /* kitchen */
-		You follow Wren into the kitchen. <<He>> is rooting through a cutlery drawer. <<if currentSkillValue('skulduggery') gte 600 or $transformationParts.traits.sharpEyes isnot "disabled">>You notice <<him>> slipping some into <<his>> pockets.<</if>> <<He>> waves you over.
+		You follow Wren into the kitchen. <<He>> is rooting through a cutlery drawer. <<if PC.skulduggery gte 600 or $transformationParts.traits.sharpEyes isnot "disabled">>You notice <<him>> slipping some into <<his>> pockets.<</if>> <<He>> waves you over.
 		<br><br>
 		"Having fun yet?" <<he>> asks.
 		<br><br>
@@ -220,7 +220,7 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 		<<link [[Go upstairs second|Wren Heist Break Upstairs]]>><<set $phase to 0>><</link>>
 		<br>
 	<<case 4>> /* exit */
-		The lights come back on. Everyone claps <<= currentSkillValue("danceskill") gte 600 ? "with enthusiasm" : "politely">>. You step off the stage and make your way to the exit.
+		The lights come back on. Everyone claps <<= PC.danceskill gte 600 ? "with enthusiasm" : "politely">>. You step off the stage and make your way to the exit.
 		<br><br>
 		Wren straightens as you approach. "Let's go," <<he>> says.
 		<br><br>
@@ -286,7 +286,7 @@ As <<he>> goes to deposit your haul somewhere safe, a spotlight lands on you. Th
 	<<link [[Go back to the party|Wren Heist Dance]]>><<endevent>><<set $dancestart to 1>><</link>>
 	<br>
 <<else>> /* Help */
-	You nod. Wren leads you into the dining room. Servers rush by you in a steady stream. <<He>> weaves through them. You <<= currentSkillValue("danceskill") gte 600 ? "follow in <<his>> wake" : "stumble into a few before breaking free">>.
+	You nod. Wren leads you into the dining room. Servers rush by you in a steady stream. <<He>> weaves through them. You <<= PC.danceskill gte 600 ? "follow in <<his>> wake" : "stumble into a few before breaking free">>.
 	<br><br>
 	You find the china cabinet tucked along the back wall. Wren crouches to fiddle with the lock. The doors soon open. You waste no time and start to take as much as you can carry.
 	<br><br>
@@ -386,7 +386,7 @@ You rush into the main room just as the lights dim. The spotlight finds you amid
 <</if>>
 You go upstairs. The sounds of the party are muffled beneath your feet. You search through the rooms with Wren.
 <br><br>
-<<He>> pulls you into a dimly-lit room. There is a safe with a complicated-looking lock. You <<= currentSkillValue('skulduggery') gte 800 ? "think you can break into it with some effort" : "know there's no way you can break into it">>.
+<<He>> pulls you into a dimly-lit room. There is a safe with a complicated-looking lock. You <<= PC.skulduggery gte 800 ? "think you can break into it with some effort" : "know there's no way you can break into it">>.
 <<He>> crouches before the safe and fiddles with the keypad. It pops open, and <<he>> gives a self-satisfied hum. "A good thief never reveals <<his>> tricks, in case you're wondering," <<he>> says.
 <br><br>
 You help <<him>> search through the safe's contents. Most of it seems to be legal papers. You try to read some of them, but your eyes glaze over after the first few lines. Wren reaches into the safe one last time. <<His>> eyes widen.
@@ -520,7 +520,7 @@ You follow <<him>> to <<his>> car.<<if $wrenHeistDance.car isnot true>> It's fai
 <br><br>
 <<if _getCricketBall is true>>
 	<<set $wrenHeistCricketBall to true>>
-	After Wren's car rounds the corner, you take out the cricket ball. It shines red and gold in the streetlight. Something on it catches your eye and you look a bit closer. There is a signature on it. You <<= currentSkillValue("history") gte 600 ? "remember Winter talking about the person's name, and" : "don't recognise the name, but">> you think it may be valuable to a fence.
+	After Wren's car rounds the corner, you take out the cricket ball. It shines red and gold in the streetlight. Something on it catches your eye and you look a bit closer. There is a signature on it. You <<= PC.history gte 600 ? "remember Winter talking about the person's name, and" : "don't recognise the name, but">> you think it may be valuable to a fence.
 	<br><br>
 <</if>>
 

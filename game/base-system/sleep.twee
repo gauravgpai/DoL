@@ -124,18 +124,18 @@
 				<<elseif Time.schoolDay and Time.hour is 7 and !$daily.baileyWake>>
 					<<set _sleepinterrupt to 1>>
 					<<set $daily.baileyWake to true>>
-				<<elseif $earSlime.growth gte 25 and $earSlime.growth gte (currentSkillValue('willpower') / 20) and random(0,100) lt 4 and Time.dayState is "night" and $earSlime.eventTimer lte 0 and $kylarbed isnot 1 and !$bedGuest>>
+				<<elseif $earSlime.growth gte 25 and $earSlime.growth gte (PC.willpower / 20) and random(0,100) lt 4 and Time.dayState is "night" and $earSlime.eventTimer lte 0 and $kylarbed isnot 1 and !$bedGuest>>
 					<<set _wakeEvent to "slimeWakeAlleyway">>
 					<<break>>
-				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 				<</if>>
 			<<case "temple">>
-				<<if $earSlime.growth gte 25 and $earSlime.growth gte (currentSkillValue('willpower') / 20) and random(0,100) lt 4 and Time.dayState is "night" and $earSlime.eventTimer lte 0 and $kylarbed isnot 1 and !$bedGuest>>
+				<<if $earSlime.growth gte 25 and $earSlime.growth gte (PC.willpower / 20) and random(0,100) lt 4 and Time.dayState is "night" and $earSlime.eventTimer lte 0 and $kylarbed isnot 1 and !$bedGuest>>
 					<<set _wakeEvent to "slimeWakeAlleyway">>
 					<<break>>
-				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 				<</if>>
@@ -162,7 +162,7 @@
 				<<elseif $suspicion gte 80 and random(1, 10) gte 10>>
 					<<set _sleepinterrupt to 1>>
 					<<set $rapewake to 1>>
-				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 				<</if>>
@@ -170,7 +170,7 @@
 				<<if Time.hour is 6 and !$daily.prison.wake>>
 					<<set _sleepinterrupt to 1>>
 					<<set $daily.prison.wake to true>>
-				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 				<</if>>
@@ -183,7 +183,7 @@
 				<<elseif $farm_attack_timer is 0 and Time.hour gte 21>>
 					<<set $remywake to 1>>
 					<<set _sleepinterrupt to 1>>
-				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 
@@ -210,7 +210,7 @@
 				<<if $location is "forest" and $wolfpackferocity gte 10 and $wolfwake isnot 1>>
 					<<set _sleepinterrupt to 1>>
 					<<set $wolfwake to 1>>
-				<<elseif !$bedGuest and !$wolfbed and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif !$bedGuest and !$wolfbed and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 				<</if>>
@@ -221,7 +221,7 @@
 					<<set _sleepinterrupt to 1>>
 				<<elseif $bird.state is "home" and !$bird.satisfied and random(1, 10) is 10>>
 					<<set _sleepinterrupt to 1>>
-				<<elseif $bird.state is "hunting" and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif $bird.state is "hunting" and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 				<</if>>
@@ -231,21 +231,21 @@
 				<<elseif $wolfpackferocity gte 10 and $wolfwake isnot 1 and random(1,10) is 10 and $bedGuest isnot "Black Wolf">>
 					<<set _sleepinterrupt to 1>>
 					<<set $wolfwake to 1>>
-				<<elseif !$bedGuest and !$wolfbed and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif !$bedGuest and !$wolfbed and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 				<</if>>
 			<<case "pound">>
 				<<if Time.hour is 6 or Time.hour is 12 or Time.hour is 18>>
 					<<set _sleepinterrupt to 1>>
-				<<elseif !$bedGuest and !$wolfbed and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif !$bedGuest and !$wolfbed and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 				<</if>>
 			<<case "pirate_ship">>
 				<<if wraithSleepEventCheck()>>
 					<<wraithEvent>>
-				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+				<<elseif !$bedGuest and $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 					<<set _wakeEvent to "slimeWakeMasturbation">>
 					<<break>>
 				<</if>>
@@ -263,7 +263,7 @@
 					<<if _rng lte 5 and _sleepinterrupt isnot 1>>
 						<<set $island_wake_1 to 1>>
 						<<set _sleepinterrupt to 1>>
-					<<elseif $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+					<<elseif $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 						<<set _wakeEvent to "slimeWakeMasturbation">>
 						<<break>>
 					<</if>>
@@ -274,7 +274,7 @@
 					<<elseif _rng lte 10 and _sleepinterrupt isnot 1>>
 						<<set $island_wake_2 to 1>>
 						<<set _sleepinterrupt to 1>>
-					<<elseif $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+					<<elseif $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 						<<set _wakeEvent to "slimeWakeMasturbation">>
 						<<break>>
 					<</if>>
@@ -288,7 +288,7 @@
 					<<elseif _rng lte 15 and _sleepinterrupt isnot 1>>
 						<<set $island_wake_3 to 1>>
 						<<set _sleepinterrupt to 1>>
-					<<elseif $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (currentSkillValue('willpower') / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
+					<<elseif $exposed is 2 and $sleepHoursTotal gte 3 and !$weekly.slimeWakeMasturbation and $earSlime.growth gte (PC.willpower / 7) and random(0,100) lt 4 and !pcAreArmsBound("any")>>
 						<<set _wakeEvent to "slimeWakeMasturbation">>
 						<<break>>
 					<</if>>
@@ -483,7 +483,7 @@
 	<</if>>
 	<<if ["home", "temple"].includes($location) and Time.dayState is "night" and between(Time.hour, 20, 24)>>
 		<<run _eventsList.push("go running or swimming for an hour")>>
-		<<if currentSkillValue("skulduggery") gt 200>>
+		<<if PC.skulduggery gt 200>>
 			<<set _eventsList.push("steal something")>>
 		<</if>>
 		<<if $earSlime.exhibitionism gte 3 and hasSexStat("exhibitionism", 3)>>
@@ -813,7 +813,7 @@ You obey the slime's demand.
 	<<set $earSlime.event to "">>
 	<br><br>
 	<<link [[Next|$slimeBedExit]]>><<unset $slimeBedExit>><<unset $slimeBedroomExit>><</link>>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	The slime is able to force you to comply with its demand.
 	<<slimeEventResult>>
 <<else>>

@@ -96,7 +96,7 @@ A tall blonde girl in a crisp black outfit walks around the bonnet, and slashes 
 The front door to the bus station is in front of you. It's locked.
 <br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -120,7 +120,7 @@ The front door to the bus station is in front of you. It's locked.
 The back door to the bus station is in front of you. It leads out to the industrial alleyways.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br>
@@ -143,7 +143,7 @@ The front door to the bus station is locked.
 <br>
 
 <<set $outside to 1>><<effects>><<set $lock to 100>>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br>
@@ -166,7 +166,7 @@ The back door to the bus station is locked.
 <br>
 
 <<set $outside to 1>><<effects>><<set $lock to 0>>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

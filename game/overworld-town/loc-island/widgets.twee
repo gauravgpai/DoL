@@ -537,7 +537,7 @@ You find a clearing full of elegant plumerias, their spiral petals swaying in th
 		<br>
 	<</if>>
 <</if>>
-<<if currentSkillValue('tending') gte 300>>
+<<if PC.tending gte 300>>
 	<<foodstufficon "plumeria">> <<link [[Pick plumerias (0:20)|Island Plumeria Pick]]>><<island_pass 20>><</link>><<tendingdifficulty 300 600>>
 	<br>
 <<else>>
@@ -1333,7 +1333,7 @@ You find a walnut tree, with fresh nuts lying about the base.
 				<span class="red">Invalid option for: _args[0]</span>
 		<</switch>>
 		<<if $_build and _islandUpgrades[_args[0]].passage>>
-			<<if currentSkillValue('housekeeping') lt _islandUpgrades[_args[0]].housekeeping>>
+			<<if PC.housekeeping lt _islandUpgrades[_args[0]].housekeeping>>
 				<br>
 				<span class="black">
 					<<skilllettergrade _islandUpgrades[_args[0]].housekeeping>> Housekeeping skill required.

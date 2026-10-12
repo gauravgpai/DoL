@@ -366,7 +366,7 @@
 	<<set _leftHand["Pose for camera"] to "leftcamerapose">>
 	<<set _leftHand["Whack the writing tool away"] to "penwhack">>
 	<<set _leftHand["Whack the hypnotic instrument away"] to "hypnosiswhack">>
-	<<if currentSkillValue('skulduggery') gte 200>>
+	<<if PC.skulduggery gte 200>>
 		<<set _leftHand["Steal"] to "steal">>
 	<</if>>
 	<<set _leftHand["Struggle"] to "leftstruggle">>
@@ -415,7 +415,7 @@
 	<<set _rightHand["Pose for camera"] to "rightcamerapose">>
 	<<set _rightHand["Whack the writing tool away"] to "penwhack">>
 	<<set _rightHand["Whack the hypnotic instrument away"] to "hypnosiswhack">>
-	<<if currentSkillValue('skulduggery') gte 200>>
+	<<if PC.skulduggery gte 200>>
 		<<set _rightHand["Steal"] to "steal">>
 	<</if>>
 	<<set _rightHand["Struggle"] to "rightstruggle">>
@@ -616,7 +616,7 @@
 	/*After penisvaginafuck*/
 	<<set _penis["Take the pussy"] to "take">>
 	<<set _penis["Cooperate with their pussy"] to "cooperate">>
-	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and currentSkillValue("penileskill") gte 800>>
+	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and PC.penileskill gte 800>>
 		<<set _penis["Edge their vagina"] to "vaginaEdging">>
 	<</if>>
 	<<if hasSexStat("promiscuity", 5) or hasSexStat("deviancy", 5) or _args[0] is true>>
@@ -638,7 +638,7 @@
 	/*After penisanusfuck*/
 	<<set _penis["Take the ass"] to "otheranustake">>
 	<<set _penis["Cooperate with their ass"] to "otheranuscooperate">>
-	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and currentSkillValue("penileskill") gte 800>>
+	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and PC.penileskill gte 800>>
 		<<set _penis["Edge their ass"] to "otheranusEdging">>
 	<</if>>
 	<<set _penis["Press your thigh against their mouth"] to "thighbay">>
@@ -676,7 +676,7 @@
 	/*After vaginapenisfuck*/
 	<<set _vagina["Take it"] to "take">>
 	<<set _vagina["Cooperate"] to "cooperate">>
-	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and currentSkillValue("vaginalskill") gte 800>>
+	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and PC.vaginalskill gte 800>>
 		<<set _vagina["Edge their penis with your vagina"] to "penisEdging">>
 	<</if>>
 	<<set _vagina["Press your thigh against their mouth"] to "thighbay">>
@@ -712,7 +712,7 @@
 	/*After anuspenisfuck*/
 	<<set _anus["Take it"] to "take">>
 	<<set _anus["Cooperate"] to "cooperate">>
-	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and currentSkillValue("analskill") gte 800>>
+	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and PC.analskill gte 800>>
 		<<set _anus["Edge their penis with your ass"] to "penisEdging">>
 	<</if>>
 	<<set _anus["Press your butt against their mouth"] to "bottombay">>

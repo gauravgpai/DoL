@@ -1130,7 +1130,7 @@
 			<<elseif $birdFly is 1 or $birdGlide is 1>>
 				<br><br>
 				<<glideicon>><<link [[Glide down (0:02)|Bird Tower Glide]]>><<unset $birdPerch>><<bird_pass 2>><<endevent>><</link>><<flight_text>>
-			<<elseif currentSkillValue('willpower') lt 250>>
+			<<elseif PC.willpower lt 250>>
 				<span class="red">But you don't have the will or courage to attempt it.</span>
 			<<elseif $daily.glideScared>>
 				<span class="red">You're too scared to try again right now.</span>
@@ -1213,8 +1213,8 @@
 			<<if $_printAlerts>><span class="green">The weather shouldn't affect your flight.</span><</if>>
 	<</switch>>
 	<<if $_printAlerts>><br><</if>>
-	<<if currentSkillValue('athletics') gt 0>>
-		<<set _flightTime -= Math.floor((_flightTime / 20) * (currentSkillValue('athletics') / 100))>>
+	<<if PC.athletics gt 0>>
+		<<set _flightTime -= Math.floor((_flightTime / 20) * (PC.athletics / 100))>>
 	<</if>>
 	<<if _flightTime lte 0>>
 		<<set _flightTime to 1>>
@@ -1538,7 +1538,7 @@
 		valuables: random(0, 2),
 		other: 1
 	}>>
-	<<set _flight_hunt_chance[$_goal] += ($bird.hunts.goal is "hawk" ? 3 : 1 + Math.floor(currentSkillValue("skulduggery") / 500))>>
+	<<set _flight_hunt_chance[$_goal] += ($bird.hunts.goal is "hawk" ? 3 : 1 + Math.floor(PC.skulduggery / 500))>>
 	<<if Weather.precipitation isnot "none">>
 		<<set _flight_hunt_chance.nothing += 2>>
 	<</if>>
@@ -2665,7 +2665,7 @@
 			<<exit>>
 		<</if>>
 
-		<<if currentSkillValue('housekeeping') lt $_upgrade.housekeeping>>
+		<<if PC.housekeeping lt $_upgrade.housekeeping>>
 			<br>
 			<span class="black">
 				<<skilllettergrade $_upgrade.housekeeping>> Housekeeping skill required.

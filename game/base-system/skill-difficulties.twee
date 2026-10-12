@@ -1,17 +1,17 @@
 :: Widgets Difficulty [widget]
 <<widget "sexactiondifficulty">>
 	<<if $settings.skillCheckStyle is "skillname" or $settings.blindStatsEnabled>>
-	<<elseif (990 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (990 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="green">(Very Easy)</span>
-	<<elseif (800 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (800 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="teal">(Easy)</span>
-	<<elseif (600 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (600 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="lblue">(Medium)</span>
-	<<elseif (400 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (400 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="blue">(Challenging)</span>
-	<<elseif (200 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (200 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="purple">(Hard)</span>
-	<<elseif (1 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (1 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="pink">(Very Hard)</span>
 	<<else>>
 		<span class="red">(Impossible)</span>
@@ -29,33 +29,33 @@
 		<<if $settings.skillCheckStyle is "skillname">>
 			<<set _text_output to "">>
 		<<elseif _args[0] is true>>
-			<<if (990 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<if (990 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '(Very Easy)'>>
-			<<elseif (800 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (800 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '(Easy)'>>
-			<<elseif (600 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (600 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '(Medium)'>>
-			<<elseif (400 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (400 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '(Challenging)'>>
-			<<elseif (200 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (200 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '(Hard)'>>
-			<<elseif (1 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (1 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '(Very Hard)'>>
 			<<else>>
 				<<set _text_output to '(Impossible)'>>
 			<</if>>
 		<<else>>
-			<<if (990 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<if (990 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '<span class="green">(Very Easy)</span>'>>
-			<<elseif (800 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (800 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '<span class="teal">(Easy)</span>'>>
-			<<elseif (600 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (600 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '<span class="lblue">(Medium)</span>'>>
-			<<elseif (400 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (400 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '<span class="blue">(Challenging)</span>'>>
-			<<elseif (200 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (200 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '<span class="purple">(Hard)</span>'>>
-			<<elseif (1 - ($enemytrust * 10) - currentSkillValue("seductionskill") + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<elseif (1 - ($enemytrust * 10) - PC.seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 				<<set _text_output to '<span class="pink">(Very Hard)</span>'>>
 			<<else>>
 				<<set _text_output to '<span class="red">(Impossible)</span>'>>
@@ -66,17 +66,17 @@
 			<<set _text_output to ` | <span class="lewd">Seduction</span>`>>
 		<<else>>
 			<<set _text_output to ` | <span class="lewd">Seduction</span>: `>>
-			<<if 990 - currentSkillValue("seductionskill") - ($attractiveness / 10) lte -100>>
+			<<if 990 - PC.seductionskill - ($attractiveness / 10) lte -100>>
 				<<set _text_output += '<span class="green">(Very Easy)</span>'>>
-			<<elseif 800 - currentSkillValue("seductionskill") - ($attractiveness / 10) lte -100>>
+			<<elseif 800 - PC.seductionskill - ($attractiveness / 10) lte -100>>
 				<<set _text_output += '<span class="teal">(Easy)</span>'>>
-			<<elseif 600 - currentSkillValue("seductionskill") - ($attractiveness / 10) lte -100>>
+			<<elseif 600 - PC.seductionskill - ($attractiveness / 10) lte -100>>
 				<<set _text_output += '<span class="lblue">(Medium)</span>'>>
-			<<elseif 400 - currentSkillValue("seductionskill") - ($attractiveness / 10) lte -100>>
+			<<elseif 400 - PC.seductionskill - ($attractiveness / 10) lte -100>>
 				<<set _text_output += '<span class="blue">(Challenging)</span>'>>
-			<<elseif 200 - currentSkillValue("seductionskill") - ($attractiveness / 10) lte -100>>
+			<<elseif 200 - PC.seductionskill - ($attractiveness / 10) lte -100>>
 				<<set _text_output += '<span class="purple">(Hard)</span>'>>
-			<<elseif 1 - currentSkillValue("seductionskill") - ($attractiveness / 10) lte -100>>
+			<<elseif 1 - PC.seductionskill - ($attractiveness / 10) lte -100>>
 				<<set _text_output += '<span class="pink">(Very Hard)</span>'>>
 			<<else>>
 				<<set _text_output += '<span class="red">(Impossible)</span>'>>
@@ -137,7 +137,7 @@
 	note: the ternary coerces the outcome to 1 or 0, because many checks check if it's exactly 1 (rather than just truthy)
 	-->
 
-	<<set $skulduggerysuccess to (random(101, 1100) >= 200 * Math.floor(($skulduggerydifficulty - currentSkillValue('skulduggery')) / 100)) ? 1 : 0>>
+	<<set $skulduggerysuccess to (random(101, 1100) >= 200 * Math.floor(($skulduggerydifficulty - PC.skulduggery) / 100)) ? 1 : 0>>
 
 	<<if $temple_burden gte random(1, 100)>>
 		<<set $skulduggerysuccess to 0>>
@@ -156,7 +156,7 @@
 	<<if !$settings.blindStatsEnabled>>
 		| <span class="orange">Skulduggery</span><<if $settings.skillCheckStyle isnot "skillname">>:
 			 <!-- only display colon if it's followed by the difficulty level -->
-			<<set _skulduggery to currentSkillValue('skulduggery')>>
+			<<set _skulduggery to PC.skulduggery>>
 			<<if _skulduggery gte $skulduggerydifficulty>>
 				<span class="green">Very Easy</span>
 			<<elseif (_skulduggery + 100) gte $skulduggerydifficulty>>
@@ -229,36 +229,36 @@
 		<</if>>
 		<br>
 		Seduction Skill:
-		<<if currentSkillValue("seductionskill") lte 0>>
+		<<if PC.seductionskill lte 0>>
 			<span class="red">None</span>
-		<<elseif currentSkillValue("seductionskill") gte 1 and currentSkillValue("seductionskill") lt 200>>
+		<<elseif PC.seductionskill gte 1 and PC.seductionskill lt 200>>
 			<span class="pink">F</span>
-		<<elseif currentSkillValue("seductionskill") gte 200 and currentSkillValue("seductionskill") lt 400>>
+		<<elseif PC.seductionskill gte 200 and PC.seductionskill lt 400>>
 			<span class="purple">D</span>
-		<<elseif currentSkillValue("seductionskill") gte 400 and currentSkillValue("seductionskill") lt 600>>
+		<<elseif PC.seductionskill gte 400 and PC.seductionskill lt 600>>
 			<span class="blue">C</span>
-		<<elseif currentSkillValue("seductionskill") gte 600 and currentSkillValue("seductionskill") lt 800>>
+		<<elseif PC.seductionskill gte 600 and PC.seductionskill lt 800>>
 			<span class="lblue">B</span>
-		<<elseif currentSkillValue("seductionskill") gte 800 and currentSkillValue("seductionskill") lt 1000>>
+		<<elseif PC.seductionskill gte 800 and PC.seductionskill lt 1000>>
 			<span class="teal">A</span>
-		<<elseif currentSkillValue("seductionskill") gte 1000>>
+		<<elseif PC.seductionskill gte 1000>>
 			<span class="green">S</span>
 		<</if>>
 		<br>
 		Overall rating:
-		<<if $attractiveness + (currentSkillValue("seductionskill") * 5) gte 10000>>
+		<<if $attractiveness + (PC.seductionskill * 5) gte 10000>>
 			<span class="green">S</span>
 			<<set $seductionrating to 6>>
-		<<elseif $attractiveness + (currentSkillValue("seductionskill") * 5) gte 8000>>
+		<<elseif $attractiveness + (PC.seductionskill * 5) gte 8000>>
 			<span class="teal">A</span>
 			<<set $seductionrating to 5>>
-		<<elseif $attractiveness + (currentSkillValue("seductionskill") * 5) gte 6000>>
+		<<elseif $attractiveness + (PC.seductionskill * 5) gte 6000>>
 			<span class="lblue">B</span>
 			<<set $seductionrating to 4>>
-		<<elseif $attractiveness + (currentSkillValue("seductionskill") * 5) gte 4000>>
+		<<elseif $attractiveness + (PC.seductionskill * 5) gte 4000>>
 			<span class="blue">C</span>
 			<<set $seductionrating to 3>>
-		<<elseif $attractiveness + (currentSkillValue("seductionskill") * 5) gte 2000>>
+		<<elseif $attractiveness + (PC.seductionskill * 5) gte 2000>>
 			<span class="purple">D</span>
 			<<set $seductionrating to 2>>
 		<<else>>
@@ -288,15 +288,15 @@
 		<</if>>
 		<br><br>
 	<<else>> <!-- Hidden stat checks -->
-		<<if $attractiveness + (currentSkillValue("seductionskill") * 5) gte 10000>>
+		<<if $attractiveness + (PC.seductionskill * 5) gte 10000>>
 			<<set $seductionrating to 6>>
-		<<elseif $attractiveness + (currentSkillValue("seductionskill") * 5) gte 8000>>
+		<<elseif $attractiveness + (PC.seductionskill * 5) gte 8000>>
 			<<set $seductionrating to 5>>
-		<<elseif $attractiveness + (currentSkillValue("seductionskill") * 5) gte 6000>>
+		<<elseif $attractiveness + (PC.seductionskill * 5) gte 6000>>
 			<<set $seductionrating to 4>>
-		<<elseif $attractiveness + (currentSkillValue("seductionskill") * 5) gte 4000>>
+		<<elseif $attractiveness + (PC.seductionskill * 5) gte 4000>>
 			<<set $seductionrating to 3>>
-		<<elseif $attractiveness + (currentSkillValue("seductionskill") * 5) gte 2000>>
+		<<elseif $attractiveness + (PC.seductionskill * 5) gte 2000>>
 			<<set $seductionrating to 2>>
 		<<else>>
 			<<set $seductionrating to 1>>
@@ -318,31 +318,31 @@
 <</widget>>
 
 <<widget "physiquedifficulty">>
-	<<skill_difficulty currentSkillValue('physique') "Physique" `(_args[0] ?? 1)` `(_args[1] ?? $physiquemax)` _args[2]>>
+	<<skill_difficulty PC.physique "Physique" `(_args[0] ?? 1)` `(_args[1] ?? $physiquemax)` _args[2]>>
 <</widget>>
 
 <<widget "dancedifficulty">>
-	<<skill_difficulty currentSkillValue('danceskill') "Dance" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.danceskill "Dance" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <<widget "swimmingdifficulty">>
-	<<skill_difficulty currentSkillValue('swimmingskill') "Swimming" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.swimmingskill "Swimming" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <<widget "athleticsdifficulty">>
-	<<skill_difficulty currentSkillValue('athletics') "Athletics" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.athletics "Athletics" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <<widget "willpowerdifficulty">>
-	<<skill_difficulty currentSkillValue('willpower') "Willpower" `(_args[0] ?? 1)` `(_args[1] ?? $willpowermax)` _args[2]>>
+	<<skill_difficulty PC.willpower "Willpower" `(_args[0] ?? 1)` `(_args[1] ?? $willpowermax)` _args[2]>>
 <</widget>>
 
 <<widget "tendingdifficulty">>
-	<<skill_difficulty currentSkillValue('tending') "Tending" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.tending "Tending" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <<widget "housekeepingdifficulty">>
-	<<skill_difficulty currentSkillValue('housekeeping') "Housekeeping" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.housekeeping "Housekeeping" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <<widget "difficulty">>
@@ -367,7 +367,7 @@
 <</widget>>
 
 <<widget "englishdifficulty">>
-	<<skill_difficulty currentSkillValue('english') "English" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.english "English" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <!--

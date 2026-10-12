@@ -176,7 +176,7 @@ You walk up the hill towards Avery's mansion. The gates rattle open as you appro
 <<set $location to "avery_mansion">><<set $bus to "avery_lounge">><<set $avery_passage to $passage>><<set $outside to 0>><<effects>><<avery_mansion>>
 <<set $daily.pianoPlayed ||= 0>>
 <<wearProp "piano">>
-<<if currentSkillValue("handskill") gte 1000>>
+<<if PC.handskill gte 1000>>
 	<<set _pianoSkill to 5>>
 	<<if random(1, 5) is 5 and $seabird_lullaby>>
 		On a whim, you play
@@ -195,16 +195,16 @@ You walk up the hill towards Avery's mansion. The gates rattle open as you appro
 	<<else>>
 		<span class="green">You play the piano with masterful grace.</span>
 	<</if>>
-<<elseif currentSkillValue("handskill") gte 800>>
+<<elseif PC.handskill gte 800>>
 	<<set _pianoSkill to 4>>
 	<span class="teal">You play some songs on the piano, expertly performing some more advanced compositions.</span>
-<<elseif currentSkillValue("handskill") gte 600>>
+<<elseif PC.handskill gte 600>>
 	<<set _pianoSkill to 3>>
 	<span class="blue">You play the piano with competence, managing a few full songs without error.</span>
-<<elseif currentSkillValue("handskill") gte 400>>
+<<elseif PC.handskill gte 400>>
 	<<set _pianoSkill to 2>>
 	<span class="purple">You play some simple songs, only hitting awkward notes occasionally.</span>
-<<elseif currentSkillValue("handskill") gte 200>>
+<<elseif PC.handskill gte 200>>
 	<<set _pianoSkill to 1>>
 	<span class="pink">You don't really know what you're doing, and send shrill notes throughout the mansion.</span>
 <<else>>
@@ -1104,7 +1104,7 @@ You scour Avery's library for recipe books. It takes a while, but you're able to
 The door is locked tight.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if $leftarm is "bound" and $rightarm is "bound">>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 	<<else>>
@@ -2098,7 +2098,7 @@ You climb from the pool, and dry yourself using the towels stacks just inside th
 			"It is a nice place," <<he>> says. "Not far." <<He>> peers at you, and adds, "You might
 			<<if $beauty gte ($beautymax / 7) * 6>>
 				try your hand at working there, <<pcpetname "Avery">>. You've got the face<<if $speech_attitude is "meek" or $speech_attitude_avery>> and demeanour<</if>> for it."
-			<<elseif currentSkillValue("handskill") gte 400>>
+			<<elseif PC.handskill gte 400>>
 				try your hand at working there, <<pcpetname "Avery">>. You're quite skilled with your hands, after all."
 			<<else>>
 				visit yourself sometime. You could use it," <<he>> adds with a <<= $averyragerevealed is 1 and C.npc.Avery.rage gte 20 ? `snort` : `smile`>>.
@@ -2637,7 +2637,7 @@ You climb from the pool, and dry yourself using the towels stacks just inside th
 				<br><br>
 			<<else>>
 				You note that <<he>> is very meticulous in <<his>> work.
-				<<if currentSkillValue('tending') lt 600>>
+				<<if PC.tending lt 600>>
 					<br><br>
 					<span class="gold">You learn a thing or two about tending gardens.</span> <<gtending>><<tending 6>>
 				<</if>>
@@ -2656,7 +2656,7 @@ You climb from the pool, and dry yourself using the towels stacks just inside th
 					<<He>> seems to be enjoying it, up until the team <<he>> was rooting for misses the winning goal.
 					<<He>> goes on a rant about what the player in question ought to have done different. It's all that <<he>> talks about for the rest of the conversation.
 				<<else>>
-					<<He>> explains the game to you as it progresses. <<= currentSkillValue('athletics') gte 600 ? `You already understand the rules of the sport, but you let <<him>> go on.` : `You struggle to follow along.`>>
+					<<He>> explains the game to you as it progresses. <<= PC.athletics gte 600 ? `You already understand the rules of the sport, but you let <<him>> go on.` : `You struggle to follow along.`>>
 				<</if>>
 			<<else>> /* Watching the news */
 				<<He>> keeps an eye on the screen as you talk.
@@ -4745,7 +4745,7 @@ Let's get moving, before Avery gets wise."
 You sneak up towards Avery's study. <<say_brown_fox "cap">> whispers to you. "It feels much different in here without guests around. Larger." <<He>> frowns. "No one person needs all of this."
 <br><br>
 
-<<if currentSkillValue("skulduggery") gte 600>>
+<<if PC.skulduggery gte 600>>
 	<span class="green">You keep up with <<his>> stealthy stride.</span>
 <<else>>
 	<<set $avery_mansion.heist_suspicion++>>
@@ -4898,7 +4898,7 @@ You reach the third floor.
 	The door to the study is locked tight.
 	<br><br>
 
-	<<if currentSkillValue('skulduggery') gte $lock>>
+	<<if PC.skulduggery gte $lock>>
 		<<if $leftarm is "bound" and $rightarm is "bound">>
 			You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<<else>>
@@ -5224,7 +5224,7 @@ Avery stomps into the room.
 <</if>>
 <br><br>
 
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	After the initial shock, <span class="green">you find that you're able to bear it.</span> For now.
 	<br><br>
 
@@ -5263,7 +5263,7 @@ Avery stomps into the room.
 <</if>>
 <<masopain 20>>
 <br><br>
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	Avery doesn't slow. A continuous wave of pain washes over your back, <span class="green">but you endure.</span>
 <<else>>
 	<span class="red">The pain overwhelms you.</span> You scream for Avery to stop, and strain at the ropes binding your limbs. All to no avail. Avery gives no sign of even hearing you.<<gdom>><<npcincr Avery dom 1>>

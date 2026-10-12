@@ -135,7 +135,7 @@
 
 <<widget "leftstealnew">>
 	<<if $lefttarget isnot "self" and !($stealtarget.includes($lefttarget)) and $NPCList[$lefttarget].clothes?.set isnot "naked">>
-		<<if (currentSkillValue('skulduggery') gte 200 or $easySteal is 1) and $enemytype is "man" and $abomination isnot 1 and !($npcrow.includes($lefttarget)) and $water isnot 1 and $punishmentposition isnot "gloryhole">>
+		<<if (PC.skulduggery gte 200 or $easySteal is 1) and $enemytype is "man" and $abomination isnot 1 and !($npcrow.includes($lefttarget)) and $water isnot 1 and $punishmentposition isnot "gloryhole">>
 			<<set $skulduggerydifficulty to (1000 - ($enemyarousal / $enemyarousalmax * 400) - $skulduggery - $enemytrust + $enemyanger) * $stealdifficulty>>
 			<<if $easySteal is 1>><<set $skulduggerydifficulty to 0>><</if>>
 			/*Missing <<skulduggerydifficulty>><<combatcrime>>*/
@@ -523,7 +523,7 @@
 
 <<widget "rightstealnew">>
 	<<if $righttarget isnot "self" and !($stealtarget.includes($righttarget)) and $NPCList[$righttarget].clothes?.set isnot "naked">>
-		<<if (currentSkillValue('skulduggery') gte 200 or $easySteal is 1) and $enemytype is "man" and $abomination isnot 1 and !($npcrow.includes($righttarget)) and $water isnot 1 and $punishmentposition isnot "gloryhole">>
+		<<if (PC.skulduggery gte 200 or $easySteal is 1) and $enemytype is "man" and $abomination isnot 1 and !($npcrow.includes($righttarget)) and $water isnot 1 and $punishmentposition isnot "gloryhole">>
 			<<set $skulduggerydifficulty to (1000 - ($enemyarousal / $enemyarousalmax * 400) - $skulduggery - $enemytrust + $enemyanger) * $stealdifficulty>>
 			<<if $easySteal is 1>><<set $skulduggerydifficulty to 0>><</if>>
 			/*Missing <<skulduggerydifficulty>><<combatcrime>>*/
@@ -1742,7 +1742,7 @@
 			<</if>>
 			<<willpower 1>>
 		<<else>>
-			<<if (1000 - ($rng * 10) - ((currentSkillValue('physique') / $physiquemax * 100) * _freestrength) + ($enemyanger * 0.5)) lte
+			<<if (1000 - ($rng * 10) - ((PC.physique / $physiquemax * 100) * _freestrength) + ($enemyanger * 0.5)) lte
 					(200 + $enemytrust)>>
 				<span class="green">
 					<<if $mouthuse is "facesit">>
@@ -1910,7 +1910,7 @@
 		<</if>>
 		<<brat 1>>
 
-		<<if combatSkillCheck("hand", _n, $NPCList[_n].fullDescription, $_handPullDifficulty)>>
+		<<if combatSkillCheck("handskill", _n, $NPCList[_n].fullDescription, $_handPullDifficulty)>>
 			You grasp <<combatpersons>> wrist,
 			<<if $penisstate is "otherhand">>
 				<span class="green">and pry <<his>> fingers off your <<penis>>.</span>
@@ -1952,7 +1952,7 @@
 		<</if>>
 		<<brat 1>>
 
-		<<if combatSkillCheck("hand", _n, $NPCList[_n].fullDescription, $_handPullDifficulty)>>
+		<<if combatSkillCheck("handskill", _n, $NPCList[_n].fullDescription, $_handPullDifficulty)>>
 			You grasp <<combatpersons>> wrist,
 			<<if $vaginastate is "otherhand">>
 				<span class="green">and pry <<his>> fingers out of your <<pussy>>.</span>
@@ -1994,7 +1994,7 @@
 		<</if>>
 		<<brat 1>>
 
-		<<if combatSkillCheck("hand", _n, $NPCList[_n].fullDescription, $_handPullDifficulty)>>
+		<<if combatSkillCheck("handskill", _n, $NPCList[_n].fullDescription, $_handPullDifficulty)>>
 			You grasp <<combatpersons>> wrist,
 			<<if $anusstate is "otherhand">>
 				<span class="green">and pry <<his>> fingers out of your asshole.</span>
@@ -2321,7 +2321,7 @@
 		<<set $_hypnosis to "lewd">>
 	<<elseif $uncomfortable.hypnosis is false and $hypnosis_traits.cover gte random(1,5)>>
 		<<set $_hypnosis to "accepted">>
-	<<elseif $hypnosis_traits.cover gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.cover))>>
+	<<elseif $hypnosis_traits.cover gte 1 and PC.willpower lt random(1, (200 * $hypnosis_traits.cover))>>
 		<<set $_hypnosis to "forced">>
 	<</if>>
 	<<switch _args[0]>>
@@ -2439,7 +2439,7 @@
 		<<set $_hypnosis to "lewd">>
 	<<elseif $uncomfortable.hypnosis is false and $hypnosis_traits.cover gte random(1,5)>>
 		<<set $_hypnosis to "accepted">>
-	<<elseif $hypnosis_traits.cover gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.cover))>>
+	<<elseif $hypnosis_traits.cover gte 1 and PC.willpower lt random(1, (200 * $hypnosis_traits.cover))>>
 		<<set $_hypnosis to "forced">>
 	<</if>>
 	<<switch _args[0]>>
@@ -2559,7 +2559,7 @@
 		<<set $_hypnosis to "lewd">>
 	<<elseif $uncomfortable.hypnosis is false and $hypnosis_traits.cover gte random(1,5)>>
 		<<set $_hypnosis to "accepted">>
-	<<elseif $hypnosis_traits.cover gte 1 and currentSkillValue('willpower') lt random(1, (200 * $hypnosis_traits.cover))>>
+	<<elseif $hypnosis_traits.cover gte 1 and PC.willpower lt random(1, (200 * $hypnosis_traits.cover))>>
 		<<set $_hypnosis to "forced">>
 	<</if>>
 	<<switch _args[0]>>

@@ -158,7 +158,7 @@
 			<<if $earSlime.startedThreats>>
 				<<link [[Defy|Street Footbridge Defy]]>>
 					<<set $phase to 1>><<corruption -1>><<pain 8>><<stress 6>><<trauma 6>><<def 1>>
-					<<if $earSlime.defyCooldown or $earSlime.corruption lt (currentSkillValue('willpower') / 10)>><<pass 10>><</if>>
+					<<if $earSlime.defyCooldown or $earSlime.corruption lt (PC.willpower / 10)>><<pass 10>><</if>>
 				<</link>><<lcorruption>><<ggpain>><<ggtrauma>><<ggstress>>
 			<<else>>
 				<<link [[Ignore and find another way around (0:10)|Street Footbridge Detour]]>><<pass 10>><</link>><<gtrauma>><<gstress>>
@@ -915,7 +915,7 @@
 			You pick it up. It's a wallet. You decide to keep the <<moneyGain $_carcash>> inside.
 			<br><br>
 		<</switch>>
-	<<elseif (currentSkillValue('danceskill') + $rng) gte 500>><<generate2>><<person2>>
+	<<elseif (PC.danceskill + $rng) gte 500>><<generate2>><<person2>>
 		With a dancer's grace and agility <span class = "green">you dodge and it harmlessly passes you by.</span>
 		<br><br>
 		<<if ($rng % 3) is 0>>A <<person>> behind you is not so lucky. <<He>> is completely soaked <<if $cumballoon is 1>><span class="lewd">in cum</span> <</if>>and some of <<his>> clothes turn translucent, exposing <<him>>. There is a loud cheer from the car.
@@ -1165,7 +1165,7 @@
 
 <<widget "streetpolice">>
 	<<set $rng1 to random(1, 100)>><<set $rng2 to random(1, 100)>><<set $rng3 to random(1, 100)>><<set $rng4 to random(1, 100)>>
-	<<if currentSkillValue('skulduggery') gte 700 and $rng4 gte 40 and $policemolestation gte 4>>
+	<<if PC.skulduggery gte 700 and $rng4 gte 40 and $policemolestation gte 4>>
 		<<if $streetpoliceintro isnot 1>>
 			<<set $streetpoliceintro to 1>>
 			There are those around most never see. The pickpockets and predators, the muggers, kidnappers and thieves, the opportunistic rapists with hungry, reptilian eyes. They don't skulk in shadows like amateurs -
@@ -3576,7 +3576,7 @@
 			<</if>>
 			/* end time differences */
 
-			<<if $worn.feet.type.includes("heels") and currentSkillValue("feetskill") lt $worn.feet.reveal>>
+			<<if $worn.feet.type.includes("heels") and PC.feetskill lt $worn.feet.reveal>>
 				<<addevent "streetheeltrip" 2>>
 			<</if>>
 

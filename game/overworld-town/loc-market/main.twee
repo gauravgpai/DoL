@@ -83,7 +83,7 @@ What goods do you want to present for sale?
 			<<set _foodstuffSample to clone(setup.foodstuff[_foodstuffKeys[_t]].plural)>>
 		<</if>>
 	<</for>>
-	<<if 3000 + $attractiveness/2 + $fame.business + (currentSkillValue('tending') * 2) + (Math.min($foodstuff_inventory.length,10) * 500) gte random(1, 10000)>>
+	<<if 3000 + $attractiveness/2 + $fame.business + (PC.tending * 2) + (Math.min($foodstuff_inventory.length,10) * 500) gte random(1, 10000)>>
 		/* At least 1/3 to get a customer. Attractiveness and inventory have 2.5 times the weight of tending and business fame.
 		Very high stats are needed to have 100% chance to get customers with only 1 item. */
 		<<set _stall_attention to 1>>
@@ -849,7 +849,7 @@ You chase the <<person1>><<person>> through the market.
 		<br>
 		<<link [[Remain silent|Stall Silent]]>><</link>>
 		<br>
-		<<if currentSkillValue('skulduggery') gte 300>>
+		<<if PC.skulduggery gte 300>>
 			<<link [[Give pointers|Stall Pointers]]>><<trauma -6>><</link>><<ltrauma>>
 			<br>
 		<</if>>
@@ -1754,7 +1754,7 @@ It turns out that the <<person1>><<person>> stole some <<if $phase is 0>>food<<e
 <<else>>
 	You tell the market stall owner about how hard the <<person>> works at school and how calling the police could destroy <<his>> whole future.<<set _bar to random(0,800)>>
 <</if>><br><br>
-<<if currentSkillValue('english') gte _bar>>
+<<if PC.english gte _bar>>
 	Hearing the passion in your words, the market stall owner relents.
 	<br>
 	<<if $phase is 0>>
@@ -1778,7 +1778,7 @@ It turns out that the <<person1>><<person>> stole some <<if $phase is 0>>food<<e
 		<<link [[Next|Connudatus Street]]>><<famegood 20>><<unset $urchin_debt>><<endevent>><</link>>
 		<br>
 	<</if>>
-<<elseif currentSkillValue('english') gte (_bar/2)>>
+<<elseif PC.english gte (_bar/2)>>
 	Hearing the conviction in your words, the market stall owner relents.
 	<br><br>
 	"Okay, but someone has to pay me for it."<br><br>

@@ -728,7 +728,7 @@ Moments later, you've arrived. The <<beasttype>> swoops through a broken wall, a
 :: Bird Rescue No Syndrome Tower Hug
 <<effects>>
 
-<<if $phase is 0>>Despite the pain you feel, you<<elseif $phase is 1>>Shakily, you<<else>>You<</if>> take a step towards the <<beasttype>> and wrap your arms around <<bhis>> <<if $monster is 1>>body<<elseif currentSkillValue('tending') gte 400>>mantle<<else>>shoulder area<</if>>, holding <<bhim>> tight.
+<<if $phase is 0>>Despite the pain you feel, you<<elseif $phase is 1>>Shakily, you<<else>>You<</if>> take a step towards the <<beasttype>> and wrap your arms around <<bhis>> <<if $monster is 1>>body<<elseif PC.tending gte 400>>mantle<<else>>shoulder area<</if>>, holding <<bhim>> tight.
 <<bHe>> seems <<if $phase isnot 2 or $birdescaped gte 1>>hesitant with this arrangement, but<<else>>happy with this arrangement and<</if>> <<if $monster is 1>>returns the embrace<<else>>nuzzles into you<</if>><<if $phase isnot 2 or $birdescaped gte 1>> after a moment<</if>>.
 <br><br>
 
@@ -776,7 +776,7 @@ You've gained the Stockholm Syndrome: Great Hawk trait.</span>
 After a minute or two passes, you pull back from the hug. You look at the <<beasttype>> and <<bhe>> <<if $monster is 1>>smiles<<else>>trills<</if>> at you.
 <br><br>
 
-You smile <<if $monster is 1>>back<<else>>at <<bhim>><</if>>, and gently pat <<bhis>> head. <<if $phase is 4 and currentSkillValue('awareness') gte 300>> You don't miss the way <<bhe>> stiffens slightly as you move your hand. After a couple of pats, <<bhis>><<else>><<bHis>><</if>> eyes close and <<bhe>> <<if $monster is 1>>relaxes<<else>>settles<</if>> as you pat <<bhis>> head.
+You smile <<if $monster is 1>>back<<else>>at <<bhim>><</if>>, and gently pat <<bhis>> head. <<if $phase is 4 and PC.awareness gte 300>> You don't miss the way <<bhe>> stiffens slightly as you move your hand. After a couple of pats, <<bhis>><<else>><<bHis>><</if>> eyes close and <<bhe>> <<if $monster is 1>>relaxes<<else>>settles<</if>> as you pat <<bhis>> head.
 Once you're done, <<bhe>> fluffs <<bhis>> feathers and stands up.
 <br><br>
 
@@ -827,10 +827,10 @@ A brief moment passes in <<if $monster is 1>>awkward <</if>>silence, before the 
 
 :: Bird Rescue No Syndrome Tower Punch
 <<effects>>
-You take the opportunity to land a clean punch on the <<beasttype>>'s wing. <<bHe>> lets out a pained shriek, before fluttering over to the other side of the room. <<if currentSkillValue('physique') gte 9000>><<bHe>> seems to have a bit of difficulty moving the wing you punched.<</if>>
+You take the opportunity to land a clean punch on the <<beasttype>>'s wing. <<bHe>> lets out a pained shriek, before fluttering over to the other side of the room. <<if PC.physique gte 9000>><<bHe>> seems to have a bit of difficulty moving the wing you punched.<</if>>
 <br><br>
 
-The <<beasttype>> looks at you from across the tower with a hurt<<if $monster is 1>> and betrayed<</if>> expression, periodically testing the wing. <<if currentSkillValue('physique') gte 12000 and $monster is 1>><<bHe>> looks to be on the verge of tears.<</if>>
+The <<beasttype>> looks at you from across the tower with a hurt<<if $monster is 1>> and betrayed<</if>> expression, periodically testing the wing. <<if PC.physique gte 12000 and $monster is 1>><<bHe>> looks to be on the verge of tears.<</if>>
 <<if C.npc["Great Hawk"].love gte 65>>
 	<<if $monster is 1>>
 		"Why?" <<bhe>> asks in a small voice,
@@ -842,16 +842,16 @@ The <<beasttype>> looks at you from across the tower with a hurt<<if $monster is
 <br><br>
 
 <<set $bird.state to "hunting">>
-<<if currentSkillValue('physique') gte 15000>>
+<<if PC.physique gte 15000>>
 	<<pass 20>><<set $bird.timer to 180>>
 	The two of you sit there in silence. The <<beasttype>>'s wing seems to recover slowly, and you're not willing to move while <<bhes>> focusing on you this intensely. <<if $monster is 1>>You can see tears beading in the corner of <<bhis>> eyes. <</if>>Once the <<beasttype>> seems to think that <<bhe>> can fly, <<bhe>> slowly walks towards the perch, keeping an eye on you the whole time. Once there <<bhe>> flies off, leaving you alone.
-<<elseif currentSkillValue('physique') gte 12000>>
+<<elseif PC.physique gte 12000>>
 	<<pass 15>><<set $bird.timer to 150>>
 	The two of you maintain a silent standoff across the tower, neither of you moving except for the <<beasttype>> occasionally stretching out the wing that you punched. Once <<bhe>> seems satisfied that the wing is in good enough condition to support <<bhis>> weight, <<bhe>> takes off and flies away from the tower.
-<<elseif currentSkillValue('physique') gte 8000>>
+<<elseif PC.physique gte 8000>>
 	<<pass 10>><<set $bird.timer to 120>>
 	The two of you spend the next ten minutes staring at each other from across the room. The <<beasttype>> spends the time alternating between keeping <<bhis>> wing still and slowly opening and closing it. Once the wing has recovered to <<bhis>> satisfaction, the <<beasttype>> gets up and flies from the tower.
-<<elseif currentSkillValue('physique') gte 4000>>
+<<elseif PC.physique gte 4000>>
 	<<pass 5>><<set $bird.timer to 90>>
 	The two of you sit there for a moment, eyeing each other distrustfully. Once the <<beasttype>>'s wing seems to have recovered, <<bhe>> gets up and launches <<bhimself>> from the tower.
 <<else>>
@@ -5979,17 +5979,17 @@ Whose feathers will you use?
 <<else>>
 	The tower is caked in dust, and small mounds of dirt are piled up in corners. You do your best to make the place look more presentable.
 <</if>>
-<<if currentSkillValue('housekeeping') gte 1500>>
+<<if PC.housekeeping gte 1500>>
 	<<set _cleanIncrease += 7>>
-<<elseif currentSkillValue('housekeeping') gte 1200>>
+<<elseif PC.housekeeping gte 1200>>
 	<<set _cleanIncrease += 6>>
-<<elseif currentSkillValue('housekeeping') gte 800>>
+<<elseif PC.housekeeping gte 800>>
 	<<set _cleanIncrease += 5>>
-<<elseif currentSkillValue('housekeeping') gte 600>>
+<<elseif PC.housekeeping gte 600>>
 	<<set _cleanIncrease += 4>>
-<<elseif currentSkillValue('housekeeping') gte 400>>
+<<elseif PC.housekeeping gte 400>>
 	<<set _cleanIncrease += 3>>
-<<elseif currentSkillValue('housekeeping') gte 200>>
+<<elseif PC.housekeeping gte 200>>
 	<<set _cleanIncrease += 2>>
 <<else>>
 	<<set _cleanIncrease += 1>>
@@ -6502,9 +6502,9 @@ Where will you fly?
 		<br><br>
 
 		You feel something stir inside of you. Watching <<bhim>> is starting to wake your own bestial instincts. You start to fly like <<bhim>>, trying to show off your own moves.
-		<<if currentSkillValue("danceskill") gte 1000>>
+		<<if PC.danceskill gte 1000>>
 			<span class="green">Your flying is just as elegant, if not more so.</span> You weave a beautiful dance across the sky with <<bhim>>. <<your_bird_text "cap">> looks impressed.
-		<<elseif currentSkillValue("danceskill") gte 500>>
+		<<elseif PC.danceskill gte 500>>
 			<span class="green">You manage to keep up with <<bhim>>.</span> It becomes something of a dance between you two. <<bHe>> looks impressed.
 		<<else>>
 			You do your best, <span class="purple">but you're not quite on <<bhis>> level</span>. Still, <<bhe>> looks pleased.
@@ -6612,9 +6612,9 @@ Together you fly around until you find an especially windy part of the moor.
 <</if>>
 <<deviancy1>>
 
-<<if currentSkillValue("danceskill") gte 1000>>
+<<if PC.danceskill gte 1000>>
 	<span class="green">Your flying is just as elegant, if not more so.</span> You weave a beautiful dance across the sky with <<bhim>>. <<your_bird_text "cap">> looks impressed.
-<<elseif currentSkillValue("danceskill") gte 500>>
+<<elseif PC.danceskill gte 500>>
 	<span class="green">You manage to keep up with <<bhim>>.</span> It becomes something of a dance between you two. <<bHe>> looks impressed.
 <<else>>
 	You do your best, <span class="purple">but you're not quite on <<bhis>> level</span>. Still, <<bhe>> looks pleased.

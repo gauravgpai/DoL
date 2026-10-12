@@ -724,7 +724,7 @@ You nod. Excited, the <<person>> produces a photo of you, and a pen. Looks like 
 You try to grip the pen in your gloved hand, but it's tricky. You'd need to pull down the front of your suit to free your arm.
 <br><br>
 
-<<link [[Do your best|Photo High Autograph Best]]>><</link>><<skill_difficulty currentSkillValue("handskill") "Hand Skill" 1 1000>>
+<<link [[Do your best|Photo High Autograph Best]]>><</link>><<skill_difficulty PC.handskill "Hand Skill" 1 1000>>
 <br>
 <<if $worn.upper.type.includes("naked") and $player.gender_appearance is "f">>
 	<<if $worn.under_upper.type.includes("naked")>>
@@ -752,7 +752,7 @@ You try to grip the pen in your gloved hand, but it's tricky. You'd need to pull
 :: Photo High Autograph Best
 <<effects>>
 
-<<if currentSkillValue("handskill") gte random(1, 1000)>>
+<<if PC.handskill gte random(1, 1000)>>
 	With deft movements, you manage to autograph the photo <span class="green">without dropping the pen.</span>
 	<<ginterest>><<photo_interest 1>>
 	<br><br>
@@ -1853,7 +1853,7 @@ Your eyes adjust to the dim interior. There's a mattress on the floor, with a tr
 	"Your camera isn't working," you say. "The settings must be wrong."
 <</if>>
 
-<<if currentSkillValue('science') gte random(1, 1000)>>
+<<if PC.science gte random(1, 1000)>>
 	<<set $photo_abduction_timer -= 1>><<photo_pass 1>>
 	You give a brief, technical description of the camera. <span class="green">It's clear no one in the gang can follow.</span>
 	<br><br>

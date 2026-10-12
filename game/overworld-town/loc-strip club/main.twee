@@ -314,7 +314,7 @@ You wash until you're squeaky clean.<<wash>>
 The strip club is closed. <<openinghours 18 6>>
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

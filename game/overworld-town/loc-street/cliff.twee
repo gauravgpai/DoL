@@ -588,12 +588,12 @@ You shudder and pocket the money.
 	<<if $rng gte 76>>
 	<<set $pillory.tenant.fruit += 1>>
 		<span class="teal">hitting <<him>> full in the face.</span> <<His>> expression is hilarious.
-		<<if currentSkillValue('physique') gte ($physiquesize / 7) * 4>>You put a lot of strength behind it, it must have hurt.<</if>>
+		<<if PC.physique gte ($physiquesize / 7) * 4>>You put a lot of strength behind it, it must have hurt.<</if>>
 		<<llstress>><<stress -12>>
 		<br>
 		The crowd cheer and laugh.
 	<<else>>
-		but miss entirely.<<if currentSkillValue('physique') lte ($physiquesize / 7) * 3>> Some people nearby mock your feeble throw.<</if>>
+		but miss entirely.<<if PC.physique lte ($physiquesize / 7) * 3>> Some people nearby mock your feeble throw.<</if>>
 	<</if>>
 <<elseif $phase is 1>>
 	You slurp up the cream from <<the_pillory_person>>'s ass and groin. The crowd watch, awed.
@@ -961,9 +961,9 @@ As time starts to stretch, you hear a rising murmur from the crowd. Starting to 
 <<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "cliff">>
 /* unlikely to pass, but needs some dice roll here. With high eloquence & skulduggery, you get up to an ~8% chance of really dumb cops */
 <<rng 1000>>
-<<if currentSkillValue('skulduggery') gte $rng>>/* chance rises with skul*/
+<<if PC.skulduggery gte $rng>>/* chance rises with skul*/
 	<<rng 600 1200>> /* Rises from 0% to ~67% as $english rises from 600 to 1000 */
-	<<if currentSkillValue('english') gte $rng>><<set _eloquent to true>><<else>><<set _eloquent to false>><</if>>
+	<<if PC.english gte $rng>><<set _eloquent to true>><<else>><<set _eloquent to false>><</if>>
 	<<rng>> /* fixed at 10% - would need 3 pretty dumb cops */
 	<<if $rng gte 91>><<set _dumb_cops to true>><<else>><<set _dumb_cops to false>><</if>>
 	<<if _dumb_cops and _eloquent>><<set _blag to true>><<else>><<set _blag to false>><</if>>

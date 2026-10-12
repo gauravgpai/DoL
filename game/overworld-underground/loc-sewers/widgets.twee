@@ -211,7 +211,7 @@
 				There's no way to reach the grating, or pass through it even if you could.
 				<br><br>
 
-				<<link [[Try to work out where you could be|Drain Lights Work]]>><</link>><<skill_difficulty `currentSkillValue("history")` "History" 400 800>>
+				<<link [[Try to work out where you could be|Drain Lights Work]]>><</link>><<skill_difficulty `PC.history` "History" 400 800>>
 				<br>
 				<<link [[Just continue on|Drain Lights Leave]]>><</link>>
 				<br>

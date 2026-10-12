@@ -699,7 +699,7 @@ Briar walks across the room and leans beside the window, looking over the buildi
 <<He>> walks back to <<his>> seat. "Was there anything else?"
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte 400>>
+<<if PC.skulduggery gte 400>>
 	<i>A thought strikes you.</i> If they don't sell the fuel, how did Briar run it before?
 	<br><br>
 
@@ -1619,7 +1619,7 @@ You are behind the largest stage in the brothel. This is where the more involved
 You examine the sex machine. A large phallus protrudes from the main body, beside a number of lights and dials. It's almost shaped like a gun. You can imagine what it was used for, <span class="gold">but Briar would know more.</span>
 <br><br>
 
-<<investigateicon>><<link [[Look closer|Brothel Machine Investigate 2]]>><</link>><<skill_difficulty `currentSkillValue("science")` "Science" 400 1000>>
+<<investigateicon>><<link [[Look closer|Brothel Machine Investigate 2]]>><</link>><<skill_difficulty `PC.science` "Science" 400 1000>>
 <br>
 <<getouticon>><<link [[Leave|Brothel Stage]]>><</link>>
 <br>
@@ -1628,7 +1628,7 @@ You examine the sex machine. A large phallus protrudes from the main body, besid
 :: Brothel Machine Investigate 2
 <<effects>>
 
-<<if currentSkillValue('science') gte random(400, 1000)>>
+<<if PC.science gte random(400, 1000)>>
 	You open a hatch on the side of the machine, and peer inside. There's an empty glass tank behind a tangle of wires.
 	<br><br>
 
@@ -1933,7 +1933,7 @@ You peek through the door. The corridor outside is still quiet, but not far away
 <br><br>
 The police will soon be here.
 <br><br>
-<<if currentSkillValue('skulduggery') gte 200>>
+<<if PC.skulduggery gte 200>>
 	<<set $skulduggerydifficulty to 800>><<link [[Attempt escape|Brothel Raid Escape]]>><</link>><<skulduggerydifficulty>>
 	<br>
 <<else>>

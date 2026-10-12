@@ -38,7 +38,7 @@ You approach the sepulchre. Gargoyles sit on either side, watching. The doors ar
 <br><br>
 
 <<set $lock to 500>>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br>

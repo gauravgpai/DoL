@@ -1873,11 +1873,11 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 
 		<<if hasSexStat("promiscuity", 2)>>
 			<<if !pcAreArmsBound("any")>>
-				<<link [[Show off your hands|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $handskill * 50>><</link>><<promiscuous2>><<skill_difficulty `currentSkillValue("handskill")` "Hand Skill" 1 800>>
+				<<link [[Show off your hands|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $handskill * 50>><</link>><<promiscuous2>><<skill_difficulty `PC.handskill` "Hand Skill" 1 800>>
 				<br>
 			<</if>>
 			<<if $settings.footFetishEnabled>>
-				<<link [[Show off your feet|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $feetskill * 50>><</link>><<promiscuous2>><<skill_difficulty `currentSkillValue("feetskill")` "Feet Skill" 1 800>>
+				<<link [[Show off your feet|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $feetskill * 50>><</link>><<promiscuous2>><<skill_difficulty `PC.feetskill` "Feet Skill" 1 800>>
 				<br>
 			<</if>>
 		<<else>>
@@ -1890,7 +1890,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<<if $phase is 0>> /* Do nothing */
 			You look around the audience with a faint smile as they continue to bid.
 		<<elseif $phase is 1>> /* Show off your hands */
-			<<if currentSkillValue("handskill") gte random(1, 800)>>
+			<<if PC.handskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You smoothly run your hands down your body, showing off your curves. You make a heart with your fingers.<<handskill 5>><<ghandskill>>
 				<br><br>
@@ -1899,7 +1899,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				You try to wave, but it is rather awkward-looking.<<handskill 5>><<ghandskill>>
 			<</if>>
 		<<else>> /* Show off your feet */
-			<<if currentSkillValue("feetskill") gte random(1, 800)>>
+			<<if PC.feetskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You angle your body to show off your legs and the soles of your feet.<<feetskill 5>><<gfeetskill>>
 				<br><br>
@@ -1913,10 +1913,10 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<br><br>
 
 		<<if hasSexStat("promiscuity", 3)>>
-			<<link [[Flaunt your chest|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $chestskill * 50>><</link>><<promiscuous3>><<skill_difficulty `currentSkillValue("chestskill")` "Chest Skill" 1 800>>
+			<<link [[Flaunt your chest|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $chestskill * 50>><</link>><<promiscuous3>><<skill_difficulty `PC.chestskill` "Chest Skill" 1 800>>
 			<<if !$worn.face.type.includes("gag")>>
 				<br>
-				<<link [[Show off your tongue|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $oralskill * 50>><</link>><<promiscuous3>><<skill_difficulty `currentSkillValue("oralskill")` "Oral Skill" 1 800>>
+				<<link [[Show off your tongue|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $oralskill * 50>><</link>><<promiscuous3>><<skill_difficulty `PC.oralskill` "Oral Skill" 1 800>>
 			<</if>>
 		<<else>>
 			<<insufficientStat "promiscuity" "to flaunt your body parts at them">>
@@ -1928,7 +1928,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<<if $phase is 0>> /* Do nothing */
 			You shift your weight from side to side as you wait for the auction to continue.
 		<<elseif $phase is 1>> /* Flaunt your chest */
-			<<if currentSkillValue("chestskill") gte random(1, 800)>>
+			<<if PC.chestskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You puff out your chest and <<if $player.breastsize gte 3>>shake<<else>>squeeze<</if>> your <<breasts>>.<<chestskill 5>><<gchestskill>>
 				<br><br>
@@ -1937,7 +1937,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				You try to puff out your chest, but it just looks awkward.<<chestskill 5>><<gchestskill>>
 			<</if>>
 		<<else>> /* Show off your tongue */
-			<<if currentSkillValue("oralskill") gte random(1, 800)>>
+			<<if PC.oralskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You flick your tongue suggestively before licking your lips.<<oralskill 5>><<goralskill>>
 				<br><br>
@@ -1951,9 +1951,9 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<br><br>
 
 		<<if hasSexStat("promiscuity", 4)>>
-			<<link [[Offer your ass|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $bottomskill * 50>><</link>><<promiscuous4>><<skill_difficulty `currentSkillValue("bottomskill")` "Bottom Skill" 1 800>>
+			<<link [[Offer your ass|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $bottomskill * 50>><</link>><<promiscuous4>><<skill_difficulty `PC.bottomskill` "Bottom Skill" 1 800>>
 			<br>
-			<<link [[Pat your thighs|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $thighskill * 50>><</link>><<promiscuous4>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 800>>
+			<<link [[Pat your thighs|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $thighskill * 50>><</link>><<promiscuous4>><<skill_difficulty `PC.thighskill` "Thigh Skill" 1 800>>
 		<<else>>
 			<<insufficientStat "promiscuity" "to flaunt your body parts at them">>
 		<</if>>
@@ -1964,7 +1964,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<<if $phase is 0>> /* Do nothing */
 			Unsure of what to do, you spin around for the audience.
 		<<elseif $phase is 1>> /* Offer your ass */
-			<<if currentSkillValue("bottomskill") gte random(1, 800)>>
+			<<if PC.bottomskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You turn around, stick out your <<bottom>>, and give it a slap.<<bottomskill 5>><<gbottomskill>>
 				<br><br>
@@ -1973,7 +1973,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				You turn around and give your <<bottom>> a slap, but only end up hurting yourself.<<bottomskill 5>><<gbottomskill>><<pain 2>><<gpain>>
 			<</if>>
 		<<else>> /* Pat your thighs */
-			<<if currentSkillValue("thighskill") gte random(1, 800)>>
+			<<if PC.thighskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You spread your legs, pat your thighs, and stroke your hands along the inside of your leg.<<thighskill 5>><<gthighskill>>
 				<br><br>
@@ -1998,7 +1998,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<<if $phase is 0>> /* Do nothing */
 			Your fidget with your hands as the bidding continues.
 		<<elseif $phase is 1>> /* Belly dance */
-			<<if currentSkillValue("danceskill") gte random(1, 800)>>
+			<<if PC.danceskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You sway your hips in time to an imaginary beat. You give a skilful roll of your belly.<<danceskill 5>><<gdanceskill>>
 				<br><br>
@@ -2007,7 +2007,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				You stiffly shuffle your feet in a graceless dance.<<danceskill 5>><<gdanceskill>>
 			<</if>>
 		<<else>> /* Stretch */
-			<<if currentSkillValue("athletics") gte random(1, 800)>>
+			<<if PC.athletics gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You spread your legs apart and stretch to the ground, jutting your <<bottom>> high in the air.<<athletics 5>><<gathletics>>
 				<br><br>
@@ -2022,11 +2022,11 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 
 		<<if hasSexStat("promiscuity", 5)>>
 			<<if $player.penisExist>>
-				<<link [[Show off your penis|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $penileskill * 50>><</link>><<promiscuous5>><<skill_difficulty `currentSkillValue("penileskill")` "Penile Skill" 1 800>>
+				<<link [[Show off your penis|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $penileskill * 50>><</link>><<promiscuous5>><<skill_difficulty `PC.penileskill` "Penile Skill" 1 800>>
 				<br>
 			<</if>>
 			<<if $player.vaginaExist>>
-				<<link [[Show off your pussy|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $vaginalskill * 50>><</link>><<promiscuous5>><<skill_difficulty `currentSkillValue("vaginalskill")` "Vaginal Skill" 1 800>>
+				<<link [[Show off your pussy|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $vaginalskill * 50>><</link>><<promiscuous5>><<skill_difficulty `PC.vaginalskill` "Vaginal Skill" 1 800>>
 				<br>
 			<</if>>
 		<<else>>
@@ -2042,7 +2042,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 			You give the audience a nervous smile as you wait for the auction to end.
 
 		<<elseif $phase is 1>> /* Show off your penis */
-			<<if currentSkillValue("penileskill") gte random(1, 800)>>
+			<<if PC.penileskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				<<if _bottomless>>
 					<<if pcAreArmsBound("both")>>
@@ -2073,7 +2073,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				<<penileskill 5>><<gpenileskill>>
 			<</if>>
 		<<else>> /* Show off your pussy */
-			<<if currentSkillValue("vaginalskill") gte random(1, 800)>>
+			<<if PC.vaginalskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				<<if _bottomExposed>>
 					<<if $leftleg is "bound" and $rightleg is "bound">>

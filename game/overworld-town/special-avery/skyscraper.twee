@@ -64,7 +64,7 @@ You approach Avery's skyscraper.
 <</if>>
 <<if $avery_tower.effects.includes("theft")>>
 	Construction materials are kept behind a metal fence. It's covered with signs, warning thieves of prosecution.
-	<<if currentSkillValue('skulduggery') gte 400>>
+	<<if PC.skulduggery gte 400>>
 		The lock on the gates wouldn't stop anyone serious.
 	<</if>>
 	<<ltowerprogress>>
@@ -525,7 +525,7 @@ You hear a commotion towards the front of the room. A <<person5>><<person>>, dre
 "You are all sinners," <<he>> screams. "And you." <<He>> points at Avery. "Are the greatest sinner of all. A pillar of fire will seize this tower, this abomination, and drag it to hell." Security push through the clicking photographers, and restrain <<him>> with surprising ease. "A pillar of fire. I foresee it." <<He>> kicks the air as security drag <<him>> from the building.
 <br><br>
 
-<<if currentSkillValue("skulduggery") gte 600>>
+<<if PC.skulduggery gte 600>>
 	That was a theatrical performance. Avery, or perhaps Remy, hired <<him>> to discredit the temple's protest. You suspect it was Avery, given <<person1>><<his>> satisfied smile.
 	<br><br>
 	<<link [[Confront Avery|Skyscraper Party Confront]]>><</link>>

@@ -58,17 +58,17 @@ There is a thermometer on the wall next to the window. It reads the outside temp
 		<<else>>
 			<<choreicon "sweep">>
 			<<link [[Clean rooms (1:00)|Temple Quarters Clean]]>>
-				<<if currentSkillValue('housekeeping') gte 1500>>
+				<<if PC.housekeeping gte 1500>>
 					<<set $temple_quarters += 9>>
-				<<elseif currentSkillValue('housekeeping') gte 1200>>
+				<<elseif PC.housekeeping gte 1200>>
 					<<set $temple_quarters += 8>>
-				<<elseif currentSkillValue('housekeeping') gte 800>>
+				<<elseif PC.housekeeping gte 800>>
 					<<set $temple_quarters += 7>>
-				<<elseif currentSkillValue('housekeeping') gte 600>>
+				<<elseif PC.housekeeping gte 600>>
 					<<set $temple_quarters += 6>>
-				<<elseif currentSkillValue('housekeeping') gte 400>>
+				<<elseif PC.housekeeping gte 400>>
 					<<set $temple_quarters += 5>>
-				<<elseif currentSkillValue('housekeeping') gte 200>>
+				<<elseif PC.housekeeping gte 200>>
 					<<set $temple_quarters += 4>>
 				<<else>>
 					<<set $temple_quarters += 3>>
@@ -910,10 +910,10 @@ The <<monk>> doesn't stop you, but <<he>> does cast a nervous look around the ro
 <</if>>
 <<handstat>>
 <br><br>
-<<if currentSkillValue("handskill") gte 800>>
+<<if PC.handskill gte 800>>
 	Your skilled fingers make quick work of <<him>>. <<He>> ejaculates almost immediately. You withdraw your hand and continue dusting as if nothing is amiss. <<He>> pants beneath you, unable to muster the strength to move.
 	<br><br>
-<<elseif currentSkillValue("handskill") gte 100>>
+<<elseif PC.handskill gte 100>>
 	You keep working, speeding up as <<he>> approaches <<his>> peak. <<His>> body tenses, and <<he>> cums against your hand.
 	<br><br>
 	A few people look over, eyes drawn by <<his>> moans. You don't think they can see what you're up to.

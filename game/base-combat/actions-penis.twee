@@ -187,7 +187,7 @@
 <<widget "actionspenisPussyImminent">>
 	<<actionspenisvaginafucknew>>
 	<<set _penisaction["Rub"] to "rub">>
-	<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55) and currentSkillValue("penileskill") gte 800>>
+	<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55) and PC.penileskill gte 800>>
 		<<set _penisaction["Edge " + $NPCList[$penistarget].pronouns.him] to "vaginaEdging">>
 	<</if>>
 	<<set _penisaction["Pull away"] to "escape">>
@@ -203,7 +203,7 @@
 	<<if !npcIsPregnant($NPCList[$penistarget].fullDescription) and NPCPregnancyPossibleWithPlayer($NPCList[$penistarget]) and $arousal gte $arousalmax - 1000 and $demon gte 6 and $demonbuild gte 90>>
 		<<set _penisaction["Force Impregnation"] to "forceImpregnation">>
 	<</if>>
-	<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55) and currentSkillValue("penileskill") gte 800>>
+	<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55) and PC.penileskill gte 800>>
 		<<set _penisaction["Edge " + $NPCList[$penistarget].pronouns.him] to "vaginaEdging">>
 	<</if>>
 	<<set _penisaction["Pull out"] to "pullOut">>
@@ -236,7 +236,7 @@
 <<widget "actionspenisAnusImminent">>
 	<<actionspenisanusfucknew>>
 	<<set _penisaction["Rub"] to "otheranusrub">>
-	<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55) and currentSkillValue("penileskill") gte 800>>
+	<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55) and PC.penileskill gte 800>>
 		<<set _penisaction["Edge " + $NPCList[$penistarget].pronouns.him] to "otheranusEdging">>
 	<</if>>
 	<<set _penisaction["Pull away"] to "otheranusescape">>
@@ -249,7 +249,7 @@
 	<<else>>
 		<<set _penisaction["Fuck"] to "otheranuscooperate">>
 	<</if>>
-	<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55) and currentSkillValue("penileskill") gte 800>>
+	<<if ($consensual is 0 or ($enemytype is "man" ? $promiscuity : $deviancy) gte 55) and PC.penileskill gte 800>>
 		<<set _penisaction["Edge " + $NPCList[$penistarget].pronouns.him] to "otheranusEdging">>
 	<</if>>
 	<<set _penisaction["Pull out"] to "pullOut">>
@@ -271,7 +271,7 @@
 	<<if $penisaction is "penistovagina">>
 		<<personselect $penistarget>>
 		<<set $penisaction to 0>><<submission 10>><<penileskilluse>><<combatpromiscuity5>>
-		<<if combatSkillCheck("penile", $penistarget)>>
+		<<if combatSkillCheck("penileskill", $penistarget)>>
 			<<if $NPCList[$penistarget].vagina is 0>>
 				<<set $_target to $NPCList[$penistarget]>>
 				<<set $_target.vagina to "penisentrance">>
@@ -310,7 +310,7 @@
 	<<if $penisaction is "penistoanus">>
 		<<personselect $penistarget>>
 		<<set $penisaction to 0>><<submission 10>><<penileskilluse>><<combatpromiscuity5>>
-		<<if combatSkillCheck("penile", $penistarget)>>
+		<<if combatSkillCheck("penileskill", $penistarget)>>
 			<<if ($NPCList[$penistarget].vagina is 0 or $NPCList[$penistarget].vagina is "none") and ($NPCList[$penistarget].penis is 0 or $NPCList[$penistarget].penis is "none")>>
 				<<set $_target to $NPCList[$penistarget]>>
 				<<if $_target.vagina isnot "none">>
@@ -365,7 +365,7 @@
 	<<if $penisaction is "penisvaginafuck" and (playerPenisSize() gte 0 or $arousal gte $arousalmax * (3 / 4))>>
 		<<personselect $penistarget>>
 		<<set $penisaction to 0>><<submission 20>><<penileskilluse>><<combatpromiscuity5>>
-		<<if random(0,1) is 1 or ($penisWetness + (currentSkillValue("penileskill") / 10)) gte (playerPenisSize() * 15) + random(1, 40)>>
+		<<if random(0,1) is 1 or ($penisWetness + (PC.penileskill / 10)) gte (playerPenisSize() * 15) + random(1, 40)>>
 			<<set $_target to $NPCList[$penistarget]>>
 			<<set $_target.vagina to "penis">><<set $penisactiondefault to "cooperate">>
 			<<if playerHasStrapon()>>
@@ -400,7 +400,7 @@
 	<<if $penisaction is "penisanusfuck" and (playerPenisSize() gte 0 or $arousal gte ($arousalmax / 4) * 3)>>
 		<<personselect $penistarget>>
 		<<set $penisaction to 0>><<submission 20>><<penileskilluse>><<combatpromiscuity5>>
-		<<if random(0,1) is 1 or ($penisWetness + (currentSkillValue("penileskill") / 10)) gte (playerPenisSize() * 15) + random(1, 40)>>
+		<<if random(0,1) is 1 or ($penisWetness + (PC.penileskill / 10)) gte (playerPenisSize() * 15) + random(1, 40)>>
 			<<set $_target to $NPCList[$penistarget]>>
 			<<if $_target.vagina is "otheranusentrance" or $_target.vagina is "otheranusimminent">>
 				<<set $_target.vagina to "otheranus">>
@@ -440,7 +440,7 @@
 	<<if $penisaction is "penistopenis">>
 		<<personselect $penistarget>>
 		<<set $penisaction to 0>><<submission 5>><<penileskilluse>><<combatpromiscuity4>>
-		<<if combatSkillCheck("penile", $penistarget)>>
+		<<if combatSkillCheck("penileskill", $penistarget)>>
 			<<if $NPCList[$penistarget].penis is 0>>
 				<<set $_target to $NPCList[$penistarget]>>
 				<<submission 5>><<set $penisuse to "otherpenis">><<set $penisstate to "otherpenisentrance">>
@@ -469,7 +469,7 @@
 	<<if $penisaction is "penistopenisfuck" and ["penisentrance", "penisimminent"].includes($NPCList[$penistarget].penis)>>
 		<<personselect $penistarget>>
 		<<set $penisaction to 0>><<submission 5>><<penileskilluse>><<combatpromiscuity4>>
-		<<if combatSkillCheck("penile", $penistarget)>>
+		<<if combatSkillCheck("penileskill", $penistarget)>>
 			<<submission 5>><<set $penisuse to "otherpenis">><<set $penisstate to "otherpenis">>
 			<<set $NPCList[$penistarget].penis to "penis">><<set $penisactiondefault to "fencingcooperate">>
 			<span class="blue">You press <<combatpersons>> <<npcPenisSimple $penistarget>> with your penis<<if playerChastity("penis")>>, through your $worn.genitals.name<</if>>.</span>

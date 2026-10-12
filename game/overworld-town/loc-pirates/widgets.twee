@@ -147,7 +147,7 @@
 
 		<<else>>
 			A <<person>> interrupts <<his>> swabbing of the deck to sweep <<his>> mop at your feet.
-			<<if currentSkillValue('danceskill') gte random(1, 800)>>
+			<<if PC.danceskill gte random(1, 800)>>
 				A thought strikes as you <span class="green">spring over it.</span>
 				<br><br>
 				<<link [[Kick the mop|Pirate Scum Deck Mop Kick]]>><<def 1>><<pirate_status 1 "scum">><</link>><<grespect "scum">>

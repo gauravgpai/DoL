@@ -492,13 +492,13 @@ You look away as Alex saws through the branch. "Here it comes," <<he>> says. It 
 			<br>
 
 			<<if $foodstuff["apple"].amount gte _requiredApples>>
-				<<if currentSkillValue("housekeeping") gte 400 and $mathstrait gte 3>>
+				<<if PC.housekeeping gte 400 and $mathstrait gte 3>>
 					<<foodstufficon "apple">><<link [[Reward them with apples (0:20)|Farm Woodland Forage Reward]]>>
 						<<set $tempRewardType to "apple">>
 						<<set $tempRewardQuantity to _requiredApples>>
 						<<set $foodstuff["apple"].amount -= _requiredApples>>
 					<</link>>
-				<<elseif currentSkillValue("housekeeping") gte 400>>
+				<<elseif PC.housekeeping gte 400>>
 					<<foodstufficon "apple">><<link [[Reward them with apples (0:15)|Farm Woodland Forage Reward]]>>
 						<<set $tempRewardType to "apple">>
 						<<set $tempRewardQuantity to _requiredApples>>
@@ -1175,8 +1175,8 @@ You look away as Alex saws through the branch. "Here it comes," <<he>> says. It 
 
 	<!-- The PC should have a 50% of passing the Science check with a Science Grade of A. -->
 	<<set _checkResults to [
-		currentSkillValue("science") gte random(600, 800),
-		currentSkillValue("tending") gte random(600, 800)
+		PC.science gte random(600, 800),
+		PC.tending gte random(600, 800)
 	]>>
 	<!-- Going to hell for this lol -->
 	<<if _checkResults[0] and _checkResults[1]>>
@@ -1416,7 +1416,7 @@ You look away as Alex saws through the branch. "Here it comes," <<he>> says. It 
 
 				Accurately cutting the apples so that each pig gets roughly the same amount will require a Maths Skill of A, because the PC will need to estimate the fraction of each apple to give to each pig.
 			-->
-			<<if currentSkillValue("housekeeping") gte 400 and $mathstrait gte 3>>
+			<<if PC.housekeeping gte 400 and $mathstrait gte 3>>
 				<!-- Takes extra time to feed them properly. -->
 				<<pass 10>>
 
@@ -1424,7 +1424,7 @@ You look away as Alex saws through the branch. "Here it comes," <<he>> says. It 
 				<br><br>
 
 				<span class="green">The <<farm_text_many pig>> are very happy with your efforts.</span><<ggrespect>><<farm_pigs 3>>
-			<<elseif currentSkillValue("housekeeping") gte 400>>
+			<<elseif PC.housekeeping gte 400>>
 				<!-- Takes a little extra time to cut the pieces. -->
 				<<pass 5>>
 
@@ -1473,8 +1473,8 @@ You look away as Alex saws through the branch. "Here it comes," <<he>> says. It 
 
 	<!-- The PC should have a 50% of passing the Science check with a Science Grade of A. -->
 	<<set _checkResults to [
-		currentSkillValue("science") gte random(600, 800),
-		currentSkillValue("tending") gte random(600, 800)
+		PC.science gte random(600, 800),
+		PC.tending gte random(600, 800)
 	]>>
 	<!-- Going to hell for this lol -->
 	<<if _checkResults[0] and _checkResults[1]>>

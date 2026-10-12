@@ -4,7 +4,7 @@
 The shutters protecting the supermarket windows would be liftable, if not for the padlock.
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 	<<else>>

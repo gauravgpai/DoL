@@ -1025,7 +1025,7 @@
 				<br><br>
 			<<case 2>>
 				<<generate1>><<person1>>
-				<<if currentSkillValue('skulduggery') gte random(1, 1000)>>
+				<<if PC.skulduggery gte random(1, 1000)>>
 					<<if pcAreArmsBound("both")>>
 						<<if $worn.feet.type.includes("shackle")>>
 							<span class="green">You hear light footsteps behind.</span> You can't defend yourself with your arms bound. You try to hasten away, <span class="red">but your shackle slows you.</span> You're helpless to resist as <<he>> grasps your <<breasts>>.
@@ -1094,7 +1094,7 @@
 				<<else>>
 					A <<person>> gropes your <<bottom>> as <<he>> passes.
 				<</if>>
-				<<if currentSkillValue('physique') gte random(1, $physiquemax)>>
+				<<if PC.physique gte random(1, $physiquemax)>>
 					You swat <<him>> away from you, <span class="green">and your hand connects with <<his>> face.</span> <<He>> staggers away.
 				<<else>>
 					You swat <<him>> away from you, <span class="red">but <<he>> dodges your blow.</span> At least you got <<his>> mitts off.<<gattention prison>><<prison_attention>><<gstress>><<stress 6>>

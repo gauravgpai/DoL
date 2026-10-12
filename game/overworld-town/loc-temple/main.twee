@@ -2285,7 +2285,7 @@ The <<person2>><<monk>> smothers the coals with a bucket of sand as Jordan leads
 You step forward as quickly as you can. You feel the coals heat beneath you.
 <<pain 1>>
 <br><br>
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	<span class="green">A little sting isn't enough to stop you.</span>
 	<<gwillpower>><<willpower 1>>
 	<br><br>
@@ -2306,7 +2306,7 @@ You step forward as quickly as you can. You feel the coals heat beneath you.
 You step forward again. The coals are even hotter.
 <<pain 2>>
 <br><br>
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	<span class="green">Still nothing you can't handle.</span>
 	<<gwillpower>><<willpower 1>>
 	<br><br>
@@ -2327,7 +2327,7 @@ You step forward again. The coals are even hotter.
 You step forward again, now about halfway across the coals. The heat continues to build.
 <<pain 3>>
 <br><br>
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	<span class="green">You feel your soles burn, but you're determined to continue.</span>
 	<<gwillpower>><<willpower 1>>
 	<br><br>
@@ -2348,7 +2348,7 @@ You step forward again, now about halfway across the coals. The heat continues t
 You tense as your foot comes down again, the coals now hotter still.
 <<pain 4>>
 <br><br>
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	<span class="green">You manage to keep your cool.</span>
 	<<gwillpower>><<willpower 1>>
 	<br><br>
@@ -2369,7 +2369,7 @@ You tense as your foot comes down again, the coals now hotter still.
 You cringe as your foot comes down again. You're so close.
 <<pain 5>>
 <br><br>
-<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 	<span class="green">You wonder if you'll need to visit the hospital after this. You don't care.</span>
 	<<gwillpower>><<willpower 1>>
 	<br><br>
@@ -3148,7 +3148,7 @@ Time passes.
 </span>
 Your body shivers, and your teeth chatter. The wind picks up.
 
-<<if (currentSkillValue('willpower') / 10) gte ($pain + random(0, 10))>>
+<<if (PC.willpower / 10) gte ($pain + random(0, 10))>>
 	<span class="green">You remain rooted to the spot, your shivers a violent defiance of the night.</span>
 	<<gwillpower>><<willpower 1>>
 	<br><br>
@@ -3256,7 +3256,7 @@ One of the initiates, a <<person4>><<person>>, tries to push into the centre of 
 Shaken by the outbreak of violence, separated from warmth, and assailed by this new chill, most initiates are broken.
 <br><br>
 
-<<if (currentSkillValue('willpower') / 10) gte ($pain + random(0, 10))>>
+<<if (PC.willpower / 10) gte ($pain + random(0, 10))>>
 	They abandon their vigil, and their silence, calling for help and running into the dark. <span class="green">You are not one of them.</span>
 	Less than a third of you remain. The <<person2>><<person>> clutches <<his>> crucifix, and the <<person3>><<person>> mouths another prayer. Sydney gives you a nudge, wordlessly trying to confirm that you're still there. You nudge <<person6>><<him>> back.
 	<<gwillpower>><<willpower 1>>
@@ -3267,7 +3267,7 @@ Shaken by the outbreak of violence, separated from warmth, and assailed by this 
 	<br>
 <<else>>
 	They abandon their vigil, and their silence, calling for help and running into the dark.
-	<<if $sydneyromance is 1 and (currentSkillValue('willpower') / 10) gte (($pain - 10) + random(0, 10))>>
+	<<if $sydneyromance is 1 and (PC.willpower / 10) gte (($pain - 10) + random(0, 10))>>
 		<span class="red">You start to join them.</span> However, just as you turn, someone grabs you by the wrist and pulls you in. It's Sydney. <span class="green">The added warmth gives you the perseverance to hold on</span> for just a little longer.
 		<br><br>
 
@@ -3310,7 +3310,7 @@ Something important, something precious, is in danger. In danger as long as you 
 
 The other initiates must feel the same. They break from the huddle with a cry and flee their vigil.
 
-<<if (currentSkillValue('willpower') / 10) gte ($pain + random(0, 10))>>
+<<if (PC.willpower / 10) gte ($pain + random(0, 10))>>
 	Terror grips you, <span class="green">but mere terror cannot break your faith.</span> You huddle with the <<person2>><<person>>, <<person3>><<person>>, and Sydney, now the only ones remaining.
 	<<gwillpower>><<willpower 1>>
 	<br><br>
@@ -3346,7 +3346,7 @@ The bell tolls, sending such a shiver down your spine that you almost lose your 
 <<set Weather.Temperature.override.increase.outside(20)>>
 <<set $player.bodyTemperature to $player.bodyTemperature + 0.5>>
 
-<<if currentSkillValue('athletics') gte 400>>
+<<if PC.athletics gte 400>>
 	You run back and forth, delivering the wood to the centre. Whips crack, though none strike you. An odd thrill energises you. It feels good to get moving. It's not as dark as it was; dawn threatens to break. You and the other initiates soon have the wood piled up.
 <<else>>
 	You run back and forth, delivering the wood to the centre. Whips crack, though none strike you. However, one comes uncomfortably close, and you <span class="red">lose your footing.</span> You quickly recover, but it hurt nonetheless. You and the other initiates soon have the wood piled up. <<pain 3>><<gpain>>
@@ -3446,7 +3446,7 @@ Your eyes sting, you blink, and <span class="red">your vision changes</span>. A 
 Your skin stings. Overpowering heat surrounds you. You feel your skin blister, melting like wax.
 
 <<if $phase is 2>>
-	<<if (currentSkillValue('willpower') / 10) gte (($pain - 10) + random(0, 10))>>
+	<<if (PC.willpower / 10) gte (($pain - 10) + random(0, 10))>>
 		<span class="green">But these bodies are mere shells.</span> The fire frees you. You suffer no fear because you have no fear.
 		<<gwillpower>><<willpower 1>><<wash>>
 		<br><br>
@@ -3461,7 +3461,7 @@ Your skin stings. Overpowering heat surrounds you. You feel your skin blister, m
 		<br>
 	<</if>>
 <<else>>
-	<<if (currentSkillValue('willpower') / 10) gte ($pain + random(0, 10))>>
+	<<if (PC.willpower / 10) gte ($pain + random(0, 10))>>
 		<span class="green">But this body is but a shell.</span> The fire frees you. You suffer no fear because you have no fear.
 		<<gwillpower>><<willpower 1>><<wash>>
 		<br><br>

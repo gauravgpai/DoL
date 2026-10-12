@@ -898,7 +898,7 @@
 		<br>
 	<</if>>
 	<<if $beastRitual.lewdOption and $beastRitual.distance gte 2 and !$beastRitual.ambush>>
-		<<link [[Wait and ambush Gwylan|Gwylan Forest Run Ambush]]>><<def 1>><<transform fox 1>><<set $phase to "ambush">><</link>><<skill_difficulty `currentSkillValue("skulduggery")` "Skulduggery" 400 1000>>
+		<<link [[Wait and ambush Gwylan|Gwylan Forest Run Ambush]]>><<def 1>><<transform fox 1>><<set $phase to "ambush">><</link>><<skill_difficulty `PC.skulduggery` "Skulduggery" 400 1000>>
 		<br>
 	<</if>>
 	<<if $beastRitual.stalked is "wolf" and ($wolfgirl gte 6 or $wolfpackleader gte 1)>>
@@ -1000,7 +1000,7 @@
 			<</if>>
 			<<if !$worship.promBreasts>><<set $worship.promBreasts to true>><<set _noBR to true>><<promiscuity1>><</if>>
 		<<case "nipples">>
-			<<set $worship.breasts-->><<set $worship.arousal += 4 + Math.floor(currentSkillValue("oralskill") / 40)>><<arousal 500>>
+			<<set $worship.breasts-->><<set $worship.arousal += 4 + Math.floor(PC.oralskill / 40)>><<arousal 500>>
 			<<if $worship.actionLast is "nipples">>
 				You continue sucking on Gwylan's nipples.
 			<<elseif $worship.actionLast is "nipplesBite">>
@@ -1036,14 +1036,14 @@
 				<</if>>
 			<</if>>
 		<<case "nipplesBite">>
-			<<set $worship.breasts-->><<set $worship.arousal += 5 + Math.floor(currentSkillValue("oralskill") / 35)>><<arousal 500>>
+			<<set $worship.breasts-->><<set $worship.arousal += 5 + Math.floor(PC.oralskill / 35)>><<arousal 500>>
 			You lightly nibble on Gwylan's nipples. <<He>> shudders.
 			<<if $worship.breasts lte -5>>
 				<<set $worship.noBreasts to true>>
 				"Alright, enough of that," <<he>> whispers, pulling your head away.
 			<</if>>
 		<<case "genitals">>
-			<<set $worship.genitals-->><<set $worship.arousal += 5 + Math.floor(currentSkillValue("oralskill") / 25)>><<arousal 800 "mouth">>
+			<<set $worship.genitals-->><<set $worship.arousal += 5 + Math.floor(PC.oralskill / 25)>><<arousal 800 "mouth">>
 			<<if $worship.actionLast isnot "genitals">>
 				You move your head to Gwylan's <<npcGenitals 0>> and
 				<<if $worship.genitals gte 1>>
@@ -1076,7 +1076,7 @@
 				<<if $_fluid is "nectar">><<nectarfed 3>><<elseif $_fluid is "cream">><<stress -1>><</if>>
 			<</if>>
 		<<case "oral">>
-			<<set $worship.arousal += 5 + Math.floor(currentSkillValue("oralskill") / 15)>><<arousal 1000 "mouth">>
+			<<set $worship.arousal += 5 + Math.floor(PC.oralskill / 15)>><<arousal 1000 "mouth">>
 			<<if $worship.actionLast is "oral">>
 			<<else>>
 				You slowly take Gwylan's <<npcPenis>> into your mouth. <<takeVirginity "Gwylan" "oral">>
@@ -1645,7 +1645,7 @@
 	/* Adversary actions */
 	<<if !$huntGame.playerTracked and ($huntGame.hunter is "other" or $huntGame.distance gte 3)>>
 		<<set $huntGame.otherAction to "track">>
-		<<set $_otherTrackingDiff to currentSkillValue("skulduggery")>>
+		<<set $_otherTrackingDiff to PC.skulduggery>>
 		<<if ["stealth", "hide"].includes($huntGame.playerAction) and $_actionPassed>>
 			/* Failed to track */
 		<<elseif $NPCList[0].skills.security gte random(1, $_otherTrackingDiff)>>

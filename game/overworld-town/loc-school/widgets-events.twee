@@ -1207,11 +1207,11 @@
 <</widget>>
 
 <<widget "lockereventpassages">>
-	<<if currentSkillValue('skulduggery') gte $lock>>
+	<<if PC.skulduggery gte $lock>>
 		<<set $skulduggerydifficulty to random($lock, 500)>>
 		<<link [[Try to pick the lock (0:02)|Hallways Pick Locker Attempt]]>><<pass 2>><<skulduggerycheck "silent">><<stress 5>><</link>><<skulduggerydifficulty>><<gstress>>
 		<br>
-	<<elseif $lockattempt gt 0 and currentSkillValue('skulduggery') lt $lock>>
+	<<elseif $lockattempt gt 0 and PC.skulduggery lt $lock>>
 		<span class="red">Try as you might, this lock is beyond your ability to pick.</span>
 		<br><br>
 		<<skulduggeryuse $skulduggerydifficulty "locks" 5>>
@@ -2476,7 +2476,7 @@
 		<<set $bullyevent += 1>>
 
 		A pair of hands grab you from behind and give you a shove.
-		<<if currentSkillValue('physique') gte random(4000,15000)>>
+		<<if PC.physique gte random(4000,15000)>>
 			You barely manage to keep your footing.
 			<br><br>
 

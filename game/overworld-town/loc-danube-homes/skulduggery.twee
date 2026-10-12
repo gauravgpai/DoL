@@ -3,7 +3,7 @@
 <<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "danube">><<set $lock to 300>>
 The door is locked tight.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -688,7 +688,7 @@ You sneak up to the <<person>> as quietly as you can. Once close enough, you rea
 <<set $outside to 0>><<set $location to "town">><<effects>><<set $bus to "danube">><<set $lock to 600>>
 The safe looks expensive, like it might contain something important.
 <br><br>
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

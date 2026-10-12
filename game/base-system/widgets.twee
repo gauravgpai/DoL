@@ -54,7 +54,7 @@
 <</widget>>
 
 <<widget "wateraction">>
-	<<set $_swimSkill to Math.max(currentSkillValue('swimmingskill'), 0)>>
+	<<set $_swimSkill to Math.max(PC.swimmingskill, 0)>>
 	<<set $_swimLevel to Math.floor($_swimSkill / 100)>>
 	<<set _waterActionTime to [18, 15, 12, 10, 8, 8, 7, 7, 6, 6, 5, 4][$_swimLevel] || 3>>
 
@@ -717,7 +717,7 @@
 <</widget>>
 
 <<widget "seductionskilluse">>
-	<<set $enemyarousal += (currentSkillValue("seductionskill") / 100)>><<seductionskill 5>>
+	<<set $enemyarousal += (PC.seductionskill / 100)>><<seductionskill 5>>
 <</widget>>
 
 <<widget "seductionskilluptext">>
@@ -728,43 +728,43 @@
 <</widget>>
 
 <<widget "seductionskillusecombat">>
-	<<set $enemyarousal += (currentSkillValue("seductionskill") / 100)>><<seductionskill 5>><<set $seductionskillup to 1>>
+	<<set $enemyarousal += (PC.seductionskill / 100)>><<seductionskill 5>><<set $seductionskillup to 1>>
 <</widget>>
 
 <<widget "oralskilluse">>
-	<<set $enemyarousal += (currentSkillValue("oralskill") / 100)>><<oralskill 5>><<set $oralskillup to 1>>
+	<<set $enemyarousal += (PC.oralskill / 100)>><<oralskill 5>><<set $oralskillup to 1>>
 <</widget>>
 
 <<widget "vaginalskilluse">>
-	<<set $enemyarousal += (currentSkillValue("vaginalskill") / 100)>><<vaginalskill 5>><<set $vaginalskillup to 1>>
+	<<set $enemyarousal += (PC.vaginalskill / 100)>><<vaginalskill 5>><<set $vaginalskillup to 1>>
 <</widget>>
 
 <<widget "analskilluse">>
-	<<set $enemyarousal += (currentSkillValue("analskill") / 100)>><<analskill 5>><<set $analskillup to 1>>
+	<<set $enemyarousal += (PC.analskill / 100)>><<analskill 5>><<set $analskillup to 1>>
 <</widget>>
 
 <<widget "handskilluse">>
-	<<set $enemyarousal += (currentSkillValue("handskill") / 100)>><<handskill 5>><<set $handskillup to 1>>
+	<<set $enemyarousal += (PC.handskill / 100)>><<handskill 5>><<set $handskillup to 1>>
 <</widget>>
 
 <<widget "feetskilluse">>
-	<<set $enemyarousal += (currentSkillValue("feetskill") / 100)>><<feetskill 5>><<set $feetskillup to 1>>
+	<<set $enemyarousal += (PC.feetskill / 100)>><<feetskill 5>><<set $feetskillup to 1>>
 <</widget>>
 
 <<widget "bottomskilluse">>
-	<<set $enemyarousal += (currentSkillValue("bottomskill") / 100)>><<bottomskill 5>><<set $bottomskillup to 1>>
+	<<set $enemyarousal += (PC.bottomskill / 100)>><<bottomskill 5>><<set $bottomskillup to 1>>
 <</widget>>
 
 <<widget "thighskilluse">>
-	<<set $enemyarousal += (currentSkillValue("thighskill") / 100)>><<thighskill 5>><<set $thighskillup to 1>>
+	<<set $enemyarousal += (PC.thighskill / 100)>><<thighskill 5>><<set $thighskillup to 1>>
 <</widget>>
 
 <<widget "chestskilluse">>
-	<<set $enemyarousal += (currentSkillValue("chestskill") / 100)>><<chestskill 5>><<set $chestskillup to 1>>
+	<<set $enemyarousal += (PC.chestskill / 100)>><<chestskill 5>><<set $chestskillup to 1>>
 <</widget>>
 
 <<widget "penileskilluse">>
-	<<set $enemyarousal += (currentSkillValue("penileskill") / 100)>><<penileskill 5>><<set $penileskillup to 1>>
+	<<set $enemyarousal += (PC.penileskill / 100)>><<penileskill 5>><<set $penileskillup to 1>>
 <</widget>>
 
 <<widget "skulduggeryskilluse">>
@@ -3778,7 +3778,7 @@
 
 <<widget "willpowerpain">>
 	<<if $pain gte 100 and $willpowerpain is undefined and _willpowerpainchecked isnot true>>
-		<<if (currentSkillValue('willpower') / 10) gte (($pain - 100) + random(1, 100))>>
+		<<if (PC.willpower / 10) gte (($pain - 100) + random(1, 100))>>
 			<span class="green">The pain threatens to overwhelm, but you endure it.</span>
 			<<gwillpower>><<willpower 1>>
 			<br>
@@ -3796,7 +3796,7 @@
 
 <<widget "willpowerorgasm">>
 	<<if $orgasmdown gte 1 and _willpowerorgasmchecked isnot true>>
-		<<if (currentSkillValue('willpower') / 10) gte (($orgasmdown * 30) + random(1, 80))>>
+		<<if (PC.willpower / 10) gte (($orgasmdown * 30) + random(1, 80))>>
 			<span class="green">You endure the orgasmic shivers running through you.</span>
 			<<gwillpower>><<willpower 1>><<set $orgasmdown to 0>>
 			<br>
@@ -5205,7 +5205,7 @@
 		<<set _variation to 0>>
 	<</if>>
 	<<if _args[2]>>
-		<<set _skulduggeryMulti to (1 + (currentSkillValue('skulduggery') / 2000))>>
+		<<set _skulduggeryMulti to (1 + (PC.skulduggery / 2000))>>
 	<<else>>
 		<<set _skulduggeryMulti to 1>>
 	<</if>>
@@ -5232,7 +5232,7 @@
 		<<set _variation to 0>>
 	<</if>>
 	<<if _args[2]>>
-		<<set _skulduggeryMulti to (1 + (currentSkillValue('skulduggery') / 2000))>>
+		<<set _skulduggeryMulti to (1 + (PC.skulduggery / 2000))>>
 	<<else>>
 		<<set _skulduggeryMulti to 1>>
 	<</if>>

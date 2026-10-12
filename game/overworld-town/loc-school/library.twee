@@ -21,7 +21,7 @@ Next to the shelf is a small basket with returned and not yet sorted books.
 <<if (Time.monthName is "November" and Time.monthDay gte 24) or Time.monthName is "December">>
 	You notice a strange, olive-coloured book tucked amidst the rest.
 <</if>>
-<<if currentSkillValue('english') lt 200>>
+<<if PC.english lt 200>>
 	You wonder if there might be something more interesting here if you were one of those bookworms.
 <</if>>
 <br><br>
@@ -316,10 +316,10 @@ Next to the shelf is a small basket with returned and not yet sorted books.
 			<br>
 		<</if>>
 		/*indev - scarlet book possible to be taken. English 200+ required*/
-		<<if currentSkillValue('english') gte 300>>
+		<<if PC.english gte 300>>
 			<<scarleticon>><<link [[Take "Raul and Janet" from the basket (0:01)|ScarletBook1]]>><<pass 1>><<set $scarletExitPassage to "School Library">><</link>>
 			<br>
-		<<elseif currentSkillValue('english') gte 200>>
+		<<elseif PC.english gte 200>>
 			<<scarleticon>><<link [[Take the medium-sized scarlet book from the basket (0:01)|ScarletBook1]]>><<pass 1>><<set $scarletExitPassage to "School Library">><</link>>
 			<br>
 		<</if>>

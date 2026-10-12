@@ -507,7 +507,7 @@
 		<</if>>
 		<<if $speechHeadNipple>>
 			<<if C.npc.Robin.dom gte 70>>
-				<<if currentSkillValue("oralskill") gte 400>>
+				<<if PC.oralskill gte 400>>
 					<<addSpeechLine "chest">>
 					<<speechLine>>
 						"I really like how warm your mouth feels!" <<he>> <<= either("moans","chuckles","giggles")>>.
@@ -523,7 +523,7 @@
 					<</addSpeechLine>>
 				<</if>>
 			<<elseif C.npc.Robin.dom lte 30>>
-				<<if currentSkillValue("oralskill") gte 400>>
+				<<if PC.oralskill gte 400>>
 					<<addSpeechLine "chest">>
 					<<speechLine>>
 						"T-that feels nice," <<he>> murmurs.
@@ -539,7 +539,7 @@
 					<</addSpeechLine>>
 				<</if>>
 			<<else>>
-				<<if currentSkillValue("oralskill") gte 400>>
+				<<if PC.oralskill gte 400>>
 					<<addSpeechLine "chest">>
 					<<speechLine>>
 						<<He>> smiles as <<he>> sighs in pleasure.

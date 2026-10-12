@@ -200,7 +200,7 @@
 
 /* Wind blow event: weight 1 at 0 dance skill, 0.1 at 600 */
 <<if ["storm", "thunderstorm"].includes(Weather.name)>>
-	<<set _windChance to Math.clamp(1 - currentSkillValue('danceskill') * 0.9 / 600, 0.1, 1)>>
+	<<set _windChance to Math.clamp(1 - PC.danceskill * 0.9 / 600, 0.1, 1)>>
 	<<addinlineevent "wind" _windChance>>
 		<<if $daily.fishing.fishingPier.whitney.phase is "idle">>
 			<<include "Fishing Pier Wind Whitney Idle">>

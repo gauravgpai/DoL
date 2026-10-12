@@ -317,7 +317,7 @@ You are in the Ocean Breeze Cafe.
 The cafe is closed. <<openinghours>>
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -1987,7 +1987,7 @@ You do your best to ignore <<him>>. Sam hears the yelling from across the cafe, 
 
 :: Ocean Breeze Slime Defy
 <<effects>><<run statusCheck("Gwylan")>>
-<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<if $earSlime.corruption gte (PC.willpower / 10)>>
 	<<set $earSlime.defyCooldown += 2>>
 	The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to buy the $daily.earSlimeOceanBreezeCafeEat.
 	<<ggwillpower>><<willpower 1>>
@@ -2144,7 +2144,7 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 				<<cafecoffeesip>>
 				<br><br>
 				A few passers-by let their eyes linger on the window a little longer than normal,
-				<<if currentSkillValue('skulduggery') gte 100 + random(0, 50)>>
+				<<if PC.skulduggery gte 100 + random(0, 50)>>
 					clearly unsure if they are seeing what they think they are.
 				<<else>>
 					before smirking as they walk away. You got caught way too easily.
@@ -2162,7 +2162,7 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 				<</if>>
 				<<cafecoffeesip>>
 				<br><br>
-				<<if currentSkillValue('skulduggery') gte 200 + random(0, 50)>>
+				<<if PC.skulduggery gte 200 + random(0, 50)>>
 					Passers-by make excuses to stop and look in your direction.
 				<<else>>
 					Some of the passers-by make excuses to stop and look in your direction, before smirking as they walk away. You got caught way too easily.
@@ -2180,7 +2180,7 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 				<<cafecoffeesip>>
 				<br><br>
 				Some of the passers-by gather in
-				<<if currentSkillValue('skulduggery') gte 300 + random(0, 50)>>
+				<<if PC.skulduggery gte 300 + random(0, 50)>>
 					small groups at a time, whispering to each other while attempting to stay discreet about their voyeurism.
 				<<else>>
 					a small group, whispering to each other before pointing and laughing. You've been caught.
@@ -2194,7 +2194,7 @@ It arrives promptly, wafting the delicious smell of fresh coffee up your nose.
 				<<cafecoffeesip>>
 				<br><br>
 				Some of the strangers gawk at what they're seeing, struggling to hide their voyeurism. A few of them
-				<<if currentSkillValue('skulduggery') gte 400 + random(0, 50)>>
+				<<if PC.skulduggery gte 400 + random(0, 50)>>
 					jab the others in the rib to try and keep them from spoiling the fun.
 				<<else>>
 					point at you, whisper something to the others before looking back at you and meeting your gaze with a smirk. You've been caught.
@@ -2462,11 +2462,11 @@ You pretend to occupy yourself with your $phase as you gently part your legs as 
 
 /* are we stealthy enough to pretend not to be putting on a show? */
 <<rng 50>>
-<<if currentSkillValue('skulduggery') gte (300 + $rng)>>
+<<if PC.skulduggery gte (300 + $rng)>>
 	<<CafeExhibitionismLegsPartSuccessS1>>
 
 /* are we good enough to at least not provoke mockery at our poor attempts at stealth exhibitionism? */
-<<elseif currentSkillValue('skulduggery') gte 100>>
+<<elseif PC.skulduggery gte 100>>
 	Knowing you're exposing yourself sends a gentle shiver down your spine but you make sure not to give any indication of your building arousal.
 	Noticing <<his>> increased interest you decide to tease a little.
 	<<flashcrotchunderskirt>> giving <<him>> a clear view of your $worn.under_lower.name covered crotch.
@@ -2555,7 +2555,7 @@ You pretend to occupy yourself with your $phase as you gently part your legs as 
 
 /* are we stealthy enough to pretend not to be putting on a show? */
 <<rng 50>>
-<<if currentSkillValue('skulduggery') gte (350 + $rng)>>
+<<if PC.skulduggery gte (350 + $rng)>>
 	Knowing you're exposing yourself sends a gentle shiver down your spine but you make sure not to give any indication of your building arousal.
 	Noticing <<his>> increased interest you decide to tease a little more. <<flashcrotchunderskirt>>, giving <<him>> a clear view of your bare <<genitals>>.
 	<br><br>
@@ -2572,7 +2572,7 @@ You pretend to occupy yourself with your $phase as you gently part your legs as 
 	<</if>>
 
 /* are we good enough to at least not provoke mockery at our poor attempts at stealth exhibitionism? */
-<<elseif currentSkillValue('skulduggery') gte 100>>
+<<elseif PC.skulduggery gte 100>>
 	Knowing you're exposing yourself sends a gentle shiver down your spine but you make sure not to give any indication of your building arousal.
 	Noticing <<his>> increased interest you decide to tease a little. <<flashcrotchunderskirt>> giving <<him>> a clear view of your bare <<genitals>>.
 	The <<person>> takes a sip of <<his>> drink and smirks a little to <<himself>>, it seems you weren't quite as subtle as you thought.
@@ -2759,7 +2759,7 @@ You stare out the window <<print Weather.precipitation is "rain" ? "at the rain-
 			<<set $tip += 400>>
 		<<elseif $speech_attitude is "meek">>
 			You tell them about your abuse and degradation in the kind of gratuitous detail that you hope will satisfy their morbid curiosity.
-			<<if currentSkillValue('english') gte 400>>
+			<<if PC.english gte 400>>
 				You are open, eloquent and explicit. They clearly get off on it.
 				<<set $tip += 1000>>
 			<<else>>
@@ -2825,7 +2825,7 @@ You stare out the window <<print Weather.precipitation is "rain" ? "at the rain-
 		<br>
 		<<if $speech_attitude is "meek">>
 			You make up a story of abuse and degradation that you hope will satisfy their morbid curiosity.
-			<<if currentSkillValue('english') gte 400>>
+			<<if PC.english gte 400>>
 				You are eloquent and convincing. They get off on it.
 				<<set $tip += 500>>
 			<<else>>

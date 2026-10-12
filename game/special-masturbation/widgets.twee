@@ -236,9 +236,9 @@
 		<!-- if virgin, limit is 2 -->
 		<<set $vaginaFingerLimit to 2>>
 	<<else>>
-		<<if currentSkillValue("vaginalskill") gte 600 or $demon gte 3>> <!-- Demons are stretchy. -->
+		<<if PC.vaginalskill gte 600 or $demon gte 3>> <!-- Demons are stretchy. -->
 			<<set $vaginaFingerLimit to 5>>
-		<<elseif currentSkillValue("vaginalskill") gte 200 or $demon gte 1>>
+		<<elseif PC.vaginalskill gte 200 or $demon gte 1>>
 			<<set $vaginaFingerLimit to 4>>
 		<<else>>
 			<<set $vaginaFingerLimit to 3>>
@@ -324,7 +324,7 @@
 
 /* these checks only determine if it could be possible. they do not check for current obstructions like clothing or hands. */
 <<widget "selfsuckchecks">>
-	<<set $_danceSkillLimit to Math.clamp(Math.ceil((800 - currentSkillValue("danceskill"))/200) + Math.floor(playerBellySize() / 3), -1, 4)>>
+	<<set $_danceSkillLimit to Math.clamp(Math.ceil((800 - PC.danceskill)/200) + Math.floor(playerBellySize() / 3), -1, 4)>>
 	<<set $_catFlexLimit to Math.clamp((6 - $cat) + Math.floor(playerBellySize() / 3), -2, 4)>>
 	<<set $_limit to Math.min($_danceSkillLimit, $_catFlexLimit)>>
 	<<if $player.penisExist>>
@@ -402,7 +402,7 @@
 /* Used in situations with custom continue controls, but standard stop controls. Usage should be similar to <<masturbationControls>> above */
 <<widget "masturbationStopControls">>
 	<<set $_passage to _args[0] or $passage>>
-	<<if $corruptionMasturbation isnot true and random(0,3) gt $orgasmcurrent and $earSlime.corruption gt (currentSkillValue('willpower') / 10) && !$hypnosis_traits.silence>>
+	<<if $corruptionMasturbation isnot true and random(0,3) gt $orgasmcurrent and $earSlime.corruption gt (PC.willpower / 10) && !$hypnosis_traits.silence>>
 		<div id="stop"><<link [[Stop|$_passage]]>><<set $corruptionMasturbation to true>><</link>></div>
 	<<elseif $corruptionMasturbation isnot true>>
 		<div id="stop"><<link [[Stop|$_passage + " Finish"]]>><<set $finish to 1>><</link>></div>

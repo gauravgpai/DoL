@@ -174,11 +174,11 @@ The door is open. A <<generate2>><<person2>><<person>> looks up from <<his>> des
 :: Docks Ask 3
 <<He>> runs <<his>> eyes up and down your body.
 
-<<if currentSkillValue('physique') gte 14000>>
+<<if PC.physique gte 14000>>
 	"You're a strapping <<lass>>, aren't you? It's a physical job, but you won't have any problems."
-<<elseif currentSkillValue('physique') gte 9000>>
+<<elseif PC.physique gte 9000>>
 	"You look good and fit. It's a physical job, but you should be fine."
-<<elseif currentSkillValue('physique') gte 6000>>
+<<elseif PC.physique gte 6000>>
 	"This is a physically demanding job. You look like you can handle yourself, but be careful."
 <<else>>
 	<<He>> sighs. "This is a physically demanding job, and, well." <<He>> pauses. "You're not the strongest <<girl>> I've seen, let me put it that way. I won't stop you, but you might be in for a rough time."
@@ -1130,7 +1130,7 @@ You arrive back at the docks. A manager greets you. <<generate2>><<person2>>"You
 
 <<if $phase is 0>>
 	You compare the numbers,
-	<<if currentSkillValue('maths') gte random(1, 1000)>>
+	<<if PC.maths gte random(1, 1000)>>
 		<span class="green">and find that some valuable cargo disappeared at some point between arrival and departure.</span> What's more, someone tried to cover it up. You inform a manager, who seems impressed at your deduction.
 		<<dockstatus 1>><<gcool>>
 	<<else>>
@@ -1168,7 +1168,7 @@ You keep an eye out for anything valuable. There's a lot, but you need something
 	<<if !_dock_location>>
 		<<skul_dock_contents electronics>>
 	<</if>>
-	<<if !_dock_location and currentSkillValue('tending') gte 400>>
+	<<if !_dock_location and PC.tending gte 400>>
 		<<skul_dock_contents fertiliser>>
 	<</if>>
 
@@ -1225,13 +1225,13 @@ It's the last crate they load into the cargo container. The <<person1>><<person>
 
 <<if _dock_location is "SW">>
 	The container looks like it's going to remain in the unloading area overnight.
-	<<if currentSkillValue('skulduggery') gte 400>>
+	<<if PC.skulduggery gte 400>>
 		<span class="teal">The contents must be valuable.</span> You make a mental note of its location.
 	<</if>>
 	<br><br>
 <<elseif _dock_location>>
 	A crane lifts the container, and carries it towards the <<skul_dock_location _dock_location>>. It will remain there overnight.
-	<<if currentSkillValue('skulduggery') gte 400>>
+	<<if PC.skulduggery gte 400>>
 		<span class="teal">The contents must be valuable.</span> You make a mental note of its location.
 	<</if>>
 	<br><br>
@@ -1252,7 +1252,7 @@ You ignore the strange vehicle and continue working.
 
 <<if $phase is 0>>
 	You look more closely,
-	<<if currentSkillValue('history') gte random(1, 1000)>>
+	<<if PC.history gte random(1, 1000)>>
 		<span class="green">and recognise the shape.</span> You <<generate1>><<person1>>inform a manager, who calls the captain in time. The ship steers around it.
 		<br><br>
 
@@ -2252,7 +2252,7 @@ The owner glares at you as you leave with your laughing colleagues.
 :: Docks Pub Crawl Calm
 <<effects>>
 
-<<if currentSkillValue('physique') gte 12000>>
+<<if PC.physique gte 12000>>
 	You stand in the middle of one of the fights and manage to hold a sailor and docker away from each other. A couple of the more level heads on both sides watch you and, inspired by your act, intervene themselves. They manage to calm things enough that security can form a line between the dockers and sailors.
 <<else>>
 	You try separate one of the fights, but just get knocked aside. A couple of the more level heads on both sides watch you and, inspired by your act, intervene themselves. They manage to calm things enough that security can form a line between the dockers and sailors.
@@ -2373,7 +2373,7 @@ You and your colleagues enjoy your free drinks and leave in an elevated mood.
 	<</if>>
 <<elseif $phase2 is 1>>
 	<<wearProp "pencil">>
-	<<if currentSkillValue('science') gte random(1, 1000)>>
+	<<if PC.science gte random(1, 1000)>>
 		<<set $docks.quiz.home += 1>>
 
 		You write down the answers, fold the paper and hand it to the pub owner. The sailors do likewise.
@@ -2382,10 +2382,10 @@ You and your colleagues enjoy your free drinks and leave in an elevated mood.
 		"That's a point to the dockers," the owner says. You cheer with your colleagues.
 		<<lstress>><<stress -1>>
 	<<else>>
-		<<if currentSkillValue('science') lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
+		<<if PC.science lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
 		<br><br>
 
-		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if currentSkillValue('science') gte 700>>You were sure you got it right.<</if>>
+		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if PC.science gte 700>>You were sure you got it right.<</if>>
 	<</if>>
 <<else>>
 	You convince your colleagues that you know your stuff, and write down nonsense answers. You fold the paper and hand it to the pub owner.
@@ -2430,7 +2430,7 @@ The owner reads the sailor's answers.
 		The owner reads your paper. "The dockers score zero." You grumble with your colleagues.
 	<</if>>
 <<elseif $phase2 is 1>>
-	<<if currentSkillValue('maths') gte random(1, 1000)>>
+	<<if PC.maths gte random(1, 1000)>>
 		<<set $docks.quiz.home += 1>>
 
 		You write down the answers, fold the paper and hand it to the pub owner. The sailors do likewise.
@@ -2439,10 +2439,10 @@ The owner reads the sailor's answers.
 		"That's a point to the dockers," the owner says. You cheer with your colleagues.
 		<<lstress>><<stress -1>>
 	<<else>>
-		<<if currentSkillValue('maths') lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
+		<<if PC.maths lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
 		<br><br>
 
-		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if currentSkillValue('maths') gte 700>>You were sure you got it right.<</if>>
+		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if PC.maths gte 700>>You were sure you got it right.<</if>>
 	<</if>>
 <<else>>
 	You convince your colleagues that you know your stuff, and write down nonsense answers. You fold the paper and hand it to the pub owner.
@@ -2491,10 +2491,10 @@ The owner reads the sailor's answers.
 		"That's a point to the dockers," the owner says. You cheer with your colleagues.
 		<<lstress>><<stress -1>>
 	<<else>>
-		<<if currentSkillValue('english') lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
+		<<if PC.english lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
 		<br><br>
 
-		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if currentSkillValue('english') gte 700>>You were sure you got it right.<</if>>
+		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if PC.english gte 700>>You were sure you got it right.<</if>>
 	<</if>>
 <<else>>
 	You convince your colleagues that you know your stuff, and write down nonsense answers. You fold the paper and hand it to the pub owner.
@@ -2535,7 +2535,7 @@ The owner reads the sailor's answers.
 		The owner reads your paper. "The dockers score zero." You grumble with your colleagues.
 	<</if>>
 <<elseif $phase2 is 1>>
-	<<if currentSkillValue('history') gte random(1, 1000)>>
+	<<if PC.history gte random(1, 1000)>>
 		<<set $docks.quiz.home += 1>>
 
 		You write down the answers, fold the paper and hand it to the pub owner. The sailors do likewise.
@@ -2544,7 +2544,7 @@ The owner reads the sailor's answers.
 		"That's a point to the dockers," the owner says. You cheer with your colleagues.
 		<<lstress>><<stress -1>>
 	<<else>>
-		<<if currentSkillValue('history') lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
+		<<if PC.history lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
 		<br><br>
 
 		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if $historytrait gte 4>>You were sure you got it right.<</if>>

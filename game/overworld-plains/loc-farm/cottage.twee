@@ -1084,9 +1084,9 @@ You whack Alex's hand, and struggle from the bed. "Suit yourself," <<he>> says. 
 <<set _alex to C.npc.Alex>>
 
 You gyrate your hips, <<bottomtext>> rubbing your <<bottom>> against Alex's <<print (_alex.penis isnot "none" ? "shaft" : "pussy")>> through the fabric, making it
-<<if currentSkillValue("bottomskill") lt 400>>
+<<if PC.bottomskill lt 400>>
 	slowly moisten.
-<<elseif currentSkillValue("bottomskill") lt 800>>
+<<elseif PC.bottomskill lt 800>>
 	quickly moisten.
 <<else>>
 	soaked in an instant.
@@ -1535,7 +1535,7 @@ You are in Alex's bedroom. It's similar to yours. Clothes tumble from the wardro
 			<br><br>
 		<</if>>
 
-		<<farmicon "alexdesk">><<link [[Offer help (1:00)|Farm Alex Admin]]>><<pass 60>><<npc Alex>><<person1>><<npcincr Alex love 1>><<stress 6>><</link>><<skill_difficulty `currentSkillValue("maths")` "Maths" 1 1000>><<glove>><<gstress>>
+		<<farmicon "alexdesk">><<link [[Offer help (1:00)|Farm Alex Admin]]>><<pass 60>><<npc Alex>><<person1>><<npcincr Alex love 1>><<stress 6>><</link>><<skill_difficulty `PC.maths` "Maths" 1 1000>><<glove>><<gstress>>
 		<br>
 		<<if $alex_countdown is undefined and C.npc.Alex.love gte 80>>
 			<<farmicon "alexdesk">><<link [[Cuddle Alex (0:30)|Farm Phone Cuddle]]>><<pass 30>><<npc Alex>><<person1>><<npcincr Alex love 1>><</link>><<glove>>
@@ -2667,7 +2667,7 @@ You get comfy beside Alex.
 			<br><br>
 
 			You swoop in to kiss <<him>> mid-laugh, and <<he>> turns red.<<takeKissVirginity "Alex" "loveInterest">>
-		<<elseif currentSkillValue('athletics') gte 800>>
+		<<elseif PC.athletics gte 800>>
 			<span class="green"><<His>> reflexes are fast, but yours prove faster.</span> "You won, fair and square. Now give it back." <<He>> folds <<his>> arms.
 			<br><br>
 
@@ -2853,7 +2853,7 @@ You pull up a chair, and help Alex manage the business.
 <</if>>
 <br><br>
 
-<<if currentSkillValue('maths') gte random(1, 1000)>>
+<<if PC.maths gte random(1, 1000)>>
 	<<if $rng gte 3>>
 		<span class="green">You convince Alex to charge more per <<print either("pint", "gallon", "kilo", "gram", "weight", "carton", "bushel", "ton")>>.</span><<farm_yield 3>><<ggfarm>>
 		<br><br>
@@ -3032,9 +3032,9 @@ You sit beside Alex, and make yourself comfy.
 		You thank <<him>>. <span class="green">It felt satisfying.</span> "Don't mention it." <<He>> smiles. "You looked tense."<<stress -12>><<llstress>>
 	<<else>>
 		Alex looks strained and fatigued. In hopes to soothe <<him>>, you start to <<handtext>> knead <<his>> shoulders and back muscles.
-			<<if currentSkillValue("handskill") gte 800>>
+			<<if PC.handskill gte 800>>
 				"I-I'll call you back," <<he>> says, hanging up the phone. <<He>> slumps against you, and breathes heavily, as if in a trance.
-			<<elseif currentSkillValue("handskill") gte 400>>
+			<<elseif PC.handskill gte 400>>
 				"One sec," <<he>> says, putting the phone down. <<He>> leans back, and puts <<his>> feet on the desk as <<he>> relaxes to your touch.
 			<<else>>
 				<<His>> expression doesn't change much as <<he>> continues to talk on the phone, but <<he>> seems appreciative for your effort.

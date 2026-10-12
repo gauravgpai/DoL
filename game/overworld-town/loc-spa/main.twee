@@ -210,7 +210,7 @@ Surrounded by a blue glow, you feel your heart pump as the warmth seeps into you
 The spa is closed. <<openinghours>>
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>
@@ -289,7 +289,7 @@ You shake your head. "Good," the <<person>> says. "You can start when you like."
 
 "Skilled hands?" the <<person>> asks. "We'll see." <<He>> reaches over the desk, grasps your hands in <<his>> own, and leans forward to observe them.
 
-<<if currentSkillValue("handskill") gte 400>>
+<<if PC.handskill gte 400>>
 	<<spa_job_init>>
 	<<He>> frowns. "Unexpected. <span class="green">Maybe there is a place for you.</span>" <<He>> pulls away.
 	<br><br>

@@ -2184,11 +2184,11 @@ Avery tries to pull you in one direction, but you pull <<him>> in another.
 <<if $danceSuccess>>
 	<<He>> resists for a moment, <span class="green">but then goes along with it.</span>
 
-	<<if currentSkillValue('danceskill') gte 600>>
+	<<if PC.danceskill gte 600>>
 		You're good at this, after all.
-	<<elseif currentSkillValue('danceskill') gte 400>>
+	<<elseif PC.danceskill gte 400>>
 		You're a confident dancer, but you're careful not to show <<him>> up.
-	<<elseif currentSkillValue('danceskill') gte 100>>
+	<<elseif PC.danceskill gte 100>>
 		It's not your first dance, but you worry you'll show <<him>> up. However, you manage to follow the music without problem.
 	<<else>>
 		You worry you'll show <<him>> up, until you notice the other dancers are novices themselves.
@@ -2236,9 +2236,9 @@ The guests like the idea. So does Avery, and the other couple. Particularly one 
 
 The other couple are up first. The musicians begin a new piece, faster still than anything they've played yet. The couple manage to keep up.
 
-<<if currentSkillValue('danceskill') gte 800>>
+<<if PC.danceskill gte 800>>
 	They're good. Really good. But you think you're better.
-<<elseif currentSkillValue('danceskill') gte 400>>
+<<elseif PC.danceskill gte 400>>
 	They're good. Really good. Winning would be a challenge.
 <<else>>
 	They're good. Really good. You don't like your chances.
@@ -5329,7 +5329,7 @@ As the helicopter continues its route towards the $avery_helicopter.destination,
 <<elseif random(1,3) is 2>> /* Turbulence */
 	you watch outside the window. Partway through the ride, the helicopter suddenly starts to shake, startling both you and Avery. <<gstress>><<stress 3>>
 	<br><br>
-	<<if (currentSkillValue('willpower')/5) gte random(1,20)>>
+	<<if (PC.willpower/5) gte random(1,20)>>
 		<<set $phase2 to 1>>
 		The both of you manage to <span class="green">keep your cool</span>.You meet Avery's eyes, and <<he>> gives you a reassuring smile<<if $averyragerevealed gte 1>>, though you detect a hint of disappointment.<</if>>
 		<br><br>
@@ -5889,11 +5889,11 @@ You<<if _end is "good">> say goodbye to Avery, and<</if>> start climbing down th
 		Avery's free hand moves to rest on the door handle. <<He>> barely grips it, but the message is clear. Your already racing heart thuds painfully. <<ggstress>><<stress 9>>
 		<br><br>
 		<<if $averySeen.includes("helicopter_ascended_threat")>>
-			<<if (currentSkillValue('willpower')/10) gte random(1,80) and $trauma lt ($traumamax*3)/4>>
+			<<if (PC.willpower/10) gte random(1,80) and $trauma lt ($traumamax*3)/4>>
 				<<link [[Check the door lock|Avery Helicopter Threat End]]>><<set $phase to 1>><</link>>
 			<</if>>
 		<<else>>
-			<<if (currentSkillValue('willpower')/10) gte random(1,40) and $trauma lt ($traumamax/2)>>
+			<<if (PC.willpower/10) gte random(1,40) and $trauma lt ($traumamax/2)>>
 				<<link [[Check the door lock|Avery Helicopter Threat End]]>><<set $phase to 1>><</link>>
 			<</if>>
 		<</if>>
@@ -6016,11 +6016,11 @@ You<<if _end is "good">> say goodbye to Avery, and<</if>> start climbing down th
 		Avery's free hand moves to rest on the door handle. <<He>> barely grips it, but the message is clear. Your already racing heart thuds painfully. <<ggstress>><<stress 9>>
 		<br><br>
 		<<if $averySeen.includes("helicopter_ascended_threat")>>
-			<<if (currentSkillValue('willpower')/10) gte random(1,80) and $trauma lt ($traumamax*3)/4>>
+			<<if (PC.willpower/10) gte random(1,80) and $trauma lt ($traumamax*3)/4>>
 				<<link [[Check the door lock|Avery Helicopter Threat End]]>><<set $phase to 1>><</link>>
 			<</if>>
 		<<else>>
-			<<if (currentSkillValue('willpower')/10) gte random(1,40) and $trauma lt ($traumamax/2)>>
+			<<if (PC.willpower/10) gte random(1,40) and $trauma lt ($traumamax/2)>>
 				<<link [[Check the door lock|Avery Helicopter Threat End]]>><<set $phase to 1>><</link>>
 				<br>
 			<</if>>

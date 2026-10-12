@@ -2,13 +2,13 @@
 <<effects>>
 <<ShowUnderEquip "over">>
 <<ShowUnderEquip "normal">>
-<<if currentSkillValue('skulduggery') lt 100>>
+<<if PC.skulduggery lt 100>>
 	A security guard watches the entrance. There's no other way out, so you put everything back before leaving.
 	<<clothingReset>>
 <<else>>
 	<<rng>>
-	<<if crimeSumCurrent() gte 50000 or (crimeSumCurrent() gte 40000 and $rng * 20 gte currentSkillValue('skulduggery')) or (crimeSumCurrent() gte 25000 and $rng * 10 gte currentSkillValue('skulduggery'))
-	or (crimeSumCurrent() gte 10000 and $rng * 5 gte currentSkillValue('skulduggery'))>>
+	<<if crimeSumCurrent() gte 50000 or (crimeSumCurrent() gte 40000 and $rng * 20 gte PC.skulduggery) or (crimeSumCurrent() gte 25000 and $rng * 10 gte PC.skulduggery)
+	or (crimeSumCurrent() gte 10000 and $rng * 5 gte PC.skulduggery)>>
 		<<generateSecurity 1>><<person1>>
 		A security guard watches the entrance, and as you try to stroll by, <<he>> stops you.
 		<br><br>

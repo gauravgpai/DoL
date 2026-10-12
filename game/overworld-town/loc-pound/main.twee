@@ -588,7 +588,7 @@ A <<person>> takes your leash and leans in. "They used to respect you," <<he>> s
 		<br><br>
 		<<stray_happiness_text>>
 	<<elseif $slimePoundDefy>>
-		<<if $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+		<<if $earSlime.corruption gte (PC.willpower / 10)>>
 			<<set $earSlime.defyCooldown += 2>>
 			The slime tries to assert control. <span class="red">It overpowers your will,</span> forcing you to do what it wants.
 			<<ggwillpower>><<willpower 1>>
@@ -2236,7 +2236,7 @@ You make <<moneyGain $pound.money>>.
 <<else>>
 	You pass beneath a stone archway. There aren't many ruins this close to town, and those that remain have been worn down, their inscriptions faded or wiped entirely.
 	<br><br>
-	<<if currentSkillValue("history") gte 1000>>
+	<<if PC.history gte 1000>>
 		<<link [[Try to read an inscription|Pound Work Walk Hills Read]]>><</link>><<willpowerdifficulty 600 1000>>
 		<br>
 	<<else>>
@@ -3062,7 +3062,7 @@ You fiddle with the primitive lock, and manage to open the cage. The <<beasttype
 The pound is closed. <<openinghours>>
 <br><br>
 
-<<if currentSkillValue('skulduggery') gte $lock>>
+<<if PC.skulduggery gte $lock>>
 	<<if pcAreArmsBound("both")>>
 		You think you'd be able to pick the lock, <span class="blue">if your arms weren't bound.</span>
 		<br><br>

@@ -518,7 +518,7 @@
 				With your cat-like reflexes, <span class="green">you easily scramble up the same tree</span>. The two of you chase each other through the canopy for a short time, before returning to the forest floor.
 			<<elseif $harpy gte 6 and $birdFly and !$plucked>>
 				You crouch, and give your wings a heavy flap to do a high jump. <span class="green">It gives you enough of a boost to climb the rest of the way.</span> The two of you chase each other through the canopy for a short time, before returning to the forest floor.
-			<<elseif currentSkillValue("athletics") gte random(0, $NPCList[0].skills.athletics + 100)>>
+			<<elseif PC.athletics gte random(0, $NPCList[0].skills.athletics + 100)>>
 				<<if $harpy gte 6 and $birdFly and $plucked>>
 					You flap your wings, but they're too plucked to give you any sort of boost.
 				<</if>>
@@ -530,7 +530,7 @@
 		<<case "river_jump">>
 			<<if $angel gte 6 or $fallenangel gte 2 or $demon gte 6 or $harpy gte 6>>
 				You jump and <span class="green">easily glide the short distance</span> over the river.
-			<<elseif currentSkillValue("athletics") gte random(0, 800)>>
+			<<elseif PC.athletics gte random(0, 800)>>
 				You jump the river, and <span class="green">manage to clear the full distance</span>.
 			<<else>>
 				You jump the river, and <span class="red">come up just short</span>. You grab the opposite bank, but your lower half dips into the water. You quickly pull yourself up, but you've lost some distance.
@@ -540,7 +540,7 @@
 			<<if $dryad gte 6>>
 				The thorns and vines <span class="green">move aside for you</span>. You end up making it through faster than your quarry did, and gain some distance.
 				<<set $NPCList[0].distance -= 1>>
-			<<elseif currentSkillValue("tending") gte random(1, 800)>>
+			<<elseif PC.tending gte random(1, 800)>>
 				You brace yourself, and take your time navigating the thick foliage. <span class="green">You know where to step, and when to take it as slow as possible to avoid being ensnared.</span>
 			<<else>>
 				You try to push through as fast as possible, <span class="red">and end up getting momentarily ensnared in some vines</span>. You escape, but your quarry has pulled ahead.
@@ -821,7 +821,7 @@
 <<widget "stalk_athletics_difficulty">>
 	<<if $stalk_assess or $NPCList[0].state is "pursuit" or $NPCList[0].state is "chased">>
 		<<if $worn.feet.type.includes("heels")>>
-			<<skill_difficulty `currentSkillValue("feetskill")` "Feet (heels)" 1 1000>>
+			<<skill_difficulty `PC.feetskill` "Feet (heels)" 1 1000>>
 		<</if>>
 		<<athleticsdifficulty 0 $NPCList[0].skills.athletics>>
 	<</if>>
@@ -832,9 +832,9 @@
 		<<set _difficulty to $NPCList[0].skills.security>>
 		<<set _difficulty += $liquidcount * 20>>
 		<<if $liquidcount gte 1>>
-			<<skill_difficulty `currentSkillValue("skulduggery")` "Skulduggery (Slimy)" 0 _difficulty>>
+			<<skill_difficulty `PC.skulduggery` "Skulduggery (Slimy)" 0 _difficulty>>
 		<<else>>
-			<<skill_difficulty `currentSkillValue("skulduggery")` "Skulduggery" 0 _difficulty>>
+			<<skill_difficulty `PC.skulduggery` "Skulduggery" 0 _difficulty>>
 		<</if>>
 	<</if>>
 <</widget>>
@@ -1331,7 +1331,7 @@
 		or $NPCList[0].fullDescription is "Gwylan" and $gwylanSeen?.includes("ritual_sex")>>
 		<<set $_chasingAnyways to true>>
 	<</if>>
-	<<if currentSkillValue('seductionskill') gte random(1, 1000) or $NPCList[0].fullDescription is "Gwylan">>
+	<<if PC.seductionskill gte random(1, 1000) or $NPCList[0].fullDescription is "Gwylan">>
 		<<set $_tauntSuccess to true>>
 	<</if>>
 	<<if $_chasingAnyways or $_tauntSuccess>>
@@ -1427,7 +1427,7 @@
 		<<if hasSexStat("promiscuity", 4)>>
 			<<set $_ambushTextPool.pushUnique("You crash down on top of the <<person>>, purposefully planting your <<bottom>> against <<his>> face. You playfully wiggle against <<his>> mouth and nose, hearing <<him>> struggle to breathe. After a few moments of this, you're satisfied and leap off <<him>> to flee the scene. <<arousal 1000>><<ggarousal>><br>")>>
 		<</if>>
-		<<if currentSkillValue('skulduggery') gte 600>>
+		<<if PC.skulduggery gte 600>>
 			<<set $_ambushTextPool.pushUnique("You manage to knock the <<person>> to the ground. Taking advantage, you tie <<his>> shoelaces together with incredible deftness. <<He>> curses as you triumphantly make your escape.")>>
 		<</if>>
 	<</if>>

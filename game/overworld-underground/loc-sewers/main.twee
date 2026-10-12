@@ -1100,7 +1100,7 @@ You tear off your <<print $worn.under_upper.name>>, and the slime with it. The f
 <<effects>>
 
 You examine the walls, and the water.
-<<if currentSkillValue("history") gte random(1, 1000)>>
+<<if PC.history gte random(1, 1000)>>
 	<<if $bus is "residentialdrain">>
 		<<set $drains_rescue_location to "residential">>
 		Leaves, grass, and other garden detritus float by. The people maintaining the park aren't so clumsy with their waste. You're beneath the residential district.

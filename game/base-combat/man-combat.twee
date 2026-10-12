@@ -815,7 +815,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		You have to come back up for air, and your breach is beautiful. You tremble together. <<set $enemyarousal += 1200>><<arousal 10000>><<pain -50>><<gggarousal>><<lllpain>><br>
 	<<elseif $uncomfortable.hypnosis is false>>
 		nurtured by a shared yearning. <span class="lewd">Your mind immediately accepts it.</span> <<gwylanHypnosis "devotion" 10>><br>
-	<<elseif currentSkillValue('willpower') gte random(1, 1000)>>
+	<<elseif PC.willpower gte random(1, 1000)>>
 		nurtured by an unwelcome part of you. <span class="lblue">You will it away.</span> <<He>> pouts.
 	<<else>>
 		unbeckoned. <span class="pink">You can't resist it.</span> <<gwylanHypnosis "devotion" 10>><<willpower 1>><<gwillpower>><br>
@@ -840,7 +840,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 	<<elseif $uncomfortable.hypnosis is false>>
 		nurtured by a lewd part of you. <span class="lewd">Your mind immediately accepts it.</span> Feelings of arousal overwhelm you. <<He>> flashes you a satisfied smile.
 		<<arousal 10000>>
-	<<elseif currentSkillValue('willpower') gte random(1, 1000)>>
+	<<elseif PC.willpower gte random(1, 1000)>>
 		nurtured by a traitorous part of you. <span class="lblue">You will it away.</span> <<He>> frowns.
 	<<else>>
 		unbeckoned. <span class="pink">You can't resist it.</span> Feelings of arousal overwhelm you. <<He>> flashes you a satisfied smile.
@@ -866,7 +866,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 	<<elseif $uncomfortable.hypnosis is false>>
 		nurtured by a lewd part of you. <span class="lewd">Your mind immediately accepts it.</span> You long for pain. <<He>> flashes you a satisfied smile.
 		<<masochism 10>>
-	<<elseif currentSkillValue('willpower') gte random(1, 1000)>>
+	<<elseif PC.willpower gte random(1, 1000)>>
 		nurtured by a traitorous part of you. <span class="lblue">You will it away.</span> <<He>> frowns.
 	<<else>>
 		unbeckoned. <span class="pink">You can't resist it.</span> You long for pain. <<He>> flashes you a satisfied smile.
@@ -3634,7 +3634,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 				<span class="purple"><<He>> withdraws <<his>> penis from your mouth.</span>
 				<<sex 30 "mouth" _n>><<set $NPCList[_n].penis to "mouthimminent">><<bruise face>><<violence 1>><<set $mouthstate to "imminent">>
 			<<elseif $enemyanger gte random(1, 100) and $NPCList[_n].penissize gte 2>>
-				<<if currentSkillValue("oralskill") gte random(1, 1200 + 100 * ($NPCList[_n].penissize - 2))>>
+				<<if PC.oralskill gte random(1, 1200 + 100 * ($NPCList[_n].penissize - 2))>>
 					<<He>> shoves <<his>> $NPCList[_n].penisdesc down your throat, <span class="blue">but you manage to gasp between <<his>> thrusts.</span>
 					<<if $neckuse isnot "hand">>
 						<<suffocatepass -1>>

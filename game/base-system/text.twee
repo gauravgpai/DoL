@@ -3086,7 +3086,7 @@
 <</widget>>
 
 <<widget "seductiontext">><<silently>>
-	<<set $_skillText to currentSkillValue("seductionskill")>>
+	<<set $_skillText to PC.seductionskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3098,7 +3098,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "oraltext">><<silently>>
-	<<set $_skillText to currentSkillValue("oralskill")>>
+	<<set $_skillText to PC.oralskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3110,7 +3110,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "vaginaltext">><<silently>>
-	<<set $_skillText to currentSkillValue("vaginalskill")>>
+	<<set $_skillText to PC.vaginalskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3122,7 +3122,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "peniletext">><<silently>>
-	<<set $_skillText to currentSkillValue("penileskill")>>
+	<<set $_skillText to PC.penileskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3134,7 +3134,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "analtext">><<silently>>
-	<<set $_skillText to currentSkillValue("analskill")>>
+	<<set $_skillText to PC.analskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3146,7 +3146,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "handtext">><<silently>>
-	<<set $_skillText to currentSkillValue("handskill")>>
+	<<set $_skillText to PC.handskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3158,7 +3158,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "feettext">><<silently>>
-	<<set $_skillText to currentSkillValue("feetskill")>>
+	<<set $_skillText to PC.feetskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3170,7 +3170,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "bottomtext">><<silently>>
-	<<set $_skillText to currentSkillValue("bottomskill")>>
+	<<set $_skillText to PC.bottomskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3182,7 +3182,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "thightext">><<silently>>
-	<<set $_skillText to currentSkillValue("thighskill")>>
+	<<set $_skillText to PC.thighskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3194,7 +3194,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "chesttext">><<silently>>
-	<<set $_skillText to currentSkillValue("chestskill")>>
+	<<set $_skillText to PC.chestskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
@@ -3206,7 +3206,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "swimmingtext">>
-	<<set $_swimmingskillText to currentSkillValue('swimmingskill')>>
+	<<set $_swimmingskillText to PC.swimmingskill>>
 	<<if $_swimmingskillText lt 200>><span class="pink">haphazardly</span>
 	<<elseif $_swimmingskillText lt 400>><span class="purple">awkwardly</span>
 	<<elseif $_swimmingskillText lt 600>><span class="blue">adequately</span>
@@ -3218,7 +3218,7 @@
 <</widget>>
 
 <<widget "tendingtext">>
-	<<set $_tendingText to currentSkillValue('tending')>>
+	<<set $_tendingText to PC.tending>>
 	<<if $_tendingText lt 200>><span class="pink">awkwardly</span>
 	<<elseif $_tendingText lt 400>><span class="purple">cautiously</span>
 	<<elseif $_tendingText lt 600>><span class="blue">rhythmically</span>
@@ -3229,7 +3229,7 @@
 <</widget>>
 
 <<widget "dancetext">>
-	<<set $_danceskillText to currentSkillValue('danceskill')>>
+	<<set $_danceskillText to PC.danceskill>>
 	<<if $_danceskillText lt 200>><span class="pink">awkwardly</span>
 	<<elseif $_danceskillText lt 400>><span class="purple">cautiously</span>
 	<<elseif $_danceskillText lt 600>><span class="blue">rhythmically</span>
@@ -3240,7 +3240,7 @@
 <</widget>>
 
 <<widget "housekeepingtext">>
-	<<set $_housekeepingText to currentSkillValue('housekeeping')>>
+	<<set $_housekeepingText to PC.housekeeping>>
 	<<if $_housekeepingText lt 200>><span class="pink">awkwardly</span>
 	<<elseif $_housekeepingText lt 400>><span class="purple">cautiously</span>
 	<<elseif $_housekeepingText lt 600>><span class="blue">rhythmically</span>
@@ -5113,7 +5113,7 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "tending_text">>
-	<<set $_tendingText to currentSkillValue('tending')>>
+	<<set $_tendingText to PC.tending>>
 	<<if $_tendingText gte 1200>>
 		<span class="gold">You're incredible at this.</span>
 	<<elseif $_tendingText gte 800>>
@@ -5130,7 +5130,7 @@
 <</widget>>
 
 <<widget "housekeeping_text">>
-<<set $_housekeepingText to currentSkillValue('housekeeping')>>
+<<set $_housekeepingText to PC.housekeeping>>
 <<if $_housekeepingText gte 1200>>
 	<span class="gold">You're incredible at this.</span>
 <<elseif $_housekeepingText gte 800>>

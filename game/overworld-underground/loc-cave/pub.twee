@@ -888,7 +888,7 @@ Wren smirks, and reclines against the bar, stretching out <<his>> arms to claim 
 <br>
 "No you don't," the <<person2>><<person>> replies. "You always slip away. Not this time."
 
-<<if currentSkillValue('skulduggery') gte 800>>
+<<if PC.skulduggery gte 800>>
 <br><br>
 	<span class="blue">You sense a change in the pub.</span> Several clientele are moving closer, each acting nonchalant, drawing little attention.
 	<br><br>

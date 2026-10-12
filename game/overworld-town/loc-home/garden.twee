@@ -1074,7 +1074,7 @@ You sit on the grass beside Robin and rummage among the wild flowers for suitabl
 	<br><br>
 <</if>>
 
-Soon, you both have flower crowns ready. <<if currentSkillValue('tending') lt 200>>Yours looks rougher than Robin's, but <<he>> doesn't seem to mind. <</if>><<He>> reaches atop your head and places the crown <<he>> made upon it. You place yours atop <<his>> head in turn.
+Soon, you both have flower crowns ready. <<if PC.tending lt 200>>Yours looks rougher than Robin's, but <<he>> doesn't seem to mind. <</if>><<He>> reaches atop your head and places the crown <<he>> made upon it. You place yours atop <<his>> head in turn.
 <br><br>
 
 <<headwear "flower crown">>

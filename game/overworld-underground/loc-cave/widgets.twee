@@ -27,7 +27,7 @@
 	<<else>>
 		The cave branches in two directions.
 		<<if random(1, 2) is 2>>
-			<<if currentSkillValue('history') gte random(1, 1000)>>
+			<<if PC.history gte random(1, 1000)>>
 				<span class="green">You recognise the markings along the walls.</span> Something was hidden down the left passage, while the right leads towards the sea.
 				<br><br>
 			<<else>>
@@ -39,7 +39,7 @@
 			<<caveicon "right">><<link [[Go right|Beach Cave Back]]>><</link>>
 			<br>
 		<<else>>
-			<<if currentSkillValue('history') gte random(1, 1000)>>
+			<<if PC.history gte random(1, 1000)>>
 				<span class="green">You recognise the markings along the walls.</span> Something was hidden down the right passage, while the left leads towards the sea.
 				<br><br>
 			<<else>>
@@ -175,7 +175,7 @@
 			<<link [[Next|Beach Cave]]>><<set $eventskip to 1>><</link>>
 			<br>
 		<<elseif $settings.tentaclesEnabled and $hallucinations gte 2>>
-			<<if currentSkillValue('skulduggery') gte random(400, 1200)>>
+			<<if PC.skulduggery gte random(400, 1200)>>
 				<span class="green">Your hair bristles.</span> You pause, and examine the ground ahead. Then you see it. The tendril of some creature, hanging in the gloom above.
 				<br><br>
 				You step around it, unharmed.
@@ -223,7 +223,7 @@
 				<</if>>
 			<</if>>
 		<<else>>
-			<<if currentSkillValue('skulduggery') gte random(400, 1200)>>
+			<<if PC.skulduggery gte random(400, 1200)>>
 				<span class="green">Your hair bristles.</span> You pause, and examine the ground ahead. Then you see it. A coiled rope, hanging in the gloom above. Beneath it is a suspicious-looking stone.
 				<br><br>
 				You step around it, unharmed.

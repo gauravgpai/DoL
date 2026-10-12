@@ -1129,7 +1129,7 @@
 		<</if>>
 
 		/* Hand skill is C or higher */
-		<<if currentSkillValue("handskill") gte 400>>
+		<<if PC.handskill gte 400>>
 			<<if $enemyanger lte 20>>
 				<<if $speechHandjobPenis or $speechHandjobVagina>>
 					<<addSpeechLine "touch">>
@@ -1214,7 +1214,7 @@
 					<<else>>
 						"Finally you're using that mouth of yours for something productive," <<he>> <<= either("drawls","says","remarks")>>.
 					<</if>>
-				<<elseif currentSkillValue("oralskill") gte 400>>
+				<<elseif PC.oralskill gte 400>>
 					"Very good." <<He>> smiles. "You know how to use that<<if C.npc.Avery.love gte 30 or C.npc.Avery.lust gte 20>> <<= either("sweet","pretty","precious")>> little<</if>> mouth of yours well..."
 				<<else>>
 					"Haven't done this much before, have you?" <<He>> <<= either("smiles","<<laughs>>")>>. "How <<= either("cute","adorable")>>. We'll have to keep practicing."
@@ -1304,7 +1304,7 @@
 				<<else>> /* Doggy */
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 3 and $rng gte 51>>
 						<<He>> starts thrusting between your thighs roughly. You hear <<his>> <<= either("grunting", "moaning","panting")>> in your ear.
-					<<elseif currentSkillValue("thighskill") gte 400>>
+					<<elseif PC.thighskill gte 400>>
 						"Yes, keep them together like that," <<he>> hisses with pleasure.<<if C.npc.Avery.love gte 40>> "Good <<girl>>."<</if>>
 					<<else>>
 						"Squeeze your thighs together tighter," <<he>> murmurs. <<He>> makes a pleased sound when you do.

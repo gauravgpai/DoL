@@ -1011,7 +1011,7 @@ You hasten your pace to escape the remarks.
 		<<endevent>>
 		<<destinationeventend>>
 	<<elseif $rng lte 80>>
-		<<if $rng lte (currentSkillValue('physique') / 200)>>
+		<<if $rng lte (PC.physique / 200)>>
 			You launch into action. The <<person1>><<person>> is holding the <<person3>><<persons>> throat with one hand, while struggling to get <<his>> underwear past <<his>> knees with the other, leaving <<person1>><<him>> lined up for a running <<if $NPCList[0].penis isnot "none">>punt to the cock.<<else>>cunt-punt.<</if>> <<He>> curls up with a blood-curdling howl.
 			<br><br>
 			The <<person2>><<person>> looks upon just in time for a follow up kick to the face.
@@ -2457,13 +2457,13 @@ Your cries attract the attention of the people passing by the alley's entrance. 
 				<br>
 				<<if $sexStats.vagina.pregnancy.totalBirthEvents is 0>>"Your hymen looks intact?" <<he>><<else>><<He>><</if>> gasps. "Lucky me, finding a virgin pussy. 
 				<<if playerBellyVisible() and $settings.pregnancySpeechEnabled>>
-					<<if currentSkillValue('physique') gte ($physiquesize / 7) * 4>>
+					<<if PC.physique gte ($physiquesize / 7) * 4>>
 						Good work..."
 					<<else>>
 						Watch out, <<girl>>..."
 					<</if>> 
 				<<else>>
-					<<if currentSkillValue('physique') gte ($physiquesize / 7) * 4>>
+					<<if PC.physique gte ($physiquesize / 7) * 4>>
 						Good work! You look like you can take care of yourself!"
 					<<else>>
 						Watch out, <<girl>>. Little thing like you will be lucky to last a week!"
@@ -2639,7 +2639,7 @@ Your cries attract the attention of the people passing by the alley's entrance. 
 			"These pictures," <<he>> sighs. "Are treasures. These will last forever."
 		<<elseif $player.virginity.anal is true>>
 			<br>
-			"Your ass looks intact," <<he>> comments. <<if currentSkillValue('physique') gte ($physiquesize / 7) * 4>>"You look like you can take care of yourself! In this town you might need to."<<else>>"You must be new around here. Skinny thing like you will be lucky to last a week in this town."<</if>>
+			"Your ass looks intact," <<he>> comments. <<if PC.physique gte ($physiquesize / 7) * 4>>"You look like you can take care of yourself! In this town you might need to."<<else>>"You must be new around here. Skinny thing like you will be lucky to last a week in this town."<</if>>
 			<br><br>
 			After a lot of camera snaps, <<he>> stops and browses through the photos on <<his>> phone.
 			<br>
@@ -2829,7 +2829,7 @@ Following the slime's command, you climb into the back of the car, and the <<per
 	<<endevent>>
 
 	<<destinationeventend>>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("promiscuity", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>
@@ -3043,7 +3043,7 @@ Industrial
 			<br>
 			"What do I owe you for such amazing sex? Just name your price."
 			<br><br>
-			<<if currentSkillValue('skulduggery') gte 700 and random(1,2) is 1>>
+			<<if PC.skulduggery gte 700 and random(1,2) is 1>>
 				<span class="gold">Thanks to your knowledge of trickery and deceit, you smell a rat. The car. The person. Everything feels wrong. This feels like a setup.</span>
 				<br><br>
 				<<set $street_car_police to true>>
@@ -3072,7 +3072,7 @@ Industrial
 		<<else>>
 			"There's no cost involved, right? That'd be prostitution. A <<girl>> like you isn't a whore? I'd have to take you in for that, I'm a police officer."
 		<br><br>
-		<<if currentSkillValue('skulduggery') gte 700 and random(1,2) is 1>>
+		<<if PC.skulduggery gte 700 and random(1,2) is 1>>
 			<span class="gold">Your eyes, used to deception, detect no lie. The car. The person. Everything makes sense. This is a genuine police officer.</span>
 			<br><br>
 			<<set $street_car_police to true>>
@@ -3191,8 +3191,8 @@ Industrial
 		<br>
 		"What do I owe you for such amazing sex? Just name your price."
 		<br><br>
-		<<if (currentSkillValue('skulduggery') gte 700 and (random(1,2) is 1)) or crimeSumCurrent() lt 1000 or ($enemyanger lte 0 and crimeSumCurrent() lt 5000)>>
-			<span class="gold">Your eyes<<if currentSkillValue('skulduggery') gte 700>>, used to deception,<</if>> detect no lie. <<if crimeSumCurrent() lt 1000>>The police has no reason to target you with a sting operation. <<else>>The person seems completely genuine. Nothing more than a satisfied customer.<</if>></span>
+		<<if (PC.skulduggery gte 700 and (random(1,2) is 1)) or crimeSumCurrent() lt 1000 or ($enemyanger lte 0 and crimeSumCurrent() lt 5000)>>
+			<span class="gold">Your eyes<<if PC.skulduggery gte 700>>, used to deception,<</if>> detect no lie. <<if crimeSumCurrent() lt 1000>>The police has no reason to target you with a sting operation. <<else>>The person seems completely genuine. Nothing more than a satisfied customer.<</if>></span>
 			<br><br>
 			<<set $street_car_police to false>>
 		<</if>>
@@ -3248,7 +3248,7 @@ Industrial
 		<br>
 		"There's no cost involved, right? That'd be prostitution. A <<girl>> like you isn't a whore? I'd have to take you in for that, I'm a police officer."
 		<br><br>
-		<<if currentSkillValue('skulduggery') gte 700 and random(1,2) is 1>>
+		<<if PC.skulduggery gte 700 and random(1,2) is 1>>
 			<span class="gold">Thanks to your knowledge of trickery and deceit, you smell that something is off. The way they behave, the whole vibe feels wrong. This person is definitely not police.</span>
 			<br><br>
 			<<set $street_car_police to false>>
@@ -3356,7 +3356,7 @@ Industrial
 <<set _ring to $phase is 1000>>
 <<clotheson>>
 <<endcombat>>
-<<if _ring and currentSkillValue('skulduggery') gte 700>>
+<<if _ring and PC.skulduggery gte 700>>
 	<<set $pronoun to $npcpronountemp>>
 	Your eyes catch a glint on the floor. It's a gold ring set with an emerald, that <<he>> must have dropped while laughing. It's probably <span class="gold">worth more than £1000</span>.
 	<<unset $npcpronountemp>>
@@ -3427,7 +3427,7 @@ You follow the slime's urging and approach the <<person>>.
 
 	<<endevent>>
 	<<destinationeventend>>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("exhibitionism", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>
@@ -5697,7 +5697,7 @@ The <<person>> is taken aback, but recovers quickly. <<He>> glances around, then
 	<<endevent>>
 
 	<<destinationeventend>>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("promiscuity", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>
@@ -5855,7 +5855,7 @@ You drop to the ground, writhing and moaning. You're not sure what you're doing,
 	<<endevent>>
 
 	<<destinationeventend>>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("promiscuity", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 6>>
 	<<else>>
@@ -6864,7 +6864,7 @@ You step off the bridge. It adds several minutes to your journey, but you find a
 	<<endevent>>
 	<<destinationeventend>>
 	<br>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("exhibitionism", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 2>>
 	<<else>>
@@ -7547,7 +7547,7 @@ You shake your head and keep walking.
 	<<destinationeventend>>
 	<br>
 	<<unset $earSlimeForcedExposure>>
-<<elseif $earSlime.corruption gte (currentSkillValue('willpower') / 10)>>
+<<elseif $earSlime.corruption gte (PC.willpower / 10)>>
 	<<if hasSexStat("exhibitionism", 4) and $earSlime.growth lt 100>>
 		<<set $earSlime.defyCooldown += 4>>
 	<<else>>
@@ -8255,11 +8255,11 @@ You turn and continue your journey.
 
 You punch the <<person>> in the face, putting a stop to the torrent of abuse.
 
-<<if currentSkillValue('physique') gte 14000>>
+<<if PC.physique gte 14000>>
 	The force sends <<him>> staggering into the road.
-<<elseif currentSkillValue('physique') gte 9000>>
+<<elseif PC.physique gte 9000>>
 	<<He>> looks surprised as <<he>> staggers backward.
-<<elseif currentSkillValue('physique') gte 5000>>
+<<elseif PC.physique gte 5000>>
 	<<He>> winces, and raises <<his>> arms to protect <<himself>>.
 <<else>>
 	<<He>> winces, and looks surprised.
@@ -9625,7 +9625,7 @@ Despite the <<persons>> sincere tone, you think better of accepting a ride from 
 		<</if>>
 		<<His>> smile falters. "Oh, I thought you'd be different," <<he>> says, rueful.
 		<br><br>
-		<<if random(0, 10000) lt $fame.model + currentSkillValue("seductionskill") + $allure>>
+		<<if random(0, 10000) lt $fame.model + PC.seductionskill + $allure>>
 			<<set $tipmod += 0.25>>
 			<<His>> smile soon returns. "But I understand." <<He>> nods. "You're right, it's your job and you get paid for it. Alright, I'll pay you."
 			<br><br>
@@ -9795,7 +9795,7 @@ Despite the <<persons>> sincere tone, you think better of accepting a ride from 
 		<</if>>
 		<<His>> lewd intentions are clear.
 		<br><br>
-		<<if random(0, 10000) lt $fame.model + currentSkillValue("seductionskill") + $allure>>
+		<<if random(0, 10000) lt $fame.model + PC.seductionskill + $allure>>
 			<<if $trance gte 1>>
 				The <<person>> pulls back. <<He>> seeks your eyes again and, rising from <<his>> knees, starts to pull off <<his>> <<npcClothesText $NPCList[0] "lower">>.
 				<br><br>
