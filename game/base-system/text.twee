@@ -1472,9 +1472,10 @@
 		<<if $player.breastsize lte 0>>
 			<<print "nipples">>
 		<<else>>
-			<<print setup.breastsizes[$player.breastsize]>>
-			<<if !_breastSensitivityDescribed or _args[0]>><<breastsensitivity>><</if>>
-			<<print " breasts">>\
+			<<set _text_output to `${setup.breastsizes[$player.breastsize]} `>>
+			<<if !_breastSensitivityDescribed or _args[0]>><<silently>><<breastsensitivity>><</silently>><<set _text_output += _text_output2>><</if>>
+			<<set _text_output += "breasts">>
+			<<print _text_output>>\
 		<</if>>
 	<<elseif $options.debugdisable is "f">>
 		<<print "ERROR - $$player.breastsize is not a number: $player.breastsize">>
@@ -1538,7 +1539,7 @@
 	<<undertop>>
 	<!-- _text_output now has top (either worn under_upper name, or breasts desc) -->
 
-	<<if !_underOutfit>> <!-- Two separate items, not an outfit -->
+	<<if !_underOutfit and $worn.under_lower.name isnot "naked">> <!-- Two separate items, not an outfit -->
 		<<set _text_output += " and " + $_secondhalf>>
 	<</if>>
 <</silently>><<print _text_output>><</widget>>
