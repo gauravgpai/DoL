@@ -915,7 +915,7 @@
 			You pick it up. It's a wallet. You decide to keep the <<moneyGain $_carcash>> inside.
 			<br><br>
 		<</switch>>
-	<<elseif (currentSkillValue('danceskill') + $rng) gte 500>><<generate2>><<person2>>
+	<<elseif (PC.danceskill + $rng) gte 500>><<generate2>><<person2>>
 		With a dancer's grace and agility <span class = "green">you dodge and it harmlessly passes you by.</span>
 		<br><br>
 		<<if ($rng % 3) is 0>>A <<person>> behind you is not so lucky. <<He>> is completely soaked <<if $cumballoon is 1>><span class="lewd">in cum</span> <</if>>and some of <<his>> clothes turn translucent, exposing <<him>>. There is a loud cheer from the car.

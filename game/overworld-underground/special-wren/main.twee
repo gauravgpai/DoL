@@ -187,7 +187,7 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 
 <<switch $wrenHeistDance.phase>>
 	<<case 1>> /* wine cellar */
-		The lights dim. You make your way off the stage to <<= currentSkillValue("danceskill") gte 600 ? "enthusiastic" : "tepid">> applause. As the rest of the party-goers start to chat, you sneak away to the wine cellar.
+		The lights dim. You make your way off the stage to <<= PC.danceskill gte 600 ? "enthusiastic" : "tepid">> applause. As the rest of the party-goers start to chat, you sneak away to the wine cellar.
 		<br><br>
 		Wren is there, waiting. <<He>> smiles when <<he>> sees you. "Nice work out there," <<he>> says. "Sorry, I didn't warn you in advance, but you did fine. That little distraction should keep them talking for a bit. Now, help me load up a few of these bottles."
 		<br><br>
@@ -220,7 +220,7 @@ As if on cue, the lights dim. A spotlight lands on you. You make your way to the
 		<<link [[Go upstairs second|Wren Heist Break Upstairs]]>><<set $phase to 0>><</link>>
 		<br>
 	<<case 4>> /* exit */
-		The lights come back on. Everyone claps <<= currentSkillValue("danceskill") gte 600 ? "with enthusiasm" : "politely">>. You step off the stage and make your way to the exit.
+		The lights come back on. Everyone claps <<= PC.danceskill gte 600 ? "with enthusiasm" : "politely">>. You step off the stage and make your way to the exit.
 		<br><br>
 		Wren straightens as you approach. "Let's go," <<he>> says.
 		<br><br>
@@ -286,7 +286,7 @@ As <<he>> goes to deposit your haul somewhere safe, a spotlight lands on you. Th
 	<<link [[Go back to the party|Wren Heist Dance]]>><<endevent>><<set $dancestart to 1>><</link>>
 	<br>
 <<else>> /* Help */
-	You nod. Wren leads you into the dining room. Servers rush by you in a steady stream. <<He>> weaves through them. You <<= currentSkillValue("danceskill") gte 600 ? "follow in <<his>> wake" : "stumble into a few before breaking free">>.
+	You nod. Wren leads you into the dining room. Servers rush by you in a steady stream. <<He>> weaves through them. You <<= PC.danceskill gte 600 ? "follow in <<his>> wake" : "stumble into a few before breaking free">>.
 	<br><br>
 	You find the china cabinet tucked along the back wall. Wren crouches to fiddle with the lock. The doors soon open. You waste no time and start to take as much as you can carry.
 	<br><br>

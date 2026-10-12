@@ -2455,7 +2455,7 @@ The <<person1>><<person>> looks at you with concern, <<his>> anger begins to tur
 			<</addinlineevent>>
 		<</if>>
 
-		<<if (PC.athletics gte 500 or currentSkillValue('danceskill') gte 500)>>
+		<<if (PC.athletics gte 500 or PC.danceskill gte 500)>>
 			<<addinlineevent "brat_dodge">>
 				The <<person1>><<person>> looks you up and down, then tries to grab you. You take a step to the side, easily slipping away from <<his>> grasping hand. <<He>> tries again, but <<his>> grab is so clumsy and obvious that you have no trouble dodging away a second time.
 				<br><br>
@@ -2510,7 +2510,7 @@ The <<person1>><<person>> looks at you with concern, <<his>> anger begins to tur
 			<</addinlineevent>>
 		<</if>>
 
-		<<if (PC.athletics gte 500 or currentSkillValue('danceskill') gte 500)>>
+		<<if (PC.athletics gte 500 or PC.danceskill gte 500)>>
 			<<addinlineevent "default_dodge">>
 				The <<person1>><<person>> looks you up and down, then tries to grab you. You take a step to the side, easily slipping away from <<his>> reaching fingers. <<He>> tries again, but <<his>> grab is so clumsy and obvious that you have no trouble dodging away a second time.
 				<br><br>

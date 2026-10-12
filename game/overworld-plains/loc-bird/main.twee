@@ -6502,9 +6502,9 @@ Where will you fly?
 		<br><br>
 
 		You feel something stir inside of you. Watching <<bhim>> is starting to wake your own bestial instincts. You start to fly like <<bhim>>, trying to show off your own moves.
-		<<if currentSkillValue("danceskill") gte 1000>>
+		<<if PC.danceskill gte 1000>>
 			<span class="green">Your flying is just as elegant, if not more so.</span> You weave a beautiful dance across the sky with <<bhim>>. <<your_bird_text "cap">> looks impressed.
-		<<elseif currentSkillValue("danceskill") gte 500>>
+		<<elseif PC.danceskill gte 500>>
 			<span class="green">You manage to keep up with <<bhim>>.</span> It becomes something of a dance between you two. <<bHe>> looks impressed.
 		<<else>>
 			You do your best, <span class="purple">but you're not quite on <<bhis>> level</span>. Still, <<bhe>> looks pleased.
@@ -6612,9 +6612,9 @@ Together you fly around until you find an especially windy part of the moor.
 <</if>>
 <<deviancy1>>
 
-<<if currentSkillValue("danceskill") gte 1000>>
+<<if PC.danceskill gte 1000>>
 	<span class="green">Your flying is just as elegant, if not more so.</span> You weave a beautiful dance across the sky with <<bhim>>. <<your_bird_text "cap">> looks impressed.
-<<elseif currentSkillValue("danceskill") gte 500>>
+<<elseif PC.danceskill gte 500>>
 	<span class="green">You manage to keep up with <<bhim>>.</span> It becomes something of a dance between you two. <<bHe>> looks impressed.
 <<else>>
 	You do your best, <span class="purple">but you're not quite on <<bhis>> level</span>. Still, <<bhe>> looks pleased.

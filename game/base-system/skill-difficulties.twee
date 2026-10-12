@@ -322,7 +322,7 @@
 <</widget>>
 
 <<widget "dancedifficulty">>
-	<<skill_difficulty currentSkillValue('danceskill') "Dance" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.danceskill "Dance" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <<widget "swimmingdifficulty">>

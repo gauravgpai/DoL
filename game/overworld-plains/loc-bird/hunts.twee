@@ -5894,7 +5894,7 @@ Like a predator, you begin slowly circling them. When you notice a good opportun
 <<else>>
 	<<if $bird.hunts.duo is true>>
 		You and <<your_bird_text>> peer over the stone, observing their movement. You wait until the lurkers are directly below you. You both step near the edge of the stone and screech. It's amplified by the echo, making the lurkers freeze in panic. The Great Hawk grabs one easily. You swoop down and grab another, making the last one flee.
-		<<if currentSkillValue("danceskill") gte random(1,1000)>>
+		<<if PC.danceskill gte random(1,1000)>>
 			<span class="green">You recover well from your swoop</span>, easily gaining altitude with the lurker in hand. You look to your spouse and smile, each of you having caught one. <<flight_hunt_get "lurkers" 2>>
 		<<else>>
 			You try to regain altitude, but you're off balance. You fumble the recovery, and have to let go of the lurker to avoid crashing face-first into a rock With free hands, you manage to avoid the collision, but the lurker is gone.
@@ -5910,7 +5910,7 @@ Like a predator, you begin slowly circling them. When you notice a good opportun
 		<</if>>
 	<<else>>
 		You wait until the lurkers are directly below you. You step near the edge of the stone and screech. It's amplified by the echo, making the lurkers freeze in panic. You swoop down and grab one, making the others scatter.
-		<<if currentSkillValue("danceskill") gte random(1,1000)>>
+		<<if PC.danceskill gte random(1,1000)>>
 			<span class="green">You recover well from your swoop</span>, easily gaining altitude with the lurker in hand. <<flight_hunt_get "lurkers" 1>>
 		<<else>>
 			You try to regain altitude, but you're off balance. You fumble the recovery, and have to let go of the lurker to avoid crashing face-first into a rock With free hands, you manage to avoid the collision, but the lurker is gone.

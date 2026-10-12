@@ -2652,7 +2652,7 @@ You approach the dance machine with Robin. There are two platforms beside one an
 
 Music begins, and the figures on the screen tap their feet. Arrows scroll down the screen. You ready yourself.
 <br><br>
-<<if currentSkillValue('danceskill') gte 600>>
+<<if PC.danceskill gte 600>>
 	The steps are easy, at first. You and Robin clear two whole songs without trouble. The third quickens the pace, and complexity. You're able to keep up just fine, but Robin struggles. Together you succeed, but the fourth song is harder still.
 	<br><br>
 	You hear Robin pant beside you. You know <<hes>> determined not to let you down. <<He>> tries until <<his>> legs give way. <<He>> grasps your arm as <<he>> falls, and together you tumble to the ground.

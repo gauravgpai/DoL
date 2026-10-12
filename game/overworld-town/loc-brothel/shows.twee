@@ -1998,7 +1998,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<<if $phase is 0>> /* Do nothing */
 			Your fidget with your hands as the bidding continues.
 		<<elseif $phase is 1>> /* Belly dance */
-			<<if currentSkillValue("danceskill") gte random(1, 800)>>
+			<<if PC.danceskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You sway your hips in time to an imaginary beat. You give a skilful roll of your belly.<<danceskill 5>><<gdanceskill>>
 				<br><br>

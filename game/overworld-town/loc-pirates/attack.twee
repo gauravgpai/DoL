@@ -507,15 +507,15 @@ The <<person>> quiets the audience with a gesture, preparing to announce the nex
 <<endevent>>
 <<loadNPC 0 "cruise_captain">><<person1>>
 
-<<if currentSkillValue('danceskill') gte 1000>>
+<<if PC.danceskill gte 1000>>
 	"What an astounding performance!" the <<person>> says. <<He>> sounds surprised, even awed.
-<<elseif currentSkillValue('danceskill') gte 800>>
+<<elseif PC.danceskill gte 800>>
 	"A great performance from our little castaway!" the <<person>> exclaims.
-<<elseif currentSkillValue('danceskill') gte 600>>
+<<elseif PC.danceskill gte 600>>
 	"Who would have known our little castaway would give such a good performance?" the <<person>> says.
-<<elseif currentSkillValue('danceskill') gte 400>>
+<<elseif PC.danceskill gte 400>>
 	"Seems our castaway knows a move or two," the <<person>> says.
-<<elseif currentSkillValue('danceskill') gte 200>>
+<<elseif PC.danceskill gte 200>>
 	"What a terrible performance," the <<person>> says. "But we can't expect our castaway to be a good dancer, can we?"
 <<else>>
 	"What an astounding performance!" the <<person>> says, sarcasm dripping off every word.

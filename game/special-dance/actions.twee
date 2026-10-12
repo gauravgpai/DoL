@@ -223,7 +223,7 @@
 			<<set _heelBonus to -4>>
 		<</if>>
 		<<rng>>
-		<<if ($allure / 100 + currentSkillValue('danceskill') / 20 + $audienceexcitement / 5 + $audiencearousal / 5 + _heelBonus) gte $rng>>
+		<<if ($allure / 100 + PC.danceskill / 20 + $audienceexcitement / 5 + $audiencearousal / 5 + _heelBonus) gte $rng>>
 			<<if $audience gte 0 and $audience lte 5>>
 				<<generatel>><<personselect $audience>>
 				A <<person>> starts watching you.
@@ -322,7 +322,7 @@
 			<br>
 
 			<<rng>>
-			<<if ($allure / 100 + currentSkillValue('danceskill') / 20 + $audienceexcitement / 5 + $audiencearousal / 5) gte $rng + 50>>
+			<<if ($allure / 100 + PC.danceskill / 20 + $audienceexcitement / 5 + $audiencearousal / 5) gte $rng + 50>>
 				<<rng 10>>
 				<<set $dancetip to ($rng * $audience * $venuemod * $audiencemod)>>
 				<<if $worn.feet.type.includes("heels")>>
@@ -367,8 +367,8 @@
 			<<if ($wraith.state is "haunt" or $wraith.offspring is "dead") and _wraithEvent and $rng lte 10>>
 				<<danceWraith>>
 				<<set $_blockDancingEvents to true>>
-			<<elseif currentSkillValue('danceskill') lt ( ($dance_stage_cum * 50) + random(1,250) )>>
-				<<if currentSkillValue('danceskill') gte ( ($dance_stage_cum * 40) + random(1,100) )>>
+			<<elseif PC.danceskill lt ( ($dance_stage_cum * 50) + random(1,250) )>>
+				<<if PC.danceskill gte ( ($dance_stage_cum * 40) + random(1,100) )>>
 					Your feet slip on the semen-covered stage, <span class="green">but you're able to recover,</span> incorporating the move into the dance.
 					<br><br>
 				<<else>>
@@ -647,7 +647,7 @@
 <<widget "dancedrink">>
 	<<set $danceevent to "drink">>
 	The <<person>> offers you a glass of wine.
-	<<if $drunk gte currentSkillValue('danceskill') - 800>>
+	<<if $drunk gte PC.danceskill - 800>>
 		You feel unsteady already.
 	<</if>>
 	<br><br>

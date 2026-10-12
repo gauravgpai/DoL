@@ -1641,7 +1641,7 @@
 
 						<<link [[Next|Farm Work]]>><<endevent>><</link>>
 						<br>
-					<<elseif currentSkillValue('danceskill') gte 800>>
+					<<elseif PC.danceskill gte 800>>
 						You step aside, <span class="green">and the bale lands beside you.</span>
 						<br><br>
 						"Nice dodge," Alex says, dropping to the earth. <<He>> hefts the bale onto <<his>> shoulder. "Gotta get them in storage to keep the weather off." <<He>> walks away.

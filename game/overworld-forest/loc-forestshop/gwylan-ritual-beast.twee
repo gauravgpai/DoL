@@ -652,7 +652,7 @@ but <<he>> holds the tincture away from you. "It's also a potent hallucinogen. I
 :: Gwylan Forest Journey 4
 <<effects>><<run statusCheck("Gwylan")>>
 <<if $phase is 1>>
-	<<if currentSkillValue("danceskill") gte 900>>
+	<<if PC.danceskill gte 900>>
 		<<set $beastRitual.difficultyMax -= 200>><<set $beastRitual.difficultyMin -= 200>>
 		You spend some time stretching. You know how to prepare for things like this, thanks to all your time dancing. You even outpace Gwylan. <<He>> looks impressed by just how flexible you are.
 		<span class="green">You feel a satisfying pop in your back as you stretch. Whatever comes next should be a little easier now.</span>

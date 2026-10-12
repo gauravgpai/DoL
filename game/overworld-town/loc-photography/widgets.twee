@@ -152,7 +152,7 @@
 	<<generate1>><<person1>>
 	A <<person1>><<person>> walks by,
 
-	<<if currentSkillValue("dancing") gte random(1, 1000)>>
+	<<if PC.dancing gte random(1, 1000)>>
 		and tries to slap the flyers from your hands. With a deft skip belying the weight of your costume, you step aside. <span class="green"><<He>> misses you.</span> The momentum carries <<him>> to the ground.<<ginterest>><<photo_interest 1>>
 		<<wearProp "flyers">>
 		<br><br>
