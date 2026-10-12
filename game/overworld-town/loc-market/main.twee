@@ -1754,7 +1754,7 @@ It turns out that the <<person1>><<person>> stole some <<if $phase is 0>>food<<e
 <<else>>
 	You tell the market stall owner about how hard the <<person>> works at school and how calling the police could destroy <<his>> whole future.<<set _bar to random(0,800)>>
 <</if>><br><br>
-<<if currentSkillValue('english') gte _bar>>
+<<if PC.english gte _bar>>
 	Hearing the passion in your words, the market stall owner relents.
 	<br>
 	<<if $phase is 0>>
@@ -1778,7 +1778,7 @@ It turns out that the <<person1>><<person>> stole some <<if $phase is 0>>food<<e
 		<<link [[Next|Connudatus Street]]>><<famegood 20>><<unset $urchin_debt>><<endevent>><</link>>
 		<br>
 	<</if>>
-<<elseif currentSkillValue('english') gte (_bar/2)>>
+<<elseif PC.english gte (_bar/2)>>
 	Hearing the conviction in your words, the market stall owner relents.
 	<br><br>
 	"Okay, but someone has to pay me for it."<br><br>

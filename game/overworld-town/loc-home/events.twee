@@ -1013,7 +1013,7 @@ Bailey keeps medical supplies in a cupboard adjoining the main hall. <<nnpc_He B
 	<<person2>><<he>> asks. You give <<him>> a grateful nod, and <<he>> smiles back.
 	<br><br>
 
-	<<if currentSkillValue('english') gte 500>>
+	<<if PC.english gte 500>>
 		You walk Robin through the motions, explaining the best way to redress the bandages. <<He>> nods, helping you along the way.
 	<<else>>
 		You fumble through your explanation on tending wounds, but Robin seems to catch on either way.

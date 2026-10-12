@@ -587,7 +587,7 @@ more suspicion if you actually lose the round. -->
 		<<set $estate._base_plead_points += _extra_wren>>
 		<<set _extra_wren_chance_str to formatDecimals((1-inverseLerp($estate._plead_required_points, $estate._plead_rng_min + _extra_wren, $estate._plead_rng_max + _extra_wren) - _base_chance)*100, 1)>>
 		<!-- 0-200 points for English (proportionate to 0,1000 english)-->
-		<<set _extra_english to lerp(Math.clamp(currentSkillValue('english') / 1000, 0, 1), 0, 250)>>
+		<<set _extra_english to lerp(Math.clamp(PC.english / 1000, 0, 1), 0, 250)>>
 		<<set $estate._base_plead_points += _extra_english>>
 		<<set _extra_english_chance_str to formatDecimals((1-inverseLerp($estate._plead_required_points, $estate._plead_rng_min + _extra_english, $estate._plead_rng_max + _extra_english) - _base_chance)*100, 1)>>
 		<!-- 0-100 extra points for submissiveness (1000,2000) -->

@@ -1823,7 +1823,7 @@ You strip slowly, just fast enough to keep the orderlies at bay. By the time you
 <<pass 25>>
 <<loadNPC 0 "long_haired">>
 Completely naked, you sit for a time with the slim, long-haired <<person1>><<personsimple>>. You don't touch <<him>>, you just keep quietly talking to <<him>>.
-<<if currentSkillValue('english') gte 500>>
+<<if PC.english gte 500>>
 	After a time, you notice <<him>> looking at you. Your eloquence seems to be getting through.
 	<<if $o_long_and_beautiful lte 7>>
 		<<set $o_long_and_beautiful += 1>>

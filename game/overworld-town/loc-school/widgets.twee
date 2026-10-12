@@ -1891,7 +1891,7 @@
 	<</if>>
 
 	<<addinlineevent "englishNote" 1>>
-		<<if currentSkillValue('english') gte 500>>
+		<<if PC.english gte 500>>
 			<<npc Doren>><<person1>>Doren approaches your desk. "I think you've sussed this material, so while the rest of the class works, I've got a message I need delivered to the caretaker's outbuilding." <<He>> hands you a note containing a list of theatre props. "Just slip it beneath the door."
 			<br><br>
 			<<endevent>>
@@ -2121,15 +2121,15 @@
 			"We're almost done with this <<print either("topic","text","book","play")>> now," <<he>> says. "Time to finish it off. It will be on the exam."
 			<br><br>
 			The class break into small groups to review the topic, while Doren moves between the groups asking and answering questions.
-			<<if currentSkillValue('english') lte 300>><br><br>Your group is struggling, so Doren spends extra time with you.<<genglish>><<englishskill>><br><br>
-			<<elseif currentSkillValue('english') gte 700>>Doren listens to your group for a little while, nods and smiles.<br><br>"Excellent work! Carry on." <<lstress>><<stress -6>>
+			<<if PC.english lte 300>><br><br>Your group is struggling, so Doren spends extra time with you.<<genglish>><<englishskill>><br><br>
+			<<elseif PC.english gte 700>>Doren listens to your group for a little while, nods and smiles.<br><br>"Excellent work! Carry on." <<lstress>><<stress -6>>
 			<</if>>
 		<<elseif Time.days % 42 lte 2>> /* every 6 weeks: day 1-2, 42-44, ... */
 			"Listen up," <<he>> says. "We're starting a new topic. <<print either("This one's fun. I think you're going to like it.","This module is one of my favourites. I really hope you like it too.","This one is tough - I'm not gonna lie - but it's worth the work. You can learn so much from it.")>>"
 			<br><br>
 			Doren outlines the upcoming content.
-			<<if currentSkillValue('english') lte 200>><<print either("It looks tough.","You barely understand a word.","You try to listen, but nothing goes in.")>><<gstress>><<stress 6>>
-			<<elseif currentSkillValue('english') gte 600>>It looks <<print either("interesting.","fun.","different, but in a good way.")>><<lstress>><<stress -6>>
+			<<if PC.english lte 200>><<print either("It looks tough.","You barely understand a word.","You try to listen, but nothing goes in.")>><<gstress>><<stress 6>>
+			<<elseif PC.english gte 600>>It looks <<print either("interesting.","fun.","different, but in a good way.")>><<lstress>><<stress -6>>
 			<<else>>It looks okay.
 			<</if>>
 		<<else>>
@@ -2305,7 +2305,7 @@
 			They mostly clown around, playing for laughs and making the characters sound funny. Doren rolls <<his>> eyes, but laughs along. It's pretty funny. <<lstress>>
 		<<elseif $rng gte 33>>
 			They act it out excellently, really bringing the scene to life.
-			<<if currentSkillValue('english') lt 700>>
+			<<if PC.english lt 700>>
 				You actually learn something from it.<<genglish>><<englishskill>>
 			<<else>>
 				You enjoyed it a lot.
@@ -2347,7 +2347,7 @@
 			Doren gives everyone 10 minutes to write a limerick.
 
 			<<set _lines = [{text: "", lewdness: -1}]>>
-			<<if currentSkillValue('english') gte 400>>
+			<<if PC.english gte 400>>
 				<<set _lines.push({text: `passable limerick.`, lewdness: 0})>>
 
 				<<if $skulduggery gte 500>>
@@ -2400,7 +2400,7 @@
 				<br>
 				<<switch _picked.lewdness>>
 					<<case 0>>
-						<<if currentSkillValue('english') gte 600>>
+						<<if PC.english gte 600>>
 							Doren <<print either("smiles","nods")>> approvingly and moves along to the next student.
 						<<else>>
 							Doren nods and moves along to the next student.
@@ -3846,7 +3846,7 @@
 				<<historyicon>><<link [[Rent a history textbook (£20)|Book Rental]]>><<money -2000 "libraryBooks">><<set $phase2 to "rent">><<set $phase to 4>><</link>><<note "+ Passive History" "green">>
 				<br>
 			<</if>>
-			<<if currentSkillValue('english') gte 300 and $studyBooks.stolen isnot "Raul and Janet">>
+			<<if PC.english gte 300 and $studyBooks.stolen isnot "Raul and Janet">>
 				<<scarleticon>><<link [[Rent "Raul and Janet" (£20)|Book Rental]]>><<money -2000 "libraryBooks">><<set $phase2 to "rent">><<set $phase to 5>><</link>>
 				<br>
 			<</if>>
@@ -3885,7 +3885,7 @@
 					<<historyicon>><<link [[Steal a history textbook|Book Rental]]>><<set $phase2 to "steal">><<set $phase to 4>><</link>><<crime "thievery">><<note "+ Passive History" "green">>
 					<br>
 				<</if>>
-				<<if currentSkillValue('english') gte 300 and $studyBooks.rented isnot "Raul and Janet">>
+				<<if PC.english gte 300 and $studyBooks.rented isnot "Raul and Janet">>
 					<<scarleticon>><<link [[Steal "Raul and Janet"|Book Rental]]>><<set $phase to 5>><<set $phase2 to "steal">><</link>><<crime "thievery">>
 					<br>
 				<</if>>

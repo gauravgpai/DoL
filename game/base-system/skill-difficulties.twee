@@ -367,7 +367,7 @@
 <</widget>>
 
 <<widget "englishdifficulty">>
-	<<skill_difficulty currentSkillValue('english') "English" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.english "English" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <!--

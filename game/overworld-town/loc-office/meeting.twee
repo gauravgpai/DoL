@@ -12,9 +12,9 @@ You take the lift to <<checkfloor>> and walk into a small conference room. A <<p
 <br><br>
 "This is a very important meeting, and I need extremely detailed notes. One of our partners is old-fashioned and refuses to use digital medium. I assume your handwriting is good, yes?"
 <br><br>
-<<if currentSkillValue("english") gte 700>>
+<<if PC.english gte 700>>
 	You give a confident nod. <<He>> smiles warmly and hands you a fine ink pen and notepad. "Fantastic!
-<<elseif currentSkillValue("english") gte 400>>
+<<elseif PC.english gte 400>>
 	You nod. <<He>> hands you a fine ink pen and notepad. "Good enough.
 <<else>>
 	You nod hesitantly. <<He>> sighs and sets an old ink pen and notepad in front of your seat. "What are the schools teaching these days? Whatever.
@@ -818,10 +818,10 @@ The <<person2>><<person>> storms over to you in a fit of rage. The <<beasttype 0
 <<if $worn.lower.name isnot "naked">>
 	After what seems like an eternity, the meeting begins to wrap up. You hand the completed notes to the <<person2>><<person>> for review.
 	<br><br>
-	<<if currentSkillValue("english") gte 700>>
+	<<if PC.english gte 700>>
 		"Everything seems in order. Our partner will be able to make good use of these. Thank you!"
 		<<set $meetingTip += 5>>
-	<<elseif currentSkillValue("english") gte 400>>
+	<<elseif PC.english gte 400>>
 		"These will do. I'll be sure to update our partner if there's anything they don't understand."
 		<<set $meetingTip += 3>>
 	<<else>>
@@ -833,7 +833,7 @@ The <<person2>><<person>> storms over to you in a fit of rage. The <<beasttype 0
 <<else>>
 	You manage to make it through the rest of the meeting without anyone being aware of your <<lewdness>>. The <<person2>><<person>> walks up to you and takes the completed notes, eyeing your flustered state.
 	<br><br>
-	<<if currentSkillValue("english") gte 700>>
+	<<if PC.english gte 700>>
 		"You seem a little agitated. These notes are more than good enough, I assure you. Try not to work yourself so hard next time, okay?"
 		<<set $meetingTip += 8>>
 	<<elseif $meetingTip gte 400>>

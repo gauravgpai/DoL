@@ -404,7 +404,7 @@ You nod. "Alright," Doren says. <<He>> doesn't sound convinced.
 		You read out a passage and Doren moves along to the next person.
 	<</if>>
 <<elseif $phase is 2>> /* Make up something */
-	<<if currentSkillValue('english') gte 700>>
+	<<if PC.english gte 700>>
 		<<skulduggerycheck "silent">>
 		<<if $skulduggerysuccess is 1>>
 			You pretend to read, while making up a fake passage, imitating the tone, diction and metre of the original text.
@@ -465,7 +465,7 @@ You nod. "Alright," Doren says. <<He>> doesn't sound convinced.
 
 			<<person1>>Doren shakes <<his>> head and points to the next student. "Carry on."
 		<</if>>
-	<<elseif currentSkillValue('english') gte 250 and ((currentSkillValue('english') + PC.skulduggery) gte 500)>>
+	<<elseif PC.english gte 250 and ((PC.english + PC.skulduggery) gte 500)>>
 		You pretend to read, while making up a fake passage. Doren soon catches on to what you're doing.
 		<br><br>
 		"Good imagination," <<he>> says. "But can you read the real text please, <<lassie>>."

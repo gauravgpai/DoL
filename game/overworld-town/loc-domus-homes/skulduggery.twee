@@ -686,7 +686,7 @@ You open the trapdoor and peek out.
 You unbolt the door. Behind, curled up like a dog, sleeping naked on the bare floor, you find a <<person>>. <<His>> body is covered in marks and bruises.
 <<He>> snorts, and two wild eyes stare up at you.
 <br>
-<<if currentSkillValue('english') gte (350+$rng)>>
+<<if PC.english gte (350+$rng)>>
 	With a few carefully chosen words, <span class="green">you reassure <<him>> that you are a friend</span>, and that you are here to help. <<He>> smiles up at you.
 <<elseif $purity gte (750 + $rng)>>
 	Somehow sensing the purity radiating from you, <span class="green"><<he>> trusts you</span>. You would never hurt <<him>>. <<He>> smiles up at you.

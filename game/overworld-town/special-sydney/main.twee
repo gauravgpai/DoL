@@ -597,7 +597,7 @@
 					You recognise it as one that Eden read to you, and nod your head. Sydney looks happy. "It's such a good read. Don't you love the part with the <<print either ("father's secret attic","dog chasing the mugger away","tree blocking the bad guy","maid picking the lock")>>?"
 				<<elseif C.npc.Robin.init is 1 and random(1,5) is 2>>
 					You recognise it as part of a series on Robin's shelf, and tell Sydney as such. <<He>> makes an interested noise. "I'll have to ask <<nnpc_him "Robin">> about it later."
-				<<elseif currentSkillValue('english') gte random(1,1200)>>
+				<<elseif PC.english gte random(1,1200)>>
 					You recognise it as <<print either("a cult-classic romance novel","a mystery novel","a popular adventure novel","an interesting post-apocalypse novel")>>, and nod your head. Sydney looks happy. "It's such a good read. Don't you love the part with the <<print either ("father's secret attic","dog chasing the mugger away","tree blocking the bad guy","maid picking the lock")>>?"
 				<<else>>
 					It's foreign to you, and you shake your head. Sydney looks disappointed, before bouncing back up. "Maybe we can read it together some time. I love the part where the <<print either ("father reveals his","dog runs toward the","tree falls and blocks the","door gets picked by")>>- oops, sorry, no spoilers!"

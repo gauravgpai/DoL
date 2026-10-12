@@ -17,22 +17,22 @@ Feb 2019
 <<else>>
 	You settle in bed with the scarlet book titled "Raul and Janet".
 <</if>>
-<<if currentSkillValue('english') gte 600>>
+<<if PC.english gte 600>>
 	You know the book very well. It's a classic English drama from 1616. It tells the tragic story of two lovers.
 	<br><br>
 	<<link [[Read (0:20)|ScarletBook2]]>><<pass 20>><<stress -6>><<englishskill>><</link>><<genglish>><<lstress>>
 	<br>
-<<elseif currentSkillValue('english') gte 500>>
+<<elseif PC.english gte 500>>
 	It's a classic story of two lovers from the seventeenth century.
 	<br><br>
 	<<link [[Read (0:20)|ScarletBook2]]>><<pass 20>><<stress -6>><<englishskill>><</link>><<genglish>><<lstress>>
 	<br>
-<<elseif currentSkillValue('english') gte 400>>
+<<elseif PC.english gte 400>>
 	You know that book. It tells the story of two lovers from the seventeenth century.
 	<br><br>
 	<<link [[Read (0:20)|ScarletBook2]]>><<pass 20>><<englishskill>><</link>><<genglish>>
 	<br>
-<<elseif currentSkillValue('english') gte 300>>
+<<elseif PC.english gte 300>>
 	This title sounds familiar. Isn't that the one about those two lovers from middle ages?
 	<br><br>
 	<<link [[Read (0:20)|ScarletBook2]]>><<pass 20>><<englishskill>><</link>><<genglish>>
@@ -72,7 +72,7 @@ You're reading "Raul and Janet".
 <<else>>
 	The book tells the story of two lovers from a few centuries ago. Raul is the son of a poor tailor, but instead of honest work, he prefers to search for adventures. Janet is a young, polite girl from a wealthy family and the daughter of a local baron and the ruler of the city. Despite the differences between them, they fall in love with each other.
 	<br><br>
-	<<if currentSkillValue('english') gte 400>>
+	<<if PC.english gte 400>>
 		You slowly delve into the text.
 		<br><br>
 		<<link [[Continue reading (0:20)|ScarletBook3]]>><<pass 20>><<englishskill>><</link>><<genglish>>
@@ -112,7 +112,7 @@ You're reading "Raul and Janet".
 <<else>>
 	The book tells the story of two lovers from the seventeenth century. Raul is the son of a poor tailor, but instead of honest work, he prefers to search for adventures. Janet is a young, polite girl from a wealthy family and the daughter of a local baron and the ruler of the city. Despite the differences between them, they fall in love with each other, but Janet's father is against their acquaintanceship, stating that the street boy is not the right fiancé for his daughter. One day, Raul convinces his beloved to run away together...
 	<br><br>
-	<<if currentSkillValue('english') gte 500>>
+	<<if PC.english gte 500>>
 		This is a tale of forbidden love, and although it does not end well, reading it gives you a strange joy.
 		<br><br>
 		<<link [[Continue reading (0:20)|ScarletBook4]]>><<pass 20>><<englishskill>><<arousal 1200>><</link>><<genglish>><<ggarousal>>
@@ -158,7 +158,7 @@ The book tells the story of two lovers from the seventeenth century. Raul is the
 	<br><br>
 	With each act, the book becomes darker and scarier. Every time you read it, you envision an innocent, pure girl in a white dress and her dangerous and lustful lad. You feel a mix of jealousy, lust, and anger. And you like it.
 	<br><br>
-	<<if currentSkillValue('english') gte 600 and $arousal gte ($arousalmax / 5) * 2>>
+	<<if PC.english gte 600 and $arousal gte ($arousalmax / 5) * 2>>
 		You're not just reading a book anymore. All of the scenes and emotions are described so perfectly that you clearly feel like you are there. Like you are one of them.
 		<br><br>
 	<<else>>
@@ -192,7 +192,7 @@ The book tells the story of two lovers from the seventeenth century. Raul is the
 			<br>
 		<</if>>
 	<</if>>
-	<<if currentSkillValue('english') gte 600 and ($arousal gte ($arousalmax / 5) * 2 or $scarletBook gte 5)>>
+	<<if PC.english gte 600 and ($arousal gte ($arousalmax / 5) * 2 or $scarletBook gte 5)>>
 		<<daydreamicon>><<link [[Imagine yourself as Janet|ScarletBook5]]>><<handheldon>><<pass 30>><<arousal 600>><</link>><<garousal>>
 		<br>
 	<</if>>

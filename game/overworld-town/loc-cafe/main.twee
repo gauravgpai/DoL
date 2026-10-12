@@ -2759,7 +2759,7 @@ You stare out the window <<print Weather.precipitation is "rain" ? "at the rain-
 			<<set $tip += 400>>
 		<<elseif $speech_attitude is "meek">>
 			You tell them about your abuse and degradation in the kind of gratuitous detail that you hope will satisfy their morbid curiosity.
-			<<if currentSkillValue('english') gte 400>>
+			<<if PC.english gte 400>>
 				You are open, eloquent and explicit. They clearly get off on it.
 				<<set $tip += 1000>>
 			<<else>>
@@ -2825,7 +2825,7 @@ You stare out the window <<print Weather.precipitation is "rain" ? "at the rain-
 		<br>
 		<<if $speech_attitude is "meek">>
 			You make up a story of abuse and degradation that you hope will satisfy their morbid curiosity.
-			<<if currentSkillValue('english') gte 400>>
+			<<if PC.english gte 400>>
 				You are eloquent and convincing. They get off on it.
 				<<set $tip += 500>>
 			<<else>>

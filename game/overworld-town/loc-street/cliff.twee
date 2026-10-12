@@ -963,7 +963,7 @@ As time starts to stretch, you hear a rising murmur from the crowd. Starting to 
 <<rng 1000>>
 <<if PC.skulduggery gte $rng>>/* chance rises with skul*/
 	<<rng 600 1200>> /* Rises from 0% to ~67% as $english rises from 600 to 1000 */
-	<<if currentSkillValue('english') gte $rng>><<set _eloquent to true>><<else>><<set _eloquent to false>><</if>>
+	<<if PC.english gte $rng>><<set _eloquent to true>><<else>><<set _eloquent to false>><</if>>
 	<<rng>> /* fixed at 10% - would need 3 pretty dumb cops */
 	<<if $rng gte 91>><<set _dumb_cops to true>><<else>><<set _dumb_cops to false>><</if>>
 	<<if _dumb_cops and _eloquent>><<set _blag to true>><<else>><<set _blag to false>><</if>>
