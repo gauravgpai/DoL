@@ -1120,7 +1120,7 @@
 	<</if>>
 
 	<!-- FEET -->
-	<<set _grip_strength to currentSkillValue('physique') / 20 + currentSkillValue("handskill")>>
+	<<set _grip_strength to PC.physique / 20 + currentSkillValue("handskill")>>
 	<<if $feetaction is "rest">>
 		<<unset $dodging>>
 		You rest your legs.
@@ -1963,7 +1963,7 @@
 
 <<widget "struggle_difficulty_set">>
 	<<for $_part range ["mouth", "vagina", "penis", "anus", "chest"]>>
-		<<set $struggle[$_part].success to Math.trunc(($struggle[$_part].grip * 17) + (currentSkillValue('physique') / 600))>>
+		<<set $struggle[$_part].success to Math.trunc(($struggle[$_part].grip * 17) + (PC.physique / 600))>>
 		<<if $struggle[$_part].success gte 100>>
 			<!-- can't strengthen anymore, default to pull -->
 			<<if $leftactiondefault is $_part + '_strengthen'>>

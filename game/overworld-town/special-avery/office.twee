@@ -437,15 +437,15 @@ You both walk to <<his>> car and then get inside. Avery starts the car, leaves t
 
 <<if $weekly.averyRejected.officeDrive gte 4>>
 	<br><br>
-	<<if currentSkillValue('physique') gte 14000>>
+	<<if PC.physique gte 14000>>
 		Despite Avery putting <<his>> strength into shoving you, you barely move an inch. Instead, <<he>> almost stumbles and falls from <<his>> attempt to shove you. <<He>> looks at you with awe, before <<his>> face transforms to rage once more
 		<br><br>
 		You wait for <<him>> to leave before making your own exit.
-	<<elseif currentSkillValue('physique') gte 11000>>
+	<<elseif PC.physique gte 11000>>
 		You manage to catch yourself before you stumble to the ground.
 		<br><br>
 		You then make your own exit.
-	<<elseif currentSkillValue('physique') gte 7000>>
+	<<elseif PC.physique gte 7000>>
 		You fall to the ground, barely catching yourself. <<pain 4>><<gpain>>
 		<br><br>
 		It takes you a bit to get back on your feet and make your own exit.

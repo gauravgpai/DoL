@@ -357,7 +357,7 @@
 			<<set $leftaction to 0>><<set $rightaction to 0>><<set $leftactiondefault to "leftstruggle">><<set $rightactiondefault to "rightstruggle">>
 			You struggle with all your might.
 			<<defiance 2 $lefttarget>><<set $speechStruggle to 1>>
-			<<if currentSkillValue('physique') gte random(1, 32000) and !$robinRentEvent>>
+			<<if PC.physique gte random(1, 32000) and !$robinRentEvent>>
 				<span class="teal">You manage to twist your arms free.</span>
 				<<defiance 5 $lefttarget>>
 				<<set $leftarm to 0>><<set $rightarm to 0>>
@@ -376,7 +376,7 @@
 			<<set $leftaction to 0>><<set $leftactiondefault to "leftstruggle">>
 			You struggle.
 			<<set $speechStruggle to 1>><<defiance 1 $lefttarget>>
-			<<if currentSkillValue('physique') gte random(1, 64000) and !$robinRentEvent>>
+			<<if PC.physique gte random(1, 64000) and !$robinRentEvent>>
 				<span class="teal">You manage to twist your arms free.</span>
 				<<defiance 5 $lefttarget>>
 				<<set $leftarm to 0>><<set $rightarm to 0>>
@@ -395,7 +395,7 @@
 			<<set $rightaction to 0>><<set $rightactiondefault to "rightstruggle">>
 			You struggle.
 			<<defiance 1 $righttarget>><<set $speechStruggle to 1>>
-			<<if currentSkillValue('physique') gte random(1, 64000) and !$robinRentEvent>>
+			<<if PC.physique gte random(1, 64000) and !$robinRentEvent>>
 				<span class="teal">You manage to twist your arms free.</span>
 				<<defiance 5 $righttarget>>
 				<<set $leftarm to 0>><<set $rightarm to 0>>
@@ -1240,7 +1240,7 @@
 				<<if $neckuse is "hand">>
 					You dig your nails into <<his>> hand around your throat and pull it.
 					<<defiance 2 _n>><<set $speechStruggle to 1>>
-					<<if currentSkillValue('physique') gte random(1, 60000/_handsCount)>>
+					<<if PC.physique gte random(1, 60000/_handsCount)>>
 						<span class="teal">You manage to rip <<his>> hand off your throat.</span>
 						<<defiance 5 _n>>
 						<<unset $neckuse>>
@@ -1259,7 +1259,7 @@
 						<<if $NPCList[_n].righthand == "throat">>
 							<<set $NPCList[_n].righthand = 0>>
 						<</if>>
-					<<elseif currentSkillValue('physique') gte random(1, 40000/_handsCount)>>
+					<<elseif PC.physique gte random(1, 40000/_handsCount)>>
 						<<His>> hand doesn't move, however <span class="blue">you manage to gasp for a bit of air when <<his>> grip weakens momentarily</span>.
 						<<oxygen 200>>
 					<<else>>
@@ -6161,7 +6161,7 @@
 				<<if $penisstate is "penetrated">>
 					<<if $NPCList[$penistarget].pregnancyAvoidance lte 15>>
 						As you try to pull out, <span class="red"><<combatperson>> locks <<his>> legs around you!</span>
-						<<if currentSkillValue('physique') gte random(1, 64000)>>
+						<<if PC.physique gte random(1, 64000)>>
 							<<set $penisstate to "entrance">>
 							<<if $NPCList[$penistarget].vagina is "penis">>
 								<<set $NPCList[$penistarget].vagina to "penisentrance">>However, you're able to <span class="green">force yourself free,</span> and <<peniletext>> pull your <<penis>> from <<his>> pussy.

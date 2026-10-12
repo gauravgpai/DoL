@@ -1959,7 +1959,7 @@ Eden casts a dark look at Robin. <<person2>><<He>> tightens <<his>> grip. "Forge
 	Eden glares at you. "We're going home," <<he>> snarls. "I'll drag you there by your hair if I have to."
 	<br><br>
 	You glare back and pull. After a bit of back and forth,
-	<<if currentSkillValue('physique') gte random(4000,14000)>>
+	<<if PC.physique gte random(4000,14000)>>
 		<span class="green">you manage to pull away.</span>
 		<br><br>
 		<<link [[Next|Robin Forest Crash Escape]]>><</link>>

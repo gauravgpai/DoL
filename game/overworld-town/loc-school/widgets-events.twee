@@ -2476,7 +2476,7 @@
 		<<set $bullyevent += 1>>
 
 		A pair of hands grab you from behind and give you a shove.
-		<<if currentSkillValue('physique') gte random(4000,15000)>>
+		<<if PC.physique gte random(4000,15000)>>
 			You barely manage to keep your footing.
 			<br><br>
 

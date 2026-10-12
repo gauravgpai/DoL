@@ -1633,7 +1633,7 @@
 					"Watch out!" says Alex from above. You look up, just in time to see a hay bale bearing down on you.
 					<br><br>
 
-					<<if currentSkillValue('physique') gte 12000>>
+					<<if PC.physique gte 12000>>
 						You raise your arms to catch it, <span class="green">and ease it to the ground.</span>
 						<br><br>
 						"Nice catch," Alex says, dropping to the earth beside you. <<He>> hefts the bale onto <<his>> shoulder. "Gotta get them in storage to keep the weather off." <<He>> walks away.

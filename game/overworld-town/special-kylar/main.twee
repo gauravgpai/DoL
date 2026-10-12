@@ -2235,7 +2235,7 @@ You rest your other hand on <<his>> _kylar.clothes.lower.name, right over <<his>
 	<<link [[Take Kylar to the bathrooms (0:05)|Kylar Tease Bathroom]]>><<unset $kylar_action>><<pass 5>><</link>><<promiscuous2>>
 <<elseif $bus is "kylarmanor">>
 	<<link [[Take Kylar to the bed|Manor Kylar Invite]]>><<unset $kylar_action>><<set $phase to 0>><</link>><<promiscuous2>>
-	<<if currentSkillValue('physique') gte $physiquesize>>
+	<<if PC.physique gte $physiquesize>>
 		<br>
 		<<link [[Carry Kylar to the bed|Manor Kylar Invite]]>><<unset $kylar_action>><<set $phase to 1>><<npcincr Kylar lust 10>><</link>><<promiscuous2>><<gglust>>
 	<</if>>

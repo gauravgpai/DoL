@@ -318,7 +318,7 @@
 <</widget>>
 
 <<widget "physiquedifficulty">>
-	<<skill_difficulty currentSkillValue('physique') "Physique" `(_args[0] ?? 1)` `(_args[1] ?? $physiquemax)` _args[2]>>
+	<<skill_difficulty PC.physique "Physique" `(_args[0] ?? 1)` `(_args[1] ?? $physiquemax)` _args[2]>>
 <</widget>>
 
 <<widget "dancedifficulty">>
