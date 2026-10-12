@@ -275,7 +275,7 @@ In front of you stands a bizarre monstrance, almost as tall as you. Numerous spi
 
 "Wh-what is it?" Kylar asks.
 <br><br>
-<<if currentSkillValue("history") gte 600>>
+<<if PC.history gte 600>>
 	<span class="green">You recognise it from history class.</span> "It's a host for sacramental bread," you explain. <span class="gold">"The temple might know more about this one."</span>
 	<br><br>
 <<else>>

@@ -205,7 +205,7 @@
 	<<elseif $rng gte 21>>
 		<<if Weather.precipitation is "snow">>
 			The snow falls heavy, and conceals the trees around the lake.
-			<<if currentSkillValue('history') gte random(1, 1000)>>
+			<<if PC.history gte random(1, 1000)>>
 				<span class="green">It soon passes.</span>
 				<br><br>
 			<<else>>

@@ -2748,7 +2748,7 @@
 	<<addinlineevent "historyCritique">>
 		<<npc Winter>><<person1>>
 		You sense Winter reading over your shoulder.
-		<<if currentSkillValue("history") gte 600>>
+		<<if PC.history gte 600>>
 			"Good," <<he>> says with a nod. "Good work."<<stress -2>><<lstress>>
 			<br><br>
 
@@ -3034,9 +3034,9 @@
 			<br>
 		<<else>>
 			Behind the screen you find
-			<<if currentSkillValue('history') gte 500>>
+			<<if PC.history gte 500>>
 				<<print either("a 19th century American merchant's outfit","a 17th century Caribbean privateer outfit","some late Victorian merchant's garb","a replica WWI officer's uniform")>>.
-			<<elseif currentSkillValue('history') gte 300>>
+			<<elseif PC.history gte 300>>
 				<<print either("a bright, old-fashioned outfit","a pirate costume","clothes like people wear in old photos","a soldier costume")>>.
 			<<else>>
 				some <<print either("old outfit","traditional outfit","old-style clothes")>>.
@@ -3091,7 +3091,7 @@
 	<<addinlineevent "historyPillory" 1>>
 		<<npc Winter>><<person1>>Winter gives the class a thin smile as <<he>> unveils the pillory in the corner of the room. "We're fortunate to have such a rare antique! I'll need somebody to help me demonstrate its use." <<He>> looks around the room. "Any volunteers?"
 		<br><br>
-		<<if currentSkillValue('history') gte 800>>
+		<<if PC.history gte 800>>
 			No one volunteers, of course. Winter looks at you. "To the front of the class, please."
 			<br><br>
 			<<link [[Refuse|History Lesson]]>><<detention 1>><<endevent>><</link>><<gdelinquency>>
@@ -3099,7 +3099,7 @@
 			<<link [[Go to the front of the class|History Lesson Pillory]]>><<historyskill>><<stress 2>><</link>><<ghistory>><<gstress>>
 			<br>
 
-		<<elseif currentSkillValue('history') gte 600>>
+		<<elseif PC.history gte 600>>
 			No one volunteers, of course. Winter looks at you. "To the front of the class, please."
 			<br><br>
 			<<link [[Refuse|History Lesson]]>><<endevent>><<detention 1>><</link>><<gdelinquency>>
@@ -3155,10 +3155,10 @@
 	<<addinlineevent "historyClothes" 1>>
 		<<generates1>><<person1>><<set _coinflip to random(0,1)>>
 		Winter calls a <<person>> to the front of the class and asks <<him>> to model some historical clothes.
-		<<if currentSkillValue('history') gte 700>>
+		<<if PC.history gte 700>>
 			The clothes look like <<print either("early-medieval servant's garb,", "Tudor-era court clothes for a noble family, possibly the St. Clairs,", "those worn by a medieval 'runner', or courier,", "a pre-industrial Naval uniform,", "stable-boy garb,")>> unless you are mistaken.
 			<<if $rng % 2>>However, judging by the <<print either("stitching,","colouring","hems","cut","'Made in Indonesia' label")>> these are only replicas.<<else>>As far as you can tell, these are genuine historical garments.<</if>>
-		<<elseif currentSkillValue('history') gte 300>>
+		<<elseif PC.history gte 300>>
 			They look like the stuff from <<print either("those plays you do in English where people say 'Hark!'","that TV show about posh old people in a huge house.","that TV show with all the beards and axes.","those old War photos.","those Roman things where everyone wears sheets.")>>
 			Winter gets unusually excited discussing the context of the clothes.
 		<<else>>
@@ -3193,7 +3193,7 @@
 
 	<<addinlineevent "historyAnswer" 1>>
 		Winter asks the class a question.
-		<<if currentSkillValue('history') gte 400>>
+		<<if PC.history gte 400>>
 			<<set $_linkSkip to true>>
 			You think you know the answer.
 			<br><br>

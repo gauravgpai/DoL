@@ -1252,7 +1252,7 @@ You ignore the strange vehicle and continue working.
 
 <<if $phase is 0>>
 	You look more closely,
-	<<if currentSkillValue('history') gte random(1, 1000)>>
+	<<if PC.history gte random(1, 1000)>>
 		<span class="green">and recognise the shape.</span> You <<generate1>><<person1>>inform a manager, who calls the captain in time. The ship steers around it.
 		<br><br>
 
@@ -2535,7 +2535,7 @@ The owner reads the sailor's answers.
 		The owner reads your paper. "The dockers score zero." You grumble with your colleagues.
 	<</if>>
 <<elseif $phase2 is 1>>
-	<<if currentSkillValue('history') gte random(1, 1000)>>
+	<<if PC.history gte random(1, 1000)>>
 		<<set $docks.quiz.home += 1>>
 
 		You write down the answers, fold the paper and hand it to the pub owner. The sailors do likewise.
@@ -2544,7 +2544,7 @@ The owner reads the sailor's answers.
 		"That's a point to the dockers," the owner says. You cheer with your colleagues.
 		<<lstress>><<stress -1>>
 	<<else>>
-		<<if currentSkillValue('history') lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
+		<<if PC.history lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
 		<br><br>
 
 		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if $historytrait gte 4>>You were sure you got it right.<</if>>

@@ -410,7 +410,7 @@ Kylar lifts it, and pulls a corkscrew from <<his>> pocket. <<He>> uncorks it wit
 
 There's a strange purple fruit on the label.
 
-<<if currentSkillValue('history') gte 500>>
+<<if PC.history gte 500>>
 	<span class="green">You're reminded of a story Winter told during history class.</span> The town used to make a wine they claimed was <span class="lewd">a love potion.</span> The recipe lost to time. A surviving bottle should be worth a lot.
 	<br><br>
 

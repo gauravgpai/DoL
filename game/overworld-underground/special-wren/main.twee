@@ -1,7 +1,7 @@
 :: Wren Heist Intro
 <<effects>>
 
-<<He>> pulls a crumpled up piece of paper from <<his>> pocket. You lean over to look at it. <<= currentSkillValue("history") gte 600 ? "You recognise it as blueprints to a house" : "It looks like a mess of lines and numbers">>.
+<<He>> pulls a crumpled up piece of paper from <<his>> pocket. You lean over to look at it. <<= PC.history gte 600 ? "You recognise it as blueprints to a house" : "It looks like a mess of lines and numbers">>.
 <br><br>
 "There's a party tonight," Wren says. <<He>> taps the centre of the paper. "The person throwing it is rich and doesn't care who knows it. All of the fancy jewellery and valuables are right in plain sight. We're going to go and take whatever we can carry." <<He>> smiles at you. "<<if $prison?.wren_names is 2>>A jailbird like you is no stranger to stealing<<elseif crimeSumCurrent() gte 5000>>You've been making waves in the underworld<<elseif $fame.social gte 600>>I've heard you like to schmooze with the upper class<</if>>. You're perfect for this job. It'll be easy, just in-and-out."
 <br><br>
@@ -520,7 +520,7 @@ You follow <<him>> to <<his>> car.<<if $wrenHeistDance.car isnot true>> It's fai
 <br><br>
 <<if _getCricketBall is true>>
 	<<set $wrenHeistCricketBall to true>>
-	After Wren's car rounds the corner, you take out the cricket ball. It shines red and gold in the streetlight. Something on it catches your eye and you look a bit closer. There is a signature on it. You <<= currentSkillValue("history") gte 600 ? "remember Winter talking about the person's name, and" : "don't recognise the name, but">> you think it may be valuable to a fence.
+	After Wren's car rounds the corner, you take out the cricket ball. It shines red and gold in the streetlight. Something on it catches your eye and you look a bit closer. There is a signature on it. You <<= PC.history gte 600 ? "remember Winter talking about the person's name, and" : "don't recognise the name, but">> you think it may be valuable to a fence.
 	<br><br>
 <</if>>
 
