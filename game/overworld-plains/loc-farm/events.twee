@@ -5457,7 +5457,7 @@ You open one of the boxes, and peek inside.
 <<case 4>>
 	There's a variety of sundries the local grocers wouldn't sell. There's more of the same in the second.
 <<case 5>>
-	<<if currentSkillValue('science') gte 700>>
+	<<if PC.science gte 700>>
 		There's a variety of metal and glass equipment. Pipes, tubes, and measuring devices. Stuff you'd expect to find in a lab rather than a farm. The second box has more of the same.
 	<<else>>
 		There's a variety of metal and glass equipment. Pipes, tubes, and containers. You're not sure what it's for. The second box has more of the same.

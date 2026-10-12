@@ -2373,7 +2373,7 @@ You and your colleagues enjoy your free drinks and leave in an elevated mood.
 	<</if>>
 <<elseif $phase2 is 1>>
 	<<wearProp "pencil">>
-	<<if currentSkillValue('science') gte random(1, 1000)>>
+	<<if PC.science gte random(1, 1000)>>
 		<<set $docks.quiz.home += 1>>
 
 		You write down the answers, fold the paper and hand it to the pub owner. The sailors do likewise.
@@ -2382,10 +2382,10 @@ You and your colleagues enjoy your free drinks and leave in an elevated mood.
 		"That's a point to the dockers," the owner says. You cheer with your colleagues.
 		<<lstress>><<stress -1>>
 	<<else>>
-		<<if currentSkillValue('science') lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
+		<<if PC.science lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
 		<br><br>
 
-		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if currentSkillValue('science') gte 700>>You were sure you got it right.<</if>>
+		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if PC.science gte 700>>You were sure you got it right.<</if>>
 	<</if>>
 <<else>>
 	You convince your colleagues that you know your stuff, and write down nonsense answers. You fold the paper and hand it to the pub owner.

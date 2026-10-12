@@ -1175,7 +1175,7 @@ You look away as Alex saws through the branch. "Here it comes," <<he>> says. It 
 
 	<!-- The PC should have a 50% of passing the Science check with a Science Grade of A. -->
 	<<set _checkResults to [
-		currentSkillValue("science") gte random(600, 800),
+		PC.science gte random(600, 800),
 		PC.tending gte random(600, 800)
 	]>>
 	<!-- Going to hell for this lol -->
@@ -1473,7 +1473,7 @@ You look away as Alex saws through the branch. "Here it comes," <<he>> says. It 
 
 	<!-- The PC should have a 50% of passing the Science check with a Science Grade of A. -->
 	<<set _checkResults to [
-		currentSkillValue("science") gte random(600, 800),
+		PC.science gte random(600, 800),
 		PC.tending gte random(600, 800)
 	]>>
 	<!-- Going to hell for this lol -->

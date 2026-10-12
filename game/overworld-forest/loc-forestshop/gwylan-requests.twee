@@ -2959,7 +2959,7 @@ Gwylan leads you back to the shop. "I'm looking forward to what we can do with t
 					<br><br>
 
 					"Wonderful! I'm low on stock, and could use a few.
-				<<elseif currentSkillValue('science') gte 200>>
+				<<elseif PC.science gte 200>>
 					You remember hearing about them from school, and nod. "They were prized by warriors in ancient times," you say.
 					<br><br>
 

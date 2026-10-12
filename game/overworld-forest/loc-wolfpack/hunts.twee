@@ -172,9 +172,9 @@ You run with the pack alongside the river. You come to a soft patch of grass. So
 
 <<location "forest">><<effects>>
 You come to a decaying stump at the base of the cliff. There's a collection of mushrooms growing at its base, some red some pink.
-<<if currentSkillValue('science') gte 400>>
+<<if PC.science gte 400>>
 	You recognise the red ones as wolfshrooms, thought to grant strength and prized by warriors in ancient times. You recognise the pink ones too. They're an aphrodisiac, and poisonous to many animals. Including <<wolf_cave_plural>>.
-<<elseif currentSkillValue('science') gte 200>>
+<<elseif PC.science gte 200>>
 	You recognise the red ones as wolfshrooms, thought to grant strength and prized by warriors in ancient times. You don't recognise the pink ones.
 <<else>>
 	You don't recognise either of them.

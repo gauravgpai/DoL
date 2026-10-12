@@ -1406,7 +1406,7 @@
 	<br><br>
 
 	<<if _forest_shrooms is 2>>
-		<<if currentSkillValue('science') gte 200>>
+		<<if PC.science gte 200>>
 			You remember from school that they're called <<foodstufficon "wolfshroom">> wolfshrooms, and were prized by warriors in ancient times.
 			<br><br>
 		<</if>>

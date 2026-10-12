@@ -2275,7 +2275,7 @@
 				<br>
 			<</if>>
 		<<elseif $farm_fight.chainsaw is undefined>>
-			<<link [[Work out how to switch the chainsaw on|Farm Fight]]>><<set $farm_fight.action to "science">><</link>><<skill_difficulty `currentSkillValue("science")` "Science" 1 700>>
+			<<link [[Work out how to switch the chainsaw on|Farm Fight]]>><<set $farm_fight.action to "science">><</link>><<skill_difficulty `PC.science` "Science" 1 700>>
 			<br>
 		<</if>>
 	<</if>>

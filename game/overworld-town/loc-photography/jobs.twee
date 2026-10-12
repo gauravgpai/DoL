@@ -1853,7 +1853,7 @@ Your eyes adjust to the dim interior. There's a mattress on the floor, with a tr
 	"Your camera isn't working," you say. "The settings must be wrong."
 <</if>>
 
-<<if currentSkillValue('science') gte random(1, 1000)>>
+<<if PC.science gte random(1, 1000)>>
 	<<set $photo_abduction_timer -= 1>><<photo_pass 1>>
 	You give a brief, technical description of the camera. <span class="green">It's clear no one in the gang can follow.</span>
 	<br><br>

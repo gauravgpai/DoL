@@ -80,7 +80,7 @@
 
 <<widget "photo_high_abduction_options">>
 	<<if !$photo_high_abduction_options.includes("camera")>>
-		<<link [[Say the camera isn't working|Photo High Exhibitionism Abduction Camera]]>><<set $photo_high_abduction_options.pushUnique("camera")>><</link>><<skill_difficulty currentSkillValue('science') "Science" 1 1000>>
+		<<link [[Say the camera isn't working|Photo High Exhibitionism Abduction Camera]]>><<set $photo_high_abduction_options.pushUnique("camera")>><</link>><<skill_difficulty PC.science "Science" 1 1000>>
 		<br>
 	<</if>>
 	<<if !$worn.face.type.includes("mask") and !$photo_high_abduction_options.includes("mask")>>

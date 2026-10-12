@@ -614,7 +614,7 @@ Using the lock pick Eden gave you, you enter the breaker room, lock the door and
 :: Asylum Disable
 
 <<set $outside to 0>><<set $location to "asylum">><<asylumeffects>><<effects>>
-<<if random(1, 200) lte (currentSkillValue('science') + 100)>>
+<<if random(1, 200) lte (PC.science + 100)>>
 	<<set $daily.eden.distract to 2>>
 	You successfully disable power to the guard tower search lights. Hopefully that'll buy you some time to escape.
 	<br><br>
@@ -638,7 +638,7 @@ After wandering the asylum for a while, you find a wireless alarm mounted to the
 :: Asylum Disconnect
 
 <<set $outside to 0>><<set $location to "asylum">><<asylumeffects>><<effects>>
-<<if random(1, 200) lte (currentSkillValue('science') + 100)>>
+<<if random(1, 200) lte (PC.science + 100)>>
 	<<set $daily.eden.asylumDisarm to 2>>
 	You successfully disconnect the alarm system from its power source. Hopefully no one will be alerted to your escape.
 	<br><br>
@@ -1120,7 +1120,7 @@ You chat with the other patients.
 			<br><br>
 
 			The <<person>> refers to an imaginary clipboard as <<he>> pronounces
-			<<if currentSkillValue('science') gte 500>>
+			<<if PC.science gte 500>>
 				earnest but meaningless pseudo-medical 'diagnoses' for these patients.
 			<<else>>
 				a medical diagnosis for each patient.
@@ -1332,7 +1332,7 @@ You chat with the other patients.
 		Sure enough, out the window you notice a small plane passing quite low over the tree line. "What do you reckon? Is that going over the forest or the town?"
 		<br><br>
 
-		<<if currentSkillValue('science') gte 400 and PC.maths gte 600>>
+		<<if PC.science gte 400 and PC.maths gte 600>>
 			You take a couple of steps left and right, then make a rough calculation in your head.
 			"Judging by the parallax, probably the town," you say.
 		<<else>>
@@ -1629,8 +1629,8 @@ You open the door and peek through.
 :: Asylum Cameras
 
 <<set $outside to 0>><<set $location to "asylum">><<asylumeffects>><<effects>>
-<<if random(1, 1000) lte (currentSkillValue('science') + 100)>>
-	<<if currentSkillValue('science') gte 400>>
+<<if random(1, 1000) lte (PC.science + 100)>>
+	<<if PC.science gte 400>>
 		You try to work out how to operate the machine. There's a logic to it, and through trial and error you discover how to turn up the aphrodisiac. Without warning, an alarm blares. The screen now reads "<span class="red">WARNING Aphrodisiac ministration active: 2000%</span>". You hear shouting.
 		<br><br>
 	<<else>>
@@ -1785,7 +1785,7 @@ You strip slowly, just fast enough to keep the orderlies at bay. By the time you
 		Harper looks confused at you for a moment. "Yes. Yes, okay. Just make sure you don't miss your wash. Hygiene is important."
 	<<elseif $speech_attitude is "bratty">>
 		"DOCTOR Harper," you shout. Harper turns. "I think your two geniuses here
-		<<if currentSkillValue('science') gte 600>>
+		<<if PC.science gte 600>>
 			can't recognise a post-traumatic trigger reaction.
 		<<else>>
 			are just making things worse.
@@ -1797,7 +1797,7 @@ You strip slowly, just fast enough to keep the orderlies at bay. By the time you
 		You quickly finish stripping and jog across to Harper.
 		<br>
 		"Doctor, please. Look at that <<person4>><<personsimple>>.
-		<<if currentSkillValue('science') gte 600>>That looks like a post-traumatic trigger reaction and <</if>>I think those two are just making things worse.
+		<<if PC.science gte 600>>That looks like a post-traumatic trigger reaction and <</if>>I think those two are just making things worse.
 		Is it okay if I stay back to help <<him>>. I- I think I kind of know <<him>>."
 		<br>
 		Harper looks curious for a moment. "Yes. Yes, okay. Just make sure you don't miss your wash. Hygiene is important."
@@ -2556,7 +2556,7 @@ The <<person2>><<person>>
 	<br><br>
 	"Uhm... okay," the <<person>> says loudly. "Get these patients out."
 	<br>
-	The door opens and <<if currentSkillValue('science') gte 600 or PC.skulduggery gte 600>>closes suspiciously quickly.<<else>>closes.<</if>>
+	The door opens and <<if PC.science gte 600 or PC.skulduggery gte 600>>closes suspiciously quickly.<<else>>closes.<</if>>
 	<br><br>
 	The hood lifts off your head and the straightjacket is closed to cover your <<breasts>>.
 	As the <<person2>><<person>> releases you from the wall, the <<person1>><<person>> talks to you.
