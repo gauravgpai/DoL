@@ -1535,7 +1535,7 @@ You are in Alex's bedroom. It's similar to yours. Clothes tumble from the wardro
 			<br><br>
 		<</if>>
 
-		<<farmicon "alexdesk">><<link [[Offer help (1:00)|Farm Alex Admin]]>><<pass 60>><<npc Alex>><<person1>><<npcincr Alex love 1>><<stress 6>><</link>><<skill_difficulty `currentSkillValue("maths")` "Maths" 1 1000>><<glove>><<gstress>>
+		<<farmicon "alexdesk">><<link [[Offer help (1:00)|Farm Alex Admin]]>><<pass 60>><<npc Alex>><<person1>><<npcincr Alex love 1>><<stress 6>><</link>><<skill_difficulty `PC.maths` "Maths" 1 1000>><<glove>><<gstress>>
 		<br>
 		<<if $alex_countdown is undefined and C.npc.Alex.love gte 80>>
 			<<farmicon "alexdesk">><<link [[Cuddle Alex (0:30)|Farm Phone Cuddle]]>><<pass 30>><<npc Alex>><<person1>><<npcincr Alex love 1>><</link>><<glove>>
@@ -2853,7 +2853,7 @@ You pull up a chair, and help Alex manage the business.
 <</if>>
 <br><br>
 
-<<if currentSkillValue('maths') gte random(1, 1000)>>
+<<if PC.maths gte random(1, 1000)>>
 	<<if $rng gte 3>>
 		<span class="green">You convince Alex to charge more per <<print either("pint", "gallon", "kilo", "gram", "weight", "carton", "bushel", "ton")>>.</span><<farm_yield 3>><<ggfarm>>
 		<br><br>

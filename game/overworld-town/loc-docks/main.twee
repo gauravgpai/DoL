@@ -1130,7 +1130,7 @@ You arrive back at the docks. A manager greets you. <<generate2>><<person2>>"You
 
 <<if $phase is 0>>
 	You compare the numbers,
-	<<if currentSkillValue('maths') gte random(1, 1000)>>
+	<<if PC.maths gte random(1, 1000)>>
 		<span class="green">and find that some valuable cargo disappeared at some point between arrival and departure.</span> What's more, someone tried to cover it up. You inform a manager, who seems impressed at your deduction.
 		<<dockstatus 1>><<gcool>>
 	<<else>>
@@ -2430,7 +2430,7 @@ The owner reads the sailor's answers.
 		The owner reads your paper. "The dockers score zero." You grumble with your colleagues.
 	<</if>>
 <<elseif $phase2 is 1>>
-	<<if currentSkillValue('maths') gte random(1, 1000)>>
+	<<if PC.maths gte random(1, 1000)>>
 		<<set $docks.quiz.home += 1>>
 
 		You write down the answers, fold the paper and hand it to the pub owner. The sailors do likewise.
@@ -2439,10 +2439,10 @@ The owner reads the sailor's answers.
 		"That's a point to the dockers," the owner says. You cheer with your colleagues.
 		<<lstress>><<stress -1>>
 	<<else>>
-		<<if currentSkillValue('maths') lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
+		<<if PC.maths lte 300>>You're not confident, but you write down the answers, fold the paper and hand it to the pub owner.<<else>>You write down the answers, fold the paper and hand it to the pub owner.<</if>> The sailors do likewise.
 		<br><br>
 
-		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if currentSkillValue('maths') gte 700>>You were sure you got it right.<</if>>
+		The owner reads your paper. "The dockers score zero." You grumble with your colleagues. <<if PC.maths gte 700>>You were sure you got it right.<</if>>
 	<</if>>
 <<else>>
 	You convince your colleagues that you know your stuff, and write down nonsense answers. You fold the paper and hand it to the pub owner.

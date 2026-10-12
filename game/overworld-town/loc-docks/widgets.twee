@@ -503,7 +503,7 @@
 	<<addinlineevent "docks_work_data_inconsistency">>
 		You're tasked with recording cargo information onto a computer. While working through the notes you notice an inconsistency.
 		<br><br>
-		<<link [[Examine the inconsistency|Docks Examine]]>><<set $phase to 0>><<stress 6>><</link>><<skill_difficulty `currentSkillValue("maths")` "Maths" 1 1000>><<gstress>>
+		<<link [[Examine the inconsistency|Docks Examine]]>><<set $phase to 0>><<stress 6>><</link>><<skill_difficulty `PC.maths` "Maths" 1 1000>><<gstress>>
 		<br>
 		<<if PC.skulduggery gte 400>>
 			<<set $skulduggerydifficulty to 500>>
@@ -1297,7 +1297,7 @@
 
 		<<link [[Let your colleagues answer|Docks Pub Crawl Maths]]>><<set $phase2 to 0>><</link>>
 		<br>
-		<<link [[Answer yourself|Docks Pub Crawl Maths]]>><<set $phase2 to 1>><</link>><<skill_difficulty `currentSkillValue("maths")` "Maths" 1 1000>>
+		<<link [[Answer yourself|Docks Pub Crawl Maths]]>><<set $phase2 to 1>><</link>><<skill_difficulty `PC.maths` "Maths" 1 1000>>
 		<br>
 		<<link [[Give the wrong answers|Docks Pub Crawl Maths]]>><<set $phase2 to 2>><</link>>
 		<br>

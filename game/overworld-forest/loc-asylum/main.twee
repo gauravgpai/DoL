@@ -1332,7 +1332,7 @@ You chat with the other patients.
 		Sure enough, out the window you notice a small plane passing quite low over the tree line. "What do you reckon? Is that going over the forest or the town?"
 		<br><br>
 
-		<<if currentSkillValue('science') gte 400 and currentSkillValue('maths') gte 600>>
+		<<if currentSkillValue('science') gte 400 and PC.maths gte 600>>
 			You take a couple of steps left and right, then make a rough calculation in your head.
 			"Judging by the parallax, probably the town," you say.
 		<<else>>
