@@ -9625,7 +9625,7 @@ Despite the <<persons>> sincere tone, you think better of accepting a ride from 
 		<</if>>
 		<<His>> smile falters. "Oh, I thought you'd be different," <<he>> says, rueful.
 		<br><br>
-		<<if random(0, 10000) lt $fame.model + currentSkillValue("seductionskill") + $allure>>
+		<<if random(0, 10000) lt $fame.model + PC.seductionskill + $allure>>
 			<<set $tipmod += 0.25>>
 			<<His>> smile soon returns. "But I understand." <<He>> nods. "You're right, it's your job and you get paid for it. Alright, I'll pay you."
 			<br><br>
@@ -9795,7 +9795,7 @@ Despite the <<persons>> sincere tone, you think better of accepting a ride from 
 		<</if>>
 		<<His>> lewd intentions are clear.
 		<br><br>
-		<<if random(0, 10000) lt $fame.model + currentSkillValue("seductionskill") + $allure>>
+		<<if random(0, 10000) lt $fame.model + PC.seductionskill + $allure>>
 			<<if $trance gte 1>>
 				The <<person>> pulls back. <<He>> seeks your eyes again and, rising from <<his>> knees, starts to pull off <<his>> <<npcClothesText $NPCList[0] "lower">>.
 				<br><br>

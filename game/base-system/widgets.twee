@@ -717,7 +717,7 @@
 <</widget>>
 
 <<widget "seductionskilluse">>
-	<<set $enemyarousal += (currentSkillValue("seductionskill") / 100)>><<seductionskill 5>>
+	<<set $enemyarousal += (PC.seductionskill / 100)>><<seductionskill 5>>
 <</widget>>
 
 <<widget "seductionskilluptext">>
@@ -728,7 +728,7 @@
 <</widget>>
 
 <<widget "seductionskillusecombat">>
-	<<set $enemyarousal += (currentSkillValue("seductionskill") / 100)>><<seductionskill 5>><<set $seductionskillup to 1>>
+	<<set $enemyarousal += (PC.seductionskill / 100)>><<seductionskill 5>><<set $seductionskillup to 1>>
 <</widget>>
 
 <<widget "oralskilluse">>

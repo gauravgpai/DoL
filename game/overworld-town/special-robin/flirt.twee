@@ -3,13 +3,13 @@
 <<set $outside to 0>><<set $location to "home">><<effects>>
 <<set _robin to statusCheck("Robin")>>
 <<set _kissType to ($robinromance gte 1 ? "loveInterest" : "romantic")>>
-<<if $allure / 20 + currentSkillValue("seductionskill") gte random(100, 1200)>>
+<<if $allure / 20 + PC.seductionskill gte random(100, 1200)>>
 	<<npcincr Robin lust 1>>
-	<<if currentSkillValue("seductionskill") lte 200>>
+	<<if PC.seductionskill lte 200>>
 		<<seductionskill 2>>
 	<</if>>
 <<else>>
-	<<if currentSkillValue("seductionskill") lte 200>>
+	<<if PC.seductionskill lte 200>>
 		<<seductionskill 1>>
 	<</if>>
 <</if>>

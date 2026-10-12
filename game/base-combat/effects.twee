@@ -5531,7 +5531,7 @@
 		<<if !$stalk_end>>
 			<<if $anusaction is "wiggle">>
 				<<set $anusaction to 0>><<set $anusactiondefault to "wiggle">>
-				<<if currentSkillValue('seductionskill') gte random(1, 1000)>>
+				<<if PC.seductionskill gte random(1, 1000)>>
 					<<meek 2>>
 					<<if $rng gte 81>>
 						You wiggle your <<bottom>> in time with your steps,

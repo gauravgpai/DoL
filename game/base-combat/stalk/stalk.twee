@@ -1331,7 +1331,7 @@
 		or $NPCList[0].fullDescription is "Gwylan" and $gwylanSeen?.includes("ritual_sex")>>
 		<<set $_chasingAnyways to true>>
 	<</if>>
-	<<if currentSkillValue('seductionskill') gte random(1, 1000) or $NPCList[0].fullDescription is "Gwylan">>
+	<<if PC.seductionskill gte random(1, 1000) or $NPCList[0].fullDescription is "Gwylan">>
 		<<set $_tauntSuccess to true>>
 	<</if>>
 	<<if $_chasingAnyways or $_tauntSuccess>>

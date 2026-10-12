@@ -936,7 +936,7 @@
 <<widget "bodypart_admire_prostitution">>
 	<<if $NPCList[_n].paid is 1>>
 	<<elseif $skin[_args[0]].degree lte 0>>
-		<<if (($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * (currentSkillValue("seductionskill") / 200)) gte 1000)>>
+		<<if (($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * (PC.seductionskill / 200)) gte 1000)>>
 			<<set $enemyanger += 10>><<set $enemytrust -= 100>><<fameprostitution 1>>
 			<<if !$speechAdmired>><<set $speechAdmired to 1>>
 				<<switch random(1, 5)>>
@@ -949,7 +949,7 @@
 			<</if>>
 			<<He>> drops a <<printmoney 1000>><<money 1000 "prostitution">> note atop you.
 			<<earnFeat "Billboard">><<set $NPCList[_n].paid to 1>>
-		<<elseif (($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * (currentSkillValue("seductionskill") / 200)) gte 500)>>
+		<<elseif (($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * (PC.seductionskill / 200)) gte 500)>>
 			<<set $enemyanger += 10>><<set $enemytrust -= 100>><<fameprostitution 1>>
 			<<if !$speechAdmired>><<set $speechAdmired to 1>>
 				<<switch random(1, 5)>>
@@ -974,7 +974,7 @@
 				<</switch>>
 			<</if>>
 		<</if>>
-	<<elseif $skin[_args[0]].degree lte ($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * (currentSkillValue("seductionskill") / 200))>>
+	<<elseif $skin[_args[0]].degree lte ($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * (PC.seductionskill / 200))>>
 		<<set $enemyanger += 10>><<set $enemytrust -= $skin[_args[0]].degree>><<fameprostitution 1>>
 		<<if !$speechAdmired>><<set $speechAdmired to 1>>
 			<<switch random(1, 5)>>

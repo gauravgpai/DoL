@@ -3086,7 +3086,7 @@
 <</widget>>
 
 <<widget "seductiontext">><<silently>>
-	<<set $_skillText to currentSkillValue("seductionskill")>>
+	<<set $_skillText to PC.seductionskill>>
 	<<if $_skillText lt 200>><<set _text_output to '<span class="pink">awkwardly</span>'>>
 	<<elseif $_skillText lt 400>><<set _text_output to '<span class="purple">cautiously</span>'>>
 	<<elseif $_skillText lt 600>><<set _text_output to '<span class="blue">rhythmically</span>'>>
