@@ -63,9 +63,8 @@
 		<<case 3>>You are large compared to others.
 	<</switch>>
 
-	<!-- Eye details -->
+	<!-- Eye Details -->
 	<<print window.buildEyeDetails()>>
-	<!-- -->
 
 	You have a <<skincolourtext>>
 	You have <<skintonetext>>
@@ -104,7 +103,7 @@
 		<</if>>
 	<</if>>
 
-	<!--Hair Details-->
+	<!-- Hair Details -->
 	<<set _hairTextConfig = { currentValue : $hairlength, states : [
 			{ requiredValue: 0,		color: '',	preText: 'Your ',									description: '<<haircolourtext>>', postText: ' hair is short.' },
 			{ requiredValue: 100,	color: '',	preText: 'When left natural, your ',				description: '<<haircolourtext>>', postText: ' hair passes your chin, <<fringedescription>>' },
@@ -122,7 +121,7 @@
 	<<characteristic-text _hairTextConfig>>
 	<br><br>
 
-	<!--Pregnancy Details-->
+	<!-- Pregnancy Details -->
 	<<set $_menstruation to $sexStats.vagina.menstruation>>
 	<<set $_pills to $sexStats.pills>>
 	<<set $_knowsTheyCanBecomePregnant to ($settings.playerPregnancyHumanEnabled or $settings.playerPregnancyBeastEnabled) and playerAwareTheyCanBePregnant()>>
@@ -219,7 +218,7 @@
 		<<heatRutDisplay true>>
 	<</if>>
 
-	<!--Semen Details-->
+	<!-- Semen Details -->
 	<<if $player.penisExist and $player.penissize gte 0>>
 		<<set _semenCapacityTextConfig = { currentValue : $semen_volume, preText: 'You produce ', states : [
 				{ requiredValue: 0,		color: '',			description: '',				postText: ' no cum.' },
@@ -263,7 +262,7 @@
 		<br>
 	<</if>>
 
-	<!--Lactation Details-->
+	<!-- Lactation Details -->
 	<<if $lactating is 1 and $settings.breastFeedingEnabled>>
 		<<set _milkCapacityTextConfig = { currentValue : $milk_volume, preText: 'Your <<breasts>> produce a ', postText: ' amount of milk, ', states : [
 					{ requiredValue: 0,		color: 'red',		description: 'tiny'},
@@ -304,13 +303,13 @@
 			{ requiredValue: 75,	color: 'pink',	description: 'dripping.',		postText: ' All but the largest penises will have an easy time sliding in.' },
 			{ requiredValue: 90,	color: 'red',	description: 'drenched.',		postText: ' Even the largest penises will have an easy time sliding in.' }
 	]>>
-	<!--Vagina Wetness-->
+	<!-- Vagina Wetness -->
 	<<if $player.vaginaExist>>
 		<<set _vaginaWetnessTextConfig = { currentValue : $vaginaWetness, preText: 'Your vagina is ', states: _holeWetnessStates}>>
 		<<characteristic-text _vaginaWetnessTextConfig>>
 		<br>
 	<</if>>
-	<!--Penis Wetness-->
+	<!-- Penis Wetness -->
 	<<if $player.penisExist>>
 		<<set _penisWetnessTextConfig = { currentValue : $penisWetness, preText: 'Your penis is ', states: [
 			{ requiredValue: 0,		color: 'green',	description: 'dry.',				postText: ($player.penissize >= 4) ? " Insertions may be difficult." : ''},
@@ -324,7 +323,7 @@
 		<<characteristic-text _penisWetnessTextConfig>>
 		<br>
 	<</if>>
-	<!--Anal Wetness-->
+	<!-- Anal Wetness -->
 	<<if $settings.analEnabled>>
 		<<set _analWetnessTextConfig = { currentValue : $anusWetness, preText: 'Your ass is ', states: _holeWetnessStates}>>
 		<<characteristic-text _analWetnessTextConfig>>
@@ -337,10 +336,10 @@
 		<br>
 		<span class="gold">Core Characteristics</span>
 		<div id="base-characteristics" class="characteristic-box-list">
-			<!--Core skill configurations-->
+			<!-- Core Characteristics Configurations -->
 			<<silently>>
 
-				<!--PURITY-->
+				<!-- PURITY -->
 				<<if $demon gte 6>>
 					<<set _purityIcon='ui/tf-demon'>>
 				<<elseif $fallenangel gte 2>>
@@ -361,21 +360,20 @@
 					]
 				}>>
 
-				<!--AWARENESS-->
-				<<set _awarenessConfig = { name : "Awareness", icon : "ui/sym-awareness", displayType : "level", currentValue : $awareness, modifier: 100, modTypes: { good: [], bad: [] },
+				<!-- BEAUTY -->
+				<<set _beautyConfig = { name : "Beauty", icon : "ui/sym-beauty", displayType : "level", currentValue : $beauty, maxValue: $beautymax, modifier: 100, modTypes: { good: [], bad: [] },
 					states : [
-						{ requiredValue: -200,	level: 0, color: 'green',	description: 'You are innocent.'},
-						{ requiredValue: 1,		level: 1, color: 'teal',	description: 'You are almost entirely innocent.'},
-						{ requiredValue: 100,	level: 2, color: 'lblue',	description: 'You have a limited understanding of sexuality.'},
-						{ requiredValue: 200,	level: 3, color: 'blue',	description: 'You have a normal understanding of sexuality.'},
-						{ requiredValue: 300,	level: 4, color: 'purple',	description: 'Your knowledge of sexual depravity extends beyond that of most people.'},
-						{ requiredValue: 400,	level: 5, color: 'pink',	description: 'You have seen things that few are privy to.'},
-						{ requiredValue: 500,	level: 6, color: 'red',		description: 'You have peered into the depths of depravity.'},
-						{ requiredValue: 1000,	level: 7, color: 'red',		description: 'Your understanding is transcendental.'}
+						{ requiredValue:	0,						level: 0, color: 'red',		description: 'You are plain.'},
+						{ requiredValue:	$beautymax / 7,			level: 1, color: 'pink',	description: 'You are cute.'},
+						{ requiredValue:	($beautymax / 7) * 2,	level: 2, color: 'purple',	description: 'You are pretty.'},
+						{ requiredValue:	($beautymax / 7) * 3,	level: 3, color: 'blue',	description: 'You are charming.'},
+						{ requiredValue:	($beautymax / 7) * 4,	level: 4, color: 'lblue',	description: 'You are beautiful.'},
+						{ requiredValue:	($beautymax / 7) * 5,	level: 5, color: 'teal',	description: 'You are ravishing.'},
+						{ requiredValue:	($beautymax / 7) * 6,	level: 6, color: 'green',	description: 'Your beauty is divine.'}
 					]
 				}>>
 
-				<!--PHYSIQUE-->
+				<!-- PHYSIQUE -->
 				<<set _physiqueConfig = { name : "Physique", icon : "ui/sym-physique", displayType : "level", currentValue : $physique, maxValue: $physiquesize, modifier: 100, modTypes: { good: [], bad: [] },
 					states : [
 						{ requiredValue:	0,							level: 0, color: 'red',		description: `You are ${$player.bodyshape === "soft" ? "malnourished" : "emaciated"}.`},
@@ -414,7 +412,7 @@
 					<<set _physiqueConfig.modTypes.good.pushUnique("<i>a white so pale</i>")>>
 				<</if>>
 
-				<!--WILLPOWER-->
+				<!-- WILLPOWER -->
 				<<set _willpowerConfig = { name : "Willpower", icon : "ui/sym-trauma", displayType : "level", currentValue : $willpower, maxValue: $willpowermax, modifier: 100, modTypes: { good: [], bad: [] },
 					states : [
 						{ requiredValue:	0,						level: 0, color: 'red',		description: 'You are timid.'},
@@ -434,20 +432,21 @@
 					<<set _willpowerConfig.modTypes.bad.pushUnique("ear slimes")>>
 				<</if>>
 
-				<!--BEAUTY-->
-				<<set _beautyConfig = { name : "Beauty", icon : "ui/sym-beauty", displayType : "level", currentValue : $beauty, maxValue: $beautymax, modifier: 100, modTypes: { good: [], bad: [] },
+				<!-- AWARENESS -->
+				<<set _awarenessConfig = { name : "Awareness", icon : "ui/sym-awareness", displayType : "level", currentValue : $awareness, modifier: 100, modTypes: { good: [], bad: [] },
 					states : [
-						{ requiredValue:	0,						level: 0, color: 'red',		description: 'You are plain.'},
-						{ requiredValue:	$beautymax / 7,			level: 1, color: 'pink',	description: 'You are cute.'},
-						{ requiredValue:	($beautymax / 7) * 2,	level: 2, color: 'purple',	description: 'You are pretty.'},
-						{ requiredValue:	($beautymax / 7) * 3,	level: 3, color: 'blue',	description: 'You are charming.'},
-						{ requiredValue:	($beautymax / 7) * 4,	level: 4, color: 'lblue',	description: 'You are beautiful.'},
-						{ requiredValue:	($beautymax / 7) * 5,	level: 5, color: 'teal',	description: 'You are ravishing.'},
-						{ requiredValue:	($beautymax / 7) * 6,	level: 6, color: 'green',	description: 'Your beauty is divine.'}
+						{ requiredValue: -200,	level: 0, color: 'green',	description: 'You are innocent.'},
+						{ requiredValue: 1,		level: 1, color: 'teal',	description: 'You are almost entirely innocent.'},
+						{ requiredValue: 100,	level: 2, color: 'lblue',	description: 'You have a limited understanding of sexuality.'},
+						{ requiredValue: 200,	level: 3, color: 'blue',	description: 'You have a normal understanding of sexuality.'},
+						{ requiredValue: 300,	level: 4, color: 'purple',	description: 'Your knowledge of sexual depravity extends beyond that of most people.'},
+						{ requiredValue: 400,	level: 5, color: 'pink',	description: 'You have seen things that few are privy to.'},
+						{ requiredValue: 500,	level: 6, color: 'red',		description: 'You have peered into the depths of depravity.'},
+						{ requiredValue: 1000,	level: 7, color: 'red',		description: 'Your understanding is transcendental.'}
 					]
 				}>>
 
-				<!--PROMISCUITY-->
+				<!-- PROMISCUITY -->
 				<<set _promiscuityConfig = { name : "Promiscuity", icon : "ui/sym-lust", displayType : "level", currentValue : $promiscuity, maxValue: 100, modifier: 100, modTypes: { good: [], bad: [] },
 					states : [
 						{ requiredValue: 0,		level: 0, color: 'green',	description: 'You are chaste and pure.'},
@@ -460,7 +459,7 @@
 					]
 				}>>
 
-				<!--EXHIBITIONISM-->
+				<!-- EXHIBITIONISM -->
 				<<set _exhibitionismConfig = { name : "Exhibitionism", icon : "ui/sym-exhibitionism", displayType : "level", currentValue : $exhibitionism, maxValue: 100, modifier: 100, modTypes: { good: [], bad: [] },
 					states : [
 						{ requiredValue: 0,		level: 0, color: 'green',	description: 'You are coy.'},
@@ -473,7 +472,7 @@
 					]
 				}>>
 
-				<!--DEVIANCY-->
+				<!-- DEVIANCY -->
 				<<set _deviancyConfig = { name : "Deviancy", icon : "ui/sym-deviancy", displayType : "level", currentValue : $deviancy, maxValue: 100, modifier: 100, modTypes: { good: [], bad: [] },
 					states : [
 						{ requiredValue: 0,		level: 0, color: 'green',	description: 'You are squeamish.'},
@@ -524,7 +523,7 @@
 			<<characteristic-box _deviancyConfig>>
 		</div>
 
-		<!--Common states for skills with grades-->
+		<!-- Common states for skills with grades -->
 		<<silently>>
 			<<set _basicSkillGrades=[
 				{ requiredValue: 0,		level: "None",	color: 'red'},
@@ -554,15 +553,29 @@
 		<br>
 		<span class="gold">Skills</span>
 		<div id="base-skills" class="characteristic-box-list" @style="($parasite.left_ear.name == 'slime' || $parasite.right_ear.name == 'slime') ? '--min-width: 30%;' : ''">
-			<!--Additional skills configurations-->
+			<!-- Core Skill Configurations -->
 			<<silently>>
+				<!-- CORRUPTION -->
 				<<set _corruptionConfig =	{ name : "Corruption",	displayType : "none",	currentValue : $earSlime.corruption,	modifier: 100, modTypes: { good: [], bad: [] },		meterColor: $earSlime.startedThreats ? "purple" : "blue", secondValue: $earSlime.growth / 2, secondMeterColor: "red"}>>
+
+				<!-- SKULDUGGERY -->
 				<<set _skulduggeryConfig =	{ name : "Skulduggery", displayType : "grade",	currentValue : $skulduggery,		modifier: 100, modTypes: { good: [], bad: [] },		states : _detailedSkillGrades}>>
+
+				<!-- DANCESKILL -->
 				<<set _dancingConfig =		{ name : "Dancing",		displayType : "grade",	currentValue : $danceskill,			modifier: 100, modTypes: { good: [], bad: [] },		states : _detailedSkillGrades}>>
+
+				<!-- SWIMMINGSKILL -->
 				<<set _swimmingConfig =		{ name : "Swimming",	displayType : "grade",	currentValue : $swimmingskill,		modifier: 100, modTypes: { good: [], bad: [] },		states : _detailedSkillGrades}>>
+
+				<!-- ATHLETICS -->
 				<<set _athleticsConfig =	{ name : "Athletics",	displayType : "grade",	currentValue : $athletics,			modifier: 100, modTypes: { good: [], bad: [] },		states : _detailedSkillGrades}>>
+
+				<!-- TENDING -->
 				<<set _tendingConfig =		{ name : "Tending",		displayType : "grade",	currentValue : $tending,			modifier: 100, modTypes: { good: [], bad: [] },		states : _detailedSkillGrades}>>
+
+				<!-- HOUSEKEEPING -->
 				<<set _housekeepingConfig =	{ name : "Housekeeping",displayType : "grade",	currentValue : $housekeeping,		modifier: 100, modTypes: { good: [], bad: [] },		states : _detailedSkillGrades}>>
+
 				<<set _bellySize to playerBellySize()>>
 				<<if _bellySize gte 10 and playerNormalPregnancyTotal() lt 20>>
 					<<switch playerNormalPregnancyTotal()>>
@@ -690,6 +703,7 @@
 					<<set _housekeepingConfig.modTypes.good.pushUnique("<i>????</i>")>>
 				<</if>>
 			<</silently>>
+
 			<<characteristic-box _skulduggeryConfig>>
 			<<characteristic-box _dancingConfig>>
 			<<characteristic-box _swimmingConfig>>
@@ -703,25 +717,45 @@
 
 		<br>
 		<span class="gold">Sex Skills</span>
-		<!--Sex skills configurations-->
+		<!-- Sex Skill Configurations -->
 		<<silently>>
+			<!-- SEDUCTIONSKILL -->
 			<<set _seductionConfig =	{ name : "Seduction",	displayType : "grade",	currentValue : $seductionskill, modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : 0}>>
+
+			<!-- ORALSKILL -->
 			<<set _oralConfig =			{ name : "Oral",		displayType : "grade",	currentValue : $oralskill,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : $mouthsensitivity}>>
+
+			<!-- CHESTSKILL -->
 			<<set _chestConfig =		{ name : "Chest",		displayType : "grade",	currentValue : $chestskill,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : $breastsensitivity}>>
+
+			<!-- HANDSKILL -->
 			<<set _handsConfig =		{ name : "Hands",		displayType : "grade",	currentValue : $handskill,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : 0}>>
+
+			<!-- BOTTOMSKILL -->
 			<<set _buttocksConfig =		{ name : "Buttocks",	displayType : "grade",	currentValue : $bottomskill,	modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : $bottomsensitivity}>>
+
+			<!-- ANALSKILL -->
 			<<set _analConfig =			{ name : "Anal",		displayType : "grade",	currentValue : $analskill,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : $bottomsensitivity}>>
+
+			<!-- THIGHSKILL -->
 			<<set _thighsConfig =		{ name : "Thighs",		displayType : "grade",	currentValue : $thighskill,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : 0}>>
+
+			<!-- FEETSKILL -->
 			<<set _feetConfig =			{ name : "Feet",		displayType : "grade",	currentValue : $feetskill,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : 0}>>
+
+			<!-- PENILESKILL -->
 			<<if $player.penisExist>>
 				<<set _penileConfig =	{ name : "Penile",		displayType : "grade",	currentValue : $penileskill,	modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : $genitalsensitivity}>>
 			<</if>>
 			<<if playerHasStrapon()>>
 				<<set _penileConfig =	{ name : "Strap-on use",displayType : "grade",	currentValue : $penileskill,	modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : 0}>>
 			<</if>>
+
+			<!-- VAGINALSKILL -->
 			<<if $player.vaginaExist>>
 				<<set _vaginalConfig =	{ name : "Vaginal",		displayType : "grade",	currentValue : $vaginalskill,	modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades, 	sensitivity : $genitalsensitivity}>>
 			<</if>>
+
 			<<if $earSlime.growth gt 50 and !V.earSlime.defyCooldown>>
 				<<set _seductionConfig.modTypes.good.pushUnique("ear slimes")>>
 				<<set _seductionConfig.modifier to Math.floor(_seductionConfig.modifier * (1 + (($earSlime.growth - 50) / 600)))>>
@@ -765,6 +799,7 @@
 				<<set _penileConfig.modifier to Math.floor(_penileConfig.modifier * (1 + (Math.clamp(playerRutMinArousal(), 0, 4000) / 20000)))>>
 			<</if>>
 		<</silently>>
+
 		<<if $options.images is 1>>
 			<div id="player-body">
 				<<player-base-body>>
@@ -859,7 +894,7 @@
 		<br>
 		<span class="gold">School Performance</span>
 		<div id="school-grades" class="characteristic-box-list">
-			<!--School grade configurations-->
+			<!-- School Grade Configurations -->
 			<<silently>>
 				<<set _schoolGradeStates= [
 					{ requiredValue: -1,	level: 'F',		color: 'red'},
@@ -870,10 +905,18 @@
 					{ requiredValue: 4,		level: 'A*',	color: 'green'}
 				]>>
 
+				<!-- SCIENCE -->
 				<<set _scienceConfig =	{ name : 'Science', icon : 'misc/icon/science', displayType : "grade",	currentValue : $sciencetrait,	modifier: 100, modTypes: { good: [], bad: [] },	percent: $science_exam,		showStars: true, starLevel: $science_star,	states : _schoolGradeStates}>>
+
+				<!-- MATHS -->
 				<<set _mathsConfig =	{ name : 'Maths',	icon : 'misc/icon/math',	displayType : "grade",	currentValue : $mathstrait,		modifier: 100, modTypes: { good: [], bad: [] },	percent: $maths_exam,		showStars: true, starLevel: $maths_star,	states : _schoolGradeStates}>>
+
+				<!-- ENGLISH -->
 				<<set _englishConfig =	{ name : 'English', icon : 'misc/icon/english', displayType : "grade",	currentValue : $englishtrait,	modifier: 100, modTypes: { good: [], bad: [] },	percent: $english_exam,		showStars: true, starLevel: $english_star,	states : _schoolGradeStates}>>
+
+				<!-- HISTORY -->
 				<<set _historyConfig =	{ name : 'History', icon : 'misc/icon/history', displayType : "grade",	currentValue : $historytrait,	modifier: 100, modTypes: { good: [], bad: [] },	percent: $history_exam,		showStars: true, starLevel: $history_star,	states : _schoolGradeStates}>>
+
 				<<if $moorLuck gt 0>>
 					<<set _scienceConfig.modifier to Math.floor(_scienceConfig.modifier * (1 + ($moorLuck / 100)))>>
 					<<set _scienceConfig.modTypes.good.pushUnique("<i>????</i>")>>
@@ -909,14 +952,27 @@
 		<br>
 		<span class="gold">Weapon Skills</span>
 		<div id="prof" class="characteristic-box-list">
+			<!-- Weapon Skill Configurations -->
 			<<silently>>
+				<!-- SPRAYSKILL -->
 				<<set _sprayConfig =		{ name : "Sprays",		displayType : "grade",	currentValue : $prof.spray,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
+
+				<!-- NETSKILL -->
 				<<set _netConfig =			{ name : "Nets",		displayType : "grade",	currentValue : $prof.net,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
+
+				<!-- BATONSKILL -->
 				<<set _batonConfig =		{ name : "Batons",		displayType : "grade",	currentValue : $prof.baton,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
+
+				<!-- WHIPSKILL -->
 				<<set _whipConfig =			{ name : "Whips",		displayType : "grade",	currentValue : $prof.whip,		modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
+				
+				<!-- PICKAXESKILL -->
 				<<set _pickaxeConfig =		{ name : "Pickaxes",	displayType : "grade",	currentValue : $prof.pickaxe,	modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
+
+				<!-- HIDDEN -->
 				<<set _hiddenConfig =		{ name : "<i>????</i>",	displayType : "grade",	currentValue : 0,				modifier: 100, modTypes: { good: [], bad: [] },		states : _basicSkillGrades}>>
 			<</silently>>
+
 			<<characteristic-box _sprayConfig>>
 			<<if $prof.net isnot undefined>>
 				<<characteristic-box _netConfig>>
