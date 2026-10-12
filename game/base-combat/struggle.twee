@@ -1133,7 +1133,7 @@
 		<</if>>
 	<<elseif $feetaction is "plant">>
 		<<unset $dodging>>
-		<<set _grip_strength += currentSkillValue("feetskill")>>
+		<<set _grip_strength += PC.feetskill>>
 		<<if $underwater is 1 or ["sea","lake"].includes($location)>>
 			You tread water, helping you steady your grip.
 		<<else>>
@@ -1815,7 +1815,7 @@
 			<!-- lurkers attacc -->
 			<<rng>>
 			<<if $dodging gte 1>>
-				<<set _doge_chance to ((currentSkillValue("feetskill") / 3) + (PC.danceskill / 3) - $drunk - (!!$worn.feet.type.includes("heels") * 200))>>
+				<<set _doge_chance to ((PC.feetskill / 3) + (PC.danceskill / 3) - $drunk - (!!$worn.feet.type.includes("heels") * 200))>>
 				<<feetskilluse>>
 			<</if>>
 			<<if $left_guard is 1>>
@@ -1839,9 +1839,9 @@
 				<<set $dodging -= 1>>
 				<<if $drunk gte 60>>
 					but you drunkenly stagger out of the way<<if !random(100)>> like the drunk master you are<</if>>,
-				<<elseif currentSkillValue("feetskill") gte 800 or PC.danceskill gte 400>>
+				<<elseif PC.feetskill gte 800 or PC.danceskill gte 400>>
 					but you dance aside,
-				<<elseif currentSkillValue("feetskill") gte 200>>
+				<<elseif PC.feetskill gte 200>>
 					but you step aside,
 				<<else>>
 					but you stumble aside,

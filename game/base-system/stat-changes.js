@@ -208,8 +208,8 @@ const statChange = (() => {
 			 *
 			 * All fatigue gains will be increased by up to 100%, depending on the overflow value.
 			 */
-			if (V.worn.feet.reveal > currentSkillValue("feetskill") && V.worn.feet.type.includes("heels")) {
-				fatigueMod += (V.worn.feet.reveal - currentSkillValue("feetskill")) / 1000;
+			if (V.worn.feet.reveal > PC.feetskill && V.worn.feet.type.includes("heels")) {
+				fatigueMod += (V.worn.feet.reveal - PC.feetskill) / 1000;
 			}
 
 			// The player's body temperature being too high will increase their fatigue gains by up to 200%

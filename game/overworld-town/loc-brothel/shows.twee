@@ -1877,7 +1877,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				<br>
 			<</if>>
 			<<if $settings.footFetishEnabled>>
-				<<link [[Show off your feet|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $feetskill * 50>><</link>><<promiscuous2>><<skill_difficulty `currentSkillValue("feetskill")` "Feet Skill" 1 800>>
+				<<link [[Show off your feet|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $feetskill * 50>><</link>><<promiscuous2>><<skill_difficulty `PC.feetskill` "Feet Skill" 1 800>>
 				<br>
 			<</if>>
 		<<else>>
@@ -1899,7 +1899,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				You try to wave, but it is rather awkward-looking.<<handskill 5>><<ghandskill>>
 			<</if>>
 		<<else>> /* Show off your feet */
-			<<if currentSkillValue("feetskill") gte random(1, 800)>>
+			<<if PC.feetskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You angle your body to show off your legs and the soles of your feet.<<feetskill 5>><<gfeetskill>>
 				<br><br>

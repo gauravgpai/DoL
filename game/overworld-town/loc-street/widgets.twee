@@ -3576,7 +3576,7 @@
 			<</if>>
 			/* end time differences */
 
-			<<if $worn.feet.type.includes("heels") and currentSkillValue("feetskill") lt $worn.feet.reveal>>
+			<<if $worn.feet.type.includes("heels") and PC.feetskill lt $worn.feet.reveal>>
 				<<addevent "streetheeltrip" 2>>
 			<</if>>
 

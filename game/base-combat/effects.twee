@@ -2742,7 +2742,7 @@
 						<<run_text>>
 					<</if>>
 					<<if $worn.feet.type.includes("heels")>>
-						<<if currentSkillValue("feetskill") gte random(1, 1000)>>
+						<<if PC.feetskill gte random(1, 1000)>>
 							<<set _stalk_feet to true>>
 						<<else>>
 							<<set _stalk_feet to false>>
@@ -2774,7 +2774,7 @@
 						<<run_text>>
 					<</if>>
 					<<if $worn.feet.type.includes("heels")>>
-						<<if currentSkillValue("feetskill") gte random(1, 1000)>>
+						<<if PC.feetskill gte random(1, 1000)>>
 							<<set _stalk_feet to true>>
 						<<else>>
 							<<set _stalk_feet to false>>
@@ -2802,7 +2802,7 @@
 							The footsteps behind you speed up. <span class="red">You are being chased.</span>
 							<<stalk_run>>
 							<<if $worn.feet.type.includes("heels")>>
-								<<if currentSkillValue("feetskill") gte random(1, 1000)>>
+								<<if PC.feetskill gte random(1, 1000)>>
 									<<set _stalk_feet to true>>
 								<</if>>
 							<<else>>
@@ -2829,7 +2829,7 @@
 							<<run_text>>
 						<</if>>
 						<<if $worn.feet.type.includes("heels")>>
-							<<if currentSkillValue("feetskill") gte random(1, 1000)>>
+							<<if PC.feetskill gte random(1, 1000)>>
 								<<set _stalk_feet to true>>
 							<</if>>
 						<<else>>

@@ -821,7 +821,7 @@
 <<widget "stalk_athletics_difficulty">>
 	<<if $stalk_assess or $NPCList[0].state is "pursuit" or $NPCList[0].state is "chased">>
 		<<if $worn.feet.type.includes("heels")>>
-			<<skill_difficulty `currentSkillValue("feetskill")` "Feet (heels)" 1 1000>>
+			<<skill_difficulty `PC.feetskill` "Feet (heels)" 1 1000>>
 		<</if>>
 		<<athleticsdifficulty 0 $NPCList[0].skills.athletics>>
 	<</if>>
