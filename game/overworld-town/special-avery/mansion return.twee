@@ -4288,7 +4288,7 @@ You go to the badminton court near the garden. Avery arrives a few minutes later
 You play to the best of your ability.
 <<if $athleticsSuccess>>
 	Avery is no slouch,
-	<<if currentSkillValue('athletics') gte 1000>>
+	<<if PC.athletics gte 1000>>
 		but <<he>> has to exert <<himself>> to <<his>> fullest just to keep up with you, stretching and straining, sweating and panting, <span class="green">until <<he>> fumbles.</span>
 	<<else>>
 		and <<he>> puts up a struggle. You both end up panting and sweating, but <span class="green"><<he>> fumbles first.</span>
@@ -4313,7 +4313,7 @@ You play to the best of your ability.
 <<effects>><<wearProp "badminton racquet">>
 
 You let Avery win.
-<<if currentSkillValue('athletics') gte 900>>
+<<if PC.athletics gte 900>>
 	You make a good show of it, pushing <<him>> until <<he>> breaks into a sweat, then you 'fumble.'
 	<br><br>
 <<else>>

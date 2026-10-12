@@ -596,7 +596,7 @@ You haul yourself over the fence and drop down on the other side.
 	<<set $daily.school.fenceHop to 1>>
 <</if>>
 /* chance to hop the fence based on athletics or fence familiarity, capped at 95% */
-<<set _fencehop to Math.max(($fenceFamiliarity - 1) * 5, currentSkillValue("athletics") / 11)>>
+<<set _fencehop to Math.max(($fenceFamiliarity - 1) * 5, PC.athletics / 11)>>
 
 /* find the top-most slot that is not naked */
 <<set _slots to ["over_lower", "lower", "under_lower"]>>
@@ -663,7 +663,7 @@ You haul yourself over the fence and drop down on the other side.
 	<<set $daily.school.fenceHop to 1>>
 <</if>>
 /* chance to hop the fence based on athletics or fence familiarity, capped at 95% */
-<<set _fencehop to Math.max(($fenceFamiliarity - 1) * 5, currentSkillValue("athletics") / 11)>>
+<<set _fencehop to Math.max(($fenceFamiliarity - 1) * 5, PC.athletics / 11)>>
 
 /* find the top-most slot that is not naked */
 <<set _slots to ["over_lower", "lower", "under_lower"]>>

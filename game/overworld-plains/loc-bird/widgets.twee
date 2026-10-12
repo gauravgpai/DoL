@@ -1213,8 +1213,8 @@
 			<<if $_printAlerts>><span class="green">The weather shouldn't affect your flight.</span><</if>>
 	<</switch>>
 	<<if $_printAlerts>><br><</if>>
-	<<if currentSkillValue('athletics') gt 0>>
-		<<set _flightTime -= Math.floor((_flightTime / 20) * (currentSkillValue('athletics') / 100))>>
+	<<if PC.athletics gt 0>>
+		<<set _flightTime -= Math.floor((_flightTime / 20) * (PC.athletics / 100))>>
 	<</if>>
 	<<if _flightTime lte 0>>
 		<<set _flightTime to 1>>

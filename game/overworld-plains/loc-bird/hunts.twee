@@ -4832,7 +4832,7 @@ Deciding you've found enough, you get ready to leave.
 <<effects>>
 <<if $bird.hunts.goal is "hawk">>
 	You fly after your <<if $monster is 1>><<nnpc_wife "Great Hawk">><<else>>partner<</if>>. <<bHes>> chasing after the plane as fast as <<bhe>> can.
-	<<if currentSkillValue('athletics') gte 600>> You're able to keep up with <<bhim>>. <<else>> You struggle to keep up with <<bhim>>. <</if>>
+	<<if PC.athletics gte 600>> You're able to keep up with <<bhim>>. <<else>> You struggle to keep up with <<bhim>>. <</if>>
 	You keep chasing the plane with your <<if $monster is 1>><<nnpc_wife "Great Hawk">><<else>>partner<</if>> for many minutes, until it eventually flies out of sight.
 	<br><br>
 

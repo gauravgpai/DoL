@@ -2007,7 +2007,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				You stiffly shuffle your feet in a graceless dance.<<danceskill 5>><<gdanceskill>>
 			<</if>>
 		<<else>> /* Stretch */
-			<<if currentSkillValue("athletics") gte random(1, 800)>>
+			<<if PC.athletics gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You spread your legs apart and stretch to the ground, jutting your <<bottom>> high in the air.<<athletics 5>><<gathletics>>
 				<br><br>

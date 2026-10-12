@@ -2750,7 +2750,7 @@
 					<<else>>
 						<<set _stalk_feet to true>>
 					<</if>>
-					<<if currentSkillValue('athletics') gte random(1, $NPCList[0].skills.athletics)>>
+					<<if PC.athletics gte random(1, $NPCList[0].skills.athletics)>>
 						<<set _stalk_athletics to true>>
 					<<else>>
 						<<set _stalk_athletics to false>>
@@ -2782,7 +2782,7 @@
 					<<else>>
 						<<set _stalk_feet to true>>
 					<</if>>
-					<<if currentSkillValue('athletics') gte random(1, $NPCList[0].skills.athletics)>>
+					<<if PC.athletics gte random(1, $NPCList[0].skills.athletics)>>
 						<<set _stalk_athletics to true>>
 					<<else>>
 						<<set _stalk_athletics to false>>
@@ -2808,7 +2808,7 @@
 							<<else>>
 								<<set _stalk_feet to true>>
 							<</if>>
-							<<if currentSkillValue('athletics') gte random(1, $NPCList[0].skills.athletics)>>
+							<<if PC.athletics gte random(1, $NPCList[0].skills.athletics)>>
 								<<set _stalk_athletics to true>>
 							<<else>>
 								<<set _stalk_athletics to false>>
@@ -2835,7 +2835,7 @@
 						<<else>>
 							<<set _stalk_feet to true>>
 						<</if>>
-						<<if currentSkillValue('athletics') gte random(1, $NPCList[0].skills.athletics)>>
+						<<if PC.athletics gte random(1, $NPCList[0].skills.athletics)>>
 							<<set _stalk_athletics to true>>
 						<<else>>
 							<<set _stalk_athletics to false>>

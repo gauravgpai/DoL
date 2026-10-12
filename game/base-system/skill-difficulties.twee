@@ -330,7 +330,7 @@
 <</widget>>
 
 <<widget "athleticsdifficulty">>
-	<<skill_difficulty currentSkillValue('athletics') "Athletics" _args[0] _args[1] _args[2]>>
+	<<skill_difficulty PC.athletics "Athletics" _args[0] _args[1] _args[2]>>
 <</widget>>
 
 <<widget "willpowerdifficulty">>

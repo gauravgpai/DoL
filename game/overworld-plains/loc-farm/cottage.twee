@@ -2667,7 +2667,7 @@ You get comfy beside Alex.
 			<br><br>
 
 			You swoop in to kiss <<him>> mid-laugh, and <<he>> turns red.<<takeKissVirginity "Alex" "loveInterest">>
-		<<elseif currentSkillValue('athletics') gte 800>>
+		<<elseif PC.athletics gte 800>>
 			<span class="green"><<His>> reflexes are fast, but yours prove faster.</span> "You won, fair and square. Now give it back." <<He>> folds <<his>> arms.
 			<br><br>
 
