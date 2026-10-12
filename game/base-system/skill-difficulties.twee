@@ -1,17 +1,17 @@
 :: Widgets Difficulty [widget]
 <<widget "sexactiondifficulty">>
 	<<if $settings.skillCheckStyle is "skillname" or $settings.blindStatsEnabled>>
-	<<elseif (990 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (990 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="green">(Very Easy)</span>
-	<<elseif (800 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (800 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="teal">(Easy)</span>
-	<<elseif (600 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (600 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="lblue">(Medium)</span>
-	<<elseif (400 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (400 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="blue">(Challenging)</span>
-	<<elseif (200 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (200 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="purple">(Hard)</span>
-	<<elseif (1 - ($enemytrust * 10) - currentSkillValue(_args[0]) + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+	<<elseif (1 - ($enemytrust * 10) - PC[_args[0]] + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<span class="pink">(Very Hard)</span>
 	<<else>>
 		<span class="red">(Impossible)</span>

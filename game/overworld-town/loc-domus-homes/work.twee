@@ -3273,9 +3273,9 @@ A moment of silence passes before you hear a distinctive beep. Another passes, a
 				<</if>>
 			<</if>>
 		<<case "keepAway">>
-			<<set _skill to ($player.vaginaExist ? "thigh" : "anal")>>
+			<<set _skill to ($player.vaginaExist ? "thighskill" : "analskill")>>
 			<<set _difficultyMachine to Math.floor(($domusLoftMachine.difficultyMin / 20) + ($rng * 2) - ($domusLoftMachine.breakFreeSuccess * 200))>>
-			<<if currentSkillValue(_skill + "skill") gte _difficultyMachine>>
+			<<if PC[_skill] gte _difficultyMachine>>
 				<<set _machineAdvance to false>><<set $domusLoftMachine.untilPenetration++>>
 				<span class="green">You manage to wiggle around and redirect the machine.</span>
 			<<else>>
