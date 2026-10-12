@@ -402,7 +402,7 @@
 		<<set _feetaction[_swarmsteady + " one of the " + _swarmname] to "feetswarm">>
 	<</if>>
 	<<if _feetOptions is "free">>
-		<<if $water is 1 and $vorecreature is 0 and currentSkillValue('swimmingskill') gt 700 and $consensual isnot 1 and ($feettarget is "self" or $options.targetYourself is false or _targetnumber is 1)>>
+		<<if $water is 1 and $vorecreature is 0 and PC.swimmingskill gt 700 and $consensual isnot 1 and ($feettarget is "self" or $options.targetYourself is false or _targetnumber is 1)>>
 			<<set _feetaction["Swim to safety"] to "swim">>
 		<</if>>
 	<</if>>
@@ -567,7 +567,7 @@
 				<label>_swarmsteady one of the <<swarmName>> <<radiobutton "$feetaction" "feetswarm" checked>></label> |
 			<</if>>
 
-			<<if $water is 1 and $vorecreature is 0 and currentSkillValue('swimmingskill') gt 700 and $consensual isnot 1>>
+			<<if $water is 1 and $vorecreature is 0 and PC.swimmingskill gt 700 and $consensual isnot 1>>
 				<label><span class="teal">Swim to safety</span> <<radiobutton "$feetaction" "swim" checked>></label> |
 			<</if>>
 

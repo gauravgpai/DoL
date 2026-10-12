@@ -3636,13 +3636,13 @@
 		<br><br>
 	<</if>>
 
-	<<if currentSkillValue('swimmingskill') lte 100>>
+	<<if PC.swimmingskill lte 100>>
 		You're not very good at swimming, and struggle to even stay above the surface of the water.
-	<<elseif currentSkillValue('swimmingskill') lte 300>>
+	<<elseif PC.swimmingskill lte 300>>
 		You're not a very fast swimmer, and need to take frequent breaks due to the strain on your muscles.
-	<<elseif currentSkillValue('swimmingskill') lte 500>>
+	<<elseif PC.swimmingskill lte 500>>
 		You're not a bad swimmer, but you've a long way to go.
-	<<elseif currentSkillValue('swimmingskill') lte 900>>
+	<<elseif PC.swimmingskill lte 900>>
 		You're a pretty good swimmer, among the best in the class.
 	<<else>>
 		You're a very good swimmer, easily the best in the class.

@@ -3206,7 +3206,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "swimmingtext">>
-	<<set $_swimmingskillText to currentSkillValue('swimmingskill')>>
+	<<set $_swimmingskillText to PC.swimmingskill>>
 	<<if $_swimmingskillText lt 200>><span class="pink">haphazardly</span>
 	<<elseif $_swimmingskillText lt 400>><span class="purple">awkwardly</span>
 	<<elseif $_swimmingskillText lt 600>><span class="blue">adequately</span>
