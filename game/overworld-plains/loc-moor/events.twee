@@ -4717,7 +4717,7 @@ You slowly hold out your hands toward the <<beasttype>>, doing your best to appe
 
 <<if $phase is 0>> /* Attempt to mount */
 	You run up behind the <<beasttype>> and jump onto <<bhis>> back. <<bHe>> starts thrashing around, trying to throw you off.
-	<<if currentSkillValue("thighskill") gte random(1, 1200)>>
+	<<if PC.thighskill gte random(1, 1200)>>
 		Despite <<bhis>> best attempt to get rid of you, <span class="green">you manage to stay on <<bhis>> back</span> until <<bhe>> calms down.
 		<br><br>
 
@@ -4992,7 +4992,7 @@ With some care, you manage to hold on and balance on <<bhis>> back.
 <<elseif $phase is 1>> /* Get a better grip with your thighs */
 	<<set _difficultyMax to $horseDifficulty*2>>
 	You squeeze your legs against the sides of the <<beasttypes>> body,
-	<<if currentSkillValue("thighskill") gte random($horseDifficulty, _difficultyMax)>>
+	<<if PC.thighskill gte random($horseDifficulty, _difficultyMax)>>
 		<span class="green">managing to stay on.</span>
 	<<else>>
 		<<set _failure to true>>

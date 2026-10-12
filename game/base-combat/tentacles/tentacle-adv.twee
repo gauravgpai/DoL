@@ -2309,7 +2309,7 @@
 		<<set $thighaction to 0>><<set $thighactiondefault to "penisrub"+_tentacle.id>>
 		<<submission 3>><<thighskilluse>>
 		You <<thightext>> rub _the _tentacle.fullDesc between your thighs.
-		<<if currentSkillValue("thighskill") gte (800 - ($rng * 10))>>
+		<<if PC.thighskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip, covering your tummy</span>.
 			<<set _tentacle.tentaclehealth -= 3>><<tentacle_record "fluid" 3>><<bodyliquid "tummy" _fluid>><<tummyejacstat>><<ejacstat>>
 			<<if $abomination is 1>>
@@ -2321,7 +2321,7 @@
 	<<if $thighaction is "vaginarub"+_tentacle.id>>
 		<<set $thighaction to 0>><<set $thighactiondefault to "vaginarub"+_tentacle.id>>
 		<<submission 3>><<thighskilluse>>You <<thightext>> rub _the _tentacle.fullDesc between your thighs.
-		<<if currentSkillValue("thighskill") gte (800 - ($rng * 10))>>
+		<<if PC.thighskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip, covering your tummy</span>.
 			<<set _tentacle.tentaclehealth -= 3>><<bodyliquid "tummy" _fluid>><<tummyejacstat>><<ejacstat>>
 			<<if $abomination is 1>>

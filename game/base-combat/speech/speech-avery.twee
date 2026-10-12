@@ -1304,7 +1304,7 @@
 				<<else>> /* Doggy */
 					<<if $enemyarousal gte ($enemyarousalmax / 5) * 3 and $rng gte 51>>
 						<<He>> starts thrusting between your thighs roughly. You hear <<his>> <<= either("grunting", "moaning","panting")>> in your ear.
-					<<elseif currentSkillValue("thighskill") gte 400>>
+					<<elseif PC.thighskill gte 400>>
 						"Yes, keep them together like that," <<he>> hisses with pleasure.<<if C.npc.Avery.love gte 40>> "Good <<girl>>."<</if>>
 					<<else>>
 						"Squeeze your thighs together tighter," <<he>> murmurs. <<He>> makes a pleased sound when you do.

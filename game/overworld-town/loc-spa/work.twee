@@ -1245,7 +1245,7 @@ Your hands are occupied. You need to use something else.
 <br><br>
 
 
-<<link [[Use your thighs|Spa Lewd Thigh]]>><<thighskill 5>><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 1200>><<gthighskill>>
+<<link [[Use your thighs|Spa Lewd Thigh]]>><<thighskill 5>><</link>><<skill_difficulty `PC.thighskill` "Thigh Skill" 1 1200>><<gthighskill>>
 <br>
 <<link [[Use your ass|Spa Lewd Bottom]]>><<bottomskill 5>><</link>><<skill_difficulty `PC.bottomskill` "Ass Skill" 1 1200>><<gbottomskill>>
 <br>
@@ -1272,7 +1272,7 @@ Your hands are occupied. You need to use something else.
 :: Spa Lewd Thigh
 
 <<effects>>
-<<if currentSkillValue("thighskill") gte random(1, 1200)>>
+<<if PC.thighskill gte random(1, 1200)>>
 	You lie flat against the <<person>>,
 	<<if $NPCList[0].penis isnot "none">>
 		and <<thightext>> grasp <<his>> <<print $NPCList[0].penisdesc>> between your thighs. <<He>> thrusts against you as <<he>> half-heartedly strains against your grasp. You're careful not to squeeze <<his>> cock too tight, <span class="green">making sure <<he>> can't cum.</span>
@@ -1296,7 +1296,7 @@ Your hands are occupied. You need to use something else.
 
 	<<link [[Finish|Spa Lewd Thigh Finish]]>><</link>>
 	<br>
-	<<link [[Demand more money|Spa Lewd Thigh 2]]>><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 300 1175>>
+	<<link [[Demand more money|Spa Lewd Thigh 2]]>><</link>><<skill_difficulty `PC.thighskill` "Thigh Skill" 300 1175>>
 	<br>
 	/* 4/5 of success */
 
@@ -1335,7 +1335,7 @@ Your hands are occupied. You need to use something else.
 :: Spa Lewd Thigh 2
 <<effects>>
 
-<<if currentSkillValue("thighskill") gte random(300, 1175)>>
+<<if PC.thighskill gte random(300, 1175)>>
 /* 4/5 of success */
 
 

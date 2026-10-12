@@ -3710,7 +3710,7 @@ You push Alex onto <<his>> back. Laughing, <<he>> grasps your shoulders and push
 
 <</if>>
 
-<<link [[Ride a horse with Alex|Farm Meadow Date 2]]>><<thighskill 5>><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 200>>
+<<link [[Ride a horse with Alex|Farm Meadow Date 2]]>><<thighskill 5>><</link>><<skill_difficulty `PC.thighskill` "Thigh Skill" 1 200>>
 
 :: Farm Meadow Date 2
 <<effects>>
@@ -3725,7 +3725,7 @@ You push Alex onto <<his>> back. Laughing, <<he>> grasps your shoulders and push
 
 <</if>>
 
-<<if currentSkillValue("thighskill") gte 200 or $alex_meadow_date_scold is 1>>
+<<if PC.thighskill gte 200 or $alex_meadow_date_scold is 1>>
 
 	You focus on riding and holding the horse reins.
 
@@ -3834,7 +3834,7 @@ After an enjoyable time in the meadow, you and Alex ride the <<steed_text>> back
 <<effects>>
 
 "Time to get back to work." Alex looks at <<his>> watch and
-<<if currentSkillValue("thighskill") gte 200 and $farm_stage gte 7 and $alex_countdown is undefined>>
+<<if PC.thighskill gte 200 and $farm_stage gte 7 and $alex_countdown is undefined>>
 	pats your back a couple of times. With a satisfied grin, <<he>> walks towards the fields.
 <<elseif $exposed gte 1>>
 	glances at you. <<He>> clears <<his>> throat, then walks towards the fields at a quick pace.<<glust>><<npcincr Alex lust 1>>

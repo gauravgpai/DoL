@@ -1953,7 +1953,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 		<<if hasSexStat("promiscuity", 4)>>
 			<<link [[Offer your ass|Brothel Show Virginity Auction]]>><<set $phase to 1>><<set $virginitytip += $bottomskill * 50>><</link>><<promiscuous4>><<skill_difficulty `PC.bottomskill` "Bottom Skill" 1 800>>
 			<br>
-			<<link [[Pat your thighs|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $thighskill * 50>><</link>><<promiscuous4>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 800>>
+			<<link [[Pat your thighs|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $thighskill * 50>><</link>><<promiscuous4>><<skill_difficulty `PC.thighskill` "Thigh Skill" 1 800>>
 		<<else>>
 			<<insufficientStat "promiscuity" "to flaunt your body parts at them">>
 		<</if>>
@@ -1973,7 +1973,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				You turn around and give your <<bottom>> a slap, but only end up hurting yourself.<<bottomskill 5>><<gbottomskill>><<pain 2>><<gpain>>
 			<</if>>
 		<<else>> /* Pat your thighs */
-			<<if currentSkillValue("thighskill") gte random(1, 800)>>
+			<<if PC.thighskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				You spread your legs, pat your thighs, and stroke your hands along the inside of your leg.<<thighskill 5>><<gthighskill>>
 				<br><br>

@@ -756,7 +756,7 @@
 <</widget>>
 
 <<widget "thighskilluse">>
-	<<set $enemyarousal += (currentSkillValue("thighskill") / 100)>><<thighskill 5>><<set $thighskillup to 1>>
+	<<set $enemyarousal += (PC.thighskill / 100)>><<thighskill 5>><<set $thighskillup to 1>>
 <</widget>>
 
 <<widget "chestskilluse">>

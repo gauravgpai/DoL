@@ -8578,7 +8578,7 @@ You approach the delinquents. They're noisier up close. Whitney leers at you,
 					<<link [[Rub back|Whitney Pub Rub]]>><<set $phase2 to "penile">><</link>><<skill_difficulty `PC.penileskill` "Penile Skill" 1 $drunk>><<note "Failure will increase arousal" "purple">>
 					<br>
 				<<else>>
-					<<link [[Rub back|Whitney Pub Rub]]>><<set $phase2 to "thigh">><</link>><<skill_difficulty `currentSkillValue("thighskill")` "Thigh Skill" 1 $drunk>><<note "Failure will increase arousal" "purple">>
+					<<link [[Rub back|Whitney Pub Rub]]>><<set $phase2 to "thigh">><</link>><<skill_difficulty `PC.thighskill` "Thigh Skill" 1 $drunk>><<note "Failure will increase arousal" "purple">>
 					<br>
 				<</if>>
 			<</if>>
@@ -9046,7 +9046,7 @@ Shock flashes in <<his>> eyes, but it quickly turns to lust. <<He>> smiles, mout
 	<<promiscuity4>>
 
 	<<He>> continues to grind,
-	<<if currentSkillValue("thighskill") gte random(1, $drunk)>>
+	<<if PC.thighskill gte random(1, $drunk)>>
 		<span class="green">but <<he>> falters.</span> Gradually, <<he>> drifts to your leg, until <<hes>> lost sight of your <<genitals>> completely.
 		<br><br>
 
