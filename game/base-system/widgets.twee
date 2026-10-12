@@ -736,7 +736,7 @@
 <</widget>>
 
 <<widget "vaginalskilluse">>
-	<<set $enemyarousal += (currentSkillValue("vaginalskill") / 100)>><<vaginalskill 5>><<set $vaginalskillup to 1>>
+	<<set $enemyarousal += (PC.vaginalskill / 100)>><<vaginalskill 5>><<set $vaginalskillup to 1>>
 <</widget>>
 
 <<widget "analskilluse">>

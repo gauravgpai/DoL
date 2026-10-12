@@ -676,7 +676,7 @@
 	/*After vaginapenisfuck*/
 	<<set _vagina["Take it"] to "take">>
 	<<set _vagina["Cooperate"] to "cooperate">>
-	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and currentSkillValue("vaginalskill") gte 800>>
+	<<if (hasSexStat("promiscuity", 4) or hasSexStat("deviancy", 4) or _args[0] is true) and PC.vaginalskill gte 800>>
 		<<set _vagina["Edge their penis with your vagina"] to "penisEdging">>
 	<</if>>
 	<<set _vagina["Press your thigh against their mouth"] to "thighbay">>

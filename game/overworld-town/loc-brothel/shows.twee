@@ -2026,7 +2026,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				<br>
 			<</if>>
 			<<if $player.vaginaExist>>
-				<<link [[Show off your pussy|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $vaginalskill * 50>><</link>><<promiscuous5>><<skill_difficulty `currentSkillValue("vaginalskill")` "Vaginal Skill" 1 800>>
+				<<link [[Show off your pussy|Brothel Show Virginity Auction]]>><<set $phase to 2>><<set $virginitytip += $vaginalskill * 50>><</link>><<promiscuous5>><<skill_difficulty `PC.vaginalskill` "Vaginal Skill" 1 800>>
 				<br>
 			<</if>>
 		<<else>>
@@ -2073,7 +2073,7 @@ The pulses increase in intensity. It's certainly not the "tingle" that was adver
 				<<penileskill 5>><<gpenileskill>>
 			<</if>>
 		<<else>> /* Show off your pussy */
-			<<if currentSkillValue("vaginalskill") gte random(1, 800)>>
+			<<if PC.vaginalskill gte random(1, 800)>>
 				<<set $virginitytip += 50000>>
 				<<if _bottomExposed>>
 					<<if $leftleg is "bound" and $rightleg is "bound">>

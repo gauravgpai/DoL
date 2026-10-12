@@ -2192,7 +2192,7 @@
 		<<set $vaginaaction to 0>><<set $vaginaactiondefault to "vaginarub"+_tentacle.id>>
 		<<submission 2>><<vaginalskilluse>>
 		You <<vaginaltext>> rub the tip of _the _tentacle.fullDesc with your <<pussy>>.
-		<<if currentSkillValue("vaginalskill") gte (800 - ($rng * 10))>>
+		<<if PC.vaginalskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip</span>.
 			<<bodyliquid "vaginaoutside" _fluid>><<set _tentacle.tentaclehealth -= 3>><<tentacle_record "fluid" 3>><<vaginalentranceejacstat>><<ejacstat>>
 			<<if $abomination is 1>>
@@ -2210,7 +2210,7 @@
 		<<set $vaginaaction to 0>><<set $vaginaactiondefault to "vaginacooperate"+_tentacle.id>>
 		<<sex 5 "genitals">><<vaginalskilluse>>
 		You <<vaginaltext>> push back against the _tentacle.fullDesc invading your <<pussy>>.
-		<<if currentSkillValue("vaginalskill") gte (800 - ($rng * 10))>>
+		<<if PC.vaginalskill gte (800 - ($rng * 10))>>
 			<span class="lblue">_Slimy _fluid erupts from the tip, flooding your womb with its warmth</span>.
 			<<set _tentacle.tentaclehealth -= 3>><<tentacle_record "fluid" 3>><<drugs 3>><<bodyliquid "vagina" _fluid>><<vaginalejacstat>><<ejacstat>>
 			<<if _tentacle.desc.includes("pale")>>

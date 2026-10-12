@@ -6577,7 +6577,7 @@ You press forward, putting your hands on <<his>> waist and pulling yourself clos
 		<</if>>
 		You <<if $player.penisExist>><<peniletext>><<else>><<vaginaltext>><</if>> begin to move on your own, being pushed on by the heat rising in you. <<ggarousal>><<arousal 1000 "genitals">>
 		<br><br>
-		<<if ($player.penisExist and PC.penileskill gte random(200, 600)) or ($player.vaginaExist and currentSkillValue("vaginalskill") gte random(200, 600))>>
+		<<if ($player.penisExist and PC.penileskill gte random(200, 600)) or ($player.vaginaExist and PC.vaginalskill gte random(200, 600))>>
 			You can feel Whitney approaching <<his>> peak as <<his>> pace increases, and you increase yours to match. In a matter of moments, <<hes>> fully pressed together with you, convulsing.
 			It pushes you over the edge. <<orgasm>>
 			<br><br>
@@ -6674,7 +6674,7 @@ You press forward, putting your hands on <<his>> waist and pulling yourself clos
 		<<He>> moves your hands to be wrapped around <<his>> waist, and <<he>> begins to grind on you.
 		You <<if $player.penisExist>><<peniletext>><<else>><<vaginaltext>><</if>> begin to help <<him>> move, being pushed on by the heat rising in you. <<ggarousal>><<arousal 1000 "genitals">>
 		<br><br>
-		<<if ($player.penisExist and PC.penileskill gte random(200, 600)) or ($player.vaginaExist and currentSkillValue("vaginalskill") gte random(200, 600))>>
+		<<if ($player.penisExist and PC.penileskill gte random(200, 600)) or ($player.vaginaExist and PC.vaginalskill gte random(200, 600))>>
 			You can feel Whitney approaching <<his>> peak as <<his>> pace increases, and you increase yours to match. In a matter of moments, <<hes>> fully pressed against you, convulsing.
 			It pushes you over the edge. <<orgasm>>
 			<br><br>
@@ -8518,11 +8518,11 @@ You approach the delinquents. They're noisier up close. Whitney leers at you,
 			<br><br>
 
 			<<if hasSexStat("promiscuity", 5)>>
-				<<if $player.penisExist and (!$player.vaginaExist or PC.penileskill gte currentSkillValue("vaginalskill"))>>
+				<<if $player.penisExist and (!$player.vaginaExist or PC.penileskill gte PC.vaginalskill)>>
 					<<link [[Thrust|Whitney Pub Thrust]]>><<set $phase2 to "penis">><</link>><<skill_difficulty `PC.penileskill` "Penile Skill" 1 $drunk>><<note "Failure will increase arousal" "purple">>
 					<br>
 				<<else>>
-					<<link [[Thrust|Whitney Pub Thrust]]>><<set $phase2 to "pussy">><</link>><<skill_difficulty `currentSkillValue("vaginalskill")` "Vaginal Skill" 1 $drunk>><<note "Failure will increase arousal" "purple">>
+					<<link [[Thrust|Whitney Pub Thrust]]>><<set $phase2 to "pussy">><</link>><<skill_difficulty `PC.vaginalskill` "Vaginal Skill" 1 $drunk>><<note "Failure will increase arousal" "purple">>
 					<br>
 				<</if>>
 			<</if>>
@@ -9136,7 +9136,7 @@ In an effort to quell <<him>>, you press your <<print $phase2>> to <<if $phase i
 <br><br>
 
 With each thrust,
-<<if ($phase2 is "penis" and PC.penileskill gte random(1, $drunk)) or ($phase2 is "pussy" and currentSkillValue("vaginalskill") gte random(1, $drunk))>>
+<<if ($phase2 is "penis" and PC.penileskill gte random(1, $drunk)) or ($phase2 is "pussy" and PC.vaginalskill gte random(1, $drunk))>>
 	<span class="green"><<he>> gets sloppier.</span> You're not fighting to keep up with <<him>>, anymore. <<Hes>> fighting to keep up with you. Fighting and losing. Lacking a drink,
 	<<if $phase is "penis">>
 		<<he>> muffles <<himself>> in your chest.
