@@ -565,7 +565,351 @@ const Mods = {
 };
 
 const Base = {
+	get arousal() {
+		return V.arousal;
+	},
 
+	set arousal(value) {
+		V.arousal = value;
+	},
+
+	get control() {
+		return V.control;
+	},
+
+	set control(value) {
+		V.control = value;
+	},
+
+	get drugged() {
+		return V.drugged;
+	},
+
+	set drugged(value) {
+		V.drugged = value;
+	},
+
+	get drunk() {
+		return V.drunk;
+	},
+
+	set drunk(value) {
+		V.drunk = value;
+	},
+
+	get tiredness() {
+		return V.tiredness;
+	},
+
+	set tiredness(value) {
+		V.tiredness = value;
+	},
+
+	get hallucinogen() {
+		return V.hallucinogen;
+	},
+
+	set hallucinogen(value) {
+		V.hallucinogen = value;
+	},
+
+	get pain() {
+		return V.pain;
+	},
+
+	set pain(value) {
+		V.pain = value;
+	},
+
+	get stress() {
+		return V.stress;
+	},
+
+	set stress(value) {
+		V.stress = value;
+	},
+
+	get trauma() {
+		return V.trauma;
+	},
+
+	set trauma(value) {
+		V.trauma = value;
+	},
+
+	// Core Characteristic Stats
+
+	get awareness() {
+		return V.awareness;
+	},
+
+	set awareness(value) {
+		V.awareness = value;
+	},
+
+	get beauty() {
+		return V.beauty;
+	},
+
+	set beauty(value) {
+		V.beauty = value;
+	},
+
+	get deviancy() {
+		return V.deviancy;
+	},
+
+	set deviancy(value) {
+		V.deviancy = value;
+	},
+
+	get exhibitionism() {
+		return V.exhibitionism;
+	},
+
+	set exhibitionism(value) {
+		V.exhibitionism = value;
+	},
+
+	get physique() {
+		return V.physique;
+	},
+
+	set physique(value) {
+		V.physique = value;
+	},
+
+	get promiscuity() {
+		return V.promiscuity;
+	},
+
+	set promiscuity(value) {
+		V.promiscuity = value;
+	},
+
+	get purity() {
+		return V.purity;
+	},
+
+	set purity(value) {
+		V.purity = value;
+	},
+
+	get willpower() {
+		return V.willpower;
+	},
+
+	set willpower(value) {
+		V.willpower = value;
+	},
+
+	// Core Skill Stats
+
+	get athletics() {
+		return V.athletics;
+	},
+
+	set athletics(value) {
+		V.athletics = value;
+	},
+
+	get danceskill() {
+		return V.danceskill;
+	},
+
+	set danceskill(value) {
+		V.danceskill = value;
+	},
+
+	get housekeeping() {
+		return V.housekeeping;
+	},
+
+	set housekeeping(value) {
+		V.housekeeping = value;
+	},
+
+	get skulduggery() {
+		return V.skulduggery;
+	},
+
+	set skulduggery(value) {
+		V.skulduggery = value;
+	},
+
+	get swimmingskill() {
+		return V.swimmingskill;
+	},
+
+	set swimmingskill(value) {
+		V.swimmingskill = value;
+	},
+
+	get tending() {
+		return V.tending;
+	},
+
+	set tending(value) {
+		V.tending = value;
+	},
+
+	// School Skill Stats
+
+	get english() {
+		return V.english;
+	},
+
+	set english(value) {
+		V.english = value;
+	},
+
+	get history() {
+		return V.history;
+	},
+
+	set history(value) {
+		V.history = value;
+	},
+
+	get maths() {
+		return V.maths;
+	},
+
+	set maths(value) {
+		V.maths = value;
+	},
+
+	get science() {
+		return V.science;
+	},
+
+	set science(value) {
+		V.science = value;
+	},
+
+	// Sex Skill Stats
+
+	get analskill() {
+		return V.analskill;
+	},
+
+	set analskill(value) {
+		V.analskill = value;
+	},
+
+	get bottomskill() {
+		return V.bottomskill;
+	},
+
+	set bottomskill(value) {
+		V.bottomskill = value;
+	},
+
+	get chestskill() {
+		return V.chestskill;
+	},
+
+	set chestskill(value) {
+		V.chestskill = value;
+	},
+
+	get feetskill() {
+		return V.feetskill;
+	},
+
+	set feetskill(value) {
+		V.feetskill = value;
+	},
+
+	get handskill() {
+		return V.handskill;
+	},
+
+	set handskill(value) {
+		V.handskill = value;
+	},
+
+	get oralskill() {
+		return V.oralskill;
+	},
+
+	set oralskill(value) {
+		V.oralskill = value;
+	},
+
+	get penileskill() {
+		return V.penileskill;
+	},
+
+	set penileskill(value) {
+		V.penileskill = value;
+	},
+
+	get seductionskill() {
+		return V.seductionskill;
+	},
+
+	set seductionskill(value) {
+		V.seductionskill = value;
+	},
+
+	get thighskill() {
+		return V.thighskill;
+	},
+
+	set thighskill(value) {
+		V.thighskill = value;
+	},
+
+	get vaginalskill() {
+		return V.vaginalskill;
+	},
+
+	set vaginalskill(value) {
+		V.vaginalskill = value;
+	},
+
+	// Weapon Skill Stats
+
+	get batonskill() {
+		return V.prof.baton;
+	},
+
+	set batonskill(value) {
+		V.prof.baton = value;
+	},
+
+	get netskill() {
+		return V.prof.net;
+	},
+
+	set netskill(value) {
+		V.prof.net = value;
+	},
+
+	get sprayskill() {
+		return V.prof.spray;
+	},
+
+	set sprayskill(value) {
+		V.prof.spray = value;
+	},
+
+	get whipskill() {
+		return V.prof.whip;
+	},
+
+	set whipskill(value) {
+		V.prof.whip = value;
+	},
+
+	get pickaxeskill() {
+		return V.prof.pickaxe;
+	},
+
+	set pickaxeskill(value) {
+		V.prof.pickaxe = value;
+	},
 };
 
 const PC = {
