@@ -668,15 +668,13 @@ You enter the changing room, and think about how you would like to dress for the
 	<br>
 <<elseif $exposed is 1 and !hasSexStat("exhibitionism", 3)>>
 	<<insufficientStat "exhibitionism" "to take the class while exposed">><br>
-<<elseif $exposed is 2 and !hasSexStat("exhibitionism", 5)>>
-	<<insufficientStat "exhibitionism" "to take the class while exposed">><br>
 <</if>>
-<<getouticon>><<link [[Leave|Dance Studio]]>><</link>>
-<br>
 <<if hasSexStat("exhibitionism", 5)>>
 	<<getinicon>><<link [[Go naked|Yoga Classes Enter]]>><<strip>><<set $danceStudio.nudeYoga to 1>><</link>><<exhibitionist5>>
 	<br>
 <</if>>
+<<getouticon>><<link [[Leave|Dance Studio]]>><</link>>
+<br>
 
 :: Yoga Classes Enter
 <<effects>>
