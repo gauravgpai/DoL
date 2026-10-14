@@ -991,7 +991,7 @@ You shove the note <<if !$worn.under_lower.type.includes("naked")>>into your $wo
 				You stay near <<him>>, not touching or being too invasive, but close enough to remind <<him>> that you're with <<him>>. Eventually, <<his>> breathing slows.
 				<br><br>
 				"Sorry. I couldn't save you then. But," <<He>> looks into your eyes. "If <<nnpc_he "Eden">> ever harasses you again, I'll protect you.<<if $robinromance is 1>> For you, I will do it no matter how scared it makes me.<</if>>"
-				<<set $robin.hurtReason to "you having Eden in your love locket">>
+				<<set $robin.hurtReason to "you having Eden in your love locket">><<set $robin.timer.hurt to 1>>
 				<<if $robinromance is 1>>
 					<br><br>
 					<<He>> looks at you<<if C.npc.Robin.dom gte 60>>. "Do you love <<nnpc_him "Eden">> more than me? How could you?"<<else>>, but seems unable to bring <<himself>> to say something.<</if>><<npcincr Robin love -1>><<llove>>
