@@ -266,7 +266,6 @@ Macro.add("speechSay", {
 		let lines = getUnsaidSpeechLines(T.speechPoolSpeaker, sayableLines);
 		if (lines.length === 0 && sayableLines.length > 0) {
 			const history = getSpeechHistory(T.speechPoolSpeaker);
-			/** @type {string | null} */
 			let lastSaidId = null;
 			for (let i = history.length - 1; i >= 0; i--) {
 				if (history[i].id !== null) {
