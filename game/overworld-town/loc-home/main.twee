@@ -5173,7 +5173,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 	<<if $speech_attitude is "meek">>
 		"Can you please stop going through my things?!" you then cry out.
 	<<elseif $speech_attitude is "bratty">>
-		"Hey! Get out of here, damnit!" you then shout.
+		"Hey! Get out of here, dammit!" you then shout.
 	<<else>>
 		"Hey! Don't go through my things!" you then scold.
 	<</if>>

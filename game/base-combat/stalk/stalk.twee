@@ -1534,12 +1534,12 @@
 					<img class="stalk_4" @src="'img/misc/stalk/ambush' + $_stalker + $_stalkerno + '.png'">
 				<<elseif $stalk_end>>
 					/* NPC passing by, either because PC successfully hid or confronted an NPC who didn't intend to attack */
-					<<if $feetaction is "confront" or $mouthaction is "taunt">>
-						<img class="stalk_4" src="img/misc/stalk/confront-npc-safe.png">
-					<<else>>
+					<<if $stalk_end is "hide">>
 						<img class="stalk_4" src="img/misc/stalk/pc-hide.png">
+					<<else>>
+						<img class="stalk_4" src="img/misc/stalk/confront-npc-safe.png">
 					<</if>>
-					<<if _stalked>>
+					<<if _stalked or $_stalker.includes("-gwylan") or $_stalker is "-wraith">>
 						<img class="stalk_5" @src="'img/misc/stalk/npc-pass' + $_stalker + $_stalkerno + '.png'">
 					<<else>>
 						<img class="stalk_5" @src="'img/misc/stalk/npc-pass-safe' + $_stalker + $_stalkerno + '.png'">
@@ -1579,8 +1579,8 @@
 						<<if $_stalker.includes("-gwylan") and $NPCList[0].distance is 0>>
 							<<set $_skipPlayer to true>>
 							<img @class="'stalk_' + _stalk_position" @src="'img/misc/stalk/npc-close' + $_stalker + '.png'">
-						<<elseif $consensual is 1 and $NPCList[0].legs is "run">>
-							<img @class="'stalk_' + _stalk_position" @src="'img/misc/stalk/npc-run' + $_stalker + $_stalkerno + '.png'">
+						<<elseif $consensual is 1 and $NPCList[0].legs is "run" or $_stalker.includes("-gwylan")>>
+							<img @class="'stalk_' + _stalk_position" @src="'img/misc/stalk/npc-chased' + $_stalker + $_stalkerno + '.png'">
 						<<else>>
 							<img @class="'stalk_' + _stalk_position" @src="'img/misc/stalk/npc' + $_stalker + $_stalkerno + '.png'">
 						<</if>>
@@ -1589,7 +1589,7 @@
 					<<else>>
 						/* NPC behind player */
 						<<set _stalk_position to 4 - $NPCList[0].distance>>
-						<<if $NPCList[0].legs is "run">>
+						<<if $NPCList[0].legs is "run" and !$_stalker.includes("-gwylan") and $_stalker isnot "-wraith">>
 							<img @class="'stalk_' + _stalk_position" @src="'img/misc/stalk/npc-run' + $_stalker + $_stalkerno + '.png'">
 						<<else>>
 							<img @class="'stalk_' + _stalk_position" @src="'img/misc/stalk/npc' + $_stalker + $_stalkerno + '.png'">

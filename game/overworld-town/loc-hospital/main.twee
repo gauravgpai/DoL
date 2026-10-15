@@ -1700,6 +1700,7 @@ You feel yourself being lifted onto a stretcher. You're holding onto something. 
 <</if>>
 <<set $player.virginity.temple to true>>
 <<set C.npc.Sydney.virginity.temple to true>>
+<<set $temple_chastity_timer to 30>>
 
 <<link [[Sleep|Hospital Bed Sydney]]>><</link>>
 <br>

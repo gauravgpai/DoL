@@ -2487,7 +2487,6 @@
 		<<link [[Refuse|Farm Cottage Bailey Refuse]]>><<def 1>><</link>>
 		<br>
 	<<else>>
-		<<set $baileypaychain to 0>>
 		<<if $speech_attitude is "meek">>
 			"I-I don't have the money," you tell Bailey. "Please don't hurt Alex."
 		<<elseif $speech_attitude is "bratty">>

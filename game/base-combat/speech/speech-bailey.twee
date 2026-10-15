@@ -74,7 +74,7 @@
 				<<case "Avery">>
 					<<if $avery_fate is "saved">>
 						<<print $_stringsPre>>"<<nnpc_He 'Avery'>>'d have let you fall."
-					<<elseif $avery_mansion and $avery_fate isnot "fallen" and $avery_fate isnot "kicked" and $rentTime lte 0>>
+					<<elseif isAveryPayingBailey() is 1 and $rentTime lte 0>>
 						<<print $_stringsPre>>"I had a deal with <<nnpc_him 'Avery'>>, but <<nnpc_he 'Avery'>> dried up. Take it up with <<nnpc_him 'Avery'>>."
 					<<elseif $bailey_avery_met>>
 						<<print $_stringsPre>>"Keep calling for that idiot. See if <<nnpc_his 'Avery'>> money reaches this far."

@@ -28,7 +28,7 @@
 	<br>
 	<<link [[Keep going|Thug Patrol Walk]]>><</link>>
 	<br>
-	<<link [[Discreetly ditch <<him>> (0:05)|Thug Patrol Ditch]]>><</link>><<if Time.dayState is "night">><<skulduggerydifficulty 400 1100>><<else>><<skulduggerydifficulty 400 900>><</if>>
+	<<link [[Discreetly ditch <<him>> (0:05)|Thug Patrol Ditch]]>><</link>><<if Time.dayState is "night">><<set $skulduggerydifficulty to (400 + random(0, 700))>><<else>><<set $skulduggerydifficulty to (400 + random(0, 500))>><</if>><<skulduggerydifficulty>>
 	<br>
 <</widget>>
 
@@ -53,7 +53,7 @@
 
 <<widget "thugHound">>
 	<<beastNEWinit 1 dog>><<generate2>><<generate3>>
-	You notice a <<person2>><<person>> and <<person3>><<person>> with an agitated looking <<person1>><<beasttype>> walking towards you. 
+	You notice a <<person2>><<person>> and <<person3>><<person>> with an agitated-looking <<person1>><<beasttype>> walking towards you. 
 	The <<beasttype>> lifts <<bhis>> nose in the air and starts barking at you.<<if $monster is 1>> "You! I found you!" <<bhe>> yells.<</if>>
 	<br><br>
 	"Is that <<phim>>?" the <<person2>><<person>> asks <<his>> friend.
@@ -73,7 +73,7 @@
 	<<if $skulduggerysuccess>>
 		<span class="blue">You've been feeling like somebody is watching you for a while.</span> You look back, but don't see anyone suspicious. Despite that, the feeling keeps lingering.
 		<br><br>
-		When you next turn the corner on a building, you decide to stop and wait for a bit. You peek back and are able to notice a <<person1>><<person>> and <<person2>><<person>> some distance away speedwalking your way. Their appearance isn't outright alarming, but their mannerisms suggest they aren't just ordinary people.
+		When you next turn the corner of a building, you decide to stop and wait for a bit. You peek back and are able to notice a <<person1>><<person>> and <<person2>><<person>> some distance away speedwalking your way. Their appearance isn't outright alarming, but their mannerisms suggest they aren't just ordinary people.
 		<br><br>
 		If they really have been following you, it's unlikely they have good intentions. You should try to shake them off your trail somehow.
 		<br><br>
@@ -81,7 +81,8 @@
 		<br>
 		<<link [[Run away quickly|Thug Persistent Run]]>><<tiredness 5>><</link>><<gtiredness>>
 		<br>
-		<<link [[Try to slip past them|Thug Persistent Slip]]>><</link>><<skulduggerydifficulty 500 1150>>
+		<<set $skulduggerydifficulty to (500 + random(0, 650))>>
+		<<link [[Try to slip past them|Thug Persistent Slip]]>><</link>><<skulduggerydifficulty>>
 	<<else>>
 		You're walking along as usual, when you suddenly bump into a <<person1>><<person>>. "Hey! Watch where you're going," <<he>> says. You could have sworn you were paying attention to your surroundings, yet <<he>> has come out of seemingly nowhere.
 		<br><br>
@@ -109,8 +110,8 @@
 		<br><br>
 		"Look what I found, a helpless slut, naked and cold on the street instead of at home," says a <<person1>><<person>>, stepping out from the shadows.
 		<br><br>
-		You attempt to flee but run into <<person2>><<person>> who promptly grabs your wrist.
-		"Not just any slut, it's that Bailey brat we've been looking for. Must be our lucky day <<pshe>> is already dressed for the occasion," the <<person2>><<he>> laughs.<<stress 8>><<gstress>>
+		You attempt to flee but run into a <<person2>><<person>> who promptly grabs your wrist.
+		"Not just any slut, it's that Bailey brat we've been looking for. Must be our lucky day <<pshe>> is already dressed for the occasion," <<he>> laughs.<<stress 8>><<gstress>>
 		<br><br>
 		<<if $rentThug.anger is 3>>
 			<<generate3>>
@@ -124,14 +125,14 @@
 		<</if>>
 		Your heart sinks as you realise just who they are. <span class="blue">Bailey's thugs,</span> and they must have been waiting for you.
 		<br><br>
-		The <<person1>><<person>> laughs in turn, "Well if <<pshe>> is that eager to get started, I see no harm in an early show."
+		The <<person1>><<person>> laughs in turn, "Well if <<pshes>> that eager to get started, I see no harm in an early show."
 		<br><br>
-		<<link [[Next|Thug Ambush Fight]]>><<set $fightstart to 1>><</link>>
+		<<link [[Next|Thug Ambush Fight]]>><<set $molestationstart to 1>><</link>>
 	<<else>>
 		As you walk along the street, you hear a voice behind you. A <<person1>><<person>> steps out from an alley and leers, "Are you the one <<nnpc_he "Bailey">> was talking about?"
 		<br><br>
 		You don't know who <<hes>> referring to, and you don't wish to find out. You turn to flee but run into a <<person2>><<person>> who promptly grabs your wrist. 
-		"You know, I think <<pshe>> is," <<person2>><<he>> says with a sinister grin. "And right where Bailey said <<pshe>> would be too."
+		"You know, I think <<pshe>> is," <<he>> says with a sinister grin. "And right where Bailey said <<pshe>> would be too."
 		<br><br>
 		<<if $rentThug.anger is 3>>
 			<<generate3>>
@@ -182,7 +183,7 @@
 
 <<widget "thugConfront">>
 	<<generate1>><<generate2>><<generate3>><<generate4>><<set $NPCList[0].traits.push("unforgiving")>>
-	You're walking along as usual, minding your own business. All of a sudden, <span class="purple">a van swerves to a stop right in front of you</span>! From the back steps out a <<person1>><<person>> and a <<person2>><<person>>.
+	You're walking along as usual, minding your own business. All of a sudden, <span class="purple">a van swerves to a stop right in front of you</span>! From the back step out a <<person1>><<person>> and a <<person2>><<person>>.
 	<br><br>
 	You're considering running away right now, but before you can do that, <span class="pink">another van screeches to a halt behind you</span>! Two people also appear from it, a <<person3>><<person>> and a <<person4>><<person>>.
 	<br><br>
@@ -198,7 +199,7 @@
 
 <<widget "thugTrapCar">>
 	<<generate1>><<generate2>>
-	As you're walking down the street, a car with tinted windows pulls up besides you. The rear window rolls down, revealing a <<person1>><<person>>.
+	As you're walking down the street, a car with tinted windows pulls up beside you. The rear window rolls down, revealing a <<person1>><<person>>.
 	<<He>> stares at you silently. "It's <<phim>>," <<he>> suddenly says. <span class="red">"You're coming with us, back home."</span>
 	<br><br>
 	The car door starts opening. You only have a second to make a decision.
@@ -3645,7 +3646,7 @@
 				<<addevent "streetchestgroper" 1>>
 			<</if>>
 
-			<<if $rentTime lt 0 and $rentThug>>
+			<<if $rentThug and isBaileyLookingForPlayer()>>
 				<<set _thugMult to ($rentThug.anger + 1) / (Time.dayState is "night" ? 4 : 2)>>
 				<<addevent "thugAmbush" `0.25 * _thugMult`>>
 			<</if>>
@@ -3675,7 +3676,7 @@
 				<<addevent "streetAlex1">>
 			<</if>>
 
-			<<if $rentTime lt 0>>
+			<<if isBaileyLookingForPlayer()>>
 				<<if !$rentThug>>
 					<<addevent "thugRentIntro" 10>>
 				<<else>>

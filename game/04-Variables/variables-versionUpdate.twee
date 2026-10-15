@@ -7682,4 +7682,5 @@
 	<<set $rentTime ??= $renttime>><<unset $renttime>>
 	<<set $rentMoney ??= $rentmoney>><<unset $rentmoney>>
 	<<set $rentStage ??= $rentstage>><<unset $rentstage>>
+	<<set $rentSale ??= $rentsale>><<unset $rentsale>>
 <</widget>>

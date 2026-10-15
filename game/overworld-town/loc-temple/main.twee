@@ -174,7 +174,7 @@ You are in the main hall of the temple. Stone walls and pillars tower into darkn
 		<br>
 		<<link [[Remain silent|Temple Bailey Intro Silent]]>><<set $temple_bailey to 1>><</link>>
 		<br>
-		<<set $rentTime to 7>><<set $rentDay to Time.weekDay>>
+		<<set $rentTime to 7>><<set $rentDay to Time.weekDay>><<thuganger -5>>
 	<<else>>
 		<<npc "Bailey">><<person1>>
 		<<if $per_npc.bishop_right_hand>>
@@ -2805,6 +2805,7 @@ Stern-faced <<monks>> cluster you and the other victims together.
 <<unset $temple_wall_victim>>
 <<set $temple_arcade_known to true>>
 <<set $player.virginity.temple to true>>
+<<set $temple_chastity_timer to 30>>
 <<clotheson>>
 <<endevent>>
 
