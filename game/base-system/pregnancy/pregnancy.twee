@@ -362,7 +362,7 @@
 	<</if>>
 	<<if _args[0] isnot "pc">>
 		<<set $_pregnancy to getLabouringPregnancy(_args[0])>>
-		<<if $_pregnancy?.carrier isnot "pc" && $_pregnancy.donor is "pc">>
+		<<if $_pregnancy?.donor is "pc" && $_pregnancy.carrier isnot "pc">>
 			<<earnFeat "First Fatherhood">>
 		<</if>>
 	<</if>>
