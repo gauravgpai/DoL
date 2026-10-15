@@ -1023,6 +1023,24 @@ function dayPassed() {
 	if (["asylum", "prison"].includes(V.location)) {
 		V.daily.asylumPrison = 1;
 	}
+
+	if (V.mine?.setup.food > 0) V.mine.setup.food--;
+	if (V.mine?.setup.dust > 0) V.mine.setup.dust--;
+	if (V.mine?.distraction.night > 0) {
+		V.mine.distraction.night--;
+	} else if (V.mine?.distraction.night === 0) {
+		delete V.mine.distraction.night;
+	}
+	if (V.mine?.distraction.mining > 0) {
+		V.mine.distraction.mining--;
+	} else if (V.mine?.distraction.mining === 0) {
+		delete V.mine.distraction.mining;
+	}
+	if (V.mine?.distraction.minecarts > 0) {
+		V.mine.distraction.minecarts--;
+	} else if (V.mine?.distraction.minecarts === 0) {
+		delete V.mine.distraction.minecarts;
+	}
 }
 
 function hourPassed(hours) {
@@ -1414,6 +1432,7 @@ function dailyNPCEffects() {
 		V.kylar.timer.halls += 10 + C.npc.Kylar.lust / 4;
 		V.kylar.timer.home += 10 + C.npc.Kylar.lust / 4;
 		V.kylar.timer.street += 10 + C.npc.Kylar.lust / 4;
+		if (V.kylar.timer.letter >= 1) V.kylar.timer.letter--;
 		if (V.kylar.riddle === 1) V.kylar.riddle = 2;
 		else V.kylar.riddle = 0;
 		if (V.kylarSeen.includes("fountainIntro") && random(1, 10) >= 2) V.kylar.fountain = 1;
@@ -1873,7 +1892,11 @@ function dailyPlayerEffects() {
 			}
 			if (key !== "devotion" && V.hypnosisTimers[key].time <= 0) {
 				V.hypnosis_timer_messages ||= [];
-				V.hypnosis_timer_messages.pushUnique(key);
+				if (key === "insight" && V.awareness >= 300) {
+					V.hypnosis_timer_messages.pushUnique("ignorance");
+				} else {
+					V.hypnosis_timer_messages.pushUnique(key);
+				}
 				V.effectsmessage = 1;
 			} else if (key === "devotion" && V.hypnosisTimers.devotion.time <= gwylanHypnoMax("value", V.hypnosis_traits.devotion - 1)) {
 				V.hypnosis_timer_messages ||= [];

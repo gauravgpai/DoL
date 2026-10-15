@@ -202,7 +202,7 @@
 				<<settextcolorfromfemininity _x.femininity>>
 				<span @class="_text_color">
 					_x.factor
-					<<if $debug is 1>>
+					<<if $debug>>
 						_x.femininity
 					<<else>>
 						<<print "+".repeat(
@@ -214,7 +214,7 @@
 				</span>
 				<br>
 			<</for>>
-			<<if $debug is 1>>
+			<<if $debug>>
 				<<settextcolorfromfemininity $player.femininity>>
 				Total femininity: <span @class="_text_color">$player.femininity</span>
 				<br>
@@ -668,6 +668,21 @@
 			<</if>>
 
 		</div>
+		<div id="visualsFreckles" class="settingsToggleItemWide">
+			<span class="gold bold">Freckles:</span>
+			<br>
+			Face: <label>Disabled <<radiobutton "$player.skin.faceFreckles" false autocheck>></label>
+			| <label>Enabled <<radiobutton "$player.skin.faceFreckles" true autocheck>></label>
+			<br>
+			Body: <label>Disabled <<radiobutton "$player.skin.bodyFreckles" "none" autocheck>></label>
+			| <label>Upper body <<radiobutton "$player.skin.bodyFreckles" "upper" autocheck>></label>
+			| <label>Full body <<radiobutton "$player.skin.bodyFreckles" "full" autocheck>></label>
+		</div>
+		<<run $(() => {
+			$('#visualsFreckles input[type="radio"]').on("change", () => {
+				Wikifier.wikifyEval('<<updatesidebarimg true>>');
+			});
+		})>>
 	</div>
 	<hr>
 	<div class="settingsGrid">
@@ -1098,7 +1113,7 @@
 		<<set _bodyWritingOptions["Love Interests"]["Gwylan's Apprentice"] to "gwylans_apprentice">>
 		<<set _bodyWritingOptions["Love Interests"]["Forever Yearning"] to "forever_yearning">>
 	<</if>>
-	<<if $debug is 1>>
+	<<if $debug>>
 		<<set _bodyWritingOptions["Debug"] to setup.bodywriting>>
 		<<set _debugBodywritingOptionsKeys to Object.keys(setup.bodywriting)>>
 		<<link [[Wash yourself|$passage]]>>
@@ -1164,7 +1179,7 @@
 				<<set _bodyPartOptions[_text_output.toUpperFirst()] to _label>>
 			<</if>>
 		<</for>>
-		<<if $debug is 1>>
+		<<if $debug>>
 			Write
 			<<listbox "_bodyWritingDebugSelected">>
 				<<optionsfrom _bodyWritingOptions[$bodywritingSet]>>
@@ -1628,7 +1643,8 @@
 						<<set _modeloptions.tanningEnabled to false>>
 						<<set _modeloptions.skin_type = Skin.color.natural>>
 						<<set _modeloptions.skin_tone = Skin.color.tan>>
-						<<set _modeloptions.freckles = $player.freckles == true and $makeup.concealer != 1>>
+						<<set _modeloptions.freckles = $player.skin.faceFreckles == true and $makeup.concealer != 1>>
+						<<set _modeloptions.bodyFreckles to $player.skin.bodyFreckles>>
 						<<set _modeloptions.mouth to 'neutral'>>
 						<<set _modeloptions.facevariant = $facevariant>>
 						<<set _modeloptions.left_eye = $makeup.eyelenses.left != 0 ? $makeup.eyelenses.left : $leftEyeColour>>
@@ -1953,7 +1969,7 @@
 				You are not wearing any makeup.
 			<</if>>
 
-			<<if _ownsMakeup or _makeup.length gt 0 or $player.freckles == true>>
+			<<if _ownsMakeup or _makeup.length gt 0 or $player.skin.faceFreckles == true>>
 				<br><br>
 				Makeup:
 			<</if>>
@@ -2002,7 +2018,7 @@
 				<</link>>
 			<</if>>
 			/* CONCEALER */
-			<<if $player.freckles == true>>
+			<<if $player.skin.faceFreckles == true>>
 				<<if _ownsMakeup>>|<</if>>
 				<<if $makeup.concealer == 0>>
 					<<link "Hide freckles with concealer">>
