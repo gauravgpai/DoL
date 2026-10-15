@@ -201,6 +201,24 @@ You are in the garden behind the orphanage.
 	<br>
 	<<link [[Refuse|Garden Crop Theft Refuse]]>><</link>>
 
+<<elseif !$weekly.gardenBaileyLotus and Time.season is "summer" and Time.dayState is "night" and Weather.precipitation is "none" and $mason_pond gte 5 and $plots.garden and $plots.garden.some(p => p.plant === "lotus" && p.stage >= 5) and $rng gte 81>>
+	<<set $weekly.gardenBaileyLotus to true>>
+
+	<<npc Bailey>><<person1>>
+	Stepping into the garden, you spot a figure by the pond. <span class="purple">It's Bailey.</span>
+	<br><br>
+
+	You stay quiet, watching <<his>> movements. <<He>> stands still near the water's edge, <<his>> gaze fixed on the lotus flowers floating on the surface.
+	
+	You can't read the expression on <<his>> face. You doubt <<hes>> even aware of your presence.
+	<br><br>
+	<<pass 3>>
+	After a short pause, <<he>> turns and walks away in silence.
+	<br><br>
+
+	<<link [[Next|Garden]]>><<endevent>><</link>>
+	<br>
+
 <<elseif !$weekly.gardenVoyeur and Time.dayState is "night" and $rng gte 81>>
 
 	<<set $weekly.gardenVoyeur to true>>
