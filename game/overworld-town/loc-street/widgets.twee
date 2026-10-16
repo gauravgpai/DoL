@@ -3646,7 +3646,7 @@
 				<<addevent "streetchestgroper" 1>>
 			<</if>>
 
-			<<if $rentThug and isBaileyLookingForPlayer()>>
+			<<if $rentThug and isBaileyLookingForPlayer() and $location isnot "alley" and $bus isnot "park">>
 				<<set _thugMult to ($rentThug.anger + 1) / (Time.dayState is "night" ? 4 : 2)>>
 				<<addevent "thugAmbush" `0.25 * _thugMult`>>
 			<</if>>
@@ -3676,7 +3676,7 @@
 				<<addevent "streetAlex1">>
 			<</if>>
 
-			<<if isBaileyLookingForPlayer()>>
+			<<if isBaileyLookingForPlayer() and $location isnot "alley" and $bus isnot "park">>
 				<<if !$rentThug>>
 					<<addevent "thugRentIntro" 10>>
 				<<else>>

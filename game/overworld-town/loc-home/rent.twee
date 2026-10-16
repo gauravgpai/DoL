@@ -439,6 +439,7 @@
 	<br><br>
 
 	<<set $baileydefeatedchain to 0>>
+	<<set $baileyRefusedToPay to 0>>
 	<<set $baileypaychain to ($baileypaychain || 0) + 1>>
 	<<unset $bailey_encroach>>
 	<<set $rentStage += 1>>

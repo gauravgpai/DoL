@@ -2041,6 +2041,10 @@ sugarcube-2:
       description: |-
         Prints `bitch`
       tags: ["text"]
+    Bitch:
+      description: |-
+        Prints `Bitch`
+      tags: ["text"]
     bitch_pirate:
       description: |-
         Prints `dog` or `bitch` depending on pc's appearance

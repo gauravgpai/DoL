@@ -94,7 +94,7 @@
 				<<if isRentDue() or isBaileyLookingForPlayer()>>
 					<li>
 					<<if $baileyRefusedToPay>>
-						Bailey will try to find you again on <<rentday>> and wants <<printmoney $rentMoney>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.
+						Bailey will try to visit you again on <<rentday>> and wants <<printmoney $rentMoney>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.
 					<<else>>
 						Bailey is looking for you and wants <<printmoney $rentMoney>><<babyRentDisplay " plus " " for not looking after your children" "gold">>.
 					<</if>>

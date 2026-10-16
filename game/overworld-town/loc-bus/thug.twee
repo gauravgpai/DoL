@@ -484,7 +484,7 @@ You don't have time to question why it wasn't taken and rush over to it, pushing
 :: Bus Thug Shakedown Hide Rape Finish
 <<effects>>
 <<if $phase lt 7 and $enemyhealth lte 0>>
-	You manage to land a good punch to <<his>> face, giving <<him>> a bloody nose. "Augh! You stupid bitch!" <<he>> says, pushing you away. "Fine! Since you clearly don't want to sit here, you can get the hell out!"
+	You manage to land a good punch to <<his>> face, giving <<him>> a bloody nose. "Augh! You stupid <<bitch>>!" <<he>> says, pushing you away. "Fine! Since you clearly don't want to sit here, you can get the hell out!"
 	<br><br>
 	The other passengers around <<him>> seem to agree, as they assist <<him>> in pushing you right into the aisle. <span class="red">You end up being pushed right in front of the shady duo.</span>
 	<<clotheson>>
@@ -500,7 +500,7 @@ You don't have time to question why it wasn't taken and rush over to it, pushing
 	<<link [[Next|Bus Thug Shakedown Hide Caught]]>><<set $outside to 1>><</link>>
 	<br>
 <<elseif $phase gte 7 and $enemyhealth lte 0>>
-	After a long struggle you manage to land a good punch to <<his>> face, giving <<him>> a bloody nose. "Augh! You fucking bitch!" <<he>> says, pushing you away. "If you're going to be this difficult, then fine! You can get the hell out of here!"
+	After a long struggle you manage to land a good punch to <<his>> face, giving <<him>> a bloody nose. "Augh! You fucking <<bitch>>!" <<he>> says, pushing you away. "If you're going to be this difficult, then fine! You can get the hell out of here!"
 	<br><br>
 	The other passengers around <<him>> seem to agree, as they assist <<him>> in pushing you away, right into the aisle. <span class="green">Thankfully, the shady duo have already left.</span>
 	<br><br>
@@ -525,7 +525,7 @@ You're led out of the bus with both the <<person1>><<person>> and <<person2>><<p
 <br><br>
 "Oh, so you did find <<phim>>," a <<person3>><<person>> waiting outside says.
 <br>
-"Yeah. Bitch tried hiding, but didn't like <<pher>> hiding place," the <<person1>><<person>> says. "Hold on to <<phim>> while I make a call."
+"Yeah. <<Bitch>> tried hiding, but didn't like <<pher>> hiding place," the <<person1>><<person>> says. "Hold on to <<phim>> while I make a call."
 <br><br>
 <span class="purple">They really aren't messing around. You'll have to act now to have any chance at escaping them.</span>
 <br><br>
@@ -558,14 +558,14 @@ You're led out of the bus with both the <<person1>><<person>> and <<person2>><<p
 :: Bus Thug Shakedown Hide Fight Finish
 <<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
-	As they shudder in orgasmic bliss, you seize the opportunity and run away. "What just- How dare you, you stupid orphaned bitch! Get back here!" the <<person1>><<person>> yells after you.<<thuganger 1>><<gthuganger>>
+	As they shudder in orgasmic bliss, you seize the opportunity and run away. "What just- How dare you, you stupid orphaned <<bitch>>! Get back here!" the <<person1>><<person>> yells after you.<<thuganger 1>><<gthuganger>>
 	<br><br>
 	<<tearful>> you run as far from them as your legs will take you. You eventually stop and regain your bearings.
 	<<clotheson>>
 	<<endcombat>>
 	<<destination>>
 <<elseif $enemyhealth lte 0>>
-	You manage to beat them back for long enough to get a chance to run away. "How?! Aurgh, you stupid orphaned bitch! Get back here!" the <<person1>><<person>> yells after you.<<thuganger 1>><<gthuganger>>
+	You manage to beat them back for long enough to get a chance to run away. "How?! Aurgh, you stupid orphaned <<bitch>>! Get back here!" the <<person1>><<person>> yells after you.<<thuganger 1>><<gthuganger>>
 	<br><br>
 	<<tearful>> you run as far from them as your legs will take you. You eventually stop and regain your bearings.
 	<<clotheson>>
@@ -668,7 +668,7 @@ The <<person1>><<person>> grins. "Now then, stay the fuck still while we arrange
 :: Bus Thug Shakedown Still Fight Finish
 <<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
-	As they shudder in orgasmic bliss, you seize the opportunity and run away. "What just- You little bitch! Get back here!" the <<person1>><<person>> yells after you.<<thuganger 1>><<gthuganger>>
+	As they shudder in orgasmic bliss, you seize the opportunity and run away. "What just- You little <<bitch>>! Get back here!" the <<person1>><<person>> yells after you.<<thuganger 1>><<gthuganger>>
 	<br><br>
 	<<tearful>> you run as far from them as your legs will take you. You eventually stop and regain your bearings.
 	<br><br>
@@ -676,7 +676,7 @@ The <<person1>><<person>> grins. "Now then, stay the fuck still while we arrange
 	<<endcombat>>
 	<<destination>>
 <<elseif $enemyhealth lte 0>>
-	You manage to fight them off of you and seize the chance to run away. "How the- Aurgh! You stupid orphaned bitch! Get back here!" the <<person1>><<person>> yells after you.<<thuganger 1>><<gthuganger>>
+	You manage to fight them off of you and seize the chance to run away. "How the- Aurgh! You stupid orphaned <<bitch>>! Get back here!" the <<person1>><<person>> yells after you.<<thuganger 1>><<gthuganger>>
 	<br><br>
 	<<tearful>> you run as far from them as your legs will take you. You eventually stop and regain your bearings.
 	<br><br>

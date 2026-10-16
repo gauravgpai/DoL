@@ -3411,7 +3411,11 @@
 							<small class="relation-title black"><i>The _wraithTitle</i></small>
 						</span>
 						<<if _loveInterest>>
-							<img class="love-interest-icon" src="img/ui/love-interest.png" alt="Love Interest" title="Love Interest"/>
+							<<if $options.images>>
+								<img class="love-interest-icon" src="img/ui/love-interest.png" alt="Love Interest" title="Love Interest"/>
+							<<else>>
+								<span class="lewd" alt="Love Interest" title="Love Interest"><b>LI</b></span>
+							<</if>>
 						<</if>>
 						<span class="primary-relation-collapse-arrow">▾</span>
 					</div>
@@ -3444,7 +3448,11 @@
 						<small class="relation-title black"><i>The _npcData.title</i></small>
 					</span>
 					<<if _loveInterest>>
-						<img class="love-interest-icon" src="img/ui/love-interest.png" alt="Love Interest" title="Love Interest"/>
+						<<if $options.images>>
+							<img class="love-interest-icon" src="img/ui/love-interest.png" alt="Love Interest" title="Love Interest"/>
+						<<else>>
+							<span class="lewd" alt="Love Interest" title="Love Interest"><b>LI</b></span>
+						<</if>>
 					<</if>>
 					<span class="primary-relation-collapse-arrow">▾</span>
 				</div>
@@ -3512,9 +3520,22 @@
 					let min = config.minValue || 0;
 					let max = config.maxValue || 100;
 					let icon = config.activeIcon;
-					if (stat === "love" && T.loveInterest) icon = "img/ui/love-interest.png";
+					let name = "";
+					switch (config.name) {
+						case "Respect":
+						case "Affection":
+						case "Interest": name = "Lo"; break;
+						case "Confidence": name = "Cd"; break;
+						case "Corruption": name = "Cr"; break;
+						case "Rage": name = "Rg"; break;
+						case "Yearning": name = "Yr"; break;
+						case "Wolf Pack Harmony": name = "Hm"; break;
+						case "Wolf Pack Ferocity": name = "Fr"; break;
+						default: name = config.name.slice(0, 2);
+					};
 					return {
-						activeIcon : icon,
+						name : (stat === "love" && T.loveInterest ? "<span class='lewd'><b>" + name + "</b></span>" : name),
+						activeIcon : (stat === "love" && T.loveInterest ? "img/ui/love-interest.png" : icon),
 						progress : Math.clamp(Math.round(100*((config.value - min) / (max - min))), 0, 100)
 					};
 				})
@@ -3527,8 +3548,13 @@
 			<<for _ci = 0; _ci lt _collapsedStatSlots; _ci++>>
 				<<if _ci lt _collapsedVisibleStats.length>>
 					<span class="relation-box-collapsed-icon-pair">
-						<<if $options.images>><img class="relation-box-collapsed-icon" @src="_collapsedVisibleStats[_ci].activeIcon"><</if>>
-						<span>_collapsedVisibleStats[_ci].progress</span>
+						<<if $options.images>>
+							<img class="relation-box-collapsed-icon" @src="_collapsedVisibleStats[_ci].activeIcon">
+							<span>_collapsedVisibleStats[_ci].progress</span>
+						<<else>>
+							<span class="relation-box-collapsed-icon">_collapsedVisibleStats[_ci].name</span>
+							<small>_collapsedVisibleStats[_ci].progress</small>
+						<</if>>
 					</span>
 				<<else>>
 					<span class="relation-box-collapsed-icon-pair"></span>
@@ -3569,10 +3595,15 @@
 				<span class="relation-stat-percent black">_config.progress<small>%</small></span>
 			</div>
 		<<else>>
-			<<if _important>>
+			<div class="relation-stat">
+				<<if !_important>>
+					<span class="relation-stat-name">
+						<small>_config.name</small>
+					</span>
+				<</if>>
 				<span class="relation-stat-percent black">&nbsp;_config.progress<small>%</small></span>
 				<div @class="'progress-bar ' + _config.color + 'bar'"></div>
-			<</if>>
+			</div>
 		<</if>>
 	</div>
 <</widget>>

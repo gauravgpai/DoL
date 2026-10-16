@@ -1487,10 +1487,10 @@
 				<<set $_pcAction to "-theft">>
 			<<else>>
 				<<set $_pcAction to "">>
-				<<if $feetuse and $feetuse isnot "walk">>
-					<<set $_pcAction += "-" + $feetuse>>
+				<<if ["run", "strut"].includes($feetactiondefault)>>
+					<<set $_pcAction += "-" + $feetactiondefault>>
 				<</if>>
-				<<if $mouthactiondefault and $mouthactiondefault isnot "rest" and $mouthactiondefault isnot "taunt" and ($feetuse isnot "run" or $mouthactiondefault is "turn")>>
+				<<if ["down", "up", "turn"].includes($mouthactiondefault) and ($feetuse isnot "run" or $mouthactiondefault is "turn")>>
 					<<set $_pcAction += "-" + $mouthactiondefault>>
 				<</if>>
 				<<if ($exposed is 1 and $uncomfortable.underwear) or ($exposed gte 2 and $uncomfortable.nude)>>

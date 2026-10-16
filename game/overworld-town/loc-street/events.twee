@@ -497,7 +497,7 @@ You move to hide in an alley, away from the <<person2>><<persons>> sight. The <<
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<if $enemyanger gte 50>>
-		"Stupid bitch, you coulda made this easier for yourself," <<he>> says, finishing up.
+		"Stupid <<bitch>>, you coulda made this easier for yourself," <<he>> says, finishing up.
 	<<else>>
 		"Thanks for the good time," <<he>> says, finishing up. 
 	<</if>>
@@ -508,7 +508,7 @@ You move to hide in an alley, away from the <<person2>><<persons>> sight. The <<
 	<<endcombat>>
 	<<destinationeventend>>
 <<elseif $enemyhealth lte 0>>
-	You punch <<him>> hard in the gut, leaving <<him>> stunned for a moment. "Ow! You feisty little bitch!" You quickly bolt out of <<his>> reach. 
+	You punch <<him>> hard in the gut, leaving <<him>> stunned for a moment. "Ow! You feisty little <<bitch>>!" You quickly bolt out of <<his>> reach. 
 	<br><br>
 	<<tearful>> you quickly make sure the <<person2>><<person>> is gone and swiftly leave the alley before the <<person1>><<person>> can stop you.
 	<<clotheson>>
@@ -686,7 +686,7 @@ After <<he>> makes a brief call, you follow <<him>> to a nearby car. "Get in," <
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	As <<he>> trembles in orgasmic bliss, you shove <<him>> against a wall and run out of the alley. "Augh! You little bitch, this isn't over!" <<he>> yells after you.<<thuganger 1>><<gthuganger>>
+	As <<he>> trembles in orgasmic bliss, you shove <<him>> against a wall and run out of the alley. "Augh! You little <<bitch>>, this isn't over!" <<he>> yells after you.<<thuganger 1>><<gthuganger>>
 	<br><br>
 	After <<his>> voice fades out in the distance, you stop to catch your breath. <<tearful>> you continue moving.
 	<<clotheson>>
@@ -694,7 +694,7 @@ After <<he>> makes a brief call, you follow <<him>> to a nearby car. "Get in," <
 	<<endcombat>>
 	<<destinationeventend>>
 <<elseif $enemyhealth lte 0>>
-	You manage to shove <<him>> against a wall and rush out of the alley. "Augh! You little bitch, this isn't over!" <<he>> yells after you.<<thuganger 1>><<gthuganger>>
+	You manage to shove <<him>> against a wall and rush out of the alley. "Augh! You little <<bitch>>, this isn't over!" <<he>> yells after you.<<thuganger 1>><<gthuganger>>
 	<br><br>
 	After <<his>> voice fades out in the distance, you stop to catch your breath. <<tearful>> you continue moving.
 	<<clotheson>>
@@ -790,12 +790,12 @@ After <<he>> makes a brief call, you follow <<him>> to a nearby car. "Get in," <
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	As <<he>> trembles in orgasmic bliss, you shove <<him>> down to the ground and continue running. "Augh! You little bitch, this isn't over!" <<he>> yells after you.<<thuganger 1>><<gthuganger>>
+	As <<he>> trembles in orgasmic bliss, you shove <<him>> down to the ground and continue running. "Augh! You little <<bitch>>, this isn't over!" <<he>> yells after you.<<thuganger 1>><<gthuganger>>
 	<br><br>
 	You manage to find a safe spot to stop. <<tearful>> you take a moment to recover. After making sure <<he>> didn't follow you, you continue walking.
 	<<clotheson>>
 <<elseif $enemyhealth lte 0>>
-	You land a lucky punch to <<his>> gut which gives you the opportunity to push <<him>> down to the ground. While <<hes>> still down, you continue running. "Augh! You little bitch, this isn't over!" <<he>> yells after you.<<thuganger 1>><<gthuganger>>
+	You land a lucky punch to <<his>> gut which gives you the opportunity to push <<him>> down to the ground. While <<hes>> still down, you continue running. "Augh! You little <<bitch>>, this isn't over!" <<he>> yells after you.<<thuganger 1>><<gthuganger>>
 	<br><br>
 	You manage to find a safe spot to stop. <<tearful>> you take a moment to recover. After making sure <<he>> didn't follow you, you continue walking.
 	<<clotheson>>
@@ -1032,7 +1032,7 @@ The <<person3>><<person>> leans against a wall.
 <<else>>
 	The <<beasttype>> recoils away from you fearfully. You feel safe for only a moment before a kick hits your back.<<pain 8>><<gpain>>
 	<br><br>
-	"You stupid fucking bitch, how dare you hurt my hound!?" the <<person3>><<person>> yells before kicking you again.<<pain 8>><<gpain>>
+	"You stupid fucking <<bitch>>, how dare you hurt my hound!?" the <<person3>><<person>> yells before kicking you again.<<pain 8>><<gpain>>
 	<br><br>
 	"Hey, you know we're not meant to rough up the merchandise too much," the <<person2>><<person>> says.
 	<br><br>
@@ -1424,7 +1424,7 @@ After a short while, a car pulls up next to you. "Get in," <<he>> says, shoving 
 <<elseif $alarm is 1 and $rescue is 1>>
 	Multiple heads turn towards you. Too many for them to ignore. "It's too crowded here," the <<person1>><<person>> says. "Damn... Let's go hatch up a new plan," <<his>> friend responds.
 	<br><br>
-	<<person2>><<He>> glares at you for a moment before letting go of you. "You got lucky this time, bitch. We're going to get you, sooner or later."<<thuganger 1>><<gthuganger>>
+	<<person2>><<He>> glares at you for a moment before letting go of you. "You got lucky this time, <<bitch>>. We're going to get you, sooner or later."<<thuganger 1>><<gthuganger>>
 	<br><br>
 	<<tearful>> you get as far as possible from them before slipping away into the crowd.
 	<<clotheson>>
@@ -1433,7 +1433,7 @@ After a short while, a car pulls up next to you. "Get in," <<he>> says, shoving 
 	<<destinationeventend>>
 <<elseif $stalk_end is "confront">>
 	<<saveNPC 0 "rent_thug">><<saveNPC 1 "rent_thug_2">><<endcombat>><<loadNPC 0 "rent_thug">><<loadNPC 1 "rent_thug_2">><<set $NPCList[0].state to "attack">><<set $NPCList[1].state to "attack">>
-	<<if $feetaction is "confront">>
+	<<if $feetactioncarry is "confront">>
 		"Still acting tough, huh? That may work on someone else, but not us," the <<person2>><<person>> says.
 		<br>
 		"We're here to take you back home, and we're not taking 'no' for an answer," the <<person1>><<person>> says.

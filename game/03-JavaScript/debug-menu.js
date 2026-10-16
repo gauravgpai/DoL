@@ -114,6 +114,14 @@ setup.debugMenu.eventList = {
 			widgets: [``],
 		},
 		{
+			link: [`Make Rent Due`, stayOnPassageFn],
+			widgets: [`<<set $rentTime to -1>>`],
+		},
+		{
+			link: [`Max Thug Anger`, stayOnPassageFn],
+			widgets: [`<<set $rentThug to { anger: 5, angerCountdown: 0, traps: [] }>>`],
+		},
+		{
 			link: [`Enemy Trust +++`, stayOnPassageFn],
 			widgets: [`<<set $enemytrust += 2000>>`, `<<set $enemyanger -= 1000>>`],
 		},
