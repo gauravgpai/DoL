@@ -2743,7 +2743,7 @@ You search the museum and find <span class="gold">'Bleeding Ward'</span> again.
 You take in its extravagant display. The reds of the moon seem to churn in the sky as the water glistens below. You think back on Winter's story. Mother goose and the blitz. The children <<= C.npc.Winter.pronoun is "m" ? "she" : "he">> took in. How later Winter met 'Summer', and how Winter was given the painting as a parting gift.
 <br><br>
 
-You also recall how Winter dodged and avoided speaking about what really happened with Summer.
+You also recall how Winter dodged and avoided speaking about what really happened with 'Summer'.
 <br><br>
 
 <<link [[Try to joke with Winter|Museum Breeding Ward Joke]]>><</link>>
