@@ -16,7 +16,7 @@
 				Pumpkins. You search under the flowers, and find orange vegetables.
 				<br><br>
 				<<if pcAreArmsBound("both")>>
-					<span class="red">Both of your arms are bound</span>, so you are unable to pick wild carrots.
+					<span class="red">Both of your arms are bound</span>, so you are unable to pick pumpkins.
 					<br>
 				<<else>>
 					<<foodstufficon "pumpkin">> <<link [[Pick pumpkin (0:30)|Moor Pumpkin]]>><<pass 30>><</link>><<tendingdifficulty 300 600>>
