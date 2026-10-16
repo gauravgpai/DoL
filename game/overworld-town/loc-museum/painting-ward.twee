@@ -2740,7 +2740,7 @@ Winter stands up.
 You search the museum and find <span class="gold">'Bleeding Ward'</span> again.
 <br><br>
 
-You take in its extravagant display. The reds of the moon seem to churn in the sky as the water glistens below. You think back on Winter's story. Mother Goose and the Blitz. The children <<he>> took in. How later Winter met Summer, and how Winter was given the painting as a parting gift.
+You take in its extravagant display. The reds of the moon seem to churn in the sky as the water glistens below. You think back on Winter's story. Mother goose and the blitz. The children <<he>> took in. How later Winter met Summer, and how Winter was given the painting as a parting gift.
 <br><br>
 
 You also recall how Winter dodged and avoided speaking about what really happened with Summer.
@@ -2759,14 +2759,14 @@ You also recall how Winter dodged and avoided speaking about what really happene
 <<set _antiqueMuseum to []>>
 <<for _antiqueName, _antiqueStatus range $museumAntiques.antiques>>
 	<<if ["talk", "museum", "recovered"].includes(_antiqueStatus) and _antiqueName isnot "antiqueivorynecklace">>
-		<<run _antiqueMuseum.push(_museumAntiqueText[_antiqueName].name.toLowerCase())>>
+		<<run _antiqueMuseum.push("the " + _museumAntiqueText[_antiqueName].name.toLowerCase())>>
 	<</if>>
 <</for>>
 <<if _antiqueMuseum.length is 0>>
-	<<run _antiqueMuseum.push("brass pot")>>
+	<<run _antiqueMuseum.push("a brass pot")>>
 <</if>>
 
-You search the museum for Winter and find <<him>> admiring the <<print either(_antiqueMuseum)>>. <<He>> sees you approaching and greets you. "Hello, and what brings you here today?" <<he>> says, turning away from the display.
+You search the museum for Winter and find <<him>> admiring <<print either(_antiqueMuseum)>>. <<He>> sees you approaching and greets you. "Hello, and what brings you here today?" <<he>> says, turning away from the display.
 <br><br>
 
 <<if $speech_attitude is "meek">>
