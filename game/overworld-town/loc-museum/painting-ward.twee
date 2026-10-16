@@ -2740,7 +2740,7 @@ Winter stands up.
 You search the museum and find <span class="gold">'Bleeding Ward'</span> again.
 <br><br>
 
-You take in its extravagant display. The reds of the moon seem to churn in the sky as the water glistens below. You think back on Winter's story. Mother goose and the blitz. The children <<he>> took in. How later Winter met Summer, and how Winter was given the painting as a parting gift.
+You take in its extravagant display. The reds of the moon seem to churn in the sky as the water glistens below. You think back on Winter's story. Mother goose and the blitz. The children <<= C.npc.Winter.pronoun is "m" ? "she" : "he">> took in. How later Winter met 'Summer', and how Winter was given the painting as a parting gift.
 <br><br>
 
 You also recall how Winter dodged and avoided speaking about what really happened with Summer.
@@ -2800,7 +2800,7 @@ Something in Winter's expression gives you pause. You realise <<he>> may not be 
 	<br><br>
 	"I said <span class="lewd">'Breeding Ward'</span>. I want to hear the story again, but this time don't skip the steamy details." 
 <<else>>
-	You try again, this time making sure to enunciate. "I want to hear about <span class="lewd">'Breeding Ward'</span> again."
+	You won't back down. You clear your throat and try to enunciate. "I want you to tell me about <span class="lewd">'Breeding Ward'</span> again." You smile again and turn to Winter for <<his>> reaction.
 <</if>>
 <br><br>
 
