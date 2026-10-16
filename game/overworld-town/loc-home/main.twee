@@ -1058,7 +1058,7 @@ You are in the bathroom.
 		<<link [[Kiss|Bed Robin Sex]]>><<set $sexstart to 1>><</link>>
 	<</if>>
 	<br>
-<<elseif $location is "home" and $wraith and $wraith.nightmare is 2 and Time.isBloodMoon()>>
+<<elseif $location is "home" and $wraith?.nightmare is 2 and Time.isBloodMoon()>>
 	You dream of a beautiful figure, cloaked in white, standing under the red moon. It has its arms spread out to you in a welcoming gesture. You can feel its gaze boring into your mind as you step closer.
 	<br><br>
 	It's surrounded by trees, all bending inwards, and floating above a lake. Everything moves around you, and you find yourself hanging above a large ruin. You can't breathe.
@@ -1388,7 +1388,7 @@ You are in the bathroom.
 
 	<<link [[Next|Sleep Rape]]>><<set $molestationstart to 1>><</link>>
 	<br>
-<<elseif $location is "home" and $wraith and $wraith.nightmare is 2 and Time.isBloodMoon()>>
+<<elseif $location is "home" and $wraith?.nightmare is 2 and Time.isBloodMoon()>>
 	You dream of a beautiful figure, cloaked in white, standing under the red moon. It has its arms spread out to you in a welcoming gesture. You can feel its gaze boring into your mind as you step closer.
 	<br><br>
 	It's surrounded by trees, all bending inwards, and floating above a lake. Everything moves around you, and you find yourself hanging above a large ruin. You can't breathe.
@@ -2428,7 +2428,7 @@ You are in the main hall of the orphanage.
 		<<else>>
 			<<rentdue 0>>
 		<</if>>
-	<<elseif $babyIntros and $babyIntros.Bailey and $babyIntros.Bailey.length gt 0>>
+	<<elseif $babyIntros?.Bailey?.length gt 0>>
 		<<homeBabyIntro>>
 
 		"Pay your dues next time so we won't have to go through this again," <<he>> says before pinching your cheek painfully.<<stress 6>><<trauma 6>><<gstress>><<gtrauma>>
@@ -2581,7 +2581,7 @@ You are in the main hall of the orphanage.
 	<<endevent>>
 	<<link [[Next|Orphanage]]>><<set $loft_whitney to 4>><</link>>
 	<br>
-<<elseif $babyIntros and $babyIntros.Bailey and $babyIntros.Bailey.length gt 0>>
+<<elseif $babyIntros?.Bailey?.length gt 0>>
 	<<npc Bailey>><<person1>>
 	"There you are," a voice says. You turn to see Bailey approaching you.
 	<br><br>
@@ -2689,7 +2689,7 @@ and !$fromRobinRoom and _robin.cdquest is 2 and _robin.trauma lte 20 and !$daily
 	<br><br>
 	"The people who ran it used it to commit massive tax evasion. Any information you could give could be very helpful," the voice says. 
 	<br><br>
-	"I told you, I don't know anything. Now get out of here before you scare the children," Bailey says, barely concealing <<his>> anger. After a moment, <<he>> and a <<person2>><<person>> wearing a cop uniform emerge from behind the corner. Bailey glances at you as they pass by.  <<ggglove "Bailey">><<npcincr Bailey love 3>>
+	"I told you, I don't know anything. Now get out of here before you scare the children," Bailey says, barely concealing <<his>> anger. After a moment, <<he>> and a <<person2>><<person>> wearing a cop uniform emerge from behind the corner. Bailey glances at you as they pass by.  <<glove "Bailey">><<npcincr Bailey love 1>>
 	<br><br>
 	<span class="blue">The gems and crystals found in the mines are probably quite valuable, and the mines are probably empty now. You could go back.</span>
 	<br><br>
@@ -2731,7 +2731,7 @@ and !$fromRobinRoom and _robin.cdquest is 2 and _robin.trauma lte 20 and !$daily
 	<<if $police_hack is 2 and ($pub_hack_job is 1 or $pub_hack_job is 2)>>
 		<<investigateicon>><<link [[Find hacker (0:10)|Orphanage Hacker]]>><<pass 10>><</link>>
 		<br><br>
-	<<elseif $pubfame and $pubfame.intro lte 2 and $pub_hack_job lte 3>>
+	<<elseif $pubfame?.intro lte 2 and $pub_hack_job lte 3>>
 		<<investigateicon>><<link [[Find hacker (0:10)|Orphanage Hacker]]>><<pass 10>><</link>>
 		<br><br>
 	<</if>>
@@ -3525,7 +3525,7 @@ You reach out and pet the <<beasttype>>. <<bHe>> stretches into your hand and ya
 :: Orphanage Hacker
 <<set $outside to 0>><<set $location to "town">><<effects>>
 <<generateMickey>>
-<<if $pub_hack_job is 1 or $pubfame and $pubfame.intro is 1>>
+<<if $pub_hack_job is 1 or $pubfame?.intro is 1>>
 	The orphans sometimes move rooms. After a few failed attempts you find the right door.
 	<br><br>
 	You knock. There's a pause. "Yes?"
@@ -3585,9 +3585,9 @@ You reach out and pet the <<beasttype>>. <<bHe>> stretches into your hand and ya
 	"Are you ready to do as I asked? To strip?"
 	<br><br>
 <</if>>
-<<link [[Strip (0:02)|Orphanage Hacker Strip]]>><<stress 1>><<pass 2>><<if $pubfame and $pubfame.intro lte 2>><<set $pubfame.intro to 3>><</if>><<if $pub_hack_job lte 2>><<set $pub_hack_job to 3>><</if>><<undress "mickey">><</link>><<gstress>>
+<<link [[Strip (0:02)|Orphanage Hacker Strip]]>><<stress 1>><<pass 2>><<if $pubfame?.intro lte 2>><<set $pubfame.intro to 3>><</if>><<if $pub_hack_job lte 2>><<set $pub_hack_job to 3>><</if>><<undress "mickey">><</link>><<gstress>>
 <br>
-<<link [[Refuse|Orphanage Hacker Strip Refuse]]>><<if $pubfame and $pubfame.intro lte 2>><<set $pubfame.intro to 2>><</if>><<if $pub_hack_job lte 2>><<set $pub_hack_job to 2>><</if>><</link>>
+<<link [[Refuse|Orphanage Hacker Strip Refuse]]>><<if $pubfame?.intro lte 2>><<set $pubfame.intro to 2>><</if>><<if $pub_hack_job lte 2>><<set $pub_hack_job to 2>><</if>><</link>>
 
 :: Orphanage Hacker Strip Refuse
 <<set $outside to 0>><<set $location to "town">><<effects>>
@@ -4890,7 +4890,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 		Kylar opens your locket, and stills once <<he>> sees nothing inside.
 		<br><br>
 
-		"It's just a necklace," you then hear <<him>> whisper as <<he>> inspects your locket. "Yes. With no one inside. Not even…"
+		"It's just a necklace," you then hear <<him>> whisper as <<he>> inspects your locket. "Yes. With no one inside. Not even..."
 		<br><br>
 
 		<<if _kylarStatus.includes("Rage")>>
@@ -4941,16 +4941,16 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			Kylar opens your locket. The gasp that comes out of <<him>> is loud enough to wake you and the rest of the orphanage.
 			<br><br>
 
-			"Ah," you hear <<him>> stammer. "No… Is that…? Oh, my love, you really-!"
+			"Ah," you hear <<him>> stammer. "No... Is that...? Oh, my love, you really—!"
 			<br><br>
 
 			<<He>> turns to you. In the light, you see how <<his>> eyes have begun to well up with tears.
 			<br><br>
 
 			<<if _kylarStatus.includes("Rage")>>
-				"I can't believe it. I knew <<pshe>> still loves me. I knew it, I knew it, I…"
+				"I can't believe it. I knew <<pshe>> still loves me. I knew it, I knew it, I..."
 			<<else>>
-				"I can't believe it! Haha! I'm so happy. So…"
+				"I can't believe it! Haha! I'm so happy. So..."
 			<</if>>
 			<br><br>
 
@@ -4966,17 +4966,17 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			Kylar opens your locket, and makes a noise of contempt at the sight of Sydney.
 			<br><br>
 
-			"You? Why you? Why do you keep…" you then hear <<him>> whisper as <<he>> inspects your locket. "I hate this."
+			"You? Why you? Why do you keep..." you then hear <<him>> whisper as <<he>> inspects your locket. "I hate this."
 			<br><br>
 
 			You watch as <<he>> keeps the locket close, and pockets it soon after. <<npcincr Kylar rage 3>><<ggksuspicion>>
 			<br><br>
 
 			<<if _kylarStatus.includes("Rage")>>
-				"Sydney… Sydney, Sydney, <i>Sydney.</i>"
+				"Sydney... Sydney, Sydney, <i>Sydney.</i>"
 				<br><br>
 			<<elseif _kylarStatus.includes("Love")>>
-				"Surely… no. No, no, no."
+				"Surely... no. No, no, no."
 				<br><br>
 			<</if>>
 
@@ -4986,14 +4986,14 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			Kylar opens your locket, and makes a noise of contempt at the sight of Robin.
 			<br><br>
 
-			"Of course I have to worry about you too," you then hear <<him>> grumble as <<he>> inspects your locket. "If only I could have lived with <<phim>>, too… "
+			"Of course I have to worry about you too," you then hear <<him>> grumble as <<he>> inspects your locket. "If only I could have lived with <<phim>>, too..."
 			<br><br>
 
 			You watch as <<he>> keeps the locket close, and pockets it soon after. <<npcincr Kylar rage 3>><<ggksuspicion>>
 			<br><br>
 
 			<<if _kylarStatus.includes("Rage")>>
-				"You have no idea just how lucky you are…"
+				"You have no idea just how lucky you are..."
 				<br><br>
 			<<elseif _kylarStatus.includes("Love")>>
 				"It's not fair at all. Not one bit."
@@ -5006,17 +5006,17 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			Kylar opens your locket, and makes a noise of contempt at the sight of Whitney.
 			<br><br>
 
-			"You? What does <<pshe>> see in you?" you then hear <<him>> grumble as <<he>> inspects your locket. "What does <i>anyone</i> see in you? You…"
+			"You? What does <<pshe>> see in you?" you then hear <<him>> grumble as <<he>> inspects your locket. "What does <i>anyone</i> see in you? You..."
 			<br><br>
 
 			You watch as <<he>> keeps the locket close, and pockets it soon after. <<npcincr Kylar rage 3>><<ggksuspicion>>
 			<br><br>
 
 			<<if _kylarStatus.includes("Rage")>>
-				"Stupid Whitney. Stupid Whitney…!"
+				"Stupid Whitney. Stupid Whitney...!"
 				<br><br>
 			<<elseif _kylarStatus.includes("Love")>>
-				"Surely <<pshes>> just forced to… ugh."
+				"Surely <<pshes>> just forced to... ugh."
 				<br><br>
 			<</if>>
 
@@ -5026,14 +5026,14 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			Kylar opens your locket, and makes a noise of surprise at the sight of Eden.
 			<br><br>
 
-			"Oh. You seem scary," you then hear <<him>> mutter as <<he>> inspects your locket. "It's okay. I can be scarier than you. So much scarier…"
+			"Oh. You seem scary," you then hear <<him>> mutter as <<he>> inspects your locket. "It's okay. I can be scarier than you. So much scarier..."
 			<br><br>
 
 			You watch as <<he>> keeps the locket close, and pockets it soon after. <<npcincr Kylar rage 1>><<gksuspicion>>
 			<br><br>
 
 			<<if _kylarStatus.includes("Rage")>>
-				"So many sluts and perverts, all after my love…"
+				"So many sluts and perverts, all after my love..."
 				<br><br>
 			<<elseif _kylarStatus.includes("Love")>>
 				"There. One less thing to worry about."
@@ -5047,9 +5047,9 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			<br><br>
 
 			<<if $averySeen.includes("schoolDropOff")>>
-				"Isn't this…" you then hear <<him>> mutter as <<he>> inspects your locket. "I thought you were— Who <i>are</i> you?"
+				"Isn't this..." you then hear <<him>> mutter as <<he>> inspects your locket. "I thought you were— Who <i>are</i> you?"
 			<<else>>
-				"Oh," you then hear <<him>> mutter as <<he>> inspects your locket. "Another person to worry about…"
+				"Oh," you then hear <<him>> mutter as <<he>> inspects your locket. "Another person to worry about..."
 			<</if>>
 			<br><br>
 
@@ -5057,7 +5057,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			<br><br>
 
 			<<if _kylarStatus.includes("Rage")>>
-				"So many sluts and perverts, all after my love…"
+				"So many sluts and perverts, all after my love..."
 				<br><br>
 			<<elseif _kylarStatus.includes("Love")>>
 				"There. One less thing to worry about."
@@ -5070,14 +5070,14 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			Kylar opens your locket, and makes a noise of surprise at the sight of Alex.
 			<br><br>
 
-			"Whoever you are," you then hear <<him>> mutter as <<he>> inspects your locket. "I won't let you take my love away…!"
+			"Whoever you are," you then hear <<him>> mutter as <<he>> inspects your locket. "I won't let you take my love away...!"
 			<br><br>
 
 			You watch as <<he>> keeps the locket close, and pockets it soon after. <<npcincr Kylar rage 1>><<gksuspicion>>
 			<br><br>
 
 			<<if _kylarStatus.includes("Rage")>>
-				"So many sluts and perverts, all after my love…"
+				"So many sluts and perverts, all after my love..."
 				<br><br>
 			<<elseif _kylarStatus.includes("Love")>>
 				"There. One less thing to worry about."
@@ -5097,7 +5097,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			<br><br>
 
 			<<if _kylarStatus.includes("Rage")>>
-				"Animals? <i>Animals?</i> No…"
+				"Animals? <i>Animals?</i> No..."
 				<br><br>
 			<<elseif _kylarStatus.includes("Love")>>
 				"I-I must be mistaken. Am I?"
@@ -5107,7 +5107,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			Seemingly done, Kylar makes <<his>> way out.
 		<<case "Great Hawk">>
 			<<set $kylarLocket to "other">><<set $kylarSeen.pushUnique("locketStolen")>><<run $wardrobe.neck.delete(_locket)>>
-			Kylar opens your locket, and makes a noise of surprise at the sight of Great Hawk.
+			Kylar opens your locket, and makes a noise of surprise at the sight of the Great Hawk.
 			<br><br>
 
 			"W-what?" you then hear <<him>> stutter as <<he>> inspects your locket. "What is this?"
@@ -5117,7 +5117,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			<br><br>
 
 			<<if _kylarStatus.includes("Rage")>>
-				"Animals? <i>Animals?</i> No…"
+				"Animals? <i>Animals?</i> No..."
 				<br><br>
 			<<elseif _kylarStatus.includes("Love")>>
 				"I-I must be mistaken. Am I?"
@@ -5140,7 +5140,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 				You watch as <<he>> slowly keeps the locket close, and pockets it soon after. <<npcincr Kylar love -1>><<llove>>
 				<br><br>
 
-				"It's okay. I can just get rid of this… picture. I can…"
+				"It's okay. I can just get rid of this... picture. I can..."
 				<br><br>
 
 				Hesitantly, Kylar makes <<his>> way out.
@@ -5156,9 +5156,9 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 				<br><br>
 
 				<<if _kylarStatus.includes("Rage")>>
-					"My head… did <<pshe>> rig this thing somehow? How? <i>How?"</i>
+					"My head... did <<pshe>> rig this thing somehow? How? <i>How?</i>"
 				<<else>>
-					"W-what? How…? I feel sick."
+					"W-what? How...? I feel sick."
 				<</if>>
 				<br><br>
 
@@ -5168,14 +5168,14 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 				Kylar opens your locket, and makes a noise of amusement at the sight of Gwylan's blurry picture.
 				<br><br>
 
-				"Hehe," you then hear <<him>> giggling as <<he>> inspects your locket. "And who are you? <<pShe>> didn't even try to keep you in frame…"
+				"Hehe," you then hear <<him>> giggling as <<he>> inspects your locket. "And who are you? <<pShe>> didn't even try to keep you in frame..."
 				<br><br>
 
 				You watch as <<he>> keeps the locket close, and pockets it soon after.
 				<br><br>
 
 				<<if _kylarStatus.includes("Rage")>>
-					"Hehe… heh!"
+					"Hehe... heh!"
 					<br><br>
 				<<elseif _kylarStatus.includes("Love")>>
 					"Oh, my love. We'll take so much better photos together soon."
@@ -5186,7 +5186,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 			<</if>>
 		<<default>>
 			<<set $kylarLocket to "other">>
-			"Don't worry," you then hear <<him>> mutter as <<he>> inspects your locket. "I'll get everyone out of the way soon…"
+			"Don't worry," you then hear <<him>> mutter as <<he>> inspects your locket. "I'll get everyone out of the way soon..."
 			<br><br>
 
 			Kylar makes <<his>> way out.
@@ -5215,7 +5215,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 		<br><br>
 
 		<<if $speech_attitude is "meek">>
-			"Well… yes," you say. "Why do you have my locket?"
+			"Well... yes," you say. "Why do you have my locket?"
 		<<elseif $speech_attitude is "bratty">>
 			"I don't know. Did you?" you spit. "Tell me why you have my locket."
 		<<else>>
@@ -5236,7 +5236,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 		Kylar stares at you. After a while, <<he>> puts the locket back in your closet.
 		<br><br>
 
-		"I never want to be angry at you," <<he>> whispers. "But sometimes…"
+		"I never want to be angry at you," <<he>> whispers. "But sometimes..."
 		<br><br>
 
 		<<He>> steps closer to the light, allowing a flash of steel in <<his>> pocket to shine. <<stress 12>><<ggstress>>
@@ -5247,7 +5247,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 
 		<<He>> walks to the window and leaves you to stare at where <<he>> stood. <<if _locketRival>><<npcincr Kylar rage 10>><<gggksuspicion>><</if>>
 	<<elseif _kylarStatus.includes("Love")>>
-		"M-my love!" Kylar stammers as <<he>> turns to face you. The locket still hangs on <<his>> wrist. "Please don't be angry. I just…"
+		"M-my love!" Kylar stammers as <<he>> turns to face you. The locket still hangs on <<his>> wrist. "Please don't be angry. I just..."
 		<br><br>
 
 		<<if $speech_attitude is "meek">>
@@ -5259,7 +5259,7 @@ With that, a brisk wind whisks you away, to the photo studio on Nightingale Stre
 		<</if>>
 		<br><br>
 
-		"I know, I'm sorry! I just… oh…"
+		"I know, I'm sorry! I just... oh..."
 		<br><br>
 
 		Dropping the locket, <<he>> sprints to the window and flees. <<npcincr Kylar love -3>><<lllove>>
