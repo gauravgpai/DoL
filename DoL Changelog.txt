@@ -40,6 +40,27 @@ Added the "Pumpkin Master", "Sancta Vexatio", and "Nothing Copied" feats.
 Thanks to Reiyu and lowercasedonkey for formatting improvements.
 Thanks to Yiphen, derp777, Reiyu, lowercasedonkey, snowinmars, JackmobTv, Songdog, and anonymous for code improvements.
 
+Town of Thugs expansion. Designed and written by Juniaki. Additional writing by wilduntammedfluffy. Coding by Jacko:
+Bailey's thugs now make themselves useful around town by hunting down players that dodge rent, bringing them back by force if they must.
+Added over a dozen randomly occurring thug events around town.
+Added thug anger, a new stat that represents how relentless the thugs are in their pursuit of the player. Thug anger increases passively over time while Bailey is looking for the player, or if the player successfully escapes the thugs' attempts to bring the player in.
+Added thug traps, triggers that activate when the player is spotted in town by a thug, making the area that the player was in "trapped" and thus much more likely to trigger a thug event. Up to three traps can exist at a time and they disappear after a few hours.
+The player's allure increases with thug anger, making the world more dangerous as they continue to refuse paying Bailey.
+Bailey no longer takes it lightly when refusing to pay them at locations other than the orphanage. If refused, they now confront you if you enter the orphanage regardless of whether rent is due or not. Their thugs will also continue to look for you in town. The only reliable way to make Bailey lay off for a week is by beating them in a fight.
+
+Thanks to Jacko for the following additions and improvements:
+Added a couple of small scenes for when Bailey confronts the player over rent while their waters have broken.
+Added new stalking sprites and improved how NPCs are represented during stalking encounters.
+Added the bait shop as a valid shop for Gwylan's requests.
+Added a recipe tracker to the journal.
+Added a reminder to the journal if the player has antiques waiting to be donated or talked about with Winter.
+Museum hints have been moved to another spot in the journal in order to avoid cluttering it.
+Facing temple punishment in order to renew your chastity vow now also resets the exam timer, encouraging confession as soon as possible.
+Named NPC pronouns now appear in applicable feat descriptions if the feat was earned in the current save.
+Renamed Night Monster's "Love" to "Interest", to be in line with other non-primary relationship labels.
+Renamed prison guards' "Respect" to "Trust", to more easily differentiate it from general prison respect.
+Fixed a broken conditional, so Gwylan should no longer ask the player to the cafe if the player has been missing for a long time.
+
 Thanks to JackmobTV for the mine rework:
 Reworked and greatly expanded the mine soft bad end.
 Passing out on Barb Street now has a chance for the PC to wake up in the mines.
@@ -121,6 +142,9 @@ Fixed a bug that prevented farm plots becoming wet if it rained overnight. Thank
 Apply drop-shadow to icon containers instead of child icons in Latte theme to prevent overlapping outlines. Thanks to eudemonism00.
 The "Inscribed Hourglass" feat is now available on soft mode. Thanks to Acorn.
 The Ivory Wraith events at the lake ruins during a blood moon should now be available on soft mode. Thanks to Acorn.
+Fixed a domus street event failing to consider the PC properly indoors. Thanks to Affoxion.
+Fixed NPCs having too short a memory, and forgetting the PC's genitals despite just seeing them, during a particular event. Thanks to Affoxion.
+The Characteristics overlay will now show how much semen PCs with micropenises have stored. Thanks to Affoxion.
 Thanks to klorpa for small spelling and spacing fixes.
 Thanks to derp for miscellanious fixes.
 
@@ -174,6 +198,7 @@ Fixed fallen angel reaction lines during sex/combat triggering at the wrong stag
 Fixed some ellipses to "..." in Kylar's locket and a single one I found in a beach/park event.
 Fixed a grammar error and broken code in Robin's Love Locket.
 Fixed a missing promiscuity check in Whitney's Love Locket.
+Fixed some punctuation errors.
 
 Thanks to JackmobTv for the following fixes:
 Fixed missing promiscuity indicators.

@@ -1470,7 +1470,7 @@
 <<widget "breasts">>
 	<<if Number.isInteger($player.breastsize)>>
 		<<if $player.breastsize lte 0>>
-			<<print "nipples">>
+			<<print "nipples">>\
 		<<else>>
 			<<set _text_output to `${setup.breastsizes[$player.breastsize]} `>>
 			<<if !_breastSensitivityDescribed or _args[0]>><<silently>><<breastsensitivity>><</silently>><<set _text_output += _text_output2>><</if>>
@@ -2114,7 +2114,7 @@
 
 <<widget "friend">><<silently>>
 	<<if $robinromance is 1>>
-		<<girl>><<set _text_output to _text_output + "friend">>
+		<<girlfriend>>
 	<<elseif _args[0] is "bff">>
 		<<set _text_output to "best friend">>
 	<<else>>
@@ -3982,6 +3982,10 @@
 	<<else>>
 		<<set _text_output to "bitch">>
 	<</if>>
+<</silently>>_text_output<</widget>>
+
+<<widget "Bitch">><<silently>>
+	<<bitch>><<capitalise>>
 <</silently>>_text_output<</widget>>
 
 <<widget "bitch_pirate">><<silently>>
