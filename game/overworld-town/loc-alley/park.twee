@@ -240,7 +240,7 @@ Tulips grow in great patches near the riverbank.
 			<<icon "pumpkin-carving.png">><<link [[Compete (1:00)|Park Pumpkin Competition]]>><<pass 60>><</link>>
 			<br>
 			
-		<<elseif $halloween is 1 and Time.monthDay is 31 or $pumpkin_competition>>
+		<<elseif $halloween is 1 and Time.monthDay is 31 or $halloween_pumpkin_competition>>
 			Bits of pumpkin litter the grass, and jack-o'-lanterns hang from branches.
 			<<if $halloween_pumpkin_competition is "won">>
 				A spooky shrine has been set up to display the winning pumpkin. <span class="green">Yours.</span>
@@ -431,7 +431,7 @@ You approach the pumpkin carving tables. Most seats are occupied, with <<people>
 	<</if>>
 
 	<<if $foodstuff.pumpkin.amount gte 1 and $pumpkin_carving lt 10>>
-		<<link [[Practice pumpkin carving (1:00 Consumes a pumpkin)|Park Pumpkin Practise]]>><<pass 60>><<tending_give "pumpkin" -1>><<set $pumpkin_carving += 1>><</link>> | Pumpkins: <<print $foodstuff.pumpkin.amount>>
+		<<link [[Practice pumpkin carving (1:00)|Park Pumpkin Practise]]>><<pass 60>><<tending_give "pumpkin" -1>><<set $pumpkin_carving += 1>><</link>> | Pumpkins: <<print $foodstuff.pumpkin.amount>>
 	<<elseif $pumpkin_carving gte 10>>
 		<span class="lblue">You've had all the pumpkin carving practise you need.</span>
 	<<else>>
@@ -475,11 +475,11 @@ You approach a seasoned-looking carver, and ask if <<he>> has any tips. <<He>> t
 You find a <<person>>, throwing and catching a pumpkin like a ball, while trying to sell it to passersby.
 <br><br>
 
-"Need a pumpkin, <<girl>>?" <<he>> asks. "The going rate is <span class="gold">£<<print (_pumpkin_price / 100)>>.</span>" <<He>> leers at your body. "Though if that's too rich for you, you could put your mouth to work instead." <<He>> makes a crude gesture with <<his>> mouth.
+"Need a pumpkin, <<girl>>?" <<he>> asks. "The going rate is <<printmoney _pumpkin_price>>.</span>" <<He>> leers at your body. "Though if that's too rich for you, you could put your mouth to work instead." <<He>> makes a crude gesture with <<his>> mouth.
 <br><br>
 
 <<if $money gte _pumpkin_price>>
-	<<link [[Buy a pumpkin (£<<print (_pumpkin_price / 100)>>)|Park Pumpkin Buy]]>><<money `-_pumpkin_price`>><<tending_give "pumpkin" 1>><<set $halloween_pumpkins_bought += 1>><</link>>
+	<<link [[Buy a pumpkin (<<printmoney _pumpkin_price>>)|Park Pumpkin Buy]]>><<money `-_pumpkin_price`>><<tending_give "pumpkin" 1>><<set $halloween_pumpkins_bought += 1>><</link>>
 	<br>
 <<else>>
 	<span class="blue">You can't afford a pumpkin.</span>
@@ -489,7 +489,7 @@ You find a <<person>>, throwing and catching a pumpkin like a ball, while trying
 	<<link [[Give oral in return for a pumpkin|Park Pumpkin Oral]]>><<set $sexstart to 1>><</link>><<promiscuous4>>
 	<br>
 <<else>>
-	<span class="blue">You're not promiscuous enough to take up such an alternative!</span>
+	<<insufficientStat "promiscuity" "to take up such an alternative!">>
 	<br>
 <</if>>
 <<link [[Grab the pumpkin and run|Park Pumpkin Athletics]]>><</link>><<athleticsdifficulty 1 1000>>
@@ -1031,7 +1031,7 @@ Reluctant, Kylar shifts enough just enough for the <<person1>><<person>> to get 
 The judge reaches the end of the tables, then turns and walks the way <<he>> came. <span class="blue"><<He>> stops before reaching you.</span> Both arms reach out, and <<he>> scoops a wild-eyed Kylar up and away from <<person3>><<his>> jack-o-'lantern.
 <br><br>
 
-The crowd hushes as everyone beholds Kylar's work. It's unmistakable. The pumpkin is carved in your likeness. Your face flushes.<<gstress>><<stress -6>>
+The crowd hushes as everyone beholds Kylar's work. It's unmistakable. The pumpkin is carved in your likeness. Your face flushes.<<gstress>><<stress 6>>
 <br><br>
 
 "Our winner," the <<person1>><<person>> announces. <<He>> seems to consider holding Kylar in the air, but decides against it, placing <<person3>><<him>> down beside <<his>> work.
@@ -1084,7 +1084,7 @@ People crowd around you and Kylar, wanting to know what <<person3>><<his>> trick
 "Did I impress you?"
 <br><br>
 
-<<link [[Say yes|Park Pumpkin Competition Yes]]>><<glove>><<npcincr Kylar love 1>><</link>>
+<<link [[Say yes|Park Pumpkin Competition Yes]]>><<npcincr Kylar love 1>><</link>><<glove>>
 <br>
 <<link [[Say no|Park Pumpkin Competition No]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 1>><</link>><<llove>><<gksuspicion>>
 <br>
@@ -1165,7 +1165,7 @@ The crowd clears as people arrive to clean up the mess, and make sure all the kn
 The judge reaches the end of the tables, then turns and walks the way <<he>> came. <span class="red"><<He>> strides right on by your jack-o'-lantern,</span> and lifts the one belonging to a <<person2>><<person>>.
 <br><br>
 
-A cheer goes up, though other competitors look dissappointed, even jealous. The <<person2>><<person>> seems eager to be photographed with the winner, and makes a show of handing <<person3>><<him>> the prize money.
+A cheer goes up, though other competitors look disappointed, even jealous. The <<person1>><<person>> seems eager to be photographed with the winner, and makes a show of handing <<person2>><<him>> the prize money.
 <br><br>
 
 The crowd clears as people arrive to clean up the mess, and make sure all the knives are accounted for.
