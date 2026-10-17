@@ -17711,8 +17711,6 @@ sugarcube-2:
       name: temple_title
     temple_Title:
       name: temple_Title
-    events_school_library_study:
-      name: events_school_library_study
     temple_scriptorium_options:
       name: temple_scriptorium_options
     temple_scriptorium_leave_options:
