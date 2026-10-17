@@ -1094,7 +1094,7 @@ You return the stolen
 	You skim a book on past customs, paying more attention to the chapters involving the forest.
 	<<if $historySuccess>>
 		<<set $kylar_altar_library += 15>>
-		<span class="green">You find an illustration of the altar,</span> <<generate1v>><<person1>>a <<person>> strapped to its surface, surrounded by dancing figures. You can't tell if the <<person>> is laughing or screaming.<<gggresearch>>
+		<span class="green">You find an illustration of the altar,</span> <<generate1>><<person1>>a <<person>> strapped to its surface, surrounded by dancing figures. You can't tell if the <<person>> is laughing or screaming.<<gggresearch>>
 		<<endevent>>
 	<<else>>
 		<<set $kylar_altar_library += 5>>

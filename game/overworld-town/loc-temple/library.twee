@@ -15,7 +15,7 @@ You are in the temple scriptorium. Tall shelves disappear into the dark above, l
 <<effects>>
 
 <<generate1>>
-You sneak through the temple scriptorium, remaining unseen thanks to the dim light. The eerie silence of the <<person1>><<monks_and_nuns>>' movement helps less. Tall shelves disappear into the dark above.
+You sneak through the temple scriptorium, remaining unseen thanks to the dim light. The eerie silence of the <<person1>><<monks_and_nuns>>' movements helps less. Tall shelves disappear into the dark above.
 <br><br>
 <<endevent>>
 <<temple_scriptorium_options>>
@@ -38,7 +38,7 @@ You walk through darkened corridors, peeking into rooms, searching for the scrip
 	<<He>> ushers you back to the main hall.
 	<br><br>
 <<elseif $temple_rank is "monk" or $temple_rank is "priest">>
-	<<He>> frowns a moment, then nods. "You scriptorium has a front door, you know," <<he>> says, then gestures at a wooden door behind <<him>>, set into the wall. It's sealed with a thick padlock. "That's the back entrance. We don't really need to use it nowadays."
+	<<He>> frowns a moment, then nods. "The scriptorium has a front door, you know," <<he>> says, then gestures at a wooden door behind <<him>>, set into the wall. It's sealed with a thick padlock. "That's the back entrance. We don't really need to use it nowadays."
 	<br><br>
 	<<He>> nods again, then passes by.
 	<br><br>
