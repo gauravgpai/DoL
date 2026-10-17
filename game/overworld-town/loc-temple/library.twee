@@ -45,7 +45,7 @@ You walk through darkened corridors, peeking into rooms, searching for the scrip
 <<else>>
 	<<He>> frowns at you. "Are you lost?" <<he>> asks. "These parts of the temple are off-limits to those not initiated." <<His>> expression softens. "Ah, are you curious about the inner workings of the temple?"
 	<br><br>
-	<<He>> gestures at a wooden door behind <<him>>, set into the wall. It's sealed by a thick padlock. "That's the scriptorium," <<he>> says. "Even the best preserved documents are ravaged by time, but through painstaking work we can preserve their spirit." <<He>> gestures the way you came. "Come. I'll show you back to temple proper."
+	<<He>> gestures at a wooden door behind <<him>>, set into the wall. It's sealed by a thick padlock. "That's the scriptorium," <<he>> says. "Even the best preserved documents are ravaged by time, but through painstaking work we can preserve their spirit." <<He>> gestures the way you came. "Come. I'll show you back to the temple proper."
 	<br><br>
 	<<He>> ushers you back to the main hall.
 	<br><br>
@@ -92,10 +92,10 @@ You approach the back door to the scriptorium. It's locked tight.
 You light a candle, and tiptoe by <<monks_and_nuns>> hunched over tables, scribbling away, oblivious to all around them. Scrolls, and the occasional tome, stack the shelves, of various degrees of wear. Some are bound and chained, as if to keep them still.
 <br><br>
 
-You come to shelves holding wooden drawyers. You lift a lit candle from a nearby table, and take care as you open the first drawyer. Old pages, bound into different collections. This is the sort of thing you're looking for.
+You come to shelves holding wooden drawyers. You lift a lit candle from a nearby table, and take care as you open the first drawer. Old pages, bound into different collections. This is the sort of thing you're looking for.
 <br><br>
 
-The ordering system takes some figuring out. You manage it well enough, and narrow your search down to a section of drawyers at the far end, each containing pages from more modern works.
+The ordering system takes some figuring out. You manage it well enough, and narrow your search down to a section of drawers at the far end, each containing pages from more modern works.
 <br><br>
 
 <<link [[Next|Temple Scriptorium Altar 2]]>><</link>>
@@ -243,7 +243,7 @@ All three smile as they turn and walk away. At that moment, you become aware of 
 :: Temple Scriptorium Altar Flip
 <<effects>>
 
-You flip the bird at their backs. The <<bishop>> and <<his>> rightmost compansion disappear for a moment, but the leftmost companion pauses a moment, as if sensing your gesture. Then <<person2>><<he>> too disappears.
+You flip the bird at their backs. The <<bishop>> and <<his>> rightmost companion disappear for a moment, but the leftmost companion pauses a moment, as if sensing your gesture. Then <<person2>><<he>> too disappears.
 <br><br>
 
 You climb to your feet. The video tape looks undamaged.
