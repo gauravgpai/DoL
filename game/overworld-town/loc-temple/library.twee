@@ -522,9 +522,9 @@ You lick the tip of your quill.
 <<elseif $temple_calligraphy gte 4>>
 	<<generate1>><<generate2>><<person1>>
 	<<if currentSkillValue("handskill") gte random(_temple_calligraphy_difficulty_min, $temple_calligraphy_difficulty)>>
-		You copy the text, using more legible words to decypher the more mysterious ones.
+		You copy the text, using more legible words to decipher the more mysterious ones.
 		<br><br>
-		A passing monk smiles at your work, as if amused by a private joke. <<person2>>"<<His>> handwriting's even worse nowadays," <<he>> says. "If you can believe it. <span class="green">Good work."</span><<gcalligraphy>>
+		A passing <<monk>> smiles at your work, as if amused by a private joke. <<person2>>"<<His>> handwriting's even worse nowadays," <<he>> says. "If you can believe it. <span class="green">Good work."</span><<gcalligraphy>>
 		<br><br>
 		<<person1>><<He>> opens <<his>> mouth to speak further, but another <<monk>> shushes <<him>>.
 		<br><br>
@@ -602,7 +602,7 @@ You lick the tip of your quill.
 
 <<if $speech_attitude is "meek">>
 	"It is awful taxing," you say.	
-<<elseif $speech_attitude is "brat	ty">>
+<<elseif $speech_attitude is "bratty">>
 	"I bet others struggle," you say.
 <<else>>
 	"They do seem to be in a hurry," you say.
@@ -722,7 +722,7 @@ You pull the scroll in front of you, and hold the quill above it. The black ink 
 
 A <<monk>> looms from the gloom, plucks the quill from your hand, and furls the scroll. <<He>> faces you, clutching the scroll as if afraid it would take flight.
 <br><br>
-"How did you do that?" <<he>> asks, piercing you with <<his>> gaze. Then <<he>> shakes <<his>> head. "It doesn't matter. "You cannot make a copy. Something is always gained. Something lost. This is the last thing we can teach you. The rest you must learn from experience."
+"How did you do that?" <<he>> asks, piercing you with <<his>> gaze. Then <<he>> shakes <<his>> head. "It doesn't matter. You cannot make a copy. Something is always gained. Something lost. This is the last thing we can teach you. The rest you must learn from experience."
 <br><br>
 
 <<He>> climbs the ladder, puts the scroll in its place, and chains it tight.
@@ -753,7 +753,7 @@ You tip the inkwell, ready to ruin the page. The text shifts as if in response, 
 Before you can read much, a <<monk>> looms from the glooms, plucks the inkwell from your hand, and furls the scroll.
 <br><br>
 
-"What's gotten into you?" <<he>> asks. "This scroll is priceless. Irreplacable. That was supposed to be the lesson here, that nothing can ever be truly copied, and you almost went and destroyed it."
+"What's gotten into you?" <<he>> asks. "This scroll is priceless. Irreplicable. That was supposed to be the lesson here, that nothing can ever be truly copied, and you almost went and destroyed it."
 <br><br>
 
 <<His>> voice is so loud other <<monks_and_nuns>> look over. <<He>> catches <<himself>> with a blush.
@@ -772,7 +772,7 @@ Before you can read much, a <<monk>> looms from the glooms, plucks the inkwell f
 <<if $speech_attitude is "meek">>
 	"I'm so sorry," you say with a bow of your head. "I don't know what came over me."
 <<elseif $speech_attitude is "bratty">>
-	"Sorry," you say. "I didn't mean to threaten a priceless artifact."
+	"Sorry," you say. "I didn't mean to threaten a priceless artefact."
 <<else>>
 	"I'm sorry," you say. "I almost did a lot of damage."
 <</if>>
@@ -791,7 +791,7 @@ The <<monk>> calms a little. "No harm done," <<he>> says. "Fortunately. There's 
 <<link [[Next|Temple Scriptorium]]>><<set $temple_calligraphy to 11>><<unset $temple_calligraphy_difficulty>><</link>>
 <br>
 
-:: Temple Calligrpahy Defile Ask
+:: Temple Calligraphy Defile Ask
 <<effects>>
 
 <<if $speech_attitude is "meek">>
@@ -840,7 +840,7 @@ You remain silent. The <<monk>> shakes <<his>> head. "Regardless," <<he>> contin
 <<else>>
 	"I don't think you're being fair," you write. "That's an imbalance I can fix."
 <</if>>
-You pull the scroll in front of you, hold the page between both thumbs and forefinger, and move as if to tear. You don't put quite enough pressure on however, holding it in a torturous balance.
+You pull the scroll in front of you, hold the page between both thumbs and forefingers, and move as if to tear. You don't put quite enough pressure on however, holding it in a torturous balance.
 <br><br>
 
 You hold the nearer part of the page at an angle, obscuring it somewhat. The text seems to change, and from what you make out, it now carries a pleading tone.
@@ -849,7 +849,7 @@ You hold the nearer part of the page at an angle, obscuring it somewhat. The tex
 A <<monk>> looms from the gloom, and furls the scroll.
 <br><br>
 
-"What's gotten into you?" <<he>> asks. "This scroll is priceless. Irreplacable. That was supposed to be the lesson here, that nothing can ever be truly copied, and you almost went and destroyed it."
+"What's gotten into you?" <<he>> asks. "This scroll is priceless. Irreplicable. That was supposed to be the lesson here, that nothing can ever be truly copied, and you almost went and destroyed it."
 <br><br>
 
 <<His>> voice is so loud other <<monks_and_nuns>> look over. <<He>> catches <<himself>> with a blush.
@@ -865,7 +865,7 @@ A <<monk>> looms from the gloom, and furls the scroll.
 :: Temple Calligraphy Threaten
 <<effects>>
 
-"Stop changing," you write. "Or I'll throw you in a sacred pyre." For a moment, it seems to work. Then the text changes even more than before. Each time you blink, the whole page changes, conjuring distubing imagery in an angry tone. You pull the scroll itself in front of you, dip the quill in the inkwell, and hover it over the changing text.
+"Stop changing," you write. "Or I'll throw you in a sacred pyre." For a moment, it seems to work. Then the text changes even more than before. Each time you blink, the whole page changes, conjuring disturbing imagery in an angry tone. You pull the scroll itself in front of you, dip the quill in the inkwell, and hover it over the changing text.
 <br><br>
 A <<monk>> looms from the gloom, plucks the quill from your hand, and furls the scroll. "Enough," <<he>> says. "You cannot make a copy. Something is always gained. Something lost. This is the last thing we can teach you. The rest you must learn from experience."
 <br><br>
