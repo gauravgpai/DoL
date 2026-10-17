@@ -5226,7 +5226,7 @@ After a while, the <<beasttype>> backs off and <<if $monster is 1>>looks<<else>>
 	<<link [[Next|Moor]]>><<set $eventskip to 1>><</link>>
 	<br>
 <<else>>
-	You pull the pumpkin from its vine, <span class="red">tearing it in half in the process.</span>
+	You try to pull the pumpkin from its vine, but it's stuck. You pull a bit too hard, hurling it a distance. <span class="red">It explodes on impact.</span>
 	<<gtending>><<tending 2>>
 	<br><br>
 

@@ -242,16 +242,16 @@ Tulips grow in great patches near the riverbank.
 			
 		<<elseif $halloween is 1 and Time.monthDay is 31 or $pumpkin_competition>>
 			Bits of pumpkin litter the grass, and jack-o'-lanterns hang from branches.
-			<<if $pumpkin_competition is "won">>
+			<<if $halloween_pumpkin_competition is "won">>
 				A spooky shrine has been set up to display the winning pumpkin. <span class="green">Yours.</span>
-			<<elseif $pumpkin_competition is "kylar">>
+			<<elseif $halloween_pumpkin_competition is "kylar">>
 				A spooky shrine has been set up to display the winning pumpkin. <span class="green">Kylar's.</span>
 			<</if>>
 			<br>
 		<<elseif $halloween is 1 and Time.monthDay is 30>>
 			Tables are being set up ready for the pumpkin carving competition.
 			<br>
-		<<elseif $halloween and Time.daystate isnot "night">>
+		<<elseif $halloween and Time.dayState isnot "night">>
 			Tables have been set up, where people practise pumpkin carving. A sign advertises a competition on the 30th of the month.
 			<br>
 			<<if $exposed lte 0>>
@@ -431,7 +431,7 @@ You approach the pumpkin carving tables. Most seats are occupied, with <<people>
 	<</if>>
 
 	<<if $foodstuff.pumpkin.amount gte 1 and $pumpkin_carving lt 10>>
-		<<link [[Practise pumpkin carving (1:00 Consumes a pumpkin)|Park Pumpkin Practise]]>><<pass 60>><<tending_give "pumpkin" -1>><<set $pumpkin_carving += 1>><</link>> | Pumpkins: <<print $foodstuff.pumpkin.amount>>
+		<<link [[Practice pumpkin carving (1:00 Consumes a pumpkin)|Park Pumpkin Practise]]>><<pass 60>><<tending_give "pumpkin" -1>><<set $pumpkin_carving += 1>><</link>> | Pumpkins: <<print $foodstuff.pumpkin.amount>>
 	<<elseif $pumpkin_carving gte 10>>
 		<span class="lblue">You've had all the pumpkin carving practise you need.</span>
 	<<else>>
@@ -457,7 +457,7 @@ You approach the pumpkin carving tables. Most seats are occupied, with <<people>
 You approach a seasoned-looking carver, and ask if <<he>> has any tips. <<He>> thrusts <<his>> knife into the table, drawing an irritated look from an organiser, and strokes <<his>> chin.
 <br><br>
 
-"You won't get my secrets," <<he>> says with a wry smile. "But I can give general advice. There are probably books in the library that will teach you a thing or two. At the end of the day though, there's no substituting practise. So get practising."
+"You won't get my secrets," <<he>> says with a wry smile. "But I can give general advice. There are probably books in the library that will teach you a thing or two. At the end of the day though, there's no substituting practice. So get practising."
 <br><br>
 
 <<He>> picks up <<his>> knife, and carves away.
@@ -469,17 +469,17 @@ You approach a seasoned-looking carver, and ask if <<he>> has any tips. <<He>> t
 :: Park Pumpkin Seller
 <<effects>>
 
-<<set _pumpkin_price to 100 + ($halloween_pumpkins_bought * 100)>>
+<<set _pumpkin_price to 10000 + ($halloween_pumpkins_bought * 10000)>>
 
 <<generate1>><<person1>>
-You find a <<person>>, throwing and catching a pumpkin like a ball, while trying to sell it to passers by.
+You find a <<person>>, throwing and catching a pumpkin like a ball, while trying to sell it to passersby.
 <br><br>
 
-"Need a pumpkin, <<girl>>?" <<he>> asks. "The going rate is <span class="gold">£<<print _pumpkin_price>>.</span>" <<He>> leers at your body. "Though if that's too rich for you, you could put your mouth to work instead." <<He>> makes a crude gesture wtih <<his>> mouth.
+"Need a pumpkin, <<girl>>?" <<he>> asks. "The going rate is <span class="gold">£<<print (_pumpkin_price / 100)>>.</span>" <<He>> leers at your body. "Though if that's too rich for you, you could put your mouth to work instead." <<He>> makes a crude gesture with <<his>> mouth.
 <br><br>
 
-<<if $money gte (_pumpkin_price * 10)>>
-	<<link [[Buy a pumpkin (£<<print _pumpkin_price>>)|Park Pumpkin Buy]]>><<money _pumpkin_price>><<tending_give "pumpkin" 1>><</link>>
+<<if $money gte _pumpkin_price>>
+	<<link [[Buy a pumpkin (£<<print (_pumpkin_price / 100)>>)|Park Pumpkin Buy]]>><<money `-_pumpkin_price`>><<tending_give "pumpkin" 1>><<set $halloween_pumpkins_bought += 1>><</link>>
 	<br>
 <<else>>
 	<span class="blue">You can't afford a pumpkin.</span>
@@ -570,7 +570,7 @@ You find a <<person>>, throwing and catching a pumpkin like a ball, while trying
 		<<towelup>>
 		<br><br>
 	<<else>>
-		"You look like you could use a cup of tea," the <<person2>><<person>> says, while the <<person3>><<person>> shakes <<his>> head in disbelief in the direction of the <<person1>><<person>>
+		"You look like you could use a cup of tea," the <<person2>><<person>> says, while the <<person3>><<person>> shakes <<his>> head in disbelief in the direction of the <<person1>><<person>>.
 		<br><br>
 	<</if>>
 	<<link [[Drink tea (0:10)|Park Pumpkin Oral Tea]]>><<pass 10>><<trauma -6>><<stress -6>><</link>><<ltrauma>><<lstress>>
@@ -655,7 +655,7 @@ You find a <<person>>, throwing and catching a pumpkin like a ball, while trying
 		<<towelup>>
 		<br><br>
 	<<else>>
-		"You look like you could use a cup of tea," the <<person2>><<person>> says, while the <<person3>><<person>> shakes <<his>> head in disbelief in the direction of the <<person1>><<person>>
+		"You look like you could use a cup of tea," the <<person2>><<person>> says, while the <<person3>><<person>> shakes <<his>> head in disbelief in the direction of the <<person1>><<person>>.
 		<br><br>
 	<</if>>
 	<<link [[Drink tea (0:10)|Park Pumpkin Oral Tea]]>><<pass 10>><<trauma -6>><<stress -6>><</link>><<ltrauma>><<lstress>>
@@ -708,7 +708,7 @@ Without skipping a beat, you snatch the pumpkin from the <<persons>> hands, and 
 <<else>>
 	<<He>> chases you through bushes, between trees, then <span class="red">tackles you beside a river.</span>
 	<br><br>
-	"You want the pumpkin that badly?" <<he>> asks. "Fine. But you're paying for it."
+	"You want the pumpkin that badly?" <<he>> asks. "Fine. You'll pay another way."
 	<br><br>
 	<<link [[Next|Park Pumpkin Rape]]>><<set $molestationstart to 1>><</link>>
 	<br>
@@ -735,9 +735,9 @@ Without skipping a beat, you snatch the pumpkin from the <<persons>> hands, and 
 <<else>>
 	You walk away, but keep watch on the <<person>> from nearby. <<He>> tries to sell the pumpkin to others, until <<he>> puts it aside for a cigarette.
 	<br><br>
-	You sneak behind <<him>>, and lift the pumpkin, <span class="red">but then <<he>> whirls and grabs your wrist.</span>
+	You sneak behind <<him>> and lift the pumpkin, <span class="red">but then <<he>> whirls and grabs your wrist.</span>
 	<br><br>
-	"Want the pumpkin that badly?" <<he>> asks. "Fine. But you're paying for it."
+	"Want the pumpkin that badly?" <<he>> asks. "Fine. You'll pay another way."
 	<br><br>
 	<<skulduggeryuse>>
 	<<link [[Next|Park Pumpkin Rape]]>><<set $molestationstart to 1>><</link>>
@@ -758,11 +758,11 @@ You take a seat at the pumpkin carving table, and get to work, carving away whil
 	<br><br>
 <</if>>
 
-Practise Progress: <<print ($pumpkin_carving * 10)>>%
+Practice Progress: <<print ($pumpkin_carving * 10)>>%
 <br><br>
 
 <<if $pumpkin_carving gte 10>>
-	<span class="gold">You feel like you've learned a lot about pumpkin carving, all you can from practise here.</span>
+	<span class="gold">You feel like you've learned a lot about pumpkin carving, all you can from practice here.</span>
 <<else>>
 	<span class="green">Your skill at pumpkin carving has improved.</span>
 <</if>>
@@ -779,6 +779,16 @@ Practise Progress: <<print ($pumpkin_carving * 10)>>%
 :: Park Pumpkin Competition
 <<effects>><<set _kylarLocation to getKylarLocation()>>
 
+
+<<if !$halloween_pumpkin>>
+	You approach the pumpkin carving tables, all set up for the annual competition.
+	<br><br>
+	<<set $halloween_pumpkin to 1>>
+	<<set $halloween_pumpkins_bought to 0>>
+	<<set $pumpkin_carving to 0>>
+	<<set $pumpkin_carving_knowledge to []>>
+<</if>>
+
 <<generate1>><<person1>><<generate2>>
 <<if C.npc.Kylar.state isnot "prison" and $halloween_pumpkin_kylar>>
 	<<npc Kylar 3>>
@@ -786,7 +796,7 @@ Practise Progress: <<print ($pumpkin_carving * 10)>>%
 <<else>>
 	You take your seat alongside the other competitors. 
 <</if>>
-A crowd gathers to watch, and a <<person>> dressed in a smart outfit steps onto a raises platform. <<He>> taps the microphone.
+A crowd gathers to watch, and a <<person>> dressed in a smart outfit steps onto a raised platform. <<He>> taps the microphone.
 <br><br>
 
 "Welcome to the annual Halloween pumpkin carving competition," <<he>> says. You hear <<his>> voice repeated through speakers in other parts of the park. <<He>> glances at <<his>> watch. "Without further ado, on the count of three. One. Two."
@@ -856,18 +866,18 @@ Overall: <<print Math.trunc($pumpkin_win_chance)>>%
 
 :: Park Pumpkin Competition 3
 <<effects>>
-
+<<person3>>
 "Time's up!" You lean back to examine your handiwork, and that of others.
 
 <<if C.npc.Kylar.state isnot "prison" and $halloween_pumpkin_kylar is "kylar">>
 	<<if $pumpkin_win_chance gte 100>>
 		<<if $pumpkin_carving_knowledge.includes("scriptorium")>>
-			At a glance, yours is technically one of the better jack-o'-lanterns, and your research at the scriptorium has given it a particular, unique spookiness.
+			At a glance, yours is one of the better jack-o'-lanterns, and your research at the scriptorium has given it a particular, unique spookiness.
 		<<else>>
-			At a glance, yours is technically one of the better jack-o'-lanterns, 
+			At a glance, yours is one of the better jack-o'-lanterns, 
 		<</if>>
 	<<else>>
-		There are technically better jack-o'-lanterns on display. Maybe the judge will think yours has character.
+		There are better jack-o'-lanterns on display. Maybe the judge will think yours has character.
 	<</if>>
 	<br><br>
 
@@ -882,14 +892,14 @@ Overall: <<print Math.trunc($pumpkin_win_chance)>>%
 <<elseif $pumpkin_win_chance gte random(1, 100)>>
 	<<if $pumpkin_win_chance gte 100>>
 		<<if $pumpkin_carving_knowledge.includes("scriptorium")>>
-			At a glance, yours is technically one of the better jack-o'-lanterns, and your research at the scriptorium has given it a particular, unique spookiness.
+			At a glance, yours is one of the better jack-o'-lanterns, and your research at the scriptorium has given it a particular, unique spookiness.
 		<<else>>
-			At a glance, yours is technically one of the better jack-o'-lanterns, 
+			At a glance, yours is one of the better jack-o'-lanterns, 
 		<</if>>
 	<<elseif $pumpkin_win_chance gte 50>>
 		Yours looks pretty good. It measures up to the best of the other jack-o'-lanterns you observe.
 	<<else>>
-		You're surprised to find yours looks pretty good. A bit rough around the edges, but it has character. There are technically better jack-o'-lanterns, but they resemble each other too closely.
+		You're surprised to find yours looks pretty good. A bit rough around the edges, but it has character. There are better jack-o'-lanterns, but they resemble each other too closely.
 	<</if>>
 
 	<<if C.npc.Kylar.state isnot "prison" and $halloween_pumpkin_kylar is "win">>
@@ -908,17 +918,17 @@ Overall: <<print Math.trunc($pumpkin_win_chance)>>%
 	<<link [[Next|Park Pumpkin Competition Won]]>><</link>>
 	<br>
 <<elseif C.npc.Kylar.state isnot "prison" and $halloween_pumpkin_kylar is "win">>
-	There are technically better jack-o'-lanterns on display. Maybe people will think yours has character. Kylar's is similar, except the features are a little more crooked.
+	There are better jack-o'-lanterns on display. Maybe people will think yours has character. Kylar's is similar, except the features are a little more crooked.
 	<br><br>
-	The judge walks the length of the tables, pausing a moment in front of each jack-o'-lantern. <<He>> observes yours, then moves on without special fanfare.
+	The judge walks the length of the tables, pausing a moment in front of each jack-o'-lantern. <<He>> observes yours, then moves on without fanfare.
 	<br><br>
 
 	<<link [[Next|Park Pumpkin Competition Loss Kylar]]>><</link>>
 	<br>
 <<else>>
-	There are technically better jack-o'-lanterns on display. Maybe people will think yours has character.
+	There are better jack-o'-lanterns on display. Maybe people will think yours has character.
 	<br><br>
-	The judge walks the length of the tables, pausing a moment in front of each jack-o'-lantern. <<He>> observes yours, then continues on without special fanfare.
+	The judge walks the length of the tables, pausing a moment in front of each jack-o'-lantern. <<He>> observes yours, then continues on without fanfare.
 	<br><br>
 
 	<<link [[Next|Park Pumpkin Competition Loss]]>><</link>>
@@ -953,7 +963,7 @@ What do you tell them?
 
 <<link [[Be coy, and keep your secrets close|Park Pumpkin Competition Coy]]>><</link>>
 <br>
-<<link [[Say it's all about practise|Park Pumpkin Competition Practise]]>><</link>>
+<<link [[Say it's all about practice|Park Pumpkin Competition Practise]]>><</link>>
 <br>
 <<if $pumpkin_carving_knowledge.includes("library")>>
 	<<link [[Say reading about the subject is important|Park Pumpkin Competition Library]]>><</link>>
@@ -978,7 +988,7 @@ You give nothing away. People badger you for a while, but respect your silence i
 :: Park Pumpkin Competition Practise
 <<effects>>
 
-You tell people it's about practise. They nod along with your words, but some seem disappointed there's no trick to it. The crowd clears as people arrive to clean up the mess, and make sure all the knives are accounted for.
+You tell people it's about practice. They nod along with your words, but some seem disappointed there's no trick to it. The crowd clears as people arrive to clean up the mess, and make sure all the knives are accounted for.
 <br><br>
 
 <<link [[Next|Park]]>><<endevent>><<set $eventskip to 1>><<unset $pumpkin_win_chance>><</link>>
@@ -1039,7 +1049,7 @@ The crowd hushes as everyone beholds Kylar's work. It's unmistakable. The pumpki
 <<if _kylarStatus.includes("Love")>>
 	Kylar climbs over the table, and snatches the microphone. "Yes!" <<person3>><<he>> says, climbing back over the table to grasp your arm. "That's my <<girlfriend>>."
 	<br><br>
-	Most of the audience seem to find it sweet. But those your age whisper and smirk.<<llcool>><<ggstress>><<status -3>><<stress 12>>
+	Most of the audience seem to find it sweet, but those your age whisper and smirk.<<llcool>><<ggstress>><<status -3>><<stress 12>>
 	<br><br>
 	The <<person1>><<person>> snatches the microphone back, and recovers <<person1>><<his>> composure, gesturing for photographers to approach. <<He>> makes a show of handing Kylar the prize money, who makes a show of handing it to you.
 	<br><br>
@@ -1180,7 +1190,22 @@ You beckon Kylar over.
 <br>
 <<link [[Say you'd be impressed if Kylar won|Park Pumpkin Kylar Kylar Win]]>><<set $halloween_pumpkin_kylar to "kylar">><</link>>
 <br>
+<<link [[Just say hi|Park Pumpkin Kylar Hi]]>><</link>>
+<br>
 
+:: Park Pumpkin Kylar Hi
+<<effects>><<run statusCheck("Kylar")>>
+
+You say hi to Kylar.
+<<if _kylarStatus.includes("Love")>>
+	<<He>> grabs your wrist, pulls your hand to <<his>> mouth, and smothers it in kisses. "Hi," <<he>> says, then runs away.
+<<else>>
+	<<He>> blushes at <<his>> feet, then runs away.
+<</if>>
+<br><br>
+
+<<link [[Next|Park Pumpkin]]>><<endevent>><</link>>
+<br>
 
 :: Park Pumpkin Kylar Win
 <<effects>><<run statusCheck("Kylar")>>

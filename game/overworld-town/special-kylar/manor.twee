@@ -419,7 +419,7 @@ Kylar opens <<his>> mouth to speak, but then tenses, tears streaming. "I'm sorry
 You remain silent. Kylar sits back, looking even smaller than usual.
 <br><br>
 
-<<link [[Comfort Kylar(0:20)|Manor Tape Comfort]]>><<npcincr Kylar love 1>><<pass 20>><</link>><<glove>>
+<<link [[Comfort Kylar (0:20)|Manor Tape Comfort]]>><<npcincr Kylar love 1>><<pass 20>><</link>><<glove>>
 <br>
 <<link [[Leave|Manor Tape 6]]>><</link>>
 <br>
