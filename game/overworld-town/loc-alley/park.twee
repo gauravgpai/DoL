@@ -413,7 +413,7 @@ You approach the pumpkin carving tables. Most seats are occupied, with <<people>
 		<<link [[Give oral in return for a pumpkin|Park Pumpkin Oral]]>><<set $sexstart to 1>><</link>><<promiscuous4>>
 		<br>
 	<<else>>
-		<span class="blue">You're not promiscuous enough to take up such an alternative!</span>
+		<<insufficientStat "promiscuity" "to take up such an alternative!">>
 		<br>
 	<</if>>
 	<<link [[Grab the pumpkin and run|Park Pumpkin Athletics]]>><</link>><<athleticsdifficulty 1 1000>>
