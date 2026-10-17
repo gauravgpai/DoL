@@ -491,10 +491,10 @@ You find a <<person>>, throwing and catching a pumpkin like a ball, while trying
 	<<insufficientStat "promiscuity" "to take up such an alternative!">>
 	<br>
 <</if>>
-<<link [[Grab the pumpkin and run|Park Pumpkin Athletics]]>><</link>><<athleticsdifficulty 1 1000>>
+<<link [[Grab the pumpkin and run|Park Pumpkin Athletics]]>><<crimeUp 3 "petty">><</link>><<athleticsdifficulty 1 1000>><<gcrime "petty">>
 <br>
 <<set $skulduggerydifficulty to 600>>
-<<link [[Steal a pumpkin (0:05)|Park Pumpkin Skulduggery]]>><<pass 5>><</link>><<skulduggerydifficulty>>
+<<link [[Steal a pumpkin (0:05)|Park Pumpkin Skulduggery]]>><<pass 5>><<crimeUp 3 "petty">><</link>><<skulduggerydifficulty>><<gcrime "petty">>
 <br>
 <<link [[Walk away|Park]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
@@ -893,7 +893,7 @@ Overall: <<print Math.trunc($pumpkin_win_chance)>>%
 		<<if $pumpkin_carving_knowledge.includes("scriptorium")>>
 			At a glance, yours is one of the better jack-o'-lanterns, and your research at the scriptorium has given it a particular, unique spookiness.
 		<<else>>
-			At a glance, yours is one of the better jack-o'-lanterns, 
+			At a glance, yours is one of the better jack-o'-lanterns.
 		<</if>>
 	<<elseif $pumpkin_win_chance gte 50>>
 		Yours looks pretty good. It measures up to the best of the other jack-o'-lanterns you observe.
@@ -1138,6 +1138,7 @@ The judge reaches the end of the tables, then turns and walks the way <<he>> cam
 <br><br>
 
 Kylar watches as the <<person2>><<person>> steps up to receive the prize money. Looks like the <<person1>><<person>> wants to make a show of handing it out.
+<<person3>>
 <<if _kylarStatus.includes("Love")>>
 	"It's rigged," <<he>> says. "They rigged it against you." Then in one swift movement,
 <<else>>
