@@ -104,7 +104,7 @@ The ordering system takes some figuring out. You manage it well enough, and narr
 :: Temple Scriptorium Altar 2
 <<temple_effects>><<effects>>
 
-You search the final drawyers, until you find a video tape tucked between pages. You examine it 'Dark One 3' is scrawled on the label. The bound pages beside it fall askew. In the candlelight, you can only make out the numbers at the top, but it's enough. <span class="gold">The missing pages.</span>
+You search the final drawers, until you find a video tape tucked between pages. You examine it. 'Dark One 3' is scrawled on the label. The bound pages beside it fall askew. In the candlelight, you can only make out the numbers at the top, but it's enough. <span class="gold">The missing pages.</span>
 <br><br>
 
 They feel about to come apart as you place them on the table. They detail an old and savage ritual. A diagram shows a figure cradling another, knife in hand. The last page is simply a depiction of a burning figure, beneath a prominent sun.
@@ -113,10 +113,10 @@ They feel about to come apart as you place them on the table. They detail an old
 <<link [[Next|Temple Scriptorium Altar Letters]]>><</link>>
 <br>
 
-:: Temple Scriptorum Altar Letters
+:: Temple Scriptorium Altar Letters
 <<effects>>
 
-You turn the last of the missing pages, and find smaller, more robust sheets. The script is modern, though the pages have yellowed a little. They're formatted like letters. They look like correspondance between the clergy and the faithful. 
+You turn the last of the missing pages, and find smaller, more robust sheets. The script is modern, though the pages have yellowed a little. They're formatted like letters. They look like correspondence between the clergy and the faithful. 
 <br><br>
 
 The topmost letter is addressed from a priest. It gives the recipient advice and supportive words, but a name sticks out in the penultimate paragraph. <span class="red">Kylar.</span>
@@ -526,7 +526,7 @@ You lick the tip of your quill.
 		<br><br>
 		A passing monk smiles at your work, as if amused by a private joke. <<person2>>"<<His>> handwriting's even worse nowadays," <<he>> says. "If you can believe it. <span class="green">Good work."</span><<gcalligraphy>>
 		<br><br>
-		<<person1>><<He>> opens <<his>> mouth to speak further, but another <<monk>> sushes <<him>>.
+		<<person1>><<He>> opens <<his>> mouth to speak further, but another <<monk>> shushes <<him>>.
 		<br><br>
 		<<link [[Next|Temple Scriptorium]]>><<set $temple_calligraphy to 5>><<unset $temple_calligraphy_difficulty>><<endevent>><</link>>
 		<br>
@@ -627,7 +627,7 @@ The <<monk>> nods. "Don't think they'll listen to the likes of us though. Set in
 <</if>>
 <br><br>
 
-The <<monk>> smiles. "If you say so," <<he>> says. "Though you next task they set might change your tune." <<He>> leaves without elaborating.<<gcalligraphy>>
+The <<monk>> smiles. "If you say so," <<he>> says. "Though the next task they set might change your tune." <<He>> leaves without elaborating.<<gcalligraphy>>
 <br><br>
 
 <<link [[Next|Temple Scriptorium]]>><<endevent>><</link>>
