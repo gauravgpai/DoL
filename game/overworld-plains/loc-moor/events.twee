@@ -5215,7 +5215,7 @@ After a while, the <<beasttype>> backs off and <<if $monster is 1>>looks<<else>>
 <<if $tendingSuccess>>
 	<<wearProp "pumpkin">>
 	You pull the pumpkin from its vine. <span class="green">It's big and ripe.</span>
-	<<tending_pick pumpkin 1>>
+	<<tending_pick pumpkin 1 1>>
 	<br><br>
 
 	<<if !$plants_known.includes("pumpkin")>>

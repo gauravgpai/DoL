@@ -47,7 +47,7 @@ Kylar's parents' room looks like the master bedroom. The four-poster bed is unto
 	<br><br>
 <</if>>
 
-<<if $kylar_altar_research.includes("tape") and !$kylar_altar_research.includes("manor_pages")>>
+<<if $kylar_altar_research and $kylar_altar_research.includes("tape") and !$kylar_altar_research.includes("pages")>>
 	<<link [[Show Kylar's parents the pages you found at the temple (0:10)|Manor Pages Room]]>><<set $kylar_altar_research.pushUnique("pages")>><<pass 10>><</link>>
 	<br>
 <</if>>
@@ -155,8 +155,8 @@ You are in Kylar's bedroom. A perpetually active computer sits on the far side, 
 
 <<set _kylar to statusCheck("Kylar")>>
 <<if $kylar_altar_research and $kylar_altar_research.includes("temple") and !$kylar_altar_research.includes("tape")>>
-	<<if _kylar.state isnot "prison" and (Time.hour gte 18 and Time.hour lte 6)>>
-		There's a video player attached to Kylar's computer via arcane means. It could play the tape you found at the temple
+	<<if _kylar.state isnot "prison" and (Time.hour gte 18 or Time.hour lte 6)>>
+		There's a video player attached to Kylar's computer via arcane means. It could play the tape you found at the temple.
 		<br><br>
 	<<else>>
 		There's a video player attached to Kylar's computer via arcane means. It could play the tape you found at the temple, <span class="blue">but you'll need Kylar around to operate it.</span>
@@ -183,7 +183,7 @@ You are in Kylar's bedroom. A perpetually active computer sits on the far side, 
 	<</if>>
 <</if>>
 
-<<if _kylar.state isnot "prison" and $kylar_altar_research and !$kylar_altar_research.includes("tape")>>
+<<if _kylar.state isnot "prison" and $kylar_altar_research and $kylar_altar_research.includes("temple") and !$kylar_altar_research.includes("tape")>>
 	<<if Time.hour lte 6>>
 		<<ind>><<link [[Ask Kylar to play the video tape you found in the temple (0:30)|Manor Tape Wake]]>><<pass 30>><<set $kylar_altar_research.pushUnique("tape")>><</link>>
 		<br>
@@ -246,7 +246,7 @@ Kylar nods, and almost drops the tape as <<he>> takes it. <<He>> needs your help
 The video comes to life. It shows a stage from the point of view of someone in a packed audience. You recognise it as the town hall.
 <br><br>
 
-Kylar looks uneasy, then horrified as several small figures walk onto the stage. One looks particularly nervous. <span class="blue">It's a younger Kylar.</span> <<His>> costume is nice, but <<his>> hair is dishevled, and <<his>> eyes red.
+Kylar looks uneasy, then horrified as several small figures walk onto the stage. One looks particularly nervous. <span class="blue">It's a younger Kylar.</span> <<His>> costume is nice, but <<his>> hair is dishevelled, and <<his>> eyes red.
 <br><br>
 
 The Kylar sat beside you sways. <<He>> sways as if about to faint, then half falls, half stumbles from <<his>> chair. <<He>> scrambles beneath <<his>> bedsheet.<br><br>

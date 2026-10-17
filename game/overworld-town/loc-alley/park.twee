@@ -495,7 +495,7 @@ You find a <<person>>, throwing and catching a pumpkin like a ball, while trying
 <<link [[Grab the pumpkin and run|Park Pumpkin Athletics]]>><</link>><<athleticsdifficulty 1 1000>>
 <br>
 <<set $skulduggerydifficulty to 600>>
-<<link [[Steal a pumpkin (0:05)|Park Pumpkin Skulduggery]]>><</link>><<skulduggerydifficulty>>
+<<link [[Steal a pumpkin (0:05)|Park Pumpkin Skulduggery]]>><<pass 5>><</link>><<skulduggerydifficulty>>
 <br>
 <<link [[Walk away|Park]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
@@ -874,7 +874,7 @@ Overall: <<print Math.trunc($pumpkin_win_chance)>>%
 		<<if $pumpkin_carving_knowledge.includes("scriptorium")>>
 			At a glance, yours is one of the better jack-o'-lanterns, and your research at the scriptorium has given it a particular, unique spookiness.
 		<<else>>
-			At a glance, yours is one of the better jack-o'-lanterns, 
+			At a glance, yours is one of the better jack-o'-lanterns. 
 		<</if>>
 	<<else>>
 		There are better jack-o'-lanterns on display. Maybe the judge will think yours has character.

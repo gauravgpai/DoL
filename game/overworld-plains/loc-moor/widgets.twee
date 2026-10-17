@@ -9,7 +9,7 @@
 			<<set $antiquemoney += 50>><<museumAntiqueStatus "antiquebullet" "found">>
 			<<link [[Next|Moor]]>><<handheldon>><<set $eventskip to 1>><</link>>
 			<br>
-		<<elseif $rng is 3>>
+		<<elseif $rng is 3 and Time.season isnot "winter">>
 			You come to a patch of big leaves on trailing vines.
 			<br><br>
 			<<if currentSkillValue('tending') gte 400>>

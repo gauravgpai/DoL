@@ -1,41 +1,41 @@
 0.5.13.0
 Added pumpkins, pumpkin drink, pumpkin pie, and pumpkin spice foodstuffs. Sprites and icons courtesy of Elen.
-Added a scriptorium to the temple. Scritorium, calligraphy, and candle icons courtesy of Elen.
+Added a scriptorium to the temple. Scriptorium, calligraphy, and candle icons courtesy of Elen.
 The PC can now investigate Kylar's parents a bit further after being confronted by the bishop.
 Added a Halloween pumpkin carving competition. Sprites and icons courtesy of Elen.
 When rent is due, Bailey is now better at catching the PC sneaking from the orphanage. Thanks to Reiyu.
 Improved and standardised scrollbars. Thanks to kissmybutt.
 Added the truffle basket sprite to the woodlands. Thanks to Yiphen.
 Improved the farming UI. Farm plots and seeds you can't plant now collapse into dropdowns. Thanks to Reiyu.
-Improved the forest and moor travel UI, with radio buttons, and new icons for traveling deeper, less deep, and searching. Moor icons include seasonal and depth variants, 20 in total. Coded by Reiyu. Moor art courtesy of Elen. Forest art courtesy of Erin and noufi.
+Improved the forest and moor travel UI, with radio buttons, and new icons for travelling deeper, less deep, and searching. Moor icons include seasonal and depth variants, 20 in total. Coded by Reiyu. Moor art courtesy of Elen. Forest art courtesy of Erin and noufi.
 Added a minor expansion to the Bailey shove random event. Coded by kanaovo, and written by mouuuu, MissedHeart, and kanaovo.
 Added commas to milk amount, compound vial sales, pepper spray charge price, during Avery's dates, for museum and stolen goods prices in the journal/inventory, and at many other spots. Thanks to lowercasedonkey.
 Added the ability to learn some recipes at the soup kitchen. Thanks to Anonymous and scarlet_letter.
 Updated Avery's helicopter event. Written by Bette and coded by Se.
-Added Avery's winter pub date, Avery's spa encounter, Avery's dog-walk mansion mini-date, and Aveyr's skycraper events to the scene viewer. Thanks to Se.
+Added Avery's winter pub date, Avery's spa encounter, Avery's dog-walk mansion mini-date, and Avery's skyscraper events to the scene viewer. Thanks to Se.
 Added lots of new strap-on encounter lines for regular encounters, gloryhole, and wall positions, so that the amount of lines is close to the other genital configurations. Thanks to Pumping Lemma.
 Added a few lines for NPCs with penis or vagina when PC asked for no vaginal/no penile/no anal, so that they stop complaining they could have "put it inside if they had just some more time". Thanks to Pumping Lemma.
 Added small flavour text about tourists commenting on the blood moon in the park and on the beach. Written by MabelLover.
 Added a cat transformation variant for the mansion housework cream scene, and the scene now contributes to cat transformation points. Written by Shirley and coded by Acorn.
 Lowered the interest requirements for unlocking Gwylan scenes a little. Thanks to JackmobTv.
 Added the option to stay put during the Jordan shower scene. Written by cuddlebug and coded by Acorn.
-Adds a once a day Starfish Street event that triggers during the day when the weather is sunny. Written by MOZUMELODY and coded by Acorn.
-Links to the lake to the forest now indicate where at the lake the PC will arrive. Thanks to lowercasedonkey.
+Adds a once-a-day Starfish Street event that triggers during the day when the weather is sunny. Written by MOZUMELODY and coded by Acorn.
+Links to the lake from the forest now indicate where at the lake the PC will arrive. Thanks to lowercasedonkey.
 Made minor updates to Eden's pre-Stockholm schedule. Written by scarlet_letter and coded by Reiyu.
 Added a dinner scene to Eden's pre-Stockholm schedule. Written by scarlet_letter and coded by Reiyu.
 Reduced the time it takes to cuddle/read with Eden before bed to 2 hours. Thanks to Reiyu.
-The side sidebar will now display the PC eating and holding their meal during Eden's pre-Stockholm sequence. Thanks to Reiyu.
+The sidebar will now display the PC eating and holding their meal during Eden's pre-Stockholm sequence. Thanks to Reiyu.
 Added a Morgan feeding scene variant. Written by Morgan and coded by Acorn.
-Added 450 Whitney encounters lines written by faetouched, Crêpe, yuraiacaeli, MabelLover, and Reiyu. Coded by Reiru.
+Added 450 Whitney encounters lines written by faetouched, Crêpe, yuraiacaeli, MabelLover, and Reiyu. Coded by Reiyu.
 Thanks to Reiyu for restructuring encounter dialogue, and adding a new speech system. NPCs should now pace their words better, and repeat themselves less often.
 Added an event to the orphanage bedroom where the PC finds a note from Kylar. Written by mochamante and coded by Acorn.
 Adjusted the ultrasound scene. Written by Iván and coded by Reiyu.
 Added the school shoulder bag and circle bag. Sprites courtesy of Elen, and code by Jacko.
 Added the lace parasol. Sprites courtesy of Paragon, and code by Jacko.
-Changed how some shop text will be displayed for cltohes and patterns. Thanks to Jacko.
+Changed how some shop text will be displayed for clothes with patterns. Thanks to Jacko.
 Added an option to tease Winter about the "Bleeding Ward." Written by Fin and coded by Acorn.
 Added variant to Whitney Love Locket for Eden and Alex if Whitney has seen them before so they don't ask "Who is this?" every time. Thanks to Reiyu.
-Added the "Temple Calligrapher" and "Knowledge:Pumpkin Carving" traits.
+Added the "Temple Calligrapher" and "Knowledge: Pumpkin Carving" traits.
 Added the "Pumpkin Master", "Sancta Vexatio", and "Nothing Copied" feats.
 Thanks to Reiyu and lowercasedonkey for formatting improvements.
 Thanks to Yiphen, derp777, Reiyu, lowercasedonkey, snowinmars, JackmobTv, Songdog, and anonymous for code improvements.
