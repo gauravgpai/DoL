@@ -222,7 +222,7 @@ You writhe on the ground. "Looks like you have me right where you want me," you 
 
 The <<bishop>> sighs. "I had hoped my warning would dissuade you," <<he>> says. "I see now I was too gentle. I merely fanned your flames. No matter. It ends here."
 <br><br>
-<<His>> companions retrieved the fallen pages, and letters. Their movements are swift, and efficient. It only takes a moment.
+<<His>> companions retrieve the fallen pages, and letters. Their movements are swift, and efficient. It only takes a moment.
 <br><br>
 "Find a better place for them," the <<bishop>> directs. "As for you,
 <<if $temple_rank is "priest" or $temple_rank is "bishop">>
@@ -481,7 +481,7 @@ You lick the tip of your quill.
 		<<if $temple_rank is "priest">>
 			"Even for one as illustrious as yourself, some more practise wouldn't hurt."
 		<<elseif $temple_rank is "monk">>
-			"Not to be rude <<sister>>, I just think we ramp things up too fast."
+			"Not to be rude, <<sister>>, I just think we ramp things up too fast."
 		<<elseif $temple_rank is "initiate">>
 			"You've come far for an initiate, and some more time to practise wouldn't have done ill."
 		<<else>>
@@ -647,14 +647,14 @@ You remain silent. "Am I talking too loud?" <<he>> asks. Another <<monk>> gives 
 <<effects>>
 
 <<if $willpowerSuccess>>
-	You resist comtemplating the text, or even individual sentences, as a whole, <span class="green">and manage to finish copying without issue.</span>
+	You resist contemplating the text, or even individual sentences, as a whole, <span class="green">and manage to finish copying without issue.</span>
 	<br><br>
 
 <<else>>
 	You try to resist the text, but doing so frightens you, as if you were ignoring a raging fire. <span class="red">You satisfy your anxious curiosity.</span>
 	<br><br>
 	
-	You read about the destruction of a temple, you assume not this one. The language is poetic. Fire and water wrestled over its fate, until something arrived that frightened them both. It scared the fire away, and the coerced the water into subservience. You feel dread build, as if the poetry were hiding something unsafe to state directly.<<gawareness>><<gstress>><<awareness 1>><<stress 1>>
+	You read about the destruction of a temple, you assume not this one. The language is poetic. Fire and water wrestled over its fate, until something arrived that frightened them both. It scared the fire away, and coerced the water into subservience. You feel dread build, as if the poetry were hiding something unsafe to state directly.<<gawareness>><<gstress>><<awareness 1>><<stress 1>>
 	<br><br>
 	You finish reading without issue, but the dread remains.
 <</if>>
@@ -708,7 +708,7 @@ Your angelic power flows through you, down your arm, and into the quill. The lig
 <br><br>
 "No more."
 <br><br>
-For a moment, it seems to work. Then the text changes even more than before. Each time you blink, the whole page changes, conjuring distubing imagery in an angry tone.
+For a moment, it seems to work. Then the text changes even more than before. Each time you blink, the whole page changes, conjuring disturbing imagery in an angry tone.
 <br><br>
 
 You pull the scroll in front of you, and hold the quill above it. The black ink on the patch seems to shrink from the golden light.
@@ -720,7 +720,7 @@ You pull the scroll in front of you, and hold the quill above it. The black ink 
 :: Temple Calligraphy Smite 2
 <<effects>>
 
-A <<monk>> looms from the gloom, pluck the quill from your hand, and furls the scroll. <<He>> faces you, clutching the scroll as if afraid it would take flight.
+A <<monk>> looms from the gloom, plucks the quill from your hand, and furls the scroll. <<He>> faces you, clutching the scroll as if afraid it would take flight.
 <br><br>
 "How did you do that?" <<he>> asks, piercing you with <<his>> gaze. Then <<he>> shakes <<his>> head. "It doesn't matter. "You cannot make a copy. Something is always gained. Something lost. This is the last thing we can teach you. The rest you must learn from experience."
 <br><br>
@@ -750,13 +750,13 @@ You throw the quill aside, and lift the whole inkwell.
 You tip the inkwell, ready to ruin the page. The text shifts as if in response, adopting an apologetic tone.
 <br><br>
 
-Before you can read much, a <<monk>> looms from the glooms, plucks the inkwell from you hand, and furls the scroll.
+Before you can read much, a <<monk>> looms from the glooms, plucks the inkwell from your hand, and furls the scroll.
 <br><br>
 
 "What's gotten into you?" <<he>> asks. "This scroll is priceless. Irreplacable. That was supposed to be the lesson here, that nothing can ever be truly copied, and you almost went and destroyed it."
 <br><br>
 
-<<His>> voice is so loud other <<monksandnuns>> look over. <<He>> catches <<himself>> with a blush.
+<<His>> voice is so loud other <<monks_and_nuns>> look over. <<He>> catches <<himself>> with a blush.
 <br><br>
 
 <<link [[Apologise|Temple Calligraphy Defile Apologise]]>><</link>>
@@ -803,7 +803,7 @@ The <<monk>> calms a little. "No harm done," <<he>> says. "Fortunately. There's 
 <</if>>
 <br><br>
 
-"I don't know what you're talking about," <<he>> says. "We've taught you wall we can. You'll have to learn the rest through experience."
+"I don't know what you're talking about," <<he>> says. "We've taught you all we can. You'll have to learn the rest through experience."
 <br><br>
 
 <<He>> climbs the ladder, puts the scroll in its place, and chains it tight.
@@ -852,7 +852,7 @@ A <<monk>> looms from the gloom, and furls the scroll.
 "What's gotten into you?" <<he>> asks. "This scroll is priceless. Irreplacable. That was supposed to be the lesson here, that nothing can ever be truly copied, and you almost went and destroyed it."
 <br><br>
 
-<<His>> voice is so loud other <<monksandnuns>> look over. <<He>> catches <<himself>> with a blush.
+<<His>> voice is so loud other <<monks_and_nuns>> look over. <<He>> catches <<himself>> with a blush.
 <br><br>
 
 <<link [[Apologise|Temple Calligraphy Defile Apologise]]>><</link>>
