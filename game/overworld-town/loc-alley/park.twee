@@ -463,7 +463,7 @@ You approach a seasoned-looking carver, and ask if <<he>> has any tips. <<He>> t
 <<He>> picks up <<his>> knife, and carves away.
 <br><br>
 
-<<link [[Next|Park]]>><<endevent>><</link>><<set $eventskip to 1>>
+<<link [[Next|Park]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
 
 :: Park Pumpkin Seller
@@ -1316,7 +1316,7 @@ Kylar glares at <<him>>, looks around with wild-eyes, then vanishes into a bush.
 Kylar nods with enthusiasm, gives you all the pumpkins, then disappears to find more.
 <br><br>
 <<wearProp "pumpkin basket">>
-You've gained five pumpkins.<<tending_give "pumpkin" 5>><<wearProp "pumpkin">>
+You've gained five pumpkins.<<tending_give "pumpkin" 5>>
 <br><br>
 <<He>> returns with yet more vegetables, takes a seat, and starts working them with <<his>> knife.
 <br><br>
