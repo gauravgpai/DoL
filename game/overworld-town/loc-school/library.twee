@@ -1067,14 +1067,15 @@ You return the stolen
 <</if>>
 
 :: Library Altar Research
-<<effects>>
-
+<<effects>><<sydneySchedule>>
+<<set _historySuccess to currentSkillValue('history') gte random(1, 1000)>>
 <<rng 3>>
 <<if $rng is 3>>
 	You flick through a book on local history, pausing to read anything about the forest.
-	<<if $historySuccess>>
+	<<if _historySuccess>>
 		<<set $kylar_altar_library += 15>>
-		<span class="green">You find a description,</span>, and diagram, of the temple grounds as it was centuries ago, extending into the forest.<<gggresearch>>
+		<span class="green">You find a description,</span> and diagram, of the temple grounds as it was centuries ago, extending into the forest.<<gggresearch>>
+		<br><br>
 	<<else>>
 		<<set $kylar_altar_library += 5>>
 		<span class="blue">You're unable to find anything solid.</span> Mere glimpses here and there.<<gresearch>>
@@ -1082,9 +1083,10 @@ You return the stolen
 	<</if>>
 <<elseif $rng is 2>>
 	You wade through a tome about the local temple, and religion, hoping to find any information about the altar you found in the forest.
-	<<if $historySuccess>>
+	<<if _historySuccess>>
 		<<set $kylar_altar_library += 15>>
 		<span class="green">You find a passage detailing ancient rites,</span> using a stone altar like the one you found. Valuables were left there as a sacrifice.<<gggresearch>>
+		<br><br>
 	<<else>>
 		<<set $kylar_altar_library += 5>>
 		<span class="blue">You're unable to find anything solid.</span> Mere glimpses here and there.<<gresearch>>
@@ -1092,9 +1094,10 @@ You return the stolen
 	<</if>>
 <<else>>
 	You skim a book on past customs, paying more attention to the chapters involving the forest.
-	<<if $historySuccess>>
+	<<if _historySuccess>>
 		<<set $kylar_altar_library += 15>>
-		<span class="green">You find an illustration of the altar,</span> <<generate1>><<person1>>a <<person>> strapped to its surface, surrounded by dancing figures. You can't tell if the <<person>> is laughing or screaming.<<gggresearch>>
+		<span class="green">You find an illustration of the altar,</span> <<generatev1>><<person1>>a <<person>> strapped to its surface, surrounded by dancing figures. You can't tell if the <<person>> is laughing or screaming.<<gggresearch>>
+		<br><br>
 		<<endevent>>
 	<<else>>
 		<<set $kylar_altar_library += 5>>

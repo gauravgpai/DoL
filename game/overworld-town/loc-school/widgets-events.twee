@@ -4058,6 +4058,7 @@
 <</widget>>
 
 <<widget "events_school_library_study">>
+	<<rng 100>>
 	<<if $scienceprojectwon is 1 and $rng gte 91>>
 		<<generates1>><<person1>>A <<person>> stops at your table. "Hey, you're that <<girl>> who won the science fair, right?"
 		<br><br>

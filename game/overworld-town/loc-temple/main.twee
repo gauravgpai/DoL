@@ -3725,11 +3725,20 @@ Sydney hugs you again before leaving.
 
 <<generate1>><<person1>>
 
-You ask passing <<monks_and_nuns>> about the missing pages. Some listen with sympathy. Others give you the cold shoulder. None seem to know what you're talking about.
-<br><br>
 
-One <<monk>> takes offence. "You think we're common thieves?" <<he>> says. "In the old days that'd have whipped and branded you for such insolence. As if we don't have our store of knowledge in the scriptorium." <<He>> departs in a huff.
-<br><br>
+<<if $temple_rank is "monk" or $temple_rank is "priest">>
+	You ask passing <<monks_and_nuns>> about the missing pages. The first few don't know what you're talking about, but then an old <<monk>> beckons you into an alcove.
+	<br><br>
+	"I'm not familiar with that subject," <<he>> says. "But if they're here, they'll be in the scriptorium, through the cloister."
+	<br><br>
+	<<He>> walks away. You hear the clink of hidden chains.
+	<br><br>
+<<else>>
+	You ask passing <<monks_and_nuns>> about the missing pages. Some listen with sympathy. Others give you the cold shoulder. None seem to know what you're talking about.
+	<br><br>
+	One <<monk>> takes offence. "You think we're common thieves?" <<he>> says. "In the old days that'd have whipped and branded you for such insolence. As if we don't have our store of knowledge in the scriptorium." <<He>> departs in a huff.
+	<br><br>
+<</if>>
 
 <<if !$temple_scriptorium_known>>
 	<<set $temple_scriptorium_known to 1>>

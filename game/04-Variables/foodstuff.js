@@ -3435,7 +3435,7 @@ function initFoodstuff() {
 				sell_price: 1800,
 			},
 			recipe: {
-				recipe_name: "stuffed_pumpkin",
+				recipe_name: "stuffed pumpkin",
 				difficulty: 3,
 				cook_minutes: 30,
 				servings: 1,
@@ -3458,7 +3458,7 @@ function initFoodstuff() {
 				sell_price: 1600,
 			},
 			recipe: {
-				recipe_name: "pumpkin_pie",
+				recipe_name: "pumpkin pie",
 				difficulty: 2,
 				cook_minutes: 30,
 				servings: 1,
@@ -3482,7 +3482,7 @@ function initFoodstuff() {
 				sell_price: 1000,
 			},
 			recipe: {
-				recipe_name: "pumpkin_drink",
+				recipe_name: "pumpkin drink",
 				difficulty: 1,
 				cook_minutes: 10,
 				servings: 1,

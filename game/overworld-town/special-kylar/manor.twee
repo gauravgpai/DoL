@@ -46,12 +46,12 @@ Kylar's parents' room looks like the master bedroom. The four-poster bed is unto
 	<<socialiseicon>><<link [[Soothe Kylar's parents (1:00)|Manor Parents Room Soothe]]>><<set $daily.manorParents to 1>><<kylar_parents_trust 1>><<stress 6>><<pass 60>><</link>><<gstress>><<gtrust>>
 	<br><br>
 <</if>>
-
+/*
 <<if $kylar_altar_research and $kylar_altar_research.includes("tape") and !$kylar_altar_research.includes("pages")>>
 	<<link [[Show Kylar's parents the pages you found at the temple (0:10)|Manor Pages Room]]>><<set $kylar_altar_research.pushUnique("pages")>><<pass 10>><</link>>
 	<br>
 <</if>>
-
+ */
 <<getouticon>><<link [[Leave|Manor Hall]]>><</link>>
 <br>
 
@@ -271,7 +271,7 @@ The Kylar sat beside you sways. <<He>> sways as if about to faint, then half fal
 You hear a small weep, then Kylar emerges from beneath the covers, and returns to <<his>> chair, and fixes <<his>> eyes on the screen.
 <br><br>
 
-Back in the video, Kylar lines up with the other figures. They begin speaking rehearsed lines in turn, but something distracts them. You hear murmuring from the front of the audience.
+Back in the video, Kylar lines up with the other figures. They begin speaking rehearsed lines in turn, but something distracts them. You hear murmuring from the front of the audience. One of the figures on stage holds their nose.
 <br><br>
 
 <<link [[Next|Manor Tape 2]]>><<set $phase to 1>><</link>>
@@ -305,7 +305,7 @@ Video-Kylar continues <<his>> lines, but <<he>> quivers, and sniffles, more and 
 
 <<link [[Continue watching the tape|Manor Tape 3]]>><</link>>
 <br>
-<<link [[Comfort Kylar|Manor Tape 2 Comfort]]>><</link>>
+<<link [[Comfort Kylar first|Manor Tape 2 Comfort]]>><</link>>
 <br>
 
 :: Manor Tape 2 Comfort
@@ -352,9 +352,9 @@ You feel their presence before you hear them. Kylar's parents stand behind you, 
 Kylar's face appears beneath the covers, red eyes resting on you. <<He>> holds out a hand.
 <br><br>
 
-<<link [[Take <<his>> hand|Manor Tape Hand]]>><</link>><<glove>>
+<<link [[Take <<his>> hand|Manor Tape Hand]]>><<npcincr Kylar love 1>><</link>><<glove>>
 <br>
-<<link [[Pull <<him>> into a hug|Manor Tape Hug]]>><</link>><<gglove>>
+<<link [[Pull <<him>> into a hug|Manor Tape Hug]]>><<npcincr Kylar love 3>><</link>><<gglove>>
 <br>
 <<link [[Remain motionless|Manor Tape Motionless]]>><</link>>
 <br>
@@ -375,6 +375,7 @@ You take Kylar's hand. <<He>> squeezes it so tight it starts to feel numb, <<his
 <<effects>>
 
 You take Kylar's hand, only to pull <<him>> into a hug. <<Hes>> still trembling. Your chest is soon soaked in <<his>> tears.
+<<upperwet 20>>
 <br><br>
 
 <<link [[Ask about what you just saw|Manor Tape Ask 2]]>><</link>>
@@ -432,6 +433,7 @@ You stay with Kylar a while. <<He>> leans into you, clinging as if the wind thre
 <br><br>
 
 "Thank you," <<he>> says after a while, pulling away and regarding you with worshipful eyes. Then, as if having spent every ounce of <<his>> energy, <<he>> collapses into a nap. You tuck <<him>> into bed, and leave the room.
+<br><br>
 
 <<link [[Next|Manor Tape 6]]>><</link>>
 <br>
@@ -442,14 +444,6 @@ You stay with Kylar a while. <<He>> leans into you, clinging as if the wind thre
 Outside, you feel a presence. You look left and right, but see nothing. Then you look up. Two pairs of eyes bore into you. Then vanish.
 <br><br>
 
-:: Manor Tape End
-<<effects>>
-
-You walk on, feeling their eyes follow.
-<br><br>
-
-<<link [[Next|Manor Hall]]>><<endevent>><</link>>
-<br>
 <<link [[Next|Manor Hall]]>><<endevent>><</link>>
 <br>
 

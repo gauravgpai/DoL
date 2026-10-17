@@ -239,7 +239,6 @@ Tulips grow in great patches near the riverbank.
 			<br>
 			<<icon "pumpkin-carving.png">><<link [[Compete (1:00)|Park Pumpkin Competition]]>><<pass 60>><</link>>
 			<br>
-			
 		<<elseif $halloween is 1 and Time.monthDay is 31 or $halloween_pumpkin_competition>>
 			Bits of pumpkin litter the grass, and jack-o'-lanterns hang from branches.
 			<<if $halloween_pumpkin_competition is "won">>
@@ -416,10 +415,10 @@ You approach the pumpkin carving tables. Most seats are occupied, with <<people>
 		<<insufficientStat "promiscuity" "to take up such an alternative!">>
 		<br>
 	<</if>>
-	<<link [[Grab the pumpkin and run|Park Pumpkin Athletics]]>><</link>><<athleticsdifficulty 1 1000>>
+	<<link [[Grab the pumpkin and run|Park Pumpkin Athletics]]>><<crimeUp 3 "petty">><</link>><<athleticsdifficulty 1 1000>><<gcrime "petty">>
 	<br>
 	<<set $skulduggerydifficulty to 600>>
-	<<link [[Steal a pumpkin (0:05)|Park Pumpkin Skulduggery]]>><</link>><<skulduggerydifficulty>>
+	<<link [[Steal a pumpkin (0:05)|Park Pumpkin Skulduggery]]>><<crimeUp 3 "petty">><</link>><<skulduggerydifficulty>><<gcrime "petty">>
 	<br>
 	<<link [[Walk away|Park]]>><<endevent>><<set $eventskip to 1>><</link>>
 	<br>
@@ -468,7 +467,7 @@ You approach a seasoned-looking carver, and ask if <<he>> has any tips. <<He>> t
 
 :: Park Pumpkin Seller
 <<effects>>
-
+<<if $halloween_pumpkins_bought is undefined>><<set $halloween_pumpkins_bought to 0>><</if>>
 <<set _pumpkin_price to 10000 + ($halloween_pumpkins_bought * 10000)>>
 
 <<generate1>><<person1>>
@@ -537,7 +536,7 @@ You find a <<person>>, throwing and catching a pumpkin like a ball, while trying
 <</if>>
 
 :: Park Pumpkin Oral Finish
-<<set $outside to 0>><<effects>>
+<<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 	<<He>> throws the pumpkin into the air, letting it thump beside you. "Enjoy."
@@ -627,7 +626,7 @@ You find a <<person>>, throwing and catching a pumpkin like a ball, while trying
 	<<ejaculation>>
 	<<He>> throws the pumpkin into the air, letting it thump beside you. "Enjoy."
 	<br><br>
-	<<tearful>> you rise to your feet. The pumpkin is still firm.<<tending_give "pumpkin" 1>>
+	<<tearful>> you rise to your feet. The pumpkin is still firm.<<tending_give "pumpkin" 1>><<wearProp "pumpkin">>
 	<br><br>
 	<<clotheson>>
 	<<endcombat>>
@@ -814,11 +813,11 @@ A crowd gathers to watch, and a <<person>> dressed in a smart outfit steps onto 
 
 A knife has been provided, a long, thin blade, as well as a selection of stencils. You get to work, carving to the best of your ability.
 <br><br>
-<<person3>>
+
 <<if C.npc.Kylar.state isnot "prison" and $halloween_pumpkin_kylar is "win">>
 	Beside you, Kylar flicks bits of pumpkin at the other competitors, distracting them.
 <<elseif C.npc.Kylar.state isnot "prison" and $halloween_pumpkin_kylar is "kylar">>
-	Kylar carves beside you. In contrast with <<his>> previous energy, <<hes>> now slow, methodical, sparing no unnecessary movements. <<He>> leans over the pumpkin, concealing it from view.
+	<<person3>>Kylar carves beside you. In contrast with <<his>> previous energy, <<hes>> now slow, methodical, sparing no unnecessary movements. <<He>> leans over the pumpkin, concealing it from view.
 <</if>>
 <br><br>
 
@@ -827,7 +826,7 @@ Victory Chance:
 Practical skill:
 <<if $pumpkin_carving gte 10>>
 	<span class="green">S</span>
-<<elseif $pumping_carving gte 8>>
+<<elseif $pumpkin_carving gte 8>>
 	<span class="lblue">A</span>
 <<elseif $pumpkin_carving gte 6>>
 	<span class="blue">B</span>
@@ -842,7 +841,7 @@ Practical skill:
 Knowledge: 
 <<if $pumpkin_carving_knowledge?.length gte 2>>
 	<span class="green">S</span>
-<<elseif $pumpking_carving_knowledge?.length gte 1>>
+<<elseif $pumpkin_carving_knowledge?.length gte 1>>
 	<span class="blue">B</span>
 <<else>>
 	<span class="red">F</span> 
@@ -920,7 +919,7 @@ Overall: <<print Math.trunc($pumpkin_win_chance)>>%
 <<elseif C.npc.Kylar.state isnot "prison" and $halloween_pumpkin_kylar is "win">>
 	There are better jack-o'-lanterns on display. Maybe people will think yours has character. Kylar's is similar, except the features are a little more crooked.
 	<br><br>
-	The judge walks the length of the tables, pausing a moment in front of each jack-o'-lantern. <<He>> observes yours, then moves on without fanfare.
+	The judge walks the length of the tables, pausing a moment in front of each jack-o'-lantern. <<person1>><<He>> observes yours, then moves on without fanfare.
 	<br><br>
 
 	<<link [[Next|Park Pumpkin Competition Loss Kylar]]>><</link>>
@@ -928,7 +927,7 @@ Overall: <<print Math.trunc($pumpkin_win_chance)>>%
 <<else>>
 	There are better jack-o'-lanterns on display. Maybe people will think yours has character.
 	<br><br>
-	The judge walks the length of the tables, pausing a moment in front of each jack-o'-lantern. <<He>> observes yours, then continues on without fanfare.
+	The judge walks the length of the tables, pausing a moment in front of each jack-o'-lantern. <<person1>><<He>> observes yours, then continues on without fanfare.
 	<br><br>
 
 	<<link [[Next|Park Pumpkin Competition Loss]]>><</link>>
@@ -1018,7 +1017,7 @@ You tell people knowing the origins of things, how they developed, can be helpfu
 "Come on," the <<person1>><<person>> says, amused. "It can't be that bad. If you're shy, just let me have a peek. No one else needs to see. You can't win if I can't see it."
 <br><br>
 
-Reluctant, Kylar shifts enough just enough for the <<person1>><<person>> to get a glimpse. <<He>> nods, then moves on.
+Reluctant, Kylar shifts just enough for the <<person1>><<person>> to get a glimpse. <<He>> nods, then moves on.
 <br><br>
 
 <<link [[Next|Park Pumpkin Competition Kylar 2]]>><</link>>
@@ -1028,7 +1027,7 @@ Reluctant, Kylar shifts enough just enough for the <<person1>><<person>> to get 
 :: Park Pumpkin Competition Kylar 2
 <<effects>>
 
-The judge reaches the end of the tables, then turns and walks the way <<he>> came. <span class="blue"><<He>> stops before reaching you.</span> Both arms reach out, and <<he>> scoops a wild-eyed Kylar up and away from <<person3>><<his>> jack-o-'lantern.
+The judge reaches the end of the tables, then turns and walks the way <<he>> came. <span class="blue"><<He>> stops before reaching you.</span> Both arms reach out, and <<he>> scoops a wild-eyed Kylar up and away from <<person3>><<his>> jack-o'-lantern.
 <br><br>
 
 The crowd hushes as everyone beholds Kylar's work. It's unmistakable. The pumpkin is carved in your likeness. Your face flushes.<<gstress>><<stress 6>>
@@ -1147,7 +1146,7 @@ Kylar watches as the <<person2>><<person>> steps up to receive the prize money. 
 <<he>> rises, lifts a handful of pulp removed from <<his>> jack-o'-lantern, and hurls it at the <<person2>><<person>>.
 <br><br>
 
-The photographers are exicted. The winner less so. <<He>> and the <<person1>><<person>> whirl to see the culprit, but Kylar is already vanishing into the bushes.
+The photographers are excited. The winner less so. <<He>> and the <<person1>><<person>> whirl to see the culprit, but Kylar is already vanishing into the bushes.
 <br><br>
 
 The crowd clears as people arrive to clean up the mess, and make sure all the knives are accounted for.
@@ -1165,7 +1164,7 @@ The crowd clears as people arrive to clean up the mess, and make sure all the kn
 The judge reaches the end of the tables, then turns and walks the way <<he>> came. <span class="red"><<He>> strides right on by your jack-o'-lantern,</span> and lifts the one belonging to a <<person2>><<person>>.
 <br><br>
 
-A cheer goes up, though other competitors look disappointed, even jealous. The <<person1>><<person>> seems eager to be photographed with the winner, and makes a show of handing <<person2>><<him>> the prize money.
+A cheer goes up, though other competitors look dissappointed, even jealous. The <<person1>><<person>> seems eager to be photographed with the winner, and makes a show of handing <<person2>><<him>> the prize money.
 <br><br>
 
 The crowd clears as people arrive to clean up the mess, and make sure all the knives are accounted for.
@@ -1211,7 +1210,7 @@ You say hi to Kylar.
 <<effects>><<run statusCheck("Kylar")>>
 
 <<if _kylarStatus.includes("Love")>>
-	Kylar nods at you. "You'll win. I know it." A face lights up with an idea. "Do you need pumpkins? I can get you some."
+	Kylar nods at you. "You'll win. I know it." <<His>> face lights up with an idea. "Do you need pumpkins? I can get you some."
 	<br><br>
 	<<link [[Ask for pumpkins (0:03)|Park Pumpkin Kylar Need]]>><<pass 3>><<tending_give "pumpkin" 5>><</link>>
 	<br>
@@ -1236,9 +1235,29 @@ At your word, Kylar vanishes into the bushes, taking several branches with <<him
 <br>
 <<link [[Praise <<him>>|Park Pumpkin Kylar Praise]]>><<npcincr Kylar love 1>><</link>><<glove>>
 <br>
+<<link [[Ask <<him>> how <<he>> got them|Park Pumpkin Kylar Got]]>><</link>>
+<br>
 <<link [[Take them and walk away without a word|Park Pumpkin Kylar Silent]]>><<npcincr Kylar rage 1>><</link>><<gksuspicion>>
 <br>
 
+
+:: Park Pumpkin Kylar Got
+<<effects>>
+
+Kylar throws a glance back the way <<he>> came, and takes a moment to respond.
+
+<<if $famescrap gte 400>>
+	"I beat someone up and took them," <<he>> says, searching your eyes. "A bad person." <<He>> takes off before you can question <<him>> further.
+<<else>>
+	"I found them," <<he>> says, avoiding eye contact. <<He>> takes off before you can question <<him>> further.
+<</if>>
+<br><br>
+
+You've gained five pumpkins.<<wearProp "pumpkin">>
+<br><br>
+
+<<link [[Next|Park Pumpkin]]>><<endevent>><</link>>
+<br>
 
 :: Park Pumpkin Kylar Thank
 <<effects>>
@@ -1258,7 +1277,7 @@ You've gained five pumpkins.<<wearProp "pumpkin">>
 :: Park Pumpkin Kylar Praise
 <<effects>>
 
-You praise Kylar, and stroke <<his>> head. <<He>> trembles in excitement, then takes off in a rush to avoid being overwhelmed.
+You praise Kylar, and stroke <<his>> head. <<He>> trembles in excitement, then takes off in a rush.
 <br><br>
 
 You've gained five pumpkins.<<wearProp "pumpkin">>
@@ -1298,7 +1317,7 @@ Kylar looks at you, a steely resolve enflamed in <<his>> eyes. Then <<he>> darts
 <<generate2>><<person2>>
 "You need to bring your own pumpkins," says a <<person>>.
 <br><br>
-Kylar glares at <<him>>, looks around with wild-eyes, then vanishes into a bush.
+Kylar glares at <<him>>, looks around with wild eyes , then vanishes into a bush.
 <br><br>
 
 <<person1>><<He>> returns a moment later, a bundle of pumpkins in <<his>> arms. <<He>> takes a seat, and starts working them with <<his>> knife.
