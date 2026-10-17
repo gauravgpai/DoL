@@ -63,7 +63,7 @@ You approach the back door to the scriptorium. It's locked tight.
 <br><br>
 
 <<if $temple_rank is "monk" or $temple_rank is "priest">>
-	<span class="teal">Your rank is sufficent to enter the scriptorium legitimately through the cloister, should you wish to.</span>
+	<span class="teal">Your rank is sufficient to enter the scriptorium legitimately through the cloister, should you wish to.</span>
 	<br><br>
 <</if>>
 

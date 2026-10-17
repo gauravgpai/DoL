@@ -1105,7 +1105,7 @@ You return the stolen
 
 <<set $kylar_altar_library to Math.clamp($kylar_altar_library, 0, 100)>>
 
-<<if $kylar_altar_library gte 100 and _sydney_location is "library" and ($sydneySeen isnot undefined or $sydneySeen.includes("library"))>>
+<<if $kylar_altar_library gte 100 and _sydney_location is "library" and ($sydneySeen isnot undefined and $sydneySeen.includes("library"))>>
 	<<npc Sydney>><<person1>>
 	<<if $sydney_romance is 1>>
 		A pair of arms wrap around you from behind, and a head rests on your shoulder. It's Sydney.
@@ -1153,7 +1153,7 @@ Sydney nods, and continues in <<his>> whisper. "Come with me."
 You follow Sydney, weaving between shelves, until you come to an unmarked door, coloured like the walls around it. It creaks open, revealing a pitch black interior. Sydney ushers you through, then closes the door, plunging you both into darkness.
 <br><br>
 
-"The light's here somewhere," you hear a bump. "Ow."
+"The light's here somewhere." You hear a bump. "Ow."
 <br><br>
 
 A light flickers on, revealing stacks of cardboard boxes. "Behold, the forbidden room," Sydney says, before rushing over to a particular stack of boxes. "This one," Sydney says, rubbing <<his>> head. <<He>> lifts a couple of boxes aside, and opens another. There are stacks of books within.
@@ -1167,7 +1167,7 @@ A light flickers on, revealing stacks of cardboard boxes. "Behold, the forbidden
 
 The topmost books seem to have nothing to do with the forest. Sydney digs until <<he>> reaches a worn tome, the title barely visible.
 <br><br>
-"Don't tell Winter this one's here," Sydney says. <<He>> opens it to the middle, turns the page, then frown. <<He>> flips through the pages, forward and back.
+"Don't tell Winter this one's here," Sydney says. <<He>> opens it to the middle, turns the page, then frowns. <<He>> flips through the pages, forward and back.
 <br><br>
 "I could've sworn there was more," <<he>> says. You look at the page numbers. It skips several. Sydney notices too. "It's like someone removed them. That's a shame." <<He>> pauses a moment, in thought.
 <br><br>
@@ -1204,7 +1204,7 @@ Sydney shakes <<his>> head. "It's a mystery. Only River and I knew the book was 
 You remain silent. 
 <br><br>
 
-"I don't know who could have done this," Sydney says. Only River and I knew the book was here, and River would pass out if <<nnpc_he "River">> knew someone had defaced it. Unless," <<he>> pauses. "I did once tell someone. During confession at the temple. River told me not to read it, and I did anyway. I felt guilty."
+"I don't know who could have done this," Sydney says. "Only River and I knew the book was here, and River would pass out if <<nnpc_he "River">> knew someone had defaced it. Unless," <<he>> pauses. "I did once tell someone. During confession at the temple. River told me not to read it, and I did anyway. I felt guilty."
 <br><br>
 
 <<link [[Say someone from the temple might have taken the page|Library Altar Forbidden Temple]]>><</link>>
