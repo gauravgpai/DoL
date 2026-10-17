@@ -121,10 +121,10 @@ You turn the last of the missing pages, and find smaller, more robust sheets. Th
 
 The topmost letter is addressed from a priest. It gives the recipient advice and supportive words, but a name sticks out in the penultimate paragraph. <span class="red">Kylar.</span>
 <br>
-<i>"I regret to confirm what you've heard. Kylar will receive all the help they need, but for the time being it would be best if you dissuaded your children from interacting with them, for their own safety.</i>
+<i>"I regret to confirm what you've heard. Kylar will receive all the help <<nnpc_he "Kylar">> needs, but for the time being it would be best if you dissuaded your children from interacting with <<nnpc_him "Kylar">>, for <<nnpc_his "Kylar">> own safety.</i>
 <br><br>
 
-You check the other letters. Each implies that Kylar is dangerous, and advises the recipient to keep their children away from them.
+You check the other letters. Each implies that Kylar is dangerous, and advises the recipient to keep their children away from <<nnpc_him "Kylar">>.
 <br><br>
 
 You take the pages, the letters, and the tape. <span class="gold">Kylar has a device that could play it.</span>

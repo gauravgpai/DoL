@@ -776,7 +776,7 @@
 		<<ind>><span class="blue">You can only practise calligraphy once a day.</span>
 		<br>
 	<</if>>
-	<<if $pumpkin_carving_knowledge and !$pumpkin_carving_knowledge.includes("temple")>>
+	<<if $pumpkin_carving_knowledge and !$pumpkin_carving_knowledge.includes("scriptorium")>>
 		<<icon "pumpkin-carving.png">><<link [[Search for esoteric pumpkin carving knowledge (2:00)|Temple Scriptorium Pumpkin]]>><<pass 120>><<set $pumpkin_carving_knowledge.pushUnique("scriptorium")>><</link>>
 		<br>
 	<</if>>

@@ -1218,7 +1218,7 @@ You remain silent.
 <<if $speech_attitude is "meek">>
 	"I'd hate to cast aspersions," you say. "But the temple might have something to do with it."
 <<elseif $speech_attitude is "bratty">>
-	"The temple might have knicked it," you say. "They like squirreling away old lore."
+	"The temple might have nicked it," you say. "They like squirreling away old lore."
 <<else>>
 	"Do you think the temple might have something to do with it?" you ask.
 <</if>>
