@@ -19,42 +19,132 @@ declare module "twine-sugarcube" {
 			};
 		};
 
-		pain: number;
-		arousal: number;
-		tiredness: number;
-		stress: number;
-		trauma: number;
-		control: number;
+		// PC Stat Maximums
 
+		// Character State Maximums
 		arousalmax: number;
+		controlmax: number;
+		druggedmax: number;
+		drunkmax: number;
+		tirednessmax: number;
+		hallucinogenmax: number;
+		painmax: number;
 		stressmax: number;
 		traumamax: number;
-		controlmax: number;
+
+		// Core Characteristic Maximums
+		awarenessmax: number;
+		awarenessmin: number;
+		beautymax: number;
+		deviancymax: number;
+		exhibitionismmax: number;
+		physiquemax: number;
+		promiscuitymax: number;
+		puritymax: number;
+		willpowermax: number;
+
+		// Physique Body Size Maximum
+		physiquesize: number;
+
+		// Core Skill Maximums
+		athleticsmax: number;
+		danceskillmax: number;
+		housekeepingmax: number;
+		skulduggerymax: number;
+		swimmingskillmax: number;
+		tendingmax: number;
+
+		// School Skill Maximums
+		englishmax: number;
+		historymax: number;
+		mathsmax: number;
+		sciencemax: number;
+
+		// Sex Skill Maximums
+		analskillmax: number;
+		bottomskillmax: number;
+		chestskillmax: number;
+		feetskillmax: number;
+		handskillmax: number;
+		oralskillmax: number;
+		penileskillmax: number;
+		seductionskillmax: number;
+		thighskillmax: number;
+		vaginalskillmax: number;
+
+		// Weapon Skill Maximums
+		batonskillmax: number;
+		netskillmax: number;
+		sprayskillmax: number;
+		whipskillmax: number;
+		pickaxeskillmax: number;
+
+		// Character State Stats
+		arousal: number;
+		control: number;
+		drugged: number;
+		drunk: number;
+		tiredness: number;
+		hallucinogen: number;
+		pain: number;
+		stress: number;
+		trauma: number;
+
+		// Core Characteristic Stats
+		awareness: number;
+		beauty: number;
+		deviancy: number;
+		exhibitionism: number;
+		physique: number;
+		promiscuity: number;
+		purity: number;
+		willpower: number;
+
+		// Core Skill Stats
+		athletics: number;
+		danceskill: number;
+		housekeeping: number;
+		skulduggery: number;
+		swimmingskill: number;
+		tending: number;
+
+		// School Skill Stats
+		english: number;
+		history: number;
+		maths: number;
+		science: number;
+		
+		// Sex Skill Stats
+		analskill: number;
+		bottomskill: number;
+		chestskill: number;
+		feetskill: number;
+		handskill: number;
+		oralskill: number;
+		penileskill: number;
+		seductionskill: number;
+		thighskill: number;
+		vaginalskill: number;
+
+		// // Weapon Skill Stats (Currently stored in the "V.prof" object)
+		// batonskill: number;
+		// netskill: number;
+		// sprayskill: number;
+		// whipskill: number;
+		// pickaxeskill: number;
 
 		oxygen: number;
 		oxygenmax: number;
 
-		purity: number;
-		willpower: number;
 		willpowerpain?: 0;
-		willpowermax: number;
 		submissive: number;
-		beauty: number;
 		delinquency: number;
 		detention: number;
 		cool: number;
 		coolmax: number;
 		masochism: number;
-		drugged: number;
-		hallucinogen: number;
-		drunk: number;
-		awareness: number;
 		suspicion: number;
 		shame: number;
-
-		exhibitionism: number;
-		promiscuity: number;
-		deviancy: number;
 
 		innocencestate: 0 | 1;
 		innocencetrauma: number;
