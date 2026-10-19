@@ -1380,11 +1380,11 @@ You look away as Alex saws through the branch. "Here it comes," <<he>> says. It 
 	<</if>>
 	<<switch $tempRewardType>>
 		<<case "potato">>
-			You think they recognise the word "potato." They start shuffling back to the farm.
+			You think they recognised the word "potato." They start shuffling back to the farm.
 		<<case "carrot">>
-			You think they recognise the word "carrot." They start walking back to the farm.
+			You think they recognised the word "carrot." They start walking back to the farm.
 		<<case "apple">>
-			You think they recognise the word "apple." They start trotting back to the farm.
+			You think they recognised the word "apple." They start trotting back to the farm.
 	<</switch>>
 	<br><br>
 
