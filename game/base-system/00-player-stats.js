@@ -634,6 +634,69 @@ const PC = {
 		pickaxeskill: [],
 	},
 
+	/**
+	 * Takes in an array of Modifiers and returns the ones that are currently active.
+	 *
+	 * If `include` is:
+	 * - "all"- All modifiers affecting the stat will be returned.
+	 * - "positive"- Only modifiers that increase the stat are returned.
+	 * - "negative"- Only modifiers that decrease the stat are returned.
+	 *
+	 * Returns an empty array if the "include" parameters is invalid, or if a modifier has an invalid type.
+	 *
+	 * @param {Array<Modifier>} modifiers
+	 * @param {string} include Can be "all", "positive", or "negative".
+	 * @returns {Array<Modifier>}
+	 */
+	activeModifiers(modifiers, include) {
+		if (!["all", "positive", "negative"].includes(include)) {
+			Errors.report(`[PC.activeModifiers]: include '${include}' is invalid.`, {
+				Stacktrace: Utils.GetStack(),
+				include,
+			});
+			return [];
+		}
+		const activeMods = [];
+
+		for (let i = 0; i < modifiers.length; i++) {
+			const modInfo = modifiers[i];
+			if (modInfo === undefined) {
+				Errors.report(`[PC.activeModifiers]: modInfo '${modInfo}' is undefined.`, {
+					Stacktrace: Utils.GetStack(),
+					modInfo,
+				});
+				return [];
+			}
+			const result = modInfo.modifier();
+
+			let breakpoint;
+			const modType = modInfo.type;
+			if (modType === ModType.Additive) {
+				// Additive modifiers don't change the final value when they are equal to 0.
+				breakpoint = 0;
+			} else if (modType === ModType.Multiplicative) {
+				// Multiplicative modifiers don't change the final value when they are equal to 1.
+				breakpoint = 1;
+			} else {
+				Errors.report(`[PC.activeModifiers]: modType '${modType}' is unknown.`, {
+					Stacktrace: Utils.GetStack(),
+					modType,
+				});
+				return [];
+			}
+
+			if (
+				(include === "all" && result !== breakpoint) ||
+				(include === "positive" && result > breakpoint) ||
+				(include === "negative" && result < breakpoint)
+			) {
+				activeMods.push(modInfo);
+			}
+		}
+
+		return activeMods;
+	},
+
 };
 
 const Check = {
