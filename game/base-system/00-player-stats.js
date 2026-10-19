@@ -1559,6 +1559,188 @@ const PC = {
 		return statValue;
 	},
 
+	get arousal() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.arousal, this.appliedModifiers.arousal)));
+	},
+
+	get control() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.control, this.appliedModifiers.control)));
+	},
+
+	get drugged() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.drugged, this.appliedModifiers.drugged)));
+	},
+
+	get drunk() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.drunk, this.appliedModifiers.drunk)));
+	},
+
+	get tiredness() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.tiredness, this.appliedModifiers.tiredness)));
+	},
+
+	get hallucinogen() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.hallucinogen, this.appliedModifiers.hallucinogen)));
+	},
+
+	get pain() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.pain, this.appliedModifiers.pain)));
+	},
+
+	get stress() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.stress, this.appliedModifiers.stress)));
+	},
+
+	get trauma() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.trauma, this.appliedModifiers.trauma)));
+	},
+
+	// Core Characteristic Stats
+
+	get awareness() {
+		return Math.max(V.awarenessmin, Math.round(this.applyModifiers(Base.awareness, this.appliedModifiers.awareness)));
+	},
+
+	get beauty() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.beauty, this.appliedModifiers.beauty)));
+	},
+
+	get deviancy() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.deviancy, this.appliedModifiers.deviancy)));
+	},
+
+	get exhibitionism() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.exhibitionism, this.appliedModifiers.exhibitionism)));
+	},
+
+	get physique() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.physique, this.appliedModifiers.physique)));
+	},
+
+	get promiscuity() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.promiscuity, this.appliedModifiers.promiscuity)));
+	},
+
+	get purity() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.purity, this.appliedModifiers.purity)));
+	},
+
+	get willpower() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.willpower, this.appliedModifiers.willpower)));
+	},
+
+	// Core Skill Stats
+
+	get athletics() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.athletics, this.appliedModifiers.athletics)));
+	},
+
+	get danceskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.danceskill, this.appliedModifiers.danceskill)));
+	},
+
+	get housekeeping() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.housekeeping, this.appliedModifiers.housekeeping)));
+	},
+
+	get skulduggery() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.skulduggery, this.appliedModifiers.skulduggery)));
+	},
+
+	get swimmingskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.swimmingskill, this.appliedModifiers.swimmingskill)));
+	},
+
+	get tending() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.tending, this.appliedModifiers.tending)));
+	},
+
+	// School Skill Stats
+
+	get english() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.english, this.appliedModifiers.english)));
+	},
+
+	get history() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.history, this.appliedModifiers.history)));
+	},
+
+	get maths() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.maths, this.appliedModifiers.maths)));
+	},
+
+	get science() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.science, this.appliedModifiers.science)));
+	},
+
+	// Sex Skill Stats
+
+	get analskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.analskill, this.appliedModifiers.analskill)));
+	},
+
+	get bottomskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.bottomskill, this.appliedModifiers.bottomskill)));
+	},
+
+	get chestskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.chestskill, this.appliedModifiers.chestskill)));
+	},
+
+	get feetskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.feetskill, this.appliedModifiers.feetskill)));
+	},
+
+	get handskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.handskill, this.appliedModifiers.handskill)));
+	},
+
+	get oralskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.oralskill, this.appliedModifiers.oralskill)));
+	},
+
+	get penileskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.penileskill, this.appliedModifiers.penileskill)));
+	},
+
+	get seductionskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.seductionskill, this.appliedModifiers.seductionskill)));
+	},
+
+	get thighskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.thighskill, this.appliedModifiers.thighskill)));
+	},
+
+	get vaginalskill() {
+		return Math.max(0, Math.round(this.applyModifiers(Base.vaginalskill, this.appliedModifiers.vaginalskill)));
+	},
+
+	// Weapon Skill Stats
+
+	get batonskill() {
+		if (Base.batonskill === undefined) return 0;
+		return Math.max(0, Math.round(this.applyModifiers(Base.batonskill, this.appliedModifiers.batonskill)));
+	},
+
+	get netskill() {
+		if (Base.netskill === undefined) return 0;
+		return Math.max(0, Math.round(this.applyModifiers(Base.netskill, this.appliedModifiers.netskill)));
+	},
+
+	get sprayskill() {
+		if (Base.sprayskill === undefined) return 0;
+		return Math.max(0, Math.round(this.applyModifiers(Base.sprayskill, this.appliedModifiers.sprayskill)));
+	},
+
+	get whipskill() {
+		if (Base.whipskill === undefined) return 0;
+		return Math.max(0, Math.round(this.applyModifiers(Base.whipskill, this.appliedModifiers.whipskill)));
+	},
+
+	get pickaxeskill() {
+		if (Base.pickaxeskill === undefined) return 0;
+		return Math.max(0, Math.round(this.applyModifiers(Base.pickaxeskill, this.appliedModifiers.pickaxeskill)));
+	},
 };
 
 const Check = {
