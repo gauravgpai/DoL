@@ -8205,6 +8205,10 @@ sugarcube-2:
       description: |-
         Prints `| + + Physique`
       tags: ["text"]
+    ggpickaxe:
+      description: |-
+        Prints `| + + Pickaxe proficiency`
+      tags: ["text"]
     ggpound_status:
       name: ggpound_status
     ggpurity:
@@ -8546,6 +8550,10 @@ sugarcube-2:
     gphysique:
       description: |-
         Prints `| + Physique`
+      tags: ["text"]
+    gpickaxe:
+      description: |-
+        Prints `| + Pickaxe proficiency`
       tags: ["text"]
     gpound_status:
       name: gpound_status
