@@ -1,4 +1,4 @@
-/* global playerAwareTheyCanBePregnant */
+/* global playerAwareTheyCanBePregnant validRange */
 
 /**
  * Character State Stats
@@ -1744,7 +1744,574 @@ const PC = {
 };
 
 const Check = {
+	/**
+	 * `return V.temple_burden >= random(1, 100)`
+	 *
+	 * Only used inside of the `<<skillCheck>>` widgets.
+	 *
+	 * @returns {boolean}
+	 */
+	templeBurden() {
+		return V.temple_burden >= random(1, 100);
+	},
 
+	// Character State Stats
+
+	/**
+	 * Checks if the PC's arousal is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	arousal(min, max) {
+		return validRange("Check.arousal", min, max) && PC.arousal >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's control is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	control(min, max) {
+		return validRange("Check.control", min, max) && PC.control >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's drugged is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	drugged(min, max) {
+		return validRange("Check.drugged", min, max) && PC.drugged >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's drunk is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	drunk(min, max) {
+		return validRange("Check.drunk", min, max) && PC.drunk >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's tiredness is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	tiredness(min, max) {
+		return validRange("Check.tiredness", min, max) && PC.tiredness >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's hallucinogen is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	hallucinogen(min, max) {
+		return validRange("Check.hallucinogen", min, max) && PC.hallucinogen >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's pain is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	pain(min, max) {
+		return validRange("Check.pain", min, max) && PC.pain >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's stress is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	stress(min, max) {
+		return validRange("Check.stress", min, max) && PC.stress >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's trauma is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	trauma(min, max) {
+		return validRange("Check.trauma", min, max) && PC.trauma >= random(min, max);
+	},
+
+	// Core Characteristic Stats
+
+	/**
+	 * Checks if the PC's awareness is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	awareness(min, max) {
+		return validRange("Check.awareness", min, max) && PC.awareness >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's beauty is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	beauty(min, max) {
+		return validRange("Check.beauty", min, max) && PC.beauty >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's deviancy is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	deviancy(min, max) {
+		return validRange("Check.deviancy", min, max) && PC.deviancy >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's exhibitionism is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	exhibitionism(min, max) {
+		return validRange("Check.exhibitionism", min, max) && PC.exhibitionism >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's physique is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	physique(min, max) {
+		return validRange("Check.physique", min, max) && PC.physique >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's promiscuity is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	promiscuity(min, max) {
+		return validRange("Check.promiscuity", min, max) && PC.promiscuity >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's purity is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	purity(min, max) {
+		return validRange("Check.purity", min, max) && PC.purity >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's willpower is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	willpower(min, max) {
+		return validRange("Check.willpower", min, max) && PC.willpower >= random(min, max);
+	},
+
+	// Core Skill Stats
+
+	/**
+	 * Checks if the PC's athletics is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	athletics(min, max) {
+		return validRange("Check.athletics", min, max) && PC.athletics >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's danceskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	danceskill(min, max) {
+		return validRange("Check.danceskill", min, max) && PC.danceskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's housekeeping is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	housekeeping(min, max) {
+		return validRange("Check.housekeeping", min, max) && PC.housekeeping >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's skulduggery is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	skulduggery(min, max) {
+		return validRange("Check.skulduggery", min, max) && PC.skulduggery >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's swimmingskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	swimmingskill(min, max) {
+		return validRange("Check.swimmingskill", min, max) && PC.swimmingskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's tending is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	tending(min, max) {
+		return validRange("Check.tending", min, max) && PC.tending >= random(min, max);
+	},
+
+	// School Skill Stats
+
+	/**
+	 * Checks if the PC's english is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	english(min, max) {
+		return validRange("Check.english", min, max) && PC.english >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's history is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	history(min, max) {
+		return validRange("Check.history", min, max) && PC.history >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's maths is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	maths(min, max) {
+		return validRange("Check.maths", min, max) && PC.maths >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's science is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	science(min, max) {
+		return validRange("Check.science", min, max) && PC.science >= random(min, max);
+	},
+
+	// Sex Skill Stats
+
+	/**
+	 * Checks if the PC's analskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	analskill(min, max) {
+		return validRange("Check.analskill", min, max) && PC.analskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's bottomskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	bottomskill(min, max) {
+		return validRange("Check.bottomskill", min, max) && PC.bottomskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's chestskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	chestskill(min, max) {
+		return validRange("Check.chestskill", min, max) && PC.chestskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's feetskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	feetskill(min, max) {
+		return validRange("Check.feetskill", min, max) && PC.feetskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's handskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	handskill(min, max) {
+		return validRange("Check.handskill", min, max) && PC.handskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's oralskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	oralskill(min, max) {
+		return validRange("Check.oralskill", min, max) && PC.oralskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's penileskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	penileskill(min, max) {
+		return validRange("Check.penileskill", min, max) && PC.penileskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's seductionskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	seductionskill(min, max) {
+		return validRange("Check.seductionskill", min, max) && PC.seductionskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's thighskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	thighskill(min, max) {
+		return validRange("Check.thighskill", min, max) && PC.thighskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's vaginalskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	vaginalskill(min, max) {
+		return validRange("Check.vaginalskill", min, max) && PC.vaginalskill >= random(min, max);
+	},
+
+	// Weapon Skill Stats
+
+	/**
+	 * Checks if the PC's batonskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	batonskill(min, max) {
+		return validRange("Check.batonskill", min, max) && PC.batonskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's netskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	netskill(min, max) {
+		return validRange("Check.netskill", min, max) && PC.netskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's sprayskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	sprayskill(min, max) {
+		return validRange("Check.sprayskill", min, max) && PC.sprayskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's whipskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	whipskill(min, max) {
+		return validRange("Check.whipskill", min, max) && PC.whipskill >= random(min, max);
+	},
+
+	/**
+	 * Checks if the PC's pickaxeskill is above a random value between [min, max], inclusive.
+	 *
+	 * Throws an error and returns false if min and max do not form a valid range.
+	 *
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {boolean}
+	 */
+	pickaxeskill(min, max) {
+		return validRange("Check.pickaxeskill", min, max) && PC.pickaxeskill >= random(min, max);
+	},
 };
 
 /**
