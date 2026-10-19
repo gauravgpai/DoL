@@ -697,6 +697,41 @@ const PC = {
 		return activeMods;
 	},
 
+	/**
+	 * Applies and returns the value of the stat after all of the specified modifiers have been applied to it.
+	 *
+	 * @param {number} statValue
+	 * @param {Array<Modifier>} modifiers An array of the relevant modifier function names.
+	 * @returns {number}
+	 */
+	applyModifiers(statValue, modifiers) {
+		if (isNaN(statValue)) {
+			Errors.report(`[PC.applyModifiers]: statValue '${statValue}' is not a number.`, {
+				Stacktrace: Utils.GetStack(),
+				statValue,
+			});
+			return 0;
+		}
+
+		for (let i = 0; i < modifiers.length; i++) {
+			const modInfo = modifiers[i];
+
+			const modType = modInfo.type;
+			if (modType === ModType.Additive) {
+				statValue += modInfo.modifier();
+			} else if (modType === ModType.Multiplicative) {
+				statValue *= modInfo.modifier();
+			} else {
+				Errors.report(`[PC.applyModifiers]: modType '${modType}' is unknown.`, {
+					Stacktrace: Utils.GetStack(),
+					modType,
+				});
+				return 0;
+			}
+		}
+		return statValue;
+	},
+
 };
 
 const Check = {
