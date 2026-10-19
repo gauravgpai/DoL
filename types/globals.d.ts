@@ -35,6 +35,25 @@ declare global {
 		| "Zephyr"
 		| "Night Monster";
 
+	interface Modifier {
+		/**
+		 * The name of the modifier function that will be called from the "Mods" object.
+		 */
+		modName: string;
+		/**
+		 * A method that returns the result of calling the modifier function.
+		 */
+		modifier: () => {};
+		/**
+		 * How the result should be applied to the PC's stat. Potential values are stored in the "ModType" object, and should be used like an enumerator.
+		 */
+		type: string;
+		/**
+		 * A method that returns a string that describes how the modifier should be displayed to the player.
+		 */
+		label: () => {};
+	};
+
 	const V: SugarCubeStoryVariables;
 	const T: SugarCubeTemporaryVariables;
 	const C: {
