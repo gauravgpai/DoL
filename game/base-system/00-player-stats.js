@@ -2403,7 +2403,403 @@ const Cause = {
 };
 
 const Norm = {
+	// Character State Stats
 
+	/**
+	 * `return Math.clamp(PC.arousal / V.arousalmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	arousal() {
+		return Math.clamp(PC.arousal / V.arousalmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.control / V.controlmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	control() {
+		return Math.clamp(PC.control / V.controlmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.drugged / V.druggedmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	drugged() {
+		return Math.clamp(PC.drugged / V.druggedmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.drunk / V.drunkmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	drunk() {
+		return Math.clamp(PC.drunk / V.drunkmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.tiredness / V.tirednessmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	tiredness() {
+		return Math.clamp(PC.tiredness / V.tirednessmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.hallucinogen / V.hallucinogenmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	hallucinogen() {
+		return Math.clamp(PC.hallucinogen / V.hallucinogenmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.pain / V.painmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	pain() {
+		return Math.clamp(PC.pain / V.painmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.stress / V.stressmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	stress() {
+		return Math.clamp(PC.stress / V.stressmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.trauma / V.traumamax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	trauma() {
+		return Math.clamp(PC.trauma / V.traumamax, 0, 1);
+	},
+
+	// Core Characteristic Stats
+
+	/**
+	 * If PC.awareness() >= 0:
+	 * - `return Math.clamp(PC.awareness / V.awarenessmax, 0, 1)`
+	 *
+	 * If PC.awareness() < 0:
+	 * - `return Math.clamp(-(PC.awareness / V.awarenessmin), -1, 0)`
+	 *
+	 * @returns {number}
+	 */
+	awareness() {
+		if (PC.awareness() >= 0) {
+			return Math.clamp(PC.awareness / V.awarenessmax, 0, 1);
+		} else {
+			return Math.clamp(-(PC.awareness / V.awarenessmin), -1, 0);
+		}
+	},
+
+	/**
+	 * `return Math.clamp(PC.beauty / V.beautymax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	beauty() {
+		return Math.clamp(PC.beauty / V.beautymax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.deviancy / V.deviancymax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	deviancy() {
+		return Math.clamp(PC.deviancy / V.deviancymax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.exhibitionism / V.exhibitionismmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	exhibitionism() {
+		return Math.clamp(PC.exhibitionism / V.exhibitionismmax, 0, 1);
+	},
+
+	/**
+	 * return Math.clamp(PC.physique / V.physiquesize, 0, 1);
+	 *
+	 * @returns {number}
+	 */
+	physique() {
+		return Math.clamp(PC.physique / V.physiquesize, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.promiscuity / V.promiscuitymax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	promiscuity() {
+		return Math.clamp(PC.promiscuity / V.promiscuitymax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.purity / V.puritymax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	purity() {
+		return Math.clamp(PC.purity / V.puritymax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.willpower / V.willpowermax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	willpower() {
+		return Math.clamp(PC.willpower / V.willpowermax, 0, 1);
+	},
+
+	// Core Skill Stats
+
+	/**
+	 * `return Math.clamp(PC.athletics / V.athleticsmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	athletics() {
+		return Math.clamp(PC.athletics / V.athleticsmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.danceskill / V.danceskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	danceskill() {
+		return Math.clamp(PC.danceskill / V.danceskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.housekeeping / V.housekeepingmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	housekeeping() {
+		return Math.clamp(PC.housekeeping / V.housekeepingmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.skulduggery / V.skulduggerymax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	skulduggery() {
+		return Math.clamp(PC.skulduggery / V.skulduggerymax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.swimmingskill / V.swimmingskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	swimmingskill() {
+		return Math.clamp(PC.swimmingskill / V.swimmingskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.tending / V.tendingmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	tending() {
+		return Math.clamp(PC.tending / V.tendingmax, 0, 1);
+	},
+
+	// School Skill Stats
+
+	/**
+	 * `return Math.clamp(PC.english / V.englishmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	english() {
+		return Math.clamp(PC.english / V.englishmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.history / V.historymax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	history() {
+		return Math.clamp(PC.history / V.historymax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.maths / V.mathsmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	maths() {
+		return Math.clamp(PC.maths / V.mathsmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.science / V.sciencemax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	science() {
+		return Math.clamp(PC.science / V.sciencemax, 0, 1);
+	},
+
+	// Sex Skill Stats
+
+	/**
+	 * `return Math.clamp(PC.analskill / V.analskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	analskill() {
+		return Math.clamp(PC.analskill / V.analskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.bottomskill / V.bottomskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	bottomskill() {
+		return Math.clamp(PC.bottomskill / V.bottomskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.chestskill / V.chestskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	chestskill() {
+		return Math.clamp(PC.chestskill / V.chestskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.feetskill / V.feetskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	feetskill() {
+		return Math.clamp(PC.feetskill / V.feetskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.handskill / V.handskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	handskill() {
+		return Math.clamp(PC.handskill / V.handskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.oralskill / V.oralskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	oralskill() {
+		return Math.clamp(PC.oralskill / V.oralskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.penileskill / V.penileskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	penileskill() {
+		return Math.clamp(PC.penileskill / V.penileskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.seductionskill / V.seductionskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	seductionskill() {
+		return Math.clamp(PC.seductionskill / V.seductionskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.thighskill / V.thighskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	thighskill() {
+		return Math.clamp(PC.thighskill / V.thighskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.vaginalskill / V.vaginalskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	vaginalskill() {
+		return Math.clamp(PC.vaginalskill / V.vaginalskillmax, 0, 1);
+	},
+
+	// Weapon Skill Stats
+
+	/**
+	 * `return Math.clamp(PC.batonskill / V.batonskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	batonskill() {
+		return Math.clamp(PC.batonskill / V.batonskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.netskill / V.netskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	netskill() {
+		return Math.clamp(PC.netskill / V.netskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.sprayskill / V.sprayskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	sprayskill() {
+		return Math.clamp(PC.sprayskill / V.sprayskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.whipskill / V.whipskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	whipskill() {
+		return Math.clamp(PC.whipskill / V.whipskillmax, 0, 1);
+	},
+
+	/**
+	 * `return Math.clamp(PC.pickaxeskill / V.pickaxeskillmax, 0, 1)`
+	 *
+	 * @returns {number}
+	 */
+	pickaxeskill() {
+		return Math.clamp(PC.pickaxeskill / V.pickaxeskillmax, 0, 1);
+	},
 };
 
 window.ModType = ModType;
