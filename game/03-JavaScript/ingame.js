@@ -1,4 +1,4 @@
-/* global ClothesItem, ClothedSlots, paramError */
+/* global ClothesItem, ClothedSlots, paramError, PC */
 
 function mapMove(moveTo) {
 	const currentPassage = V.passage;
@@ -1493,11 +1493,9 @@ function hasSexStat(input, required, modifiers = true) {
 		return false;
 	}
 	if (modifiers) {
-		// modify effective stat value based on inebriation.
-		statValue += drunkSexStatModifier(statValue);
-
-		// modify effective stat value based on heat/rut/minArousal.
-		statValue += heatRutSexStatModifier(statName);
+		if (statName === "deviancy") statValue = PC.deviancy;
+		else if (statName === "exhibitionism") statValue = PC.exhibitionism;
+		else if (statName === "promiscuity") statValue = PC.promiscuity;
 	}
 	statValue = Math.clamp(statValue, 0, 100);
 
