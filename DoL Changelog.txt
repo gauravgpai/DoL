@@ -61,7 +61,7 @@ Renamed Night Monster's "Love" to "Interest", to be in line with other non-prima
 Renamed prison guards' "Respect" to "Trust", to more easily differentiate it from general prison respect.
 Fixed a broken conditional, so Gwylan should no longer ask the player to the cafe if the player has been missing for a long time.
 
-Thanks to JackmobTV for the mine rework:
+Thanks to JackmobTv for the mine rework:
 Reworked and greatly expanded the mine soft bad end.
 Passing out on Barb Street now has a chance for the PC to wake up in the mines.
 Added a random event to the orphanage and temple.
