@@ -147,7 +147,7 @@ You walk with them until you reach a metal gate leading to a small cave. The gro
 		<br><br>
 		<<if $history gte 300>>
 			<<set $mine.setup.map to 1>>
-			<span class="green">It's an old map of the tunnels!</span>
+			<span class="green">It's an old map of the tunnels!</span> You can't take it while the guard is watching.
 		<<else>>
 			<span class="red">You can't get a better look while the guard is watching.</span> <span class="blue">You could maybe have figured out what it is if you were better with history.</span>
 		<</if>>
@@ -418,7 +418,7 @@ You bring it over to the <<person>> and set it down on the table.
 	<br><br>
 	<<He>> soon releases you, and walks away as if nothing had happened.
 <<else>>
-	You push <<him>> away from you. "I know you want this you, <<slut>>," <<he>> says while groping your <<bottom>>. <<He>> pushes you away from <<him>> and walks away as if nothing had happened.
+	You push <<him>> away from you. "I know you want this, you <<slut>>," <<he>> says while groping your <<bottom>>. <<He>> pushes you away from <<him>> and walks away as if nothing had happened.
 <</if>>
 <br><br>
 <<endevent>>
