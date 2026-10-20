@@ -71,7 +71,8 @@
  */
 
 const ModType = {
-
+	Additive: "ADDITIVE",
+	Multiplicative: "MULTIPLICATIVE",
 };
 
 const Mods = {
