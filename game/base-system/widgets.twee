@@ -3105,7 +3105,7 @@
 				<img class="characteristic-icon" @src="'img/' + _config.icon + '.png'" />
 			<</if>>
 			<span class="characteristic-title">
-				_config.name<<characteristic-box-modifier `clone(_config.modifier)` `clone(_config.modTypes)` `clone(_config.name)`>>
+				_config.name<<characteristic-box-modifier `clone(_config.currentValue)` `clone(_config.modifiedValue)` `clone(_config.modTypes)` `clone(_config.name)`>>
 				<<if _config.sensitivity gte 4>>
 					<mouse class = "pink tooltip-small">
 						!!!
@@ -3156,25 +3156,53 @@
 <</widget>>
 
 <<widget "characteristic-box-modifier">><<silently>>
-	<<if _args[0] isnot undefined or _args[0] isnot 100>>
-		<<set $_modifier to _args[0] - 100>>
-		<<if $_modifier gt 0>>
-			<<set $_result to " <small class='green characteristic-modifier'>(+"+$_modifier+"%)</small>">>
-		<<elseif $_modifier lt 0>>
-			<<set $_result to " <small class='red characteristic-modifier'>("+$_modifier+"%)</small>">>
-		<<elseif ["Promiscuity", "Exhibitionism", "Deviancy"].includes(_args[2]) and (drunkSexStatModifier(V[_args[2].toLowerCase()]) gte 1 or heatRutSexStatModifier(_args[2].toLowerCase()) gte 1)>>
-			<<set $_result to " <span class='" + getLargestSexStatModifierCssClasses(_args[2].toLowerCase()) + "'><small class='blue characteristic-modifier'>(???%)</small></span>">>
+	<<set $_currentValue to _args[0]>>
+	<<set $_modifiedValue to _args[1]>>
+	<<set $_modTypes to _args[2]>>
+	<<set $_name to _args[3]>>
+
+	<<if $_modTypes.good.length gt 0 or $_modTypes.bad.length gt 0>>
+		<<if $_currentValue is 0 and $_modifiedValue gt 0>>
+			<<set $_result to " <small class='green characteristic-modifier'>(+?%)</small>">>
+		<<elseif $_currentValue is 0 and $_modifiedValue lte 0 and $_modTypes.good.length gt 0>>
+			<<set $_result to " <small class='green characteristic-modifier'>(+0%)</small>">>
+		<<elseif $_currentValue is 0 and $_modifiedValue lte 0 and $_modTypes.bad.length gt 0>>
+			<<set $_result to " <small class='red characteristic-modifier'>(-0%)</small>">>
+		<<else>>
+			<<set $_modifier to Math.round(100 * ($_modifiedValue / $_currentValue) - 100)>>
+			
+			<<if $_modifier gt 0>>
+				<<set $_result to " <small class='green characteristic-modifier'>(+"+$_modifier+"%)</small>">>
+			<<elseif $_modifier lt 0>>
+				<<set $_result to " <small class='red characteristic-modifier'>("+$_modifier+"%)</small>">>
+			<</if>>
 		<</if>>
 	<</if>>
 	<</silently>>
 	<<if $_result>>
-		<<set $_good to _args[1].good>>
-		<<set $_bad to _args[1].bad>>
-		<<set $_stat to _args[2].toLowerCase()>>
-		<span @class="$_modifier gt 0 ? 'green' : 'red'"><mouse class = "tooltip-small">
+		<!-- Convert the Modifier objects into only an array of their labels. -->
+		<<set $_good to $_modTypes.good>>
+		<<for $_i = 0; $_i lt $_good.length; $_i++>>
+			<<set $_good[$_i] to $_good[$_i].label()>>
+		<</for>>
+		<<set $_bad to $_modTypes.bad>>
+		<<for $_i = 0; $_i lt $_bad.length; $_i++>>
+			<<set $_bad[$_i] to $_bad[$_i].label()>>
+		<</for>>
+		<<set $_stat to $_name.toLowerCase()>>
+		<span @class="$_good.length gt 0 ? ($_bad.length gt 0 ? 'blue' : 'green') : 'red'"><mouse class = "tooltip-small">
 			$_result
 			<<if $_good.length gt 0 and $_bad.length gt 0>>
-				<span class="green">Increasing your $_stat: <<print $_good>> <span class="red">Decreasing your $_stat: <<print $_bad>></span></span>
+				<span>
+					<!-- "placeholder" can be anything without a definition in the CSS files. It's there to prevent the text from being put into two separate boxes. -->
+					<placeholder class="green">
+						Increasing your $_stat: <<print $_good>>
+					</placeholder>
+					<br>
+					<placeholder class="red">
+						Decreasing your $_stat: <<print $_bad>>
+					</placeholder>
+				</span>
 			<<elseif $_good.length gt 0>>
 				<span class="green">Increasing your $_stat: <<print $_good>></span>
 			<<elseif $_bad.length gt 0>>

@@ -1,4 +1,4 @@
-/* global ClothesItem, ClothedSlots, paramError */
+/* global ClothesItem, ClothedSlots, paramError, PC */
 
 function mapMove(moveTo) {
 	const currentPassage = V.passage;
@@ -1469,65 +1469,6 @@ function sexStatNameMapper(input) {
 window.sexStatNameMapper = sexStatNameMapper;
 
 /**
- * @param {number} statValue
- */
-function drunkSexStatModifier(statValue) {
-	if (V.drunk === 0) return 0;
-
-	const maxValue = 40; // The maximum value of the curve.
-	const valueAdjust = Math.clamp(maxValue - Math.floor(statValue / 4), 0, maxValue); // The curve is less effective with higher base stat.
-	const growthRate = 3; // How fast the curve grows as the drunk value increases.
-	const midpoint = 500; // Needs to be half of the max drunk value.
-	const shifter = 0.85; // Decreases this value to make lower drunk values give higher results and higher drunk values give lower results.
-	const drunkMod = (V.drunk - midpoint) / 500; // Adjusts the drunk values to be scaled correctly with the equation and max stat value.
-	const denominator = 1 + shifter * Math.E ** (-1 * growthRate * drunkMod);
-
-	return Math.floor(valueAdjust / denominator);
-}
-window.drunkSexStatModifier = drunkSexStatModifier;
-
-/**
- * Returns the modifier for a sexStat based on heat/rut/minArousal and the stat provided.
- *
- * @param {string} input
- * @returns {number}
- */
-function heatRutSexStatModifier(input) {
-	/**
-	 * While the PC's minimum arousal can technically go higher than 2500, a PC with only a penis has this arousal max out at 1500, and a PC with only a vagina has this arousal max out at 2500 (when risk = 0 and taking fertility pills). This also assumes the PC does not have ear slimes and anal pregnancy is disabled.
-	 *
-	 * To account for this, the PC's Sex Stat mods will have their boosts max out at 2,500 minimum arousal to make the effects more noticeable.
-	 *
-	 * The PC's actual maximum minimum arousal threshold, meanwhile, is handled in a separate function.
-	 */
-	const maxMinArousal = 2500; // Maximum value for minArousal.
-	const minArousal = Math.clamp(playerHeatMinArousal() + playerRutMinArousal(), 0, maxMinArousal);
-	if (minArousal === 0) return 0;
-
-	const statName = sexStatNameMapper(input);
-	if (statName == null) {
-		Errors.report(`[heatRutSexStatModifier]: input '${statName}' null.`, {
-			Stacktrace: Utils.GetStack(),
-			statName,
-		});
-		return 0;
-	}
-
-	if (statName === "exhibitionism") return 0;
-
-	const maxHeatRutSexStatModifier = 30; // Maximum modifier for sexStat() from minArousal.
-	const heatRutSexStatModifierExponent = 0.6; // Lower to raise the final modifier at lower levels of minArousal.
-	const heatRutSexStatModifier = (maxHeatRutSexStatModifier / maxMinArousal ** heatRutSexStatModifierExponent) * minArousal ** heatRutSexStatModifierExponent;
-
-	if (statName === "promiscuity") {
-		return Math.floor(heatRutSexStatModifier * 0.75);
-	} else {
-		return Math.floor(heatRutSexStatModifier);
-	}
-}
-window.heatRutSexStatModifier = heatRutSexStatModifier;
-
-/**
  * @param {string} input
  * @param {number} required
  * @param {boolean} modifiers
@@ -1552,11 +1493,9 @@ function hasSexStat(input, required, modifiers = true) {
 		return false;
 	}
 	if (modifiers) {
-		// modify effective stat value based on inebriation.
-		statValue += drunkSexStatModifier(statValue);
-
-		// modify effective stat value based on heat/rut/minArousal.
-		statValue += heatRutSexStatModifier(statName);
+		if (statName === "deviancy") statValue = PC.deviancy;
+		else if (statName === "exhibitionism") statValue = PC.exhibitionism;
+		else if (statName === "promiscuity") statValue = PC.promiscuity;
 	}
 	statValue = Math.clamp(statValue, 0, 100);
 

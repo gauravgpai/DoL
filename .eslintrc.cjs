@@ -14,6 +14,7 @@ module.exports = {
 		l10nStrings: "readonly",
 		LoadScreen: "readonly",
 		Macro: "readonly",
+		Modifier: "readonly",
 		Save: "readonly",
 		Scripting: "readonly",
 		Setting: "readonly",

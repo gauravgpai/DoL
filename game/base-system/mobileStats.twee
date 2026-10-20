@@ -93,11 +93,11 @@
 		<<case "allure">>
 			<<mobileStatsColorAllure>>
 		<<case "drunk">>
-			<<mobileStatsColorSet `Math.clamp($drunk, C.stats.drunk.effectLimit / 10, C.stats.drunk.effectLimit)` C.stats.drunk.effectLimit>>
+			<<mobileStatsColorSet `Math.clamp($drunk, $drunklimit / 10, $drunklimit)` $drunklimit>>
 		<<case "drugged">>
-			<<mobileStatsColorSet `Math.clamp($drugged, 50, 500)` 500>>
+			<<mobileStatsColorSet `Math.clamp($drugged, $druggedlimit / 10, $druggedlimit)` $druggedlimit>>
 		<<case "hallucinogen">>
-			<<mobileStatsColorSet `Math.clamp($hallucinogen, 50, 500)` 500>>
+			<<mobileStatsColorSet `Math.clamp($hallucinogen, $hallucinogenlimit / 10, $hallucinogenlimit)` $hallucinogenlimit>>
 	<</switch>>
 <</widget>>
 

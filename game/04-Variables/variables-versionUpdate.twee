@@ -7471,6 +7471,7 @@
 		<<set $drunkSensitivity to $alcoholMod>>
 		<<unset $alcoholMod>>
 	<</if>>
+
 	<<if $fishing is undefined>>
 		<<set $fishing to {}>>
 		<<set $fishing.locationsFound to []>>
@@ -7621,7 +7622,7 @@
 		<</switch>>
 	<</if>>
 
-	/*0.5.12.13 */
+	/* 0.5.12.13 */
 	<<if $wrenHeist is false and $wrenHeistMonthly is undefined>>
 		<<unset $wrenHeist>>
 	<</if>>
@@ -7708,4 +7709,75 @@
 		<<set $kylar_altar_research to []>>
 		<<set $kylar_altar_library to 0>>
 	<</if>>
+
+	<!-- PC Stat Max Initializations. -->
+
+	<!-- Character State Maximums -->
+	<<if $arousalmax is undefined>><<set $arousalmax to 10000>><</if>>
+	<<if $controlmax is undefined>><<set $controlmax to 1000>><</if>>
+	<<if $druggedmax is undefined>><<set $druggedmax to 1000>><</if>>
+	<<if $drunkmax is undefined>><<set $drunkmax to 1000>><</if>>
+	<<if $tirednessmax is undefined>><<set $tirednessmax to 2000>><</if>>
+	<<if $hallucinogenmax is undefined>><<set $hallucinogenmax to 1000>><</if>>
+	<<if $painmax is undefined>><<set $painmax to 200>><</if>>
+	<<if $stressmax is undefined>><<set $stressmax to 10000>><</if>>
+	<<if $traumamax is undefined>><<set $traumamax to 5000>><</if>>
+
+	<!-- Core Characteristic Maximums -->
+	<<if $awarenessmax is undefined>><<set $awarenessmax to 1000>><</if>>
+	<<if $awarenessmin is undefined>><<set $awarenessmin to -200>><</if>>
+	<<if $beautymax is undefined>><<set $beautymax to 10000>><</if>>
+	<<if $deviancymax is undefined>><<set $deviancymax to 100>><</if>>
+	<<if $exhibitionismmax is undefined>><<set $exhibitionismmax to 100>><</if>>
+	<<if $physiquemax is undefined>><<set $physiquemax to 20000>><</if>>
+	<<if $promiscuitymax is undefined>><<set $promiscuitymax to 100>><</if>>
+	<<if $puritymax is undefined>><<set $puritymax to 1000>><</if>>
+	<<if $willpowermax is undefined>><<set $willpowermax to 1000>><</if>>
+
+	<!-- Physique Body Size Maximums -->
+	<<if $largemax is undefined>><<set $largemax to 15000>><</if>>
+	<<if $normalmax is undefined>><<set $normalmax to 12000>><</if>>
+	<<if $smallmax is undefined>><<set $smallmax to 9000>><</if>>
+	<<if $tinymax is undefined>><<set $tinymax to 6000>><</if>>
+
+	<!-- Core Skill Maximums -->
+	<<if $athleticsmax is undefined>><<set $athleticsmax to 1000>><</if>>
+	<<if $danceskillmax is undefined>><<set $danceskillmax to 1000>><</if>>
+	<<if $housekeepingmax is undefined>><<set $housekeepingmax to 1000>><</if>>
+	<<if $skulduggerymax is undefined>><<set $skulduggerymax to 1000>><</if>>
+	<<if $swimmingskillmax is undefined>><<set $swimmingskillmax to 1000>><</if>>
+	<<if $tendingmax is undefined>><<set $tendingmax to 1000>><</if>>
+
+	<!-- School Skill Maximums -->
+	<<if $englishmax is undefined>><<set $englishmax to 1000>><</if>>
+	<<if $historymax is undefined>><<set $historymax to 1000>><</if>>
+	<<if $mathsmax is undefined>><<set $mathsmax to 1000>><</if>>
+	<<if $sciencemax is undefined>><<set $sciencemax to 1000>><</if>>
+
+	<!-- Sex Skill Maximums -->
+	<<if $analskillmax is undefined>><<set $analskillmax to 1000>><</if>>
+	<<if $bottomskillmax is undefined>><<set $bottomskillmax to 1000>><</if>>
+	<<if $chestskillmax is undefined>><<set $chestskillmax to 1000>><</if>>
+	<<if $feetskillmax is undefined>><<set $feetskillmax to 1000>><</if>>
+	<<if $handskillmax is undefined>><<set $handskillmax to 1000>><</if>>
+	<<if $oralskillmax is undefined>><<set $oralskillmax to 1000>><</if>>
+	<<if $penileskillmax is undefined>><<set $penileskillmax to 1000>><</if>>
+	<<if $seductionskillmax is undefined>><<set $seductionskillmax to 1000>><</if>>
+	<<if $thighskillmax is undefined>><<set $thighskillmax to 1000>><</if>>
+	<<if $vaginalskillmax is undefined>><<set $vaginalskillmax to 1000>><</if>>
+
+	<!-- Weapon Skill Maximums -->
+	<<if $batonskillmax is undefined>><<set $batonskillmax to 1000>><</if>>
+	<<if $netskillmax is undefined>><<set $netskillmax to 1000>><</if>>
+	<<if $sprayskillmax is undefined>><<set $sprayskillmax to 1000>><</if>>
+	<<if $whipskillmax is undefined>><<set $whipskillmax to 1000>><</if>>
+	<<if $pickaxeskillmax is undefined>><<set $pickaxeskillmax to 1000>><</if>>
+	
+	<!-- PC Stat Limit Initializations. -->
+
+	<!-- Character State Limits -->
+	<<if $druggedlimit is undefined>><<set $druggedlimit to 500>><</if>>
+	<<if $drunklimit is undefined>><<set $drunklimit to 500>><</if>>
+	<<if $hallucinogenlimit is undefined>><<set $hallucinogenlimit to 500>><</if>>
+
 <</widget>>

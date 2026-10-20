@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable jsdoc/require-description-complete-sentence */
-/* globals hasSexStat, sexStatNameMapper, heatRutSexStatModifier, drunkSexStatModifier */
+/* globals hasSexStat, sexStatNameMapper, Mods */
 
 function overlayShowHide(elementId) {
 	const div = document.getElementById(elementId);
@@ -491,17 +491,31 @@ function getLargestSexStatModifierCssClasses(input, requiredLevel = 0) {
 		return "";
 	}
 
-	const drunkSexStatModifierValue = drunkSexStatModifier(V[statName]);
-	const heatRutSexStatModifierValue = heatRutSexStatModifier(statName);
+	let drunkSexBoostValue;
+	let heatRutSexBoostValue;
+	switch (statName) {
+		case "deviancy":
+			drunkSexBoostValue = Mods.drunkSexBoost(V.deviancy);
+			heatRutSexBoostValue = Mods.heatRutSexBoost(1.0);
+			break;
+		case "exhibitionism":
+			drunkSexBoostValue = Mods.drunkSexBoost(V.exhibitionism);
+			heatRutSexBoostValue = Mods.heatRutSexBoost(0);
+			break;
+		case "promiscuity":
+			drunkSexBoostValue = Mods.drunkSexBoost(V.promiscuity);
+			heatRutSexBoostValue = Mods.heatRutSexBoost(0.75);
+			break;
+	}
 
 	// If there is a modifier and either requiredLevel is 0 or the modifiers put the player up a level of the sexStat.
 	if (
-		drunkSexStatModifierValue + heatRutSexStatModifierValue > 0 &&
+		drunkSexBoostValue + heatRutSexBoostValue > 0 &&
 		(requiredLevel === 0 || (!hasSexStat(statName, requiredLevel, false) && hasSexStat(statName, requiredLevel, true)))
 	) {
 		const modifiers = [
-			{ value: drunkSexStatModifierValue, class: "drunk" },
-			{ value: heatRutSexStatModifierValue, class: "jitter" },
+			{ value: drunkSexBoostValue, class: "drunk" },
+			{ value: heatRutSexBoostValue, class: "jitter" },
 		];
 
 		// Gets the largest modifier.

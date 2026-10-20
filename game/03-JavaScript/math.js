@@ -504,3 +504,63 @@ function arrayConvert(a, convert) {
 	return array;
 }
 window.arrayConvert = arrayConvert;
+
+/**
+ * "Checks" if something like `Check.stat(min, max)` is called with valid values for min and max :3
+ *
+ * Throws an error if the values are invalid.
+ *
+ * Requirements:
+ * - min and max are integers
+ * - min <= max
+ *
+ * @param {number} ID Name of the function / widget / line where `validRange` is called.
+ * @param {number} min
+ * @param {number} max
+ * @returns {boolean} Returns true if the range is valid, false otherwise.
+ */
+function validRange(ID, min, max) {
+	if (isNaN(min)) {
+		Errors.report(`[validRange]: min '${min}' not a number.`, {
+			Stacktrace: Utils.GetStack(),
+			ID,
+			min,
+		});
+		return false;
+	} else if (min % 1 !== 0) {
+		Errors.report(`[validRange]: min '${min}' not an integer.`, {
+			Stacktrace: Utils.GetStack(),
+			ID,
+			min,
+		});
+		return false;
+	}
+
+	if (isNaN(max)) {
+		Errors.report(`[validRange]: max '${max}' not a number.`, {
+			Stacktrace: Utils.GetStack(),
+			ID,
+			max,
+		});
+		return false;
+	} else if (max % 1 !== 0) {
+		Errors.report(`[validRange]: max '${max}' not an integer.`, {
+			Stacktrace: Utils.GetStack(),
+			ID,
+			max,
+		});
+		return false;
+	}
+
+	if (min > max) {
+		Errors.report(`[validRange]: min '${min}' is greater than max '${max}'.`, {
+			Stacktrace: Utils.GetStack(),
+			ID,
+			min,
+			max,
+		});
+		return false;
+	}
+	return true;
+}
+window.validRange = validRange;
