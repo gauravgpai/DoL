@@ -109,7 +109,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 <<addinlineevent "nothing">>
 	You don't find anything of note.
 	<br><br>
-	
+	<<mine_links>>
 <</addinlineevent>>
 
 <<addinlineevent "gem">>
