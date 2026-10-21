@@ -10099,12 +10099,12 @@ sugarcube-2:
       name: kylar_pet_name
     kylar_stockholm_start:
       name: kylar_stockholm_start
-    kylarangry:
-      name: kylarangry
+    kylarAngry:
+      name: kylarAngry
     kylarFinish:
       name: kylarFinish
-    kylargag:
-      name: kylargag
+    kylarGag:
+      name: kylarGag
     kylarhallways:
       name: kylarhallways
     kylarLibrary:
@@ -10115,12 +10115,12 @@ sugarcube-2:
       description: |-
         Prints paragraph chatting with Kylar in the library
       tags: ["text"]
-    kylaroptions:
-      name: kylaroptions
-    kylaroptionsleave:
-      name: kylaroptionsleave
-    kylaroptionstext:
-      name: kylaroptionstext
+    kylarOptions:
+      name: kylarOptions
+    kylarOptionsLeave:
+      name: kylarOptionsLeave
+    kylarOptionsText:
+      name: kylarOptionsText
     kylarRandomUnderwear:
       name: kylarRandomUnderwear
     kylarReunionScene:
@@ -15339,8 +15339,8 @@ sugarcube-2:
     relation-text:
       name: relation-text
       tags: ["unused"]
-    relationshipclamp:
-      name: relationshipclamp
+    relationshipClamp:
+      name: relationshipClamp
     relationshiptext:
       name: relationshiptext
     relaxed_guard:
