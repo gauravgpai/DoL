@@ -924,3 +924,23 @@ function wetAll(amount = 200) {
 	wetLower(amount);
 }
 DefineMacro("wetAll", wetAll);
+
+/**
+ * Checks if pc's lower clothing can be pulled down
+ *
+ * @returns {boolean}
+ */
+function pantsable() {
+	return V.worn.lower.one_piece !== 1 && !["shortalls"].includes(V.worn.lower.name);
+}
+window.pantsable = pantsable;
+
+/**
+ * Checks if pc's lower clothing can be flipped up
+ *
+ * @returns {boolean}
+ */
+function upskirtable() {
+	return setup.clothes.lower[clothesIndex("lower", V.worn.lower)].skirt === 1;
+}
+window.upskirtable = upskirtable;

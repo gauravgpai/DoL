@@ -551,12 +551,14 @@
 							<<generate1>><<person1>>A <<person>> rakes leaves off the pavement and into a pile. Just as <<he>> finishes, the wind scatters them across the sidewalk yet again, causing <<him>> to curse loudly. <<stress -3>><<lstress>>
 							<<endevent>>
 						<</addinlineevent>>
-						<<addinlineevent "autumn_anystreet_3">>
-							<<generate1>><<person1>>A <<person>> stands on the sidewalk using a leaf blower to clear the sidewalks. As you near <<him>>, <<he>> turns suddenly, and the powerful blast of air from the blower sends your clothes into various states of disarray, giving anyone nearby a show.
-							<br><br>
-							The <<person>> laughs as you walk past, wrangling your clothes back in order. <<stress 3>><<arousal 10>><<gstress>><<garousal>>
-							<<endevent>>
-						<</addinlineevent>>
+						<<if upskirtable()>>
+							<<addinlineevent "autumn_anystreet_3">>
+								<<generate1>><<person1>>A <<person>> stands on the sidewalk using a leaf blower to clear the sidewalks. As you near <<him>>, <<he>> turns suddenly, and the powerful blast of air from the blower sends your clothes into various states of disarray, giving anyone nearby a show.
+								<br><br>
+								The <<person>> laughs as you walk past, wrangling your clothes back in order. <<stress 3>><<arousal 10>><<gstress>><<garousal>>
+								<<endevent>>
+							<</addinlineevent>>
+						<</if>>
 					<</if>>
 				<<case "alley">>
 					<<addinlineevent "autumn_anyalley_1">>

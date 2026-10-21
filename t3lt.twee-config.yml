@@ -13712,13 +13712,6 @@ sugarcube-2:
 
         See `<<npcClothesText>>` for full name of clothes
       tags: ["text"]
-    pantsable:
-      description: |-
-        Checks if pc's lower clothing can be pulled down/ flipped up
-
-        `_pantsable` will be set to 0 or 1 if lower can be pulled down
-        `_upskirt` will be set to 0 or 1 if lower can be flipped up
-      tags: ["temp"]
     pantsdowncomments:
       name: pantsdowncomments
     pantsdownevents:
