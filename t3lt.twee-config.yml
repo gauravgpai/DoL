@@ -11833,6 +11833,10 @@ sugarcube-2:
       description: |-
         Prints orgasm text for mines
       name: mine_orgasm
+    mine_links:
+      description: |-
+        Prints post sbe mines links
+      name: mine_links
     mirror:
       description: |-
         Prints wrapper for mirror options
