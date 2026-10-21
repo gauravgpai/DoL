@@ -7522,6 +7522,10 @@
 		<<set $options.fishingBaitSelection to "sidebar">>
 	<</if>>
 
+	<<if $objectVersion.updateAccessories lt 1 or $objectVersion.updateAccessories is undefined>>
+		<<updateAccessories>>
+	<</if>>
+
 	<<if $foodstuff.cod?.supermarket>>
 		<<unset $foodstuff.cod.supermarket>>
 	<</if>>

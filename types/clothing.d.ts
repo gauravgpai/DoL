@@ -55,6 +55,12 @@ declare module "twine-sugarcube" {
 		lowerwetstage: number;
 		underlowerwetstage: number;
 		specialClothes: specialClothesItem[];
+		accessories: {
+			[x in AccessoryTypes]: AccessoryItem[];
+		};
+		wornAccessories: {
+			[x in AccessoryTypes]: AccessoryItem[];
+		};
 	}
 
 	export interface SugarCubeSetupObject {
@@ -78,6 +84,13 @@ declare module "twine-sugarcube" {
 		moddedProps: {
 			[x: string]: PropSetup;
 		};
+		accessories: {
+			[x in AccessoryTypes]: AccessoryItemSetup[];
+		};
+		moddedAccessories: {
+			[x in AccessoryTypes]: AccessoryItemSetup[];
+		};
+		accessoriesAllTypes: AccessoryTypes[];
 	}
 }
 
@@ -106,6 +119,8 @@ declare global {
 		| "legs"
 		| "feet"
 		| "genitals";
+
+	export type AccessoryTypes = "sides" | "fringes";
 
 	export type SexToySlots = "strap-on" | "vibrator" | "dildo" | "butt_plug" | "lube" | "stroker" | "aphrodisiacpill" | "breastpump";
 
@@ -382,6 +397,39 @@ declare global {
 		// Modded clothing only
 		modder?: string;
 		// TODO list and document other options
+	}
+	export interface AccessoryItem {
+		setupIndex: number;
+		type: string;
+		variable: string;
+		colour: string;
+		colourCustom: string;
+		customName?: string;
+	}
+
+	export interface AccessoryItemSetup {
+		index: number;
+		name: string;
+		name_cap: string;
+		/**
+		 * Folder name
+		 */
+		variable: string;
+		type: string;
+		/**
+		 * a: A piercing.
+		 *
+		 * n: Ribbons.
+		 *
+		 * an: An earring.
+		 */
+		word: "a" | "n" | "an";
+		/** Whether the item is plural */
+		plural: number;
+		cost: number;
+		description: string;
+		shop: string[];
+		colour_options: string[];
 	}
 
 	export interface Wardrobe {

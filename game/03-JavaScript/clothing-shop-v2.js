@@ -603,3 +603,9 @@ DefineMacro("updatewarmthscale", () => {
 		indicatorNew.hide();
 	});
 });
+
+function addAccessory(accessory, colour) {
+	V.accessories[accessory.type].push({ index: accessory.index, colour });
+}
+
+DefineMacro("addAccessory", addAccessory);

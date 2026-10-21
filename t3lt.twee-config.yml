@@ -130,6 +130,8 @@ sugarcube-2:
       name: acceptassignment
     acceptbrothelshow:
       name: acceptbrothelshow
+    accessoryData:
+      name: accessoryData
     actioncarry:
       name: actioncarry
     actioncarrydrop:

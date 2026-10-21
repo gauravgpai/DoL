@@ -109,6 +109,10 @@ DefineMacro("modelprepare-player-body", function () {
 	T.modeloptions.hair_fringe_length = V.fringelengthstage;
 	T.modeloptions.hair_fringe_type = V.fringetype;
 
+	if (V.wornAccessories.sides.length > 0) {
+		T.modeloptions.sides_accessory = V.wornAccessories.sides[0];
+	}
+
 	/*
 			█████  ██████  ███    ███ ███████
 			██   ██ ██   ██ ████  ████ ██

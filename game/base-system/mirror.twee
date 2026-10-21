@@ -1456,7 +1456,7 @@
 		<div class="containerHeader" class="no-numberify">
 			<<mirrorhairdisplayLinks "hair">>
 		</div>
-		<<mirrorhairdisplay "$hairtype" "sides">>
+		<<mirrorhairdisplay "hair">>
 	</div>
 	<br><br>
 <</widget>>
@@ -1502,13 +1502,30 @@
 		<<set _page to 1>>
 	<</if>>
 	<<set _hairCategory to _args[0]>>
-	<<mirrorhairOptions _args[1]>>
+	<<mirrorhairOptions _hairCategory>>
 
 	<div id="hairContainerElements">
 		<<mirrorhairdisplayElements _hairOptions>>
 	</div>
 	<div id="hairContainerPages" class="no-numberify">
-		<<mirrorhairControls _args[1]>>
+		<<mirrorhairControls _hairCategory>>
+	</div>
+<</widget>>
+
+<<widget "mirrorAccessoryDisplay">>
+	<<if _hairCategory isnot "accessories">>
+		<<set _perPage to $showMannequins ? 14 : 100>>
+		<<set _page to 1>>
+	<</if>>
+
+	<<set _hairCategory to "accessories">>
+	<<mirrorAccessoryOptions>>
+
+	<div id="hairContainerElements">
+		<<mirrorHairAccessoriesDisplayElements _hairOptions>>
+	</div>
+	<div id="hairContainerPages" class="no-numberify">
+		<<mirrorhairControls _hairCategory>>
 	</div>
 <</widget>>
 
@@ -1543,6 +1560,13 @@
 					<</button>>
 				</div>
 			</div>
+			<<if _args[0] is "accessories">>
+				<div class="tab">
+					<div class="accessory-discard-container">
+						<<checkbox "_discardAccessories" false true autocheck>> Discard
+					</div>
+				</div>
+			<</if>>
 		</div>
 	<</if>>
 <</widget>>
@@ -1550,26 +1574,43 @@
 <<widget "mirrorhairTraits">>
 	<div id="hairContainerFilter">
 		<div class="tab">
-				<<button "<span class='fa-icon fa-check'></span> Apply">>
-					<<set $shopClothingFilter.active = true>>
-					<<run updateMoment()>>
-				<</button>>
-				<<button "<span class='fa-icon fa-reset'></span> Reset Filters">>
-					<<shopClothingFilterReset>>
-					<<replace "#hairContainerTraits">><<mirrorHairTraitList>><</replace>>
-					<<run updateMoment()>>
-				<</button>>
-				<<button "<span class='fa-icon fa-selected'></span> Select/Deselect All">>
-					<<run toggleAllHairTraitsFilter()>>
-				<</button>>
+			<<button "<span class='fa-icon fa-check'></span> Apply">>
+				<<set $shopClothingFilter.active = true>>
+				<<run updateMoment()>>
+			<</button>>
+			<<button "<span class='fa-icon fa-reset'></span> Reset Filters">>
+				<<shopClothingFilterReset>>
+				<<replace "#hairContainerTraits">><<mirrorHairTraitList>><</replace>>
+				<<run updateMoment()>>
+			<</button>>
+			<<button "<span class='fa-icon fa-selected'></span> Select/Deselect All">>
+				<<run toggleAllHairTraitsFilter()>>
+			<</button>>
 		</div>
 	</div>
 <</widget>>
 
 <<widget "mirrorhairOptions">>
 	<<set _hairOptions to {}>>
-	<<run setup.hairstyles[_args[0]].forEach(style => {
-		if (!V.shopClothingFilter.active || !V.shopClothingFilter.traits.length || style.type.find(type => V.shopClothingFilter.traits.includes(type))) T.hairOptions[style.name] = style.variable;
+	<<set _fringesides to _args[0] is "hair" ? "sides" : "fringe">>
+
+	<<run setup.hairstyles[_fringesides].forEach(style => {
+		if ((!V.shopClothingFilter.active || !V.shopClothingFilter.traits.length || style.type.find(type => V.shopClothingFilter.traits.includes(type))) && (!style.type.includes("ribbon") || haveSidesAccessoryFor(_fringesides, style))) T.hairOptions[style.name] = style.variable;
+	})>>
+	<<set _pageMax to Math.ceil(Object.keys(_hairOptions).length / _perPage)>>
+
+	<<run Object.keys(_hairOptions).forEach((key, index) => {
+	if (!between(index, T.perPage * (T.page - 1), (T.perPage * T.page) - 1)) {
+			delete T.hairOptions[key];
+		}
+	})>>
+<</widget>>
+
+<<widget "mirrorAccessoryOptions">>
+	<<set _hairOptions to {}>>
+	<<run V.accessories.sides.forEach(a => {
+		let original = setup.accessories.sides[a.setupIndex];
+		if (original.variable === V.hairtype) T.hairOptions[a.colour === "custom" ? a.customName : a.colour] = a;
 	})>>
 	<<set _pageMax to Math.ceil(Object.keys(_hairOptions).length / _perPage)>>
 
@@ -1581,32 +1622,47 @@
 <</widget>>
 
 <<widget "mirrorhairdisplayLinks">>
+	<<set _mirrorTab to _args[0]>>
 	<div class="tab">
-		<span @class="_args[0] is 'hair' ? 'tab-selected' : 'tab'">
+		<span @class="_mirrorTab is 'hair' ? 'tab-selected' : 'tab'">
 			<<button "Sides">>
 				<<replace "#hairContainer">>
 					<div class="containerHeader" class="no-numberify">
 						<<mirrorhairdisplayLinks "hair">>
 					</div>
-					<<mirrorhairdisplay "$hairtype" "sides">>
+					<<mirrorhairdisplay _mirrorTab>>
 				<</replace>>
 			<</button>>
 		</span>
 	</div>
 	<div class="tab">
-		<span @class="_args[0] is 'fringe' ? 'tab-selected' : ''">
+		<span @class="_mirrorTab is 'fringe' ? 'tab-selected' : ''">
 			<<button "Fringe">>
 				<<replace "#hairContainer">>
 					<div class="containerHeader" class="no-numberify">
 						<<mirrorhairdisplayLinks "fringe">>
 					</div>
-					<<mirrorhairdisplay "$fringetype" "fringe">>
+					<<mirrorhairdisplay _mirrorTab>>
 				<</replace>>
 			<</button>>
 		</span>
 	</div>
+	<<if setup.hairstyles.sides.find(hs => hs.variable === V.hairtype).type.includes("ribbon")>>
+		<div class="tab">
+			<span @class="_mirrorTab is 'accessories' ? 'tab-selected' : ''">
+				<<button "Accessories">>
+					<<replace "#hairContainer">>
+						<div class="containerHeader" class="no-numberify">
+							<<mirrorhairdisplayLinks "accessories">>
+						</div>
+						<<mirrorAccessoryDisplay>>
+					<</replace>>
+				<</button>>
+			</span>
+		</div>
+	<</if>>
 	<div class="tab">
-		<span @class="_args[0] is 'style' ? 'tab-selected' : ''">
+		<span @class="_mirrorTab is 'style' ? 'tab-selected' : ''">
 			<<button "Save/Load">>
 				<<replace "#hairContainer">>
 					<div class="containerHeader" class="no-numberify">
@@ -1620,7 +1676,7 @@
 		</span>
 	</div>
 	<div class="tab">
-		<span @class="_args[0] is 'filter' ? 'tab-selected' : ''">
+		<span @class="_mirrorTab is 'filter' ? 'tab-selected' : ''">
 			<<button "Filters">>
 				<<replace "#hairContainer">>
 					<div class="containerHeader" class="no-numberify">
@@ -1637,7 +1693,7 @@
 	<div id="hairGridSides" class="no-numberify hairGrid">
 		<<for _label, _hairName range _args[0]>>
 			<<capture _hairCategory, _hairName>>
-				<div @id="'hairGrid-' + _hairCategory.replace('$','') + '-' + _hairName.replace(/ /g,'')" @class="'gridItem' + (_hairName is V[_hairCategory.replace('$','')] ? ' selectedHair' : '')" @onclick="`wikifier('mirrorhairdisplayClick', '${T.hairCategory.replace('$','')}', '${T.hairName.replace(/ /g,'_')}');`">
+				<div @id="'hairGrid-' + _hairCategory + 'type-' + _hairName.replace(/ /g,'')" @class="'gridItem' + (_hairName is V[_hairCategory + 'type'] ? ' selectedHair' : '')" @onclick="`wikifier('mirrorhairdisplayClick', '${_hairCategory}', '${T.hairName.replace(/ /g,'_')}');`">
 					<<if $options.images is 1 and $showMannequins is 1>>
 						<<selectmodel "main">>
 						<<set _modeloptions.tanningEnabled to false>>
@@ -1658,13 +1714,18 @@
 						<<set _modeloptions.hair_sides_length to $hairlengthstage>>
 						<<set _modeloptions.hair_sides_position to $hairposition>>
 						<<set _modeloptions.hair_fringe_length to $fringelengthstage>>
-						<<if _hairCategory is "$hairtype">>
+						<<if _hairCategory is "hair">>
 							<<set _modeloptions.hair_sides_type to _hairName>>
 							<<set _modeloptions.hair_fringe_type to $fringetype>>
 						<<else>>
 							<<set _modeloptions.hair_fringe_type to _hairName>>
 							<<set _modeloptions.hair_sides_type to $hairtype>>
 						<</if>>
+						
+						<<if setup.hairstyles.sides.find(h => h.variable === _modeloptions.hair_sides_type && h.type.includes("ribbon"))>>
+							<<set _modeloptions.sides_accessory to { colour: "white", "variable": _modeloptions.hair_sides_type }>>
+						<</if>>
+
 						<<set _modeloptions.ears_position to $earsposition>>
 						<<rendermodel "hairstyleMannequin">>
 						<br>
@@ -1676,19 +1737,107 @@
 	</div>
 <</widget>>
 
+<<widget "mirrorHairAccessoriesDisplayElements">>
+	<div id="hairGridSides" class="no-numberify hairGrid">
+		<<for _name, _accessory range _args[0]>>
+			<<capture _hairCategory, _name, _accessory>>
+				<div @id="'hairGrid-accessories-' + _accessory.colour" @class="'gridItem' + (_accessory.colour is V.wornAccessories.sides[0].colour ? ' selectedHair' : '')" @onclick="`wikifier('mirrorHairAccessoryDisplayClick', '${JSON.stringify(_accessory)}');`">
+					<<if $options.images is 1 and $showMannequins is 1>>
+						<<selectmodel "main">>
+						<<set _modeloptions.tanningEnabled to false>>
+						<<set _modeloptions.skin_type = Skin.color.natural>>
+						<<set _modeloptions.skin_tone = Skin.color.tan>>
+						<<set _modeloptions.freckles = $player.freckles == true and $makeup.concealer != 1>>
+						<<set _modeloptions.mouth to 'neutral'>>
+						<<set _modeloptions.facevariant = $facevariant>>
+						<<set _modeloptions.left_eye = $makeup.eyelenses.left != 0 ? $makeup.eyelenses.left : $leftEyeColour>>
+						<<set _modeloptions.right_eye = $makeup.eyelenses.right != 0 ? $makeup.eyelenses.right : $rightEyeColour>>
+						<<set _modeloptions.hair_colour = $haircolour>>
+						<<set _modeloptions.hair_fringe_colour = $hairfringecolour>>
+						<<set _modeloptions.hair_fringe_colour_gradient = $hairFringeColourGradient>>
+						<<set _modeloptions.hair_fringe_colour_style = $hairFringeColourStyle>>
+						<<set _modeloptions.hair_colour_gradient = $hairColourGradient>>
+						<<set _modeloptions.hair_colour_style = $hairColourStyle>>
+						<<set _modeloptions.hair_sides_length to $hairlengthstage>>
+						<<set _modeloptions.hair_sides_position to $hairposition>>
+						<<set _modeloptions.hair_fringe_length to $fringelengthstage>>
+						<<set _modeloptions.hair_sides_type to $hairtype>>
+						<<set _modeloptions.hair_fringe_type to $fringetype>>
+						<<set _modeloptions.ears_position to $earsposition>>
+						<<set _modeloptions.sides_accessory to _accessory>>
+						<<rendermodel "hairstyleMannequin">>
+						<br>
+					<</if>>
+					<<print toTitleCase(_name)>>
+				</div>
+			<</capture>>
+		<</for>>
+	</div>
+<</widget>>
+
 <<widget "mirrorhairdisplayClick">>
 	<<if _args[0] and _args[1]>>
-		<<if Object.values(_hairOptions).includes(V[_args[0]])>>
-			<<set _id to "#hairGrid-" + _args[0] + "-" + V[_args[0]].replace(/ /g,"")>>
+		<<set _type to _args[0] + "type">>
+		<<if Object.values(_hairOptions).includes(V[_type].replace(/_/g,""))>>
+			<<set _id to "#hairGrid-" + _type + "-" + V[_type].replace(/ /g,"")>>
 			<<removeclass _id "selectedHair">>
 		<</if>>
-		<<set V[_args[0]] to _args[1].replace(/_/g," ")>>
-		<<set _id2 to "#hairGrid-" + _args[0] + "-" + _args[1].replace(/_/g,"")>>
+
+		<<set $_current to setup.hairstyles.sides.find(hs => hs.variable === V.hairtype)>>
+		<<set $_new to setup.hairstyles.sides.find(hs => hs.variable === _args[1].replace(/_/g," "))>>
+		
+		<<if $_new.type.includes("ribbon")>>
+			<<if $_new.name neq $_current.name>>
+				<<set $_newAccessory to V.accessories.sides.find(a => a.variable === $_new.variable)>>
+				<<wearAccessory $_newAccessory>>
+			<</if>>
+		<<else>>
+			<<set V.wornAccessories.sides to []>>
+		<</if>>
+
+		<<set V[_type] to _args[1].replace(/_/g," ")>>
+		<<set _id3 to "#hairGrid-" + _type + "-" + _args[1].replace(/_/g,"")>>
 		<<set $ruffledisable to "f">>
-		<<addclass _id2 "selectedHair">>
+		<<addclass _id3 "selectedHair">>
+		<<if _args[0] is "hair" and ($_current?.type.includes("ribbon") neq $_new?.type.includes("ribbon"))>>
+			<<replace "#hairContainer">>
+				<div class="containerHeader" class="no-numberify">
+					<<mirrorhairdisplayLinks _args[0]>>
+				</div>
+				<<mirrorhairdisplay _args[0]>>
+			<</replace>>
+		<</if>>
 		<<updatesidebarimg>>
 		<<replace #hairDescription>><<hairDescription>><</replace>>
-		<<replace #hairgelLinks>><<hairgelLinks>><</replace>>
+	<</if>>
+<</widget>>
+
+<<widget "mirrorHairAccessoryDisplayClick">>
+	<<if _args[0] is not undefined>>
+		<<if _discardAccessories>>
+			<<discardSidesAccessory _args[0]>>
+			<<updatesidebarimg>>
+			
+			<<replace "#hairContainer">>
+				<div class="containerHeader" class="no-numberify">
+					<<mirrorhairdisplayLinks "accessories">>
+				</div>
+				<<mirrorAccessoryDisplay>>
+			<</replace>>
+		<<else>>
+			<<if Object.keys(_hairOptions).includes(V.wornAccessories.sides[0].colour)>>
+				<<set _id to "#hairGrid-accessories-" + V.wornAccessories.sides[0].colour>>
+				<<removeclass _id "selectedHair">>
+			<</if>>
+
+			<<removeAccessories "sides">>
+			<<wearAccessory _args[0]>>
+			<<set _id2 to "#hairGrid-accessories-" + _args[0].colour>>
+			<<addclass _id2 "selectedHair">>
+			<<updatesidebarimg>>
+			<<replace #hairDescription>><<hairDescription>><</replace>>
+			<<replace #hairgelLinks>><<hairgelLinks>><</replace>>
+		<</if>>
 	<</if>>
 <</widget>>
 
@@ -1814,58 +1963,39 @@
 
 <<widget "mirrorHairSave">>
 	<div class="hairContainerSave">
-	<<if _savedHairStylesKeys.length gt 0>>
-	<div class="tab">
-		<<button '<span class="fa-icon fa-check"></span> Wear'>>
-			<<set $hairtype to $savedHairStyles[_selectedSavedHairStyle].hairtype>>
-			<<set $fringetype to $savedHairStyles[_selectedSavedHairStyle].fringetype>>
-			<<set $hairposition to $savedHairStyles[_selectedSavedHairStyle].hairposition>>
-			<<set $ruffledisable to "f">>
-			<<updatesidebarimg>>
-		<</button>>
-		<<button '<span class="fa-icon fa-overwrite"></span> Overwrite'>>
-			<<set $savedHairStyles[_selectedSavedHairStyle].hairtype to $hairtype>>
-			<<set $savedHairStyles[_selectedSavedHairStyle].fringetype to $fringetype>>
-			<<set $savedHairStyles[_selectedSavedHairStyle].hairposition to $hairposition>>
-			<<updatesidebarimg>>
-		<</button>>
-		<<button '<span class="fa-icon fa-delete"></span> Delete'>>
-			<<if _selectedSavedHairStyle isnot "Default">>
-				<<run $outfit.forEach((o) => {
-					if(o.hairStyle === T.selectedSavedHairStyle){
-						o.hairStyle = undefined;
-					}
-				})>>
-				<<run delete $savedHairStyles[_selectedSavedHairStyle]>>
-				<<updatesidebarimg>>
-				<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
+		<div class="tab">
+			<<if _savedHairStylesKeys.length gt 0>>
+				<<button '<span class="fa-icon fa-check"></span> Wear'>>
+					<<hairPresetWear _selectedSavedHairStyle>>
+					<<updatesidebarimg>>
+					
+					<<replace "#hairContainer">>
+						<div class="containerHeader" class="no-numberify">
+							<<mirrorhairdisplayLinks "style">>
+						</div>
+						<<mirrorhairdisplaySave>>
+					<</replace>>
+				<</button>>
+				<<button '<span class="fa-icon fa-overwrite"></span> Overwrite'>>
+					<<hairPresetOverwrite _selectedSavedHairStyle>>
+				<</button>>
+				<<button '<span class="fa-icon fa-delete"></span> Delete'>>
+					<<if _selectedSavedHairStyle isnot "Default">>
+						<<hairPresetDelete _selectedSavedHairStyle>>
+						<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
+					<</if>>
+				<</button>>
 			<</if>>
-		<</button>>
-		<<button '<span class="fa-icon fa-save"></span> Save'>>
-			<<if _hairStyleName is "">>
-				<<replace "#textbox-error">><br> <span class="red">Please enter a name.</span><</replace>>
-			<<else>>
-				<<replace "#textbox-error">><</replace>>
-				<<set _hairStyleName to _hairStyleName.replace(/[^a-zA-Z\u4e00-\u9fa50-9_-]+/g,"").substring(0,30)>>
-				<<set $savedHairStyles[_hairStyleName] to { hairtype:$hairtype, fringetype:$fringetype, hairposition:$hairposition }>>
-				<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
-			<</if>>
-		<</button>>
-	</div>
-	<<else>>
-	<div class="tab">
-		<<button '<span class="fa-icon fa-save"></span> Save'>>
-			<<if _hairStyleName is "">>
-				<<replace "#textbox-error">><br> <span class="red">Please enter a name.</span><</replace>>
-			<<else>>
-				<<replace "#textbox-error">><</replace>>
-				<<set _hairStyleName to _hairStyleName.replace(/[^a-zA-Z\u4e00-\u9fa50-9_-]+/g,"").substring(0,30)>>
-				<<set $savedHairStyles[_hairStyleName] to { hairtype:$hairtype, fringetype:$fringetype, hairposition:$hairposition }>>
-				<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
-			<</if>>
-		<</button>>
-	</div>
-	<</if>>
+			<<button '<span class="fa-icon fa-save"></span> Save'>>
+				<<if _hairStyleName is "">>
+					<<replace "#textbox-error">><br> <span class="red">Please enter a name.</span><</replace>>
+				<<else>>
+					<<replace "#textbox-error">><</replace>>
+					<<hairPresetSave _hairStyleName>>
+					<<replace #hairContainerHairstyle>><<mirrorHairSaveOptions>><</replace>>
+				<</if>>
+			<</button>>
+		</div>
 	</div>
 <</widget>>
 

@@ -614,6 +614,14 @@ Renderer.CanvasModels.main = {
 			);
 		}
 
+		if (options.sides_accessory) {
+			if (options.sides_accessory.colour === "custom") {
+				options.filters.sides_accessory = getCustomClothesColourCanvasFilter(options.sides_accessory.colourCustom);
+			} else {
+				options.filters.sides_accessory = lookupColour(options, setup.colours.clothes_map, options.sides_accessory.colour, "sides_accessory", "sides_accessory.colourCustom");
+			}
+		}
+
 		const empty = Renderer.emptyLayerFilter();
 		options.filters.brows = lookupColour(options, setup.colours.hair_map, options.brows_colour || options.hair_colour, "brows", "brows_custom", "brows");
 		options.filters.pbhair = lookupColour(options, setup.colours.hair_map, options.pbhair_colour || options.hair_colour, "pbhair", "pbhair_custom", "pbhair");
@@ -1605,6 +1613,25 @@ Renderer.CanvasModels.main = {
 			},
 			showfn(options) {
 				return !!options.show_hair && !!options.hair_sides_type;
+			},
+		},
+		"sides_accessory": {
+			filters: ["sides_accessory"],
+			animation: "idle",
+
+			srcfn(options) {
+				return `img/clothes/accessories/hair/ribbons/${options.sides_accessory.variable}/${options.hair_sides_length}.png`;
+			},
+			zfn(options) {
+				return (options.hair_sides_position === "front" ? ZIndices.hair_forward : ZIndices.backhair)+1;
+			},
+			masksrcfn(options) {
+				if (options.worn.over_upper.setup.name === "kaiju costume")
+				return `img/clothes/over-upper/kaiju/mask.png`;
+				return options.headMask;
+			},
+			showfn(options) {
+				return !!options.show_hair && !!options.hair_sides_type && options.sides_accessory !== undefined;
 			},
 		},
 		/***

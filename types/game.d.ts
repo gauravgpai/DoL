@@ -275,8 +275,7 @@ declare module "twine-sugarcube" {
 			getSkinCSSFilter(type: SkinColours, tone: number): string;
 		};
 		hairstyles: {
-			fringe: any[];
-			sides: any[];
+			[x in HairCategories]: Hairstyle[];
 		};
 		skinColor: {
 			tanLoc: string[];
@@ -392,6 +391,17 @@ declare global {
 			wings?: boolean;
 		};
 	}
+
+	export interface Hairstyle {
+		name: string;
+		name_cap: string;
+		variable: string;
+		hasCombatImg: boolean;
+		type: string[];
+		shop: string[];
+	}
+
+	export type HairCategories = "sides" | "fringes";
 }
 
 export {};

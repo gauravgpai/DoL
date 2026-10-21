@@ -67,6 +67,7 @@ module.exports = {
 		Stack: "readonly",
 		Wikifier: "readonly",
 		// DoL other namespaces/objects
+		AccessoryItem: "readonly",
 		ClothesItem: "readonly",
 		Constants: "readonly",
 		ConstantsLoader: "readonly",
@@ -495,6 +496,7 @@ module.exports = {
 			1,
 			{
 				definedTypes: [
+					"AccessoryItem",
 					"EventNpc",
 					"ClothesItem",
 					"Penetrator",
