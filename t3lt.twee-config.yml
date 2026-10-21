@@ -15137,6 +15137,8 @@ sugarcube-2:
 
         Does not actually set clothing into exposed or pulled state. Consider refactoring
       tags: ["text", "refactor"]
+    pumpkin_prop:
+      name: pumpkin_prop
     purity:
       description: |-
         Adds purity to pc's state, with appropriate modifiers
