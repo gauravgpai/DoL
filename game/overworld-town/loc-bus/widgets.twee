@@ -27,7 +27,7 @@
 		<<case "connudatus">><<connudatusQuick>>
 		<<case "wolf">><<wolfQuick>>
 		<<case "harvest">><<harvestQuick>>
-		<<case "oxford">><<oxfordquick>>
+		<<case "oxford">><<oxfordQuick>>
 		<<case "danube">><<danubeQuick>>
 		<<case "mer">><<merQuick>>
 		<<case "cliff">><<cliffQuick>>

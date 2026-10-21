@@ -13672,8 +13672,8 @@ sugarcube-2:
     oxfordexposed:
       name: oxfordexposed
       tags: ["unused"]
-    oxfordquick:
-      name: oxfordquick
+    oxfordQuick:
+      name: oxfordQuick
     oxygen:
       name: oxygen
     oxygencaption:

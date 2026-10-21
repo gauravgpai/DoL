@@ -3575,7 +3575,7 @@
 	<<hideDisplay true>>
 <</widget>>
 
-<<widget "oxfordquick">>
+<<widget "oxfordQuick">>
 	<<oxfordicon>><<link [[Oxford Street|Oxford Street]]>><</link>>
 <</widget>>
 
