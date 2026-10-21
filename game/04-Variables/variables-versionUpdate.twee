@@ -7712,4 +7712,9 @@
 	<<if def $cumballoon>>
 		<<unset $cumballoon>>
 	<</if>>
+
+	<<if !$objectVersion.baileyLoveFloor and C.npc.Bailey.love lt 0>>
+		<<set C.npc.Bailey.love to 0>>
+	<</if>>
+	<<set $objectVersion.baileyLoveFloor to 1>>
 <</widget>>
