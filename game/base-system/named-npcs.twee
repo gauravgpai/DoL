@@ -428,6 +428,8 @@ Zohar
 		<<switch _nam>>
 			<<case Kylar>>
 				<<set C.npc.Kylar.state to 0>>
+			<<case Bailey>>
+				<<set $baileySeen to []>>
 			<<case Robin>>
 				<<set $robinSeen to []>>
 				<<set $NPCName[_i].cdquest to 0>>

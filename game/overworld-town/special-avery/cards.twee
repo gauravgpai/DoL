@@ -1583,6 +1583,7 @@ You're barely onto Barb Street when Bailey's phone rings. "What is it?" <<he>> a
 
 :: Avery Cards Bailey 5
 <<set $bus to "mer">><<effects>>
+<<set $baileySeen.pushUnique("cardsDocks")>>
 
 <<generate2>>
 Bailey drives through Cliff Street and Starfish Street. On Mer Street, <<he>> drives down an alley, coming to a stop beside a maze of rusted cargo containers.

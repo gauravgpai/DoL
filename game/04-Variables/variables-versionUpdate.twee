@@ -7717,4 +7717,8 @@
 		<<set C.npc.Bailey.love to 0>>
 	<</if>>
 	<<set $objectVersion.baileyLoveFloor to 1>>
+
+	<<if C.npc.Bailey.init is 1 and !$baileySeen>>
+		<<set $baileySeen to []>>
+	<</if>>
 <</widget>>
