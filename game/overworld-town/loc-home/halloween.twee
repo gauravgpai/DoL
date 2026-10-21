@@ -1,0 +1,71 @@
+:: Halloween Bailey Candy
+<<set $outside to 0>><<set $location to "home">><<effects>>
+/* 20% chance at the end of Robin's trick-or-treat event (Robin Trick 6) */
+<<endevent>><<npc Bailey>><<person1>>
+"Remember," Robin whispers to the other orphans as you reach the door. "Don't let Bailey find out. <<Hes>> busy today, but be careful anyway."
+<br><br>
+Robin pushes the door open. The orphans spill inside clutching their candy, eager to slip off to their rooms. Then a voice cuts through the hall.
+<br><br>
+"Stop right there." Bailey appears at the end of the corridor and strides towards you. "Hand over the candy. All of you."
+<br><br>
+The orphans hold their breath. They look down at their candy, then at the floor. Bailey gestures for you all to get in line. You shuffle into place.
+<br><br>
+<<link [[Hand the candy over|Halloween Bailey Candy Hand Over]]>><</link>>
+<br>
+<<set $skulduggerydifficulty to 1000>>
+<<link [[Hide the candy|Halloween Bailey Candy Hide]]>><</link>><<skulduggerydifficulty>>
+<br>
+
+
+:: Halloween Bailey Candy Hand Over
+<<effects>>
+One by one, the orphans ahead of you hand over their candy. When your turn comes, you step forward and hold out your bag. Bailey takes it, then jerks <<his>> head to send you on your way. "Next."
+<br><br>
+<span class="red">You lose all your Halloween candy.</span>
+<br><br>
+The other orphans give you sympathetic looks. You head back to your room, eyes on the floor.
+<<hope -1>><<lhope>><<stress 6>><<gstress>>
+<br><br>
+<<link [[Next|Bedroom]]>><<endevent>><</link>>
+<br>
+
+
+:: Halloween Bailey Candy Hide
+<<effects>>
+<<skulduggerycheck>>
+While Bailey is busy with the orphans ahead of you, you quickly stash most of your candy on you, leaving only a little in your bag. When you step forward, Bailey glances at the bottom of the bag, but doesn't take it.
+<br><br>
+<<His>> eyes settle on you. "That's all of it?"
+<br><br>
+<<if $speech_attitude is "meek">>
+	You force yourself to meet <<his>> eyes. "Y-yes. That's all of it."
+<<elseif $speech_attitude is "bratty">>
+	You stare right back at <<him>>. "It's all right under your nose."
+<<else>>
+	You keep your face perfectly straight. "Yes."
+<</if>>
+<br><br>
+Bailey says nothing. <<He>> clearly doesn't believe you. <<He>> pushes the bag aside and pats you down, checking for anything hidden. <<stress 6>><<gstress>>
+<br><br>
+<<if $skulduggerysuccess is 1>>
+	Bailey searches you thoroughly, but <span class="green">comes away empty-handed.</span> <<He>> studies your face for a moment, then withdraws <<his>> hands without a word.
+	<br><br>
+	<<He>> snatches your bag. "Next."
+	<br><br>
+	You head back to your room, quietly delighted that your candy survived. Maybe you'll share it with the other orphans once Bailey's gone.
+	<<hope 1>><<ghope>><<stress -6>><<lstress>><<trauma -6>><<ltrauma>>
+<<else>>
+	Bailey's hands stop. With a sharp tug, <span class="red">the candy you hid spills out</span> and clatters across the floor. Your face burns.
+	<br><br>
+	"Pick it up." <<He>> nudges the bag towards you with <<his>> foot. "All of it."
+	<br><br>
+	You kneel and gather the candy piece by piece while the other orphans watch, dropping each one back into the bag. When you're done, Bailey snatches it from your hands and shoves you aside. "Next." <<trauma 6>><<gtrauma>>
+	<br><br>
+		<span class="red">You lose all your Halloween candy.</span>
+	<br><br>
+	The other orphans give you sympathetic looks. You head back to your room, eyes on the floor.
+	<<hope -1>><<lhope>><<stress 12>><<ggstress>>
+<</if>>
+<br><br>
+<<link [[Next|Bedroom]]>><<endevent>><</link>>
+<br>
