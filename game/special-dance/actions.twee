@@ -176,7 +176,7 @@
 			<span class="blue">You can't bring yourself to drink while you know you're with child.</span>
 			<br>
 		<<else>>
-			<<link [[Drink|$passage]]>><<set $danceaction to "drink">><</link>><<dancedifficulty 1 `800 + $drunk`>><<gdrunk>>
+			<<link [[Drink|$passage]]>><<set $danceaction to "drink">><</link>><<dancedifficulty 1 `600 + $drunk`>><<gdrunk>>
 			<br>
 			<<link [[Drink carefully|$passage]]>><<set $danceaction to "drink_careful">><</link>><<gdrunk>>
 			<br>
@@ -647,7 +647,7 @@
 <<widget "dancedrink">>
 	<<set $danceevent to "drink">>
 	The <<person>> offers you a glass of wine.
-	<<if $drunk gte currentSkillValue('danceskill') - 800>>
+	<<if $drunk gte currentSkillValue('danceskill') - 600>>
 		You feel unsteady already.
 	<</if>>
 	<br><br>

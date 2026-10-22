@@ -2029,22 +2029,22 @@
 	<</if>>
 
 	/* Drunk */
-	<<if $drunk gte 100>>
+	<<if drunkModifier() gte 0.25>>
 		<<addinlineevent 2>>
 			<span @class="basicDrunkCss()">You steady yourself and watch the <<fishingBob>> carefully.</span>
 		<</addinlineevent>>
 	<</if>>
-	<<if $drunk gte 100>>
+	<<if drunkModifier() gte 0.25>>
 		<<addinlineevent 2>>
 			<span @class="basicDrunkCss()">You correct your balance and keep watching your line.</span>
 		<</addinlineevent>>
 	<</if>>
-	<<if $drunk gte 100>>
+	<<if drunkModifier() gte 0.25>>
 		<<addinlineevent 2>>
 			<span @class="basicDrunkCss()">You blink hard and try to track the <<fishingBob>>.</span>
 		<</addinlineevent>>
 	<</if>>
-	<<if $drunk gte 100>>
+	<<if drunkModifier() gte 0.25>>
 		<<addinlineevent 2>>
 			<span @class="basicDrunkCss()">You slow your movements, trying to keep your hands steady.</span>
 		<</addinlineevent>>

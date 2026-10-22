@@ -1,5 +1,17 @@
 /* global statDisplay */
 
+/**
+ * Returns a modifier based on the strength of the PC's intoxication.
+ *
+ * Goes from 0 to 1. Scaling caps out when $drunk >= C.stats.drunk.effectLimit.
+ *
+ * @returns {number}
+ */
+function drunkModifier() {
+	return Math.clamp(V.drunk / C.stats.drunk.effectLimit, 0, 1);
+}
+window.drunkModifier = drunkModifier;
+
 const statChange = (() => {
 	function paramError(functionName = "", param = "", value, expectedValues = "") {
 		if (typeof value === "object") value = JSON.stringify(value);
@@ -15,6 +27,7 @@ const statChange = (() => {
 			}`
 		);
 	}
+
 	// Overflow (Clamp) Code Section
 
 	/**

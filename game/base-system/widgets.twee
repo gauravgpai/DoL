@@ -1515,8 +1515,8 @@
 <</widget>>
 
 <<widget "drunkcaption">>
-	<<if $drunk gt 0>>
-		<<set $_colour to getColourClassFromPercentage($drunk * (100 / 480), "drunk")>>
+	<<if drunkModifier() gt 0>>
+		<<set $_colour to getColourClassFromPercentage(100 * drunkModifier(), "drunk")>>
 		<<set $_barColour to $_colour + "bar">>
 		<<set $_percent to Math.floor(100 * ($drunk / $drunkmax))>>
 		<<set $_barWidth to `width:${$_percent}%`>>
