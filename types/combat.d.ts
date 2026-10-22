@@ -5,6 +5,8 @@ declare module "twine-sugarcube" {
 
 		walltype?: "pillory" | "cleanpillory" | "horse_pillory" | "wall";
 		pilloryaudience?: number;
+		punishmentposition: string | 0;
+		gloryhole?: boolean | number;
 
 		arousalmax: number;
 		enemyarousal: number;

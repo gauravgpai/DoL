@@ -1728,7 +1728,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<<set $askedtochoke to 0>>
 		<<combat-set-hand-target _args[0] "throat">>
 		<<neutral 1 _n>>
-		<<namedNpcReaction 0 "choke">>
+		<<namedNpcReaction _n "choke">>
 	<<elseif $combatgoal is "strip">>
 		<<if $worn.over_upper.name isnot "naked" and $noupper isnot 1 and !$worn.over_upper.cursed>>
 			<span class="purple"><<He>> grasps your $worn.over_upper.name with <<his>> _args[0] hand.</span>
@@ -5423,7 +5423,7 @@ Hands are 'inverted': NPC holds PC's left hand with their right one, and vice ve
 		<</if>>
 		<<rng>>
 		<<unset _npc_speech>>
-		<<namedNpcComments $NPCList[_n].fullDescription>>
+		<<namedNpcComments _n>>
 		<<if ($NPCList[_n].mouth is 0 or $NPCList[_n].mouth is "speech_only" or ($NPCList[_n].type is "plant" and $speechKissVirgin is 1)) and $speechDisable isnot 1 and _noNameComment>>
 			<<if $role is "islander" and (!$islander_language or $islander_language lt 100) and !_npc_speech>>
 				<<He>> speaks and gesticulates in <<his>> incomprehensible language.

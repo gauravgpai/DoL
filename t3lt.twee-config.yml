@@ -12224,11 +12224,9 @@ sugarcube-2:
         Plays the named NPC's speech lines for this turn. NPCs without a speech widget or that skip speaking this turn (passes) set `_noNameComment`, so generic comments or mouth actions play instead.
 
         `<<namedNpcComments npc>>`
-        - **npc**: `string` - the NPC's `fullDescription`
+        - **npc**: `number | string` - index into `$NPCList` or the NPC's name
       parameters:
-        - string
-    namedNpcEjaculation:
-      name: namedNpcEjaculation
+        - number|string
     namedNpcGenderApply:
       name: namedNpcGenderApply
     namedNpcGenderConfirm:
@@ -12891,6 +12889,15 @@ sugarcube-2:
       name: npcCondomEquipImmediate
     npcdamage:
       name: npcdamage
+    npcEjaculation:
+      description: |-
+        Plays scene-specific, NPC-specific, or existing generic dialogue for an NPC's climax.
+
+        `<<npcEjaculation index [mode]>>`
+        - **index**: `number` - index into `$NPCList`
+        - **mode** _optional_: `string` - passed through to the selected widget, e.g. `"short"`
+      parameters:
+        - 'number |+ string'
     npcexhibit:
       name: npcexhibit
     npcexpose:
