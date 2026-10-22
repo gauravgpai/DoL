@@ -2670,7 +2670,7 @@ Quinn laughs. "Suit yourself," <<he>> says. <<He>> downs one in a gulp, then the
 <br>
 
 :: Avery Cards Quinn 5
-<<effects>>
+<<set $location to "quinn_mansion">><<effects>>
 
 The <<person2>><<person>> drives the car through Connudatus Street, onto Danube Street. You pass by houses of increasing sophistication, until you arrive in front of a wide set of gates. There's a mansion beyond, raised above the other buildings.
 <br><br>
