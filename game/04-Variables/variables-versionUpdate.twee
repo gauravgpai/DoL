@@ -7721,4 +7721,13 @@
 	<<if C.npc.Bailey.init is 1 and !$baileySeen>>
 		<<set $baileySeen to []>>
 	<</if>>
+	<<if C.npc.Leighton.init is 1 and !$leightonSeen>>
+		<<set $leightonSeen to []>>
+	<</if>>
+	<<if $pillory.tenant.special.name is "Leighton">>
+		<<set $leightonSeen.pushUnique("pillory")>>
+	<</if>>
+	<<if C.npc.Whitney.state is "pillory">>
+		<<set $whitneySeen.pushUnique("pillory")>>
+	<</if>>
 <</widget>>

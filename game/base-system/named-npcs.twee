@@ -437,6 +437,7 @@ Zohar
 				//River teaches maths and housekeeping at the local school. <<His>> <<if $pronoun is "m">>short<<else>>long<</if>> brown hair is flecked with grey and <<his>> piercing blue eyes scrutinise <<his>> surroundings. Students tend to be well-behaved in <<his>> class.//<br><br>
 			<<case Leighton>>
 				<<set $NPCName[_i].title to $pronoun is "m" ? "headmaster" : "headmistress">>
+				<<set $leightonSeen to []>>
 				//Leighton is the head<<master>> of the local school. <<He>> has green eyes and <<if $pronoun is "m">>well-kept greying black hair<<else>>greying black hair, held behind her head in a bun<</if>>. Tall and stately, <<he>> has a firm attitude towards the students at <<his>> school.//<br><br>
 			<<case Mason>>
 				//Mason is the swimming teacher at the local school. <<Hes>> the youngest teacher, only a few years older than some of the students. <<His>> toned body is naturally shown off during class, but if <<he>> notices the way <<hes>> leered at, <<he>> gives no indication.//
