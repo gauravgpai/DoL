@@ -342,7 +342,7 @@ Before you can turn back, a shape rushes from the darkness.
 	<<molested>>
 	<<maninit>>
 	<<npcexpose>>
-	<<set $speechdisable to 1>>
+	<<set $speechDisable to 1>>
 	<<set $noBodyWriting to 1>>
 <</if>>
 
