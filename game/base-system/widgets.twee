@@ -4040,6 +4040,7 @@
 	<<clear_pillory>>
 	<<npc Whitney>>
 	<<set C.npc.Whitney.state to "pillory">>
+	<<set $whitneySeen.pushUnique("pillory")>>
 	<<set $pillory.tenant.special.name to "Whitney">>
 	<<set $pillory.tenant.special.desc to C.npc.Whitney.title>>
 	<<new_npc_pillory $NPCList[0]>>
@@ -4050,6 +4051,7 @@
 <<widget "imprison_leighton">>
 	<<clear_pillory>>
 	<<npc Leighton>>
+	<<set $leightonSeen.pushUnique("pillory")>>
 	<<set $pillory.tenant.special.name to "Leighton">>
 	<<set $pillory.tenant.special.desc to C.npc.Leighton.title>>
 	<<new_npc_pillory $NPCList[0]>>
