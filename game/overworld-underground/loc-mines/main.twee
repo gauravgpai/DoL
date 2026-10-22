@@ -103,7 +103,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 	<<mine_orgasm>>
 <</if>>
 
-<<set _toggle_mod to 1>>
+<<set _relativeWeight to 1>>
 
 <br><br>
 <<cleareventpool>>
@@ -152,7 +152,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 		<<link [[Struggle|Mine Tentacle]]>><<set $molestationstart to 1>><</link>>
 	<</addinlineevent>>
 <<else>>
-	<<set _toggle_mod++>>
+	<<set _relativeWeight++>>
 <</if>>
 
 <<if $settings.slimesEnabled and $hallucinations gte 1>>
@@ -162,7 +162,7 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 		<<link [[Struggle|Mine Slime]]>><<set $molestationstart to 1>><</link>>
 	<</addinlineevent>>
 <<else>>
-	<<set _toggle_mod++>>
+	<<set _relativeWeight++>>
 <</if>>
 
 <<if !$mine.tunnel.intro>>
@@ -181,10 +181,10 @@ You explore the winding tunnels. The map you took makes it easy to find your way
 		<<link [[Struggle|Mine Struggle]]>><<set $struggle_start to 1>><</link>>
 	<</addinlineevent>>
 <<else>>
-	<<set _toggle_mod++>>
+	<<set _relativeWeight++>>
 <</if>>
 
-<<addinlineevent "creature" _toggle_mod>>
+<<addinlineevent "creature" _relativeWeight>>
 	<<generateStrangeCreature 1>><<person1>>
 	As you're exploring, you come across a dark tunnel. You venture forward, making your way through, until you hear small rocks fall behind you. 
 	You turn to look, but nothing's there. You turn to continue, only to see a shape standing in front of you. It lunges, inhuman arms grabbing your body.
